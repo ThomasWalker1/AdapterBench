@@ -1,0 +1,13 @@
+schema_version: 1
+name: ia3
+family: ia3
+implementation: peft
+output_structure: Generated multiplicative activation scaling vectors.
+target_modules: [k_proj, v_proj, down_proj]
+hyperparameters:
+  feedforward_modules: [down_proj]
+  init_ia3_weights: true
+compatible_objectives: [downstream, reconstruction, hybrid]
+supports_batched_generation: false
+notes: [Target and feed-forward module sets must be mapped for each interpreter architecture.]
+

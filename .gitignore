@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+upstream/
+runs/
+train_outputs/
+wandb/
+.venv/
+
+# Regeneratable binary adapter weights written by `peft-hnet run`/`peft-smoke`
+# (results.jsonl/.csv/loss_curves.json metrics stay tracked)
+results/**/adapters/
+

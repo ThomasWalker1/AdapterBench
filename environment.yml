@@ -1,0 +1,13 @@
+name: adapterbench
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip>=24
+  - pytorch=2.5.1
+  - pytorch-cuda=12.4
+  - pip:
+      - -e .[dev]
+

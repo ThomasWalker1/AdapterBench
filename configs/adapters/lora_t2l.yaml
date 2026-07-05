@@ -1,0 +1,16 @@
+schema_version: 1
+name: lora_r8_t2l
+family: lora
+implementation: peft
+output_structure: Generated rank-8 RS-LoRA A/B factors.
+target_modules: [q_proj, v_proj]
+hyperparameters:
+  r: 8
+  lora_alpha: 16
+  lora_dropout: 0.05
+  use_rslora: true
+  bias: none
+compatible_objectives: [downstream, reconstruction, hybrid]
+supports_batched_generation: true
+notes: [Exact adapter configuration from the released Text-to-LoRA Gemma checkpoint.]
+

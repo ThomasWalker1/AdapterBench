@@ -1,0 +1,14 @@
+schema_version: 1
+name: freeze_a_lora_r8
+family: lora
+implementation: custom
+output_structure: Shared frozen A factors with task-conditioned generated B factors.
+target_modules: [q_proj, v_proj]
+hyperparameters:
+  r: 8
+  lora_alpha: 16
+  a_initialization: orthogonal
+compatible_objectives: [downstream, reconstruction, hybrid]
+supports_batched_generation: true
+notes: [Requires the custom dynamic adapter path because upstream PEFT treats both factors as adapter state.]
+

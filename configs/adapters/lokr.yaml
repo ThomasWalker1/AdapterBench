@@ -1,0 +1,13 @@
+schema_version: 1
+name: lokr_r8
+family: lokr
+implementation: peft
+output_structure: Generated low-rank Kronecker factors using the PEFT LoKr implementation.
+target_modules: [q_proj, v_proj]
+hyperparameters:
+  r: 8
+  alpha: 8
+compatible_objectives: [downstream, reconstruction, hybrid]
+supports_batched_generation: false
+notes: [LoKr is used as the maintained Kronecker-product implementation; record factor shapes per target module.]
+

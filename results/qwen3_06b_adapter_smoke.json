@@ -1,0 +1,62 @@
+[
+  {
+    "model": "Qwen/Qwen3-0.6B",
+    "adapter": "lora_r8_t2l",
+    "family": "lora",
+    "status": "ok",
+    "generated_parameters": 1146880,
+    "trainable_parameters": 1146880,
+    "downstream_lm_loss": 5.465763568878174,
+    "forward_seconds": 0.5262227691709995,
+    "peak_memory_bytes": 1218346496,
+    "warning": "Untrained deterministic generator; this validates materialization and execution only."
+  },
+  {
+    "model": "Qwen/Qwen3-0.6B",
+    "adapter": "fourierft_1000",
+    "family": "fourierft",
+    "status": "ok",
+    "generated_parameters": 56000,
+    "trainable_parameters": 56000,
+    "downstream_lm_loss": 5.467845916748047,
+    "forward_seconds": 0.19824375957250595,
+    "peak_memory_bytes": 1243803136,
+    "warning": "Untrained deterministic generator; this validates materialization and execution only."
+  },
+  {
+    "model": "Qwen/Qwen3-0.6B",
+    "adapter": "lokr_r8",
+    "family": "lokr",
+    "status": "ok",
+    "generated_parameters": 93184,
+    "trainable_parameters": 93184,
+    "downstream_lm_loss": 5.452004432678223,
+    "forward_seconds": 0.04335794225335121,
+    "peak_memory_bytes": 1215732224,
+    "warning": "Untrained deterministic generator; this validates materialization and execution only."
+  },
+  {
+    "model": "Qwen/Qwen3-0.6B",
+    "adapter": "ia3",
+    "family": "ia3",
+    "status": "ok",
+    "generated_parameters": 143360,
+    "trainable_parameters": 143360,
+    "downstream_lm_loss": 5.4757280349731445,
+    "forward_seconds": 0.0333101786673069,
+    "peak_memory_bytes": 1215832576,
+    "warning": "Untrained deterministic generator; this validates materialization and execution only."
+  },
+  {
+    "model": "Qwen/Qwen3-0.6B",
+    "adapter": "prefix_tuning_64",
+    "family": "prefix_tuning",
+    "status": "ok",
+    "generated_parameters": 3670016,
+    "trainable_parameters": 3670016,
+    "downstream_lm_loss": 16.061805725097656,
+    "forward_seconds": 0.05300634354352951,
+    "peak_memory_bytes": 1244675584,
+    "warning": "Untrained deterministic generator; this validates materialization and execution only."
+  }
+]

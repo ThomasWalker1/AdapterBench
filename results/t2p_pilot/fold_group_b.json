@@ -1,0 +1,58 @@
+{
+  "representation": "fourierft",
+  "delta_w_scaling": 10000.0,
+  "steps": 500,
+  "folds": [
+    {
+      "held_out_task_id": "lol_035",
+      "train_task_ids": [
+        "lol_022",
+        "lol_033",
+        "lol_034",
+        "lol_039",
+        "lol_043",
+        "lol_044",
+        "lol_045"
+      ],
+      "initial_train_loss": 0.37289741169661283,
+      "final_train_loss": 0.37488000001758337,
+      "held_out_loss": 0.23456841707229614,
+      "zero_baseline_loss": 0.22973155975341797,
+      "steps": 500
+    },
+    {
+      "held_out_task_id": "lol_039",
+      "train_task_ids": [
+        "lol_022",
+        "lol_033",
+        "lol_034",
+        "lol_035",
+        "lol_043",
+        "lol_044",
+        "lol_045"
+      ],
+      "initial_train_loss": 0.3698321236297488,
+      "final_train_loss": 0.3724115416407585,
+      "held_out_loss": 0.2550627589225769,
+      "zero_baseline_loss": 0.25118860602378845,
+      "steps": 500
+    },
+    {
+      "held_out_task_id": "lol_043",
+      "train_task_ids": [
+        "lol_022",
+        "lol_033",
+        "lol_034",
+        "lol_035",
+        "lol_039",
+        "lol_044",
+        "lol_045"
+      ],
+      "initial_train_loss": 0.3395287860184908,
+      "final_train_loss": 0.3419581172056496,
+      "held_out_loss": 0.46585899591445923,
+      "zero_baseline_loss": 0.46331191062927246,
+      "steps": 500
+    }
+  ]
+}

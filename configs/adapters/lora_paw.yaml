@@ -1,0 +1,15 @@
+schema_version: 1
+name: lora_r64_bases64
+family: lora
+implementation: peft
+output_structure: Two generated rank-64 factors per target matrix, mixed from 64 shared bases.
+target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+hyperparameters:
+  r: 64
+  lora_alpha: 16
+  lora_dropout: 0.0
+  bias: none
+compatible_objectives: [downstream, reconstruction, hybrid]
+supports_batched_generation: true
+notes: [Exact adapter shape from the released PAW Qwen3 checkpoint metadata.]
+

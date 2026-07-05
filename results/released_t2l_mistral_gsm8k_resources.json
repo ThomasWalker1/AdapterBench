@@ -1,0 +1,12 @@
+{
+  "checkpoint": "trained_t2l/mistral_7b_t2l/hypermod.pt",
+  "base_model": "mistralai/Mistral-7B-Instruct-v0.2",
+  "representation": "lora",
+  "description": "This task challenges your problem-solving abilities through mathematical reasoning. You must carefully read each scenario and systematically work through the data to compute the final outcome.",
+  "model_load_seconds": 6.263335771858692,
+  "adapter_generation_seconds": 0.2935396246612072,
+  "generated_parameters": 3407872,
+  "generated_bytes": 13631488,
+  "peak_gpu_memory_bytes": 16768096256,
+  "torch": "2.4.0+cu121"
+}

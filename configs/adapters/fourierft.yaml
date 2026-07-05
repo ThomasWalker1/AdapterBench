@@ -1,0 +1,16 @@
+schema_version: 1
+name: fourierft_1000
+family: fourierft
+implementation: peft
+output_structure: Generated real coefficients at fixed 2D Fourier frequency locations.
+target_modules: [q_proj, v_proj]
+hyperparameters:
+  n_frequency: 1000
+  scaling: 300.0
+  random_loc_seed: 777
+  init_weights: true
+  bias: none
+compatible_objectives: [downstream, reconstruction, hybrid]
+supports_batched_generation: false
+notes: [Frequency count is a sweep point and must be budget-matched to each setup.]
+

@@ -1,0 +1,9 @@
+[1/4] embedding 8 task description(s) via Alibaba-NLP/gte-large-en-v1.5...
+[2/4] loading oracle ΔW targets from /home/tw78/scripts/peft_for_hnets/upstream/text-to-lora/train_outputs/sft/oracle_lora...
+[3/4] running leave-one-task-out pilot (3 of 8 folds, representation=fourierft)...
+[4/4] results (L1 loss on scaled ΔW, lower is better):
+  held_out_task      hypernetwork  zero_baseline beats_zero
+  lol_035                  0.2346         0.2297      False
+  lol_039                  0.2551         0.2512      False
+  lol_043                  0.4659         0.4633      False
+wrote results/t2p_pilot/fold_group_b.json
