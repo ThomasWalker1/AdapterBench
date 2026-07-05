@@ -45,8 +45,10 @@ could never produce.
 - `configs/setups/`, `configs/adapters/` — declarative manifests for each benchmark
   setting and each representation; `peft-hnet catalog`/`validate`/`matrix` operate on
   these.
-- `archive/` — retired code, kept for history (see [PROJECT_PLAN.md](PROJECT_PLAN.md)
-  for what superseded it and why).
+- Retired reconstruction-matching code (`t2p/pilot.py`, `t2p/oracle_targets.py`, and
+  friends) isn't in the working tree — it's preserved in git history (see the repo's
+  first two commits) rather than a live `archive/` directory. See
+  [PROJECT_PLAN.md](PROJECT_PLAN.md) for what superseded it and why.
 
 Start with [SETUP.md](SETUP.md) for environment setup, then
 [BENCHMARK_CONTRACT.md](BENCHMARK_CONTRACT.md) for the interfaces every setting

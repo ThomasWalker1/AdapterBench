@@ -1,6 +1,15 @@
-# PEFT-as-Hypernetwork-Output Benchmark: Project Plan
+# AdapterBench: Project Plan
 
 ## Status snapshot (as of 2026-07-05)
+
+Moved to `/home/tw78/peft_for_hnets` and put under git version control (repo:
+`https://github.com/ThomasWalker1/AdapterBench`, private) — rebranded from its earlier
+working name ("PEFT-as-Hypernetwork-Output Benchmark" / `peft-hnet-benchmark`) to
+**AdapterBench**. The installable Python package (`peft_hnet`) and CLI command
+(`peft-hnet`) keep their existing names to avoid an invasive import-path rename; only the
+repo/distribution name and docs are rebranded. `archive/` (retired Phase 3 code) was
+removed from the working tree once git history existed to fall back on — see the repo's
+first two commits, not a live directory.
 
 **Phase 4: the benchmark has been restructured to train solely via live end-to-end SFT**
 — the hypernetwork's generated output is hooked directly into a real frozen interpreter's
@@ -27,9 +36,11 @@ zero-gradient saddle point at this hypernetwork's default init (fixed at the cod
 level), and Qwen3's default "thinking" chat-template mode silently breaking both training
 and eval prompts unless `enable_thinking=False` is passed explicitly.
 
-**Phase 3's reconstruction-matching pilot is retired and archived** (`archive/`, not
-deleted — this project has no git history of its own) now that live SFT is the sole
-training/eval mechanism; its real results and findings are preserved below for history.
+**Phase 3's reconstruction-matching pilot is retired** now that live SFT is the sole
+training/eval mechanism; its code was removed from the working tree once this project
+gained git history (recoverable via `git log`/`git show` on the repo's first two
+commits, not a live `archive/` directory), and its real results and findings are
+preserved below for history.
 One old finding from even before Phase 3 (an unresolved KronA initialization issue, see
 just below the Phase 2 results) turned out to be the same *family* of problem as gotcha
 #15's LoRA/LoKr fix here — bilinear factorized codecs need deliberate asymmetric
@@ -196,7 +207,7 @@ gets to KronA, rather than assuming a naive basis-mixing head will "just work" f
 ## How to check current status / resume
 
 ```bash
-cd /home/tw78/scripts/peft_for_hnets
+cd /home/tw78/peft_for_hnets
 uv run pytest -q                                                             # 52 tests as of 2026-07-05
 cat results/text_to_peft_gemma2b_reconstruction_phase1/results.jsonl         # Phase-1 numbers: released T2L checkpoint, lora vs frozen_interpreter, 5 tasks x 100 examples
 cat results/text_to_peft_mistral7b_reconstruction_pilot/results.jsonl        # Phase-2 numbers: our self-trained 8-task checkpoint, lora vs frozen_interpreter, 2 tasks x 20 examples
@@ -204,7 +215,7 @@ cat results/t2p_sft/smoke_lol022_lora.json                                  # Ph
 cat results/t2p_sft/smoke_lol022_steering.json                              # Phase-4 smoke: same, activation_steering — same command, different --representation/--target-modules
 cat results/t2p_sft_pilot/results.jsonl                                     # Phase-4 pilot: lora vs ia3 vs activation_steering vs frozen, boolq+hellaswag (n=20/family)
 cat results/t2p_sft_pilot/loss_curves.json                                  # Phase-4 pilot: full 400-step loss curve per representation
-ls archive/                                                                  # retired Phase 3 reconstruction-matching code + its real results/findings (not deleted, no git history to fall back on)
+git show 9afd7d3 -- archive/                                                 # retired Phase 3 reconstruction-matching code (removed from the working tree, recoverable via git history)
 ```
 
 To rerun the Phase-4 multi-task pilot (needs a real GPU; trains 3 representations to 400
@@ -430,8 +441,9 @@ Requires `hf auth login` (or `HF_TOKEN`) with license-accepted access to gated
 ### Phase 3: generalize the representation seam — ✅ done, then retired and archived (see Phase 4)
 
 **Superseded.** Kept below for history — the reconstruction-matching machinery this
-phase built (`t2p/pilot.py`, `t2p/oracle_targets.py`) is archived under `archive/`, not
-part of the active codebase. Live end-to-end SFT (Phase 4) is now the sole training/eval
+phase built (`t2p/pilot.py`, `t2p/oracle_targets.py`) has been removed from the active
+codebase (recoverable via git history, not a live `archive/` directory). Live end-to-end
+SFT (Phase 4) is now the sole training/eval
 mechanism, for a reason that goes beyond "it's what Sakana actually does": reconstruction
 matching requires a representation-specific *oracle target* (an already-trained example
 of that representation to regress onto), which has no general recipe for activation-based
