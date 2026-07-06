@@ -1,0 +1,60 @@
+warning: `VIRTUAL_ENV=/home/tw78/miniconda3/envs/egl_libs` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[1/6] building tiny interpreter (freshly initialized, no download)...
+[2/6] embedding task descriptions via Alibaba-NLP/gte-large-en-v1.5...
+[3/6] building 200 synthetic example(s) per family for ['copy', 'reverse', 'increment', 'sort', 'constant']...
+[3/6] built 1000 example(s), 63 batch(es)/epoch
+[4/6] scoring frozen interpreter baseline...
+  frozen_interpreter   copy         exact_match=0.00
+  frozen_interpreter   reverse      exact_match=0.00
+  frozen_interpreter   increment    exact_match=0.00
+  frozen_interpreter   sort         exact_match=0.00
+  frozen_interpreter   constant     exact_match=0.00
+[5/6] representation=lora target_modules=['q_proj', 'v_proj']: training...
+  lora: initial_loss=2.7723 final_loss=2.5373
+[6/6] representation=lora: evaluating...
+  lora                 copy         exact_match=0.00
+  lora                 reverse      exact_match=0.00
+  lora                 increment    exact_match=0.00
+  lora                 sort         exact_match=0.00
+  lora                 constant     exact_match=1.00
+[5/6] representation=freeze_a_lora target_modules=['q_proj', 'v_proj']: training...
+  freeze_a_lora: initial_loss=2.7723 final_loss=2.4617
+[6/6] representation=freeze_a_lora: evaluating...
+  freeze_a_lora        copy         exact_match=0.02
+  freeze_a_lora        reverse      exact_match=0.00
+  freeze_a_lora        increment    exact_match=0.00
+  freeze_a_lora        sort         exact_match=0.00
+  freeze_a_lora        constant     exact_match=1.00
+[5/6] representation=ia3 target_modules=['k_proj', 'v_proj', 'down_proj']: training...
+  ia3: initial_loss=2.7723 final_loss=2.5969
+[6/6] representation=ia3: evaluating...
+  ia3                  copy         exact_match=0.00
+  ia3                  reverse      exact_match=0.00
+  ia3                  increment    exact_match=0.00
+  ia3                  sort         exact_match=0.00
+  ia3                  constant     exact_match=1.00
+[5/6] representation=lokr target_modules=['q_proj', 'v_proj']: training...
+  lokr: initial_loss=2.7723 final_loss=2.4370
+[6/6] representation=lokr: evaluating...
+  lokr                 copy         exact_match=0.60
+  lokr                 reverse      exact_match=0.00
+  lokr                 increment    exact_match=0.66
+  lokr                 sort         exact_match=0.00
+  lokr                 constant     exact_match=1.00
+[5/6] representation=fourierft target_modules=['q_proj', 'v_proj']: training...
+  fourierft: initial_loss=2.7723 final_loss=2.6815
+[6/6] representation=fourierft: evaluating...
+  fourierft            copy         exact_match=0.00
+  fourierft            reverse      exact_match=0.00
+  fourierft            increment    exact_match=0.00
+  fourierft            sort         exact_match=0.00
+  fourierft            constant     exact_match=0.82
+[5/6] representation=activation_steering target_modules=['block']: training...
+  activation_steering: initial_loss=2.7723 final_loss=2.5481
+[6/6] representation=activation_steering: evaluating...
+  activation_steering  copy         exact_match=0.00
+  activation_steering  reverse      exact_match=0.00
+  activation_steering  increment    exact_match=0.00
+  activation_steering  sort         exact_match=0.00
+  activation_steering  constant     exact_match=1.00
+wrote results/t2p_synthetic_pilot_long/results.jsonl, results/t2p_synthetic_pilot_long/results.csv, results/t2p_synthetic_pilot_long/loss_curves.json

@@ -3,8 +3,10 @@ from types import SimpleNamespace
 import torch
 from torch import nn
 
-from peft_hnet.t2p.hypernetwork import TextToPeftHypernetwork
+from peft_hnet.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+from peft_hnet.t2p.model_utils import get_decoder_layers
 from peft_hnet.t2p.sft_trainer import SFTBatch, compute_sft_loss, train_downstream_hypernetwork
+from peft_hnet.t2p.tiny_interpreter import build_tiny_interpreter
 
 
 class TinyDecoderLayer(nn.Module):
@@ -85,5 +87,33 @@ def test_train_downstream_hypernetwork_reduces_loss_on_an_easy_target():
 
     assert stats.steps == 100
     assert len(stats.losses) == 100
+    assert all(torch.isfinite(torch.tensor(loss)) for loss in stats.losses)
+    assert stats.final_loss < stats.initial_loss
+
+
+def test_train_downstream_hypernetwork_works_against_a_real_tiny_transformers_model():
+    """Same training loop as the toy-model tests above, but the interpreter is a real
+    (if tiny) `transformers` LlamaForCausalLM (t2p/tiny_interpreter.py) — the lightweight
+    synthetic setting's interpreter — proving it's a drop-in replacement for the
+    hand-rolled `TinyCausalLM` stand-in, not just superficially similar."""
+    torch.manual_seed(0)
+    interpreter = build_tiny_interpreter(vocab_size=16, hidden_size=32, num_layers=2)
+    for parameter in interpreter.parameters():
+        parameter.requires_grad = False
+    layers = get_decoder_layers(interpreter)
+    module_shapes = infer_module_shapes(layers, ["q_proj", "v_proj"])
+    hypernetwork = TextToPeftHypernetwork(
+        condition_dim=6,
+        module_shapes=module_shapes,
+        num_layers=len(layers),
+        representation="lora",
+        latent_dim=16,
+        head_dim=16,
+        rank=2,
+    )
+    batch = _make_batch(batch_size=4, seq_len=6, vocab_size=16, condition_dim=6, target_token=5)
+
+    stats = train_downstream_hypernetwork(hypernetwork, interpreter, layers, [batch], steps=100, learning_rate=1e-2)
+
     assert all(torch.isfinite(torch.tensor(loss)) for loss in stats.losses)
     assert stats.final_loss < stats.initial_loss

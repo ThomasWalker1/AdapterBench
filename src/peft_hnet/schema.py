@@ -36,7 +36,7 @@ class ConditioningSpec(StrictModel):
 
 
 class DatasetSpec(StrictModel):
-    source: Literal["huggingface", "upstream", "local"]
+    source: Literal["huggingface", "upstream", "local", "synthetic"]
     dataset_id: str
     revision: str | None = None
     train_split: str | None = None

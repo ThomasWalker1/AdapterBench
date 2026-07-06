@@ -12,7 +12,7 @@ environment on a given machine, so any researcher can reproduce it from
 `pyproject.toml`/`uv.lock` alone:
 
 ```bash
-cd /home/tw78/peft_for_hnets
+cd /home/tw78/AdapterBench
 uv venv .venv --python 3.11
 uv pip install -e ".[dev]"     # or: uv sync, once uv.lock is committed
 uv run peft-hnet doctor --require-cuda

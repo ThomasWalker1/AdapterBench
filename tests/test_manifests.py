@@ -16,6 +16,7 @@ def test_catalog_and_trial_ids_are_complete_and_stable():
         "text_to_peft_gemma2b_sft",
         "text_to_peft_mistral7b_reconstruction_pilot",
         "text_to_peft_sft_pilot",
+        "synthetic_sft_pilot",
     }
     assert len(adapters) == 8
     # activation_steering has no weight-space delta (dense_delta raises) and only

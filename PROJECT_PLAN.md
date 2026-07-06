@@ -2,7 +2,11 @@
 
 ## Status snapshot (as of 2026-07-05)
 
-Moved to `/home/tw78/peft_for_hnets` and put under git version control (repo:
+Moved to `/home/tw78/AdapterBench` (renamed again from an intermediate
+`/home/tw78/peft_for_hnets` — each move breaks every installed console script's shebang,
+since those are absolute paths baked in at install time; fix is always
+`uv pip install --python .venv/bin/python --reinstall -e ".[dev]"` to regenerate them,
+not a fresh `uv venv`) and put under git version control (repo:
 `https://github.com/ThomasWalker1/AdapterBench`, private) — rebranded from its earlier
 working name ("PEFT-as-Hypernetwork-Output Benchmark" / `peft-hnet-benchmark`) to
 **AdapterBench**. The installable Python package (`peft_hnet`) and CLI command
@@ -180,7 +184,14 @@ gets to KronA, rather than assuming a naive basis-mixing head will "just work" f
   fundamentally cannot load them, since they were never materialized as PEFT adapters.
   Its scoring routines (`_score_multiple_choice`, `_score_gsm8k`) are verbatim ports —
   representation-agnostic, only the activation mechanism differs.
-- `src/peft_hnet/cli.py` — `peft-hnet {catalog,validate,matrix,doctor,peft-smoke,run,t2p-sft,t2p-sft-pilot}`.
+- `src/peft_hnet/t2p/tiny_interpreter.py`, `t2p/synthetic_tasks.py`, `t2p/synthetic_evaluator.py`
+  — the Phase-5 lightweight setting: a tiny freshly initialized `LlamaForCausalLM` (no
+  download), 5 synthetic algorithmic task families with exactly known correct answers,
+  and a function-based exact-match evaluator. Reuses `t2p/sft_trainer.py`,
+  `t2p/codecs.py`, `t2p/hypernetwork.py`, `t2p/condition_encoder.py`, and even
+  `t2p/lol_data.py::lol_collate_fn` completely unchanged — only the interpreter and data
+  source differ from the real setting.
+- `src/peft_hnet/cli.py` — `peft-hnet {catalog,validate,matrix,doctor,peft-smoke,run,t2p-sft,t2p-sft-pilot,t2p-synthetic-pilot}`.
   `run` is the Phase-1 entrypoint (unchanged: generate → evaluate → evaluate_frozen via
   the disk-artifact `HypernetworkBackend`/`DownstreamEvaluator` contract — still the
   right tool for evaluating Sakana's released/self-trained checkpoints as baselines).
@@ -195,7 +206,10 @@ gets to KronA, rather than assuming a naive basis-mixing head will "just work" f
   `HypernetworkDownstreamEvaluator` against real held-out benchmark examples, writing
   `results.jsonl`/`.csv` (via the existing `reporting.write_results`, reused unchanged)
   and a per-representation `loss_curves.json` incrementally after each representation
-  completes (crash-safety, matching gotcha #3's established pattern).
+  completes (crash-safety, matching gotcha #3's established pattern). `t2p-synthetic-pilot`
+  is the Phase-5 lightweight-setting entrypoint: same shared-then-loop structure, but
+  builds a tiny from-scratch interpreter instead of downloading one, defaults to *all six*
+  registered representations (affordable at this scale), and defaults `--device cpu`.
 - `src/peft_hnet/reporting.py::write_results` — writes `results.jsonl` (schema-free,
   always safe) and `results.csv` (fieldnames are the *union* of metric keys across all
   rows — see gotcha #4 below).
@@ -207,14 +221,16 @@ gets to KronA, rather than assuming a naive basis-mixing head will "just work" f
 ## How to check current status / resume
 
 ```bash
-cd /home/tw78/peft_for_hnets
-uv run pytest -q                                                             # 52 tests as of 2026-07-05
+cd /home/tw78/AdapterBench
+uv run pytest -q                                                             # 68 tests as of 2026-07-05
 cat results/text_to_peft_gemma2b_reconstruction_phase1/results.jsonl         # Phase-1 numbers: released T2L checkpoint, lora vs frozen_interpreter, 5 tasks x 100 examples
 cat results/text_to_peft_mistral7b_reconstruction_pilot/results.jsonl        # Phase-2 numbers: our self-trained 8-task checkpoint, lora vs frozen_interpreter, 2 tasks x 20 examples
 cat results/t2p_sft/smoke_lol022_lora.json                                  # Phase-4 smoke: real live-SFT loss curve, LoRA, 1 task, Qwen3-0.6B
 cat results/t2p_sft/smoke_lol022_steering.json                              # Phase-4 smoke: same, activation_steering — same command, different --representation/--target-modules
 cat results/t2p_sft_pilot/results.jsonl                                     # Phase-4 pilot: lora vs ia3 vs activation_steering vs frozen, boolq+hellaswag (n=20/family)
 cat results/t2p_sft_pilot/loss_curves.json                                  # Phase-4 pilot: full 400-step loss curve per representation
+cat results/t2p_synthetic_pilot_long/results.jsonl                          # Phase-5 pilot: all 6 representations vs frozen, 5 synthetic task families, 1500 steps
+cat results/t2p_synthetic_pilot_long/loss_curves.json                       # Phase-5 pilot: full 1500-step loss curve per representation
 git show 9afd7d3 -- archive/                                                 # retired Phase 3 reconstruction-matching code (removed from the working tree, recoverable via git history)
 ```
 
@@ -224,6 +240,13 @@ few minutes on an idle A100 for `Qwen/Qwen3-0.6B`):
 
 ```bash
 uv run peft-hnet t2p-sft-pilot --device cuda:0 --output results/t2p_sft_pilot
+```
+
+To rerun the Phase-5 lightweight synthetic pilot (no GPU or network needed; all 6
+representations, ~3 min for 400 steps or ~20 min for 1500 steps on CPU):
+
+```bash
+uv run peft-hnet t2p-synthetic-pilot --steps 1500 --output results/t2p_synthetic_pilot_long
 ```
 
 To rerun the Phase-4 live-SFT smoke test (needs a real GPU; loads a real interpreter —
@@ -433,6 +456,26 @@ Requires `hf auth login` (or `HF_TOKEN`) with license-accepted access to gated
     this benchmark that scores a Qwen3 (or other hybrid-reasoning-model) interpreter via
     direct next-token/loglikelihood scoring rather than free-form generation — always
     check the frozen baseline against chance before trusting adapted-vs-frozen deltas.
+19. **Moving this project's directory breaks every installed console script
+    (`pytest`, `peft-hnet`, ...) — happened twice now (`scripts/peft_for_hnets` →
+    `peft_for_hnets` → `AdapterBench`).** `uv`-installed entry-point scripts under
+    `.venv/bin/` have an absolute-path shebang (`#!/old/path/.venv/bin/python`) baked in
+    at install time; after a directory move that path no longer exists, so *any* command
+    fails with a misleading `Failed to spawn: pytest — No such file or directory` (the
+    error is about the shebang interpreter, not the script itself — `.venv/bin/pytest`
+    still exists on disk). Symptom is easy to misdiagnose as a broken environment.
+    **Fix: `uv pip install --python .venv/bin/python --reinstall -e ".[dev]"`** — this
+    regenerates every entry-point shim (and any editable-install path metadata, e.g. an
+    `Unnecessary package: peft-hnet-benchmark==0.1.0 (from file:///old/path)` line in
+    `uv run -v`'s debug output is the tell) against the new path, without needing to
+    recreate the whole venv from scratch. Also note: **editing `pyproject.toml`'s
+    `[project].name`** can independently trigger `uv run` to silently re-resolve
+    `uv.lock` against whatever Python `uv` finds first on `PATH`/`VIRTUAL_ENV` (on this
+    machine, an unrelated conda env's Python 3.14, incompatible with the pinned
+    `torch==2.5.1` wheels) — if a rename is immediately followed by
+    `torch ... doesn't have a source distribution or wheel for the current platform`,
+    re-lock explicitly against the project's own interpreter:
+    `uv lock --python .venv/bin/python`.
 
 ## Roadmap (not yet done, in priority order)
 
@@ -612,7 +655,96 @@ section above; this section tracks what's been validated vs. what's still ahead.
   currently duplicate the scoring routines) — kept separate deliberately for now so the
   new live-hook path can't destabilize the already-working PEFT-artifact baseline path.
 
-### Phase 5: Doc-to-LoRA as the second benchmark "setting"
+### Phase 5: lightweight synthetic setting — ✅ done
+
+A second, lightweight setting for the live-SFT mechanism (`peft-hnet t2p-synthetic-pilot`),
+purely additive to the real Qwen3/Lots-of-LoRAs setting above. Motivation: that real
+setting is heavy (network access, a real ~0.6B-parameter model) and has no ground truth —
+when a representation underperforms (LoRA, in the Phase 4 pilot) there's no way to tell
+whether the *codec* is underpowered or the *real-world task* is just hard. This setting
+reuses the entire training/codec stack unchanged and swaps only the interpreter and data
+source for ones with exactly known correct answers, closing that gap.
+
+- **Tiny real-`transformers` interpreter** (`t2p/tiny_interpreter.py::build_tiny_interpreter`)
+  — a `LlamaConfig`/`LlamaForCausalLM` at tiny dimensions (2 layers, hidden_size 32),
+  constructed via `from_config` and **never downloaded** — fully network-independent,
+  randomly initialized, real `transformers` mechanics (`.generate()`, forward hooks,
+  `get_decoder_layers`/`infer_module_shapes` all work completely unchanged). Llama was
+  chosen over reusing Qwen3 specifically to avoid the `enable_thinking` chat-template trap
+  (gotcha #18) — moot here anyway since this setting never uses a chat template at all;
+  examples are built directly as integer ids over a fixed 16-symbol vocabulary
+  (`PAD/BOS/EOS/SEP` + digits 0-9), no tokenizer involved on the interpreter side.
+- **Synthetic task registry** (`t2p/synthetic_tasks.py::TASK_FAMILIES`) — 5 hard-coded task
+  families, each a pure-Python transform with exactly known correct output plus 4
+  hand-written description paraphrases (no external data, no description-generation
+  provenance gap to track): `copy` (identity), `reverse`, `increment` (+1 mod 10 per
+  digit, pointwise), `sort` (ascending, needs real cross-position reasoning), `constant`
+  (fixed output regardless of input — a control task testing whether conditioning can
+  make the model ignore its input at all). `SyntheticSFTDataset` mirrors `LolSFTDataset`'s
+  random(train)/deterministic(eval) description-embedding draw convention exactly, but
+  generates examples on the fly via a per-`(seed, family, index)` RNG — no dataset
+  download, fully reproducible. Batches collate via the *existing*
+  `t2p/lol_data.py::lol_collate_fn` **completely unchanged** — good evidence the pipeline
+  was already factored data-source-agnostically despite that function's name. Condition
+  embeddings reuse `t2p/condition_encoder.py` unchanged too (real `gte-large-en-v1.5`) —
+  the *only* things that differ from the real setting are the interpreter and the data.
+- **Synthetic evaluator** (`t2p/synthetic_evaluator.py`) — function-based (not a class;
+  proportionate to how little logic remains with no chat template or text parsing):
+  greedy-decode via `interpreter.generate()` under the same `hypernetwork.apply(...)`
+  contextmanager every setting uses, then direct token-id exact-match against the known
+  target. A `condition_embeddings=None` path scores the frozen baseline.
+- **CLI**: `peft-hnet t2p-synthetic-pilot` mirrors `t2p-sft-pilot`'s structure (shared
+  interpreter/encoder/batches, per-representation train-then-evaluate loop, incremental
+  `results.jsonl`/`loss_curves.json` writes) but defaults `--device cpu` (no GPU needed at
+  all) and — affordable for the first time at this tiny scale — defaults
+  `--representations` to **all six** registered codecs, including FourierFT/LoKr, which
+  Phase 4 explicitly deferred from live SFT at real-model scale over a memory risk that is
+  specific to real model dimensions and remains open there.
+- **Schema**: `schema.py::DatasetSpec.source` gained `"synthetic"` (additive); new
+  `configs/setups/synthetic_sft_pilot.yaml`.
+- **A real bug found immediately by the first real run**: `FourierFTCodec`'s default
+  `n_frequency=1000` exceeds this tiny model's smallest target module's element count
+  (`v_proj` is 32×16=512) — `make_codec` raised `n_frequency exceeds the matrix size`.
+  Fixed by exposing `--n-frequency`/`--rank` on the CLI with tiny-scale-safe defaults
+  (`n_frequency=32`, `rank=4`) rather than hardcoding the real-model defaults (1000/8).
+
+**Real results** (200 examples/family training, 1000 total, batch size 16; `n=50`/family
+eval; two runs, 400 and 1500 steps, to see whether more budget changes the picture):
+
+| representation | copy | reverse | increment | sort | constant |
+|---|---|---|---|---|---|
+| frozen_interpreter | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
+| lora (400 / 1500 steps) | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 1.00 / 1.00 |
+| freeze_a_lora | 0.00 / 0.02 | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 1.00 / 1.00 |
+| ia3 | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 1.00 / 1.00 |
+| lokr | 0.04 / **0.60** | 0.00 / 0.00 | 0.00 / **0.66** | 0.00 / 0.00 | 1.00 / 1.00 |
+| fourierft | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 0.28 / 0.82 |
+| activation_steering | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 1.00 / 1.00 |
+
+**Honest read:** `constant` (the control task — ignore the input entirely) is solved
+almost immediately by every representation except FourierFT, confirming the conditioning
+mechanism itself works — the hypernetwork can clearly steer the tiny interpreter's
+behavior via the codec/hook path. The genuinely interesting result is what happens on the
+*input-dependent* tasks: at 1500 steps, **LoKr is the only representation that learns
+`copy` and `increment`** (both pointwise, position-preserving transforms) — a real,
+substantial jump (0.60/0.66) that LoRA, FreezeALoRA, IA3, and activation steering never
+make at the same budget, despite LoKr sharing the same bilinear-factorization fix (gotcha
+#15) as LoRA. Nothing solves `reverse`/`sort` (both require reordering across positions,
+plausibly beyond a 2-layer/hidden-32 model's capacity regardless of representation, or
+just needing far more steps). FourierFT remains the weakest representation even on the
+control task (0.28 → 0.82, still not fully solved) — consistent with the historical
+gotchas #12/13 about FourierFT being unusually sensitive to head-parameter scaling; worth
+retrying here with a scaling/lr sweep before concluding it's a capacity problem rather
+than the same optimization-recipe sensitivity found before. This is exactly the kind of
+finding this setting was built to produce: a representation-specific effect, isolated
+from real-world task noise, that the real Qwen3 setting's small held-out benchmark
+couldn't have distinguished from "the benchmark task was just hard."
+
+**Explicitly out of scope for this pass** (per the approved plan): leave-one-family-out
+generalization testing (cheap to add later given synthetic data, not built now); no
+changes to the real Qwen3/Lots-of-LoRAs setting.
+
+### Phase 6: Doc-to-LoRA as the second benchmark "setting"
 
 `doc-to-lora/` is cloned but has zero integration so far (no config, no backend, no code
 references anywhere). Structurally different from T2L (Perceiver-style cross-attention

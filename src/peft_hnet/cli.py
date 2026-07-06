@@ -349,6 +349,156 @@ def _t2p_sft_pilot_command(args) -> None:
     print(f"wrote {output_dir}/results.jsonl, {output_dir}/results.csv, {output_dir}/loss_curves.json", flush=True)
 
 
+def _t2p_synthetic_pilot_command(args) -> None:
+    import torch
+    from functools import partial
+
+    from .contracts import EvaluationResult
+    from .reporting import write_results
+    from .t2p.condition_encoder import embed_task_descriptions, load_condition_encoder
+    from .t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+    from .t2p.lol_data import lol_collate_fn
+    from .t2p.model_utils import get_decoder_layers
+    from .t2p.sft_trainer import train_downstream_hypernetwork
+    from .t2p.synthetic_evaluator import evaluate_families
+    from .t2p.synthetic_tasks import TASK_FAMILIES, SyntheticSFTDataset
+    from .t2p.tiny_interpreter import PAD_ID, build_tiny_interpreter
+
+    representations = args.representations.split(",")
+    family_names = args.families.split(",") if args.families else list(TASK_FAMILIES)
+    output_dir = Path(args.output)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    print("[1/6] building tiny interpreter (freshly initialized, no download)...", flush=True)
+    interpreter = build_tiny_interpreter(
+        vocab_size=args.vocab_size,
+        hidden_size=args.hidden_size,
+        num_layers=args.num_layers,
+        num_heads=args.num_heads,
+        num_kv_heads=args.num_kv_heads,
+        intermediate_size=args.intermediate_size,
+        max_position_embeddings=args.max_position_embeddings,
+        seed=args.seed,
+    ).to(args.device)
+    interpreter.eval()
+    for parameter in interpreter.parameters():
+        parameter.requires_grad = False
+    layers = get_decoder_layers(interpreter)
+
+    print(f"[2/6] embedding task descriptions via {args.condition_encoder}...", flush=True)
+    encoder_model, encoder_tokenizer = load_condition_encoder(args.condition_encoder, device=args.device)
+    train_embeddings_by_family, eval_embeddings_by_family = {}, {}
+    for family_name in family_names:
+        descriptions = TASK_FAMILIES[family_name].descriptions
+        train_descriptions = descriptions[: args.train_descriptions]
+        eval_descriptions = descriptions[args.train_descriptions :]
+        if not eval_descriptions:
+            raise ValueError(f"{family_name} has no held-out descriptions left after --train-descriptions")
+        train_embeddings_by_family[family_name] = embed_task_descriptions(
+            train_descriptions, encoder_model, encoder_tokenizer
+        ).to(args.device)
+        eval_embeddings_by_family[family_name] = embed_task_descriptions(
+            eval_descriptions, encoder_model, encoder_tokenizer
+        )[0].to(args.device)
+    condition_dim = next(iter(train_embeddings_by_family.values())).shape[-1]
+    del encoder_model
+
+    print(f"[3/6] building {args.examples_per_family} synthetic example(s) per family for {family_names}...", flush=True)
+    datasets = [
+        SyntheticSFTDataset(
+            family_name,
+            train_embeddings_by_family[family_name],
+            seq_len=args.seq_len,
+            size=args.examples_per_family,
+            training=True,
+            seed=args.seed,
+        )
+        for family_name in family_names
+    ]
+    dataset = torch.utils.data.ConcatDataset(datasets)
+    dataloader = torch.utils.data.DataLoader(
+        dataset,
+        batch_size=args.batch_size,
+        shuffle=True,
+        collate_fn=partial(lol_collate_fn, pad_token_id=PAD_ID),
+    )
+    batches = [batch.to(args.device) for batch in dataloader]
+    print(f"[3/6] built {len(dataset)} example(s), {len(batches)} batch(es)/epoch", flush=True)
+
+    results: list = []
+    loss_curves: dict = {}
+
+    def _record(representation: str, trial_id: str, accuracies: dict, generated_parameter_count: int) -> None:
+        for family_name, accuracy in accuracies.items():
+            results.append(
+                EvaluationResult(
+                    trial_id=trial_id,
+                    task_id=family_name,
+                    split="synthetic_eval",
+                    representation=representation,
+                    metrics={"exact_match": accuracy, "n_examples": float(args.eval_examples_per_family)},
+                    generated_parameter_count=generated_parameter_count,
+                    generation_seconds=0.0,
+                    inference_seconds=0.0,
+                    metadata={},
+                )
+            )
+        write_results(results, output_dir)
+        for family_name, accuracy in accuracies.items():
+            print(f"  {representation:20} {family_name:12} exact_match={accuracy:.2f}", flush=True)
+
+    print("[4/6] scoring frozen interpreter baseline...", flush=True)
+    frozen_accuracies = evaluate_families(
+        None, interpreter, layers, None, family_names,
+        seq_len=args.seq_len, num_examples=args.eval_examples_per_family, device=args.device, seed=args.eval_seed,
+    )
+    _record("frozen_interpreter", "t2p_synthetic_pilot::frozen_interpreter", frozen_accuracies, 0)
+
+    for representation in representations:
+        target_modules = _PILOT_DEFAULT_TARGET_MODULES[representation]
+        print(f"[5/6] representation={representation} target_modules={target_modules}: training...", flush=True)
+        module_shapes = infer_module_shapes(layers, target_modules, hidden_size=interpreter.config.hidden_size)
+        hypernetwork = TextToPeftHypernetwork(
+            condition_dim=condition_dim,
+            module_shapes=module_shapes,
+            num_layers=len(layers),
+            representation=representation,
+            rank=args.rank,
+            n_frequency=args.n_frequency,
+            seed=args.seed,
+        ).to(args.device)
+        stats = train_downstream_hypernetwork(
+            hypernetwork,
+            interpreter,
+            layers,
+            batches,
+            steps=args.steps,
+            learning_rate=args.learning_rate,
+            max_grad_norm=args.max_grad_norm,
+            l2_reg_generated_w=args.l2_reg_generated_w,
+        )
+        print(f"  {representation}: initial_loss={stats.initial_loss:.4f} final_loss={stats.final_loss:.4f}", flush=True)
+        loss_curves[representation] = {
+            "target_modules": target_modules,
+            "initial_loss": stats.initial_loss,
+            "final_loss": stats.final_loss,
+            "steps": stats.steps,
+            "losses": list(stats.losses),
+        }
+        (output_dir / "loss_curves.json").write_text(json.dumps(loss_curves, indent=2) + "\n")
+
+        print(f"[6/6] representation={representation}: evaluating...", flush=True)
+        accuracies = evaluate_families(
+            hypernetwork, interpreter, layers, eval_embeddings_by_family, family_names,
+            seq_len=args.seq_len, num_examples=args.eval_examples_per_family, device=args.device, seed=args.eval_seed,
+        )
+        _record(representation, f"t2p_synthetic_pilot::{representation}", accuracies, hypernetwork.generated_parameter_count())
+
+        del hypernetwork
+
+    print(f"wrote {output_dir}/results.jsonl, {output_dir}/results.csv, {output_dir}/loss_curves.json", flush=True)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Benchmark PEFT representations as hypernetwork outputs")
     parser.set_defaults(func=lambda _: parser.print_help())
@@ -476,6 +626,49 @@ def main() -> None:
     t2p_sft_pilot.add_argument("--eval-split", default="test")
     t2p_sft_pilot.add_argument("--output", default="results/t2p_sft_pilot")
     t2p_sft_pilot.set_defaults(func=_t2p_sft_pilot_command)
+
+    t2p_synthetic_pilot = subparsers.add_parser(
+        "t2p-synthetic-pilot",
+        help="lightweight live-SFT setting: a tiny, freshly initialized transformers causal LM (no download) trained "
+        "on synthetic algorithmic tasks with exactly known correct answers — validates codec expressiveness "
+        "decoupled from real-world task noise, CPU-friendly and network-independent",
+    )
+    t2p_synthetic_pilot.add_argument(
+        "--families", default="", help="comma-separated task families (default: all of copy,reverse,increment,sort,constant)"
+    )
+    t2p_synthetic_pilot.add_argument(
+        "--representations", default="lora,freeze_a_lora,ia3,lokr,fourierft,activation_steering"
+    )
+    t2p_synthetic_pilot.add_argument("--vocab-size", type=int, default=16)
+    t2p_synthetic_pilot.add_argument("--hidden-size", type=int, default=32)
+    t2p_synthetic_pilot.add_argument("--num-layers", type=int, default=2)
+    t2p_synthetic_pilot.add_argument("--num-heads", type=int, default=4)
+    t2p_synthetic_pilot.add_argument("--num-kv-heads", type=int, default=2)
+    t2p_synthetic_pilot.add_argument("--intermediate-size", type=int, default=64)
+    t2p_synthetic_pilot.add_argument("--max-position-embeddings", type=int, default=32)
+    t2p_synthetic_pilot.add_argument("--seq-len", type=int, default=5, help="digits per synthetic example")
+    t2p_synthetic_pilot.add_argument("--condition-encoder", default="Alibaba-NLP/gte-large-en-v1.5")
+    t2p_synthetic_pilot.add_argument(
+        "--train-descriptions", type=int, default=3, help="description variants per family used for training"
+    )
+    t2p_synthetic_pilot.add_argument("--examples-per-family", type=int, default=200, help="training examples per epoch")
+    t2p_synthetic_pilot.add_argument("--rank", type=int, default=4, help="LoRA/FreezeALoRA/LoKr rank")
+    t2p_synthetic_pilot.add_argument(
+        "--n-frequency", type=int, default=32,
+        help="FourierFT frequency count; must be <= the smallest target module's in_features*out_features "
+        "(tiny model dimensions need a much smaller value than the real-model default of 1000)",
+    )
+    t2p_synthetic_pilot.add_argument("--batch-size", type=int, default=16)
+    t2p_synthetic_pilot.add_argument("--steps", type=int, default=400)
+    t2p_synthetic_pilot.add_argument("--learning-rate", type=float, default=1e-3)
+    t2p_synthetic_pilot.add_argument("--max-grad-norm", type=float, default=1.0)
+    t2p_synthetic_pilot.add_argument("--l2-reg-generated-w", type=float, default=1e-3)
+    t2p_synthetic_pilot.add_argument("--eval-examples-per-family", type=int, default=50)
+    t2p_synthetic_pilot.add_argument("--eval-seed", type=int, default=1234)
+    t2p_synthetic_pilot.add_argument("--seed", type=int, default=777)
+    t2p_synthetic_pilot.add_argument("--device", default="cpu")
+    t2p_synthetic_pilot.add_argument("--output", default="results/t2p_synthetic_pilot")
+    t2p_synthetic_pilot.set_defaults(func=_t2p_synthetic_pilot_command)
 
     args = parser.parse_args()
     args.func(args)
