@@ -1,6 +1,6 @@
 """Differentiable generated-parameter codecs, hookable at either a named linear
-submodule (weight-space representations: LoRA, FreezeALoRA, LoKr, FourierFT) or a whole
-decoder layer's output / residual stream (activation-space representations: IA3,
+submodule (weight-space adapters: LoRA, FreezeALoRA, LoKr, FourierFT) or a whole
+decoder layer's output / residual stream (activation-space adapters: IA3,
 activation steering). The hook site is determined entirely by the `target_modules`/
 `module_shapes` name passed to `TextToPeftHypernetwork` — `"block"` resolves to the
 layer itself (see `hypernetwork.py::_resolve_target`), anything else resolves to a named
@@ -301,5 +301,5 @@ def make_codec(
     try:
         return constructors[name]()
     except KeyError as error:
-        raise ValueError(f"unsupported differentiable representation: {name}") from error
+        raise ValueError(f"unsupported differentiable adapter: {name}") from error
 

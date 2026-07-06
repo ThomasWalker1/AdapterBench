@@ -59,7 +59,7 @@ def main() -> None:
     result = {
         "checkpoint": args.checkpoint,
         "base_model": upstream_args.model_dir,
-        "representation": "lora",
+        "adapter": "lora",
         "description": args.description,
         "model_load_seconds": load_seconds,
         "adapter_generation_seconds": generation_seconds,

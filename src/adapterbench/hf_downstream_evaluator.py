@@ -1,7 +1,7 @@
 """DownstreamEvaluator that scores generated adapters with plain transformers+peft.
 
 Deliberately avoids vLLM: it is not installed in this environment, and non-LoRA
-representations (FourierFT/IA3/LoKr) this benchmark ultimately compares are not
+adapters (FourierFT/IA3/LoKr) this benchmark ultimately compares are not
 vLLM-servable anyway, so a custom evaluator is required regardless.
 
 Replicates upstream Text-to-LoRA's tokenizer setup (padding side, pad token, chat
@@ -148,7 +148,7 @@ class HFDownstreamEvaluator(DownstreamEvaluator):
     ) -> EvaluationResult:
         adapter_name = None
         if artifact is not None:
-            adapter_name = f"{family}__{artifact.representation}"
+            adapter_name = f"{family}__{artifact.adapter}"
             self._ensure_adapter_loaded(adapter_name, artifact.path)
 
         if self.device.startswith("cuda"):
@@ -162,12 +162,12 @@ class HFDownstreamEvaluator(DownstreamEvaluator):
         inference_seconds = time.perf_counter() - started
 
         metric_name = "exact_match" if family == "gsm8k" else "accuracy"
-        representation = artifact.representation if artifact is not None else "frozen_interpreter"
+        adapter = artifact.adapter if artifact is not None else "frozen_interpreter"
         return EvaluationResult(
             trial_id=self.trial_id,
             task_id=family,
             split=split,
-            representation=representation,
+            adapter=adapter,
             metrics={metric_name: correct / len(examples), "n_examples": float(len(examples))},
             generated_parameter_count=artifact.generated_parameter_count if artifact is not None else 0,
             generation_seconds=artifact.generation_seconds if artifact is not None else 0.0,

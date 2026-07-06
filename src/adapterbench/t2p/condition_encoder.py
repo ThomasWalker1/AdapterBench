@@ -5,7 +5,7 @@ Replicates upstream Text-to-LoRA's own embedding recipe
 ``pooling.py::cls_pool`` + ``preprocessing.py::add_full_stop``) so embeddings here are
 comparable to what T2L's own checkpoints were conditioned on. Unlike
 ``ReleasedTextToLoRABackend``, this runs in-process: gte-large-en-v1.5's config and
-tokenizer load cleanly under ``peft_hnet``'s own pinned ``transformers`` (only needs
+tokenizer load cleanly under ``adapterbench``'s own pinned ``transformers`` (only needs
 ``trust_remote_code=True``, no incompatible pin), so no cross-venv subprocess bridge is
 needed here.
 """

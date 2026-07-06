@@ -3,9 +3,9 @@ from types import SimpleNamespace
 import torch
 from torch import nn
 
-from peft_hnet.contracts import TaskExample
-from peft_hnet.t2p.hypernetwork import TextToPeftHypernetwork
-from peft_hnet.t2p.live_evaluator import HypernetworkDownstreamEvaluator
+from adapterbench.contracts import TaskExample
+from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork
+from adapterbench.t2p.live_evaluator import HypernetworkDownstreamEvaluator
 
 
 class FakeDecoderLayer(nn.Module):
@@ -51,7 +51,7 @@ def _setup(vocab_size=16, hidden_size=8):
         condition_dim=4,
         module_shapes={"block": (hidden_size, hidden_size)},
         num_layers=1,
-        representation="activation_steering",
+        adapter="activation_steering",
         latent_dim=16,
         head_dim=16,
     )
@@ -77,12 +77,12 @@ def test_evaluate_frozen_scores_without_any_hypernetwork_involvement():
     results = evaluator.evaluate_frozen([_example()], split="test")
     assert len(results) == 1
     result = results[0]
-    assert result.representation == "frozen_interpreter"
+    assert result.adapter == "frozen_interpreter"
     assert result.generated_parameter_count == 0
     assert 0.0 <= result.metrics["accuracy"] <= 1.0
 
 
-def test_evaluate_hooks_the_generated_representation_and_reports_its_parameter_count():
+def test_evaluate_hooks_the_generated_adapter_and_reports_its_parameter_count():
     interpreter, hypernetwork = _setup()
     evaluator = HypernetworkDownstreamEvaluator(
         interpreter, interpreter.layers, hypernetwork, FakeTokenizer(), trial_id="t", device="cpu"
@@ -91,7 +91,7 @@ def test_evaluate_hooks_the_generated_representation_and_reports_its_parameter_c
     results = evaluator.evaluate(condition_embeddings, [_example()], split="test")
     assert len(results) == 1
     result = results[0]
-    assert result.representation == "activation_steering"
+    assert result.adapter == "activation_steering"
     assert result.generated_parameter_count == hypernetwork.generated_parameter_count()
 
 

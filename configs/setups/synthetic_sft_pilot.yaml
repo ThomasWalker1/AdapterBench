@@ -3,7 +3,7 @@ name: synthetic_sft_pilot
 description: Lightweight live end-to-end SFT setting — a tiny, freshly initialized (not downloaded) real transformers causal LM trained on synthetic algorithmic tasks with exactly known correct answers, for validating that a codec is expressive enough to learn a task at all, decoupled from real-world task noise. No network dependency, CPU-friendly.
 protocol: generic_text_to_adapter
 availability: runnable
-runner: peft_hnet.t2p
+runner: adapterbench.t2p
 sources:
   - name: originating_code
     uri: https://github.com/SakanaAI/text-to-lora
@@ -42,7 +42,7 @@ evaluation:
   primary_metric: exact_match_mean
   metrics: [exact_match]
   baselines: [frozen_interpreter]
-  report_by: [task, representation]
+  report_by: [task, adapter]
   generation:
     use_icl: false
     num_fewshot: 0

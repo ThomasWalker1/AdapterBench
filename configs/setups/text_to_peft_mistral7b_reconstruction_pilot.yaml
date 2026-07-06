@@ -45,7 +45,7 @@ evaluation:
   primary_metric: benchmark_accuracy_mean
   metrics: [accuracy, exact_match, generation_latency]
   baselines: [frozen_interpreter]
-  report_by: [task, representation]
+  report_by: [task, adapter]
   generation:
     use_icl: false
     num_fewshot: 0
@@ -61,5 +61,5 @@ fixed_controls:
   - hypernetwork hidden architecture
 notes:
   - "This is a Phase 2 pilot, not a full-scale run: 8 tasks vs. the released checkpoint's 479, and the hypermod.pt is self-trained via scripts/train_lora_baselines.py + scripts/train_hyper_recon.py, not downloaded."
-  - "Purpose is validating that peft_hnet's ReleasedTextToLoRABackend/HFDownstreamEvaluator work against a self-trained checkpoint, not just the one released checkpoint they were originally built against. Weak accuracy on held-out benchmarks is expected and not itself a finding."
+  - "Purpose is validating that adapterbench's ReleasedTextToLoRABackend/HFDownstreamEvaluator work against a self-trained checkpoint, not just the one released checkpoint they were originally built against. Weak accuracy on held-out benchmarks is expected and not itself a finding."
   - "Do not average or compare these numbers against text_to_peft_gemma2b_reconstruction's results: different interpreter model, different training scale, different task family."

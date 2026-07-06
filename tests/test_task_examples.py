@@ -1,4 +1,4 @@
-from peft_hnet.task_examples import (
+from adapterbench.task_examples import (
     _arc_examples,
     _boolq_examples,
     _gsm8k_examples,

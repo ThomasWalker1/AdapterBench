@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from peft_hnet.text_to_lora_backend import ReleasedTextToLoRABackend
+from adapterbench.text_to_lora_backend import ReleasedTextToLoRABackend
 
 
 def _fake_checkpoint(tmp_path: Path) -> Path:
@@ -33,7 +33,7 @@ def test_generate_wraps_subprocess_manifest_into_adapter_artifacts(tmp_path, mon
         manifest = {
             "checkpoint": str(checkpoint),
             "base_model": "google/gemma-2-2b-it",
-            "representation": "lora",
+            "adapter": "lora",
             "model_load_seconds": 5.0,
             "torch": "2.4.0",
             "adapters": {
@@ -54,7 +54,7 @@ def test_generate_wraps_subprocess_manifest_into_adapter_artifacts(tmp_path, mon
 
         return Result()
 
-    monkeypatch.setattr("peft_hnet.text_to_lora_backend.subprocess.run", fake_run)
+    monkeypatch.setattr("adapterbench.text_to_lora_backend.subprocess.run", fake_run)
 
     backend = ReleasedTextToLoRABackend(checkpoint=checkpoint, python=python)
     artifacts = backend.generate({"arc_easy": "Answer science questions."}, output_dir)
@@ -62,7 +62,7 @@ def test_generate_wraps_subprocess_manifest_into_adapter_artifacts(tmp_path, mon
     assert set(artifacts) == {"arc_easy"}
     artifact = artifacts["arc_easy"]
     assert artifact.task_id == "arc_easy"
-    assert artifact.representation == "lora"
+    assert artifact.adapter == "lora"
     assert artifact.format == "peft"
     assert artifact.generated_parameter_count == 1234
     assert artifact.generation_seconds == 0.1

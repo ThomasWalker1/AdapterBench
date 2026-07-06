@@ -84,7 +84,7 @@ class SetupManifest(StrictModel):
     schema_version: Literal[1]
     name: str
     description: str
-    protocol: Literal["paw", "text_to_lora", "doc_to_lora", "generic_text_to_adapter"]
+    protocol: Literal["text_to_lora", "doc_to_lora", "generic_text_to_adapter"]
     availability: Literal["runnable", "artifacts_only", "specification_only"]
     runner: str
     sources: list[SourceRef]

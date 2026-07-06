@@ -1,11 +1,11 @@
 """Generate one or more Text-to-LoRA adapters from a trained hypernetwork checkpoint.
 
 This script must run under the upstream Text-to-LoRA environment
-(``upstream/text-to-lora/.venv/bin/python``), NOT the main ``peft_hnet`` uv venv:
+(``upstream/text-to-lora/.venv/bin/python``), NOT the main ``adapterbench`` uv venv:
 ``hyper_llm_modulator`` pins an older torch/transformers/peft stack that conflicts
-with ``peft_hnet``'s own dependencies. ``peft_hnet.text_to_lora_backend`` invokes this
-script via subprocess and only ever reads back the adapter directories + JSON manifest
-it writes, so the two environments never need to share a process.
+with ``adapterbench``'s own dependencies. ``adapterbench.text_to_lora_backend`` invokes
+this script via subprocess and only ever reads back the adapter directories + JSON
+manifest it writes, so the two environments never need to share a process.
 
 Loads the base model + hypernetwork once, then generates one saved PEFT LoRA adapter
 per condition (avoids repeated ~2B-parameter model loads for multi-task batches).
@@ -63,7 +63,7 @@ def main() -> None:
     manifest: dict[str, dict] = {
         "checkpoint": args.checkpoint,
         "base_model": upstream_args.model_dir,
-        "representation": "lora",
+        "adapter": "lora",
         "model_load_seconds": load_seconds,
         "torch": torch.__version__,
         "adapters": {},

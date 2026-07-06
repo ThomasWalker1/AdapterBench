@@ -2,7 +2,7 @@
 
 Generation runs out-of-process under the upstream Text-to-LoRA environment
 (``upstream/text-to-lora/.venv``): ``hyper_llm_modulator`` pins a torch/transformers/peft
-stack incompatible with ``peft_hnet``'s own dependencies (see SETUP.md). This backend never
+stack incompatible with ``adapterbench``'s own dependencies (see SETUP.md). This backend never
 imports ``hyper_llm_modulator`` directly - it shells out to ``scripts/generate_t2l_adapter.py``
 and reads back the adapter directories + JSON manifest it writes.
 """
@@ -80,7 +80,7 @@ class ReleasedTextToLoRABackend(HypernetworkBackend):
         for task_id, entry in manifest["adapters"].items():
             artifacts[task_id] = AdapterArtifact(
                 task_id=task_id,
-                representation=manifest["representation"],
+                adapter=manifest["adapter"],
                 path=Path(entry["path"]),
                 format="peft",
                 generated_parameter_count=entry["generated_parameter_count"],

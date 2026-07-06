@@ -3,10 +3,10 @@ from types import SimpleNamespace
 import torch
 from torch import nn
 
-from peft_hnet.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-from peft_hnet.t2p.model_utils import get_decoder_layers
-from peft_hnet.t2p.sft_trainer import SFTBatch, compute_sft_loss, train_downstream_hypernetwork
-from peft_hnet.t2p.tiny_interpreter import build_tiny_interpreter
+from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+from adapterbench.t2p.model_utils import get_decoder_layers
+from adapterbench.t2p.sft_trainer import SFTBatch, compute_sft_loss, train_downstream_hypernetwork
+from adapterbench.t2p.tiny_interpreter import build_tiny_interpreter
 
 
 class TinyDecoderLayer(nn.Module):
@@ -47,7 +47,7 @@ def _toy_setup(seed=0):
         condition_dim=6,
         module_shapes={"block": (hidden_size, hidden_size)},
         num_layers=num_layers,
-        representation="activation_steering",
+        adapter="activation_steering",
         latent_dim=16,
         head_dim=16,
     )
@@ -106,7 +106,7 @@ def test_train_downstream_hypernetwork_works_against_a_real_tiny_transformers_mo
         condition_dim=6,
         module_shapes=module_shapes,
         num_layers=len(layers),
-        representation="lora",
+        adapter="lora",
         latent_dim=16,
         head_dim=16,
         rank=2,

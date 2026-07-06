@@ -1,6 +1,6 @@
 import torch
 
-from peft_hnet.state import AdapterStateLayout
+from adapterbench.state import AdapterStateLayout
 
 
 def test_adapter_state_round_trip_preserves_named_tensor_shapes():

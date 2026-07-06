@@ -8,7 +8,7 @@ train_outputs/
 wandb/
 .venv/
 
-# Regeneratable binary adapter weights written by `peft-hnet run`/`peft-smoke`
+# Regeneratable binary adapter weights written by `adapterbench run`/`peft-smoke`
 # (results.jsonl/.csv/loss_curves.json metrics stay tracked)
 results/**/adapters/
 

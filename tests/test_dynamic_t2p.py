@@ -2,12 +2,12 @@ import pytest
 import torch
 from torch import nn
 
-from peft_hnet.t2p.codecs import make_codec
-from peft_hnet.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+from adapterbench.t2p.codecs import make_codec
+from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
 
 
 @pytest.mark.parametrize("name", ["lora", "freeze_a_lora", "fourierft", "lokr", "ia3", "activation_steering"])
-def test_generated_representation_is_differentiable(name):
+def test_generated_adapter_is_differentiable(name):
     torch.manual_seed(0)
     codec = make_codec(
         name,
@@ -74,7 +74,7 @@ def test_hypernetwork_hooks_apply_per_example_adapters_and_backpropagate():
         condition_dim=6,
         module_shapes={"q_proj": (8, 8)},
         num_layers=2,
-        representation="lora",
+        adapter="lora",
         latent_dim=32,
         head_dim=32,
         rank=2,
@@ -109,7 +109,7 @@ def test_hypernetwork_hooks_a_whole_layer_via_block_sentinel_and_backpropagates(
         condition_dim=6,
         module_shapes={"block": (hidden_size, hidden_size)},
         num_layers=2,
-        representation="activation_steering",
+        adapter="activation_steering",
         latent_dim=32,
         head_dim=32,
     )
@@ -176,7 +176,7 @@ def test_bilinear_codec_contributes_zero_at_init_but_has_nonzero_gradient(name):
         condition_dim=4,
         module_shapes={"q_proj": (8, 8)},
         num_layers=1,
-        representation=name,
+        adapter=name,
         latent_dim=16,
         head_dim=16,
         rank=2,

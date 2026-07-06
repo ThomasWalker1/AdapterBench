@@ -107,7 +107,7 @@ def _run_command(args) -> None:
     def _record(result) -> None:
         results.append(result)
         write_results(results, args.output)
-        print(f"  {result.task_id:16} {result.representation:20} {result.metrics}", flush=True)
+        print(f"  {result.task_id:16} {result.adapter:20} {result.metrics}", flush=True)
 
     for result in evaluator.iter_evaluate(artifacts, all_examples, split=args.split):
         _record(result)
@@ -170,12 +170,12 @@ def _t2p_sft_command(args) -> None:
     batches = [batch.to(args.device) for batch in dataloader]
     print(f"[3/5] built {len(dataset)} example(s) across {len(datasets)} task(s), {len(batches)} batch(es)/epoch", flush=True)
 
-    print(f"[4/5] training hypernetwork (representation={args.representation}, target_modules={target_modules})...", flush=True)
+    print(f"[4/5] training hypernetwork (adapter={args.adapter}, target_modules={target_modules})...", flush=True)
     hypernetwork = TextToPeftHypernetwork(
         condition_dim=condition_dim,
         module_shapes=module_shapes,
         num_layers=len(layers),
-        representation=args.representation,
+        adapter=args.adapter,
         seed=args.seed,
     ).to(args.device)
     stats = train_downstream_hypernetwork(
@@ -194,7 +194,7 @@ def _t2p_sft_command(args) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "interpreter": args.interpreter,
-        "representation": args.representation,
+        "adapter": args.adapter,
         "target_modules": target_modules,
         "tasks": task_ids,
         "steps": stats.steps,
@@ -232,7 +232,7 @@ def _t2p_sft_pilot_command(args) -> None:
     from .t2p.sft_trainer import train_downstream_hypernetwork
 
     task_ids = args.tasks.split(",")
-    representations = args.representations.split(",")
+    adapters = args.adapters.split(",")
     eval_task_ids = args.eval_tasks.split(",")
     tasks_dir = Path(args.tasks_dir)
     output_dir = Path(args.output)
@@ -296,7 +296,7 @@ def _t2p_sft_pilot_command(args) -> None:
     def _record(result) -> None:
         results.append(result)
         write_results(results, output_dir)
-        print(f"  {result.representation:20} {result.task_id:16} {result.metrics}", flush=True)
+        print(f"  {result.adapter:20} {result.task_id:16} {result.metrics}", flush=True)
 
     print("[5/6] scoring frozen interpreter baseline...", flush=True)
     frozen_evaluator = HypernetworkDownstreamEvaluator(
@@ -305,15 +305,15 @@ def _t2p_sft_pilot_command(args) -> None:
     for result in frozen_evaluator.iter_evaluate_frozen(all_eval_examples, split=args.eval_split):
         _record(result)
 
-    for representation in representations:
-        target_modules = _PILOT_DEFAULT_TARGET_MODULES[representation]
-        print(f"[6/6] representation={representation} target_modules={target_modules}: training...", flush=True)
+    for adapter in adapters:
+        target_modules = _PILOT_DEFAULT_TARGET_MODULES[adapter]
+        print(f"[6/6] adapter={adapter} target_modules={target_modules}: training...", flush=True)
         module_shapes = infer_module_shapes(layers, target_modules, hidden_size=interpreter.config.hidden_size)
         hypernetwork = TextToPeftHypernetwork(
             condition_dim=condition_dim,
             module_shapes=module_shapes,
             num_layers=len(layers),
-            representation=representation,
+            adapter=adapter,
             seed=args.seed,
         ).to(args.device)
         stats = train_downstream_hypernetwork(
@@ -326,8 +326,8 @@ def _t2p_sft_pilot_command(args) -> None:
             max_grad_norm=args.max_grad_norm,
             l2_reg_generated_w=args.l2_reg_generated_w,
         )
-        print(f"  {representation}: initial_loss={stats.initial_loss:.4f} final_loss={stats.final_loss:.4f}", flush=True)
-        loss_curves[representation] = {
+        print(f"  {adapter}: initial_loss={stats.initial_loss:.4f} final_loss={stats.final_loss:.4f}", flush=True)
+        loss_curves[adapter] = {
             "target_modules": target_modules,
             "initial_loss": stats.initial_loss,
             "final_loss": stats.final_loss,
@@ -336,9 +336,9 @@ def _t2p_sft_pilot_command(args) -> None:
         }
         (output_dir / "loss_curves.json").write_text(json.dumps(loss_curves, indent=2) + "\n")
 
-        print(f"[6/6] representation={representation}: evaluating...", flush=True)
+        print(f"[6/6] adapter={adapter}: evaluating...", flush=True)
         evaluator = HypernetworkDownstreamEvaluator(
-            interpreter, layers, hypernetwork, tokenizer, trial_id=f"t2p_sft_pilot::{representation}", device=args.device
+            interpreter, layers, hypernetwork, tokenizer, trial_id=f"t2p_sft_pilot::{adapter}", device=args.device
         )
         for result in evaluator.iter_evaluate(eval_condition_embeddings, all_eval_examples, split=args.eval_split):
             _record(result)
@@ -364,7 +364,7 @@ def _t2p_synthetic_pilot_command(args) -> None:
     from .t2p.synthetic_tasks import TASK_FAMILIES, SyntheticSFTDataset
     from .t2p.tiny_interpreter import PAD_ID, build_tiny_interpreter
 
-    representations = args.representations.split(",")
+    adapters = args.adapters.split(",")
     family_names = args.families.split(",") if args.families else list(TASK_FAMILIES)
     output_dir = Path(args.output)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -428,14 +428,14 @@ def _t2p_synthetic_pilot_command(args) -> None:
     results: list = []
     loss_curves: dict = {}
 
-    def _record(representation: str, trial_id: str, accuracies: dict, generated_parameter_count: int) -> None:
+    def _record(adapter: str, trial_id: str, accuracies: dict, generated_parameter_count: int) -> None:
         for family_name, accuracy in accuracies.items():
             results.append(
                 EvaluationResult(
                     trial_id=trial_id,
                     task_id=family_name,
                     split="synthetic_eval",
-                    representation=representation,
+                    adapter=adapter,
                     metrics={"exact_match": accuracy, "n_examples": float(args.eval_examples_per_family)},
                     generated_parameter_count=generated_parameter_count,
                     generation_seconds=0.0,
@@ -445,7 +445,7 @@ def _t2p_synthetic_pilot_command(args) -> None:
             )
         write_results(results, output_dir)
         for family_name, accuracy in accuracies.items():
-            print(f"  {representation:20} {family_name:12} exact_match={accuracy:.2f}", flush=True)
+            print(f"  {adapter:20} {family_name:12} exact_match={accuracy:.2f}", flush=True)
 
     print("[4/6] scoring frozen interpreter baseline...", flush=True)
     frozen_accuracies = evaluate_families(
@@ -454,15 +454,15 @@ def _t2p_synthetic_pilot_command(args) -> None:
     )
     _record("frozen_interpreter", "t2p_synthetic_pilot::frozen_interpreter", frozen_accuracies, 0)
 
-    for representation in representations:
-        target_modules = _PILOT_DEFAULT_TARGET_MODULES[representation]
-        print(f"[5/6] representation={representation} target_modules={target_modules}: training...", flush=True)
+    for adapter in adapters:
+        target_modules = _PILOT_DEFAULT_TARGET_MODULES[adapter]
+        print(f"[5/6] adapter={adapter} target_modules={target_modules}: training...", flush=True)
         module_shapes = infer_module_shapes(layers, target_modules, hidden_size=interpreter.config.hidden_size)
         hypernetwork = TextToPeftHypernetwork(
             condition_dim=condition_dim,
             module_shapes=module_shapes,
             num_layers=len(layers),
-            representation=representation,
+            adapter=adapter,
             rank=args.rank,
             n_frequency=args.n_frequency,
             seed=args.seed,
@@ -477,8 +477,8 @@ def _t2p_synthetic_pilot_command(args) -> None:
             max_grad_norm=args.max_grad_norm,
             l2_reg_generated_w=args.l2_reg_generated_w,
         )
-        print(f"  {representation}: initial_loss={stats.initial_loss:.4f} final_loss={stats.final_loss:.4f}", flush=True)
-        loss_curves[representation] = {
+        print(f"  {adapter}: initial_loss={stats.initial_loss:.4f} final_loss={stats.final_loss:.4f}", flush=True)
+        loss_curves[adapter] = {
             "target_modules": target_modules,
             "initial_loss": stats.initial_loss,
             "final_loss": stats.final_loss,
@@ -487,12 +487,12 @@ def _t2p_synthetic_pilot_command(args) -> None:
         }
         (output_dir / "loss_curves.json").write_text(json.dumps(loss_curves, indent=2) + "\n")
 
-        print(f"[6/6] representation={representation}: evaluating...", flush=True)
+        print(f"[6/6] adapter={adapter}: evaluating...", flush=True)
         accuracies = evaluate_families(
             hypernetwork, interpreter, layers, eval_embeddings_by_family, family_names,
             seq_len=args.seq_len, num_examples=args.eval_examples_per_family, device=args.device, seed=args.eval_seed,
         )
-        _record(representation, f"t2p_synthetic_pilot::{representation}", accuracies, hypernetwork.generated_parameter_count())
+        _record(adapter, f"t2p_synthetic_pilot::{adapter}", accuracies, hypernetwork.generated_parameter_count())
 
         del hypernetwork
 
@@ -500,11 +500,11 @@ def _t2p_synthetic_pilot_command(args) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Benchmark PEFT representations as hypernetwork outputs")
+    parser = argparse.ArgumentParser(description="Benchmark PEFT adapters as hypernetwork outputs")
     parser.set_defaults(func=lambda _: parser.print_help())
     subparsers = parser.add_subparsers(dest="command")
 
-    catalog = subparsers.add_parser("catalog", help="list registered setups and adapter representations")
+    catalog = subparsers.add_parser("catalog", help="list registered setups and adapters")
     catalog.add_argument("--root", default=DEFAULT_CATALOG, type=Path)
     catalog.set_defaults(func=_catalog_command)
 
@@ -564,12 +564,12 @@ def main() -> None:
         "--tasks", default="lol_022,lol_033,lol_034,lol_035,lol_039,lol_043,lol_044,lol_045"
     )
     t2p_sft.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
-    t2p_sft.add_argument("--representation", default="lora")
+    t2p_sft.add_argument("--adapter", default="lora")
     t2p_sft.add_argument(
         "--target-modules",
         default="q_proj,v_proj",
         help="comma-separated hook sites: named linear submodules (e.g. q_proj,v_proj) "
-        "for weight-space representations, or 'block' for activation-space ones "
+        "for weight-space adapters, or 'block' for activation-space ones "
         "(hooks the whole decoder layer / residual stream)",
     )
     t2p_sft.add_argument("--condition-encoder", default="Alibaba-NLP/gte-large-en-v1.5")
@@ -587,7 +587,7 @@ def main() -> None:
 
     t2p_sft_pilot = subparsers.add_parser(
         "t2p-sft-pilot",
-        help="small multi-task live-SFT pilot: train 2-3 representations to convergence on the shared 8-task "
+        help="small multi-task live-SFT pilot: train 2-3 adapters to convergence on the shared 8-task "
         "training split, then score each via HypernetworkDownstreamEvaluator against real held-out benchmark "
         "examples (Phase 4's 'next' step)",
     )
@@ -597,9 +597,9 @@ def main() -> None:
     )
     t2p_sft_pilot.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
     t2p_sft_pilot.add_argument(
-        "--representations",
+        "--adapters",
         default="lora,ia3,activation_steering",
-        help="comma-separated representations to train and compare; each uses a fixed default hook site "
+        help="comma-separated adapters to train and compare; each uses a fixed default hook site "
         "(lora/freeze_a_lora/lokr/fourierft -> q_proj,v_proj; ia3 -> k_proj,v_proj,down_proj; "
         "activation_steering -> block)",
     )
@@ -637,7 +637,7 @@ def main() -> None:
         "--families", default="", help="comma-separated task families (default: all of copy,reverse,increment,sort,constant)"
     )
     t2p_synthetic_pilot.add_argument(
-        "--representations", default="lora,freeze_a_lora,ia3,lokr,fourierft,activation_steering"
+        "--adapters", default="lora,freeze_a_lora,ia3,lokr,fourierft,activation_steering"
     )
     t2p_synthetic_pilot.add_argument("--vocab-size", type=int, default=16)
     t2p_synthetic_pilot.add_argument("--hidden-size", type=int, default=32)

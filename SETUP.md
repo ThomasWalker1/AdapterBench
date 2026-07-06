@@ -7,7 +7,7 @@ Transformers 4.57.x, and PEFT 0.19. The NVIDIA 550.90.07 driver on this machine
 supports this CUDA build. Do not use the pre-existing Transformers 5.7 build:
 its float8 dtype expectations are incompatible with PyTorch 2.5 and PEFT 0.19.
 
-`peft_hnet` is managed with `uv`, independent of any pre-existing conda
+`adapterbench` is managed with `uv`, independent of any pre-existing conda
 environment on a given machine, so any researcher can reproduce it from
 `pyproject.toml`/`uv.lock` alone:
 
@@ -15,10 +15,10 @@ environment on a given machine, so any researcher can reproduce it from
 cd /home/tw78/AdapterBench
 uv venv .venv --python 3.11
 uv pip install -e ".[dev]"     # or: uv sync, once uv.lock is committed
-uv run peft-hnet doctor --require-cuda
+uv run adapterbench doctor --require-cuda
 uv run pytest -q
-uv run peft-hnet validate
-uv run peft-hnet catalog
+uv run adapterbench validate
+uv run adapterbench catalog
 ```
 
 For the live end-to-end SFT path (the current main benchmark mechanism — no upstream
@@ -43,13 +43,13 @@ export HF_HOME=/path/with/sufficient/cache/space
 **`google/gemma-2-2b-it` is a gated model.** You must accept Google's license
 on its Hugging Face model page with the same account as your token, or every
 command below that loads the interpreter will fail with a 401/403 from the
-Hub. Mistral and the other datasets used by `peft-hnet run` (ARC, BoolQ,
+Hub. Mistral and the other datasets used by `adapterbench run` (ARC, BoolQ,
 HellaSwag, GSM8K) are not gated.
 
 ## Build a comparison matrix
 
 ```bash
-peft-hnet matrix \
+adapterbench matrix \
   --setup text_to_lora_gemma2b \
   --adapters lora_r8_t2l,fourierft_1000,lokr_r8,ia3,prefix_tuning_64 \
   --output runs/text_to_lora_gemma2b/trials.json
@@ -66,7 +66,7 @@ generator is deliberately untrained; the command validates compatibility and
 parameter accounting, not task quality.
 
 ```bash
-peft-hnet peft-smoke \
+adapterbench peft-smoke \
   --model Qwen/Qwen3-0.6B \
   --adapters lora_r8_t2l,fourierft_1000,lokr_r8,ia3,prefix_tuning_64 \
   --device cuda:0 \
@@ -95,18 +95,18 @@ Our two Text-to-LoRA manifests keep those objectives separate.
 ### Generating and evaluating adapters from a released Text-to-LoRA checkpoint
 
 `hyper_llm_modulator` (upstream's package) pins torch 2.4.0/transformers
-4.46.2/peft 0.15.2, which conflicts with `peft_hnet`'s own pins. It is
-therefore never imported by `peft_hnet` directly. `ReleasedTextToLoRABackend`
-(`src/peft_hnet/text_to_lora_backend.py`) instead shells out to
+4.46.2/peft 0.15.2, which conflicts with `adapterbench`'s own pins. It is
+therefore never imported by `adapterbench` directly. `ReleasedTextToLoRABackend`
+(`src/adapterbench/text_to_lora_backend.py`) instead shells out to
 `scripts/generate_t2l_adapter.py`, run explicitly under
 `upstream/text-to-lora/.venv/bin/python`, and only reads back the adapter
 directories + `manifest.json` it writes. This is the same pattern
 `scripts/measure_released_t2l.py` already used for a one-off Mistral
-measurement; `peft-hnet run` generalizes it into the benchmark contract
-(`src/peft_hnet/contracts.py`) for the released Gemma-2-2B checkpoint:
+measurement; `adapterbench run` generalizes it into the benchmark contract
+(`src/adapterbench/contracts.py`) for the released Gemma-2-2B checkpoint:
 
 ```bash
-uv run peft-hnet run \
+uv run adapterbench run \
   --setup text_to_peft_gemma2b_reconstruction \
   --adapter lora_r8_t2l \
   --checkpoint upstream/text-to-lora/trained_t2l/gemma_2b_t2l/hypermod.pt \
@@ -117,31 +117,15 @@ uv run peft-hnet run \
 
 This is the recommended smoke-test scope (1 task, 10 examples) before scaling
 to the full `--tasks arc_easy,arc_challenge,boolq,hellaswag,gsm8k --limit 100`
-run. `peft-hnet run` writes both the `lora` (released checkpoint) and
+run. `adapterbench run` writes both the `lora` (released checkpoint) and
 `frozen_interpreter` baseline rows to `results.jsonl`/`results.csv` via
-`src/peft_hnet/reporting.py`. `HFDownstreamEvaluator`
-(`src/peft_hnet/hf_downstream_evaluator.py`) evaluates with plain
+`src/adapterbench/reporting.py`. `HFDownstreamEvaluator`
+(`src/adapterbench/hf_downstream_evaluator.py`) evaluates with plain
 `transformers`+`peft` rather than vLLM (not installed here, and non-LoRA
-representations this benchmark ultimately compares are not vLLM-servable
+adapters this benchmark ultimately compares are not vLLM-servable
 anyway), replicating upstream's exact tokenizer setup (chat template,
 padding/truncation sides) so results are comparable to the paper's own
 evaluation formatting even though the underlying serving stack differs.
-
-## PAW reference setup
-
-The released PAW checkpoint and verified evaluation data are public:
-
-```bash
-huggingface-cli download programasweights/paw-4b-qwen3-0.6b \
-  --local-dir upstream/paw-4b-qwen3-0.6b
-huggingface-cli download yuntian-deng/fuzzy_bench_verified \
-  --repo-type dataset --local-dir data/fuzzy_bench_verified
-```
-
-The checkpoint metadata pins Qwen3-0.6B, rank 64, alpha 16, 64 bases, and all
-attention/MLP projection targets. The public Python repository is an inference
-SDK; until compiler-training code/data are released, alternative-PEFT PAW
-training remains a specified experiment rather than a reproducible run.
 
 ## Eight-GPU launch policy
 
@@ -153,7 +137,7 @@ torchrun --standalone --nproc_per_node=8 TRAINING_ENTRYPOINT --config TRIAL_JSON
 accelerate launch --num_processes 8 TRAINING_ENTRYPOINT --config TRIAL_JSON
 ```
 
-Write one result directory per immutable trial ID. Never average PAW and
-Text-to-LoRA task scores together; compare representation rankings and failure
-modes within each setup.
+Write one result directory per immutable trial ID. Never average task scores across
+different setups together; compare adapter rankings and failure modes within each
+setup.
 

@@ -3,31 +3,31 @@
 The unit of comparison is a **trial within a setup**. A setup fixes the
 conditioning information, hypernetwork shell, frozen interpreter, tasks,
 training budget, evaluator, and decoding. A trial changes the generated PEFT
-representation and, where exact payload matching is impossible, one declared
+adapter and, where exact payload matching is impossible, one declared
 budget point.
 
-PAW and Text-to-LoRA are separate setups. Their absolute scores are not pooled:
-they use different conditioning, objectives, interpreters, task distributions,
-and evaluators. The useful cross-setup question is whether a representation's
-relative behavior repeats across protocols.
+Different settings (Text-to-LoRA reconstruction, live end-to-end SFT, the synthetic
+setting) are separate setups. Their absolute scores are not pooled: they use different
+conditioning, objectives, interpreters, task distributions, and evaluators. The useful
+cross-setup question is whether an adapter's relative behavior repeats across protocols.
 
 ## Interfaces
 
 1. A task loader emits `TaskExample(task_id, condition, input, target, family)`.
 2. A paper-specific `HypernetworkBackend` converts one condition per task into
-   an `AdapterArtifact`. Artifacts record representation, exact generated
+   an `AdapterArtifact`. Artifacts record adapter, exact generated
    parameter count, generation latency, format, and provenance.
 3. A `DownstreamEvaluator` attaches the artifact to the frozen interpreter and
    scores that task's held-out examples.
 4. `EvaluationResult` records downstream metrics plus resource measurements.
 
-This artifact boundary accommodates PAW's end-to-end compiler, Text-to-LoRA's
-description encoder and reconstruction training, and future document/context
-hypernetworks without pretending their generators are identical.
+This artifact boundary accommodates Text-to-LoRA's description encoder and
+reconstruction training, the live-hook SFT mechanism's in-process generation, and future
+document/context hypernetworks without pretending their generators are identical.
 
 ## Required controls and baselines
 
-Every completed representation sweep reports:
+Every completed adapter sweep reports:
 
 - identical train/validation/test task identities and complete-family holdouts;
 - the frozen interpreter and exact revision;
@@ -43,7 +43,7 @@ Every completed representation sweep reports:
 Reconstruction loss is a diagnostic. The primary result is always frozen
 interpreter performance on held-out downstream examples.
 
-## Representation catalog
+## Adapter catalog
 
 - LoRA and freeze-A/generate-B LoRA
 - FourierFT coefficients at fixed frequency locations

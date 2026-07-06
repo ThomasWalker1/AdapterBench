@@ -2,11 +2,11 @@
 
 `hf_downstream_evaluator.py::HFDownstreamEvaluator` activates a generated adapter via
 `peft.PeftModel.load_adapter`/`set_adapter` — fundamentally tied to materialized,
-PEFT-native adapter directories, which a hook-based representation (activation steering,
-or any representation trained via `sft_trainer.py`) doesn't produce. This evaluator
-activates a representation the same way `sft_trainer.py` trains it: run the hypernetwork
+PEFT-native adapter directories, which a hook-based adapter (activation steering,
+or any adapter trained via `sft_trainer.py`) doesn't produce. This evaluator
+activates an adapter the same way `sft_trainer.py` trains it: run the hypernetwork
 forward, then `hypernetwork.apply(layers, generated)` to hook it live into the real
-interpreter's forward pass. Every representation — weight- or activation-based — is
+interpreter's forward pass. Every adapter — weight- or activation-based — is
 evaluated identically, through the exact same code path it was trained through.
 
 The scoring routines below (`_score_multiple_choice`, `_score_gsm8k`, `_group_by_family`)
@@ -136,12 +136,12 @@ class HypernetworkDownstreamEvaluator:
         inference_seconds = time.perf_counter() - started
 
         metric_name = "exact_match" if family == "gsm8k" else "accuracy"
-        representation = self.hypernetwork.representation if condition_embedding is not None else "frozen_interpreter"
+        adapter = self.hypernetwork.adapter if condition_embedding is not None else "frozen_interpreter"
         return EvaluationResult(
             trial_id=self.trial_id,
             task_id=family,
             split=split,
-            representation=representation,
+            adapter=adapter,
             metrics={metric_name: correct / len(examples), "n_examples": float(len(examples))},
             generated_parameter_count=(
                 self.hypernetwork.generated_parameter_count() if condition_embedding is not None else 0

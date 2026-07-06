@@ -1,10 +1,10 @@
 import torch
 
-from peft_hnet.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-from peft_hnet.t2p.model_utils import get_decoder_layers
-from peft_hnet.t2p.synthetic_evaluator import evaluate_families
-from peft_hnet.t2p.synthetic_tasks import TASK_FAMILIES
-from peft_hnet.t2p.tiny_interpreter import build_tiny_interpreter
+from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+from adapterbench.t2p.model_utils import get_decoder_layers
+from adapterbench.t2p.synthetic_evaluator import evaluate_families
+from adapterbench.t2p.synthetic_tasks import TASK_FAMILIES
+from adapterbench.t2p.tiny_interpreter import build_tiny_interpreter
 
 
 def _setup():
@@ -18,7 +18,7 @@ def _setup():
         condition_dim=4,
         module_shapes=module_shapes,
         num_layers=len(layers),
-        representation="activation_steering",
+        adapter="activation_steering",
         latent_dim=8,
         head_dim=8,
     )

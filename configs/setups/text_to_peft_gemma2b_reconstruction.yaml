@@ -48,7 +48,7 @@ evaluation:
   primary_metric: benchmark_accuracy_mean
   metrics: [accuracy, exact_match, pass_at_1, adapter_reconstruction_mse, generation_latency]
   baselines: [frozen_interpreter, interpreter_with_icl, oracle_adapter, released_t2l]
-  report_by: [task, seen_vs_unseen, representation]
+  report_by: [task, seen_vs_unseen, adapter]
   generation:
     use_icl: true
     num_fewshot: 3

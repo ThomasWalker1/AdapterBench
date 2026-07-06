@@ -21,7 +21,7 @@ class TaskExample:
 @dataclass(frozen=True)
 class AdapterArtifact:
     task_id: str
-    representation: str
+    adapter: str
     path: Path
     format: str
     generated_parameter_count: int
@@ -34,7 +34,7 @@ class EvaluationResult:
     trial_id: str
     task_id: str
     split: str
-    representation: str
+    adapter: str
     metrics: Mapping[str, float]
     generated_parameter_count: int
     generation_seconds: float

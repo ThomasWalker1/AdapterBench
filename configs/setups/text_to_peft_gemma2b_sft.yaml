@@ -1,9 +1,9 @@
 schema_version: 1
 name: text_to_peft_gemma2b_sft
-description: Text-to-LoRA-style end-to-end downstream training with representation held as the experimental variable.
+description: Text-to-LoRA-style end-to-end downstream training with adapter held as the experimental variable.
 protocol: generic_text_to_adapter
 availability: specification_only
-runner: peft_hnet.t2p
+runner: adapterbench.t2p
 sources:
   - name: originating_code
     uri: https://github.com/SakanaAI/text-to-lora
@@ -42,7 +42,7 @@ evaluation:
   primary_metric: benchmark_accuracy_mean
   metrics: [accuracy, exact_match, pass_at_1, generation_latency, interpreter_tokens_per_second]
   baselines: [frozen_interpreter, interpreter_with_icl, oracle_adapter, released_t2l]
-  report_by: [task, seen_vs_unseen, representation]
+  report_by: [task, seen_vs_unseen, adapter]
   generation:
     use_icl: true
     num_fewshot: 3
@@ -58,5 +58,5 @@ fixed_controls:
   - update and token budget
   - downstream evaluator
 notes:
-  - The LoRA arm is runnable through the pinned upstream pipeline. Alternative representation codecs are under implementation and must pass downstream evaluation before this setup is marked runnable.
+  - The LoRA arm is runnable through the pinned upstream pipeline. Alternative adapter codecs are under implementation and must pass downstream evaluation before this setup is marked runnable.
 

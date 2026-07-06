@@ -3,7 +3,7 @@ name: text_to_peft_sft_pilot
 description: Small-scale live end-to-end SFT pilot — hypernetwork output hooked live into a real frozen interpreter's forward pass, trained on real next-token loss (Sakana's actual main training method), validating the training+eval loop itself rather than producing a competitive benchmark result.
 protocol: generic_text_to_adapter
 availability: runnable
-runner: peft_hnet.t2p
+runner: adapterbench.t2p
 sources:
   - name: originating_code
     uri: https://github.com/SakanaAI/text-to-lora
@@ -42,7 +42,7 @@ evaluation:
   primary_metric: benchmark_accuracy_mean
   metrics: [accuracy, exact_match]
   baselines: [frozen_interpreter]
-  report_by: [task, representation]
+  report_by: [task, adapter]
   generation:
     use_icl: false
     num_fewshot: 0

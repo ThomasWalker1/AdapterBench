@@ -37,7 +37,7 @@ class TextToPeftHypernetwork(nn.Module):
         condition_dim: int,
         module_shapes: Mapping[str, tuple[int, int]],
         num_layers: int,
-        representation: str,
+        adapter: str,
         latent_dim: int = 512,
         head_dim: int = 2048,
         rank: int = 8,
@@ -49,7 +49,7 @@ class TextToPeftHypernetwork(nn.Module):
         super().__init__()
         self.module_names = tuple(module_shapes)
         self.num_layers = num_layers
-        self.representation = representation
+        self.adapter = adapter
         task_dim, depth_dim, type_dim = latent_dim // 2, latent_dim // 4, latent_dim // 4
         self.task_encoder = nn.Sequential(nn.Linear(condition_dim, task_dim), nn.LayerNorm(task_dim))
         self.depth_embedding = nn.Sequential(nn.Embedding(num_layers, depth_dim), nn.LayerNorm(depth_dim))
@@ -70,7 +70,7 @@ class TextToPeftHypernetwork(nn.Module):
         heads = {}
         for index, (name, (in_features, out_features)) in enumerate(module_shapes.items()):
             codec = make_codec(
-                representation,
+                adapter,
                 in_features,
                 out_features,
                 num_layers=num_layers,

@@ -1,12 +1,11 @@
 # Agent orientation
 
-This is **AdapterBench**: it benchmarks PEFT representations (LoRA, FourierFT, KronA,
+This is **AdapterBench**: it benchmarks PEFT adapters (LoRA, FourierFT, KronA,
 IA3, activation steering, prefix-tuning) as **hypernetwork output targets**, generated
 live and hooked into a frozen interpreter's forward pass for end-to-end SFT training —
 generalizing the mechanism behind Sakana AI's Text-to-LoRA beyond LoRA itself. Also hosts
 earlier disk-artifact-based settings (a released Text-to-LoRA checkpoint, a self-trained
-reconstruction hypernetwork, PAW/FuzzyBench metadata; Doc-to-LoRA integration is planned
-but not yet started).
+reconstruction hypernetwork; Doc-to-LoRA integration is planned but not yet started).
 
 **Start here: [`PROJECT_PLAN.md`](PROJECT_PLAN.md)** — current status, what's actually
 implemented vs. still a gap, how to check/resume the latest run, hard-won gotchas, and

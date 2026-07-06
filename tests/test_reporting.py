@@ -2,16 +2,16 @@ import csv
 import json
 from pathlib import Path
 
-from peft_hnet.contracts import EvaluationResult
-from peft_hnet.reporting import write_results
+from adapterbench.contracts import EvaluationResult
+from adapterbench.reporting import write_results
 
 
-def _result(task_id: str, representation: str, metrics: dict) -> EvaluationResult:
+def _result(task_id: str, adapter: str, metrics: dict) -> EvaluationResult:
     return EvaluationResult(
         trial_id="trial-1",
         task_id=task_id,
         split="test",
-        representation=representation,
+        adapter=adapter,
         metrics=metrics,
         generated_parameter_count=100,
         generation_seconds=0.1,

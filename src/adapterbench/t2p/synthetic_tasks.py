@@ -2,7 +2,7 @@
 of task families with a pure-Python, exactly-known transform and a handful of
 hand-written natural-language description paraphrases each — no external data, no
 description-generation step to track down later (contrast ``lol_data.py``'s unresolved
-GPT-4o-mini provenance gap). Ground truth means a representation's live-SFT loss and
+GPT-4o-mini provenance gap). Ground truth means an adapter's live-SFT loss and
 downstream accuracy can be checked against "does this codec even have the capacity to
 represent this transform," decoupled from real-world task difficulty/noise.
 

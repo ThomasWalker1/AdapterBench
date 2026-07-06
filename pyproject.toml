@@ -1,7 +1,7 @@
 [project]
 name = "adapterbench"
 version = "0.1.0"
-description = "AdapterBench: controlled benchmarks of PEFT representations as hypernetwork outputs"
+description = "AdapterBench: controlled benchmarks of PEFT adapters as hypernetwork outputs"
 requires-python = ">=3.10"
 dependencies = [
   "accelerate>=1.2,<2",
@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [project.scripts]
-peft-hnet = "peft_hnet.cli:main"
+adapterbench = "adapterbench.cli:main"
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<9"]

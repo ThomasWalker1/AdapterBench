@@ -1,7 +1,7 @@
 import torch
 import yaml
 
-from peft_hnet.t2p.lol_data import (
+from adapterbench.t2p.lol_data import (
     lol_collate_fn,
     load_task_metadata,
     preprocess_lol_example,

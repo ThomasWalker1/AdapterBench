@@ -5,7 +5,7 @@ adapters, no reconstruction matching — mirrors Sakana's own actual training me
 (``hyper_llm_modulator/sft_trainer.py``/``hooks.py``), built on our generalized
 ``TextToPeftHypernetwork.apply()`` (hookable at either a named linear submodule or a
 whole decoder layer, see ``codecs.py``/``hypernetwork.py``) rather than their
-LoRA-specific hook code, so any representation trains the same way.
+LoRA-specific hook code, so any adapter trains the same way.
 """
 
 from __future__ import annotations

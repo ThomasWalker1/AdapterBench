@@ -1,8 +1,8 @@
 import torch
 
-from peft_hnet.t2p.hypernetwork import infer_module_shapes
-from peft_hnet.t2p.model_utils import get_decoder_layers
-from peft_hnet.t2p.tiny_interpreter import build_tiny_interpreter
+from adapterbench.t2p.hypernetwork import infer_module_shapes
+from adapterbench.t2p.model_utils import get_decoder_layers
+from adapterbench.t2p.tiny_interpreter import build_tiny_interpreter
 
 
 def test_build_tiny_interpreter_constructs_offline_with_expected_shapes():

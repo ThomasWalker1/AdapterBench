@@ -1,14 +1,14 @@
 import torch
 
-from peft_hnet.t2p.lol_data import lol_collate_fn
-from peft_hnet.t2p.synthetic_tasks import (
+from adapterbench.t2p.lol_data import lol_collate_fn
+from adapterbench.t2p.synthetic_tasks import (
     TASK_FAMILIES,
     SyntheticSFTDataset,
     build_prompt_ids,
     build_target_ids,
     encode_example,
 )
-from peft_hnet.t2p.tiny_interpreter import BOS_ID, DIGIT_BASE, EOS_ID, SEP_ID
+from adapterbench.t2p.tiny_interpreter import BOS_ID, DIGIT_BASE, EOS_ID, SEP_ID
 
 
 def test_family_transforms_are_exactly_known():

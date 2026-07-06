@@ -2,8 +2,8 @@ from pathlib import Path
 
 import pytest
 
-from peft_hnet.catalog import build_matrix, load_catalog
-from peft_hnet.peft_support import make_peft_config
+from adapterbench.catalog import build_matrix, load_catalog
+from adapterbench.peft_support import make_peft_config
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,16 +18,16 @@ def test_catalog_and_trial_ids_are_complete_and_stable():
         "text_to_peft_sft_pilot",
         "synthetic_sft_pilot",
     }
-    assert len(adapters) == 8
+    assert len(adapters) == 7
     # activation_steering has no weight-space delta (dense_delta raises) and only
     # declares compatible_objectives=[downstream], so it deliberately can't build a
     # trial against a reconstruction-objective setup — restrict to the adapters that
-    # can, matching how `peft-hnet validate`/build_matrix actually behaves.
+    # can, matching how `adapterbench validate`/build_matrix actually behaves.
     reconstruction_compatible = [
         adapter for adapter in adapters.values() if "reconstruction" in adapter.compatible_objectives
     ]
     trials = build_matrix(setups["text_to_peft_gemma2b_reconstruction"], reconstruction_compatible)
-    assert len(trials) == 7
+    assert len(trials) == 6
     assert len({trial.trial_id for trial in trials}) == len(trials)
     repeated = build_matrix(setups["text_to_peft_gemma2b_reconstruction"], reconstruction_compatible)
     assert [trial.trial_id for trial in repeated] == [trial.trial_id for trial in trials]
