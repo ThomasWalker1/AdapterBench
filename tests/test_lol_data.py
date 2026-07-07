@@ -1,11 +1,14 @@
+import pytest
 import torch
 import yaml
 
 from adapterbench.t2p.lol_data import (
     lol_collate_fn,
+    load_decontaminated_train_task_ids,
     load_task_metadata,
     preprocess_lol_example,
     tokenize_prompt_response,
+    validate_training_tasks,
 )
 
 
@@ -67,6 +70,46 @@ def test_load_task_metadata_reads_yaml_and_truncates_descriptions(tmp_path):
     assert metadata.dataset_id == "Lots-of-LoRAs/task999_example"
     assert metadata.split == "train[:10]"
     assert metadata.descriptions == ["d0", "d1"]
+
+
+def _write_decontam_yaml(tmp_path):
+    path = tmp_path / "decontam.yaml"
+    path.write_text(
+        yaml.dump(
+            {
+                "train_ds_names": ["lol_022", "lol_043", "lol_044"],
+                "eval_ds_info": {"lol_035": {}, "lol_039": {}},
+            }
+        )
+    )
+    return path
+
+
+def test_load_decontaminated_train_task_ids_reads_train_ds_names(tmp_path):
+    path = _write_decontam_yaml(tmp_path)
+    assert load_decontaminated_train_task_ids(path) == {"lol_022", "lol_043", "lol_044"}
+
+
+def test_validate_training_tasks_accepts_tasks_in_the_decontaminated_list(tmp_path):
+    path = _write_decontam_yaml(tmp_path)
+    validate_training_tasks(["lol_022", "lol_044"], path)  # must not raise
+
+
+def test_validate_training_tasks_rejects_held_out_validation_tasks(tmp_path):
+    path = _write_decontam_yaml(tmp_path)
+    with pytest.raises(ValueError, match="lol_035"):
+        validate_training_tasks(["lol_022", "lol_035"], path)
+
+
+def test_validate_training_tasks_rejects_contamination_removed_tasks(tmp_path):
+    path = _write_decontam_yaml(tmp_path)
+    with pytest.raises(ValueError, match="lol_033"):
+        validate_training_tasks(["lol_033"], path)
+
+
+def test_validate_training_tasks_ignores_non_lol_task_ids(tmp_path):
+    path = _write_decontam_yaml(tmp_path)
+    validate_training_tasks(["boolq", "arc_easy"], path)  # must not raise
 
 
 def test_lol_collate_fn_pads_dynamically_and_stacks_condition_embeddings():

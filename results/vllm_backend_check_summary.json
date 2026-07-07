@@ -1,0 +1,12 @@
+{
+  "mistral_arc_easy_lora": 0.892,
+  "mistral_arc_easy_frozen": 0.766,
+  "mistral_arc_challenge_lora": 0.779,
+  "mistral_arc_challenge_frozen": 0.657,
+  "mistral_boolq_lora": 0.84,
+  "mistral_boolq_frozen": 0.751,
+  "mistral_hellaswag_lora": 0.661,
+  "mistral_hellaswag_frozen": 0.308,
+  "mistral_gsm8k_lora": 0.4533333333333333,
+  "mistral_gsm8k_frozen": 0.43333333333333335
+}

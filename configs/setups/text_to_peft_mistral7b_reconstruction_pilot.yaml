@@ -57,7 +57,7 @@ runtime:
 fixed_controls:
   - gte-large-en-v1.5 condition encoder
   - frozen Mistral-7B-Instruct-v0.2 interpreter
-  - 8-task training split (lol_022, lol_033, lol_034, lol_035, lol_039, lol_043, lol_044, lol_045)
+  - 8-task training split (lol_022, lol_043, lol_044, lol_045, lol_047, lol_050, lol_063, lol_064 — corrected from an earlier split that included two of T2L's contamination-removed tasks and two of its own held-out validation tasks; see adapterbench.t2p.lol_data.validate_training_tasks)
   - hypernetwork hidden architecture
 notes:
   - "This is a Phase 2 pilot, not a full-scale run: 8 tasks vs. the released checkpoint's 479, and the hypermod.pt is self-trained via scripts/train_lora_baselines.py + scripts/train_hyper_recon.py, not downloaded."

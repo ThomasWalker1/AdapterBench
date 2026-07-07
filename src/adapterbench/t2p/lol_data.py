@@ -57,6 +57,33 @@ def load_task_metadata(tasks_root: Path, task_id: str, *, max_descriptions: int 
     )
 
 
+def load_decontaminated_train_task_ids(decontam_yaml: str | Path) -> set[str]:
+    """Read T2L's own ``train_ds_names`` from ``hyper_lora_decontam_lol_tasks.yaml`` (479
+    tasks) - the canonical list of SNI tasks T2L actually trains on, after removing 10
+    tasks for benchmark contamination and reserving 11 more as its own held-out
+    zero-shot validation set. Neither of those 21 excluded tasks should ever appear in
+    a training ``--tasks`` list here either, or a "training pilot" would silently be
+    training on data T2L itself treats as contaminated or as a generalization test."""
+    payload = yaml.safe_load(Path(decontam_yaml).read_text())
+    return set(payload["train_ds_names"])
+
+
+def validate_training_tasks(task_ids: list[str], decontam_yaml: str | Path) -> None:
+    """Raise if any requested training task isn't in T2L's own decontaminated training
+    list - catches both contamination-removed and held-out-validation tasks (see
+    ``load_decontaminated_train_task_ids``), which look like ordinary ``lol_###`` ids
+    and give no other signal that they're unsafe to train on."""
+    valid = load_decontaminated_train_task_ids(decontam_yaml)
+    invalid = [task_id for task_id in task_ids if task_id.startswith("lol_") and task_id not in valid]
+    if invalid:
+        raise ValueError(
+            f"{invalid} are not in T2L's decontaminated training split ({decontam_yaml}) - "
+            "each is either one of the 10 tasks T2L removed for benchmark contamination or "
+            "one of its 11 own held-out zero-shot validation tasks. Training on them would "
+            "silently reproduce that exact leakage. Pick replacements from train_ds_names."
+        )
+
+
 def preprocess_lol_example(example: dict) -> dict:
     """Port of upstream ``preprocessing.py``'s ``lol_``-prefixed branch: the raw
     ``Lots-of-LoRAs/task###_...`` dataset's ``input`` column embeds the task definition

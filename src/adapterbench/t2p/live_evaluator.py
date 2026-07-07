@@ -9,10 +9,13 @@ forward, then `hypernetwork.apply(layers, generated)` to hook it live into the r
 interpreter's forward pass. Every adapter — weight- or activation-based — is
 evaluated identically, through the exact same code path it was trained through.
 
-The scoring routines below (`_score_multiple_choice`, `_score_gsm8k`, `_group_by_family`)
-are intentionally near-verbatim from `HFDownstreamEvaluator`: they only ever call
-`model(...)`/`model.generate(...)` on whatever `model` object they're handed, so they
-needed no changes — only the activation mechanism around them differs.
+The scoring routines below (`_score_choice`, `_score_boolq`, `_score_gsm8k`,
+`_group_by_family`) are intentionally near-verbatim from `HFDownstreamEvaluator`: they
+only ever call `model(...)`/`model.generate(...)` on whatever `model` object they're
+handed, so they needed no changes — only the activation mechanism around them differs.
+Answer extraction (`get_choice_accuracy`/`get_binary_accuracy`) is imported rather than
+reimplemented so both evaluators stay in sync with upstream Text-to-LoRA's own
+generation+extraction eval protocol (see `hf_downstream_evaluator.py`'s module docstring).
 """
 
 from __future__ import annotations
@@ -26,7 +29,7 @@ import torch
 from torch import Tensor, nn
 
 from ..contracts import EvaluationResult, TaskExample
-from ..hf_downstream_evaluator import _NUMBER_RE
+from ..hf_downstream_evaluator import _NUMBER_RE, get_binary_accuracy, get_choice_accuracy
 from .hypernetwork import TextToPeftHypernetwork
 
 
@@ -39,7 +42,8 @@ class HypernetworkDownstreamEvaluator:
         tokenizer,
         trial_id: str,
         device: str = "cuda:0",
-        max_new_tokens: int = 256,
+        max_new_tokens: int = 512,  # matches upstream's vllm.SamplingParams(max_tokens=2**9)
+        use_icl: bool = False,
     ):
         self.interpreter = interpreter
         self.layers = layers
@@ -48,6 +52,10 @@ class HypernetworkDownstreamEvaluator:
         self.trial_id = trial_id
         self.device = device
         self.max_new_tokens = max_new_tokens
+        self._prefill_by_family = {"gsm8k": "Let's think step by step."}
+        if use_icl:
+            for family in ("arc_easy", "arc_challenge", "hellaswag", "boolq"):
+                self._prefill_by_family[family] = "Answer:"
 
     @contextmanager
     def _active(self, condition_embedding: Tensor | None):
@@ -59,7 +67,7 @@ class HypernetworkDownstreamEvaluator:
         with self.hypernetwork.apply(self.layers, generated):
             yield self.interpreter
 
-    def _prompt(self, input_text: str) -> str:
+    def _prompt(self, input_text: str, prefill: str = "") -> str:
         # enable_thinking=False matters for reasoning-capable interpreters (Qwen3): without
         # it, the model expects to emit its own <think>...</think> block before answering,
         # so scoring a continuation immediately after the prompt is badly out-of-distribution
@@ -67,36 +75,15 @@ class HypernetworkDownstreamEvaluator:
         # scored higher than "yes" for "Is Paris the capital of France?"). Must match
         # lol_data.py::format_prompt_response's training-time prompt format exactly, or the
         # frozen/adapted comparison isn't apples-to-apples. No-op for non-Qwen3 tokenizers.
-        return self.tokenizer.apply_chat_template(
+        chat_prompt = self.tokenizer.apply_chat_template(
             [{"role": "user", "content": input_text}],
             tokenize=False,
             add_generation_prompt=True,
             enable_thinking=False,
         )
+        return chat_prompt + prefill
 
-    def _loglikelihood(self, model, prompt: str, continuation: str) -> float:
-        prompt_ids = self.tokenizer(prompt, add_special_tokens=True)["input_ids"]
-        continuation_text = continuation if continuation.startswith(" ") else " " + continuation
-        continuation_ids = self.tokenizer(continuation_text, add_special_tokens=False)["input_ids"]
-        input_ids = torch.tensor([prompt_ids + continuation_ids], device=self.device)
-        with torch.no_grad():
-            logits = model(input_ids=input_ids).logits
-        log_probs = torch.log_softmax(logits[0, :-1], dim=-1)
-        target_ids = input_ids[0, 1:]
-        n_continuation = len(continuation_ids)
-        token_log_probs = log_probs[-n_continuation:].gather(-1, target_ids[-n_continuation:].unsqueeze(-1))
-        return float(token_log_probs.sum()) / max(n_continuation, 1)
-
-    def _score_multiple_choice(self, model, example: TaskExample) -> bool:
-        choices = example.metadata["choices"]
-        answer_index = example.metadata["answer_index"]
-        prompt = self._prompt(example.input_text)
-        scores = [self._loglikelihood(model, prompt, choice) for choice in choices]
-        predicted = max(range(len(scores)), key=lambda i: scores[i])
-        return predicted == answer_index
-
-    def _score_gsm8k(self, model, example: TaskExample) -> bool:
-        prompt = self._prompt(example.input_text)
+    def _generate(self, model, prompt: str) -> str:
         input_ids = self.tokenizer(prompt, return_tensors="pt").to(self.device)
         with torch.no_grad():
             output_ids = model.generate(
@@ -105,7 +92,21 @@ class HypernetworkDownstreamEvaluator:
                 do_sample=False,
                 pad_token_id=self.tokenizer.pad_token_id,
             )
-        generated = self.tokenizer.decode(output_ids[0, input_ids["input_ids"].shape[1] :], skip_special_tokens=True)
+        return self.tokenizer.decode(output_ids[0, input_ids["input_ids"].shape[1] :], skip_special_tokens=True)
+
+    def _score_choice(self, model, example: TaskExample) -> bool:
+        prefill = self._prefill_by_family.get(example.family, "")
+        generated = self._generate(model, self._prompt(example.input_text, prefill))
+        return get_choice_accuracy(generated, example.target_text)
+
+    def _score_boolq(self, model, example: TaskExample) -> bool:
+        prefill = self._prefill_by_family.get(example.family, "")
+        generated = self._generate(model, self._prompt(example.input_text, prefill))
+        return get_binary_accuracy(generated, example.target_text)
+
+    def _score_gsm8k(self, model, example: TaskExample) -> bool:
+        prefill = self._prefill_by_family.get("gsm8k", "")
+        generated = self._generate(model, self._prompt(example.input_text, prefill))
         matches = _NUMBER_RE.findall(generated)
         if not matches:
             return False
@@ -118,7 +119,9 @@ class HypernetworkDownstreamEvaluator:
     def _score(self, model, example: TaskExample) -> bool:
         if example.family == "gsm8k":
             return self._score_gsm8k(model, example)
-        return self._score_multiple_choice(model, example)
+        if example.family == "boolq":
+            return self._score_boolq(model, example)
+        return self._score_choice(model, example)
 
     @staticmethod
     def _group_by_family(examples: Iterable[TaskExample]) -> dict[str, list[TaskExample]]:

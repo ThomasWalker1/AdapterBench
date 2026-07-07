@@ -54,7 +54,7 @@ runtime:
 fixed_controls:
   - gte-large-en-v1.5 condition encoder
   - frozen Qwen/Qwen3-0.6B interpreter (small model, deliberately — this is a plumbing pilot, not a competitive result)
-  - 8-task training split (lol_022, lol_033, lol_034, lol_035, lol_039, lol_043, lol_044, lol_045 — same tasks Phase 2 already used; none source from boolq or hellaswag, the eval families used here, so no train/eval leakage)
+  - 8-task training split (lol_022, lol_043, lol_044, lol_045, lol_047, lol_050, lol_063, lol_064 — all confirmed in T2L's own decontaminated train_ds_names; none source from boolq or hellaswag, the eval families used here, so no train/eval leakage. The earlier split additionally included lol_033/lol_034 — two of T2L's 10 contamination-removed tasks — and lol_035/lol_039 — two of T2L's own 11 held-out zero-shot validation tasks — which adapterbench.t2p.lol_data.validate_training_tasks now rejects.)
   - hypernetwork hidden architecture
 notes:
   - "Restructures the benchmark around live end-to-end SFT training (see PROJECT_PLAN.md Phase 4) — supersedes the retired reconstruction-matching approach (archived under archive/) as the sole training/eval mechanism."

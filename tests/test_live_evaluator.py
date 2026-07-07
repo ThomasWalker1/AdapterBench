@@ -30,6 +30,20 @@ class FakeCausalLM(nn.Module):
             (hidden,) = layer(hidden)
         return SimpleNamespace(logits=self.lm_head(hidden))
 
+    def generate(self, input_ids, max_new_tokens=1, do_sample=False, pad_token_id=None):
+        # Scoring is now generation-based (matches upstream Text-to-LoRA's own eval
+        # protocol - see hf_downstream_evaluator.py), so the fake model needs a
+        # generate() to exercise. The new tokens' content doesn't matter here: these
+        # tests check hook wiring/parameter counting, not scoring correctness (that's
+        # covered by dedicated get_choice_accuracy/get_binary_accuracy tests).
+        pad = torch.zeros((input_ids.shape[0], max_new_tokens), dtype=input_ids.dtype)
+        return torch.cat([input_ids, pad], dim=1)
+
+
+class _BatchEncoding(dict):
+    def to(self, device):
+        return self
+
 
 class FakeTokenizer:
     pad_token_id = 0
@@ -40,8 +54,11 @@ class FakeTokenizer:
     def __call__(self, text, add_special_tokens=True, return_tensors=None):
         ids = [ord(char) % 16 for char in text][:8] or [1]
         if return_tensors == "pt":
-            return {"input_ids": torch.tensor([ids])}
+            return _BatchEncoding(input_ids=torch.tensor([ids]))
         return {"input_ids": ids}
+
+    def decode(self, ids, skip_special_tokens=True):
+        return "0"
 
 
 def _setup(vocab_size=16, hidden_size=8):

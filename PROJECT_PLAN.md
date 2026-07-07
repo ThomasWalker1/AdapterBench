@@ -117,6 +117,10 @@ problems hit and fixed/worked around along the way (a `--model_dir` trailing-sla
 introduced, two separate non-fatal crashes in upstream's own automatic eval steps, and an
 unreliable background-task-completion signal on this machine).
 
+**Correction (found later):** the 8-task list above included 2 of T2L's contamination-removed
+tasks and 2 of its own held-out validation tasks — not fatal here (self-trained smoke test,
+never compared to the paper), but fixed going forward. See Phase 5.5 below.
+
 Environment: a dedicated `uv` venv at the repo root (`.venv/` + committed `uv.lock`) —
 not any pre-existing conda env. `google/gemma-2-2b-it` is gated; needs `hf auth login`
 with license acceptance on the same HF account (see SETUP.md).
@@ -141,13 +145,31 @@ gets to KronA, rather than assuming a naive basis-mixing head will "just work" f
   because `hyper_llm_modulator` pins a torch/transformers/peft stack incompatible with
   `adapterbench`'s own — **never import it directly from `adapterbench`.**
 - `src/adapterbench/hf_downstream_evaluator.py::HFDownstreamEvaluator` — the first concrete
-  `DownstreamEvaluator`. Plain `transformers`+`peft` (no vLLM — not installed, and
-  non-LoRA adapters this benchmark ultimately compares aren't vLLM-servable
+  `DownstreamEvaluator`. Plain `transformers`+`peft` (adapterbench itself never depends on
+  vLLM — non-LoRA adapters this benchmark ultimately compares aren't vLLM-servable
   anyway). Replicates T2L's exact tokenizer/chat-template setup so scoring is comparable
   to upstream. Has `iter_evaluate`/`iter_evaluate_frozen` generator methods (yield one
   result per task as it completes) — always prefer these over the batch
   `evaluate`/`evaluate_frozen` for anything that takes more than a minute or so, so a
-  crash/kill doesn't lose all progress (see "Lessons learned" below).
+  crash/kill doesn't lose all progress (see "Lessons learned" below). Also exposes the
+  scoring primitives (`get_choice_accuracy`/`get_binary_accuracy`/`get_gsm8k_accuracy`) and
+  prompt-building helpers (`build_prefill_by_family`/`render_prompt`/
+  `load_faithful_tokenizer`) as free functions, reused by `VLLMDownstreamEvaluator` below
+  so both evaluators score/prompt identically and only the generation backend differs.
+- `src/adapterbench/vllm_downstream_evaluator.py::VLLMDownstreamEvaluator` — a second
+  `DownstreamEvaluator`, LoRA-only, that generates via vLLM (upstream's own pinned
+  `vllm==0.5.4`) instead of plain `transformers`. Exists because of a confirmed real gap,
+  not a hypothetical one — see Phase 5.5 below: swapping only the generation backend
+  (identical prompts/adapters/scoring) took Mistral's numbers from actively disagreeing
+  with the paper to matching it closely on 4/5 tasks. Selected via `adapterbench run
+  --evaluator vllm`. Like `ReleasedTextToLoRABackend`, it never imports `vllm` directly —
+  generation happens out-of-process under `upstream/text-to-lora/.venv` via
+  `scripts/vllm_generate.py`, which loads the engine exactly once per `iter_evaluate`/
+  `iter_evaluate_frozen` call (reloading per family would dominate wall time) and streams
+  one sentinel-prefixed JSON result line back per family as it finishes — the prefix is
+  required because vLLM's own logger writes its INFO/WARNING lines to stdout too, so a
+  plain-JSON-per-line protocol would be corrupted by them. See gotcha #20 for a real,
+  non-deterministic vLLM tokenizer-fallback crash this evaluator has to work around.
 - `src/adapterbench/task_examples.py` — builds `TaskExample`s for
   arc_easy/arc_challenge/boolq/hellaswag/gsm8k from public HF datasets; condition text
   is sourced from the checkpoint's own `args.yaml::eval_ds_info`.
@@ -488,6 +510,27 @@ Requires `hf auth login` (or `HF_TOKEN`) with license-accepted access to gated
     `torch ... doesn't have a source distribution or wheel for the current platform`,
     re-lock explicitly against the project's own interpreter:
     `uv lock --python .venv/bin/python`.
+20. **vLLM's per-LoRA tokenizer resolution (`vllm.transformers_utils.tokenizer.
+    get_lora_tokenizer`) only falls back to the base tokenizer on `OSError`, but a bare PEFT
+    adapter directory (`adapter_config.json` + `adapter_model.safetensors` only, no
+    tokenizer/config files at all) doesn't reliably raise that exception type** — hit this
+    building `VLLMDownstreamEvaluator`'s real CLI path (`adapterbench run --evaluator
+    vllm`), where it surfaced as a hard crash (`ValueError: Unrecognized model in <adapter
+    dir>. Should have a model_type key in its config.json`) instead of the harmless
+    `logger.warning("No tokenizer found in ..., using base model tokenizer instead")` the
+    standalone diagnostic script happened to always get. Root cause: this project's own
+    gotcha #8 already documented the same underlying vLLM behavior once before (there,
+    non-fatal, because it only broke a training-side automatic eval step) — the exception
+    type `transformers`/`huggingface_hub` actually raises for "local directory exists but
+    has no `config.json`" isn't guaranteed to be `OSError` across versions/call paths, so
+    depending on vLLM's fallback catching the right type is fragile. Fixed by sidestepping
+    the fallback path entirely: `scripts/vllm_generate.py` now saves a real copy of the
+    base tokenizer into any adapter directory that's about to get a `LoRARequest`
+    (`AutoTokenizer.from_pretrained(model_id).save_pretrained(adapter_dir)`, once per
+    directory, skipped if `tokenizer_config.json` already exists there) *before* the engine
+    ever calls `generate()` — every adapter here shares the interpreter's own tokenizer
+    (never a task-specific one), so this is always correct, not just a workaround that
+    happens to produce the right tokenizer.
 
 ## Roadmap (not yet done, in priority order)
 
@@ -645,7 +688,8 @@ section above; this section tracks what's been validated vs. what's still ahead.
    harder than IA3/steering; the bilinear zero-gradient fix (gotcha #15) still leaving
    LoRA's optimization landscape rougher than the other codecs'; or an interaction with
    the `enable_thinking` fix below that happens to hurt LoRA specifically — not yet
-   isolated).
+   isolated). **Add to that list:** this run used the contaminated 8-task split fixed in
+   Phase 5.5 below — re-run with the corrected default before trusting these numbers.
 
 **Explicitly deferred, not part of this pass:**
 - The full 479-task decontaminated training config (`configs/hyper_lora_decontam_lol_tasks.yaml`)
@@ -755,6 +799,98 @@ couldn't have distinguished from "the benchmark task was just hard."
 **Explicitly out of scope for this pass** (per the approved plan): leave-one-family-out
 generalization testing (cheap to add later given synthetic data, not built now); no
 changes to the real Qwen3/Lots-of-LoRAs setting.
+
+### Phase 5.5: Validating the harness against T2L's own published LoRA results — done, mixed outcome
+
+**Goal:** before trusting `adapterbench run`'s comparisons for other adapters, verify the
+disk-artifact harness reproduces the T2L paper's own published LoRA numbers, using
+SakanaAI's released `gemma_2b_t2l`/`mistral_7b_t2l` checkpoints directly (no training of
+ours involved in this path at all — that distinction matters below).
+
+**Harness fixes made along the way, now permanent and benefiting every future adapter run
+through this path:**
+- Rewrote `HFDownstreamEvaluator`'s scoring from log-likelihood-over-choices to
+  generation + answer-extraction (`get_choice`/`get_binary_accuracy` in
+  `hf_downstream_evaluator.py`). Verified line-by-line against the paper's own LaTeX
+  appendix (not just its code) that our prompt templates match byte-for-byte. A
+  log-likelihood scorer answers a different question than what the paper's numbers
+  measure, so it was never a substitute for this.
+- Added `--use-icl`: Gemma's Table 8 uses ICL for every method including the frozen
+  baseline; Mistral's main Table 2 does not, for its headline `T2L(SFT)` row.
+- Fixed a real non-determinism bug in `scripts/generate_t2l_adapter.py`: it never set the
+  CUDA determinism flags upstream's own eval code uses, so every adapter-generation call
+  produced a *different* LoRA from the identical checkpoint+condition (confirmed: two
+  back-to-back generations differed by up to 0.05 absolute in the weights, swinging
+  downstream accuracy by ~20 points). Fixed; adapters are now byte-identical across
+  repeated generations.
+- Matched `max_new_tokens` to upstream's `512` (we defaulted to `256`) and added
+  `set_seed(42)`, both confirmed from the paper's/upstream's exact eval configuration.
+
+**Result: Gemma reproduces well; Mistral does not,** at n=1000/task (n=300 for gsm8k):
+
+| task | Gemma paper (frozen / T2L) | Gemma ours (frozen / LoRA) | Mistral paper (frozen / T2L) | Mistral ours (frozen / LoRA) |
+|---|---|---|---|---|
+| arc_easy | 89.9 / 89.8 | 88.9 / 83.2 | 77.8 / 88.9 | 86.2 / 67.5 |
+| arc_challenge | 73.7 / 74.0 | 74.0 / 70.6 | 65.4 / 77.5 | 71.4 / 50.4 |
+| boolq | 81.0 / 81.8 | 81.9 / 80.0 | 71.6 / 85.0 | 66.5 / 81.7 |
+| hellaswag | 55.2 / 62.5 | 52.2 / 60.4 | 49.7 / 66.5 | 35.4 / 30.0 |
+| gsm8k | 55.6 / 55.1 | 64.0 / 11.7 | 40.9 / 45.8 | 43.0 / 25.3 |
+
+Gemma's frozen baseline matches the paper within ~1pt on 3/5 tasks; its LoRA numbers
+track the paper within a few points on 3/5. Mistral's frozen baseline is off by several
+points on 3/5 tasks, and its LoRA numbers *underperform* frozen on 4/5 tasks — the
+opposite of what the paper reports.
+
+**Two root causes confirmed for the Mistral gap, by reading raw generations rather than
+just aggregate numbers — neither is a harness bug:**
+1. Without ICL, Mistral-7B-Instruct-v0.2 outright refuses to answer on ~40-47% of
+   hellaswag prompts ("I'm an AI language model, I don't have the ability to..."). Adding
+   ICL eliminates this entirely (0/30 refusals) and roughly triples accuracy on a spot
+   sample. The paper's own no-ICL baseline (49.7%) sits between our no-ICL and with-ICL
+   numbers, suggesting their harness saw *some* of this too, just less severely.
+2. The LoRA-adapted model's GSM8K score got *worse* (43.0→25.3), not better, when given
+   more generation budget — ruling out truncation as the cause. This looks like a genuine
+   property of this specific released adapter's interaction with our prompt format, not
+   an artifact we're free to tune away.
+
+**Follow-up (2026-07-06): confirmed — it was a vLLM-vs-`transformers` generation-backend
+difference, not a harness bug.** vLLM (`vllm==0.5.4`) turned out to already be installed in
+`upstream/text-to-lora/.venv` (upstream's own pinned eval backend), so this was testable
+directly rather than needing a new dependency. Isolated the backend as the single variable
+under test: same rendered prompts, same already-generated LoRA adapters (byte-identical,
+per gotcha #5.5's determinism fix above), same scoring functions — only swapped
+`transformers`' `.generate()` for vLLM's `LLM.generate()` with a `LoRARequest`. Result, at
+the same n=1000 (n=300 for gsm8k) scale, Mistral frozen/lora:
+
+| task | paper (frozen/T2L) | transformers-backend (frozen/lora) | vLLM-backend (frozen/lora) |
+|---|---|---|---|
+| arc_easy | 77.8 / 88.9 | 86.2 / 67.5 | 76.6 / 89.2 |
+| arc_challenge | 65.4 / 77.5 | 71.4 / 50.4 | 65.7 / 77.9 |
+| boolq | 71.6 / 85.0 | 66.5 / 81.7 | 75.1 / 84.0 |
+| hellaswag | 49.7 / 66.5 | 35.4 / 30.0 | 30.8 / 66.1 |
+| gsm8k | 40.9 / 45.8 | 43.0 / 25.3 | 43.3 / 45.3 |
+
+The vLLM-backend LoRA numbers now track the paper closely on 4/5 tasks (arc_challenge and
+gsm8k within ~0.5pt; arc_easy and boolq within a couple points; hellaswag's LoRA number
+matches almost exactly, 66.1 vs. 66.5). The one residual gap is the *frozen* model's
+hellaswag baseline (30.8 vs. paper's 49.7) — consistent with this section's earlier
+ICL-refusal finding (Mistral refuses a large fraction of hellaswag prompts without ICL),
+which apparently hits the frozen model much harder than the LoRA-adapted one. Given how
+decisive this result was, promoted it from a one-off diagnostic into a real, permanent
+evaluator: `src/adapterbench/vllm_downstream_evaluator.py::VLLMDownstreamEvaluator`,
+selected via `adapterbench run --evaluator vllm` (default remains `hf`/
+`HFDownstreamEvaluator`, since vLLM can only serve LoRA — FourierFT/IA3/LoKr still need the
+`transformers`-backend path). See gotcha #20 for a real vLLM tokenizer-fallback crash this
+evaluator has to work around, hit while wiring it into the real CLI path (not present in
+the diagnostic script, which happened to only ever exercise the code path that falls back
+successfully).
+
+**Separately found and fixed, in an unrelated pipeline:** the *live-SFT* `t2p-sft`/
+`t2p-sft-pilot` pilot's default training-task split (used to train a small from-scratch
+hypernetwork on Qwen3-0.6B — not the released-checkpoint path above) included 2 of T2L's
+contamination-removed tasks and 2 of T2L's own held-out validation tasks. Fixed with an
+enforced check (`t2p.lol_data.validate_training_tasks`) and a corrected default task list.
+Doesn't affect the Gemma/Mistral numbers above, which never involve training data of ours.
 
 ### Phase 6: Doc-to-LoRA as the second benchmark "setting"
 

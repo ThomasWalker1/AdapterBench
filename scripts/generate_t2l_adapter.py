@@ -15,13 +15,32 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 import time
+
+# Must be set before any CUDA context is created.
+os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
 
 import torch
 
 from hyper_llm_modulator.hyper_modulator import load_hypermod_checkpoint, save_lora
 from hyper_llm_modulator.utils import embed_texts, get_layers
+
+# Matches upstream's own hyper_llm_modulator.vllm_eval.eval() determinism settings.
+# Without these, TF32/cuDNN algorithm auto-tuning can pick a different (not
+# bit-identical) reduction path across separate process invocations of this script -
+# confirmed directly: two back-to-back generations from the identical checkpoint and
+# condition text produced LoRA A/B matrices differing by up to ~0.05 absolute, which
+# cascaded into a ~20-point downstream accuracy swing between runs. hypermod.eval()
+# alone does not prevent this - it disables dropout, not GPU kernel-selection
+# non-determinism.
+torch.backends.cuda.matmul.allow_fp16_reduced_precision_reduction = False
+torch.backends.cuda.matmul.allow_bf16_reduced_precision_reduction = False
+torch.backends.cudnn.benchmark = False
+torch.backends.cuda.matmul.allow_tf32 = False
+torch.backends.cudnn.allow_tf32 = False
+torch.manual_seed(42)
 
 
 def main() -> None:

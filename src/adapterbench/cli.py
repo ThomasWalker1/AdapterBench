@@ -11,6 +11,14 @@ from .doctor import environment_report
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_CATALOG = REPO_ROOT / "configs"
 
+# lol_022/043/044/045/047/050/063/064 are all confirmed present in T2L's own
+# train_ds_names (upstream/text-to-lora/configs/hyper_lora_decontam_lol_tasks.yaml).
+# The previous default (lol_022,033,034,035,039,043,044,045) trained on lol_033/034
+# (two of T2L's 10 contamination-removed tasks) and lol_035/039 (two of T2L's own 11
+# held-out zero-shot validation tasks) - exactly the leakage a training pilot should
+# avoid. --decontam-config validates any --tasks value against this list at run time.
+_DEFAULT_SFT_TRAIN_TASKS = "lol_022,lol_043,lol_044,lol_045,lol_047,lol_050,lol_063,lol_064"
+
 
 def _catalog_command(args) -> None:
     setups, adapters = load_catalog(args.root)
@@ -68,7 +76,6 @@ def _peft_smoke_command(args) -> None:
 
 
 def _run_command(args) -> None:
-    from .hf_downstream_evaluator import HFDownstreamEvaluator
     from .reporting import write_results
     from .task_examples import build_all_task_examples, build_conditions, load_task_descriptions
     from .text_to_lora_backend import ReleasedTextToLoRABackend
@@ -89,17 +96,37 @@ def _run_command(args) -> None:
     print(f"[1/4] generated: {list(artifacts)}", flush=True)
 
     print(f"[2/4] building up to {args.limit} example(s) per task for {task_ids}...", flush=True)
-    examples_by_family = build_all_task_examples(task_ids, descriptions, args.limit, variant=args.condition_variant)
+    examples_by_family = build_all_task_examples(
+        task_ids, descriptions, args.limit, variant=args.condition_variant, use_icl=args.use_icl
+    )
     all_examples = [example for group in examples_by_family.values() for example in group]
     print(f"[2/4] built {len(all_examples)} example(s) total", flush=True)
 
-    print(f"[3/4] loading interpreter {setup.models['interpreter'].model_id}...", flush=True)
-    evaluator = HFDownstreamEvaluator(
-        model_id=setup.models["interpreter"].model_id,
-        chat_template_path=args.chat_template,
-        trial_id=trial.trial_id,
-        device=args.device,
+    print(
+        f"[3/4] loading interpreter {setup.models['interpreter'].model_id} "
+        f"(evaluator={args.evaluator})...",
+        flush=True,
     )
+    if args.evaluator == "vllm":
+        from .vllm_downstream_evaluator import VLLMDownstreamEvaluator
+
+        evaluator = VLLMDownstreamEvaluator(
+            model_id=setup.models["interpreter"].model_id,
+            chat_template_path=args.chat_template,
+            trial_id=trial.trial_id,
+            device=args.device,
+            use_icl=args.use_icl,
+        )
+    else:
+        from .hf_downstream_evaluator import HFDownstreamEvaluator
+
+        evaluator = HFDownstreamEvaluator(
+            model_id=setup.models["interpreter"].model_id,
+            chat_template_path=args.chat_template,
+            trial_id=trial.trial_id,
+            device=args.device,
+            use_icl=args.use_icl,
+        )
 
     print("[4/4] evaluating (writing results.jsonl/.csv after each task)...", flush=True)
     results: list = []
@@ -123,13 +150,14 @@ def _t2p_sft_command(args) -> None:
 
     from .t2p.condition_encoder import embed_task_descriptions, load_condition_encoder
     from .t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-    from .t2p.lol_data import LolSFTDataset, load_task_metadata, lol_collate_fn
+    from .t2p.lol_data import LolSFTDataset, load_task_metadata, lol_collate_fn, validate_training_tasks
     from .t2p.model_utils import get_decoder_layers
     from .t2p.sft_trainer import train_downstream_hypernetwork
 
     task_ids = args.tasks.split(",")
     target_modules = args.target_modules.split(",")
     tasks_dir = Path(args.tasks_dir)
+    validate_training_tasks(task_ids, args.decontam_config)
 
     print(f"[1/5] loading interpreter {args.interpreter}...", flush=True)
     tokenizer = AutoTokenizer.from_pretrained(args.interpreter)
@@ -227,12 +255,13 @@ def _t2p_sft_pilot_command(args) -> None:
     from .t2p.condition_encoder import embed_task_descriptions, load_condition_encoder
     from .t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
     from .t2p.live_evaluator import HypernetworkDownstreamEvaluator
-    from .t2p.lol_data import LolSFTDataset, load_task_metadata, lol_collate_fn
+    from .t2p.lol_data import LolSFTDataset, load_task_metadata, lol_collate_fn, validate_training_tasks
     from .t2p.model_utils import get_decoder_layers
     from .t2p.sft_trainer import train_downstream_hypernetwork
 
     task_ids = args.tasks.split(",")
     adapters = args.adapters.split(",")
+    validate_training_tasks(task_ids, args.decontam_config)
     eval_task_ids = args.eval_tasks.split(",")
     tasks_dir = Path(args.tasks_dir)
     output_dir = Path(args.output)
@@ -286,7 +315,7 @@ def _t2p_sft_pilot_command(args) -> None:
 
     print(f"[4/6] building {args.eval_limit} eval example(s) per family for {eval_task_ids}...", flush=True)
     eval_examples_by_family = build_all_task_examples(
-        eval_task_ids, eval_descriptions, args.eval_limit, variant=args.eval_variant
+        eval_task_ids, eval_descriptions, args.eval_limit, variant=args.eval_variant, use_icl=args.use_icl
     )
     all_eval_examples = [example for group in eval_examples_by_family.values() for example in group]
 
@@ -300,7 +329,13 @@ def _t2p_sft_pilot_command(args) -> None:
 
     print("[5/6] scoring frozen interpreter baseline...", flush=True)
     frozen_evaluator = HypernetworkDownstreamEvaluator(
-        interpreter, layers, None, tokenizer, trial_id="t2p_sft_pilot::frozen_interpreter", device=args.device
+        interpreter,
+        layers,
+        None,
+        tokenizer,
+        trial_id="t2p_sft_pilot::frozen_interpreter",
+        device=args.device,
+        use_icl=args.use_icl,
     )
     for result in frozen_evaluator.iter_evaluate_frozen(all_eval_examples, split=args.eval_split):
         _record(result)
@@ -338,7 +373,13 @@ def _t2p_sft_pilot_command(args) -> None:
 
         print(f"[6/6] adapter={adapter}: evaluating...", flush=True)
         evaluator = HypernetworkDownstreamEvaluator(
-            interpreter, layers, hypernetwork, tokenizer, trial_id=f"t2p_sft_pilot::{adapter}", device=args.device
+            interpreter,
+            layers,
+            hypernetwork,
+            tokenizer,
+            trial_id=f"t2p_sft_pilot::{adapter}",
+            device=args.device,
+            use_icl=args.use_icl,
         )
         for result in evaluator.iter_evaluate(eval_condition_embeddings, all_eval_examples, split=args.eval_split):
             _record(result)
@@ -547,10 +588,29 @@ def main() -> None:
     run.add_argument("--split", default="test")
     run.add_argument("--device", default="cuda:0")
     run.add_argument(
+        "--use-icl",
+        action="store_true",
+        help="prepend upstream Text-to-LoRA's 3-shot in-context examples to every prompt and force an "
+        "'Answer:'/\"Let's think step by step.\" generation prefix, matching the paper's Gemma table "
+        "(Table 8), which uses ICL for every method including the frozen baseline. Must be set "
+        "consistently: it changes both the built TaskExamples and the evaluator's scoring prefill.",
+    )
+    run.add_argument(
         "--chat-template",
         default=str(
             REPO_ROOT / "upstream" / "text-to-lora" / "chat_templates" / "google" / "gemma-2-2b-it" / "chat_template.jinja"
         ),
+    )
+    run.add_argument(
+        "--evaluator",
+        choices=["hf", "vllm"],
+        default="hf",
+        help="'hf' (default): plain transformers+peft, works for any adapter format. "
+        "'vllm': upstream's own inference backend (vllm==0.5.4, via a subprocess into "
+        "upstream/text-to-lora/.venv) - LoRA-only (not FourierFT/IA3/LoKr), but reproduces "
+        "the paper's published numbers noticeably more closely (confirmed for Mistral-7B, "
+        "see PROJECT_PLAN.md's Phase 5.5 follow-up); prefer it whenever every adapter under "
+        "test is a plain LoRA.",
     )
     run.add_argument("--output", default="results/text_to_peft_gemma2b_reconstruction")
     run.set_defaults(func=_run_command)
@@ -560,8 +620,12 @@ def main() -> None:
         help="live end-to-end SFT: hook the hypernetwork's generated output into a real interpreter's forward pass and train on real next-token loss (Phase 4)",
     )
     t2p_sft.add_argument("--tasks-dir", default=str(REPO_ROOT / "upstream" / "text-to-lora" / "tasks"))
+    t2p_sft.add_argument("--tasks", default=_DEFAULT_SFT_TRAIN_TASKS)
     t2p_sft.add_argument(
-        "--tasks", default="lol_022,lol_033,lol_034,lol_035,lol_039,lol_043,lol_044,lol_045"
+        "--decontam-config",
+        default=str(REPO_ROOT / "upstream" / "text-to-lora" / "configs" / "hyper_lora_decontam_lol_tasks.yaml"),
+        help="T2L's own train_ds_names list - --tasks is validated against it so a training run "
+        "can't silently include one of T2L's contamination-removed or held-out-validation tasks",
     )
     t2p_sft.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
     t2p_sft.add_argument("--adapter", default="lora")
@@ -592,8 +656,11 @@ def main() -> None:
         "examples (Phase 4's 'next' step)",
     )
     t2p_sft_pilot.add_argument("--tasks-dir", default=str(REPO_ROOT / "upstream" / "text-to-lora" / "tasks"))
+    t2p_sft_pilot.add_argument("--tasks", default=_DEFAULT_SFT_TRAIN_TASKS)
     t2p_sft_pilot.add_argument(
-        "--tasks", default="lol_022,lol_033,lol_034,lol_035,lol_039,lol_043,lol_044,lol_045"
+        "--decontam-config",
+        default=str(REPO_ROOT / "upstream" / "text-to-lora" / "configs" / "hyper_lora_decontam_lol_tasks.yaml"),
+        help="see 't2p-sft --decontam-config'",
     )
     t2p_sft_pilot.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
     t2p_sft_pilot.add_argument(
@@ -624,6 +691,11 @@ def main() -> None:
     t2p_sft_pilot.add_argument("--eval-limit", type=int, default=20, help="eval examples per family")
     t2p_sft_pilot.add_argument("--eval-variant", type=int, default=0)
     t2p_sft_pilot.add_argument("--eval-split", default="test")
+    t2p_sft_pilot.add_argument(
+        "--use-icl",
+        action="store_true",
+        help="see 'run' subcommand's --use-icl; applies the same ICL-prompt/prefill protocol here",
+    )
     t2p_sft_pilot.add_argument("--output", default="results/t2p_sft_pilot")
     t2p_sft_pilot.set_defaults(func=_t2p_sft_pilot_command)
 

@@ -42,9 +42,15 @@ def test_arc_examples_skip_unmatched_answer_key():
     example = examples[0]
     assert example.task_id == "arc_easy::0"
     assert example.condition == "condition text"
-    assert example.target_text == "Blue"
+    # target_text is the raw answer key (matching upstream's response_field="answerKey"),
+    # not the choice text: scoring extracts a leading letter from the model's own
+    # generated answer, it doesn't rank choice log-likelihoods.
+    assert example.target_text == "A"
     assert example.metadata["answer_index"] == 0
-    assert example.metadata["choices"] == ["Blue", "Green"]
+    # Padded to 4 choices with "N/A" filler, matching upstream's ARC preprocessing
+    # (the template hardcodes 4 slots; this row only has 2 real choices).
+    assert example.metadata["choices"] == ["Blue", "Green", "N/A", "N/A"]
+    assert "A: Blue" in example.input_text and "B: Green" in example.input_text
 
 
 def test_arc_examples_respects_limit():
@@ -52,10 +58,10 @@ def test_arc_examples_respects_limit():
     assert len(examples) == 2
 
 
-def test_boolq_examples_maps_bool_answer_to_yes_no_choice():
+def test_boolq_examples_maps_bool_answer_to_true_false_target():
     examples = _boolq_examples("boolq", "c", BOOLQ_ROWS, limit=10, variant=0)
     assert len(examples) == 1
-    assert examples[0].target_text == "yes"
+    assert examples[0].target_text == "true"
     assert examples[0].metadata["answer_index"] == 1
     assert "Question:" in examples[0].input_text
 
@@ -63,7 +69,10 @@ def test_boolq_examples_maps_bool_answer_to_yes_no_choice():
 def test_hellaswag_examples_skip_rows_with_unparseable_label():
     examples = _hellaswag_examples("hellaswag", "c", HELLASWAG_ROWS, limit=10, variant=0)
     assert len(examples) == 1
-    assert examples[0].target_text == "walked in."
+    # target_text is the ending's index as a string (matching the template's 0/1/2/3
+    # labeling), not the ending text itself.
+    assert examples[0].target_text == "0"
+    assert "walked in." in examples[0].input_text
 
 
 def test_gsm8k_examples_extract_final_numeric_answer():

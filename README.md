@@ -92,6 +92,10 @@ uv run adapterbench run \
   --output results/text_to_peft_gemma2b_reconstruction_phase1
 ```
 
+Add `--evaluator vllm` to score through upstream's own inference backend (vLLM) instead of
+plain `transformers`+`peft` — LoRA-only (not FourierFT/IA3/LoKr), but reproduces the
+paper's published numbers noticeably more closely; see PROJECT_PLAN.md's Phase 5.5.
+
 Generate an immutable comparison matrix for any registered setup:
 
 ```bash

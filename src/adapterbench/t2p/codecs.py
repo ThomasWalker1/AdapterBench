@@ -124,9 +124,9 @@ class FreezeALoRACodec(GeneratedUpdateCodec):
 
     def apply(self, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int) -> Tensor:
         self._check(inputs, generated)
-        a = self.fixed_a[layer_index].to(inputs.dtype)
         b = generated.reshape(-1, self.out_features, self.rank)
-        low_rank = torch.einsum("bsi,ri->bsr", inputs, a)
+        a = self.fixed_a[layer_index].to(b.dtype)
+        low_rank = torch.einsum("bsi,ri->bsr", inputs.to(b.dtype), a)
         delta = torch.einsum("bsr,bor->bso", low_rank, b)
         return base_output + self.scaling * delta.to(base_output.dtype)
 

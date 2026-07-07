@@ -9,6 +9,14 @@ template, truncation side - see ``hyper_llm_modulator.utils.model_loading.get_to
 so generated adapters are scored under the same input formatting they were evaluated
 against upstream. The task condition text is never shown to the interpreter - only
 used to generate the adapter - matching upstream's default ``system_message=""`` eval mode.
+
+Scoring itself (this module's ``get_choice``/``get_binary_accuracy``) is generation +
+answer-extraction, not log-likelihood-over-choices: upstream's own eval harness
+(``hyper_llm_modulator.vllm_eval``/``utils.eval_tasks``) generates free text against a
+templated prompt (see ``task_examples.py``) and extracts a leading choice letter/digit
+or a loose true/false keyword. A log-likelihood scorer answers a different question
+("which full choice text is most probable") than what the paper's published numbers
+measure, so it isn't a substitute for this protocol if the goal is reproducing them.
 """
 
 from __future__ import annotations
@@ -24,7 +32,102 @@ import torch
 
 from .contracts import AdapterArtifact, DownstreamEvaluator, EvaluationResult, TaskExample
 
+# Matches upstream's hyper_llm_modulator.vllm_eval.eval() determinism settings (also
+# applied in scripts/generate_t2l_adapter.py, where their absence was confirmed to make
+# adapter generation non-deterministic across process invocations - see that script's
+# comment). Applied here too so a fixed adapter's scored accuracy doesn't depend on
+# GPU kernel-selection non-determinism either.
+torch.backends.cuda.matmul.allow_fp16_reduced_precision_reduction = False
+torch.backends.cuda.matmul.allow_bf16_reduced_precision_reduction = False
+torch.backends.cudnn.benchmark = False
+torch.backends.cuda.matmul.allow_tf32 = False
+torch.backends.cudnn.allow_tf32 = False
+
 _NUMBER_RE = re.compile(r"-?\d[\d,]*\.?\d*")
+
+# Ordered so single-digit "10" doesn't get misparsed as leading-"1"; matches upstream's
+# `hyper_llm_modulator.utils.eval_tasks.get_choice` CHOICES list.
+_CHOICE_ORDER = [*"abcdefghijklmnopqrstuvwxyz", *"0123456789", "10"]
+
+
+def get_choice(text: str) -> str | None:
+    """Extract the leading answer choice (letter or digit) from generated text,
+    matching upstream's ``get_choice`` exactly."""
+    stripped = str(text).strip().strip(":`'\"(.) ").lower()
+    for choice in _CHOICE_ORDER:
+        if stripped.startswith(choice):
+            return choice
+    return None
+
+
+def get_choice_accuracy(generated_text: str, target_text: str) -> bool:
+    return get_choice(generated_text) == get_choice(target_text)
+
+
+def get_bool_value(text: str) -> bool | None:
+    """Loose true/false extraction, matching upstream's ``get_bool_value_from_text``:
+    checks digits before words, and returns None (never-correct) if no boolean-ish
+    token appears at all."""
+    text = str(text)
+    if "1" in text:
+        return True
+    if "0" in text:
+        return False
+    lowered = text.lower()
+    for word, value in (
+        ("yes", True),
+        ("no", False),
+        ("true", True),
+        ("false", False),
+        ("positive", True),
+        ("negative", False),
+        ("valid", True),
+        ("invalid", False),
+    ):
+        if word in lowered:
+            return value
+    return None
+
+
+def get_binary_accuracy(generated_text: str, target_text: str) -> bool:
+    predicted = get_bool_value(generated_text)
+    target = get_bool_value(target_text)
+    if predicted is None or target is None:
+        return False
+    return predicted == target
+
+
+def get_gsm8k_accuracy(generated_text: str, target_text: str) -> bool:
+    matches = _NUMBER_RE.findall(generated_text)
+    if not matches:
+        return False
+    predicted = matches[-1].replace(",", "")
+    try:
+        return abs(float(predicted) - float(target_text)) < 1e-4
+    except ValueError:
+        return False
+
+
+def build_prefill_by_family(use_icl: bool) -> dict[str, str]:
+    """GSM8K always gets a "Let's think step by step." nudge (matches upstream's
+    ``eval_gsm8k``, unconditional on ``use_icl``); multiple-choice/boolq tasks only get
+    the "Answer:" nudge when reproducing the ICL-enabled tables (e.g. the paper's Gemma
+    table, which uses ICL for every method) - callers must pass the same ``use_icl``
+    value used to build the ``TaskExample``s."""
+    prefill = {"gsm8k": "Let's think step by step."}
+    if use_icl:
+        for family in ("arc_easy", "arc_challenge", "hellaswag", "boolq"):
+            prefill[family] = "Answer:"
+    return prefill
+
+
+def render_prompt(tokenizer, input_text: str, prefill: str = "") -> str:
+    chat_prompt = tokenizer.apply_chat_template(
+        [{"role": "user", "content": input_text}],
+        tokenize=False,
+        add_generation_prompt=True,
+    )
+    return chat_prompt + prefill
 
 
 def load_faithful_tokenizer(model_id: str, chat_template_path: str | Path):
@@ -49,9 +152,12 @@ class HFDownstreamEvaluator(DownstreamEvaluator):
         trial_id: str,
         device: str = "cuda:0",
         dtype: torch.dtype = torch.bfloat16,
-        max_new_tokens: int = 256,
+        max_new_tokens: int = 512,  # matches upstream's vllm.SamplingParams(max_tokens=2**9)
+        use_icl: bool = False,
     ):
-        from transformers import AutoModelForCausalLM
+        from transformers import AutoModelForCausalLM, set_seed
+
+        set_seed(42)  # matches upstream's vllm_eval.eval() (also LLM(..., seed=42))
 
         self.model_id = model_id
         self.trial_id = trial_id
@@ -62,6 +168,7 @@ class HFDownstreamEvaluator(DownstreamEvaluator):
         self.model.eval()
         self.peft_model = None
         self._loaded_adapter_names: set[str] = set()
+        self._prefill_by_family = build_prefill_by_family(use_icl)
 
     def _ensure_adapter_loaded(self, name: str, path: Path) -> None:
         from peft import PeftModel
@@ -86,36 +193,10 @@ class HFDownstreamEvaluator(DownstreamEvaluator):
             self.peft_model.set_adapter(adapter_name)
             yield self.peft_model
 
-    def _prompt(self, input_text: str) -> str:
-        return self.tokenizer.apply_chat_template(
-            [{"role": "user", "content": input_text}],
-            tokenize=False,
-            add_generation_prompt=True,
-        )
+    def _prompt(self, input_text: str, prefill: str = "") -> str:
+        return render_prompt(self.tokenizer, input_text, prefill)
 
-    def _loglikelihood(self, model, prompt: str, continuation: str) -> float:
-        prompt_ids = self.tokenizer(prompt, add_special_tokens=True)["input_ids"]
-        continuation_text = continuation if continuation.startswith(" ") else " " + continuation
-        continuation_ids = self.tokenizer(continuation_text, add_special_tokens=False)["input_ids"]
-        input_ids = torch.tensor([prompt_ids + continuation_ids], device=self.device)
-        with torch.no_grad():
-            logits = model(input_ids=input_ids).logits
-        log_probs = torch.log_softmax(logits[0, :-1], dim=-1)
-        target_ids = input_ids[0, 1:]
-        n_continuation = len(continuation_ids)
-        token_log_probs = log_probs[-n_continuation:].gather(-1, target_ids[-n_continuation:].unsqueeze(-1))
-        return float(token_log_probs.sum()) / max(n_continuation, 1)
-
-    def _score_multiple_choice(self, model, example: TaskExample) -> bool:
-        choices = example.metadata["choices"]
-        answer_index = example.metadata["answer_index"]
-        prompt = self._prompt(example.input_text)
-        scores = [self._loglikelihood(model, prompt, choice) for choice in choices]
-        predicted = max(range(len(scores)), key=lambda i: scores[i])
-        return predicted == answer_index
-
-    def _score_gsm8k(self, model, example: TaskExample) -> bool:
-        prompt = self._prompt(example.input_text)
+    def _generate(self, model, prompt: str) -> str:
         input_ids = self.tokenizer(prompt, return_tensors="pt").to(self.device)
         with torch.no_grad():
             output_ids = model.generate(
@@ -124,20 +205,29 @@ class HFDownstreamEvaluator(DownstreamEvaluator):
                 do_sample=False,
                 pad_token_id=self.tokenizer.pad_token_id,
             )
-        generated = self.tokenizer.decode(output_ids[0, input_ids["input_ids"].shape[1] :], skip_special_tokens=True)
-        matches = _NUMBER_RE.findall(generated)
-        if not matches:
-            return False
-        predicted = matches[-1].replace(",", "")
-        try:
-            return abs(float(predicted) - float(example.target_text)) < 1e-4
-        except ValueError:
-            return False
+        return self.tokenizer.decode(output_ids[0, input_ids["input_ids"].shape[1] :], skip_special_tokens=True)
+
+    def _score_choice(self, model, example: TaskExample) -> bool:
+        prefill = self._prefill_by_family.get(example.family, "")
+        generated = self._generate(model, self._prompt(example.input_text, prefill))
+        return get_choice_accuracy(generated, example.target_text)
+
+    def _score_boolq(self, model, example: TaskExample) -> bool:
+        prefill = self._prefill_by_family.get(example.family, "")
+        generated = self._generate(model, self._prompt(example.input_text, prefill))
+        return get_binary_accuracy(generated, example.target_text)
+
+    def _score_gsm8k(self, model, example: TaskExample) -> bool:
+        prefill = self._prefill_by_family.get("gsm8k", "")
+        generated = self._generate(model, self._prompt(example.input_text, prefill))
+        return get_gsm8k_accuracy(generated, example.target_text)
 
     def _score(self, model, example: TaskExample) -> bool:
         if example.family == "gsm8k":
             return self._score_gsm8k(model, example)
-        return self._score_multiple_choice(model, example)
+        if example.family == "boolq":
+            return self._score_boolq(model, example)
+        return self._score_choice(model, example)
 
     def _evaluate_group(
         self,
