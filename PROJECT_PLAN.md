@@ -531,6 +531,26 @@ Requires `hf auth login` (or `HF_TOKEN`) with license-accepted access to gated
     ever calls `generate()` — every adapter here shares the interpreter's own tokenizer
     (never a task-specific one), so this is always correct, not just a workaround that
     happens to produce the right tokenizer.
+21. **None of `t2p-sft`/`t2p-sft-pilot`/`t2p-sft-sweep`/`t2p-synthetic-pilot` actually
+    seeded anything, despite all four exposing a `--seed` flag.** `TextToPeftHypernetwork
+    (seed=...)`'s `seed` parameter only feeds `initial_bias()` (the LoRA/LoKr asymmetric-
+    init fix, gotcha #15) — it does *not* seed the module's own `nn.Linear`/`nn.Embedding`
+    weight init, which draws from whatever the global `torch` RNG happens to be at
+    construction time. Separately, every `DataLoader(..., shuffle=True)` in these commands
+    had no `generator=`, so batch order also depended on uncontrolled global RNG state -
+    and the hypernetwork's own internal `nn.Dropout(0.05)` layers consume more of that same
+    state on every training step. Net effect: two invocations of the same command with the
+    same `--seed` and same data were **not** reproducible, and this is what actually
+    explained the step-budget-sweep follow-up's confusing result (see Phase 4 above) -
+    once suspected, confirmed by finding the sweep's step-400 numbers didn't match an
+    earlier pilot run's step-400 numbers for the identical setup. Fixed in all four
+    commands: `torch.manual_seed(args.seed)` once at the top (pins weight init) *and*
+    again immediately before each adapter's `TextToPeftHypernetwork(...)` construction
+    inside the per-adapter loop (so adapter N's trajectory doesn't silently depend on how
+    much RNG state adapters 1..N-1 already consumed), plus `generator=torch.Generator().
+    manual_seed(args.seed)` on every `DataLoader`. This makes a *single* run reproducible
+    given a fixed seed - it does not by itself resolve whether results are seed-sensitive
+    across *different* seeds, which is a separate, still-open question (see Phase 4).
 
 ## Roadmap (not yet done, in priority order)
 
@@ -690,6 +710,163 @@ section above; this section tracks what's been validated vs. what's still ahead.
    the `enable_thinking` fix below that happens to hurt LoRA specifically — not yet
    isolated). **Add to that list:** this run used the contaminated 8-task split fixed in
    Phase 5.5 below — re-run with the corrected default before trusting these numbers.
+
+**Follow-up (2026-07-06): re-ran with the corrected 8-task split and all six registered
+adapters** (`results/t2p_sft_pilot_full/`, same 400 steps/n=20 budget as above — this run
+already existed on disk from a prior session but had never been analyzed or written up):
+
+| adapter | generated params | train loss (init → final) | boolq (n=20) | hellaswag (n=20) |
+|---|---|---|---|---|
+| frozen_interpreter | 0 | — | 0.75 | 0.20 |
+| lora (`q_proj,v_proj`) | 1,146,880 | 5.88 → 3.65 | **0.85** | 0.25 |
+| freeze_a_lora (`q_proj,v_proj`) | 688,128 | 5.88 → 4.26 | 0.15 | 0.20 |
+| ia3 (`k_proj,v_proj,down_proj`) | 86,016 | 5.88 → 0.89 | **0.85** | 0.20 |
+| lokr (`q_proj,v_proj`) | 143,360 | 5.88 → 4.38 | 0.15 | 0.30 |
+| fourierft (`q_proj,v_proj`) | 56,000 | 5.88 → 4.32 | **0.85** | 0.30 |
+| activation_steering (`block`) | 28,672 | 5.88 → 4.14 | 0.15 | **0.40** |
+
+**This qualitatively reverses the previous (contaminated-split) finding that LoRA
+actively hurt downstream performance** — with the corrected split, LoRA ties IA3 and
+FourierFT at the top on boolq (0.85, vs. frozen's 0.75) rather than falling below chance.
+That in itself is a useful result: the earlier "LoRA actively harms generalization"
+conclusion was at least partly an artifact of training on 2 contaminated + 2 held-out-leak
+tasks, not a clean property of LoRA-as-hypernetwork-target. Don't over-read the new
+numbers either, though — n=20 still means each family is one 5%-accuracy increment, and a
+binned-by-50-steps look at the loss curves (`loss_curves.json`) shows the six adapters are
+*not* comparably converged at this shared 400-step/1e-3-lr budget, which is a real
+confound for comparing them head to head:
+
+| adapter | steps 1-50 | 101-150 | 201-250 | 301-350 | 351-400 |
+|---|---|---|---|---|---|
+| ia3 | 2.92 | 1.12 | 0.74 | 0.70 | 0.63 |
+| lora | 11.60 | 4.92 | 4.06 | 3.84 | 3.63 |
+| freeze_a_lora | 7.36 | 4.46 | 4.01 | 3.91 | 3.69 |
+| activation_steering | 6.20 | 4.68 | 4.18 | 4.31 | 4.11 |
+| lokr | 9.13 | 5.01 | 4.61 | 4.80 | 4.53 |
+| fourierft | 7.71 | 5.30 | 4.84 | 4.76 | 4.53 |
+
+IA3 is dramatically better-optimized than everything else at this shared learning rate
+(final loss 0.63 vs. 3.6-4.5 for the rest) — consistent with the original 3-adapter
+pilot's finding above, and with this project's recurring theme (gotchas #12/13/15) that
+different codecs need different learning rates/init, not one shared default. All six are
+still slowly decreasing at step 400 (none have clearly plateaued or diverged), so more
+steps is a legitimate lever, not just noise. One genuine puzzle *not* explained by
+under-optimization: **`freeze_a_lora` and `lora` end at nearly identical training loss
+(3.69 vs. 3.63) but wildly different downstream boolq accuracy (0.15 vs. 0.85)** — same
+final loss, opposite generalization. Candidates: `freeze_a_lora`'s frozen-`A`-matrix
+constraint changes *what* it can represent even at matched loss (fits the 8 training
+tasks via a narrower subspace that happens to transfer worse to boolq's held-out
+condition), or a mechanism-level difference in how it's actually hooked/applied that
+matched loss doesn't surface. Not yet isolated — worth a raw-generation spot check (this
+run didn't persist generations, only aggregate accuracy) rather than assuming it's the
+same "large parameter count overfits the conditioning distribution" story as LoRA's
+original contaminated-split finding, since `freeze_a_lora` has *fewer* parameters than
+`lora` here, not more.
+
+**Follow-up (2026-07-06): re-ran at 3x the step budget (1200) and 3x the eval n
+(60/family)** (`results/t2p_sft_pilot_scaled/`) to test whether the picture above is a
+step-budget artifact (most codecs still converging at 400 steps) or holds with more room
+to optimize. Result: training loss keeps improving for every adapter (e.g. lora
+2.19→ chunked-mean at step 400 → 2.19 at step 1200 from a *different* starting point this
+run, freeze_a_lora down to 1.68, ia3 down to 1.95 — all still decreasing, none diverged),
+but held-out downstream accuracy got *uniformly worse*: every one of the 6 adapters
+scored **exactly 0/60 on hellaswag** (frozen: 0.233), and boolq dropped for 4/6 adapters
+(ia3 0.85→0.23, fourierft 0.85→0.17, lokr 0.15→0.22, activation_steering 0.15→0.0; lora
+rose 0.85→0.47, still down from its own 400-step number; freeze_a_lora 0.15→0.13,
+roughly flat).
+
+**A uniform 0.0 across six structurally different adapters is exactly the signature a
+scoring bug would produce, so this was checked directly against raw generated text
+before being trusted as a training finding** (retrained a fresh single-adapter
+lora/activation_steering hypernetwork with the identical recipe, since the pilot doesn't
+persist trained weights, and printed actual generations instead of just accuracy):
+
+- **`lora`** at 1200 steps answers hellaswag with the literal text `"C."` on 4/5 sampled
+  examples (one example: empty string) — a letter, not the digit format hellaswag's own
+  prompt template explicitly demands ("respond with the only number... (0,1,2,3)"). The
+  frozen baseline, by contrast, correctly answers with a digit (`"0"`) — confirming
+  `get_choice_accuracy`/the harness are working correctly and this is genuine model
+  behavior, not an extraction bug. `lora` does *not* collapse this way on boolq (0.47,
+  clearly non-zero), so this is specific to hellaswag's particular held-out condition,
+  not a global breakdown.
+- **`activation_steering`** collapses far more severely: on hellaswag it emits a string of
+  repeated periods (`"...................."`, 500 tokens, no other content) on every
+  sampled example; on boolq it emits a repetitive `"No. No. No...."` token loop. This
+  happens to coincidentally score *some* boolq examples "correct" (`get_bool_value`
+  matches the literal word "No" → predicts false) purely by luck when the target is
+  false, which is consistent with the actual run's 0.0 rather than contradicting it (small
+  eval set, could easily have skewed toward target=true).
+
+**Read: extended training induces an out-of-distribution answer-format/mode collapse on
+held-out conditions for at least `lora` and `activation_steering`, even while their own
+training-task loss keeps monotonically improving.** This is a real overfitting-to-the-
+8-task-conditioning-distribution effect, not a step-budget-insufficiency problem — more
+steps made things *worse*, not better, which rules out "just needs more room to converge"
+as the explanation for the earlier non-convergence gap. It also means a fixed step count
+is the wrong knob to tune here at all: the pilot currently has no notion of held-out
+validation during training, so it can't detect the point where held-out generalization
+peaks and then degrades — it only ever reports the fixed-budget endpoint. Two natural
+follow-ups, not yet done: (a) a step-budget *sweep* (e.g. checkpoint held-out accuracy at
+100/200/400/800/1200 steps, same seed) to find where each adapter's held-out performance
+peaks rather than assuming more-is-better, and (b) the `freeze_a_lora` vs. `lora`
+same-loss-different-accuracy puzzle from the 400-step run above remains completely
+separate and still unexplained by this collapse story.
+
+**Follow-up (2026-07-07): ran the step-budget sweep — result reframes the finding above,
+doesn't just confirm it.** New `t2p.sft_trainer.train_with_checkpoints` (one persistent
+optimizer across all checkpoints, verified by test to reproduce one continuous run's loss
+curve exactly, so checkpointing itself introduces no discontinuity) plus a new
+`adapterbench t2p-sft-sweep` CLI command, run at checkpoints 100/200/400/800/1200,
+n=40/family (`results/t2p_sft_sweep/`):
+
+| adapter | step 100 | 200 | 400 | 800 | 1200 |
+|---|---|---|---|---|---|
+| frozen (boolq / hellaswag) | 0.75 / 0.225 | — | — | — | — |
+| lora | 0.175 / 0.000 | 0.175 / 0.000 | 0.150 / 0.000 | 0.150 / 0.000 | 0.150 / 0.000 |
+| freeze_a_lora | 0.000 / 0.000 | 0.000 / 0.000 | 0.000 / 0.000 | 0.000 / 0.000 | 0.000 / 0.000 |
+| ia3 | 0.325 / 0.050 | 0.325 / 0.050 | 0.350 / 0.050 | 0.300 / 0.075 | 0.325 / 0.050 |
+| lokr | 0.050 / 0.000 | 0.050 / 0.000 | 0.050 / 0.000 | 0.050 / 0.000 | 0.050 / 0.000 |
+| fourierft | 0.125 / 0.000 | 0.050 / 0.000 | 0.050 / 0.000 | 0.025 / 0.000 | 0.125 / 0.000 |
+| activation_steering | 0.000 / 0.000 | 0.000 / 0.000 | 0.000 / 0.000 | 0.000 / 0.000 | 0.000 / 0.000 |
+
+(cell = boolq / hellaswag accuracy)
+
+**There is no peak-then-decline curve anywhere in this data — five of six adapters are
+already flat and near/below-chance by the *first* checkpoint (100 steps) and simply stay
+there through 1200,** while training loss keeps dropping the entire time for every adapter
+(`loss_curves.json`: e.g. `lora` 6.93→0.93, `lokr` 6.93→0.96, `activation_steering`
+6.93→1.96, all clearly fitting the 8 training tasks). Only `ia3` holds a stable,
+consistently-above-chance boolq accuracy (0.30-0.35) across the *entire* sweep. This means
+the working hypothesis from the paragraph above — "extended training causes collapse from
+an earlier good state" — was **wrong as stated**: for most of these adapters, the collapse
+isn't a function of *how long* training runs at all, since it's already present at the
+earliest checkpoint measured.
+
+**More importantly, this run's numbers don't match the earlier 400-step corrected-split
+pilot's numbers at the same nominal step count** (that run: frozen 0.75, lora **0.85**, ia3
+**0.85**, freeze_a_lora 0.15, lokr 0.15, fourierft **0.85**, activation_steering 0.15 — vs.
+this sweep's step-400 row: lora 0.15, ia3 0.35, freeze_a_lora 0.0, lokr 0.05, fourierft
+0.05, activation_steering 0.0). Same adapters, same 8-task split, same nominal step count,
+wildly different outcomes. The two commands share the training code path, but neither
+seeds nor otherwise controls the `DataLoader`'s batch shuffle order (`shuffle=True`, no
+generator) or the hypernetwork's internal `nn.Dropout(0.05)` calls, both of which consume
+global torch RNG state that differs run-to-run depending on exactly what random calls
+happened first — meaning two nominally-identical invocations of this pilot can land on
+substantially different training trajectories from the same 160-example dataset. **This is
+the real headline finding of this follow-up, superseding the collapse-from-training-length
+framing above: single-seed comparisons on this 8-task/160-example live-SFT setting are not
+reliable enough to trust on their own** — not just for step-budget conclusions, but for
+every adapter-vs-adapter comparison this project has run in this setting so far, including
+the corrected-split "LoRA ties IA3/FourierFT" reversal earlier in this section. The one
+consistent signal across *both* runs: **IA3 never collapsed to nowhere-near-chance in
+either run** (0.85 in the pilot, 0.30-0.35 stable throughout the sweep) — the other five
+adapters each hit at least one 0.0-or-near-0.0 result in one run or the other. Don't yet
+read that as "IA3 wins" so much as "IA3 has been the most robust to whatever is causing
+this variance, so far, at n=1 seed per adapter" — multi-seed replication (the natural next
+step, not yet done) is what would upgrade that from a suggestive pattern to a real finding.
+The `freeze_a_lora` vs. `lora` same-loss-different-accuracy puzzle from the 400-step pilot
+is now most parsimoniously explained by this same seed/batch-order sensitivity rather than
+being its own distinct mechanism-level puzzle — still not confirmed either way.
 
 **Explicitly deferred, not part of this pass:**
 - The full 479-task decontaminated training config (`configs/hyper_lora_decontam_lol_tasks.yaml`)

@@ -5,7 +5,7 @@ from torch import nn
 
 from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
 from adapterbench.t2p.model_utils import get_decoder_layers
-from adapterbench.t2p.sft_trainer import SFTBatch, compute_sft_loss, train_downstream_hypernetwork
+from adapterbench.t2p.sft_trainer import SFTBatch, compute_sft_loss, train_downstream_hypernetwork, train_with_checkpoints
 from adapterbench.t2p.tiny_interpreter import build_tiny_interpreter
 
 
@@ -89,6 +89,58 @@ def test_train_downstream_hypernetwork_reduces_loss_on_an_easy_target():
     assert len(stats.losses) == 100
     assert all(torch.isfinite(torch.tensor(loss)) for loss in stats.losses)
     assert stats.final_loss < stats.initial_loss
+
+
+def test_train_with_checkpoints_returns_one_stats_entry_per_checkpoint_with_correct_deltas():
+    interpreter, layers, hypernetwork, vocab_size = _toy_setup()
+    batch = _make_batch(batch_size=4, seq_len=6, vocab_size=vocab_size, condition_dim=6, target_token=3)
+
+    stats_by_checkpoint = train_with_checkpoints(
+        hypernetwork, interpreter, layers, [batch], checkpoint_steps=[30, 50, 100], learning_rate=1e-2
+    )
+
+    assert list(stats_by_checkpoint) == [30, 50, 100]
+    assert stats_by_checkpoint[30].steps == 30
+    assert stats_by_checkpoint[50].steps == 20  # delta since checkpoint 30, not cumulative
+    assert stats_by_checkpoint[100].steps == 50  # delta since checkpoint 50
+    for stats in stats_by_checkpoint.values():
+        assert all(torch.isfinite(torch.tensor(loss)) for loss in stats.losses)
+
+
+def test_train_with_checkpoints_matches_one_continuous_run_of_the_same_total_steps():
+    """Checkpointing shouldn't perturb the trajectory - training to [50, 100] on a given
+    hypernetwork should produce bit-for-bit the same loss curve as one continuous 100-step
+    run from the same starting weights, since both use a single persistent optimizer over
+    the same deterministic batch cycle - no optimizer-reset discontinuity at the checkpoint
+    boundary. Resets the *same* module instance's weights in place between the two runs
+    (rather than comparing against a separately-constructed second instance) so this isn't
+    confounded by the floating-point non-associativity two distinct module instances can
+    introduce even from identical copied weights."""
+    interpreter, layers, hypernetwork, vocab_size = _toy_setup()
+    batch = _make_batch(batch_size=4, seq_len=6, vocab_size=vocab_size, condition_dim=6, target_token=3)
+    pristine_state = {k: v.clone() for k, v in hypernetwork.state_dict().items()}
+
+    torch.manual_seed(123)  # hypernetwork has internal dropout - pin the RNG both runs consume
+    continuous = train_downstream_hypernetwork(hypernetwork, interpreter, layers, [batch], steps=100, learning_rate=1e-2)
+
+    hypernetwork.load_state_dict(pristine_state)
+    torch.manual_seed(123)
+    checkpointed = train_with_checkpoints(
+        hypernetwork, interpreter, layers, [batch], checkpoint_steps=[50, 100], learning_rate=1e-2
+    )
+    stitched_losses = checkpointed[50].losses + checkpointed[100].losses
+
+    assert stitched_losses == continuous.losses
+
+
+def test_train_with_checkpoints_rejects_non_ascending_checkpoints():
+    interpreter, layers, hypernetwork, vocab_size = _toy_setup()
+    batch = _make_batch(batch_size=4, seq_len=6, vocab_size=vocab_size, condition_dim=6, target_token=3)
+
+    import pytest
+
+    with pytest.raises(ValueError):
+        train_with_checkpoints(hypernetwork, interpreter, layers, [batch], checkpoint_steps=[100, 100], learning_rate=1e-2)
 
 
 def test_train_downstream_hypernetwork_works_against_a_real_tiny_transformers_model():

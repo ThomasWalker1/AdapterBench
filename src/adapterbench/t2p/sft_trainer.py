@@ -137,3 +137,45 @@ def train_downstream_hypernetwork(
         for batch in itertools.islice(itertools.cycle(train_batches), steps)
     ]
     return SFTTrainStats(initial_loss=losses[0], final_loss=losses[-1], steps=steps, losses=tuple(losses))
+
+
+def train_with_checkpoints(
+    hypernetwork: TextToPeftHypernetwork,
+    interpreter: nn.Module,
+    layers: nn.ModuleList,
+    train_batches: Iterable[SFTBatch],
+    *,
+    checkpoint_steps: Iterable[int],
+    learning_rate: float,
+    max_grad_norm: float = 1.0,
+    l2_reg_generated_w: float = 0.0,
+) -> dict[int, SFTTrainStats]:
+    """Train to each of ``checkpoint_steps`` (ascending, cumulative - e.g. [100, 200, 400]
+    trains 100 steps, then 100 *more* to reach 200 total, not 200 from scratch) under one
+    persistent ``AdamW`` optimizer, so a caller comparing held-out performance across step
+    budgets (e.g. a step-budget sweep) doesn't confound the comparison by restarting Adam's
+    momentum/bias-correction warmup at every checkpoint boundary the way calling
+    ``train_downstream_hypernetwork`` once per budget would. Returns one ``SFTTrainStats``
+    per checkpoint covering only the steps *since the previous checkpoint* (deltas, not
+    cumulative) - a caller wanting the full curve up to a checkpoint should concatenate."""
+    checkpoint_steps = sorted(checkpoint_steps)
+    optimizer = torch.optim.AdamW(hypernetwork.parameters(), lr=learning_rate)
+    batch_iter = itertools.cycle(train_batches)
+    stats_by_checkpoint: dict[int, SFTTrainStats] = {}
+    previous = 0
+    for checkpoint in checkpoint_steps:
+        delta = checkpoint - previous
+        if delta <= 0:
+            raise ValueError(f"checkpoint_steps must be strictly ascending and positive, got {checkpoint_steps}")
+        losses = [
+            train_step(
+                batch, interpreter, hypernetwork, layers, optimizer,
+                max_grad_norm=max_grad_norm, l2_reg_generated_w=l2_reg_generated_w,
+            )
+            for batch in itertools.islice(batch_iter, delta)
+        ]
+        stats_by_checkpoint[checkpoint] = SFTTrainStats(
+            initial_loss=losses[0], final_loss=losses[-1], steps=delta, losses=tuple(losses)
+        )
+        previous = checkpoint
+    return stats_by_checkpoint

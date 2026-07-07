@@ -154,6 +154,14 @@ def _t2p_sft_command(args) -> None:
     from .t2p.model_utils import get_decoder_layers
     from .t2p.sft_trainer import train_downstream_hypernetwork
 
+    # Pins the hypernetwork's weight init (only its codec-specific initial_bias is seeded
+    # by `TextToPeftHypernetwork(seed=...)` itself, not its Linear/Embedding layers) and
+    # the DataLoader's shuffle order, both of which otherwise draw from whatever the global
+    # RNG happens to be at construction time - see PROJECT_PLAN.md's step-budget-sweep
+    # follow-up for why two nominally-identical runs landed on wildly different outcomes
+    # without this.
+    torch.manual_seed(args.seed)
+
     task_ids = args.tasks.split(",")
     target_modules = args.target_modules.split(",")
     tasks_dir = Path(args.tasks_dir)
@@ -259,6 +267,11 @@ def _t2p_sft_pilot_command(args) -> None:
     from .t2p.model_utils import get_decoder_layers
     from .t2p.sft_trainer import train_downstream_hypernetwork
 
+    # See _t2p_sft_command's comment on why this is required for reproducibility, not
+    # just tidiness: neither the DataLoader shuffle nor the hypernetwork's own weight
+    # init/dropout is otherwise pinned.
+    torch.manual_seed(args.seed)
+
     task_ids = args.tasks.split(",")
     adapters = args.adapters.split(",")
     validate_training_tasks(task_ids, args.decontam_config)
@@ -308,6 +321,7 @@ def _t2p_sft_pilot_command(args) -> None:
         dataset,
         batch_size=args.batch_size,
         shuffle=True,
+        generator=torch.Generator().manual_seed(args.seed),
         collate_fn=partial(lol_collate_fn, pad_token_id=tokenizer.pad_token_id),
     )
     batches = [batch.to(args.device) for batch in dataloader]
@@ -341,6 +355,11 @@ def _t2p_sft_pilot_command(args) -> None:
         _record(result)
 
     for adapter in adapters:
+        # Re-seeded per adapter (not just once at the top of this function) so each
+        # adapter's weight init/dropout trajectory is independent of which adapters were
+        # trained before it in this same process/loop position - otherwise adapter N's
+        # result would silently depend on how much RNG state adapters 1..N-1 consumed.
+        torch.manual_seed(args.seed)
         target_modules = _PILOT_DEFAULT_TARGET_MODULES[adapter]
         print(f"[6/6] adapter={adapter} target_modules={target_modules}: training...", flush=True)
         module_shapes = infer_module_shapes(layers, target_modules, hidden_size=interpreter.config.hidden_size)
@@ -390,6 +409,168 @@ def _t2p_sft_pilot_command(args) -> None:
     print(f"wrote {output_dir}/results.jsonl, {output_dir}/results.csv, {output_dir}/loss_curves.json", flush=True)
 
 
+def _t2p_sft_sweep_command(args) -> None:
+    """Checkpointed counterpart to `t2p-sft-pilot`: scores held-out accuracy at several
+    step budgets per adapter under one persistent optimizer (`t2p.sft_trainer.
+    train_with_checkpoints`), instead of only ever reporting a single fixed-step endpoint.
+
+    Originally motivated by an apparent finding that longer training made held-out
+    accuracy worse for every adapter (see PROJECT_PLAN.md's Phase 4 section) - but running
+    this swept the ground out from under that framing: most adapters were already
+    flat/collapsed by the *first* checkpoint, with no peak-then-decline curve at all, and
+    the numbers didn't even match an earlier pilot run at the same nominal step count.
+    Root cause: neither the DataLoader shuffle nor the hypernetwork's own weight
+    init/dropout was seeded, so nominally-identical runs land on different trajectories
+    (now fixed - see the `torch.manual_seed`/`generator=` calls below). This command is
+    still the right tool for telling "still converging" apart from "already past the
+    point where held-out generalization peaks" per adapter - just don't trust a single
+    seed's answer to that question either, per the same finding.
+    """
+    import dataclasses
+
+    import torch
+    from functools import partial
+
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
+    from .reporting import write_results
+    from .task_examples import build_all_task_examples, load_task_descriptions
+    from .t2p.condition_encoder import embed_task_descriptions, load_condition_encoder
+    from .t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+    from .t2p.live_evaluator import HypernetworkDownstreamEvaluator
+    from .t2p.lol_data import LolSFTDataset, load_task_metadata, lol_collate_fn, validate_training_tasks
+    from .t2p.model_utils import get_decoder_layers
+    from .t2p.sft_trainer import train_with_checkpoints
+
+    torch.manual_seed(args.seed)
+
+    task_ids = args.tasks.split(",")
+    adapters = args.adapters.split(",")
+    checkpoint_steps = sorted(int(s) for s in args.checkpoint_steps.split(","))
+    validate_training_tasks(task_ids, args.decontam_config)
+    eval_task_ids = args.eval_tasks.split(",")
+    tasks_dir = Path(args.tasks_dir)
+    output_dir = Path(args.output)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    print(f"[1/6] loading interpreter {args.interpreter}...", flush=True)
+    tokenizer = AutoTokenizer.from_pretrained(args.interpreter)
+    if tokenizer.pad_token_id is None:
+        tokenizer.pad_token_id = tokenizer.eos_token_id
+    interpreter = AutoModelForCausalLM.from_pretrained(args.interpreter, dtype=torch.bfloat16).to(args.device)
+    interpreter.eval()
+    for parameter in interpreter.parameters():
+        parameter.requires_grad = False
+    layers = get_decoder_layers(interpreter)
+
+    print(f"[2/6] embedding task descriptions via {args.condition_encoder}...", flush=True)
+    encoder_model, encoder_tokenizer = load_condition_encoder(args.condition_encoder, device=args.device)
+    metadata_by_task = {
+        task_id: load_task_metadata(tasks_dir, task_id, max_descriptions=args.max_descriptions)
+        for task_id in task_ids
+    }
+    train_embeddings_by_task = {
+        task_id: embed_task_descriptions(metadata.descriptions, encoder_model, encoder_tokenizer).to(args.device)
+        for task_id, metadata in metadata_by_task.items()
+    }
+    condition_dim = next(iter(train_embeddings_by_task.values())).shape[-1]
+
+    eval_descriptions = load_task_descriptions(args.eval_descriptions)
+    eval_condition_embeddings = {
+        family: embed_task_descriptions(
+            [eval_descriptions[family][args.eval_variant]], encoder_model, encoder_tokenizer
+        )[0].to(args.device)
+        for family in eval_task_ids
+    }
+    del encoder_model
+
+    print(f"[3/6] loading + tokenizing {len(task_ids)} training task(s) from {args.tasks_dir}...", flush=True)
+    datasets = [
+        LolSFTDataset(tokenizer, metadata_by_task[task_id], train_embeddings_by_task[task_id], limit=args.limit)
+        for task_id in task_ids
+    ]
+    dataset = torch.utils.data.ConcatDataset(datasets)
+    dataloader = torch.utils.data.DataLoader(
+        dataset,
+        batch_size=args.batch_size,
+        shuffle=True,
+        generator=torch.Generator().manual_seed(args.seed),
+        collate_fn=partial(lol_collate_fn, pad_token_id=tokenizer.pad_token_id),
+    )
+    batches = [batch.to(args.device) for batch in dataloader]
+    print(f"[3/6] built {len(dataset)} example(s) across {len(datasets)} task(s), {len(batches)} batch(es)/epoch", flush=True)
+
+    print(f"[4/6] building {args.eval_limit} eval example(s) per family for {eval_task_ids}...", flush=True)
+    eval_examples_by_family = build_all_task_examples(
+        eval_task_ids, eval_descriptions, args.eval_limit, variant=args.eval_variant, use_icl=args.use_icl
+    )
+    all_eval_examples = [example for group in eval_examples_by_family.values() for example in group]
+
+    results: list = []
+    loss_curves: dict = {}
+
+    def _record(result) -> None:
+        results.append(result)
+        write_results(results, output_dir)
+        print(f"  step={result.metadata['checkpoint_step']:<5} {result.adapter:20} {result.task_id:16} {result.metrics}", flush=True)
+
+    print("[5/6] scoring frozen interpreter baseline (checkpoint_step=0)...", flush=True)
+    frozen_evaluator = HypernetworkDownstreamEvaluator(
+        interpreter, layers, None, tokenizer, trial_id="t2p_sft_sweep::frozen_interpreter", device=args.device,
+        use_icl=args.use_icl,
+    )
+    for result in frozen_evaluator.iter_evaluate_frozen(all_eval_examples, split=args.eval_split):
+        _record(dataclasses.replace(result, metadata={**result.metadata, "checkpoint_step": 0}))
+
+    for adapter in adapters:
+        # Re-seeded per adapter, not just once at the top - see t2p-sft-pilot's identical
+        # comment for why (each adapter's trajectory must be independent of loop position).
+        torch.manual_seed(args.seed)
+        target_modules = _PILOT_DEFAULT_TARGET_MODULES[adapter]
+        print(f"[6/6] adapter={adapter} target_modules={target_modules}: sweeping checkpoints {checkpoint_steps}...", flush=True)
+        module_shapes = infer_module_shapes(layers, target_modules, hidden_size=interpreter.config.hidden_size)
+        hypernetwork = TextToPeftHypernetwork(
+            condition_dim=condition_dim,
+            module_shapes=module_shapes,
+            num_layers=len(layers),
+            adapter=adapter,
+            seed=args.seed,
+        ).to(args.device)
+        stats_by_checkpoint = train_with_checkpoints(
+            hypernetwork,
+            interpreter,
+            layers,
+            batches,
+            checkpoint_steps=checkpoint_steps,
+            learning_rate=args.learning_rate,
+            max_grad_norm=args.max_grad_norm,
+            l2_reg_generated_w=args.l2_reg_generated_w,
+        )
+        loss_curves[adapter] = {
+            "target_modules": target_modules,
+            "checkpoints": {
+                str(step): {"initial_loss": s.initial_loss, "final_loss": s.final_loss, "losses": list(s.losses)}
+                for step, s in stats_by_checkpoint.items()
+            },
+        }
+        (output_dir / "loss_curves.json").write_text(json.dumps(loss_curves, indent=2) + "\n")
+
+        for step in checkpoint_steps:
+            print(f"  {adapter} @ step {step}: final_loss={stats_by_checkpoint[step].final_loss:.4f} - evaluating...", flush=True)
+            evaluator = HypernetworkDownstreamEvaluator(
+                interpreter, layers, hypernetwork, tokenizer, trial_id=f"t2p_sft_sweep::{adapter}::step{step}",
+                device=args.device, use_icl=args.use_icl,
+            )
+            for result in evaluator.iter_evaluate(eval_condition_embeddings, all_eval_examples, split=args.eval_split):
+                _record(dataclasses.replace(result, metadata={**result.metadata, "checkpoint_step": step}))
+            del evaluator
+
+        del hypernetwork
+        torch.cuda.empty_cache()
+
+    print(f"wrote {output_dir}/results.jsonl, {output_dir}/results.csv, {output_dir}/loss_curves.json", flush=True)
+
+
 def _t2p_synthetic_pilot_command(args) -> None:
     import torch
     from functools import partial
@@ -404,6 +585,8 @@ def _t2p_synthetic_pilot_command(args) -> None:
     from .t2p.synthetic_evaluator import evaluate_families
     from .t2p.synthetic_tasks import TASK_FAMILIES, SyntheticSFTDataset
     from .t2p.tiny_interpreter import PAD_ID, build_tiny_interpreter
+
+    torch.manual_seed(args.seed)
 
     adapters = args.adapters.split(",")
     family_names = args.families.split(",") if args.families else list(TASK_FAMILIES)
@@ -461,6 +644,7 @@ def _t2p_synthetic_pilot_command(args) -> None:
         dataset,
         batch_size=args.batch_size,
         shuffle=True,
+        generator=torch.Generator().manual_seed(args.seed),
         collate_fn=partial(lol_collate_fn, pad_token_id=PAD_ID),
     )
     batches = [batch.to(args.device) for batch in dataloader]
@@ -496,6 +680,9 @@ def _t2p_synthetic_pilot_command(args) -> None:
     _record("frozen_interpreter", "t2p_synthetic_pilot::frozen_interpreter", frozen_accuracies, 0)
 
     for adapter in adapters:
+        # Re-seeded per adapter, not just once at the top - see t2p-sft-pilot's identical
+        # comment for why (each adapter's trajectory must be independent of loop position).
+        torch.manual_seed(args.seed)
         target_modules = _PILOT_DEFAULT_TARGET_MODULES[adapter]
         print(f"[5/6] adapter={adapter} target_modules={target_modules}: training...", flush=True)
         module_shapes = infer_module_shapes(layers, target_modules, hidden_size=interpreter.config.hidden_size)
@@ -698,6 +885,57 @@ def main() -> None:
     )
     t2p_sft_pilot.add_argument("--output", default="results/t2p_sft_pilot")
     t2p_sft_pilot.set_defaults(func=_t2p_sft_pilot_command)
+
+    t2p_sft_sweep = subparsers.add_parser(
+        "t2p-sft-sweep",
+        help="checkpointed counterpart to t2p-sft-pilot: scores held-out accuracy at several step budgets per "
+        "adapter under one persistent optimizer, to tell 'still converging' apart from 'already past the point "
+        "where held-out generalization peaks' - see PROJECT_PLAN.md's Phase 4 section for why this exists",
+    )
+    t2p_sft_sweep.add_argument("--tasks-dir", default=str(REPO_ROOT / "upstream" / "text-to-lora" / "tasks"))
+    t2p_sft_sweep.add_argument("--tasks", default=_DEFAULT_SFT_TRAIN_TASKS)
+    t2p_sft_sweep.add_argument(
+        "--decontam-config",
+        default=str(REPO_ROOT / "upstream" / "text-to-lora" / "configs" / "hyper_lora_decontam_lol_tasks.yaml"),
+        help="see 't2p-sft --decontam-config'",
+    )
+    t2p_sft_sweep.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
+    t2p_sft_sweep.add_argument(
+        "--adapters",
+        default="lora,freeze_a_lora,ia3,lokr,fourierft,activation_steering",
+        help="see 't2p-sft-pilot --adapters'",
+    )
+    t2p_sft_sweep.add_argument(
+        "--checkpoint-steps",
+        default="100,200,400,800,1200",
+        help="comma-separated, strictly ascending cumulative step counts to evaluate held-out accuracy at "
+        "(e.g. '100,200,400' trains 100 steps, evaluates, trains 100 more to reach 200, evaluates, ...) - one "
+        "persistent optimizer across all checkpoints, so this isn't confounded by an Adam-restart discontinuity "
+        "at each boundary the way calling t2p-sft-pilot once per budget would be",
+    )
+    t2p_sft_sweep.add_argument("--condition-encoder", default="Alibaba-NLP/gte-large-en-v1.5")
+    t2p_sft_sweep.add_argument("--max-descriptions", type=int, default=8)
+    t2p_sft_sweep.add_argument("--limit", type=int, default=20, help="training examples per task")
+    t2p_sft_sweep.add_argument("--batch-size", type=int, default=4)
+    t2p_sft_sweep.add_argument("--learning-rate", type=float, default=1e-3)
+    t2p_sft_sweep.add_argument("--max-grad-norm", type=float, default=1.0)
+    t2p_sft_sweep.add_argument("--l2-reg-generated-w", type=float, default=1e-3)
+    t2p_sft_sweep.add_argument("--seed", type=int, default=777)
+    t2p_sft_sweep.add_argument("--device", default="cuda:0")
+    t2p_sft_sweep.add_argument(
+        "--eval-descriptions",
+        default=str(REPO_ROOT / "upstream" / "text-to-lora" / "trained_t2l" / "gemma_2b_t2l" / "args.yaml"),
+        help="see 't2p-sft-pilot --eval-descriptions'",
+    )
+    t2p_sft_sweep.add_argument("--eval-tasks", default="boolq,hellaswag")
+    t2p_sft_sweep.add_argument("--eval-limit", type=int, default=40, help="eval examples per family")
+    t2p_sft_sweep.add_argument("--eval-variant", type=int, default=0)
+    t2p_sft_sweep.add_argument("--eval-split", default="test")
+    t2p_sft_sweep.add_argument(
+        "--use-icl", action="store_true", help="see 'run' subcommand's --use-icl"
+    )
+    t2p_sft_sweep.add_argument("--output", default="results/t2p_sft_sweep")
+    t2p_sft_sweep.set_defaults(func=_t2p_sft_sweep_command)
 
     t2p_synthetic_pilot = subparsers.add_parser(
         "t2p-synthetic-pilot",
