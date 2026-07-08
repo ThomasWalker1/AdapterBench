@@ -12,13 +12,14 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_catalog_and_trial_ids_are_complete_and_stable():
     setups, adapters = load_catalog(ROOT / "configs")
     assert set(setups) == {
+        "doc_to_peft_gemma2b_reconstruction",
         "text_to_peft_gemma2b_reconstruction",
         "text_to_peft_gemma2b_sft",
+        "text_to_peft_llama8b_reconstruction",
         "text_to_peft_mistral7b_reconstruction_pilot",
         "text_to_peft_sft_pilot",
-        "synthetic_sft_pilot",
     }
-    assert len(adapters) == 7
+    assert len(adapters) == 8
     # activation_steering has no weight-space delta (dense_delta raises) and only
     # declares compatible_objectives=[downstream], so it deliberately can't build a
     # trial against a reconstruction-objective setup — restrict to the adapters that

@@ -1,1099 +1,465 @@
 # AdapterBench: Project Plan
 
-## Status snapshot (as of 2026-07-05)
+## What this is
 
-Moved to `/home/tw78/AdapterBench` (renamed again from an intermediate
-`/home/tw78/peft_for_hnets` — each move breaks every installed console script's shebang,
-since those are absolute paths baked in at install time; fix is always
-`uv pip install --python .venv/bin/python --reinstall -e ".[dev]"` to regenerate them,
-not a fresh `uv venv`) and put under git version control (repo:
-`https://github.com/ThomasWalker1/AdapterBench`, private) — rebranded from its earlier
-working name ("PEFT-as-Hypernetwork-Output Benchmark" / `peft-hnet-benchmark`) to
-**AdapterBench**. The Python package and CLI command were initially left as
-`peft_hnet`/`peft-hnet` to avoid an invasive rename during the first branding pass, but
-that gap is now closed too: the package is `src/adapterbench/`, importable as
-`adapterbench`, and the CLI command is `adapterbench <subcommand>` — fully consistent
-with the repo/distribution name. The `representation` field/parameter/CLI-flag used
-throughout the `t2p`/live-SFT stack (`TextToPeftHypernetwork(representation=...)`,
-`--representation`/`--representations`, `AdapterArtifact.representation`,
-`EvaluationResult.representation`) was also renamed to `adapter`, matching the
-terminology already used elsewhere (`AdapterManifest`, `AdapterArtifact`,
-`configs/adapters/`) rather than living as a near-synonym beside it. **PAW**
-("Program-as-Weights") scaffolding was removed outright (not archived — it had zero real
-implementation: one generic adapter manifest, one unused schema `protocol` value, no
-backend/evaluator code); the existing `adapterbench run --checkpoint <hypermod.pt>` →
-`ReleasedTextToLoRABackend` mechanism remains as *the* generic way to provide a
-pretrained hypernetwork for the disk-artifact Text-to-LoRA setting. `archive/` (retired
-Phase 3 code) was removed from the working tree once git history existed to fall back
-on — see the repo's first two commits, not a live directory.
+AdapterBench answers one question: **when a hypernetwork generates a parameter-efficient
+adapter instead of an optimizer fitting one directly, does the adapter's *shape* matter?**
+Text-to-LoRA, Program-as-Weights, and Doc-to-LoRA all generate LoRA specifically, without
+testing it against simpler alternatives in this generation setting. AdapterBench holds the
+hypernetwork, training procedure, and evaluation protocol fixed and varies only the
+generated representation — LoRA, FreezeALoRA, LoKr, FourierFT, IA3, and activation
+steering all plug into the same `codec` (output structure) + `hook site` (attachment
+point) seam, so a new adapter needs no adapter-specific plumbing.
 
-**Phase 4: the benchmark has been restructured to train solely via live end-to-end SFT**
-— the hypernetwork's generated output is hooked directly into a real frozen interpreter's
-forward pass on real training examples, computing ordinary next-token cross-entropy loss
-and backpropagating through the hook into the hypernetwork. This is Sakana's own actual
-main training method (not the reconstruction-matching approach Phase 3 built), and it's
-a strictly better foundation for the project's real goal — an "almost plug-and-play"
-mechanism for testing *any* new PEFT adapter, weight-based or activation-based,
-without needing an adapter-specific oracle-target derivation step at all. A new
-adapter now needs exactly two things: an output structure (a codec) and a hook
-site (a named linear submodule, or `"block"` for the whole decoder layer/residual
-stream) — the training loop, data pipeline, and evaluator are the same for every
-adapter. Proven end-to-end on a real model for both a weight-space adapter
-(LoRA) and an activation-space one (a new `ActivationSteeringCodec`) using the identical
-CLI command, just swapping `--adapter`/`--target-modules`. Then taken all the way
-to a genuine three-way comparison: `adapterbench t2p-sft-pilot` trains LoRA, IA3, and
-activation steering independently on a shared 8-task split and scores each against real
-held-out `boolq`/`hellaswag` examples — first honest result: IA3 and activation steering
-(the two low-parameter-count adapters) both beat the frozen baseline, while LoRA
-(the largest, ~40x more generated parameters than steering) actively destroys downstream
-performance, below-chance on `boolq`. See the Phase 4 section below for the full writeup
-— including two real, previously-undiscovered bugs this exposed: LoRA/LoKr's dead
-zero-gradient saddle point at this hypernetwork's default init (fixed at the codec
-level), and Qwen3's default "thinking" chat-template mode silently breaking both training
-and eval prompts unless `enable_thinking=False` is passed explicitly.
+Two settings, deliberately kept separate (different conditioning, objectives,
+interpreters, and evaluators — their absolute scores are never pooled):
 
-**Phase 3's reconstruction-matching pilot is retired** now that live SFT is the sole
-training/eval mechanism; its code was removed from the working tree once this project
-gained git history (recoverable via `git log`/`git show` on the repo's first two
-commits, not a live `archive/` directory), and its real results and findings are
-preserved below for history.
-One old finding from even before Phase 3 (an unresolved KronA initialization issue, see
-just below the Phase 2 results) turned out to be the same *family* of problem as gotcha
-#15's LoRA/LoKr fix here — bilinear factorized codecs need deliberate asymmetric
-initialization, a recurring theme worth remembering for any future bilinear codec.
+1. **Disk-artifact checkpoint reproduction** — load a released Text-to-LoRA checkpoint
+   (Gemma-2-2B, Mistral-7B, Llama-3.1-8B, all from SakanaAI), generate a real LoRA for a
+   benchmark task, and score it via vLLM (upstream's own inference backend) exactly the
+   way the paper does. No training of our own — this is a pure reproduction check. A
+   second project, Doc-to-LoRA (D2L, also SakanaAI), also has a Setting-1-shaped disk-
+   artifact reproduction here: load a released D2L checkpoint and evaluate it on
+   needle-in-a-haystack (NIAH, `ctx_magic_number_*`) tasks. Its conditioning is
+   structurally different (cross-attention over a document's own per-layer activations,
+   not a pooled task-description embedding) and its own eval API doesn't separate adapter
+   generation from downstream scoring, so it gets its own backend module rather than
+   reusing Text-to-LoRA's — see "Setting 1 (disk-artifact)" below.
+2. **Live end-to-end SFT** — hook a hypernetwork's generated output directly into a real
+   frozen `Qwen3-0.6B` interpreter's forward pass on real training examples, backprop
+   ordinary next-token cross-entropy through the hook, and evaluate on real held-out
+   benchmarks. The hypernetwork is trained entirely from scratch here (no released
+   checkpoint) — this is where the six representations are actually compared head to head.
 
-Phase 1 (Text-to-LoRA reconstruction setting, released checkpoint, LoRA adapter
-only) is implemented and validated end-to-end on real hardware and real data — this is
-the first genuine result the benchmark has produced. A full run (5 tasks x 100 examples,
-`lora` + `frozen_interpreter` arms) completed at
-`results/text_to_peft_gemma2b_reconstruction_phase1/results.jsonl`:
+## Architecture
 
-| task | lora (T2L) | frozen_interpreter |
+- `src/adapterbench/contracts.py` — `HypernetworkBackend.generate()`,
+  `DownstreamEvaluator.evaluate()`, `TaskExample`/`AdapterArtifact`/`EvaluationResult`.
+  Every setting implements these two interfaces; nothing else needs to know which setting
+  produced a result.
+- **Setting 1 (disk-artifact):**
+  - `text_to_lora_backend.py::ReleasedTextToLoRABackend` — wraps a released `hypermod.pt`.
+    Generation runs out-of-process under `upstream/text-to-lora/.venv` via
+    `scripts/generate_t2l_adapter.py`, because `hyper_llm_modulator` pins a
+    torch/transformers/peft stack incompatible with `adapterbench`'s own — **never import
+    it directly from `adapterbench`.**
+  - `vllm_downstream_evaluator.py::VLLMDownstreamEvaluator` — the evaluator this setting
+    actually uses. Generates via vLLM (`vllm==0.5.4`, already installed in
+    `upstream/text-to-lora/.venv` — no new dependency needed), out-of-process through
+    `scripts/vllm_generate.py`, which loads the engine once and streams one result back
+    per task family. LoRA-only (vLLM's LoRA serving support) — sufficient for this
+    setting, since every setup here evaluates a released LoRA checkpoint.
+  - `hf_downstream_evaluator.py::HFDownstreamEvaluator` — plain `transformers`+`peft`
+    fallback, kept because it's the only evaluator that can score non-LoRA adapter
+    formats if this setting ever needs one. Also the shared source of the
+    generation+answer-extraction scoring primitives (`get_choice_accuracy`/
+    `get_binary_accuracy`/`get_gsm8k_accuracy`) and prompt-building helpers
+    (`build_prefill_by_family`/`render_prompt`/`load_faithful_tokenizer`) both evaluators
+    use, so scoring never drifts between them.
+  - `task_examples.py` — builds `TaskExample`s for arc_easy/arc_challenge/boolq/
+    hellaswag/gsm8k from public HF datasets, using upstream's own prompt templates and
+    3-shot in-context examples verbatim. Scoring is generation + answer-extraction, not
+    log-likelihood-over-choices — the paper's numbers were produced by generating an
+    answer and extracting a leading choice letter/digit (or a loose true/false keyword),
+    not by scoring choice log-likelihoods.
+  - `cli.py`'s `run` command — generate → evaluate → evaluate_frozen. `--evaluator
+    {hf,vllm}` selects the evaluator (default `hf`; pass `vllm` for this setting).
+  - `doc_to_lora_backend.py::ReleasedDocToLoRANIAHEvaluator` — wraps a released D2L
+    `pytorch_model.bin`. Unlike `ReleasedTextToLoRABackend`/`VLLMDownstreamEvaluator`,
+    this is a single class, not a `HypernetworkBackend`/`DownstreamEvaluator` pair:
+    `ctx_to_lora.eval_utils.evaluate()` bakes per-document LoRA generation (never
+    materialized as a portable adapter - it's merged straight into the running model's
+    forward pass by a hand-rolled monkeypatch) and downstream scoring into one call, so
+    there is no artifact to hand from a "generate" step to a separate "evaluate" step.
+    Runs out-of-process under `upstream/doc-to-lora/.venv` via `scripts/run_d2l_eval.py`
+    (one subprocess call per `evaluate`/`evaluate_frozen`, covering every requested
+    `ctx_magic_number_<lo>_<hi>` dataset in that one call — D2L only loads the model once
+    regardless, so there's no benefit to `VLLMDownstreamEvaluator`'s persistent-process
+    streaming pattern here). `cli.py`'s `run-d2l-niah` command wires it up (a separate
+    subcommand from `run`, not a variant of it — see that command's own comment for why).
+- **Setting 2 (live SFT):**
+  - `t2p/codecs.py` — adapter-agnostic differentiable codecs (`GeneratedUpdateCodec`
+    base), each hookable at either a named linear submodule (LoRA, FreezeALoRA, LoKr,
+    FourierFT) or a whole decoder layer's residual stream (IA3, activation steering).
+  - `t2p/hypernetwork.py::TextToPeftHypernetwork` — the shared hypernetwork shell;
+    `apply()`'s hook closure handles both bare-tensor and tuple decoder outputs.
+  - `t2p/lol_data.py` — Lots-of-LoRAs/SNI training data. `load_decontaminated_train_task_ids`
+    reads T2L's own 479-task training split from `hyper_lora_decontam_lol_tasks.yaml`;
+    `validate_training_tasks` refuses any task outside it (never one of T2L's
+    contamination-removed or held-out-validation tasks).
+  - `t2p/sft_trainer.py` — the training loop. `train_downstream_hypernetwork` (fixed step
+    budget) and `train_with_checkpoints` (several step budgets under one persistent
+    optimizer, for step-budget sweeps) both support `grad_accum_steps` and `warmup_steps`
+    — matching upstream's own recipe (`batch_size=4, grad_accum_steps=64` → effective
+    batch 256, `lr=1e-5`, `warmup_frac=0.1`, 10 epochs over the full 479-task corpus).
+  - `t2p/live_evaluator.py::HypernetworkDownstreamEvaluator` — activates a generated
+    adapter via `hypernetwork.apply(...)` (the same mechanism training uses) rather than
+    `peft.PeftModel.load_adapter`, so hook-based adapters that were never materialized as
+    PEFT adapters (activation steering, or anything trained here) can be scored at all.
+  - `cli.py`'s `t2p-sft` (single adapter), `t2p-sft-pilot` (train + compare several
+    adapters, optionally on the full 479-task split via `--all-decontam-tasks`, optionally
+    across several seeds via `--seeds`), and `t2p-sft-sweep` (checkpointed step-budget
+    sweep under one persistent optimizer, to tell "still converging" apart from "already
+    past the point where held-out generalization peaks").
+  - **Document-conditioning variant (Doc-to-LoRA-style Setting 2, integrated
+    2026-07-07):** same live-SFT loop, same six codecs, same
+    `TextToPeftHypernetwork.apply()` hook mechanism - only the conditioning input
+    changes, from a pooled task-description embedding to a frozen interpreter's own
+    per-layer token activations on a synthetic needle-in-a-haystack (NIAH) document.
+    - `t2p/hypernetwork.py::PooledVectorConditioner` - the pre-existing pooled-vector
+      behavior, extracted verbatim into a pluggable `conditioner` module
+      (`TextToPeftHypernetwork(..., conditioner=None)` still builds this by default,
+      so every pre-existing call site is byte-for-byte unchanged).
+    - `t2p/document_conditioning.py::DocumentPerceiverConditioner` - a hand-rolled
+      (no HF VLM-specific Perceiver import) cross-attention stack: one learned latent
+      query per decoder layer, cross-attending onto that layer's own document-token
+      activations (`capture_document_activations`, a `@torch.no_grad()` forward pass
+      through the frozen interpreter with `output_hidden_states=True`). Layer-index-
+      aware in a way `PooledVectorConditioner` structurally cannot be - see that
+      class's docstring for the `forward` (cross-layer-pooled summary, to keep
+      `TextToPeftHypernetwork.forward`'s single-task-vector broadcast contract intact)
+      vs. `forward_layer` (genuinely per-layer) design split. Both document-conditioned
+      call sites (`document_sft_trainer.py::compute_doc_sft_loss`,
+      `live_evaluator.py::DocumentHypernetworkDownstreamEvaluator`) use
+      `TextToPeftHypernetwork.generate_per_layer` (fixed 2026-07-07), which loops
+      `forward_layer` across every layer instead of the cross-layer-pooled-broadcast
+      `forward` - so training/eval both condition each layer's generated adapter on
+      that layer's own cross-attention result, at the cost of `num_layers` trunk
+      forward passes instead of 1 per call.
+    - `t2p/niah_data.py` - synthetic haystack/needle generation (`make_niah_example`,
+      cycled filler sentences + one `"The special magic number for {topic} is
+      {digits}."` needle at a controlled depth), `DocSFTDataset`/`doc_collate_fn`/
+      `DocSFTBatch` (parallel to `lol_data.py`'s `LolSFTDataset`/`lol_collate_fn`/
+      `sft_trainer.py`'s `SFTBatch`), and `build_niah_eval_examples` for held-out
+      scoring. **Documented simplification:** every document is packed into one
+      context window per example - this does NOT replicate Doc-to-LoRA's own
+      multi-chunk rank composition (`combine_lora`, splitting a LoRA's rank across
+      chunks when a document exceeds the interpreter's context window); see
+      `assert_context_fits_in_one_pass`'s docstring. Valid here because Qwen3-0.6B's
+      `max_position_embeddings` (40960) comfortably exceeds every configured length bin
+      (default up to 2048).
+    - `t2p/document_sft_trainer.py::compute_doc_sft_loss`/`doc_train_step`/
+      `train_doc_downstream_hypernetwork` - a document-conditioned sibling of
+      `sft_trainer.py`'s training loop (reuses that module's `masked_cross_entropy`/
+      `_linear_warmup_then_constant` rather than duplicating them, but reimplements the
+      grad-accumulation/step-loop shape itself, since `sft_trainer.py`'s own loop
+      functions are hardcoded to `SFTBatch`/`compute_sft_loss` and were left unmodified
+      per this integration's own scope decision - see that module's docstring).
+    - `t2p/live_evaluator.py::DocumentHypernetworkDownstreamEvaluator` - same
+      hook-then-score pattern as `HypernetworkDownstreamEvaluator`, but hooks a fresh
+      adapter *per example* (every NIAH document is distinct, unlike one
+      condition_embedding shared by a whole task family) and scores via exact 4-digit
+      substring match rather than `get_choice_accuracy`/ROUGE-L.
+    - `cli.py`'s `d2p-sft-pilot` - mirrors `t2p-sft-pilot`'s structure
+      (`--adapters`/`--seeds`/`--steps`/`--grad-accum-steps`/`--warmup-frac`/
+      `--eval-limit`/`--device`/`--output`), with `--context-lengths`/
+      `--num-train-documents` replacing the task-selection flags.
+
+## Setting 1 results: reproducing Text-to-LoRA
+
+Released checkpoints, n=1000/task (n=300 for gsm8k), scored via `VLLMDownstreamEvaluator`
+(`adapterbench run --evaluator vllm`). Gemma uses `--use-icl` (matches the paper's Table 8,
+which applies ICL to every method); Mistral and Llama don't (matches their own main
+tables, where ICL is a separate baseline, not applied to the T2L(SFT) row).
+
+<!-- RESULTS: results/vllm_repro/{gemma,mistral,llama}_{arc_easy,arc_challenge,boolq,hellaswag,gsm8k} -->
+
+*(Results pending — a full sweep across Gemma/Mistral/Llama is running as of 2026-07-07;
+this section gets the real numbers once it completes.)*
+
+## Setting 1 results: Doc-to-LoRA on NIAH (generalization, not upstream's own protocol)
+
+Released `gemma_demo` checkpoint (QA-trained, not NIAH-trained — see Gotchas), scored via
+`ReleasedDocToLoRANIAHEvaluator` (`adapterbench run-d2l-niah`). Smoke scope only so far
+(`ctx_magic_number_32_1024`, n=10, `--baseline`):
+
+| task_id                              | adapter             | rougeL_f1 | n_examples |
+|---------------------------------------|----------------------|-----------|------------|
+| ctx_magic_number_32_1024              | lora_r8_d2l          | 1.0       | 10         |
+| ctx_magic_number_32_1024_no_context   | frozen_interpreter   | 0.0       | 10         |
+
+The checkpoint retrieves the magic number exactly on all 10 smoke-test examples despite
+never having been trained on `ctx_magic_number` data; the frozen interpreter given no
+document at all (sanity-check baseline) scores exactly 0, as expected. Not yet run at the
+paper's own scale (`--limit 1000` across the full `test_splits` bin sweep in
+`configs/setups/doc_to_peft_gemma2b_reconstruction.yaml`) or across the other three
+released checkpoints (`gemma_2b_d2l`, `mistral_7b_d2l`, `qwen_4b_d2l`).
+
+## Setting 2 results: comparing representations under live SFT
+
+Qwen3-0.6B, hypernetwork trained entirely from scratch, full 479-task decontaminated
+corpus (`--all-decontam-tasks`, 20 examples/task ≈ 9,580 examples), matching upstream's own
+recipe (`--grad-accum-steps 64 --warmup-frac 0.1 --learning-rate 1e-5`, 380 optimizer
+steps ≈ 10 epochs), 3 seeds per adapter (777/778/779), scored against held-out
+boolq/hellaswag (n=60/family).
+
+<!-- RESULTS: results/t2p_sft_full_{lora_freeze,ia3_lokr,fourierft_steering}/results.jsonl -->
+
+Held-out accuracy (%), mean ± std across 3 seeds (777/778/779):
+
+| adapter | boolq | hellaswag |
 |---|---|---|
-| arc_easy | 0.71 | 0.59 |
-| arc_challenge | 0.43 | 0.44 |
-| boolq | 0.81 | 0.83 |
-| hellaswag | 0.55 | 0.48 |
-| gsm8k (exact_match) | 0.13 | 0.57 |
+| frozen_interpreter | 75.0 | 23.3 |
+| lora | 77.2 ± 3.5 | 29.4 ± 5.9 |
+| freeze_a_lora | 71.1 ± 5.4 | 25.6 ± 4.8 |
+| ia3 | 75.6 ± 1.0 | 35.6 ± 3.5 |
+| lokr | 78.3 ± 1.7 | 32.2 ± 3.5 |
+| fourierft | 27.8 ± 18.4 | 0.0 ± 0.0 |
+| activation_steering | 78.9 ± 5.1 | 30.0 ± 2.9 |
 
-**Notable finding (verified, not a scoring bug — manually inspected raw generations
-before trusting it):** the released T2L LoRA for gsm8k causes Gemma-2-2b-it to emit a
-bare terse number ("8", "3", "$45,000") with no reasoning, whereas the frozen model
-naturally does step-by-step chain-of-thought and gets most of them right. The LoRA
-adapter is actively suppressing the base model's existing CoT behavior — plausibly an
-artifact of the short-QA-style (Lots-of-LoRAs) task distribution it was conditioned on —
-and Gemma-2-2b-it apparently can't do this arithmetic correctly without reasoning through
-it. Net effect: LoRA helps or ties on the four classification-style tasks but is sharply
-*worse* than doing nothing on the one task requiring multi-step reasoning. Relevant for
-Phase 3: an adapter can look "worse" not because it lacks capacity, but because it
-overwrites a capability the base model already had on tasks outside its conditioning
-distribution — a different failure mode than raw expressivity, worth measuring
-separately (e.g. compare adapted-vs-frozen behavior on tasks *unrelated* to what the
-adapter was generated for) once multiple adapters are being compared head to head.
+IA3 is the strongest and most stable on hellaswag; lokr and activation_steering close
+behind. FourierFT collapses to exactly 0.0 on hellaswag in all 3 seeds and swings wildly on
+boolq (10-47% across seeds) — a real, seed-independent failure now that seeding is fixed,
+not an artifact of the earlier unseeded pilots. freeze_a_lora is the one adapter that
+slightly *underperforms* frozen on boolq (71.1 vs 75.0) despite beating it on hellaswag.
 
-**Phase 2 (train our own hypernetwork checkpoint, still LoRA-only) is also complete.**
-Trained 8 real oracle per-task LoRAs for `mistralai/Mistral-7B-Instruct-v0.2` (tasks
-`lol_022, lol_033, lol_034, lol_035, lol_039, lol_043, lol_044, lol_045`, via upstream's
-`scripts/train_lora_baselines.py`, saved under
-`upstream/text-to-lora/train_outputs/sft/oracle_lora/*/`), then trained our own
-reconstruction hypernetwork against them (`scripts/train_hyper_recon.py`, 10,000 epochs,
-converged — recon loss flat around 0.156 since roughly epoch 6000), producing
-`upstream/text-to-lora/train_outputs/recon/hyper_lora/20260705-114020_VmdhLFWM/hypermod.pt`.
-Plugged that checkpoint into the *same* `ReleasedTextToLoRABackend`/`HFDownstreamEvaluator`
-Phase 1 built (new setup manifest:
-`configs/setups/text_to_peft_mistral7b_reconstruction_pilot.yaml`) and confirmed it
-generalizes beyond the one released checkpoint it was originally built against — real,
-non-degenerate results on two held-out benchmarks the checkpoint never saw during its
-narrow 8-task training:
+**Caveat (2026-07-08):** a code review found `_t2p_sft_pilot_command` never called
+`hypernetwork.eval()` before scoring, so the numbers above were measured with dropout
+(p=0.05, in the trunk) still active during held-out evaluation — adding noise on top of the
+genuine seed variance already reported. Now fixed (gotcha below). The relative ranking above
+is unlikely to flip given IA3's consistently low variance, but the exact numbers should be
+treated as provisional until this run is repeated post-fix.
 
-| task | lora (self-trained, 8-task pilot) | frozen_interpreter |
-|---|---|---|
-| arc_easy (n=20) | 0.70 | 0.65 |
-| boolq (n=20) | 0.85 | 0.85 |
+**Why 3 seeds, and why the full corpus:** an earlier pass at this comparison (8-task
+subset, single seed, 400 steps) found first that a contaminated task split made LoRA look
+like it actively harmed generalization, then — after fixing that — found that a 3x larger
+step budget made *every* adapter's held-out accuracy collapse while training loss kept
+improving. Chasing that down turned up a real bug: none of the live-SFT commands actually
+seeded the `DataLoader` shuffle or the hypernetwork's own weight init/dropout, so
+nominally-identical runs landed on different trajectories — the "more training causes
+collapse" framing was an artifact of that, not a property of training length. Both are
+fixed now (see Gotchas below); this run is the first one to test whether results are
+actually stable once seeding is real.
 
-Small n, so don't read much into the arc_easy gap — the point was proving the harness
-works against a self-trained checkpoint, which it does. See gotchas #7-10 below for real
-problems hit and fixed/worked around along the way (a `--model_dir` trailing-slash bug I
-introduced, two separate non-fatal crashes in upstream's own automatic eval steps, and an
-unreliable background-task-completion signal on this machine).
+## Setting 2 results: document-conditioning variant (NIAH)
 
-**Correction (found later):** the 8-task list above included 2 of T2L's contamination-removed
-tasks and 2 of its own held-out validation tasks — not fatal here (self-trained smoke test,
-never compared to the paper), but fixed going forward. See Phase 5.5 below.
+Smoke scope only so far (integrated 2026-07-07): Qwen3-0.6B, LoRA (`q_proj,v_proj`),
+seed 777, 40 synthetic training documents at a single 256-token context length, batch
+size 4 (10 batches/epoch), 20 optimizer steps, `lr=1e-3`, no warmup:
 
-Environment: a dedicated `uv` venv at the repo root (`.venv/` + committed `uv.lock`) —
-not any pre-existing conda env. `google/gemma-2-2b-it` is gated; needs `hf auth login`
-with license acceptance on the same HF account (see SETUP.md).
-
-Prior planning docs and an early CPU-only synthetic diagnostic pilot (`archive/`) have
-been deleted — superseded by the real implementation described below. One durable
-finding from that pilot is worth keeping in mind for Phase 3: KronA's compiled error
-stayed high (0.981) despite near-zero oracle error on held-out Kronecker-structured
-targets — i.e. the adapter could express the target perfectly, but the
-hypernetwork's mapper failed to learn to generate the right nonlinear factors. That
-motivates factor-aware initialization or a delta-space auxiliary loss whenever Phase 3
-gets to KronA, rather than assuming a naive basis-mixing head will "just work" for it.
-
-## Architecture (what actually exists)
-
-- `src/adapterbench/contracts.py` — the core abstraction everything below implements:
-  `HypernetworkBackend.generate(conditions, output_dir) -> Mapping[str, AdapterArtifact]`,
-  `DownstreamEvaluator.evaluate(artifacts, examples, split) -> list[EvaluationResult]`.
-- `src/adapterbench/text_to_lora_backend.py::ReleasedTextToLoRABackend` — the first concrete
-  `HypernetworkBackend`. Wraps a released T2L `hypermod.pt` checkpoint. Generation runs
-  out-of-process (`scripts/generate_t2l_adapter.py`) under `upstream/text-to-lora/.venv`,
-  because `hyper_llm_modulator` pins a torch/transformers/peft stack incompatible with
-  `adapterbench`'s own — **never import it directly from `adapterbench`.**
-- `src/adapterbench/hf_downstream_evaluator.py::HFDownstreamEvaluator` — the first concrete
-  `DownstreamEvaluator`. Plain `transformers`+`peft` (adapterbench itself never depends on
-  vLLM — non-LoRA adapters this benchmark ultimately compares aren't vLLM-servable
-  anyway). Replicates T2L's exact tokenizer/chat-template setup so scoring is comparable
-  to upstream. Has `iter_evaluate`/`iter_evaluate_frozen` generator methods (yield one
-  result per task as it completes) — always prefer these over the batch
-  `evaluate`/`evaluate_frozen` for anything that takes more than a minute or so, so a
-  crash/kill doesn't lose all progress (see "Lessons learned" below). Also exposes the
-  scoring primitives (`get_choice_accuracy`/`get_binary_accuracy`/`get_gsm8k_accuracy`) and
-  prompt-building helpers (`build_prefill_by_family`/`render_prompt`/
-  `load_faithful_tokenizer`) as free functions, reused by `VLLMDownstreamEvaluator` below
-  so both evaluators score/prompt identically and only the generation backend differs.
-- `src/adapterbench/vllm_downstream_evaluator.py::VLLMDownstreamEvaluator` — a second
-  `DownstreamEvaluator`, LoRA-only, that generates via vLLM (upstream's own pinned
-  `vllm==0.5.4`) instead of plain `transformers`. Exists because of a confirmed real gap,
-  not a hypothetical one — see Phase 5.5 below: swapping only the generation backend
-  (identical prompts/adapters/scoring) took Mistral's numbers from actively disagreeing
-  with the paper to matching it closely on 4/5 tasks. Selected via `adapterbench run
-  --evaluator vllm`. Like `ReleasedTextToLoRABackend`, it never imports `vllm` directly —
-  generation happens out-of-process under `upstream/text-to-lora/.venv` via
-  `scripts/vllm_generate.py`, which loads the engine exactly once per `iter_evaluate`/
-  `iter_evaluate_frozen` call (reloading per family would dominate wall time) and streams
-  one sentinel-prefixed JSON result line back per family as it finishes — the prefix is
-  required because vLLM's own logger writes its INFO/WARNING lines to stdout too, so a
-  plain-JSON-per-line protocol would be corrupted by them. See gotcha #20 for a real,
-  non-deterministic vLLM tokenizer-fallback crash this evaluator has to work around.
-- `src/adapterbench/task_examples.py` — builds `TaskExample`s for
-  arc_easy/arc_challenge/boolq/hellaswag/gsm8k from public HF datasets; condition text
-  is sourced from the checkpoint's own `args.yaml::eval_ds_info`.
-- `src/adapterbench/t2p/codecs.py` — adapter-agnostic differentiable codecs, each
-  hookable at either a named linear submodule (weight-space: LoRA, FreezeALoRA, LoKr,
-  FourierFT) or a whole decoder layer's output/residual stream (activation-space: IA3,
-  `ActivationSteeringCodec`). Base class is `GeneratedUpdateCodec` (renamed from
-  `LinearUpdateCodec` — no longer linear-submodule-specific). Every codec except IA3/
-  activation steering (no weight-space delta) exposes `dense_delta(generated,
-  layer_index) -> (batch, out, in)` — a holdover from the retired reconstruction path,
-  kept because it's cheap and harmless, not used by live SFT. `initial_bias()` lets a
-  codec override the hypernetwork's default all-zero head init — LoRA/LoKr must (see
-  gotcha #15); everything else is fine at zero.
-- `src/adapterbench/t2p/hypernetwork.py::TextToPeftHypernetwork` — `apply()`'s hook closure
-  now handles both bare-tensor (linear submodule) and tuple (decoder layer) outputs;
-  `_resolve_target` resolves `"block"` to the layer itself as a sentinel (matching
-  upstream Sakana's own `hooks.py` convention) and anything else to a named submodule;
-  `infer_module_shapes` accepts an optional `hidden_size` for non-`nn.Linear` targets.
-  `forward_layer(condition_embeddings, layer_index)` (a Phase 3 holdover, memory-saving
-  for dense-ΔW reconstruction training) is unused by live SFT but left in place.
-- `src/adapterbench/t2p/model_utils.py::get_decoder_layers` — resolves a live
-  `AutoModelForCausalLM`'s decoder-layer list (port of upstream's `get_layers`).
-- `src/adapterbench/t2p/lol_data.py` — Super-NaturalInstructions training data via its
-  per-task `Lots-of-LoRAs/task*` HF Hub mirror (confirmed the only SNI access path
-  Sakana's own repo uses — no raw SNI dataset reference exists anywhere upstream).
-  `load_task_metadata` reads the already-cloned `upstream/text-to-lora/tasks/*/
-  metadata.yaml`; `preprocess_lol_example` ports the exact `Definition:`/`Now complete
-  the following example -`/`Output:` string-split convention; `tokenize_prompt_response`
-  does response-only label masking (`-100` on prompt tokens) via a simplified,
-  tokenizer-portable length-based split rather than upstream's sequence-pair
-  `sequence_ids()` approach; `LolSFTDataset`/`lol_collate_fn` build batches. Points at
-  the existing per-task descriptions as-is (a small prefix, not the paper's full 128) —
-  see the `# TODO` in the module docstring re: unresolved GPT-4o-mini provenance.
-- `src/adapterbench/t2p/sft_trainer.py` — the live training loop itself.
-  `compute_sft_loss` runs `hypernetwork(condition_embeddings)` then
-  `hypernetwork.apply(layers, generated)` around a real interpreter forward pass,
-  `masked_cross_entropy` does upstream's per-example (not per-token) loss averaging
-  plus optional label smoothing, `train_step`/`train_downstream_hypernetwork` optimize
-  `hypernetwork.parameters()` only (interpreter frozen). No oracle adapters anywhere in
-  this path.
-- `src/adapterbench/t2p/live_evaluator.py::HypernetworkDownstreamEvaluator` — the downstream
-  evaluator counterpart: activates an adapter via `hypernetwork.apply(...)` (same
-  mechanism training used) instead of `HFDownstreamEvaluator`'s `peft.PeftModel.
-  load_adapter`/`set_adapter`, so hook-based adapters (activation steering, or any
-  adapter trained via `sft_trainer.py`) can be scored at all — `HFDownstreamEvaluator`
-  fundamentally cannot load them, since they were never materialized as PEFT adapters.
-  Its scoring routines (`_score_multiple_choice`, `_score_gsm8k`) are verbatim ports —
-  adapter-agnostic, only the activation mechanism differs.
-- `src/adapterbench/t2p/tiny_interpreter.py`, `t2p/synthetic_tasks.py`, `t2p/synthetic_evaluator.py`
-  — the Phase-5 lightweight setting: a tiny freshly initialized `LlamaForCausalLM` (no
-  download), 5 synthetic algorithmic task families with exactly known correct answers,
-  and a function-based exact-match evaluator. Reuses `t2p/sft_trainer.py`,
-  `t2p/codecs.py`, `t2p/hypernetwork.py`, `t2p/condition_encoder.py`, and even
-  `t2p/lol_data.py::lol_collate_fn` completely unchanged — only the interpreter and data
-  source differ from the real setting.
-- `src/adapterbench/cli.py` — `adapterbench {catalog,validate,matrix,doctor,peft-smoke,run,t2p-sft,t2p-sft-pilot,t2p-synthetic-pilot}`.
-  `run` is the Phase-1 entrypoint (unchanged: generate → evaluate → evaluate_frozen via
-  the disk-artifact `HypernetworkBackend`/`DownstreamEvaluator` contract — still the
-  right tool for evaluating Sakana's released/self-trained checkpoints as baselines).
-  `t2p-sft` is the Phase-4 single-adapter entrypoint: load interpreter → embed task
-  descriptions → load + tokenize Lots-of-LoRAs examples → train the hypernetwork live →
-  write loss-curve JSON. Replaces the retired `t2p-pilot` command. `t2p-sft-pilot` builds
-  on the same pieces to train and compare *multiple* adapters in one run (default
-  `lora,ia3,activation_steering`, each with a fixed default hook site — see
-  `_PILOT_DEFAULT_TARGET_MODULES`): shares one loaded interpreter/condition-encoder/
-  training-batches across adapters, trains each independently to convergence, then
-  scores each (plus one shared `frozen_interpreter` baseline) via
-  `HypernetworkDownstreamEvaluator` against real held-out benchmark examples, writing
-  `results.jsonl`/`.csv` (via the existing `reporting.write_results`, reused unchanged)
-  and a per-adapter `loss_curves.json` incrementally after each adapter
-  completes (crash-safety, matching gotcha #3's established pattern). `t2p-synthetic-pilot`
-  is the Phase-5 lightweight-setting entrypoint: same shared-then-loop structure, but
-  builds a tiny from-scratch interpreter instead of downloading one, defaults to *all six*
-  registered adapters (affordable at this scale), and defaults `--device cpu`.
-- `src/adapterbench/reporting.py::write_results` — writes `results.jsonl` (schema-free,
-  always safe) and `results.csv` (fieldnames are the *union* of metric keys across all
-  rows — see gotcha #4 below).
-- Environment: `uv venv .venv` + `uv pip install -e ".[dev]"` + committed `uv.lock` at
-  the repo root, independent of any pre-existing conda env. `upstream/text-to-lora/.venv`
-  is a second, separate `uv` env (older, upstream-pinned stack), gitignored, provisioned
-  per `SETUP.md`.
-
-## How to check current status / resume
-
-```bash
-cd /home/tw78/AdapterBench
-uv run pytest -q                                                             # 68 tests as of 2026-07-05
-cat results/text_to_peft_gemma2b_reconstruction_phase1/results.jsonl         # Phase-1 numbers: released T2L checkpoint, lora vs frozen_interpreter, 5 tasks x 100 examples
-cat results/text_to_peft_mistral7b_reconstruction_pilot/results.jsonl        # Phase-2 numbers: our self-trained 8-task checkpoint, lora vs frozen_interpreter, 2 tasks x 20 examples
-cat results/t2p_sft/smoke_lol022_lora.json                                  # Phase-4 smoke: real live-SFT loss curve, LoRA, 1 task, Qwen3-0.6B
-cat results/t2p_sft/smoke_lol022_steering.json                              # Phase-4 smoke: same, activation_steering — same command, different --adapter/--target-modules
-cat results/t2p_sft_pilot/results.jsonl                                     # Phase-4 pilot: lora vs ia3 vs activation_steering vs frozen, boolq+hellaswag (n=20/family)
-cat results/t2p_sft_pilot/loss_curves.json                                  # Phase-4 pilot: full 400-step loss curve per adapter
-cat results/t2p_synthetic_pilot_long/results.jsonl                          # Phase-5 pilot: all 6 adapters vs frozen, 5 synthetic task families, 1500 steps
-cat results/t2p_synthetic_pilot_long/loss_curves.json                       # Phase-5 pilot: full 1500-step loss curve per adapter
-git show 9afd7d3 -- archive/                                                 # retired Phase 3 reconstruction-matching code (removed from the working tree, recoverable via git history)
+```
+initial_loss=6.3438  final_loss=3.3140
+losses: [6.34, 19.35, 12.83, 32.88, 13.38, 36.58, 21.29, 7.47, 8.31, 7.71,
+         6.95, 4.75, 4.96, 4.13, 4.13, 9.05, 3.68, 2.81, 2.89, 3.31]
 ```
 
-To rerun the Phase-4 multi-task pilot (needs a real GPU; trains 3 adapters to 400
-steps each, then scores each against real held-out `boolq`/`hellaswag` examples — takes a
-few minutes on an idle A100 for `Qwen/Qwen3-0.6B`):
+Loss decreases overall (6.34 → 3.31) but is noisy step to step - expected at this scale
+(no warmup, `lr=1e-3`, only 40 documents/10 batches, only 20 steps). Held-out eval (10
+NIAH documents at the same 256-token bin) scored 0/10 exact-match for both the trained
+LoRA adapter and the frozen-interpreter (no-document-access) baseline - unsurprising at
+20 steps; this run's purpose was confirming the full document-capture → cross-attention
+conditioning → hook → backprop pipeline executes correctly end to end on the real
+interpreter, not achieving real needle-retrieval accuracy. Not yet run at a scale where
+NIAH accuracy above chance would be expected (more steps, more documents, multiple
+context-length bins, multiple adapters/seeds) - see Roadmap.
 
-```bash
-uv run adapterbench t2p-sft-pilot --device cuda:0 --output results/t2p_sft_pilot
+**Same smoke run, rerun after fixing the per-layer conditioning gap (2026-07-07 —
+`compute_doc_sft_loss`/`DocumentHypernetworkDownstreamEvaluator` switched from the
+mean-pooled-broadcast `hypernetwork(raw_condition)` to the layer-faithful
+`hypernetwork.generate_per_layer(raw_condition)`, see Architecture and that module's
+docstring above), identical hyperparameters and seed, different `--output` so both
+smoke runs are preserved (`results/d2p_sft_smoke_per_layer`):
+
+```
+initial_loss=6.3438  final_loss=3.3434
+losses: [6.34, 21.96, 23.38, 23.00, 9.08, 51.17, 6.42, 11.20, 8.33, 13.36,
+         9.66, 4.60, 4.20, 3.37, 4.27, 3.80, 3.95, 3.31, 3.16, 3.34]
 ```
 
-To rerun the Phase-5 lightweight synthetic pilot (no GPU or network needed; all 6
-adapters, ~3 min for 400 steps or ~20 min for 1500 steps on CPU):
+Loss still decreases overall (6.34 → 3.34, essentially the same final loss as the
+pooled-broadcast run's 3.31) and is, if anything, noisier step to step early on now
+that every layer actually receives distinct conditioning instead of one shared
+broadcast vector - consistent with a harder, more expressive conditioning target at
+this still-tiny scale (40 documents, 20 steps), not evidence of a regression. Held-out
+eval again scored 0/10 for both the trained adapter and the frozen-interpreter
+baseline, as expected at this step count. Compute cost, same `--steps 20` command,
+same GPU: wall-clock rose from ~21.6s to ~29.5s end to end (includes constant
+model-load/eval overhead in both) after switching to per-layer conditioning - expected,
+since `generate_per_layer` runs `num_layers` trunk forward passes per training step
+(one per `forward_layer` call) instead of `forward`'s single batched trunk pass.
+
+## How to run
 
 ```bash
-uv run adapterbench t2p-synthetic-pilot --steps 1500 --output results/t2p_synthetic_pilot_long
-```
-
-To rerun the Phase-4 live-SFT smoke test (needs a real GPU; loads a real interpreter —
-unlike the retired Phase 3 pilot, this path always loads the interpreter model):
-
-```bash
-uv run adapterbench t2p-sft --device cuda:0 --tasks lol_022 \
-  --adapter lora --target-modules q_proj,v_proj \
-  --steps 60 --output results/t2p_sft/smoke_lol022_lora.json
-# swap for activation steering with no other code changes:
-uv run adapterbench t2p-sft --device cuda:0 --tasks lol_022 \
-  --adapter activation_steering --target-modules block \
-  --steps 60 --output results/t2p_sft/smoke_lol022_steering.json
-```
-
-If the Phase-1 results file is missing/stale/incomplete, rerun it — it's idempotent and
-cheap (~10-20 min total, mostly gsm8k's 200 greedy-decode calls):
-
-```bash
+# Setting 1: reproduce a released checkpoint via vLLM
 uv run adapterbench run \
-  --setup text_to_peft_gemma2b_reconstruction \
+  --setup text_to_peft_mistral7b_reconstruction_pilot \
   --adapter lora_r8_t2l \
-  --checkpoint upstream/text-to-lora/trained_t2l/gemma_2b_t2l/hypermod.pt \
-  --tasks arc_easy,arc_challenge,boolq,hellaswag,gsm8k \
-  --limit 100 \
-  --output results/text_to_peft_gemma2b_reconstruction_phase1
+  --checkpoint upstream/text-to-lora/trained_t2l/mistral_7b_t2l/hypermod.pt \
+  --chat-template upstream/text-to-lora/chat_templates/mistralai/Mistral-7B-Instruct-v0.2/chat_template.jinja \
+  --tasks boolq --limit 1000 --evaluator vllm --output results/vllm_repro/mistral_boolq
+
+# Setting 1: reproduce a released Doc-to-LoRA checkpoint on NIAH (smoke scope)
+uv run adapterbench run-d2l-niah \
+  --setup doc_to_peft_gemma2b_reconstruction \
+  --checkpoint upstream/doc-to-lora/trained_d2l/gemma_demo/checkpoint-80000/pytorch_model.bin \
+  --datasets ctx_magic_number_32_1024 --limit 10 --baseline \
+  --output results/doc_to_peft_gemma2b_reconstruction_smoke
+
+# Setting 2: full-corpus live SFT, all six adapters, three seeds
+uv run adapterbench t2p-sft-pilot \
+  --all-decontam-tasks --adapters lora,freeze_a_lora,ia3,lokr,fourierft,activation_steering \
+  --seeds 777,778,779 --steps 380 --grad-accum-steps 64 --warmup-frac 0.1 \
+  --learning-rate 1e-5 --eval-limit 60 --output results/t2p_sft_full
+
+# Step-budget sweep (single seed, several step budgets, one persistent optimizer)
+uv run adapterbench t2p-sft-sweep \
+  --adapters lora,freeze_a_lora,ia3,lokr,fourierft,activation_steering \
+  --checkpoint-steps 100,200,400,800,1200 --eval-limit 40 --output results/t2p_sft_sweep
+
+# Setting 2, document-conditioning variant: live SFT on synthetic NIAH documents
+# (smoke scope - see "Setting 2 results" below for the real smoke-run numbers)
+uv run adapterbench d2p-sft-pilot \
+  --adapters lora --seeds 777 --steps 20 --grad-accum-steps 1 \
+  --context-lengths 256 --num-train-documents 40 --eval-limit 10 \
+  --device cuda:0 --output results/d2p_sft_smoke
 ```
 
-Requires `hf auth login` (or `HF_TOKEN`) with license-accepted access to gated
-`google/gemma-2-2b-it` (see SETUP.md).
+```bash
+uv run pytest -q   # 112 tests as of 2026-07-07 (per-layer document-conditioning fix)
+```
 
-## Lessons learned / gotchas (read before touching the pipeline again)
+`google/gemma-2-2b-it` and `meta-llama/Llama-3.1-8B-Instruct` are gated models — need
+`hf auth login` with license acceptance on the same HF account (see SETUP.md).
 
-1. **Subprocess path resolution.** `ReleasedTextToLoRABackend` runs its generation
-   subprocess with `cwd=upstream/text-to-lora`, so every path passed as a CLI arg must
-   be pre-resolved to absolute — relative paths silently resolve against the wrong
-   directory.
-2. **Never `.resolve()` the upstream interpreter path.**
-   `upstream/text-to-lora/.venv/bin/python` is a symlink; fully resolving it collapses
-   to the real system interpreter and skips venv site-package activation
-   (`hyper_llm_modulator` becomes `ModuleNotFoundError`). Only resolve *data* paths,
-   never the interpreter path itself.
-3. **Long-running steps must stream progress and persist incrementally.** The first
-   full Phase-1 attempt was killed by the harness mid-evaluation with zero results
-   saved, because the original code only printed/wrote output once at the very end.
-   Fixed via the `iter_evaluate*` generators plus writing `results.jsonl`/`.csv` after
-   every single task. Any new long-running command should follow this pattern from
-   the start, not retrofit it after a loss.
-4. **`reporting.write_results`'s CSV fieldnames must be a union across all rows**, not
-   derived from the first row — different task families report different metric names
-   (`accuracy` for multiple-choice tasks vs `exact_match` for gsm8k). Regression test:
-   `tests/test_reporting.py`.
-5. **`google/gemma-2-2b-it` is gated** — requires `hf auth login` (the modern `hf` CLI,
-   not the deprecated `huggingface-cli`) plus accepting the license on the model's HF
-   page with the same account.
-6. Removed: the redundant top-level `text-to-lora/` clone (superseded by
-   `upstream/text-to-lora/`, which already has an identical `chat_templates/`) and the
-   entire `archive/` directory (superseded planning docs + a CPU-only synthetic
-   diagnostic pilot; its one durable finding is captured above).
-7. **`--model_dir` must not have a trailing slash** when passed to
-   `scripts/train_hyper_recon.py` (or anything else that hands it to
-   `AutoModelForCausalLM.from_pretrained`/`hf_hub_download`) — `huggingface_hub`'s
-   `validate_repo_id` rejects `"mistralai/Mistral-7B-Instruct-v0.2/"` outright, even
-   though upstream's own README example command uses exactly that trailing-slash form.
-   Use `mistralai/Mistral-7B-Instruct-v0.2` (matches what oracle training itself writes
-   into `args.yaml`, which is also what `get_target_lora_dirs` needs to match against).
-8. **Two separate non-fatal crashes in upstream's own *automatic* post-training eval
-   steps** — neither blocks anything we actually need, both happen only after the real
-   artifact (adapter or `hypermod.pt`) is already safely saved to disk:
-   - Oracle LoRA training's single-task self-eval (`sft_trainer.py`'s unconditional
-     `eval_lora(..., full_eval=True)`) crashed for every one of our 8 tasks with a vLLM
-     `ValueError: Unrecognized model in <run_dir>` — vLLM's LoRA tokenizer loader tries
-     to read a full `config.json` from the adapter run directory, which only has
-     `adapter_config.json` (PEFT format, no `model_type`). We looked for a way to
-     disable this (`--eval_ds_info='{}'`) but that field also controls the train/val
-     split used for early stopping, so clearing it would remove a real training-quality
-     control — not worth it just to silence a cosmetic crash. Just expect and ignore
-     this traceback; check for `adapter_model.safetensors` on disk instead of trusting
-     the process's reported exit status.
-   - Reconstruction training's automatic 10-benchmark eval (`recon_trainer.py`'s
-     unconditional `eval_hypermod_checkpoint(..., full_eval=True)`) died silently with
-     **no Python traceback at all** partway through generating eval LoRAs, right before
-     it would have spun up a second full vLLM engine copy of Mistral-7B on top of
-     whatever training had already allocated — consistent with an OOM kill, though we
-     couldn't confirm via dmesg/journalctl (no kernel-log access on this shared
-     machine). `hypermod.pt` was already written before this phase started, so it's a
-     non-issue for us, but don't expect this automatic eval to complete on a
-     single-GPU/shared-memory setup — plan to skip it or run our own smaller eval
-     instead (which is exactly what our own harness's Step 4 does).
-9. **Background job "failed"/exit-code-1 notifications on this machine are sometimes
-   false.** Twice during Phase 2, a long-running job's wrapper reported failure
-   (`/bin/bash: line 1: /tmp/claude-XXXX-cwd: Permission denied`) from a trailing
-   housekeeping command unrelated to the actual job, while the real training/eval
-   process was confirmed alive and progressing normally via `ps aux`/log files. Always
-   verify via the actual process/output artifacts before trusting a reported failure on
-   a long-running background command here.
-10. For watching a long-running background job whose own wrapper's completion signal
-    can't be trusted (#9), poll the real PID and output files directly with the
-    `Monitor` tool (an `until`-style loop checking `kill -0 $PID` / grepping the log /
-    checking for the output artifact) rather than relying on the task-notification
-    event for that specific job.
-11. **Dense-ΔW codecs can blow past 50GB for one training step at real model dimensions**
-    if written the "natural" way — computing all `num_layers` layers via one batched
-    `hypernetwork(condition_embeddings)` call and backpropagating a single combined loss
-    keeps every layer's dense-ΔW graph (FourierFT's `ifft2` intermediates are ~1GB/layer
-    at `q_proj`'s 4096x4096) alive simultaneously for that one backward pass. Profiled at
-    56GB for a single step on the real 32-layer problem. `retain_graph=True` does **not**
-    fix this — it disables buffer freeing for the *entire* graph reachable from each
-    backward call, including that layer's own large buffers, not just a shared prefix.
-    The actual fix: `TextToPeftHypernetwork.forward_layer` gives each layer an
-    independent forward pass, so ordinary (non-retained) `backward()` frees that layer's
-    graph before the next layer is even computed — bounds peak memory to ~one layer's
-    worth regardless of `num_layers`. Separately, the *static* oracle ΔW targets
-    themselves are large (7 tasks x 32 layers x 4096x4096 float32 for `q_proj` alone is
-    ~15GB) — keep `oracle_targets` CPU-resident between folds and move only the current
-    fold's target stack to the compute device once per fold (`pilot.py::_stack_targets`),
-    not once per training step.
-12. **`torch.fft.ifft2`'s default normalization (`norm="backward"`) divides by
-    `out_features * in_features`** — negligible at the tiny dimensions
-    `test_dynamic_t2p.py`'s unit tests use (8x8, N=64), but a ~1/16.7M attenuation at real
-    Mistral-7B `q_proj` dimensions (4096x4096). This made `FourierFTCodec`'s
-    `fourier_scaling` hyperparameter silently dimension-dependent — a `generated` value
-    that produced a reasonable ΔW at toy scale required ~10,000x larger magnitude at real
-    scale to produce the same ΔW, well past what a zero-initialized head can reach via
-    gradient descent in any practical step budget (confirmed: 500 steps, lr up to 1e-2,
-    train loss didn't move). Fixed by switching to `norm="forward"` (unnormalized ifft,
-    all scaling folded into `self.scaling`), which makes `scaling` a true
-    dimension-independent knob, matching every other codec's `alpha`-style scaling.
-13. **After the `norm="forward"` fix, the codec became correspondingly *more* sensitive
-    to head parameters, and the old default `learning_rate=1e-3` now diverges** (loss
-    grew 10x within a handful of steps). Empirically, `lr=1e-6` is stable (an initial
-    Adam-bias-correction overshoot at step 1, then a clean monotonic decrease) at real
-    Mistral-7B dimensions; this is now `adapterbench t2p-pilot`'s default. This is a genuine
-    remaining rough edge, not a resolved one — see the Phase 3 section below for why 500
-    steps at this conservative lr wasn't enough to clearly beat the zero-delta baseline,
-    and what a follow-up should try (LR warmup, more steps, or better head init/scaling).
-14. **Independent leave-one-out folds parallelize across GPUs via `--held-out-tasks`.**
-    (Phase 3, retired code, kept for history.) `run_leave_one_out_pilot`'s folds don't
-    share any state (each builds a fresh hypernetwork), so `adapterbench t2p-pilot
-    --held-out-tasks <subset>` let you launch one process per idle GPU, each computing a
-    disjoint slice of the 8 folds against a different `CUDA_VISIBLE_DEVICES`/`--output`
-    pair, then merge the `"folds"` lists from each output JSON. Cut the real Phase 3 run
-    from ~73 min sequential to ~28 min across 3 GPUs. The general pattern (independent
-    per-fold/per-task work parallelizes trivially across GPUs) still applies to Phase 4.
-15. **LoRA and LoKr have a dead zero-gradient saddle point at this hypernetwork's default
-    all-zero head init — found via the first real live-SFT smoke test, not a hypothetical.**
-    Both split the head's flat `generated` output into two factors multiplied together
-    (`ΔW = B @ A` for LoRA, a Kronecker product for LoKr) — bilinear in both factors.
-    With `heads[name].weight` and `.bias` both zero-initialized (deliberate, so an
-    untrained adapter contributes nothing), *both* factors are exactly zero, and the
-    gradient w.r.t. *each* factor is proportional to the *other* — so both gradients
-    vanish simultaneously too. Confirmed directly: `adapterbench t2p-sft --adapter
-    lora` produced a loss curve that repeated *bit-for-bit* every 5 steps (one training
-    epoch) — proof the parameters never moved at all, not just moved slowly. Standard
-    LoRA/PEFT practice avoids this by initializing `A` non-zero and only `B` at zero;
-    our hypernetwork's uniform zero-init broke that invariant. Fixed at the codec level,
-    not the hypernetwork: `GeneratedUpdateCodec.initial_bias() -> Tensor | None` lets a
-    codec override the head's bias (weight stays zero) — `LoRACodec`/`LoKrCodec` now
-    return a bias with one factor's slice randomized and the other's left at zero
-    (`ΔW` still exactly 0 at init, since the zero factor still zeroes the product, but
-    gradient reaches the zero factor immediately). Every other codec (IA3, FourierFT,
-    activation steering) is linear in `generated`, so all-zero is already fine for them
-    and `initial_bias()` defaults to `None`. After the fix, the same smoke test's loss
-    went from 14.0 to 1.1 over 60 real steps — a real, substantial decrease, not noise.
-    This bug was latent through Phases 2/3 too (Phase 2's oracle LoRAs were trained via
-    upstream's own separately-initialized `HyperModulator`, not ours; Phase 3's real
-    pilot used FourierFT, which is unaffected) — this is the first time our own
-    hypernetwork's LoRA path was actually gradient-trained end to end.
-16. **Hooking a whole decoder layer (`"block"`) needs different output-unwrapping than
-    hooking a linear submodule.** A `nn.Linear`'s forward hook receives/returns a bare
-    tensor; a decoder layer's forward returns a tuple (`(hidden_states, ...)`).
-    `TextToPeftHypernetwork.apply()`'s hook closure branches on
-    `isinstance(output, tuple)` to unwrap/rewrap correctly either way — matches upstream
-    Sakana's own `hooks.py::add_vec_hook` convention (`(newoutput, *output[1:])`), which
-    is also where the `"block"` sentinel name itself comes from (not invented here).
-17. **`tokenize_prompt_response`'s response-only label masking deliberately does not
-    replicate upstream's `sequence_ids()`-based approach.** Upstream tokenizes prompt and
-    response as a sequence *pair* (`tokenizer(prompt, response, ...)`) and uses
-    `BatchEncoding.sequence_ids()` to mask sequence-0 (prompt) tokens — this depends on
-    fast-tokenizer pair-tokenization semantics that aren't guaranteed the same way across
-    every causal-LM tokenizer (that API is more commonly exercised for BERT-style
-    sentence-pair tasks). Used a simpler, more portable equivalent instead: tokenize the
-    prompt alone to get its token length, tokenize `prompt + response` as one string,
-    mask the first that-many positions. Same supervision, no pair-tokenization edge cases
-    to worry about across interpreter families.
-18. **Qwen3's chat template defaults to "thinking" mode — `add_generation_prompt=True`
-    alone is not enough to get a direct-answer prompt, and skipping this silently breaks
-    both training and eval.** Found via the first multi-task pilot run: the
-    `frozen_interpreter` baseline scored *below chance* on `boolq` (0.15 vs. 0.5 for a
-    binary task). Root-caused by directly probing `_loglikelihood` on hand-written
-    unambiguous cases (e.g. "Is Paris the capital of France?") — the model preferred
-    "no" over "yes" by a nearly constant, content-independent margin regardless of the
-    actual question. Cause: without `enable_thinking=False`, Qwen3's chat template
-    leaves the prompt ending right after `<|im_start|>assistant\n`, with the model
-    "expecting" to emit its own `<think>...</think>` block before answering — scoring (or
-    training on) a direct answer glued on immediately after that point is badly
-    out-of-distribution for the model's actual behavior at that point in the sequence.
-    This affected *both* `t2p/lol_data.py::format_prompt_response` (training prompts) and
-    `t2p/live_evaluator.py::_prompt` (eval prompts) — same bug, same fix, both call sites
-    now pass `enable_thinking=False` explicitly, which is Qwen3's documented non-thinking
-    mode (inserts a literal empty `<think>\n\n</think>\n\n` block into the prompt itself,
-    a well-defined mode rather than an implicit one). Confirmed harmless as a no-op for
-    non-Qwen3 tokenizers (Gemma-2, Mistral chat templates don't reference
-    `enable_thinking` at all — extra `apply_chat_template` kwargs a template doesn't
-    reference are silently ignored). After the fix, `frozen_interpreter` boolq jumped
-    from 0.15 to a sane 0.75. This is a generally-relevant trap for *any* future work in
-    this benchmark that scores a Qwen3 (or other hybrid-reasoning-model) interpreter via
-    direct next-token/loglikelihood scoring rather than free-form generation — always
-    check the frozen baseline against chance before trusting adapted-vs-frozen deltas.
-19. **Moving this project's directory breaks every installed console script
-    (`pytest`, `adapterbench`, ...) — happened twice now (`scripts/peft_for_hnets` →
-    `peft_for_hnets` → `AdapterBench`).** `uv`-installed entry-point scripts under
-    `.venv/bin/` have an absolute-path shebang (`#!/old/path/.venv/bin/python`) baked in
-    at install time; after a directory move that path no longer exists, so *any* command
-    fails with a misleading `Failed to spawn: pytest — No such file or directory` (the
-    error is about the shebang interpreter, not the script itself — `.venv/bin/pytest`
-    still exists on disk). Symptom is easy to misdiagnose as a broken environment.
-    **Fix: `uv pip install --python .venv/bin/python --reinstall -e ".[dev]"`** — this
-    regenerates every entry-point shim (and any editable-install path metadata, e.g. an
-    `Unnecessary package: adapterbench-benchmark==0.1.0 (from file:///old/path)` line in
-    `uv run -v`'s debug output is the tell) against the new path, without needing to
-    recreate the whole venv from scratch. Also note: **editing `pyproject.toml`'s
-    `[project].name`** can independently trigger `uv run` to silently re-resolve
-    `uv.lock` against whatever Python `uv` finds first on `PATH`/`VIRTUAL_ENV` (on this
-    machine, an unrelated conda env's Python 3.14, incompatible with the pinned
-    `torch==2.5.1` wheels) — if a rename is immediately followed by
-    `torch ... doesn't have a source distribution or wheel for the current platform`,
-    re-lock explicitly against the project's own interpreter:
-    `uv lock --python .venv/bin/python`.
-20. **vLLM's per-LoRA tokenizer resolution (`vllm.transformers_utils.tokenizer.
-    get_lora_tokenizer`) only falls back to the base tokenizer on `OSError`, but a bare PEFT
-    adapter directory (`adapter_config.json` + `adapter_model.safetensors` only, no
-    tokenizer/config files at all) doesn't reliably raise that exception type** — hit this
-    building `VLLMDownstreamEvaluator`'s real CLI path (`adapterbench run --evaluator
-    vllm`), where it surfaced as a hard crash (`ValueError: Unrecognized model in <adapter
-    dir>. Should have a model_type key in its config.json`) instead of the harmless
-    `logger.warning("No tokenizer found in ..., using base model tokenizer instead")` the
-    standalone diagnostic script happened to always get. Root cause: this project's own
-    gotcha #8 already documented the same underlying vLLM behavior once before (there,
-    non-fatal, because it only broke a training-side automatic eval step) — the exception
-    type `transformers`/`huggingface_hub` actually raises for "local directory exists but
-    has no `config.json`" isn't guaranteed to be `OSError` across versions/call paths, so
-    depending on vLLM's fallback catching the right type is fragile. Fixed by sidestepping
-    the fallback path entirely: `scripts/vllm_generate.py` now saves a real copy of the
-    base tokenizer into any adapter directory that's about to get a `LoRARequest`
-    (`AutoTokenizer.from_pretrained(model_id).save_pretrained(adapter_dir)`, once per
-    directory, skipped if `tokenizer_config.json` already exists there) *before* the engine
-    ever calls `generate()` — every adapter here shares the interpreter's own tokenizer
-    (never a task-specific one), so this is always correct, not just a workaround that
-    happens to produce the right tokenizer.
-21. **None of `t2p-sft`/`t2p-sft-pilot`/`t2p-sft-sweep`/`t2p-synthetic-pilot` actually
-    seeded anything, despite all four exposing a `--seed` flag.** `TextToPeftHypernetwork
-    (seed=...)`'s `seed` parameter only feeds `initial_bias()` (the LoRA/LoKr asymmetric-
-    init fix, gotcha #15) — it does *not* seed the module's own `nn.Linear`/`nn.Embedding`
-    weight init, which draws from whatever the global `torch` RNG happens to be at
-    construction time. Separately, every `DataLoader(..., shuffle=True)` in these commands
-    had no `generator=`, so batch order also depended on uncontrolled global RNG state -
-    and the hypernetwork's own internal `nn.Dropout(0.05)` layers consume more of that same
-    state on every training step. Net effect: two invocations of the same command with the
-    same `--seed` and same data were **not** reproducible, and this is what actually
-    explained the step-budget-sweep follow-up's confusing result (see Phase 4 above) -
-    once suspected, confirmed by finding the sweep's step-400 numbers didn't match an
-    earlier pilot run's step-400 numbers for the identical setup. Fixed in all four
-    commands: `torch.manual_seed(args.seed)` once at the top (pins weight init) *and*
-    again immediately before each adapter's `TextToPeftHypernetwork(...)` construction
-    inside the per-adapter loop (so adapter N's trajectory doesn't silently depend on how
-    much RNG state adapters 1..N-1 already consumed), plus `generator=torch.Generator().
-    manual_seed(args.seed)` on every `DataLoader`. This makes a *single* run reproducible
-    given a fixed seed - it does not by itself resolve whether results are seed-sensitive
-    across *different* seeds, which is a separate, still-open question (see Phase 4).
+## Gotchas (read before touching the pipeline again)
 
-## Roadmap (not yet done, in priority order)
+1. **Never import `hyper_llm_modulator` or `vllm` directly from `adapterbench`.** Both are
+   pinned, incompatible stacks — always shell out to `upstream/text-to-lora/.venv` via a
+   subprocess bridge (`text_to_lora_backend.py`, `scripts/generate_t2l_adapter.py`,
+   `vllm_downstream_evaluator.py`, `scripts/vllm_generate.py`). Never `.resolve()` the
+   upstream interpreter path itself (it's a symlink into the venv; resolving it collapses
+   to the system interpreter and skips venv site-packages) — only resolve *data* paths.
+2. **vLLM's per-LoRA tokenizer fallback (`get_lora_tokenizer`) only catches `OSError`,
+   but a bare PEFT adapter directory doesn't reliably raise that type** — surfaces as a
+   hard `ValueError` crash instead of the intended silent fallback. Fixed by saving a real
+   copy of the base tokenizer into any adapter directory before vLLM ever calls
+   `generate()` on it (`scripts/vllm_generate.py`) — every adapter here shares the
+   interpreter's own tokenizer, so this is always correct, not a workaround.
+3. **`use_rslora=True` adapters (r=8, alpha=16) need a backend that actually implements
+   rslora scaling** (`alpha/sqrt(r)`, not the standard `alpha/r`) to match the paper's
+   numbers — this is genuinely why matching upstream's own vLLM backend (not just "a"
+   correct LoRA implementation) matters for reproduction; a naive-but-correct standard
+   LoRA scaling would silently under-scale these adapters by ~2.8x.
+4. **Neither the `DataLoader` shuffle nor `TextToPeftHypernetwork`'s own weight init/
+   dropout was seeded**, despite every live-SFT command exposing `--seed` — the seed
+   parameter only fed `initial_bias()` (gotcha #6 below). Fixed: `torch.manual_seed(seed)`
+   once at the top of each command *and* again immediately before each adapter's
+   `TextToPeftHypernetwork(...)` construction inside the per-adapter loop (so adapter N
+   doesn't inherit RNG state from adapters trained before it), plus an explicit
+   `generator=` on every `DataLoader`. This makes a *single* run reproducible given a fixed
+   seed — it doesn't by itself establish whether results are stable *across* seeds.
+5. **Qwen3's chat template defaults to "thinking" mode** — without
+   `enable_thinking=False`, the model expects to emit its own `<think>...</think>` block
+   before answering, so scoring a direct-answer continuation is badly out-of-distribution
+   (confirmed: `frozen_interpreter` scored *below chance* on boolq without this fix).
+   Applies to both training prompts (`lol_data.py::format_prompt_response`) and eval
+   prompts (`live_evaluator.py::_prompt`) — harmless no-op for non-Qwen3 tokenizers.
+6. **LoRA/LoKr have a dead zero-gradient saddle point at this hypernetwork's default
+   all-zero head init.** Both split the head's output into two factors multiplied
+   together — with both factors zero-initialized, the gradient w.r.t. *each* factor is
+   proportional to the *other*, so both vanish simultaneously. Fixed at the codec level:
+   `GeneratedUpdateCodec.initial_bias()` lets LoRA/LoKr override the head's bias with one
+   factor's slice randomized (the product is still exactly zero at init, but gradient now
+   reaches the zero factor immediately). Every other codec is linear in the generated
+   output, so all-zero init is already fine for them.
+7. **Moving this project's directory breaks every installed console script** (`.venv/bin/`
+   entry points have an absolute-path shebang baked in at install time). Fix:
+   `uv pip install --python .venv/bin/python --reinstall -e ".[dev]"` — regenerates the
+   shims without recreating the venv. Renaming `pyproject.toml`'s `[project].name` can
+   separately make `uv run` silently re-resolve `uv.lock` against the wrong interpreter on
+   `PATH`; re-lock explicitly with `uv lock --python .venv/bin/python` if that happens.
+8. **`google/gemma-2-2b-it` and `meta-llama/Llama-3.1-8B-Instruct` are gated** — `hf auth
+   login` (the modern `hf` CLI) plus accepting each model's license on the same account.
+9. **None of the four checkpoints on `SakanaAI/doc-to-lora` are NIAH-trained** — every
+   `args.yaml`'s `train_ds_names` is QA data (self-gen `fw_qa_v2` + `pwc`/`squad`/`ropes`/
+   `drop_compact`), never `ctx_magic_number`. There is no released NIAH-specific D2L
+   checkpoint; `run-d2l-niah` against any of them is a generalization test, not a
+   reproduction of a paper table for that exact checkpoint+dataset pairing. D2L's own
+   from-scratch NIAH training recipe exists (`upstream/doc-to-lora/scripts/niah/*.sh`) but
+   is Setting-2-shaped (train from scratch), not Setting 1.
+10. **`ctx_to_lora`'s dataset loader never generates `ctx_magic_number_*` data lazily** —
+    `data/raw_datasets/ctx_magic_number_<lo>_<hi>/{train,val,test}.jsonl` must already
+    exist on disk (`uv run data/generate_ctx_magic_number.py`, see SETUP.md) before
+    `run_eval`/`run-d2l-niah` can reference that dataset name; a missing bin fails with a
+    `datasets`-library file-not-found error, not a clear "run the generator first" message.
+11. **`ctx_to_lora`'s `Trainer` reports to `wandb` by default** — every checkpoint's
+    `args.yaml` carries `report_to: [tensorboard, wandb]` from its original training run,
+    and `eval_trainer_args` copies that field verbatim into the eval-time
+    `Seq2SeqTrainingArguments`. Without `WANDB_MODE=disabled` (set inside
+    `scripts/run_d2l_eval.py`, matching upstream's own `scripts/niah/2-eval.sh` launch
+    convention), a plain eval run silently creates a real run under whatever wandb account
+    happens to be logged in on the host - confirmed: the first standalone run of
+    `run_d2l_eval.py` while developing this integration did exactly that before the env var
+    was added.
+12. **Document-conditioning live SFT does NOT replicate Doc-to-LoRA's own multi-chunk
+    rank composition** (`combine_lora`, splitting a document across several context
+    windows and composing each chunk's generated LoRA rank together when the document
+    exceeds the interpreter's context length). Every document here is packed into one
+    context window per example instead - a documented simplification, valid only as
+    long as every configured `--context-lengths` bin fits under the interpreter's own
+    `max_position_embeddings` (`niah_data.py::assert_context_fits_in_one_pass` is the
+    safety net; `d2p-sft-pilot` now calls it automatically before building any dataset,
+    fixed 2026-07-08 — previously it was implemented and tested but never wired in,
+    so an over-long bin silently corrupted position encodings instead of erroring).
+13. **The frozen interpreter itself runs in bf16 but every from-scratch hypernetwork
+    parameter (including `DocumentPerceiverConditioner`'s) is plain float32** —
+    `capture_document_activations` casts its captured activations to float32 before
+    they reach the conditioner, or `nn.MultiheadAttention` raises a dtype-mismatch
+    `RuntimeError` (confirmed directly while smoke-testing this integration against the
+    real bf16 Qwen3-0.6B interpreter - see that function's docstring).
+14. **Every live-SFT pilot/sweep command must call `hypernetwork.eval()` after training
+    and before scoring** — `t2p-sft-pilot`, `d2p-sft-pilot`, and `t2p-sft-sweep` all
+    trained a hypernetwork and then handed it straight to an evaluator without this,
+    leaving the trunk's/conditioner's `nn.Dropout(0.05)` layers active during held-out
+    scoring and adding non-determinism on top of genuine seed variance. Fixed 2026-07-08
+    in all three commands. Any new pilot/sweep command needs the same call.
+15. **`TextToPeftHypernetwork.generate_per_layer` used to recompute the shared trunk/heads
+    once per layer** (28x for Qwen3-0.6B's 28 layers) to enable a per-layer-immediate-
+    backward memory optimization that neither real caller (`document_sft_trainer.py`,
+    `live_evaluator.py`) actually exercises — both defer or skip backward entirely, so the
+    memory saving never materialized. Fixed 2026-07-08: per-layer work is now limited to
+    the conditioner call itself; trunk/heads run once, batched across layers, same as
+    `forward()`. `forward_layer` (single-layer, still useful for a future caller that does
+    do per-layer backward) is unchanged.
 
-### Phase 2: train our own hypernetwork checkpoint — ✅ done (see Status snapshot above)
+## Roadmap
 
-### Phase 3: generalize the adapter seam — ✅ done, then retired and archived (see Phase 4)
+- **Multi-seed live-SFT comparison at full 479-task scale** — in progress (see Results
+  above); the direct next question once it lands is whether the pattern replicates a
+  *second* time, not just across these 3 seeds but across independent reruns.
+- **Doc-to-LoRA NIAH sweep at full scale** — only smoke-tested so far (n=10, one length
+  bin, `gemma_demo` only). Next: the full `test_splits` bin sweep at `--limit 1000` for
+  `gemma_demo`, then the same for `gemma_2b_d2l`/`mistral_7b_d2l`/`qwen_4b_d2l` to see
+  whether generalization from QA training to NIAH holds across interpreters and step
+  budgets, and at what document length it starts to degrade.
+- Description-variant robustness (the released checkpoints' `args.yaml` carries 3
+  paraphrased descriptions per benchmark task; only variant 0 is used anywhere so far).
+- **Document-conditioning live SFT (`d2p-sft-pilot`) at real training scale** — only
+  smoke-tested so far (single adapter/seed, 20 steps, one 256-token context-length bin,
+  40 training documents). Next: enough steps/documents for held-out NIAH accuracy to
+  plausibly rise above the 0-accuracy smoke-test floor, then the full six-codec
+  head-to-head comparison across multiple context-length bins (`--context-lengths
+  256,512,1024,2048`) and multiple seeds, mirroring the pooled-vector variant's own
+  `t2p-sft-pilot`/`t2p-sft-sweep` scale-up path - including checking whether NIAH
+  accuracy degrades with document length the way it does for the released D2L
+  checkpoint (Setting 1's own open question above), but now for hypernetworks trained
+  from scratch on each of the six representations.
 
-**Superseded.** Kept below for history — the reconstruction-matching machinery this
-phase built (`t2p/pilot.py`, `t2p/oracle_targets.py`) has been removed from the active
-codebase (recoverable via git history, not a live `archive/` directory). Live end-to-end
-SFT (Phase 4) is now the sole training/eval
-mechanism, for a reason that goes beyond "it's what Sakana actually does": reconstruction
-matching requires an adapter-specific *oracle target* (an already-trained example
-of that adapter to regress onto), which has no general recipe for activation-based
-adapters the way "fine-tune a LoRA" does for weight-based ones. Live SFT needs no
-oracle at all — see Phase 4 below.
+## Reference: prior art
 
-The point of this phase is **not** picking a winning PEFT adapter — it's proving
-the hypernetwork/codec seam is genuinely adapter-agnostic: any codec with a
-weight-space update can be dropped into the same reconstruction training/eval loop with
-no new plumbing per adapter. That seam is now implemented and exercised
-end-to-end against real Mistral-7B-dimension oracle LoRAs (not just toy `nn.Linear`
-layers), closing what the Status snapshot called "the biggest remaining gap."
-
-Key simplifying fact that made this cheap to build: **the core test needs no live 7B
-model, no forward hooks, and no new oracle training** — it's pure parameter-space
-regression, reusing the exact 8 oracle LoRAs Phase 2 already trained. Every task's
-reconstruction target is just `ΔW = B @ A` (dense, adapter-agnostic), computable
-directly from the existing `adapter_model.safetensors` files.
-
-All four originally-scoped gaps are closed:
-1. **Dense ΔW exposure** — every codec except IA3 now has `dense_delta(generated,
-   layer_index) -> (batch, out, in)` (`t2p/codecs.py`).
-2. **IA3 exclusion** — confirmed as a scoping decision, not a bug: `IA3Codec.dense_delta`
-   raises `NotImplementedError` with an explanation (multiplicative on activations, no
-   weight-space delta).
-3. **Oracle ΔW target loading** — `t2p/oracle_targets.py` ports upstream's
-   `get_recon_train_data` key-parsing + `bmm(B,A)` logic; `find_oracle_adapter_paths`
-   resolves task ids to their timestamped oracle-LoRA run directories.
-4. **Task-description embedding** — `t2p/condition_encoder.py` embeds via
-   `Alibaba-NLP/gte-large-en-v1.5` **in-process** (confirmed compatible with `adapterbench`'s
-   own pinned `transformers==4.57.6`, given `trust_remote_code=True` — no cross-venv
-   bridge needed, simpler than `ReleasedTextToLoRABackend`'s pattern).
-
-Also confirmed: `src/adapterbench/generators.py`/`reconstruction.py` (an earlier
-condition→flat-vector reconstruction training loop) really is dead weight here —
-`TextToPeftHypernetwork.forward` returns a `dict[str, Tensor]` keyed by module name with
-a different shape per module, not the flat `(batch, state_dim)` shape that loop expects.
-Left in place but not used by the Phase 3 pilot; candidate for deletion if nothing else
-claims it.
-
-**Real pilot run**: `TextToPeftHypernetwork` configured for `FourierFTCodec` (the paper's
-flagship non-LoRA case), leave-one-task-out across all 8 real oracle LoRAs (train on 7,
-evaluate held-out reconstruction L1 against a predict-zero-delta baseline), 500 steps,
-lr=1e-6, `delta_w_scaling=10000` (matches Phase 2's `train_hyper_recon.py` convention).
-Ran as 3 parallel processes across 3 idle GPUs via `--held-out-tasks` (see gotcha #14),
-merged into `results/t2p_pilot/fourierft_vs_lora_delta.json`:
-
-| held-out task | hypernetwork L1 | zero-baseline L1 | beats zero |
-|---|---|---|---|
-| lol_022 | 0.1779 | 0.1730 | no (+2.80%) |
-| lol_033 | 0.3313 | 0.3285 | no (+0.87%) |
-| lol_034 | 0.3655 | 0.3625 | no (+0.82%) |
-| lol_035 | 0.2346 | 0.2297 | no (+2.11%) |
-| lol_039 | 0.2551 | 0.2512 | no (+1.54%) |
-| lol_043 | 0.4659 | 0.4633 | no (+0.55%) |
-| lol_044 | 0.5527 | 0.5502 | no (+0.45%) |
-| lol_045 | 0.4833 | 0.4816 | no (+0.36%) |
-
-**Honest read: 0/8 folds beat the zero-delta baseline, and this is a hyperparameter
-problem, not an adapter-capability one.** Two real bugs were found and fixed while getting
-here (gotchas #11-12: a memory blowup from the natural way to backprop through all
-layers, and a genuine `torch.fft.ifft2` normalization bug that made `FourierFTCodec`
-practically untrainable at real dimensions). Fixing the second bug fixed the *gradient
-magnitude* problem but also made the codec much more sensitive to its head parameters,
-which made the old default learning rate diverge — the safe lr found empirically
-(1e-6, gotcha #13) is conservative enough that 500 steps isn't enough to move the
-hypernetwork meaningfully away from its zero-initialized starting point (train loss on
-the 7 training tasks barely moves in any fold). This was confirmed on a synthetic
-sanity check too (shared-target small-dimension case in `tests/test_pilot.py` *does*
-clearly beat the zero baseline, proving the training machinery itself works when given
-an easy, learnable signal and a normal lr) — so the gap here is specifically "the real
-model dimensions force a lr too conservative for 500 steps," not a bug in the loop.
-Follow-up options, in likely order of effort: (a) just run far more steps at the same
-conservative lr, (b) an lr warmup schedule to avoid wasting the first several steps on
-Adam's bias-correction overshoot, (c) a smarter head initialization tied to the codec's
-actual output scale instead of the current uniform zero-init. None of these require
-further architecture changes — the harness is done; this is a training-recipe tuning
-pass whenever the project returns to Phase 3.
-
-### Phase 4: live end-to-end SFT — ✅ done (mechanism, real smoke test, and the small multi-task pilot with real downstream eval)
-
-Restructured the benchmark around Sakana's actual main training method (live-hook SFT,
-not reconstruction matching) specifically to make adding a new adapter
-"almost plug-and-play": a researcher needs only an output structure (a codec) and a hook
-site (a linear submodule name, or `"block"` for the whole decoder layer), and the same
-training loop, data pipeline, and evaluator work unchanged. Full architecture in the
-section above; this section tracks what's been validated vs. what's still ahead.
-
-**Done:**
-1. **Mechanism generalization** (`t2p/codecs.py`, `t2p/hypernetwork.py`) — hook sites
-   generalized beyond named linear submodules to whole decoder layers, proven
-   differentiably with a synthetic tuple-returning fake layer before touching any real
-   model (`tests/test_dynamic_t2p.py`).
-2. **Real single-task smoke test** — `adapterbench t2p-sft` against `Qwen/Qwen3-0.6B` (real
-   model, real forward/backward passes) and one real `lol_022` task from the actual
-   Lots-of-LoRAs/SNI data:
-   - LoRA (`--target-modules q_proj,v_proj`): loss 14.02 → 1.11 over 60 real steps.
-   - Activation steering (`--target-modules block`, the new `ActivationSteeringCodec`):
-     loss 15.69 → 1.31 over 60 real steps — **the same command, same training loop, only
-     `--adapter`/`--target-modules` changed.** This is the actual proof of the
-     plug-and-play claim, not just an architectural argument for it.
-   Found and fixed one real, previously-latent bug along the way (gotcha #15 — LoRA/LoKr's
-   bilinear zero-gradient saddle point).
-
-3. **Small multi-task pilot with real downstream evaluation** — `adapterbench t2p-sft-pilot`
-   (new CLI command): trains LoRA, IA3, and `ActivationSteeringCodec` independently, each
-   to 400 real live-SFT steps on the shared 8-task training split
-   (`lol_022, lol_033, lol_034, lol_035, lol_039, lol_043, lol_044, lol_045`), then scores
-   each via `HypernetworkDownstreamEvaluator` against 20 real held-out examples per family
-   from `boolq`/`hellaswag` (`task_examples.py`), alongside a `frozen_interpreter`
-   baseline. First genuinely honest "does adapter X actually help downstream,
-   trained live, with no oracle" result:
-
-   | adapter | generated params | train loss (init → final) | boolq (n=20) | hellaswag (n=20) |
-   |---|---|---|---|---|
-   | frozen_interpreter | 0 | — | 0.75 | 0.20 |
-   | lora (`q_proj,v_proj`) | 1,146,880 | 5.92 → 2.85 | 0.15 | 0.10 |
-   | ia3 (`k_proj,v_proj,down_proj`) | 86,016 | 5.92 → 0.46 | 0.85 | 0.25 |
-   | activation_steering (`block`) | 28,672 | 5.92 → 3.85 | 0.85 | 0.25 |
-
-   **Honest read, small n caveats aside:** LoRA reaches a middling training loss but
-   *actively destroys* downstream performance on both held-out families — well below the
-   frozen baseline and, on `boolq`, below random guessing (0.15 vs. 0.5 chance for a
-   binary task). This echoes the Phase 1 "notable finding" above (an adapter can suppress
-   a capability the base model already had, worse outside its conditioning distribution)
-   but is more severe here: both eval families' condition embeddings are genuinely
-   out-of-distribution relative to the 8 `lol_*` training descriptions, and LoRA's
-   dense, 40x-larger-than-steering parameterization apparently overfits hard enough to
-   that narrow conditioning distribution to actively harm generalization. IA3 and
-   activation steering — the two multiplicative/additive, much-lower-parameter-count
-   adapters — both *improve* over frozen on both families, and reach a
-   dramatically lower training loss (IA3 especially, 0.46) with 13-40x fewer generated
-   parameters than LoRA. IA3 and activation steering land on identical accuracy figures
-   (0.85/0.25) — plausibly real convergent behavior given both are far cheaper/simpler
-   adapters than LoRA here, but with n=20 per family this could also just be
-   coincidence at this sample size; don't read the tie as more than "both clearly beat
-   LoRA and frozen here." Not a competitive benchmark result (Qwen3-0.6B, 8 tasks, 400
-   steps, n=20/family) — the point was proving the plug-and-play train+eval loop produces
-   real, differentiated, non-degenerate signal across three structurally different
-   adapters without any per-adapter plumbing beyond the codec + hook site.
-   Follow-up worth doing before trusting these numbers further: larger n, more seeds,
-   and specifically investigating *why* LoRA generalizes so much worse here (candidates:
-   its much larger parameter count overfitting the 8-task conditioning distribution
-   harder than IA3/steering; the bilinear zero-gradient fix (gotcha #15) still leaving
-   LoRA's optimization landscape rougher than the other codecs'; or an interaction with
-   the `enable_thinking` fix below that happens to hurt LoRA specifically — not yet
-   isolated). **Add to that list:** this run used the contaminated 8-task split fixed in
-   Phase 5.5 below — re-run with the corrected default before trusting these numbers.
-
-**Follow-up (2026-07-06): re-ran with the corrected 8-task split and all six registered
-adapters** (`results/t2p_sft_pilot_full/`, same 400 steps/n=20 budget as above — this run
-already existed on disk from a prior session but had never been analyzed or written up):
-
-| adapter | generated params | train loss (init → final) | boolq (n=20) | hellaswag (n=20) |
-|---|---|---|---|---|
-| frozen_interpreter | 0 | — | 0.75 | 0.20 |
-| lora (`q_proj,v_proj`) | 1,146,880 | 5.88 → 3.65 | **0.85** | 0.25 |
-| freeze_a_lora (`q_proj,v_proj`) | 688,128 | 5.88 → 4.26 | 0.15 | 0.20 |
-| ia3 (`k_proj,v_proj,down_proj`) | 86,016 | 5.88 → 0.89 | **0.85** | 0.20 |
-| lokr (`q_proj,v_proj`) | 143,360 | 5.88 → 4.38 | 0.15 | 0.30 |
-| fourierft (`q_proj,v_proj`) | 56,000 | 5.88 → 4.32 | **0.85** | 0.30 |
-| activation_steering (`block`) | 28,672 | 5.88 → 4.14 | 0.15 | **0.40** |
-
-**This qualitatively reverses the previous (contaminated-split) finding that LoRA
-actively hurt downstream performance** — with the corrected split, LoRA ties IA3 and
-FourierFT at the top on boolq (0.85, vs. frozen's 0.75) rather than falling below chance.
-That in itself is a useful result: the earlier "LoRA actively harms generalization"
-conclusion was at least partly an artifact of training on 2 contaminated + 2 held-out-leak
-tasks, not a clean property of LoRA-as-hypernetwork-target. Don't over-read the new
-numbers either, though — n=20 still means each family is one 5%-accuracy increment, and a
-binned-by-50-steps look at the loss curves (`loss_curves.json`) shows the six adapters are
-*not* comparably converged at this shared 400-step/1e-3-lr budget, which is a real
-confound for comparing them head to head:
-
-| adapter | steps 1-50 | 101-150 | 201-250 | 301-350 | 351-400 |
-|---|---|---|---|---|---|
-| ia3 | 2.92 | 1.12 | 0.74 | 0.70 | 0.63 |
-| lora | 11.60 | 4.92 | 4.06 | 3.84 | 3.63 |
-| freeze_a_lora | 7.36 | 4.46 | 4.01 | 3.91 | 3.69 |
-| activation_steering | 6.20 | 4.68 | 4.18 | 4.31 | 4.11 |
-| lokr | 9.13 | 5.01 | 4.61 | 4.80 | 4.53 |
-| fourierft | 7.71 | 5.30 | 4.84 | 4.76 | 4.53 |
-
-IA3 is dramatically better-optimized than everything else at this shared learning rate
-(final loss 0.63 vs. 3.6-4.5 for the rest) — consistent with the original 3-adapter
-pilot's finding above, and with this project's recurring theme (gotchas #12/13/15) that
-different codecs need different learning rates/init, not one shared default. All six are
-still slowly decreasing at step 400 (none have clearly plateaued or diverged), so more
-steps is a legitimate lever, not just noise. One genuine puzzle *not* explained by
-under-optimization: **`freeze_a_lora` and `lora` end at nearly identical training loss
-(3.69 vs. 3.63) but wildly different downstream boolq accuracy (0.15 vs. 0.85)** — same
-final loss, opposite generalization. Candidates: `freeze_a_lora`'s frozen-`A`-matrix
-constraint changes *what* it can represent even at matched loss (fits the 8 training
-tasks via a narrower subspace that happens to transfer worse to boolq's held-out
-condition), or a mechanism-level difference in how it's actually hooked/applied that
-matched loss doesn't surface. Not yet isolated — worth a raw-generation spot check (this
-run didn't persist generations, only aggregate accuracy) rather than assuming it's the
-same "large parameter count overfits the conditioning distribution" story as LoRA's
-original contaminated-split finding, since `freeze_a_lora` has *fewer* parameters than
-`lora` here, not more.
-
-**Follow-up (2026-07-06): re-ran at 3x the step budget (1200) and 3x the eval n
-(60/family)** (`results/t2p_sft_pilot_scaled/`) to test whether the picture above is a
-step-budget artifact (most codecs still converging at 400 steps) or holds with more room
-to optimize. Result: training loss keeps improving for every adapter (e.g. lora
-2.19→ chunked-mean at step 400 → 2.19 at step 1200 from a *different* starting point this
-run, freeze_a_lora down to 1.68, ia3 down to 1.95 — all still decreasing, none diverged),
-but held-out downstream accuracy got *uniformly worse*: every one of the 6 adapters
-scored **exactly 0/60 on hellaswag** (frozen: 0.233), and boolq dropped for 4/6 adapters
-(ia3 0.85→0.23, fourierft 0.85→0.17, lokr 0.15→0.22, activation_steering 0.15→0.0; lora
-rose 0.85→0.47, still down from its own 400-step number; freeze_a_lora 0.15→0.13,
-roughly flat).
-
-**A uniform 0.0 across six structurally different adapters is exactly the signature a
-scoring bug would produce, so this was checked directly against raw generated text
-before being trusted as a training finding** (retrained a fresh single-adapter
-lora/activation_steering hypernetwork with the identical recipe, since the pilot doesn't
-persist trained weights, and printed actual generations instead of just accuracy):
-
-- **`lora`** at 1200 steps answers hellaswag with the literal text `"C."` on 4/5 sampled
-  examples (one example: empty string) — a letter, not the digit format hellaswag's own
-  prompt template explicitly demands ("respond with the only number... (0,1,2,3)"). The
-  frozen baseline, by contrast, correctly answers with a digit (`"0"`) — confirming
-  `get_choice_accuracy`/the harness are working correctly and this is genuine model
-  behavior, not an extraction bug. `lora` does *not* collapse this way on boolq (0.47,
-  clearly non-zero), so this is specific to hellaswag's particular held-out condition,
-  not a global breakdown.
-- **`activation_steering`** collapses far more severely: on hellaswag it emits a string of
-  repeated periods (`"...................."`, 500 tokens, no other content) on every
-  sampled example; on boolq it emits a repetitive `"No. No. No...."` token loop. This
-  happens to coincidentally score *some* boolq examples "correct" (`get_bool_value`
-  matches the literal word "No" → predicts false) purely by luck when the target is
-  false, which is consistent with the actual run's 0.0 rather than contradicting it (small
-  eval set, could easily have skewed toward target=true).
-
-**Read: extended training induces an out-of-distribution answer-format/mode collapse on
-held-out conditions for at least `lora` and `activation_steering`, even while their own
-training-task loss keeps monotonically improving.** This is a real overfitting-to-the-
-8-task-conditioning-distribution effect, not a step-budget-insufficiency problem — more
-steps made things *worse*, not better, which rules out "just needs more room to converge"
-as the explanation for the earlier non-convergence gap. It also means a fixed step count
-is the wrong knob to tune here at all: the pilot currently has no notion of held-out
-validation during training, so it can't detect the point where held-out generalization
-peaks and then degrades — it only ever reports the fixed-budget endpoint. Two natural
-follow-ups, not yet done: (a) a step-budget *sweep* (e.g. checkpoint held-out accuracy at
-100/200/400/800/1200 steps, same seed) to find where each adapter's held-out performance
-peaks rather than assuming more-is-better, and (b) the `freeze_a_lora` vs. `lora`
-same-loss-different-accuracy puzzle from the 400-step run above remains completely
-separate and still unexplained by this collapse story.
-
-**Follow-up (2026-07-07): ran the step-budget sweep — result reframes the finding above,
-doesn't just confirm it.** New `t2p.sft_trainer.train_with_checkpoints` (one persistent
-optimizer across all checkpoints, verified by test to reproduce one continuous run's loss
-curve exactly, so checkpointing itself introduces no discontinuity) plus a new
-`adapterbench t2p-sft-sweep` CLI command, run at checkpoints 100/200/400/800/1200,
-n=40/family (`results/t2p_sft_sweep/`):
-
-| adapter | step 100 | 200 | 400 | 800 | 1200 |
-|---|---|---|---|---|---|
-| frozen (boolq / hellaswag) | 0.75 / 0.225 | — | — | — | — |
-| lora | 0.175 / 0.000 | 0.175 / 0.000 | 0.150 / 0.000 | 0.150 / 0.000 | 0.150 / 0.000 |
-| freeze_a_lora | 0.000 / 0.000 | 0.000 / 0.000 | 0.000 / 0.000 | 0.000 / 0.000 | 0.000 / 0.000 |
-| ia3 | 0.325 / 0.050 | 0.325 / 0.050 | 0.350 / 0.050 | 0.300 / 0.075 | 0.325 / 0.050 |
-| lokr | 0.050 / 0.000 | 0.050 / 0.000 | 0.050 / 0.000 | 0.050 / 0.000 | 0.050 / 0.000 |
-| fourierft | 0.125 / 0.000 | 0.050 / 0.000 | 0.050 / 0.000 | 0.025 / 0.000 | 0.125 / 0.000 |
-| activation_steering | 0.000 / 0.000 | 0.000 / 0.000 | 0.000 / 0.000 | 0.000 / 0.000 | 0.000 / 0.000 |
-
-(cell = boolq / hellaswag accuracy)
-
-**There is no peak-then-decline curve anywhere in this data — five of six adapters are
-already flat and near/below-chance by the *first* checkpoint (100 steps) and simply stay
-there through 1200,** while training loss keeps dropping the entire time for every adapter
-(`loss_curves.json`: e.g. `lora` 6.93→0.93, `lokr` 6.93→0.96, `activation_steering`
-6.93→1.96, all clearly fitting the 8 training tasks). Only `ia3` holds a stable,
-consistently-above-chance boolq accuracy (0.30-0.35) across the *entire* sweep. This means
-the working hypothesis from the paragraph above — "extended training causes collapse from
-an earlier good state" — was **wrong as stated**: for most of these adapters, the collapse
-isn't a function of *how long* training runs at all, since it's already present at the
-earliest checkpoint measured.
-
-**More importantly, this run's numbers don't match the earlier 400-step corrected-split
-pilot's numbers at the same nominal step count** (that run: frozen 0.75, lora **0.85**, ia3
-**0.85**, freeze_a_lora 0.15, lokr 0.15, fourierft **0.85**, activation_steering 0.15 — vs.
-this sweep's step-400 row: lora 0.15, ia3 0.35, freeze_a_lora 0.0, lokr 0.05, fourierft
-0.05, activation_steering 0.0). Same adapters, same 8-task split, same nominal step count,
-wildly different outcomes. The two commands share the training code path, but neither
-seeds nor otherwise controls the `DataLoader`'s batch shuffle order (`shuffle=True`, no
-generator) or the hypernetwork's internal `nn.Dropout(0.05)` calls, both of which consume
-global torch RNG state that differs run-to-run depending on exactly what random calls
-happened first — meaning two nominally-identical invocations of this pilot can land on
-substantially different training trajectories from the same 160-example dataset. **This is
-the real headline finding of this follow-up, superseding the collapse-from-training-length
-framing above: single-seed comparisons on this 8-task/160-example live-SFT setting are not
-reliable enough to trust on their own** — not just for step-budget conclusions, but for
-every adapter-vs-adapter comparison this project has run in this setting so far, including
-the corrected-split "LoRA ties IA3/FourierFT" reversal earlier in this section. The one
-consistent signal across *both* runs: **IA3 never collapsed to nowhere-near-chance in
-either run** (0.85 in the pilot, 0.30-0.35 stable throughout the sweep) — the other five
-adapters each hit at least one 0.0-or-near-0.0 result in one run or the other. Don't yet
-read that as "IA3 wins" so much as "IA3 has been the most robust to whatever is causing
-this variance, so far, at n=1 seed per adapter" — multi-seed replication (the natural next
-step, not yet done) is what would upgrade that from a suggestive pattern to a real finding.
-The `freeze_a_lora` vs. `lora` same-loss-different-accuracy puzzle from the 400-step pilot
-is now most parsimoniously explained by this same seed/batch-order sensitivity rather than
-being its own distinct mechanism-level puzzle — still not confirmed either way.
-
-**Explicitly deferred, not part of this pass:**
-- The full 479-task decontaminated training config (`configs/hyper_lora_decontam_lol_tasks.yaml`)
-  and distributed/`torchrun` training (`text_to_peft_gemma2b_sft.yaml`'s original scope,
-  `runtime.launcher: torchrun, num_processes: 8`) — the pilot above deliberately stays
-  small-scale first, matching every prior phase's pattern.
-- Dense-ΔW adapters (FourierFT, LoKr) at live-SFT scale on a real multi-billion
-  parameter interpreter — materializing a dense ΔW inside a live forward graph is a real
-  memory risk structurally different from (worse than) what Phase 3 already fixed for
-  the retired reconstruction path: there, `forward_layer`'s per-layer-then-backward trick
-  worked because the loss was computed independently per layer; in live SFT, one shared
-  next-token loss only exists after every layer's hook has run, so every earlier layer's
-  dense-ΔW graph must stay alive simultaneously regardless. Needs its own memory
-  validation pass before scaling past cheap codecs (LoRA, IA3, activation steering).
-- Reproducing the paper's claimed GPT-4o-mini-generated task descriptions — unresolved,
-  see `t2p/lol_data.py`'s module docstring; using the existing stored descriptions as-is
-  for now per project decision.
-- Unifying `HFDownstreamEvaluator`/`HypernetworkDownstreamEvaluator` into one class (they
-  currently duplicate the scoring routines) — kept separate deliberately for now so the
-  new live-hook path can't destabilize the already-working PEFT-artifact baseline path.
-
-### Phase 5: lightweight synthetic setting — ✅ done
-
-A second, lightweight setting for the live-SFT mechanism (`adapterbench t2p-synthetic-pilot`),
-purely additive to the real Qwen3/Lots-of-LoRAs setting above. Motivation: that real
-setting is heavy (network access, a real ~0.6B-parameter model) and has no ground truth —
-when an adapter underperforms (LoRA, in the Phase 4 pilot) there's no way to tell
-whether the *codec* is underpowered or the *real-world task* is just hard. This setting
-reuses the entire training/codec stack unchanged and swaps only the interpreter and data
-source for ones with exactly known correct answers, closing that gap.
-
-- **Tiny real-`transformers` interpreter** (`t2p/tiny_interpreter.py::build_tiny_interpreter`)
-  — a `LlamaConfig`/`LlamaForCausalLM` at tiny dimensions (2 layers, hidden_size 32),
-  constructed via `from_config` and **never downloaded** — fully network-independent,
-  randomly initialized, real `transformers` mechanics (`.generate()`, forward hooks,
-  `get_decoder_layers`/`infer_module_shapes` all work completely unchanged). Llama was
-  chosen over reusing Qwen3 specifically to avoid the `enable_thinking` chat-template trap
-  (gotcha #18) — moot here anyway since this setting never uses a chat template at all;
-  examples are built directly as integer ids over a fixed 16-symbol vocabulary
-  (`PAD/BOS/EOS/SEP` + digits 0-9), no tokenizer involved on the interpreter side.
-- **Synthetic task registry** (`t2p/synthetic_tasks.py::TASK_FAMILIES`) — 5 hard-coded task
-  families, each a pure-Python transform with exactly known correct output plus 4
-  hand-written description paraphrases (no external data, no description-generation
-  provenance gap to track): `copy` (identity), `reverse`, `increment` (+1 mod 10 per
-  digit, pointwise), `sort` (ascending, needs real cross-position reasoning), `constant`
-  (fixed output regardless of input — a control task testing whether conditioning can
-  make the model ignore its input at all). `SyntheticSFTDataset` mirrors `LolSFTDataset`'s
-  random(train)/deterministic(eval) description-embedding draw convention exactly, but
-  generates examples on the fly via a per-`(seed, family, index)` RNG — no dataset
-  download, fully reproducible. Batches collate via the *existing*
-  `t2p/lol_data.py::lol_collate_fn` **completely unchanged** — good evidence the pipeline
-  was already factored data-source-agnostically despite that function's name. Condition
-  embeddings reuse `t2p/condition_encoder.py` unchanged too (real `gte-large-en-v1.5`) —
-  the *only* things that differ from the real setting are the interpreter and the data.
-- **Synthetic evaluator** (`t2p/synthetic_evaluator.py`) — function-based (not a class;
-  proportionate to how little logic remains with no chat template or text parsing):
-  greedy-decode via `interpreter.generate()` under the same `hypernetwork.apply(...)`
-  contextmanager every setting uses, then direct token-id exact-match against the known
-  target. A `condition_embeddings=None` path scores the frozen baseline.
-- **CLI**: `adapterbench t2p-synthetic-pilot` mirrors `t2p-sft-pilot`'s structure (shared
-  interpreter/encoder/batches, per-adapter train-then-evaluate loop, incremental
-  `results.jsonl`/`loss_curves.json` writes) but defaults `--device cpu` (no GPU needed at
-  all) and — affordable for the first time at this tiny scale — defaults
-  `--adapters` to **all six** registered codecs, including FourierFT/LoKr, which
-  Phase 4 explicitly deferred from live SFT at real-model scale over a memory risk that is
-  specific to real model dimensions and remains open there.
-- **Schema**: `schema.py::DatasetSpec.source` gained `"synthetic"` (additive); new
-  `configs/setups/synthetic_sft_pilot.yaml`.
-- **A real bug found immediately by the first real run**: `FourierFTCodec`'s default
-  `n_frequency=1000` exceeds this tiny model's smallest target module's element count
-  (`v_proj` is 32×16=512) — `make_codec` raised `n_frequency exceeds the matrix size`.
-  Fixed by exposing `--n-frequency`/`--rank` on the CLI with tiny-scale-safe defaults
-  (`n_frequency=32`, `rank=4`) rather than hardcoding the real-model defaults (1000/8).
-
-**Real results** (200 examples/family training, 1000 total, batch size 16; `n=50`/family
-eval; two runs, 400 and 1500 steps, to see whether more budget changes the picture):
-
-| adapter | copy | reverse | increment | sort | constant |
-|---|---|---|---|---|---|
-| frozen_interpreter | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
-| lora (400 / 1500 steps) | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 1.00 / 1.00 |
-| freeze_a_lora | 0.00 / 0.02 | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 1.00 / 1.00 |
-| ia3 | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 1.00 / 1.00 |
-| lokr | 0.04 / **0.60** | 0.00 / 0.00 | 0.00 / **0.66** | 0.00 / 0.00 | 1.00 / 1.00 |
-| fourierft | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 0.28 / 0.82 |
-| activation_steering | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 0.00 / 0.00 | 1.00 / 1.00 |
-
-**Honest read:** `constant` (the control task — ignore the input entirely) is solved
-almost immediately by every adapter except FourierFT, confirming the conditioning
-mechanism itself works — the hypernetwork can clearly steer the tiny interpreter's
-behavior via the codec/hook path. The genuinely interesting result is what happens on the
-*input-dependent* tasks: at 1500 steps, **LoKr is the only adapter that learns
-`copy` and `increment`** (both pointwise, position-preserving transforms) — a real,
-substantial jump (0.60/0.66) that LoRA, FreezeALoRA, IA3, and activation steering never
-make at the same budget, despite LoKr sharing the same bilinear-factorization fix (gotcha
-#15) as LoRA. Nothing solves `reverse`/`sort` (both require reordering across positions,
-plausibly beyond a 2-layer/hidden-32 model's capacity regardless of adapter, or
-just needing far more steps). FourierFT remains the weakest adapter even on the
-control task (0.28 → 0.82, still not fully solved) — consistent with the historical
-gotchas #12/13 about FourierFT being unusually sensitive to head-parameter scaling; worth
-retrying here with a scaling/lr sweep before concluding it's a capacity problem rather
-than the same optimization-recipe sensitivity found before. This is exactly the kind of
-finding this setting was built to produce: an adapter-specific effect, isolated
-from real-world task noise, that the real Qwen3 setting's small held-out benchmark
-couldn't have distinguished from "the benchmark task was just hard."
-
-**Explicitly out of scope for this pass** (per the approved plan): leave-one-family-out
-generalization testing (cheap to add later given synthetic data, not built now); no
-changes to the real Qwen3/Lots-of-LoRAs setting.
-
-### Phase 5.5: Validating the harness against T2L's own published LoRA results — done, mixed outcome
-
-**Goal:** before trusting `adapterbench run`'s comparisons for other adapters, verify the
-disk-artifact harness reproduces the T2L paper's own published LoRA numbers, using
-SakanaAI's released `gemma_2b_t2l`/`mistral_7b_t2l` checkpoints directly (no training of
-ours involved in this path at all — that distinction matters below).
-
-**Harness fixes made along the way, now permanent and benefiting every future adapter run
-through this path:**
-- Rewrote `HFDownstreamEvaluator`'s scoring from log-likelihood-over-choices to
-  generation + answer-extraction (`get_choice`/`get_binary_accuracy` in
-  `hf_downstream_evaluator.py`). Verified line-by-line against the paper's own LaTeX
-  appendix (not just its code) that our prompt templates match byte-for-byte. A
-  log-likelihood scorer answers a different question than what the paper's numbers
-  measure, so it was never a substitute for this.
-- Added `--use-icl`: Gemma's Table 8 uses ICL for every method including the frozen
-  baseline; Mistral's main Table 2 does not, for its headline `T2L(SFT)` row.
-- Fixed a real non-determinism bug in `scripts/generate_t2l_adapter.py`: it never set the
-  CUDA determinism flags upstream's own eval code uses, so every adapter-generation call
-  produced a *different* LoRA from the identical checkpoint+condition (confirmed: two
-  back-to-back generations differed by up to 0.05 absolute in the weights, swinging
-  downstream accuracy by ~20 points). Fixed; adapters are now byte-identical across
-  repeated generations.
-- Matched `max_new_tokens` to upstream's `512` (we defaulted to `256`) and added
-  `set_seed(42)`, both confirmed from the paper's/upstream's exact eval configuration.
-
-**Result: Gemma reproduces well; Mistral does not,** at n=1000/task (n=300 for gsm8k):
-
-| task | Gemma paper (frozen / T2L) | Gemma ours (frozen / LoRA) | Mistral paper (frozen / T2L) | Mistral ours (frozen / LoRA) |
-|---|---|---|---|---|
-| arc_easy | 89.9 / 89.8 | 88.9 / 83.2 | 77.8 / 88.9 | 86.2 / 67.5 |
-| arc_challenge | 73.7 / 74.0 | 74.0 / 70.6 | 65.4 / 77.5 | 71.4 / 50.4 |
-| boolq | 81.0 / 81.8 | 81.9 / 80.0 | 71.6 / 85.0 | 66.5 / 81.7 |
-| hellaswag | 55.2 / 62.5 | 52.2 / 60.4 | 49.7 / 66.5 | 35.4 / 30.0 |
-| gsm8k | 55.6 / 55.1 | 64.0 / 11.7 | 40.9 / 45.8 | 43.0 / 25.3 |
-
-Gemma's frozen baseline matches the paper within ~1pt on 3/5 tasks; its LoRA numbers
-track the paper within a few points on 3/5. Mistral's frozen baseline is off by several
-points on 3/5 tasks, and its LoRA numbers *underperform* frozen on 4/5 tasks — the
-opposite of what the paper reports.
-
-**Two root causes confirmed for the Mistral gap, by reading raw generations rather than
-just aggregate numbers — neither is a harness bug:**
-1. Without ICL, Mistral-7B-Instruct-v0.2 outright refuses to answer on ~40-47% of
-   hellaswag prompts ("I'm an AI language model, I don't have the ability to..."). Adding
-   ICL eliminates this entirely (0/30 refusals) and roughly triples accuracy on a spot
-   sample. The paper's own no-ICL baseline (49.7%) sits between our no-ICL and with-ICL
-   numbers, suggesting their harness saw *some* of this too, just less severely.
-2. The LoRA-adapted model's GSM8K score got *worse* (43.0→25.3), not better, when given
-   more generation budget — ruling out truncation as the cause. This looks like a genuine
-   property of this specific released adapter's interaction with our prompt format, not
-   an artifact we're free to tune away.
-
-**Follow-up (2026-07-06): confirmed — it was a vLLM-vs-`transformers` generation-backend
-difference, not a harness bug.** vLLM (`vllm==0.5.4`) turned out to already be installed in
-`upstream/text-to-lora/.venv` (upstream's own pinned eval backend), so this was testable
-directly rather than needing a new dependency. Isolated the backend as the single variable
-under test: same rendered prompts, same already-generated LoRA adapters (byte-identical,
-per gotcha #5.5's determinism fix above), same scoring functions — only swapped
-`transformers`' `.generate()` for vLLM's `LLM.generate()` with a `LoRARequest`. Result, at
-the same n=1000 (n=300 for gsm8k) scale, Mistral frozen/lora:
-
-| task | paper (frozen/T2L) | transformers-backend (frozen/lora) | vLLM-backend (frozen/lora) |
-|---|---|---|---|
-| arc_easy | 77.8 / 88.9 | 86.2 / 67.5 | 76.6 / 89.2 |
-| arc_challenge | 65.4 / 77.5 | 71.4 / 50.4 | 65.7 / 77.9 |
-| boolq | 71.6 / 85.0 | 66.5 / 81.7 | 75.1 / 84.0 |
-| hellaswag | 49.7 / 66.5 | 35.4 / 30.0 | 30.8 / 66.1 |
-| gsm8k | 40.9 / 45.8 | 43.0 / 25.3 | 43.3 / 45.3 |
-
-The vLLM-backend LoRA numbers now track the paper closely on 4/5 tasks (arc_challenge and
-gsm8k within ~0.5pt; arc_easy and boolq within a couple points; hellaswag's LoRA number
-matches almost exactly, 66.1 vs. 66.5). The one residual gap is the *frozen* model's
-hellaswag baseline (30.8 vs. paper's 49.7) — consistent with this section's earlier
-ICL-refusal finding (Mistral refuses a large fraction of hellaswag prompts without ICL),
-which apparently hits the frozen model much harder than the LoRA-adapted one. Given how
-decisive this result was, promoted it from a one-off diagnostic into a real, permanent
-evaluator: `src/adapterbench/vllm_downstream_evaluator.py::VLLMDownstreamEvaluator`,
-selected via `adapterbench run --evaluator vllm` (default remains `hf`/
-`HFDownstreamEvaluator`, since vLLM can only serve LoRA — FourierFT/IA3/LoKr still need the
-`transformers`-backend path). See gotcha #20 for a real vLLM tokenizer-fallback crash this
-evaluator has to work around, hit while wiring it into the real CLI path (not present in
-the diagnostic script, which happened to only ever exercise the code path that falls back
-successfully).
-
-**Separately found and fixed, in an unrelated pipeline:** the *live-SFT* `t2p-sft`/
-`t2p-sft-pilot` pilot's default training-task split (used to train a small from-scratch
-hypernetwork on Qwen3-0.6B — not the released-checkpoint path above) included 2 of T2L's
-contamination-removed tasks and 2 of T2L's own held-out validation tasks. Fixed with an
-enforced check (`t2p.lol_data.validate_training_tasks`) and a corrected default task list.
-Doesn't affect the Gemma/Mistral numbers above, which never involve training data of ours.
-
-### Phase 6: Doc-to-LoRA as the second benchmark "setting"
-
-`doc-to-lora/` is cloned but has zero integration so far (no config, no backend, no code
-references anywhere). Structurally different from T2L (Perceiver-style cross-attention
-over document token activations, rather than a pooled task-description embedding) — will
-likely need its own `HypernetworkBackend` implementation following the same
-subprocess-bridge pattern as `ReleasedTextToLoRABackend`, not a reused one.
-
-### Smaller/deferred items
-
-- `interpreter_with_icl` and `oracle_adapter` baselines (`BENCHMARK_CONTRACT.md` lists
-  these; Phase 1 only has `lora` + `frozen_interpreter`).
-- Description-variant robustness: `args.yaml::eval_ds_info` has 3 paraphrased
-  descriptions per task; Phase 1 only used variant 0.
-- `README.md` still documents a `adapterbench synthetic --config configs/standard.json`
-  command that no longer exists (leftover from the removed synthetic pilot) — fix next
-  time README.md is touched.
-
-## Reference: prior art this benchmark builds on
-
-- Program-as-Weights: arXiv:2607.02512
-- Text-to-LoRA: arXiv:2506.06105
-- Doc-to-LoRA: arXiv:2602.15902 — github.com/SakanaAI/doc-to-lora
-- FourierFT: arXiv:2405.03003 · KronA: arXiv:2212.10650 · Compacter: arXiv:2106.04647
-- HyperTuning/HyperLlama (Phang et al.): arXiv:2402.16817 — the one directly-comparable
-  prior result that *disagrees* with T2L's LoRA-over-steering-tokens finding
-  (opposite conclusion, different task distribution). Characterizing when each wins is
-  itself a legitimate research question this benchmark can eventually answer.
+- Text-to-LoRA — arXiv:2506.06105 (the system Setting 1 reproduces and Setting 2
+  generalizes beyond LoRA).
+- Program-as-Weights — arXiv:2607.02512 (LoRA vs. prefix-tuning as hypernetwork targets;
+  found LoRA ahead, on its own compiler/interpreter setting).
+- Doc-to-LoRA — arXiv:2602.15902 (Setting 1 disk-artifact reproduction integrated on
+  2026-07-07; document-conditioned, NIAH-evaluated, structurally distinct from
+  Text-to-LoRA's task-description conditioning). Its document-conditioning mechanism
+  (cross-attention over a frozen interpreter's own per-layer activations) was also
+  ported into Setting 2 the same day (`d2p-sft-pilot`), so all six codecs can now be
+  compared head-to-head under both conditioning mechanisms, not just Text-to-LoRA's.
+- HyperTuning (Phang et al.) — arXiv:2402.16817 (the one directly-comparable prior result
+  that disagrees with LoRA-over-steering-tokens, on a different task distribution — the
+  open question this project exists to help answer).
+- LoRA, FourierFT (arXiv:2405.03003), KronA (arXiv:2212.10650), Compacter
+  (arXiv:2106.04647) — the representations under comparison.

@@ -1,12 +1,18 @@
 from types import SimpleNamespace
 
+import pytest
 import torch
 from torch import nn
 
 from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
 from adapterbench.t2p.model_utils import get_decoder_layers
-from adapterbench.t2p.sft_trainer import SFTBatch, compute_sft_loss, train_downstream_hypernetwork, train_with_checkpoints
-from adapterbench.t2p.tiny_interpreter import build_tiny_interpreter
+from adapterbench.t2p.sft_trainer import (
+    SFTBatch,
+    compute_sft_loss,
+    train_downstream_hypernetwork,
+    train_step,
+    train_with_checkpoints,
+)
 
 
 class TinyDecoderLayer(nn.Module):
@@ -137,19 +143,95 @@ def test_train_with_checkpoints_rejects_non_ascending_checkpoints():
     interpreter, layers, hypernetwork, vocab_size = _toy_setup()
     batch = _make_batch(batch_size=4, seq_len=6, vocab_size=vocab_size, condition_dim=6, target_token=3)
 
-    import pytest
-
     with pytest.raises(ValueError):
         train_with_checkpoints(hypernetwork, interpreter, layers, [batch], checkpoint_steps=[100, 100], learning_rate=1e-2)
 
 
+def test_train_step_with_grad_accumulation_matches_one_step_on_the_concatenated_batch():
+    """Accumulating gradients over two equal-size micro-batches should produce the same
+    gradient as one step on their concatenation, since `masked_cross_entropy` already
+    per-example-averages within a batch - averaging two equal-size per-batch means equals
+    the true overall mean. This is the actual guarantee grad_accum_steps is supposed to
+    provide (same update as a bigger batch, less memory), not just "it runs"."""
+    interpreter, layers, hypernetwork, vocab_size = _toy_setup()
+    batch_a = _make_batch(batch_size=4, seq_len=6, vocab_size=vocab_size, condition_dim=6, target_token=3)
+    batch_b = _make_batch(batch_size=4, seq_len=6, vocab_size=vocab_size, condition_dim=6, target_token=5)
+    concatenated = SFTBatch(
+        input_ids=torch.cat([batch_a.input_ids, batch_b.input_ids]),
+        attention_mask=torch.cat([batch_a.attention_mask, batch_b.attention_mask]),
+        labels=torch.cat([batch_a.labels, batch_b.labels]),
+        condition_embeddings=torch.cat([batch_a.condition_embeddings, batch_b.condition_embeddings]),
+    )
+
+    pristine_state = {k: v.clone() for k, v in hypernetwork.state_dict().items()}
+    # The hypernetwork has internal dropout, which draws a differently-shaped random mask
+    # for a (4, ...) batch than a (8, ...) one even from the same RNG state - breaking the
+    # exact equivalence this test checks for reasons unrelated to grad_accum_steps itself.
+    # Disable it so this isolates the accumulation math, not dropout's batch-shape coupling.
+    hypernetwork.eval()
+
+    optimizer_accum = torch.optim.AdamW(hypernetwork.parameters(), lr=1e-2)
+    train_step([batch_a, batch_b], interpreter, hypernetwork, layers, optimizer_accum)
+    accumulated_grads = {name: p.grad.clone() for name, p in hypernetwork.named_parameters() if p.grad is not None}
+
+    # train_step's optimizer.step() moved the weights - reset to the same starting point
+    # before the second call, or its gradients would reflect a different (post-step) state.
+    hypernetwork.load_state_dict(pristine_state)
+    optimizer_single = torch.optim.AdamW(hypernetwork.parameters(), lr=1e-2)
+    train_step([concatenated], interpreter, hypernetwork, layers, optimizer_single)
+    single_batch_grads = {name: p.grad.clone() for name, p in hypernetwork.named_parameters() if p.grad is not None}
+
+    assert accumulated_grads.keys() == single_batch_grads.keys()
+    for name in accumulated_grads:
+        assert torch.allclose(accumulated_grads[name], single_batch_grads[name], atol=1e-5), name
+
+
+def test_train_downstream_hypernetwork_respects_grad_accum_steps():
+    interpreter, layers, hypernetwork, vocab_size = _toy_setup()
+    batch = _make_batch(batch_size=4, seq_len=6, vocab_size=vocab_size, condition_dim=6, target_token=3)
+
+    stats = train_downstream_hypernetwork(
+        hypernetwork, interpreter, layers, [batch], steps=10, learning_rate=1e-2, grad_accum_steps=3
+    )
+
+    # 10 optimizer steps requested, regardless of how many micro-batches each consumes.
+    assert stats.steps == 10
+    assert len(stats.losses) == 10
+
+
+def test_warmup_ramps_lr_linearly_then_holds_constant():
+    interpreter, layers, hypernetwork, vocab_size = _toy_setup()
+    batch = _make_batch(batch_size=4, seq_len=6, vocab_size=vocab_size, condition_dim=6, target_token=3)
+
+    optimizer = torch.optim.AdamW(hypernetwork.parameters(), lr=1e-2)
+    from adapterbench.t2p.sft_trainer import _linear_warmup_then_constant
+
+    scheduler = _linear_warmup_then_constant(optimizer, warmup_steps=4)
+    lrs = []
+    for _ in range(6):
+        lrs.append(optimizer.param_groups[0]["lr"])
+        scheduler.step()
+
+    assert lrs[0] == pytest.approx(1e-2 * 1 / 4)
+    assert lrs[1] == pytest.approx(1e-2 * 2 / 4)
+    assert lrs[3] == pytest.approx(1e-2)
+    assert lrs[5] == pytest.approx(1e-2)  # held constant past warmup, no decay
+
+
 def test_train_downstream_hypernetwork_works_against_a_real_tiny_transformers_model():
     """Same training loop as the toy-model tests above, but the interpreter is a real
-    (if tiny) `transformers` LlamaForCausalLM (t2p/tiny_interpreter.py) — the lightweight
-    synthetic setting's interpreter — proving it's a drop-in replacement for the
-    hand-rolled `TinyCausalLM` stand-in, not just superficially similar."""
+    (if tiny, freshly initialized, never downloaded) `transformers` `LlamaForCausalLM` -
+    proving the training loop is a drop-in replacement for the hand-rolled `TinyCausalLM`
+    stand-in, not just superficially similar."""
+    from transformers import LlamaConfig, LlamaForCausalLM
+
     torch.manual_seed(0)
-    interpreter = build_tiny_interpreter(vocab_size=16, hidden_size=32, num_layers=2)
+    interpreter = LlamaForCausalLM(
+        LlamaConfig(
+            vocab_size=16, hidden_size=32, num_hidden_layers=2, num_attention_heads=4,
+            num_key_value_heads=2, intermediate_size=64, max_position_embeddings=32,
+        )
+    )
     for parameter in interpreter.parameters():
         parameter.requires_grad = False
     layers = get_decoder_layers(interpreter)

@@ -1,15 +1,14 @@
 # Agent orientation
 
-This is **AdapterBench**: it benchmarks PEFT adapters (LoRA, FourierFT, KronA,
-IA3, activation steering, prefix-tuning) as **hypernetwork output targets**, generated
-live and hooked into a frozen interpreter's forward pass for end-to-end SFT training —
-generalizing the mechanism behind Sakana AI's Text-to-LoRA beyond LoRA itself. Also hosts
-earlier disk-artifact-based settings (a released Text-to-LoRA checkpoint, a self-trained
-reconstruction hypernetwork; Doc-to-LoRA integration is planned but not yet started).
+This is **AdapterBench**: it tests whether the *shape* of a hypernetwork-generated PEFT
+adapter matters (LoRA, FreezeALoRA, LoKr, FourierFT, IA3, activation steering), across two
+settings: (1) disk-artifact reproduction of released Text-to-LoRA checkpoints (Gemma,
+Mistral, Llama) scored via vLLM, and (2) live end-to-end SFT with a hypernetwork trained
+entirely from scratch against a real Qwen3-0.6B interpreter, comparing all six
+representations head to head. Doc-to-LoRA integration is planned but not yet started.
 
-**Start here: [`PROJECT_PLAN.md`](PROJECT_PLAN.md)** — current status, what's actually
-implemented vs. still a gap, how to check/resume the latest run, hard-won gotchas, and
-the prioritized roadmap (Phase 2/3/4).
+**Start here: [`PROJECT_PLAN.md`](PROJECT_PLAN.md)** — current status, architecture, how
+to run each setting, results, and hard-won gotchas.
 
 For day-to-day commands (environment setup, running the benchmark, the cross-venv
 generation bridge), see [`SETUP.md`](SETUP.md). For the plugin contract every backend/

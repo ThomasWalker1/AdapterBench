@@ -30,7 +30,9 @@ from torch import Tensor, nn
 
 from ..contracts import EvaluationResult, TaskExample
 from ..hf_downstream_evaluator import _NUMBER_RE, get_binary_accuracy, get_choice_accuracy
+from .document_conditioning import DocumentActivations, capture_document_activations
 from .hypernetwork import TextToPeftHypernetwork
+from .niah_data import NiahExample, build_query_prompt
 
 
 class HypernetworkDownstreamEvaluator:
@@ -172,3 +174,117 @@ class HypernetworkDownstreamEvaluator:
 
     def evaluate_frozen(self, examples: Iterable[TaskExample], split: str) -> list[EvaluationResult]:
         return list(self.iter_evaluate_frozen(examples, split))
+
+
+class DocumentHypernetworkDownstreamEvaluator:
+    """Document-conditioned counterpart to `HypernetworkDownstreamEvaluator`, for
+    scoring held-out NIAH (`niah_data.py`) examples. The activation mechanism is
+    identical in spirit (hook the generated adapter live via
+    `hypernetwork.apply(...)`, never `peft.PeftModel.load_adapter`) but the
+    conditioning input is a whole per-example document rather than one embedding
+    shared by an entire task family - `HypernetworkDownstreamEvaluator._active` hooks
+    once per family (one condition_embedding serves every example in that family);
+    this evaluator's `_active` instead runs `capture_document_activations` (a real
+    interpreter forward pass) and hooks a fresh adapter once *per example*, since every
+    NIAH document is distinct. Scoring is exact-match on the needle's 4-digit answer
+    (substring containment in the generated continuation), not
+    `get_choice_accuracy`/`get_binary_accuracy` (those are for multiple-choice/boolean
+    answers, not a short numeric string) and not D2L's own word-level ROUGE-L (see
+    `doc_to_lora_backend.py` / PROJECT_PLAN.md's Setting-1 gotchas) - this is a
+    documented deviation from Setting 1's own NIAH scoring, appropriate here since the
+    generated answer is always meant to be exactly the needle's digits, not a
+    free-form span ROUGE-L would be needed to fuzzily match.
+    """
+
+    def __init__(
+        self,
+        interpreter: nn.Module,
+        layers: nn.ModuleList,
+        hypernetwork: TextToPeftHypernetwork | None,
+        tokenizer,
+        trial_id: str,
+        device: str = "cuda:0",
+        max_new_tokens: int = 16,  # the answer is always exactly 4 digits - far less generation budget than free-form tasks
+        max_context_len: int = 4096,
+    ):
+        self.interpreter = interpreter
+        self.layers = layers
+        self.hypernetwork = hypernetwork
+        self.tokenizer = tokenizer
+        self.trial_id = trial_id
+        self.device = device
+        self.max_new_tokens = max_new_tokens
+        self.max_context_len = max_context_len
+
+    @contextmanager
+    def _active(self, context_text: str | None):
+        if context_text is None or self.hypernetwork is None:
+            yield self.interpreter
+            return
+        encoded = self.tokenizer(
+            context_text, return_tensors="pt", truncation=True, max_length=self.max_context_len
+        ).to(self.device)
+        doc_activations = capture_document_activations(
+            self.interpreter, encoded["input_ids"], encoded["attention_mask"]
+        )
+        raw_condition = DocumentActivations(hidden_states=doc_activations, attention_mask=encoded["attention_mask"])
+        with torch.no_grad():
+            generated = self.hypernetwork.generate_per_layer(raw_condition)
+        with self.hypernetwork.apply(self.layers, generated):
+            yield self.interpreter
+
+    def _generate(self, model, prompt: str) -> str:
+        input_ids = self.tokenizer(prompt, return_tensors="pt").to(self.device)
+        with torch.no_grad():
+            output_ids = model.generate(
+                **input_ids,
+                max_new_tokens=self.max_new_tokens,
+                do_sample=False,
+                pad_token_id=self.tokenizer.pad_token_id,
+            )
+        return self.tokenizer.decode(output_ids[0, input_ids["input_ids"].shape[1] :], skip_special_tokens=True)
+
+    def _score(self, model, example: NiahExample) -> bool:
+        prompt = build_query_prompt(self.tokenizer, example.topic)
+        generated = self._generate(model, prompt)
+        return example.digits in generated
+
+    def _evaluate_group(self, family: str, examples: list[NiahExample], split: str, active: bool) -> EvaluationResult:
+        started = time.perf_counter()
+        correct = 0
+        for example in examples:
+            context = example.context_text if active else None
+            with self._active(context) as model:
+                correct += int(self._score(model, example))
+        inference_seconds = time.perf_counter() - started
+
+        adapter = self.hypernetwork.adapter if (active and self.hypernetwork is not None) else "frozen_interpreter"
+        return EvaluationResult(
+            trial_id=self.trial_id,
+            task_id=family,
+            split=split,
+            adapter=adapter,
+            metrics={"accuracy": correct / len(examples), "n_examples": float(len(examples))},
+            generated_parameter_count=(
+                self.hypernetwork.generated_parameter_count() if (active and self.hypernetwork is not None) else 0
+            ),
+            generation_seconds=0.0,
+            inference_seconds=inference_seconds,
+            metadata={"depths": [example.depth for example in examples]},
+        )
+
+    def iter_evaluate(self, examples_by_family: Mapping[str, list[NiahExample]], split: str):
+        """Yield one EvaluationResult per context-length family as it completes -
+        same reasoning as `HypernetworkDownstreamEvaluator.iter_evaluate`."""
+        for family, examples in examples_by_family.items():
+            yield self._evaluate_group(family, examples, split, active=True)
+
+    def iter_evaluate_frozen(self, examples_by_family: Mapping[str, list[NiahExample]], split: str):
+        for family, examples in examples_by_family.items():
+            yield self._evaluate_group(family, examples, split, active=False)
+
+    def evaluate(self, examples_by_family: Mapping[str, list[NiahExample]], split: str) -> list[EvaluationResult]:
+        return list(self.iter_evaluate(examples_by_family, split))
+
+    def evaluate_frozen(self, examples_by_family: Mapping[str, list[NiahExample]], split: str) -> list[EvaluationResult]:
+        return list(self.iter_evaluate_frozen(examples_by_family, split))

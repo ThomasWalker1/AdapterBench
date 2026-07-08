@@ -1,0 +1,67 @@
+schema_version: 1
+name: text_to_peft_llama8b_reconstruction
+description: Text-to-PEFT reconstruction protocol using natural-language task descriptions and a Llama-3.1-8B-Instruct interpreter, scored via the vLLM evaluator against SakanaAI's released llama_8b_t2l checkpoint.
+protocol: text_to_lora
+availability: runnable
+runner: upstream/SakanaAI/text-to-lora@8ba77493eb8c732bac41c22ca76117dcacfcf2a4
+sources:
+  - name: paper
+    uri: https://openreview.net/forum?id=zWskCdu3QA
+  - name: code
+    uri: https://github.com/SakanaAI/text-to-lora
+    revision: main
+  - name: released_checkpoint
+    uri: https://huggingface.co/SakanaAI/text-to-lora
+models:
+  condition_encoder:
+    model_id: Alibaba-NLP/gte-large-en-v1.5
+    frozen: true
+    dtype: bfloat16
+  interpreter:
+    model_id: meta-llama/Llama-3.1-8B-Instruct
+    frozen: true
+    dtype: bfloat16
+conditioning:
+  kind: task_description
+  encoder: Alibaba-NLP/gte-large-en-v1.5
+  pooling: upstream_text_to_lora
+  fields: [task_description]
+dataset:
+  source: upstream
+  dataset_id: SakanaAI/text-to-lora/configs/hyper_lora_decontam_lol_tasks.yaml
+  train_split: train_tasks_479
+  validation_split: upstream_validation
+  test_splits: [seen_benchmarks, unseen_tasks]
+  task_id_field: dataset_name
+  family_field: benchmark_family
+  condition_field: task_description
+  input_field: prompt
+  target_field: answer
+  holdout_unit: task
+objective:
+  kind: reconstruction
+  downstream_weight: 0.0
+  reconstruction_weight: 1.0
+  oracle_adapter_source: upstream_task_specific_adapters
+evaluation:
+  primary_metric: benchmark_accuracy_mean
+  metrics: [accuracy, exact_match, generation_latency]
+  baselines: [frozen_interpreter]
+  report_by: [task, adapter]
+  generation:
+    use_icl: false
+    num_fewshot: 0
+runtime:
+  launcher: torchrun
+  num_processes: 8
+  mixed_precision: bf16
+  gradient_checkpointing: false
+fixed_controls:
+  - gte-large-en-v1.5 condition encoder
+  - frozen Llama-3.1-8B-Instruct interpreter
+  - 479-task training split and unseen-task split
+  - hypernetwork hidden architecture
+  - reconstruction optimizer and update count
+notes:
+  - The released Llama adapter uses rank 8 RS-LoRA, alpha 16, dropout 0.05 on q_proj and v_proj - same PEFT config as Gemma/Mistral (see configs/adapters/lora_t2l.yaml).
+  - The paper's main Llama table (zero-shot-llama) does not use ICL for its T2L (SFT) row (ICL is a separate baseline row there), matching Mistral's convention, unlike Gemma's Table 8 which applies ICL to every method.

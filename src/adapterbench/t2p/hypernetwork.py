@@ -5,11 +5,33 @@ from __future__ import annotations
 from collections.abc import Mapping
 from contextlib import contextmanager
 from operator import attrgetter
+from typing import Any
 
 import torch
 from torch import Tensor, nn
 
 from .codecs import GeneratedUpdateCodec, make_codec
+
+
+class PooledVectorConditioner(nn.Module):
+    """Default conditioner - reproduces `TextToPeftHypernetwork`'s original,
+    pre-refactor behavior exactly: a single pooled per-example vector (e.g. a
+    task-description embedding from `condition_encoder.py`), linearly projected and
+    layer-normed into `task_dim`. Ignores `layer_index` entirely - every layer sees
+    byte-identical conditioning; only `depth_embedding` (see
+    `TextToPeftHypernetwork.forward`/`forward_layer`) differentiates one layer's
+    generated output from another's. Contrast with
+    `document_conditioning.py::DocumentPerceiverConditioner`, which *is`
+    layer-index-aware (it has genuinely different per-layer activations available to
+    condition on, not just one pooled vector) - see that class's docstring.
+    """
+
+    def __init__(self, condition_dim: int, task_dim: int):
+        super().__init__()
+        self.encoder = nn.Sequential(nn.Linear(condition_dim, task_dim), nn.LayerNorm(task_dim))
+
+    def forward(self, raw_condition: Tensor, layer_index: int | None = None) -> Tensor:
+        return self.encoder(raw_condition)
 
 
 class ResidualMLP(nn.Module):
@@ -34,7 +56,7 @@ class TextToPeftHypernetwork(nn.Module):
     def __init__(
         self,
         *,
-        condition_dim: int,
+        condition_dim: int | None = None,
         module_shapes: Mapping[str, tuple[int, int]],
         num_layers: int,
         adapter: str,
@@ -45,13 +67,24 @@ class TextToPeftHypernetwork(nn.Module):
         n_frequency: int = 1000,
         steering_scale: float = 1.0,
         seed: int = 777,
+        conditioner: nn.Module | None = None,
     ):
         super().__init__()
         self.module_names = tuple(module_shapes)
         self.num_layers = num_layers
         self.adapter = adapter
         task_dim, depth_dim, type_dim = latent_dim // 2, latent_dim // 4, latent_dim // 4
-        self.task_encoder = nn.Sequential(nn.Linear(condition_dim, task_dim), nn.LayerNorm(task_dim))
+        if conditioner is not None:
+            # A caller-supplied conditioner must itself output `(batch, task_dim)` with
+            # this exact `task_dim = latent_dim // 2` - `self.trunk`'s input width is
+            # `task_dim + depth_dim + type_dim == latent_dim` regardless of which
+            # conditioner produced the `task_dim` slice. Construct e.g.
+            # DocumentPerceiverConditioner(..., task_dim=latent_dim // 2, ...) to match.
+            self.conditioner = conditioner
+        else:
+            if condition_dim is None:
+                raise ValueError("condition_dim is required when conditioner is not provided")
+            self.conditioner = PooledVectorConditioner(condition_dim, task_dim)
         self.depth_embedding = nn.Sequential(nn.Embedding(num_layers, depth_dim), nn.LayerNorm(depth_dim))
         self.type_embedding = nn.Sequential(nn.Embedding(len(module_shapes), type_dim), nn.LayerNorm(type_dim))
         self.trunk = nn.Sequential(
@@ -95,16 +128,26 @@ class TextToPeftHypernetwork(nn.Module):
     def generated_parameter_count(self) -> int:
         return self.num_layers * sum(codec.output_size for codec in self.codecs.values())
 
-    def forward(self, condition_embeddings: Tensor) -> dict[str, Tensor]:
-        batch = condition_embeddings.shape[0]
-        tasks = self.task_encoder(condition_embeddings)
-        depths = self.depth_embedding(torch.arange(self.num_layers, device=tasks.device))
+    def _generate_from_tasks_per_layer(self, tasks_per_layer: Tensor) -> dict[str, Tensor]:
+        """Shared batched trunk/heads computation used by both ``forward`` and
+        ``generate_per_layer``: takes an already layer-differentiated (or
+        layer-broadcast) tasks tensor, shape ``(num_layers, batch, task_dim)``, and runs
+        the depth/type embedding concatenation + ``self.trunk`` + ``self.heads`` exactly
+        once across the whole ``num_layers`` dimension in a single batched call - this is
+        the (cheap) part that must never be redone per layer; see ``generate_per_layer``'s
+        docstring for why looping this per layer used to cost ~28x more trunk-MLP compute
+        for zero benefit.
+        """
+        batch = tasks_per_layer.shape[1]
+        depths = self.depth_embedding(torch.arange(self.num_layers, device=tasks_per_layer.device))
         outputs = {}
         for type_index, name in enumerate(self.module_names):
-            types = self.type_embedding(torch.tensor(type_index, device=tasks.device)).expand(self.num_layers, -1)
+            types = self.type_embedding(torch.tensor(type_index, device=tasks_per_layer.device)).expand(
+                self.num_layers, -1
+            )
             features = torch.cat(
                 (
-                    tasks.unsqueeze(0).expand(self.num_layers, batch, -1),
+                    tasks_per_layer,
                     depths.unsqueeze(1).expand(-1, batch, -1),
                     types.unsqueeze(1).expand(-1, batch, -1),
                 ),
@@ -113,19 +156,49 @@ class TextToPeftHypernetwork(nn.Module):
             outputs[name] = self.heads[name](self.trunk(features))
         return outputs
 
-    def forward_layer(self, condition_embeddings: Tensor, layer_index: int) -> dict[str, Tensor]:
-        """Generate one layer's parameters only (numerically equal to ``forward(...)[name][layer_index]``).
+    def forward(self, condition_embeddings: Any) -> dict[str, Tensor]:
+        # `condition_embeddings` is whatever raw form `self.conditioner` expects (a
+        # plain (batch, condition_dim) Tensor for the default PooledVectorConditioner;
+        # a DocumentActivations-shaped container for DocumentPerceiverConditioner) -
+        # `batch` is derived from the conditioner's *output* (always (batch, task_dim))
+        # rather than from `condition_embeddings` directly, since the latter's shape is
+        # conditioner-specific.
+        tasks = self.conditioner(condition_embeddings, layer_index=None)
+        batch = tasks.shape[0]
+        tasks_per_layer = tasks.unsqueeze(0).expand(self.num_layers, batch, -1)
+        return self._generate_from_tasks_per_layer(tasks_per_layer)
 
-        Dense-ΔW codecs (e.g. FourierFT) materialize an ``(out_features, in_features)``
-        tensor per task per layer, which is large at real model dimensions. Backpropagating
-        through ``forward``'s single batched call would keep every layer's dense-ΔW graph
-        alive simultaneously for one shared backward pass. Calling this per layer instead —
-        each with its own immediate ``backward()`` — lets autograd free one layer's graph
-        before the next layer is even computed, at the cost of recomputing the (cheap)
-        trunk forward once per layer instead of once total.
+    def forward_layer(self, condition_embeddings: Any, layer_index: int) -> dict[str, Tensor]:
+        """Generate one layer's parameters only (numerically equal to ``forward(...)[name][layer_index]``
+        for `PooledVectorConditioner`; see below for why that equality doesn't generally
+        hold for a layer-index-aware conditioner).
+
+        Use this directly (rather than `generate_per_layer`) when a caller actually wants
+        to do a per-layer *immediate* ``backward()``: dense-ΔW codecs (e.g. FourierFT)
+        materialize an ``(out_features, in_features)`` tensor per task per layer, which is
+        large at real model dimensions, and backpropagating through ``forward``'s single
+        batched call would keep every layer's dense-ΔW graph alive simultaneously for one
+        shared backward pass. Calling this per layer instead — each with its own immediate
+        ``backward()`` — lets autograd free one layer's graph before the next layer is even
+        computed, at the cost of recomputing the (cheap) trunk forward once per layer
+        instead of once total. Neither existing call site actually does this (see
+        `generate_per_layer`'s docstring), so `generate_per_layer` no longer calls this
+        method — it exists for that future per-layer-backward use case and for
+        layer-faithful conditioning (see next paragraph); prefer `generate_per_layer` when
+        you want every layer's generated output at once without an immediate backward.
+
+        `layer_index` is forwarded to `self.conditioner` (unlike `forward`, which always
+        passes `layer_index=None`) - `PooledVectorConditioner` ignores it (so this method
+        stays numerically equal to `forward(...)[name][layer_index]` for that conditioner,
+        as documented above), but `DocumentPerceiverConditioner` uses it to condition on
+        that one layer's own document-token activations instead of a cross-layer-pooled
+        summary - see that class's docstring for the full reasoning. That means for a
+        layer-index-aware conditioner, `forward_layer(x, i)` and `forward(x)[name][i]` are
+        *not* numerically equal in general - `forward_layer` is deliberately the more
+        layer-faithful of the two.
         """
-        batch = condition_embeddings.shape[0]
-        tasks = self.task_encoder(condition_embeddings)
+        tasks = self.conditioner(condition_embeddings, layer_index=layer_index)
+        batch = tasks.shape[0]
         depth = self.depth_embedding(torch.tensor([layer_index], device=tasks.device))
         outputs = {}
         for type_index, name in enumerate(self.module_names):
@@ -140,6 +213,38 @@ class TextToPeftHypernetwork(nn.Module):
             )
             outputs[name] = self.heads[name](self.trunk(features))[0]
         return outputs
+
+    def generate_per_layer(self, condition_embeddings: Any) -> dict[str, Tensor]:
+        """Drop-in, layer-faithful replacement for ``forward(condition_embeddings)``:
+        produces the same ``dict[name -> Tensor(num_layers, batch, output_size)]`` shape
+        ``forward`` does, so the result works unchanged anywhere ``forward``'s return
+        value is consumed (in particular, ``hypernetwork.apply(layers, generated)``).
+
+        Only `self.conditioner(condition_embeddings, layer_index=i)` is called once per
+        layer here - that part genuinely needs to be per-layer for a layer-index-aware
+        conditioner (e.g. `document_conditioning.py::DocumentPerceiverConditioner`) to
+        produce genuinely different per-layer conditioning (`forward` broadcasts one
+        cross-layer-pooled vector to every layer instead). The depth/type embedding
+        concatenation + `self.trunk` + `self.heads` computation is then run exactly once,
+        batched across all `num_layers` conditioner outputs at once (via
+        `_generate_from_tasks_per_layer`, the same batched logic `forward` itself uses) -
+        *not* once per layer. This method previously called `forward_layer` in a loop,
+        which recomputed the trunk from scratch for every layer (~28x wasted trunk-MLP
+        compute for the default Qwen3-0.6B interpreter's 28 layers) even though neither
+        real call site (`document_sft_trainer.py::compute_doc_sft_loss`,
+        `live_evaluator.py::DocumentHypernetworkDownstreamEvaluator._active`) ever does a
+        per-layer immediate backward that would have justified that cost - see
+        `forward_layer`'s own docstring for when a per-layer immediate backward is
+        actually the right tool.
+
+        For `PooledVectorConditioner` this is numerically equal to ``forward(...)`` (up
+        to dropout noise), since that conditioner ignores `layer_index` and produces the
+        same vector regardless.
+        """
+        tasks_per_layer = torch.stack(
+            [self.conditioner(condition_embeddings, layer_index=i) for i in range(self.num_layers)], dim=0
+        )
+        return self._generate_from_tasks_per_layer(tasks_per_layer)
 
     @contextmanager
     def apply(self, layers: list[nn.Module] | nn.ModuleList, generated: Mapping[str, Tensor]):

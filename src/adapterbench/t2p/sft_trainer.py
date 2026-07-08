@@ -95,7 +95,7 @@ def compute_sft_loss(
 
 
 def train_step(
-    batch: SFTBatch,
+    batches: list[SFTBatch],
     interpreter: nn.Module,
     hypernetwork: TextToPeftHypernetwork,
     layers: nn.ModuleList,
@@ -104,12 +104,36 @@ def train_step(
     max_grad_norm: float = 1.0,
     l2_reg_generated_w: float = 0.0,
 ) -> float:
+    """One optimizer step, accumulating gradients over every micro-batch in ``batches``
+    (a single-element list is the plain, non-accumulated case). Loss is divided by
+    ``len(batches)`` before each ``backward()`` so accumulated gradients are averaged, not
+    summed, across micro-batches - matches upstream's own ``grad_accum_steps`` semantics.
+    Returns the mean per-micro-batch loss (each micro-batch is already per-example-averaged
+    by ``masked_cross_entropy``, so this mean-of-means equals the true overall mean when
+    every micro-batch is the same size)."""
     optimizer.zero_grad(set_to_none=True)
-    loss = compute_sft_loss(batch, interpreter, hypernetwork, layers, l2_reg_generated_w=l2_reg_generated_w)
-    loss.backward()
+    losses = []
+    for batch in batches:
+        loss = compute_sft_loss(batch, interpreter, hypernetwork, layers, l2_reg_generated_w=l2_reg_generated_w)
+        (loss / len(batches)).backward()
+        losses.append(float(loss.detach()))
     torch.nn.utils.clip_grad_norm_(hypernetwork.parameters(), max_grad_norm)
     optimizer.step()
-    return float(loss.detach())
+    return sum(losses) / len(losses)
+
+
+def _linear_warmup_then_constant(optimizer: torch.optim.Optimizer, warmup_steps: int):
+    """LR ramps linearly from ~0 to the optimizer's base LR over ``warmup_steps``, then
+    stays constant - matches upstream's ``warmup_frac`` (a fraction of total steps spent
+    ramping, then flat; no decay schedule is specified in their own training config, so
+    none is added here). A no-op (constant LR throughout) when ``warmup_steps <= 0``."""
+
+    def lr_lambda(step: int) -> float:
+        if warmup_steps <= 0:
+            return 1.0
+        return min(1.0, (step + 1) / warmup_steps)
+
+    return torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
 
 
 def train_downstream_hypernetwork(
@@ -122,20 +146,28 @@ def train_downstream_hypernetwork(
     learning_rate: float,
     max_grad_norm: float = 1.0,
     l2_reg_generated_w: float = 0.0,
+    grad_accum_steps: int = 1,
+    warmup_steps: int = 0,
 ) -> SFTTrainStats:
     """Interpreter params must already be frozen (``requires_grad=False``) by the
     caller — the optimizer is built over ``hypernetwork.parameters()`` only, so nothing
     else trains regardless, but skipping the freeze wastes memory on unused grad
     buffers. ``train_batches`` may be a one-shot iterable (e.g. a small in-memory list
-    for a pilot) — cycled via `itertools.cycle` to run exactly ``steps`` steps."""
+    for a pilot) — cycled via `itertools.cycle` to run exactly ``steps`` optimizer steps,
+    each over ``grad_accum_steps`` micro-batches (1 = no accumulation)."""
     optimizer = torch.optim.AdamW(hypernetwork.parameters(), lr=learning_rate)
-    losses = [
-        train_step(
-            batch, interpreter, hypernetwork, layers, optimizer,
-            max_grad_norm=max_grad_norm, l2_reg_generated_w=l2_reg_generated_w,
+    scheduler = _linear_warmup_then_constant(optimizer, warmup_steps)
+    batch_iter = itertools.cycle(train_batches)
+    losses = []
+    for _ in range(steps):
+        micro_batches = list(itertools.islice(batch_iter, grad_accum_steps))
+        losses.append(
+            train_step(
+                micro_batches, interpreter, hypernetwork, layers, optimizer,
+                max_grad_norm=max_grad_norm, l2_reg_generated_w=l2_reg_generated_w,
+            )
         )
-        for batch in itertools.islice(itertools.cycle(train_batches), steps)
-    ]
+        scheduler.step()
     return SFTTrainStats(initial_loss=losses[0], final_loss=losses[-1], steps=steps, losses=tuple(losses))
 
 
@@ -149,17 +181,22 @@ def train_with_checkpoints(
     learning_rate: float,
     max_grad_norm: float = 1.0,
     l2_reg_generated_w: float = 0.0,
+    grad_accum_steps: int = 1,
+    warmup_steps: int = 0,
 ) -> dict[int, SFTTrainStats]:
     """Train to each of ``checkpoint_steps`` (ascending, cumulative - e.g. [100, 200, 400]
     trains 100 steps, then 100 *more* to reach 200 total, not 200 from scratch) under one
-    persistent ``AdamW`` optimizer, so a caller comparing held-out performance across step
-    budgets (e.g. a step-budget sweep) doesn't confound the comparison by restarting Adam's
-    momentum/bias-correction warmup at every checkpoint boundary the way calling
-    ``train_downstream_hypernetwork`` once per budget would. Returns one ``SFTTrainStats``
-    per checkpoint covering only the steps *since the previous checkpoint* (deltas, not
-    cumulative) - a caller wanting the full curve up to a checkpoint should concatenate."""
+    persistent ``AdamW`` optimizer (and one persistent LR schedule, so warmup isn't
+    restarted at a checkpoint boundary either), so a caller comparing held-out performance
+    across step budgets (e.g. a step-budget sweep) doesn't confound the comparison by
+    restarting Adam's momentum/bias-correction warmup at every checkpoint boundary the way
+    calling ``train_downstream_hypernetwork`` once per budget would. Returns one
+    ``SFTTrainStats`` per checkpoint covering only the steps *since the previous
+    checkpoint* (deltas, not cumulative) - a caller wanting the full curve up to a
+    checkpoint should concatenate."""
     checkpoint_steps = sorted(checkpoint_steps)
     optimizer = torch.optim.AdamW(hypernetwork.parameters(), lr=learning_rate)
+    scheduler = _linear_warmup_then_constant(optimizer, warmup_steps)
     batch_iter = itertools.cycle(train_batches)
     stats_by_checkpoint: dict[int, SFTTrainStats] = {}
     previous = 0
@@ -167,13 +204,16 @@ def train_with_checkpoints(
         delta = checkpoint - previous
         if delta <= 0:
             raise ValueError(f"checkpoint_steps must be strictly ascending and positive, got {checkpoint_steps}")
-        losses = [
-            train_step(
-                batch, interpreter, hypernetwork, layers, optimizer,
-                max_grad_norm=max_grad_norm, l2_reg_generated_w=l2_reg_generated_w,
+        losses = []
+        for _ in range(delta):
+            micro_batches = list(itertools.islice(batch_iter, grad_accum_steps))
+            losses.append(
+                train_step(
+                    micro_batches, interpreter, hypernetwork, layers, optimizer,
+                    max_grad_norm=max_grad_norm, l2_reg_generated_w=l2_reg_generated_w,
+                )
             )
-            for batch in itertools.islice(batch_iter, delta)
-        ]
+            scheduler.step()
         stats_by_checkpoint[checkpoint] = SFTTrainStats(
             initial_loss=losses[0], final_loss=losses[-1], steps=delta, losses=tuple(losses)
         )

@@ -6,10 +6,10 @@ training budget, evaluator, and decoding. A trial changes the generated PEFT
 adapter and, where exact payload matching is impossible, one declared
 budget point.
 
-Different settings (Text-to-LoRA reconstruction, live end-to-end SFT, the synthetic
-setting) are separate setups. Their absolute scores are not pooled: they use different
-conditioning, objectives, interpreters, task distributions, and evaluators. The useful
-cross-setup question is whether an adapter's relative behavior repeats across protocols.
+Different settings (disk-artifact checkpoint reproduction, live end-to-end SFT) are
+separate setups. Their absolute scores are not pooled: they use different conditioning,
+objectives, interpreters, task distributions, and evaluators. The useful cross-setup
+question is whether an adapter's relative behavior repeats across protocols.
 
 ## Interfaces
 
