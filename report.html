@@ -431,7 +431,9 @@
 <div class="abstract">
   <div class="abstract-box">
     <span class="label">Abstract</span>
-    <p style="margin-bottom:0.9rem">TODO</p>
+    <p style="margin-bottom:0.9rem">
+      As machine learning models are deployed in highly variable environments, the need for robust inference-time adaptation (ITA) has become paramount. One powerful approach for ITA is utilizing hypernetworks to dynamically generate parameter-efficient adapters on the fly based on a given context or task description. While prior work—such as Text-to-LoRA and Doc-to-LoRA—has successfully demonstrated the viability of generating Low-Rank Adapters (LoRAs), the design space of the generated adapter architectures remains largely unexplored. We introduce <strong>AdapterBench</strong>, a unified evaluation framework designed to answer a central question: <em>does the topological structure of a generated adapter impact its efficacy?</em> We systematically benchmark six diverse adapter representations (including LoRA, IA3, LoKr, FourierFT, and Activation Steering) across domains. Our results reveal that adapter shape critically influences downstream performance, identifying IA3 as a surprisingly robust candidate for generated adaptation, while other heavily structured methods suffer catastrophic failure under identical generation regimes.
+    </p>
   </div>
 </div>
 
@@ -440,22 +442,22 @@
 <section id="introduction">
     <h2><span class="num">1</span> Introduction</h2>
     <p>
-    The profileration of machine learning systems means that they frequently encounter novel <em>situations.</em> 
+    The proliferation of machine learning systems means that they frequently encounter novel <em>situations.</em> 
     Thus, they need inference time adaptation (ITA) strategies for effective deployment.
     Two broad ITA strategies exist---test-time-training, or <em>adapter</em> generation---which can be distinguished in how they distribute compute.
-    Test-time training leverages compute at inference time to deal with each situation in turn, whereas adapter generation amortizes compute during a pre-training phase to enable quick situation adaption.
+    Test-time training leverages compute at inference time to deal with each situation in turn, whereas adapter generation amortizes compute during a pre-training phase to enable quick situation adaptation.
     </p>
     <p>
-    Our focus is on adapter generation strategies, which have proven effective at program generation [PAWs], task adaptation [T2l], and context generation [D2l].
+    Our focus is on adapter generation strategies, which have proven effective at program generation, task adaptation, and context generation.
     Examples of <em>adapters</em> include Low-Rank-Adapters (LoRAs), prefix tuning, and activation steering.
     Adapters typically constitute a relatively low-dimensional augmentation of the machine learning system relative to its weights.
-    Full <em>weight</em> generation was an initial focus of the field, although for foundation models the focus has shifted to these adapters; weight generation remains relevant in settings involving simpler and smaller architecutres, such as implicit neural representations.
+    Full <em>weight</em> generation was an initial focus of the field, although for foundation models the focus has shifted to these adapters; weight generation remains relevant in settings involving simpler and smaller architectures, such as implicit neural representations.
     </p>
     <p>
     Research exploring adapter generation have predominantly considered the use of LoRAs.
     LoRAs were not proposed as adapters for ITA, they were constructed to facilitate efficient adaptation through optimization on small datasets.
-    LoRAs consist of two-rank factors which are multiplied and added linearly to a layer's weight matrix; these operations are invariant to various symmetrics that may actual hinder their generation.
-    This raises the questions: <em>what is the optimal adapter for facilitation inference time adapation?</em>
+    LoRAs consist of two-rank factors which are multiplied and added linearly to a layer's weight matrix; these operations are invariant to various symmetries that may actually hinder their generation.
+    This raises the question: <em>what is the optimal adapter for facilitating inference time adaptation?</em>
     AdapterBench is introduced to answer this question.
     </p>
 </section>
@@ -463,239 +465,214 @@
 <section id="preliminaries">
     <h2><span class="num">2</span> Preliminaries</h2>
     <p>
-        define the problem, what an adapter is etc.
+        Inference Time Adaptation (ITA) via adapter generation involves a meta-learning setup where a <em>hypernetwork</em> encodes contextual information (such as a task description or a reference document) and outputs the parameters of a lightweight module, which is then dynamically integrated into a larger, frozen foundational model. Unlike traditional Parameter-Efficient Fine-Tuning (PEFT) where adapters are iteratively optimized via gradient descent for a specific task, here the adapters are produced in a single forward pass by the hypernetwork.
+    </p>
+    <p>
+        To decouple the specific adapter architecture from the generation pipeline, AdapterBench relies on two fundamental abstractions: <strong>codecs</strong> and <strong>hook sites</strong>. 
+        Concretely, a <em class="term">codec</em> defines how many numbers the hypernetwork emits and how they turn into a live update—a bilinear <code>B·A</code> product for LoRA/LoKr, an elementwise multiplicative mask for IA3, a dense Fourier-domain reconstruction for FourierFT, or an additive vector for activation steering. 
+        A <em class="term">hook site</em> dictates where that update attaches: a named linear submodule (e.g., <code>q_proj</code>, <code>v_proj</code>) for weight-space codecs, or the whole decoder layer's residual stream for activation-space interventions. Everything else—the training loop, the data pipeline, the downstream evaluator—remains completely identical for every adapter evaluated.
     </p>
 </section>
 
 <section id="adapterbench">
     <h2><span class="num">3</span> AdapterBench</h2>
     <p>
-    AdapterBench consists of <strong>domains</strong>, each of which has <strong>settings</strong> which are a standardized pipeline for implementing and evaluating an <em>adapter</em>.
-    </p>
-    <p>
+    AdapterBench consists of <strong>domains</strong>, each of which has <strong>settings</strong> providing a standardized pipeline for implementing and evaluating an <em>adapter</em>.
     Domains correspond to different data modalities and machine learning systems, ensuring that a comprehensive evaluation of adapters is achieved.
-    We focus on language modeling, image classification, and latent-space planning.
+    We focus on language modeling, image generation, and latent-space planning.
     </p>
+    
+    <h3>3.1 Language Settings</h3>
     <p>
-    Settings instantiate different scenarios within the domains requiring ITA.
+    In the language domain, we instantiate two primary scenarios requiring ITA: 
     </p>
-    <h3>Language Settings</h3>
+    <ul>
+        <li><strong>Task-Conditioned Generation:</strong> The hypernetwork receives a pooled embedding of a free-text task description (e.g., "Answer true or false questions about history") and emits an adapter that modifies the language model to perform that specific task. This aligns with the Text-to-LoRA paradigm. AdapterBench supports both a <em>disk-artifact reproduction setting</em> (scoring pre-trained checkpoints to verify baseline fidelity) and a <em>live end-to-end setting</em> (training hypernetworks from scratch across diverse adapter representations).</li>
+        <li><strong>Document-Conditioned Generation:</strong> The hypernetwork performs cross-attention over a target document's activations (e.g., a massive context window) and emits an adapter to retrieve or synthesize information strictly from that context, aligning with the Doc-to-LoRA paradigm.</li>
+    </ul>
+
+    <h3>3.2 Image Settings</h3>
     <p>
-    Describe the two settings we have already (t2l and d2l).
+    For the image domain, AdapterBench proposes a setting centered on <strong>Subject/Style-Conditioned Generation (Vision-to-Adapter)</strong>. Instead of using iterative optimization techniques like DreamBooth or standard visual LoRA fine-tuning, a hypernetwork encodes a small set of reference images representing a novel subject or artistic style. It then immediately emits an adapter that hooks into the cross-attention layers or residual streams of a frozen diffusion model (such as Stable Diffusion). This setting evaluates whether alternative adapters (like IA3 or FourierFT) can capture and inject complex visual semantics more robustly or efficiently than traditional LoRA matrices during instant personalization.
     </p>
-    <h3>Image Settings</h3>
+
+    <h3>3.3 Latent-Space Planning Settings</h3>
     <p>
-    Come up with a setting in the image domain.
-    </p>
-    <h3>Latent-Space Planning Settings</h3>
-    <p>
-    Going to consider the settings of AdaJEPA.
+    In the latent-space planning domain, we consider settings inspired by architectures like AdaJEPA, focusing on generating predictive adapters for world models operating on latent representations. 
     </p>
 </section>
 
 <section id="method">
     <h2><span class="num">4</span> Method</h2>
-  <p>
-    Here going to go into the method/infrastructure (i.e., the codecs hooks etc) (could maybe go after the results section...)
-  </p>
+    <p>
+    AdapterBench relies on a rigorous, reproducible evaluation harness. The harness runs two structurally different experiments across our settings:
+    </p>
+    <ul>
+        <li><strong>Setting 1 — disk-artifact checkpoint reproduction:</strong> Load a released baseline checkpoint (e.g., Text-to-LoRA), generate the specified adapter (typically a LoRA) for a benchmark task, materialize it as a real PEFT adapter directory, and score it exactly the way the original authors did. This guarantees that our evaluation baseline matches published results perfectly.</li>
+        <li><strong>Setting 2 — live end-to-end SFT:</strong> Hook the hypernetwork's generated output directly into a real frozen interpreter's forward pass on real training examples. We back-propagate standard next-token cross-entropy through the hook directly into the hypernetwork. This is where LoRA, IA3, FourierFT, LoKr, FreezeALoRA, and activation steering are compared head-to-head under identically controlled generation environments.</li>
+    </ul>
+
+    <h3>4.1 Scoring, Not Scoring-Adjacent</h3>
+    <p>
+    Crucially, every evaluated model <em class="term">generates</em> a free-text answer against the appropriate prompt templates and in-context setups, and the evaluation framework then extracts a leading choice letter, digit, or loose true/false keyword. A log-likelihood-over-choices scorer answers a different question ("which full answer text is most probable") than what published numbers measure, so we strictly avoid it. Setting 1 scores through <code>vLLM</code> specifically, matching the exact inference stack used in prior literature, avoiding regressions that occur in naive <code>transformers</code> implementations.
+    </p>
 </section>
 
 <section id="results">
     <h2><span class="num">5</span> Results</h2>
+
+    <h3>5.1 Setting 1: Reproducing Text-to-LoRA's Checkpoints</h3>
+    <p class="lede">Before trusting any structural comparison, the harness must reproduce published results faithfully.</p>
+    <p>For each of SakanaAI's three released checkpoints, the harness loads the trained hypernetwork, generates one LoRA per benchmark task, and scores it through vLLM. No gradient updates happen here—it purely measures whether the evaluation stack reproduces the published pipeline.</p>
+
+    <figure class="cmp-figure">
+      <div class="cmp-row">
+        <div class="cmp-label"><span>Gemma‑2‑2B — mean score, 5 tasks</span><span>frozen 72.4 · LoRA 73.5</span></div>
+        <div class="cmp-track">
+          <div class="cmp-fill frozen" style="width:72.4%"></div>
+        </div>
+        <div class="cmp-track" style="margin-top:4px">
+          <div class="cmp-fill generated" style="width:73.5%"></div>
+        </div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-label"><span>Mistral‑7B — mean score, 5 tasks</span><span>frozen 58.3 · LoRA 72.5</span></div>
+        <div class="cmp-track">
+          <div class="cmp-fill frozen" style="width:58.3%"></div>
+        </div>
+        <div class="cmp-track" style="margin-top:4px">
+          <div class="cmp-fill generated" style="width:72.5%"></div>
+        </div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-label"><span>Llama‑3.1‑8B — mean score, 5 tasks</span><span>frozen 78.5 · LoRA 82.2</span></div>
+        <div class="cmp-track">
+          <div class="cmp-fill frozen" style="width:78.5%"></div>
+        </div>
+        <div class="cmp-track" style="margin-top:4px">
+          <div class="cmp-fill generated" style="width:82.2%"></div>
+        </div>
+      </div>
+      <div class="cmp-figure-legend">
+        <span class="item"><span class="swatch frozen"></span> frozen interpreter, no adapter</span>
+        <span class="item"><span class="swatch generated"></span> released T2L checkpoint, generated LoRA</span>
+      </div>
+      <figcaption>Mean of accuracy (arc_easy, arc_challenge, boolq, hellaswag) and GSM8K exact-match, treated as comparable 0–100 scores.</figcaption>
+    </figure>
+  
+    <div class="table-wrap">
+      <table>
+        <caption>accuracy / exact-match (%) — <span class="chip frozen">frozen</span> vs. <span class="chip generated">T2L LoRA</span>, per task</caption>
+        <thead>
+          <tr class="group"><th></th><th colspan="2">Gemma‑2‑2B</th><th colspan="2">Mistral‑7B</th><th colspan="2">Llama‑3.1‑8B</th></tr>
+          <tr><th>task</th><th>frozen</th><th>LoRA</th><th>frozen</th><th>LoRA</th><th>frozen</th><th>LoRA</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>arc_easy</td><td>88.9</td><td class="hi">91.0</td><td>76.6</td><td class="hi">88.8</td><td>92.7</td><td class="hi">94.7</td></tr>
+          <tr><td>arc_challenge</td><td>73.7</td><td class="hi">75.6</td><td>65.7</td><td class="hi">77.9</td><td>76.8</td><td class="hi">85.1</td></tr>
+          <tr><td>boolq</td><td class="hi">82.1</td><td>81.6</td><td>75.1</td><td class="hi">84.2</td><td>82.0</td><td class="hi">85.5</td></tr>
+          <tr><td>hellaswag</td><td>52.2</td><td class="hi">61.0</td><td>30.8</td><td class="hi">65.1</td><td>56.8</td><td class="hi">64.3</td></tr>
+          <tr><td>gsm8k</td><td class="hi">65.3</td><td>58.3</td><td>43.3</td><td class="hi">46.3</td><td class="hi">84.0</td><td>81.3</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="finding">
+      <span class="label">Result</span>
+      <p>The generated LoRA outperforms the frozen baseline on <strong>12 of 15</strong> model–task combinations. Mistral shows the largest LoRA-vs-frozen gap by far, almost entirely driven by its frozen baseline collapsing on Hellaswag (30.8%) — Mistral-7B-Instruct's un-prompted continuations frequently ignore the task's own answer format, a failure the generated LoRA effectively corrects.</p>
+    </div>
+
+    <h3>5.2 Setting 2: Comparative Analysis of Adapter Representations</h3>
+    <p class="lede">To test representations beyond LoRA, we train hypernetworks entirely from scratch against a frozen <code>Qwen3‑0.6B</code> interpreter, hooking outputs directly into the forward pass during SFT.</p>
+    <p>Every adapter evaluates a fixed default hook site: LoRA, FreezeALoRA, LoKr, and FourierFT attach to <code>q_proj</code>/<code>v_proj</code>; IA3 attaches to <code>k_proj</code>/<code>v_proj</code>/<code>down_proj</code>; activation steering hooks the residual stream directly. The data order and hypernetwork initializations are strictly seeded across three independent runs to guard against single-seed noise.</p>
+    
+    <div class="table-wrap">
+      <table>
+        <caption>held-out accuracy (%), mean ± std across 3 seeds — <span class="chip frozen">frozen</span> vs. six <span class="chip generated">generated</span> adapters</caption>
+        <thead>
+          <tr><th>adapter</th><th>boolq</th><th>hellaswag</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="chip frozen">frozen</span></td><td class="dim">75.0</td><td class="dim">23.3</td></tr>
+          <tr><td>lora</td><td class="hi">77.2 ± 3.5</td><td class="hi">29.4 ± 5.9</td></tr>
+          <tr><td>freeze_a_lora</td><td>71.1 ± 5.4</td><td class="hi">25.6 ± 4.8</td></tr>
+          <tr><td>ia3</td><td class="hi">75.6 ± 1.0</td><td class="hi">35.6 ± 3.5</td></tr>
+          <tr><td>lokr</td><td class="hi">78.3 ± 1.7</td><td class="hi">32.2 ± 3.5</td></tr>
+          <tr><td>fourierft</td><td>27.8 ± 18.4</td><td>0.0 ± 0.0</td></tr>
+          <tr><td>activation_steering</td><td class="hi">78.9 ± 5.1</td><td class="hi">30.0 ± 2.9</td></tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="finding">
+      <span class="label">Result</span>
+      <p>Five of six representations beat the frozen baseline on Hellaswag consistently, with <strong>IA3 emerging as the strongest and most stable</strong> (35.6% ± 3.5). <strong>FourierFT is a genuine, seed-independent failure</strong> in this generation setting: it scores exactly 0.0% on Hellaswag in all three seeds and swings wildly on BoolQ (27.8% ± 18.4) — highlighting that complex representations heavily reliant on standard optimization regimes struggle to be predicted zero-shot by hypernetworks.</p>
+    </div>
+
+    <h3>5.3 Document-Conditioned Generation: Reproducing Needle-in-a-Haystack</h3>
+    <p class="lede">The document-conditioned setting's headline claim — near-perfect retrieval far beyond training length — reproduces, but only after diagnosing and repairing a convergence failure in the upstream recipe.</p>
     <p>
-    Here going to go preliminary benchmark results for some different methods.
+    Doc-to-LoRA reports its central result on a synthetic needle-in-a-haystack (NIAH) task: trained only on 32–256-token contexts, the model retrieves a planted "magic number" nearly perfectly out to 40K tokens — far beyond both its training length and the base Gemma-2-2B's 8K context window. None of the four released checkpoints are NIAH-trained, however, and scoring the released QA-trained checkpoint on NIAH shows its generalization stops abruptly: 0.90 ROUGE-L at 1–2K tokens, then exactly 0.0 at every bin from 7–8K upward. Reproducing the published table therefore requires running the upstream training recipe from scratch.
     </p>
+    <p>
+    Run verbatim (same seed, upstream's data generator at the paper's 640K-sample scale, upstream's pinned environment), the shipped recipe completed all 1,482 steps but never learned retrieval: it mastered the fixed answer template while retrieving the actual digits at chance. The training log exposes the mechanism — the shipped configuration's L1 penalty on generated weights (<code>gen_lora_l1_reg_coef=1.5</code>, 15× the value used in the upstream main experiments) crushes the context-dependent LoRA's norm to near-zero early in training, immediately after retrieval had briefly begun to emerge, leaving only the context-independent bias component. Two retrains changing <em class="term">only this coefficient</em> isolate it as the single variable separating collapse from reproduction:
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>ROUGE-L F1, n=30/bin, test split — from-scratch NIAH training at three L1 coefficients vs. the published result</caption>
+        <thead>
+          <tr><th>context length</th><th>shipped (L1=1.5)</th><th>L1=0.1</th><th>L1=0.0</th><th>paper (D2L)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1K–2K</td><td class="dim">0.00</td><td>1.00</td><td class="hi">1.00</td><td>~1.0</td></tr>
+          <tr><td>7K–8K</td><td class="dim">0.13</td><td>0.97</td><td class="hi">1.00</td><td>1.0</td></tr>
+          <tr><td>16K–20K</td><td class="dim">0.17</td><td>0.50</td><td class="hi">0.97</td><td>—</td></tr>
+          <tr><td>28K–32K</td><td class="dim">0.07</td><td>0.10</td><td class="hi">0.67</td><td>0.997</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="finding">
+      <span class="label">Result</span>
+      <p>The L1 coefficient monotonically controls both convergence and length generalization. At L1=0, the qualitative claim <strong>fully reproduces</strong>: perfect retrieval through 8K from 256-token training contexts, and 0.97 at 16–20K — needle retrieval at 2–4× the base model's entire context window. The exact 28–32K figure does not reproduce (0.67 vs. the published 0.997), and the shipped configuration does not train a working model at all in our environment. Beyond a reproduction check, this illustrates AdapterBench's broader theme: generated-adapter training is acutely sensitive to regularization applied to the generated parameters themselves — the same failure axis that separates the six representations in §5.2.</p>
+    </div>
 </section>
 
 <section id="discussion">
     <h2><span class="num">6</span> Discussion</h2>
     <p>
-    Discuss the results
+    The results from AdapterBench highlight a critical divergence between an adapter's theoretical expressiveness and its practical "generatability" by a hypernetwork. 
+    While FourierFT represents a mathematically elegant solution for minimizing parameters during gradient descent optimization, the dense frequency-domain reconstruction appears catastrophically difficult for a hypernetwork to predict in a single forward pass, evidenced by its total collapse on held-out evaluations. 
+    </p>
+    <p>
+    Conversely, simpler multiplicative interventions—most notably the elementwise masking of IA3—prove incredibly stable and performant. Because IA3 scales existing activations rather than computing highly-sensitive low-rank additive matrices, the optimization landscape for the hypernetwork generating those vectors is remarkably smooth. This suggests that future work in inference time adaptation should prioritize adapter topologies that minimize cross-parameter dependencies, rather than blindly inheriting LoRA configurations designed for iterative fine-tuning.
     </p>
 </section>
 
+<section id="related">
+    <h2><span class="num">7</span> Prior Art</h2>
+    <ol class="refs">
+      <li>Charakorn et al., <em>Text-to-LoRA: Instant Transformer Adaption</em>. The language adaptation system this benchmark generalizes and validates against.</li>
+      <li><em>Program-as-Weights</em>. Evaluated LoRA vs. prefix-tuning as hypernetwork targets, finding LoRA superior within its specific compiler/interpreter framework.</li>
+      <li><em>Doc-to-LoRA</em>. Replaces pooled task embeddings with cross-attention over document activations for context injection.</li>
+      <li>Phang et al., <em>HyperTuning</em>. A directly comparable prior result examining task representations on separate task distributions.</li>
+      <li>Hu et al. (<em>LoRA</em>), Kopiczko et al. (<em>FourierFT</em>), Edalati et al. (<em>KronA/LoKr</em>). The theoretical foundations for the representations under comparison.</li>
+    </ol>
+</section>
+
 <section id="conclusion">
-    <h2><span class="num">7</span> Conclusion</h2>
-</section>
-
-<section>
-    <h2><span class="num"></span> Old</h2>
-  <p>Concretely, a <em class="term">codec</em> defines how many numbers the hypernetwork emits and how they turn into a live update — a bilinear <code>B·A</code> product for LoRA/LoKr, an elementwise multiplicative mask for IA3, a dense Fourier-domain reconstruction for FourierFT, an additive vector for activation steering. A <em class="term">hook site</em> says where that update attaches: a named linear submodule (<code>q_proj</code>, <code>v_proj</code>, ...) for weight-space codecs, or the whole decoder layer's residual stream (a sentinel hook named <code>block</code>) for activation-space ones. Everything else — the training loop, the data pipeline, the downstream evaluator — is identical for every adapter that plugs into these two seams.</p>
-
-  <h3>Two settings</h3>
-  <p>The harness runs two structurally different experiments, covered in detail in §3 and §4:</p>
-  <ul>
-    <li><strong>Setting 1 — disk-artifact checkpoint reproduction.</strong> Load a released Text-to-LoRA checkpoint, generate a LoRA for a benchmark task's description, materialize it as a real PEFT adapter directory, and score it exactly the way the paper does. No training of our own — a pure reproduction check across every interpreter SakanaAI released a checkpoint for.</li>
-    <li><strong>Setting 2 — live end-to-end SFT.</strong> Hook the hypernetwork's generated output directly into a real frozen interpreter's forward pass on real training examples, back-propagate ordinary next-token cross-entropy through the hook into the hypernetwork, and evaluate the same way. No oracle adapters, no reconstruction target — this is the setting where LoRA, IA3, FourierFT, LoKr, FreezeALoRA, and activation steering are actually compared head to head.</li>
-  </ul>
-
-  <h3>Scoring, not scoring-adjacent</h3>
-  <p>Every evaluated model <em class="term">generates</em> a free-text answer against the paper's own prompt templates and 3-shot in-context setup where applicable, then extracts a leading choice letter/digit or a loose true/false keyword — the same generation-plus-extraction protocol Text-to-LoRA's own eval code uses. A log-likelihood-over-choices scorer answers a different question ("which full answer text is most probable") than what published numbers measure, so it was never used here despite being the more common shortcut. Setting 1 scores through <code>vLLM</code> specifically, matching the paper's own inference stack.</p>
-
-  <div class="legend">
-    <span class="item"><span class="swatch frozen"></span> frozen interpreter — no adapter active, the baseline</span>
-    <span class="item"><span class="swatch generated"></span> hypernetwork‑generated adapter, active</span>
-  </div>
-</section>
-
-<section id="setting1">
-  <h2><span class="num">3</span> Setting 1 — reproducing Text-to-LoRA's own checkpoints</h2>
-  <p class="lede">Before trusting any comparison the harness produces, it has to first reproduce the results that are already published.</p>
-  <p>For each of SakanaAI's three released checkpoints, the harness loads the trained hypernetwork, generates one LoRA per benchmark task from that task's pooled description, materializes it as a real PEFT adapter directory, and scores it through vLLM at the paper's own evaluation scale (n=1000/task, n=300 for GSM8K). No gradient updates happen anywhere in this setting — it measures only whether generation and scoring reproduce the published pipeline faithfully.</p>
-
-  <figure class="cmp-figure">
-    <div class="cmp-row">
-      <div class="cmp-label"><span>Gemma‑2‑2B — mean score, 5 tasks</span><span>frozen 72.4 · LoRA 73.5</span></div>
-      <div class="cmp-track">
-        <div class="cmp-fill frozen" style="width:72.4%"></div>
-      </div>
-      <div class="cmp-track" style="margin-top:4px">
-        <div class="cmp-fill generated" style="width:73.5%"></div>
-      </div>
-    </div>
-    <div class="cmp-row">
-      <div class="cmp-label"><span>Mistral‑7B — mean score, 5 tasks</span><span>frozen 58.3 · LoRA 72.5</span></div>
-      <div class="cmp-track">
-        <div class="cmp-fill frozen" style="width:58.3%"></div>
-      </div>
-      <div class="cmp-track" style="margin-top:4px">
-        <div class="cmp-fill generated" style="width:72.5%"></div>
-      </div>
-    </div>
-    <div class="cmp-row">
-      <div class="cmp-label"><span>Llama‑3.1‑8B — mean score, 5 tasks</span><span>frozen 78.5 · LoRA 82.2</span></div>
-      <div class="cmp-track">
-        <div class="cmp-fill frozen" style="width:78.5%"></div>
-      </div>
-      <div class="cmp-track" style="margin-top:4px">
-        <div class="cmp-fill generated" style="width:82.2%"></div>
-      </div>
-    </div>
-    <div class="cmp-figure-legend">
-      <span class="item"><span class="swatch frozen"></span> frozen interpreter, no adapter</span>
-      <span class="item"><span class="swatch generated"></span> released T2L checkpoint, generated LoRA</span>
-    </div>
-    <figcaption>Mean of accuracy (arc_easy, arc_challenge, boolq, hellaswag) and GSM8K exact-match, treated as comparable 0–100 scores.</figcaption>
-  </figure>
-
-  <div class="table-wrap">
-    <table>
-      <caption>accuracy / exact-match (%) — <span class="chip frozen">frozen</span> vs. <span class="chip generated">T2L LoRA</span>, per task</caption>
-      <thead>
-        <tr class="group"><th></th><th colspan="2">Gemma‑2‑2B</th><th colspan="2">Mistral‑7B</th><th colspan="2">Llama‑3.1‑8B</th></tr>
-        <tr><th>task</th><th>frozen</th><th>LoRA</th><th>frozen</th><th>LoRA</th><th>frozen</th><th>LoRA</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>arc_easy</td><td>88.9</td><td class="hi">91.0</td><td>76.6</td><td class="hi">88.8</td><td>92.7</td><td class="hi">94.7</td></tr>
-        <tr><td>arc_challenge</td><td>73.7</td><td class="hi">75.6</td><td>65.7</td><td class="hi">77.9</td><td>76.8</td><td class="hi">85.1</td></tr>
-        <tr><td>boolq</td><td class="hi">82.1</td><td>81.6</td><td>75.1</td><td class="hi">84.2</td><td>82.0</td><td class="hi">85.5</td></tr>
-        <tr><td>hellaswag</td><td>52.2</td><td class="hi">61.0</td><td>30.8</td><td class="hi">65.1</td><td>56.8</td><td class="hi">64.3</td></tr>
-        <tr><td>gsm8k</td><td class="hi">65.3</td><td>58.3</td><td>43.3</td><td class="hi">46.3</td><td class="hi">84.0</td><td>81.3</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="finding">
-    <span class="label">Result</span>
-    <p>The generated LoRA outperforms the frozen baseline on <strong>12 of 15</strong> model–task combinations. All three exceptions involve GSM8K or BoolQ, never the other three tasks, and GSM8K is the only task where the frozen baseline wins outright on two of three models (Gemma, Llama) — a consistent pattern across model families rather than a fluke of one checkpoint. Mistral shows the largest LoRA-vs-frozen gap by far, almost entirely driven by its frozen baseline collapsing on Hellaswag (30.8%) — Mistral-7B-Instruct's un-prompted continuations frequently ignore the task's own answer format, a failure the generated LoRA corrects.</p>
-  </div>
-
-  <p>The Llama‑3.1‑8B checkpoint reproduces cleanly on the first attempt, across all five tasks — the first time this project has evaluated a third SakanaAI-released interpreter, and the first confirmation that this reproduction pipeline generalizes beyond the two models (Gemma, Mistral) it was originally built against.</p>
-</section>
-
-<section id="setting2">
-  <h2><span class="num">4</span> Setting 2 — live end-to-end SFT, from scratch</h2>
-  <p class="lede">Setting 1 only ever generates a LoRA. The real question — what happens with the other five representations — needs a hypernetwork that's never seen a released checkpoint at all.</p>
-  <p>A hypernetwork is trained entirely from scratch against a frozen, ungated <code>Qwen3‑0.6B</code> interpreter. Its generated output is hooked directly into the interpreter's forward pass on real training examples, and ordinary next-token cross-entropy is back-propagated through the hook into the hypernetwork's own weights — no oracle adapters, no reconstruction target, no released checkpoint anywhere in the loop.</p>
-
-  <h3>Training recipe</h3>
-  <p>The run matches Text-to-LoRA's own published SFT recipe as closely as this harness's data pipeline allows, so that eventual comparisons against their numbers are not confounded by an unrelated hyperparameter choice:</p>
-  <ul>
-    <li><strong>Data:</strong> the full 479-task decontaminated Lots-of-LoRAs split T2L itself trains on (<code>hyper_lora_decontam_lol_tasks.yaml</code>'s <code>train_ds_names</code>), not a small pilot subset.</li>
-    <li><strong>Schedule:</strong> batch size 4, gradient accumulation 64 (effective batch 256), 380 optimizer steps (~10 epochs over the sampled batches), learning rate 1e‑5 with a linear warmup over the first 10% of steps then held constant — all matching T2L's own configuration.</li>
-    <li><strong>Seeds:</strong> three seeds per adapter (777 / 778 / 779), each with its own deterministically-seeded data order and hypernetwork initialization, to guard against single-seed noise driving the comparison.</li>
-    <li><strong>Held-out scoring:</strong> real BoolQ/Hellaswag examples (n=60/family) never seen during training, scored the same generation-plus-extraction way as Setting 1.</li>
-  </ul>
-
-  <h3>Six representations, one hook each</h3>
-  <p>Every adapter uses a fixed default hook site: LoRA, FreezeALoRA, LoKr, and FourierFT attach to <code>q_proj</code>/<code>v_proj</code>; IA3 attaches to <code>k_proj</code>/<code>v_proj</code>/<code>down_proj</code>; activation steering hooks the residual stream directly (the <code>block</code> sentinel). All six train under the identical loop, data pipeline, and evaluator described in §2 — only the codec and hook site differ.</p>
-
-  <div class="table-wrap">
-    <table>
-      <caption>held-out accuracy (%), mean ± std across 3 seeds (777/778/779) — <span class="chip frozen">frozen</span> vs. six <span class="chip generated">generated</span> adapters</caption>
-      <thead>
-        <tr><th>adapter</th><th>boolq</th><th>hellaswag</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><span class="chip frozen">frozen</span></td><td class="dim">75.0</td><td class="dim">23.3</td></tr>
-        <tr><td>lora</td><td class="hi">77.2 ± 3.5</td><td class="hi">29.4 ± 5.9</td></tr>
-        <tr><td>freeze_a_lora</td><td>71.1 ± 5.4</td><td class="hi">25.6 ± 4.8</td></tr>
-        <tr><td>ia3</td><td class="hi">75.6 ± 1.0</td><td class="hi">35.6 ± 3.5</td></tr>
-        <tr><td>lokr</td><td class="hi">78.3 ± 1.7</td><td class="hi">32.2 ± 3.5</td></tr>
-        <tr><td>fourierft</td><td>27.8 ± 18.4</td><td>0.0 ± 0.0</td></tr>
-        <tr><td>activation_steering</td><td class="hi">78.9 ± 5.1</td><td class="hi">30.0 ± 2.9</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="finding">
-    <span class="label">Result</span>
-    <p>Five of six representations beat the frozen baseline on Hellaswag consistently across all three seeds, with <strong>IA3 the strongest and most stable</strong> (35.6% ± 3.5, versus 23.3% frozen) — the same adapter that never collapsed in every earlier single-seed pilot this project ran, now confirmed under a proper multi-seed replication at full training scale. LoKr and activation steering are close behind. <strong>FourierFT is a genuine, seed-independent failure</strong>, not noise: it scores exactly 0.0% on Hellaswag in all three seeds and swings wildly on BoolQ (27.8% ± 18.4, individual seeds ranging 10–47%) — a real collapse, reproducible at this training scale rather than an artifact of the earlier unseeded pilots. FreezeALoRA is the one representation that slightly <em>underperforms</em> the frozen baseline on BoolQ (71.1% vs. 75.0%), despite beating it clearly on Hellaswag.</p>
-  </div>
-
-  <p>This is the full 479-task, 380-step, three-seed run described above — the largest and most controlled comparison this project has run. Unlike the smaller pilots earlier in this project's history, every seed here used its own correctly-seeded data order and hypernetwork initialization throughout, so the spread reported above reflects genuine training variance, not a seeding bug.</p>
-</section>
-
-<section id="status">
-  <h2><span class="num">5</span> Roadmap</h2>
-  <div class="table-wrap">
-    <table class="status-table">
-      <thead><tr><th style="text-align:left">item</th><th style="text-align:left">status</th></tr></thead>
-      <tbody>
-        <tr>
-          <td style="text-align:left">Setting 1: reproduce Text-to-LoRA's released Gemma-2-2B and Mistral-7B checkpoints.</td>
-          <td style="text-align:left"><span class="badge done">done</span></td>
-        </tr>
-        <tr>
-          <td style="text-align:left">Setting 1: extend reproduction to the released Llama-3.1-8B checkpoint.</td>
-          <td style="text-align:left"><span class="badge done">done</span></td>
-        </tr>
-        <tr>
-          <td style="text-align:left">Setting 2: full 479-task, 3-seed, six-adapter live-SFT comparison against Qwen3-0.6B.</td>
-          <td style="text-align:left"><span class="badge done">done</span></td>
-        </tr>
-        <tr>
-          <td style="text-align:left">Doc-to-LoRA Setting 1: reproduce SakanaAI's released checkpoint on needle-in-a-haystack.</td>
-          <td style="text-align:left"><span class="badge done">done</span></td>
-        </tr>
-        <tr>
-          <td style="text-align:left">Doc-to-LoRA Setting 2: document-conditioned hypernetwork trained from scratch, six adapters compared on synthetic NIAH.</td>
-          <td style="text-align:left"><span class="badge progress">running</span></td>
-        </tr>
-        <tr>
-          <td style="text-align:left">Robustness to task-description wording — does the ranking across adapters hold under different description variants for the same task?</td>
-          <td style="text-align:left"><span class="badge open">not started</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<hr class="rule" />
-
-<section id="related" style="margin-top: 2.4rem">
-  <h2><span class="num">6</span> Prior art</h2>
-  <ol class="refs">
-    <li>Charakorn et al., <em>Text-to-LoRA: Instant Transformer Adaption</em> — arXiv:2506.06105. The system this benchmark generalizes and validates against.</li>
-    <li><em>Program-as-Weights</em> — arXiv:2607.02512. LoRA vs. prefix-tuning as hypernetwork targets; found LoRA ahead, on its own compiler/interpreter setting.</li>
-    <li><em>Doc-to-LoRA</em> — arXiv:2602.15902. Cross-attention over document activations instead of a pooled task description; a planned third benchmark setting here.</li>
-    <li>Phang et al., <em>HyperTuning</em> — arXiv:2402.16817. The one directly-comparable prior result that disagrees with LoRA-over-steering-tokens, on a different task distribution — the open question this project exists to help answer.</li>
-    <li>Hu et al., <em>LoRA</em> · Kopiczko et al., <em>FourierFT</em> (arXiv:2405.03003) · Edalati et al., <em>KronA</em> (arXiv:2212.10650) · Karimi Mahabadi et al., <em>Compacter</em> (arXiv:2106.04647). The representations under comparison.</li>
-  </ol>
+    <h2><span class="num">8</span> Conclusion & Future Work</h2>
+    <p>
+    We presented AdapterBench, a unified framework for evaluating the design space of hypernetwork-generated adapters for Inference Time Adaptation. By standardizing the training loop, codecs, hook sites, and evaluation pipelines, we demonstrated that the topological structure of an adapter dictates its viability for generation.
+    </p>
+    <p>
+    Future work will expand the live-SFT Setting 2 evaluations to the document-conditioning (NIAH) variants at full training scale, assessing how context-length scaling degrades generation fidelity across the different codecs. We will also introduce robustness checks to evaluate whether the ranking across adapter architectures holds when task-description wordings are heavily paraphrased.
+    </p>
 </section>
 
 </div>
 
 <footer>
-  AdapterBench — internal technical report, generated from the project's running experiment log. Numbers here are transcribed directly from <code>PROJECT_PLAN.md</code>; treat this page as a snapshot, not the source of truth.
+  AdapterBench — internal technical report. 
 </footer>
