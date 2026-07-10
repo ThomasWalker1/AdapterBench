@@ -180,10 +180,61 @@ Released `gemma_demo` checkpoint (QA-trained, not NIAH-trained — see Gotchas),
 
 The checkpoint retrieves the magic number exactly on all 10 smoke-test examples despite
 never having been trained on `ctx_magic_number` data; the frozen interpreter given no
-document at all (sanity-check baseline) scores exactly 0, as expected. Not yet run at the
-paper's own scale (`--limit 1000` across the full `test_splits` bin sweep in
-`configs/setups/doc_to_peft_gemma2b_reconstruction.yaml`) or across the other three
-released checkpoints (`gemma_2b_d2l`, `mistral_7b_d2l`, `qwen_4b_d2l`).
+document at all (sanity-check baseline) scores exactly 0, as expected.
+
+**Length sweep (2026-07-08, n=30/bin, test split, 1024-token chunks —
+`results/doc_to_peft_gemma2b_reconstruction_niah_sweep/`):** the QA-trained checkpoint's
+NIAH generalization stops abruptly past a few K tokens:
+
+| bin | lora_r8_d2l | frozen (no context) |
+|---|---|---|
+| 1024–2048 | 0.900 | 0.0 |
+| 7168–8192 | 0.000 | 0.0 |
+| 16384–20480 | 0.000 | 0.0 |
+| 28672–32768 | 0.000 | 0.0 |
+
+So the paper's NIAH table (1.0 at 7–8K, 0.997 at 28–32K) is *not* reachable by the released
+QA checkpoint — it genuinely requires the NIAH-specific training recipe. Bins ≥57K OOM'd on
+one 80GB A100 even at `--eval-batch-size-gen 1` (upstream evals on an H200); deferred.
+
+**Reproduction attempt of the NIAH training recipe itself (2026-07-08): FAILED to
+converge, root cause diagnosed.** We ran `scripts/niah/1-train.sh` verbatim (same seed=1,
+same data generator at the paper's 640K-sample scale, upstream's own pinned venv; only
+`PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` added after a first attempt died to
+allocator fragmentation at step 471/1482). Training completed all 1482 steps
+(`train_outputs/runs/Jul08_06-45-39_*/checkpoint-1482/`), but the model never learned
+retrieval: in-training `prefix_matchings` rose 0.002 → 0.15 mid-run, then collapsed to a
+bit-identical 0.0536 for every subsequent eval, while `per_token_accs` sat at 0.82-0.83
+(the fixed response template) and eval loss froze at 0.504. The mechanism is visible in
+`gen_lora_l1_norm`: it fell from 0.015 at init to ~0.0004 almost immediately — the NIAH
+recipe's `gen_lora_l1_reg_coef=1.5` (15x the main experiment's 0.1) crushed the
+context-dependent LoRA to ~zero, leaving only the context-independent bias-LoRA, which can
+express the template but not the needle. Downstream eval of this checkpoint scores
+near-chance everywhere (0.0-0.17 across 1K-32K bins).
+
+**L1 ablation (2026-07-09): confirmed — the coefficient alone separates collapse from
+reproduction.** Two retrains changing only `gen_lora_l1_reg_coef` (everything else
+byte-identical to `1-train.sh`, same seed=1, same data), evaluated identically
+(n=30/bin, test split, 1024-token chunks; `results/d2l_niah_ours_l1_0p{1,0}/`):
+
+| bin | shipped (L1=1.5) | L1=0.1 | L1=0.0 | paper (D2L) |
+|---|---|---|---|---|
+| 1024–2048 | 0.00 | 1.00 | 1.00 | ~1.0 |
+| 7168–8192 | 0.13 | 0.97 | 1.00 | 1.0 |
+| 16384–20480 | 0.17 | 0.50 | 0.97 | — |
+| 28672–32768 | 0.07 | 0.10 | 0.67 | 0.997 |
+
+Both ablations converged to `prefix_matchings=1.0` on the training distribution
+(vs. the shipped recipe's frozen 0.0536), and the effect on downstream length
+generalization is monotone in the coefficient: L1=0.0 is the closest reproduction —
+perfect retrieval through 8K (matching the paper exactly, at 32-256-token training
+contexts and a base model with an 8K window), 0.97 at 16-20K, degrading to 0.67 at
+28-32K where the paper reports 0.997. So the paper's qualitative claim (near-perfect
+retrieval far beyond training length and the base context window) reproduces at L1=0
+or 0.1, the exact 28-32K figure does not, and the shipped config's L1=1.5 does not
+train a working model at all in our environment. Whether upstream's own successful runs
+used a different effective coefficient (or the collapse is seed/hardware-contingent) is
+an open question for upstream.
 
 ## Setting 2 results: comparing representations under live SFT
 
