@@ -432,7 +432,7 @@
   <div class="abstract-box">
     <span class="label">Abstract</span>
     <p style="margin-bottom:0.9rem">
-      As machine learning models are deployed in highly variable environments, the need for robust inference-time adaptation (ITA) has become paramount. One powerful approach for ITA is utilizing hypernetworks to dynamically generate parameter-efficient adapters on the fly based on a given context or task description. While prior work—such as Text-to-LoRA and Doc-to-LoRA—has successfully demonstrated the viability of generating Low-Rank Adapters (LoRAs), the design space of the generated adapter architectures remains largely unexplored. We introduce <strong>AdapterBench</strong>, a unified evaluation framework designed to answer a central question: <em>does the topological structure of a generated adapter impact its efficacy?</em> We systematically benchmark six diverse adapter representations (including LoRA, IA3, LoKr, FourierFT, and Activation Steering) across domains. Our results reveal that adapter shape critically influences downstream performance, identifying IA3 as a surprisingly robust candidate for generated adaptation, while other heavily structured methods suffer catastrophic failure under identical generation regimes.
+      As machine learning models are deployed in highly variable environments, the need for robust inference-time adaptation (ITA) has become paramount. One powerful approach for ITA is utilizing hypernetworks to dynamically generate parameter-efficient adapters on the fly based on a given context or task description. While prior work—such as Text-to-LoRA and Doc-to-LoRA—has successfully demonstrated the viability of generating Low-Rank Adapters (LoRAs), the design space of the generated adapter architectures remains largely unexplored. We introduce <strong>AdapterBench</strong>, a unified evaluation framework designed to answer a central question: <em>does the topological structure of a generated adapter impact its efficacy?</em> We systematically benchmark six diverse adapter representations (including LoRA, IA3, LoKr, FourierFT, and Activation Steering) across domains. Our results reveal that adapter shape critically decides whether generation works at all: a family of low-rank weight adapters (LoRA, LoKr, IA3) all adapt robustly and comparably when generated, while a dense frequency-domain method (FourierFT) suffers catastrophic, seed-independent failure under the identical generation regime.
     </p>
   </div>
 </div>
@@ -594,25 +594,25 @@
         </thead>
         <tbody>
           <tr><td><span class="chip frozen">frozen</span></td><td class="dim">75.0</td><td class="dim">23.3</td></tr>
-          <tr><td>lora</td><td class="hi">77.2 ± 3.5</td><td class="hi">29.4 ± 5.9</td></tr>
-          <tr><td>freeze_a_lora</td><td>71.1 ± 5.4</td><td class="hi">25.6 ± 4.8</td></tr>
-          <tr><td>ia3</td><td class="hi">75.6 ± 1.0</td><td class="hi">35.6 ± 3.5</td></tr>
-          <tr><td>lokr</td><td class="hi">78.3 ± 1.7</td><td class="hi">32.2 ± 3.5</td></tr>
-          <tr><td>fourierft</td><td>27.8 ± 18.4</td><td>0.0 ± 0.0</td></tr>
-          <tr><td>activation_steering</td><td class="hi">78.9 ± 5.1</td><td class="hi">30.0 ± 2.9</td></tr>
+          <tr><td>lora</td><td>72.8 ± 11.1</td><td class="hi">39.4 ± 2.5</td></tr>
+          <tr><td>freeze_a_lora</td><td>74.4 ± 3.5</td><td class="hi">35.0 ± 8.7</td></tr>
+          <tr><td>ia3</td><td>75.0 ± 0.0</td><td class="hi">37.2 ± 4.2</td></tr>
+          <tr><td>lokr</td><td class="hi">75.6 ± 3.5</td><td class="hi">38.3 ± 5.0</td></tr>
+          <tr><td>fourierft</td><td>30.6 ± 15.4</td><td>0.0 ± 0.0</td></tr>
+          <tr><td>activation_steering</td><td>70.0 ± 5.0</td><td class="hi">30.0 ± 1.7</td></tr>
         </tbody>
       </table>
     </div>
   
     <div class="finding">
       <span class="label">Result</span>
-      <p>Five of six representations beat the frozen baseline on Hellaswag consistently, with <strong>IA3 emerging as the strongest and most stable</strong> (35.6% ± 3.5). <strong>FourierFT is a genuine, seed-independent failure</strong> in this generation setting: it scores exactly 0.0% on Hellaswag in all three seeds and swings wildly on BoolQ (27.8% ± 18.4) — highlighting that complex representations heavily reliant on standard optimization regimes struggle to be predicted zero-shot by hypernetworks.</p>
+      <p>The discriminative signal is on Hellaswag (BoolQ is largely non-separating — most adapters sit near the frozen 75.0). There, the <strong>four structured low-rank weight adapters cluster well above frozen</strong> — LoRA (39.4), LoKr (38.3), IA3 (37.2), FreezeALoRA (35.0) vs. frozen's 23.3 — with no single clear winner (LoRA nominally highest and lowest-variance, but within noise of LoKr/IA3). Activation steering beats frozen more modestly (30.0). <strong>FourierFT is a genuine, seed-independent catastrophic failure</strong>: exactly 0.0% on Hellaswag in all three seeds and wild swings on BoolQ (30.6% ± 15.4) — complex dense-frequency representations that rely on standard optimization are the one family a hypernetwork cannot predict zero-shot. That failure, not a single-adapter champion, is the robust result: <em class="term">adapter shape decides whether generation works at all</em>.</p>
     </div>
 
     <h3>5.3 Document-Conditioned Generation: Reproducing Needle-in-a-Haystack</h3>
     <p class="lede">The document-conditioned setting's headline claim — near-perfect retrieval far beyond training length — reproduces, but only after diagnosing and repairing a convergence failure in the upstream recipe.</p>
     <p>
-    Doc-to-LoRA reports its central result on a synthetic needle-in-a-haystack (NIAH) task: trained only on 32–256-token contexts, the model retrieves a planted "magic number" nearly perfectly out to 40K tokens — far beyond both its training length and the base Gemma-2-2B's 8K context window. None of the four released checkpoints are NIAH-trained, however, and scoring the released QA-trained checkpoint on NIAH shows its generalization stops abruptly: 0.90 ROUGE-L at 1–2K tokens, then exactly 0.0 at every bin from 7–8K upward. Reproducing the published table therefore requires running the upstream training recipe from scratch.
+    Doc-to-LoRA reports its central result on a synthetic needle-in-a-haystack (NIAH) task: trained only on 32–256-token contexts, the model retrieves a planted "magic number" nearly perfectly out to 40K tokens — far beyond both its training length and the base Gemma-2-2B's 8K context window. None of the four released checkpoints are NIAH-trained, however, so reproducing the published table requires running the upstream training recipe from scratch.
     </p>
     <p>
     Run verbatim (same seed, upstream's data generator at the paper's 640K-sample scale, upstream's pinned environment), the shipped recipe completed all 1,482 steps but never learned retrieval: it mastered the fixed answer template while retrieving the actual digits at chance. The training log exposes the mechanism — the shipped configuration's L1 penalty on generated weights (<code>gen_lora_l1_reg_coef=1.5</code>, 15× the value used in the upstream main experiments) crushes the context-dependent LoRA's norm to near-zero early in training, immediately after retrieval had briefly begun to emerge, leaving only the context-independent bias component. Two retrains changing <em class="term">only this coefficient</em> isolate it as the single variable separating collapse from reproduction:
@@ -646,7 +646,7 @@
     While FourierFT represents a mathematically elegant solution for minimizing parameters during gradient descent optimization, the dense frequency-domain reconstruction appears catastrophically difficult for a hypernetwork to predict in a single forward pass, evidenced by its total collapse on held-out evaluations. 
     </p>
     <p>
-    Conversely, simpler multiplicative interventions—most notably the elementwise masking of IA3—prove incredibly stable and performant. Because IA3 scales existing activations rather than computing highly-sensitive low-rank additive matrices, the optimization landscape for the hypernetwork generating those vectors is remarkably smooth. This suggests that future work in inference time adaptation should prioritize adapter topologies that minimize cross-parameter dependencies, rather than blindly inheriting LoRA configurations designed for iterative fine-tuning.
+    Conversely, the low-rank weight adapters — LoRA, LoKr, and IA3 alike — all generate robustly and, once eval-time noise is removed, cluster together well above the frozen baseline with no single clear champion. What they share is a compact, low-dimensional target whose entries are only loosely coupled: a rank-8 additive factorization (LoRA/LoKr) or an elementwise activation scaling (IA3). This suggests the axis that matters for generated adaptation is not a specific topology but a property — the generated parameters must be few and weakly cross-coupled, so a single hypernetwork forward pass can predict them; a dense reconstruction with strong global coupling (FourierFT) is what breaks. Future ITA work should select adapters for <em class="term">generatability</em> under this criterion rather than inheriting configurations tuned for iterative fine-tuning.
     </p>
 </section>
 

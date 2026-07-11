@@ -164,38 +164,37 @@ tables, where ICL is a separate baseline, not applied to the T2L(SFT) row).
 
 <!-- RESULTS: results/vllm_repro/{gemma,mistral,llama}_{arc_easy,arc_challenge,boolq,hellaswag,gsm8k} -->
 
-*(Results pending — a full sweep across Gemma/Mistral/Llama is running as of 2026-07-07;
-this section gets the real numbers once it completes.)*
+Accuracy / exact-match (%), frozen interpreter vs. released T2L LoRA (completed
+2026-07-07; numbers verified against `results/vllm_repro/` on 2026-07-10):
 
-## Setting 1 results: Doc-to-LoRA on NIAH (generalization, not upstream's own protocol)
+| task | Gemma frozen | Gemma LoRA | Mistral frozen | Mistral LoRA | Llama frozen | Llama LoRA |
+|---|---|---|---|---|---|---|
+| arc_easy      | 88.9 | 91.0 | 76.6 | 88.8 | 92.7 | 94.7 |
+| arc_challenge | 73.7 | 75.6 | 65.7 | 77.9 | 76.8 | 85.1 |
+| boolq         | 82.1 | 81.6 | 75.1 | 84.2 | 82.0 | 85.5 |
+| hellaswag     | 52.2 | 61.0 | 30.8 | 65.1 | 56.8 | 64.3 |
+| gsm8k         | 65.3 | 58.3 | 43.3 | 46.3 | 84.0 | 81.3 |
 
-Released `gemma_demo` checkpoint (QA-trained, not NIAH-trained — see Gotchas), scored via
-`ReleasedDocToLoRANIAHEvaluator` (`adapterbench run-d2l-niah`). Smoke scope only so far
-(`ctx_magic_number_32_1024`, n=10, `--baseline`):
+The generated LoRA beats the frozen baseline on **12 of 15** model×task combinations
+(the 3 exceptions: Gemma boolq, Gemma gsm8k, Llama gsm8k). Mistral shows the largest
+LoRA-vs-frozen gap, driven mostly by its frozen baseline collapsing on hellaswag (30.8)
+— Mistral-7B-Instruct's un-prompted continuations frequently ignore the answer format,
+which the generated LoRA corrects. This reproduces T2L's published pattern (generated
+LoRA ≳ frozen on the multiple-choice benchmarks). Report §5.1 renders the same table.
 
-| task_id                              | adapter             | rougeL_f1 | n_examples |
-|---------------------------------------|----------------------|-----------|------------|
-| ctx_magic_number_32_1024              | lora_r8_d2l          | 1.0       | 10         |
-| ctx_magic_number_32_1024_no_context   | frozen_interpreter   | 0.0       | 10         |
+## Doc-to-LoRA NIAH: reproducing the from-scratch training recipe
 
-The checkpoint retrieves the magic number exactly on all 10 smoke-test examples despite
-never having been trained on `ctx_magic_number` data; the frozen interpreter given no
-document at all (sanity-check baseline) scores exactly 0, as expected.
+Doc-to-LoRA's headline claim is near-perfect needle-in-a-haystack (NIAH) retrieval far
+beyond both its 32–256-token training contexts and the base Gemma-2-2B's 8K window. None
+of the four released checkpoints are NIAH-trained (every one's `train_ds_names` is QA
+data — see Gotchas), so reproducing that claim requires running the upstream NIAH
+training recipe from scratch.
 
-**Length sweep (2026-07-08, n=30/bin, test split, 1024-token chunks —
-`results/doc_to_peft_gemma2b_reconstruction_niah_sweep/`):** the QA-trained checkpoint's
-NIAH generalization stops abruptly past a few K tokens:
-
-| bin | lora_r8_d2l | frozen (no context) |
-|---|---|---|
-| 1024–2048 | 0.900 | 0.0 |
-| 7168–8192 | 0.000 | 0.0 |
-| 16384–20480 | 0.000 | 0.0 |
-| 28672–32768 | 0.000 | 0.0 |
-
-So the paper's NIAH table (1.0 at 7–8K, 0.997 at 28–32K) is *not* reachable by the released
-QA checkpoint — it genuinely requires the NIAH-specific training recipe. Bins ≥57K OOM'd on
-one 80GB A100 even at `--eval-batch-size-gen 1` (upstream evals on an H200); deferred.
+**Scope note (2026-07-10):** the released QA checkpoints are out of scope for the
+doc-conditioned work. The earlier generalization test (scoring the QA `gemma_demo`
+checkpoint on NIAH — it retrieved at 1–2K but collapsed to 0 by 7–8K) has been dropped;
+doc-conditioned NIAH is now purely (a) this from-scratch recipe reproduction and (b) our
+own six-codec `d2p-sft-pilot` framework (Setting 2, below).
 
 **Reproduction attempt of the NIAH training recipe itself (2026-07-08): FAILED to
 converge, root cause diagnosed.** We ran `scripts/niah/1-train.sh` verbatim (same seed=1,
@@ -244,32 +243,35 @@ recipe (`--grad-accum-steps 64 --warmup-frac 0.1 --learning-rate 1e-5`, 380 opti
 steps ≈ 10 epochs), 3 seeds per adapter (777/778/779), scored against held-out
 boolq/hellaswag (n=60/family).
 
-<!-- RESULTS: results/t2p_sft_full_{lora_freeze,ia3_lokr,fourierft_steering}/results.jsonl -->
+<!-- RESULTS: results/t2p_sft_full_rerun_{lora_freeze,ia3_lokr,fourierft_steering}/results.jsonl -->
 
-Held-out accuracy (%), mean ± std across 3 seeds (777/778/779):
+Held-out accuracy (%), mean ± std across 3 seeds (777/778/779). **Re-run 2026-07-10
+post-`eval()` fix** (dropout disabled during scoring, gotcha #14):
 
 | adapter | boolq | hellaswag |
 |---|---|---|
 | frozen_interpreter | 75.0 | 23.3 |
-| lora | 77.2 ± 3.5 | 29.4 ± 5.9 |
-| freeze_a_lora | 71.1 ± 5.4 | 25.6 ± 4.8 |
-| ia3 | 75.6 ± 1.0 | 35.6 ± 3.5 |
-| lokr | 78.3 ± 1.7 | 32.2 ± 3.5 |
-| fourierft | 27.8 ± 18.4 | 0.0 ± 0.0 |
-| activation_steering | 78.9 ± 5.1 | 30.0 ± 2.9 |
+| lora | 72.8 ± 11.1 | 39.4 ± 2.5 |
+| freeze_a_lora | 74.4 ± 3.5 | 35.0 ± 8.7 |
+| ia3 | 75.0 ± 0.0 | 37.2 ± 4.2 |
+| lokr | 75.6 ± 3.5 | 38.3 ± 5.0 |
+| fourierft | 30.6 ± 15.4 | 0.0 ± 0.0 |
+| activation_steering | 70.0 ± 5.0 | 30.0 ± 1.7 |
 
-IA3 is the strongest and most stable on hellaswag; lokr and activation_steering close
-behind. FourierFT collapses to exactly 0.0 on hellaswag in all 3 seeds and swings wildly on
-boolq (10-47% across seeds) — a real, seed-independent failure now that seeding is fixed,
-not an artifact of the earlier unseeded pilots. freeze_a_lora is the one adapter that
-slightly *underperforms* frozen on boolq (71.1 vs 75.0) despite beating it on hellaswag.
+The discriminative signal is hellaswag (boolq barely separates — most adapters sit near
+frozen's 75.0). There the four low-rank weight adapters cluster well above frozen — lora
+39.4, lokr 38.3, ia3 37.2, freeze_a_lora 35.0 vs frozen 23.3 — with **no single clear
+winner** (lora nominally highest and lowest-variance, but within noise of lokr/ia3).
+Activation steering beats frozen more modestly (30.0). **FourierFT is a genuine,
+seed-independent catastrophic failure**: exactly 0.0 on hellaswag in all 3 seeds, wild
+boolq swings (± 15.4). That failure — not a single-adapter champion — is the robust result.
 
-**Caveat (2026-07-08):** a code review found `_t2p_sft_pilot_command` never called
-`hypernetwork.eval()` before scoring, so the numbers above were measured with dropout
-(p=0.05, in the trunk) still active during held-out evaluation — adding noise on top of the
-genuine seed variance already reported. Now fixed (gotcha below). The relative ranking above
-is unlikely to flip given IA3's consistently low variance, but the exact numbers should be
-treated as provisional until this run is repeated post-fix.
+**Correction vs. the pre-fix (2026-07-08) numbers:** disabling eval-time dropout raised
+hellaswag for every low-rank adapter (lora 29.4→39.4, freeze 25.6→35.0, lokr 32.2→38.3,
+ia3 35.6→37.2), which *changed the secondary conclusion*: the earlier "IA3 is strongest and
+most stable" no longer holds — IA3 is now one of a cluster, with lora nominally ahead. The
+headline (FourierFT collapses while the low-rank family all beat frozen) is unchanged and
+stronger. The old caveat is resolved: these are the post-fix numbers.
 
 **Why 3 seeds, and why the full corpus:** an earlier pass at this comparison (8-task
 subset, single seed, 400 steps) found first that a contaminated task split made LoRA look
@@ -282,52 +284,85 @@ collapse" framing was an artifact of that, not a property of training length. Bo
 fixed now (see Gotchas below); this run is the first one to test whether results are
 actually stable once seeding is real.
 
-## Setting 2 results: document-conditioning variant (NIAH)
+## Setting 2 results: document-conditioning variant (NIAH) — diagnosis + D2L integration plan
 
-Smoke scope only so far (integrated 2026-07-07): Qwen3-0.6B, LoRA (`q_proj,v_proj`),
-seed 777, 40 synthetic training documents at a single 256-token context length, batch
-size 4 (10 batches/epoch), 20 optimizer steps, `lr=1e-3`, no warmup:
+**STATUS (2026-07-11): the from-scratch six-codec D2P framework does NOT yet learn NIAH
+retrieval. A full diagnostic pass established why; an upstream-parity integration is in
+progress. Read this whole section before touching the D2P path — it supersedes the earlier
+"generalization wall" framing.**
 
-```
-initial_loss=6.3438  final_loss=3.3140
-losses: [6.34, 19.35, 12.83, 32.88, 13.38, 36.58, 21.29, 7.47, 8.31, 7.71,
-         6.95, 4.75, 4.96, 4.13, 4.13, 9.05, 3.68, 2.81, 2.89, 3.31]
-```
+### What was tried and ruled out (all on Qwen3-0.6B unless noted)
 
-Loss decreases overall (6.34 → 3.31) but is noisy step to step - expected at this scale
-(no warmup, `lr=1e-3`, only 40 documents/10 batches, only 20 steps). Held-out eval (10
-NIAH documents at the same 256-token bin) scored 0/10 exact-match for both the trained
-LoRA adapter and the frozen-interpreter (no-document-access) baseline - unsurprising at
-20 steps; this run's purpose was confirming the full document-capture → cross-attention
-conditioning → hook → backprop pipeline executes correctly end to end on the real
-interpreter, not achieving real needle-retrieval accuracy. Not yet run at a scale where
-NIAH accuracy above chance would be expected (more steps, more documents, multiple
-context-length bins, multiple adapters/seeds) - see Roadmap.
+Scaled up from the 2026-07-07 smoke across many configs. Held-out NIAH retrieval stayed at
+**0** in every one:
 
-**Same smoke run, rerun after fixing the per-layer conditioning gap (2026-07-07 —
-`compute_doc_sft_loss`/`DocumentHypernetworkDownstreamEvaluator` switched from the
-mean-pooled-broadcast `hypernetwork(raw_condition)` to the layer-faithful
-`hypernetwork.generate_per_layer(raw_condition)`, see Architecture and that module's
-docstring above), identical hyperparameters and seed, different `--output` so both
-smoke runs are preserved (`results/d2p_sft_smoke_per_layer`):
+| variation | held-out | rules out |
+|---|---|---|
+| conditioner: single-vector bottleneck (default) | 0 | — |
+| conditioner: 8× capacity (32 latents / 4 blocks) | 0 | "make the conditioner bigger" |
+| conditioner: per-slot Perceiver-IO (no bottleneck) | 0 | the bottleneck hypothesis |
+| conditioner: faithful per-layer (`layer_to_layer`) | 0 | conditioner architecture generally |
+| data scale: 3K → 60K → 120K docs | 0 (loss plateau ~1.54) | "just needs more data" in this range |
+| Gemma-2-2B interpreter | 0/8 overfit — won't even converge | model swap as a quick fix (integration bug) |
 
-```
-initial_loss=6.3438  final_loss=3.3434
-losses: [6.34, 21.96, 23.38, 23.00, 9.08, 51.17, 6.42, 11.20, 8.33, 13.36,
-         9.66, 4.60, 4.20, 3.37, 4.27, 3.80, 3.95, 3.31, 3.16, 3.34]
-```
+The **overfit control always passes on Qwen** (memorizes 8 docs), so the mechanism is wired
+correctly — it is *generalization* to held-out documents that never emerges.
 
-Loss still decreases overall (6.34 → 3.34, essentially the same final loss as the
-pooled-broadcast run's 3.31) and is, if anything, noisier step to step early on now
-that every layer actually receives distinct conditioning instead of one shared
-broadcast vector - consistent with a harder, more expressive conditioning target at
-this still-tiny scale (40 documents, 20 steps), not evidence of a regression. Held-out
-eval again scored 0/10 for both the trained adapter and the frozen-interpreter
-baseline, as expected at this step count. Compute cost, same `--steps 20` command,
-same GPU: wall-clock rose from ~21.6s to ~29.5s end to end (includes constant
-model-load/eval overhead in both) after switching to per-layer conditioning - expected,
-since `generate_per_layer` runs `num_layers` trunk forward passes per training step
-(one per `forward_layer` call) instead of `forward`'s single batched trunk pass.
+### THE key finding: CE loss is NOT a retrieval signal
+
+Every "loss decreasing" observation above says nothing about retrieval. Direct proof: an
+upstream-parity mechanism check (scale 45.25, down_proj, 8000 steps, lr 4e-5) drove training
+loss to **0.000 while retrieving 0/8 on the same documents**. The answer is ~5 tokens
+(space + 4 digits + eos); teacher-forced CE is dominated by the easy continuation tokens, so
+it rounds to ~0 while the one hard token — the first digit, which requires the adapter to
+carry document identity — is never learned. **Never trust loss for NIAH; use exact-digit
+generation + the context-swap control (see below).**
+
+### Why upstream works and ours did not — verified recipe mismatches
+
+AdapterBench's D2P was built as its own unified-codec framework, NOT a faithful D2L port.
+Against upstream's actual NIAH recipe (`upstream/doc-to-lora/scripts/niah/1-train.sh` + its
+config), load-bearing mismatches, each verified against the code:
+
+| knob | AdapterBench default | upstream NIAH |
+|---|---|---|
+| LoRA scale | `alpha/sqrt(r)` = 5.66 | `lora_alpha = 2·r^1.5` = **45.25**, applied DIRECTLY (`lora_forward` uses `scaling=lora_alpha`; model_loading.py:171, lora_layer.py:520) — ~8× larger |
+| hook site | `q_proj,v_proj` | `down_proj` only |
+| learning rate | 1e-3 | 4e-5 (the big scale needs a low lr for stability) |
+| doc encoder | per-layer / all-layer activations | **early-exit @ layer L//4**, single representation (ctx_encoder.py `EarlyExit`) |
+| Perceiver | 2 blocks / 4 latent queries | **8 blocks / 208 latent queries**, `num_self_attn_per_block=0` |
+| data | topic-needle, raw tok (`add_special_tokens=False`) | generic needle, context as a chat user message |
+| regime | batch 4, no packing, +L2 penalty | batch 1 × grad_accum 16, sequence packing, per-context loss, `gen_lora_l1_reg_coef=1.5`* |
+
+*Our own Setting-1 reproduction (above) found L1=1.5 **collapses**; use ~0. The two most
+load-bearing mismatches are the 8×-too-small scale and the wrong hook site: a too-small
+adapter on the wrong modules cannot override the frozen model to emit an unseen needle.
+
+### Already integrated this session (2026-07-11, tests green)
+- `DocumentHypernetworkDownstreamEvaluator`: **context-swap control** — each query is also
+  scored against the WRONG document (the next example's); genuine doc-dependent retrieval must
+  sit near chance there. Reported as `accuracy_ctxswap` beside exact-match `accuracy`. The
+  matched-minus-swapped gap is the real signal.
+- `LoRACodec` / `make_codec`: optional `scaling` / `lora_scaling` override so the framework can
+  express upstream's 45.25 (was hardcoded to 5.66).
+
+### Remaining integration — start fresh here ("make NIAH work at all", then vary the codec)
+The six-codec comparison is meaningless until ONE config actually retrieves. So reproduce a
+working recipe inside the framework first, then vary only the codec:
+1. **Generation path**: add an early-exit context encoder (interpreter → layer L//4, single
+   representation) + a larger Perceiver-IO (208 latents, 8 blocks) emitting per-(layer,module,
+   rank) output queries → codec params, replacing the small per-layer conditioner + trunk/head.
+   Keep the codec seam so all six codecs still plug in.
+2. **Parity config path** (new CLI flags, e.g. a `--d2l-parity` preset): `down_proj` hook,
+   `lora_scaling = 2·r^1.5`, lr 4e-5, generic-needle + chat-tokenized NIAH data, reg ~0.
+3. **Full-scale run — MUST be restart-safe/checkpointed** (session teardowns repeatedly killed
+   multi-hour runs this session; checkpoint model+optimizer every eval and resume). Train at
+   upstream's regime; per eval, log exact-digit `accuracy` AND `accuracy_ctxswap`. Success =
+   matched retrieval lifts off 0 while the context-swap control stays near chance.
+4. Only then: the six-codec comparison under document conditioning.
+
+The full parity recipe is specified in the mismatch table above (self-contained — rebuild from
+it). A validating prototype was run this session but lived in a scratch dir (not committed).
 
 ## How to run
 
@@ -340,12 +375,13 @@ uv run adapterbench run \
   --chat-template upstream/text-to-lora/chat_templates/mistralai/Mistral-7B-Instruct-v0.2/chat_template.jinja \
   --tasks boolq --limit 1000 --evaluator vllm --output results/vllm_repro/mistral_boolq
 
-# Setting 1: reproduce a released Doc-to-LoRA checkpoint on NIAH (smoke scope)
+# Doc-to-LoRA NIAH: evaluate a FROM-SCRATCH NIAH checkpoint on the length bins.
+# (Released QA checkpoints are out of scope - see the from-scratch reproduction section.)
 uv run adapterbench run-d2l-niah \
   --setup doc_to_peft_gemma2b_reconstruction \
-  --checkpoint upstream/doc-to-lora/trained_d2l/gemma_demo/checkpoint-80000/pytorch_model.bin \
-  --datasets ctx_magic_number_32_1024 --limit 10 --baseline \
-  --output results/doc_to_peft_gemma2b_reconstruction_smoke
+  --checkpoint <from-scratch NIAH run>/checkpoint-1482/pytorch_model.bin \
+  --datasets ctx_magic_number_1024_2048,ctx_magic_number_7168_8192 \
+  --limit 30 --split test --output results/d2l_niah_eval
 
 # Setting 2: full-corpus live SFT, all six adapters, three seeds
 uv run adapterbench t2p-sft-pilot \
@@ -473,29 +509,33 @@ uv run pytest -q   # 112 tests as of 2026-07-07 (per-layer document-conditioning
     the conditioner call itself; trunk/heads run once, batched across layers, same as
     `forward()`. `forward_layer` (single-layer, still useful for a future caller that does
     do per-layer backward) is unchanged.
+16. **NIAH training loss is NOT a retrieval signal — never gate on it.** Response CE can be
+    driven to ~0 while exact-digit retrieval is 0/N (proven 2026-07-11: parity mechanism
+    check hit loss 0.000, retrieval 0/8 on trained docs). The answer is ~5 tokens and CE is
+    dominated by the easy teacher-forced continuation; the one hard token (first digit,
+    needing the adapter to carry doc identity) is never learned. Always evaluate with
+    exact-digit generation **and** the context-swap control (`accuracy_ctxswap` in
+    `DocumentHypernetworkDownstreamEvaluator`, added 2026-07-11) — genuine retrieval means
+    matched `accuracy` high AND `accuracy_ctxswap` near chance.
+17. **`LoRACodec` scale defaults to `alpha/sqrt(r)`=5.66, but D2L's NIAH recipe applies
+    `2·r^1.5`=45.25 directly** (~8×). Pass `make_codec(..., lora_scaling=2*r**1.5)` (added
+    2026-07-11) for D2L parity; the small default scale cannot override the frozen model to
+    emit an unseen needle. See the D2P diagnosis section for the full mismatch table.
 
 ## Roadmap
 
 - **Multi-seed live-SFT comparison at full 479-task scale** — in progress (see Results
   above); the direct next question once it lands is whether the pattern replicates a
   *second* time, not just across these 3 seeds but across independent reruns.
-- **Doc-to-LoRA NIAH sweep at full scale** — only smoke-tested so far (n=10, one length
-  bin, `gemma_demo` only). Next: the full `test_splits` bin sweep at `--limit 1000` for
-  `gemma_demo`, then the same for `gemma_2b_d2l`/`mistral_7b_d2l`/`qwen_4b_d2l` to see
-  whether generalization from QA training to NIAH holds across interpreters and step
-  budgets, and at what document length it starts to degrade.
 - Description-variant robustness (the released checkpoints' `args.yaml` carries 3
   paraphrased descriptions per benchmark task; only variant 0 is used anywhere so far).
-- **Document-conditioning live SFT (`d2p-sft-pilot`) at real training scale** — only
-  smoke-tested so far (single adapter/seed, 20 steps, one 256-token context-length bin,
-  40 training documents). Next: enough steps/documents for held-out NIAH accuracy to
-  plausibly rise above the 0-accuracy smoke-test floor, then the full six-codec
-  head-to-head comparison across multiple context-length bins (`--context-lengths
-  256,512,1024,2048`) and multiple seeds, mirroring the pooled-vector variant's own
-  `t2p-sft-pilot`/`t2p-sft-sweep` scale-up path - including checking whether NIAH
-  accuracy degrades with document length the way it does for the released D2L
-  checkpoint (Setting 1's own open question above), but now for hypernetworks trained
-  from scratch on each of the six representations.
+- **D2P: integrate a working D2L-parity recipe, then compare the six codecs** — the active
+  D2P workstream. The from-scratch six-codec framework does not yet learn NIAH; the full
+  diagnosis, the verified upstream-recipe mismatch table, what's already integrated
+  (context-swap diagnostic, `lora_scaling` override), and the remaining integration steps
+  (early-exit + 208/8 per-slot generation path, `--d2l-parity` config, restart-safe
+  full-scale run, then the six-codec comparison) are all in the **"Setting 2 results:
+  document-conditioning variant (NIAH)"** section above. Start there.
 
 ## Reference: prior art
 

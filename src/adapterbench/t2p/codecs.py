@@ -66,11 +66,16 @@ class GeneratedUpdateCodec(nn.Module, ABC):
 
 class LoRACodec(GeneratedUpdateCodec):
     def __init__(
-        self, in_features: int, out_features: int, rank: int, alpha: float, use_rslora: bool = True, seed: int = 777
+        self, in_features: int, out_features: int, rank: int, alpha: float, use_rslora: bool = True,
+        scaling: float | None = None, seed: int = 777
     ):
         super().__init__(in_features, out_features)
         self.rank = rank
-        self.scaling = alpha / math.sqrt(rank) if use_rslora else alpha / rank
+        # `scaling`, if given, overrides the alpha-derived value - Doc-to-LoRA's NIAH recipe
+        # applies `lora_alpha = 2*r^1.5` DIRECTLY as the scale (~45.25 at r=8; see upstream
+        # lora_layer.lora_forward), ~8x larger than rslora's alpha/sqrt(r). That larger update
+        # is load-bearing for the generated adapter to override the frozen model on NIAH.
+        self.scaling = scaling if scaling is not None else (alpha / math.sqrt(rank) if use_rslora else alpha / rank)
         self.seed = seed
 
     @property
@@ -284,10 +289,11 @@ def make_codec(
     n_frequency: int = 1000,
     fourier_scaling: float = 300.0,
     steering_scale: float = 1.0,
+    lora_scaling: float | None = None,
     seed: int = 777,
 ) -> GeneratedUpdateCodec:
     constructors = {
-        "lora": lambda: LoRACodec(in_features, out_features, rank, alpha, seed=seed),
+        "lora": lambda: LoRACodec(in_features, out_features, rank, alpha, scaling=lora_scaling, seed=seed),
         "freeze_a_lora": lambda: FreezeALoRACodec(
             in_features, out_features, rank, alpha, num_layers, seed
         ),

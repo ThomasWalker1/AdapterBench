@@ -251,20 +251,35 @@ class DocumentHypernetworkDownstreamEvaluator:
 
     def _evaluate_group(self, family: str, examples: list[NiahExample], split: str, active: bool) -> EvaluationResult:
         started = time.perf_counter()
+        n = len(examples)
         correct = 0
-        for example in examples:
+        swap_hits = 0
+        for i, example in enumerate(examples):
             context = example.context_text if active else None
             with self._active(context) as model:
                 correct += int(self._score(model, example))
+            # Context-swap control: same query, but the adapter is generated from the WRONG
+            # document (the next example's). Genuine document-dependent retrieval must NOT
+            # surface this example's digits here, so accuracy_ctxswap should sit near chance.
+            # The matched-minus-swapped gap is the real retrieval signal - exact-digit CE/loss
+            # is not (a model can drive response CE to ~0 by learning digit priors + the
+            # teacher-forced continuation without ever routing the document; see PROJECT_PLAN).
+            if active and n > 1:
+                wrong_context = examples[(i + 1) % n].context_text
+                with self._active(wrong_context) as model:
+                    swap_hits += int(self._score(model, example))
         inference_seconds = time.perf_counter() - started
 
         adapter = self.hypernetwork.adapter if (active and self.hypernetwork is not None) else "frozen_interpreter"
+        metrics = {"accuracy": correct / n, "n_examples": float(n)}
+        if active and self.hypernetwork is not None and n > 1:
+            metrics["accuracy_ctxswap"] = swap_hits / n
         return EvaluationResult(
             trial_id=self.trial_id,
             task_id=family,
             split=split,
             adapter=adapter,
-            metrics={"accuracy": correct / len(examples), "n_examples": float(len(examples))},
+            metrics=metrics,
             generated_parameter_count=(
                 self.hypernetwork.generated_parameter_count() if (active and self.hypernetwork is not None) else 0
             ),

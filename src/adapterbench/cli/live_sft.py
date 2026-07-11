@@ -1,206 +1,39 @@
+"""Setting 2 (live end-to-end SFT) commands: train a hypernetwork from scratch,
+hooking its generated adapter into a frozen interpreter's forward pass, then score
+held-out benchmarks.
+
+- `t2p-sft`         single adapter, single run, writes a loss-curve JSON.
+- `t2p-sft-pilot`   several adapters x seeds, task-description conditioning.
+- `d2p-sft-pilot`   document-conditioning variant (synthetic NIAH documents).
+- `t2p-sft-sweep`   checkpointed step-budget sweep under one persistent optimizer.
+"""
+
 from __future__ import annotations
 
-import argparse
+import dataclasses
 import json
+from functools import partial
 from pathlib import Path
 
-from .catalog import build_matrix, load_catalog
-from .doctor import environment_report
-
-
-REPO_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_CATALOG = REPO_ROOT / "configs"
-
-# lol_022/043/044/045/047/050/063/064 are all confirmed present in T2L's own
-# train_ds_names (upstream/text-to-lora/configs/hyper_lora_decontam_lol_tasks.yaml).
-# The previous default (lol_022,033,034,035,039,043,044,045) trained on lol_033/034
-# (two of T2L's 10 contamination-removed tasks) and lol_035/039 (two of T2L's own 11
-# held-out zero-shot validation tasks) - exactly the leakage a training pilot should
-# avoid. --decontam-config validates any --tasks value against this list at run time.
-_DEFAULT_SFT_TRAIN_TASKS = "lol_022,lol_043,lol_044,lol_045,lol_047,lol_050,lol_063,lol_064"
-
-
-def _catalog_command(args) -> None:
-    setups, adapters = load_catalog(args.root)
-    print("Setups:")
-    for item in setups.values():
-        print(f"  {item.name:32} {item.protocol:24} {item.availability}")
-    print("Adapters:")
-    for item in adapters.values():
-        print(f"  {item.name:32} {item.family:24} {item.implementation}")
-
-
-def _validate_command(args) -> None:
-    setups, adapters = load_catalog(args.root)
-    trials = []
-    for setup in setups.values():
-        for adapter in adapters.values():
-            try:
-                trials.extend(build_matrix(setup, [adapter]))
-            except ValueError as error:
-                print(f"SKIP {setup.name} x {adapter.name}: {error}")
-    print(f"valid setups={len(setups)} adapters={len(adapters)} trials={len(trials)}")
-
-
-def _matrix_command(args) -> None:
-    setups, adapters = load_catalog(args.root)
-    setup = setups[args.setup]
-    selected = list(adapters.values()) if args.adapters == "all" else [adapters[name] for name in args.adapters.split(",")]
-    trials = build_matrix(setup, selected)
-    payload = [trial.model_dump(mode="json") for trial in trials]
-    if args.output:
-        path = Path(args.output)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(payload, indent=2) + "\n")
-    for trial in trials:
-        print(trial.trial_id)
-
-
-def _doctor_command(args) -> None:
-    report = environment_report()
-    print(json.dumps(report, indent=2))
-    if args.require_cuda and not report["cuda"]["available"]:
-        raise SystemExit("CUDA is required but not visible to this process")
-
-
-def _peft_smoke_command(args) -> None:
-    from .hf_smoke import run_adapter_materialization_smoke
-
-    _, adapters = load_catalog(args.root)
-    selected = [adapters[name] for name in args.adapters.split(",")]
-    results = run_adapter_materialization_smoke(args.model, selected, args.device, args.condition)
-    output = Path(args.output)
-    output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(results, indent=2) + "\n")
-    print(json.dumps(results, indent=2))
-
-
-def _run_command(args) -> None:
-    from .reporting import write_results
-    from .task_examples import build_all_task_examples, build_conditions, load_task_descriptions
-    from .text_to_lora_backend import ReleasedTextToLoRABackend
-
-    setups, adapters = load_catalog(args.root)
-    setup = setups[args.setup]
-    adapter = adapters[args.adapter]
-    trial = build_matrix(setup, [adapter])[0]
-
-    checkpoint = Path(args.checkpoint)
-    descriptions = load_task_descriptions(checkpoint.parent / "args.yaml")
-    task_ids = args.tasks.split(",")
-    conditions = build_conditions(descriptions, task_ids, variant=args.condition_variant)
-
-    print(f"[1/4] generating {len(task_ids)} adapter(s) via {args.adapter}...", flush=True)
-    backend = ReleasedTextToLoRABackend(checkpoint=checkpoint, device=args.device)
-    artifacts = backend.generate(conditions, Path(args.output) / "adapters")
-    print(f"[1/4] generated: {list(artifacts)}", flush=True)
-
-    print(f"[2/4] building up to {args.limit} example(s) per task for {task_ids}...", flush=True)
-    examples_by_family = build_all_task_examples(
-        task_ids, descriptions, args.limit, variant=args.condition_variant, use_icl=args.use_icl
-    )
-    all_examples = [example for group in examples_by_family.values() for example in group]
-    print(f"[2/4] built {len(all_examples)} example(s) total", flush=True)
-
-    print(
-        f"[3/4] loading interpreter {setup.models['interpreter'].model_id} "
-        f"(evaluator={args.evaluator})...",
-        flush=True,
-    )
-    if args.evaluator == "vllm":
-        from .vllm_downstream_evaluator import VLLMDownstreamEvaluator
-
-        evaluator = VLLMDownstreamEvaluator(
-            model_id=setup.models["interpreter"].model_id,
-            chat_template_path=args.chat_template,
-            trial_id=trial.trial_id,
-            device=args.device,
-            use_icl=args.use_icl,
-        )
-    else:
-        from .hf_downstream_evaluator import HFDownstreamEvaluator
-
-        evaluator = HFDownstreamEvaluator(
-            model_id=setup.models["interpreter"].model_id,
-            chat_template_path=args.chat_template,
-            trial_id=trial.trial_id,
-            device=args.device,
-            use_icl=args.use_icl,
-        )
-
-    print("[4/4] evaluating (writing results.jsonl/.csv after each task)...", flush=True)
-    results: list = []
-
-    def _record(result) -> None:
-        results.append(result)
-        write_results(results, args.output)
-        print(f"  {result.task_id:16} {result.adapter:20} {result.metrics}", flush=True)
-
-    for result in evaluator.iter_evaluate(artifacts, all_examples, split=args.split):
-        _record(result)
-    for result in evaluator.iter_evaluate_frozen(all_examples, split=args.split):
-        _record(result)
-
-
-def _run_d2l_command(args) -> None:
-    from pathlib import Path as _Path
-
-    from .doc_to_lora_backend import ReleasedDocToLoRANIAHEvaluator
-    from .reporting import write_results
-
-    setups, adapters = load_catalog(args.root)
-    setup = setups[args.setup]
-    adapter = adapters[args.adapter]
-    trial = build_matrix(setup, [adapter])[0]
-
-    datasets = args.datasets.split(",")
-    output_dir = _Path(args.output)
-
-    evaluator = ReleasedDocToLoRANIAHEvaluator(
-        checkpoint=args.checkpoint,
-        trial_id=trial.trial_id,
-        max_ctx_chunk_len=args.max_ctx_chunk_len,
-        max_new_tokens=args.max_new_tokens,
-        eval_batch_size_gen=args.eval_batch_size_gen,
-    )
-
-    results: list = []
-
-    def _record(result) -> None:
-        results.append(result)
-        write_results(results, output_dir)
-        print(f"  {result.task_id:28} {result.adapter:20} {result.metrics}", flush=True)
-
-    print(f"[1/2] evaluating released D2L checkpoint on {datasets}...", flush=True)
-    for result in evaluator.evaluate(
-        datasets, args.limit, output_dir / "d2l_eval", split=args.split, adapter=args.adapter
-    ):
-        _record(result)
-
-    if args.baseline:
-        print("[2/2] evaluating frozen-interpreter baseline...", flush=True)
-        for result in evaluator.evaluate_frozen(
-            datasets,
-            args.limit,
-            output_dir / "d2l_eval_baseline",
-            model_name_or_path=setup.models["interpreter"].model_id,
-            split=args.split,
-            remove_context=not args.baseline_icl,
-        ):
-            _record(result)
+from ._shared import (
+    D2P_LATENT_DIM,
+    DEFAULT_CATALOG,
+    DEFAULT_SFT_TRAIN_TASKS,
+    PILOT_DEFAULT_TARGET_MODULES,
+    REPO_ROOT,
+    ResultRecorder,
+    embed_training_conditions,
+    load_frozen_interpreter,
+    write_json,
+)
 
 
 def _t2p_sft_command(args) -> None:
     import torch
-    from functools import partial
 
-    from transformers import AutoModelForCausalLM, AutoTokenizer
-
-    from .t2p.condition_encoder import embed_task_descriptions, load_condition_encoder
-    from .t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-    from .t2p.lol_data import LolSFTDataset, load_task_metadata, lol_collate_fn, validate_training_tasks
-    from .t2p.model_utils import get_decoder_layers
-    from .t2p.sft_trainer import train_downstream_hypernetwork
+    from ..t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+    from ..t2p.lol_data import LolSFTDataset, lol_collate_fn, validate_training_tasks
+    from ..t2p.sft_trainer import train_downstream_hypernetwork
 
     # Pins the hypernetwork's weight init (only its codec-specific initial_bias is seeded
     # by `TextToPeftHypernetwork(seed=...)` itself, not its Linear/Embedding layers) and
@@ -216,27 +49,13 @@ def _t2p_sft_command(args) -> None:
     validate_training_tasks(task_ids, args.decontam_config)
 
     print(f"[1/5] loading interpreter {args.interpreter}...", flush=True)
-    tokenizer = AutoTokenizer.from_pretrained(args.interpreter)
-    if tokenizer.pad_token_id is None:
-        tokenizer.pad_token_id = tokenizer.eos_token_id
-    interpreter = AutoModelForCausalLM.from_pretrained(args.interpreter, dtype=torch.bfloat16).to(args.device)
-    interpreter.eval()
-    for parameter in interpreter.parameters():
-        parameter.requires_grad = False
-    layers = get_decoder_layers(interpreter)
+    tokenizer, interpreter, layers = load_frozen_interpreter(args.interpreter, args.device)
     module_shapes = infer_module_shapes(layers, target_modules, hidden_size=interpreter.config.hidden_size)
 
     print(f"[2/5] embedding task descriptions via {args.condition_encoder}...", flush=True)
-    encoder_model, encoder_tokenizer = load_condition_encoder(args.condition_encoder, device=args.device)
-    metadata_by_task = {
-        task_id: load_task_metadata(tasks_dir, task_id, max_descriptions=args.max_descriptions)
-        for task_id in task_ids
-    }
-    embeddings_by_task = {
-        task_id: embed_task_descriptions(metadata.descriptions, encoder_model, encoder_tokenizer).to(args.device)
-        for task_id, metadata in metadata_by_task.items()
-    }
-    condition_dim = next(iter(embeddings_by_task.values())).shape[-1]
+    encoder_model, _, metadata_by_task, embeddings_by_task, condition_dim = embed_training_conditions(
+        args.condition_encoder, args.device, tasks_dir, task_ids, args.max_descriptions
+    )
     del encoder_model
 
     print(f"[3/5] loading + tokenizing {len(task_ids)} task(s) from {args.tasks_dir}...", flush=True)
@@ -274,54 +93,36 @@ def _t2p_sft_command(args) -> None:
     )
 
     print(f"[5/5] initial_loss={stats.initial_loss:.4f} final_loss={stats.final_loss:.4f}", flush=True)
-    output = Path(args.output)
-    output.parent.mkdir(parents=True, exist_ok=True)
-    payload = {
-        "interpreter": args.interpreter,
-        "adapter": args.adapter,
-        "target_modules": target_modules,
-        "tasks": task_ids,
-        "steps": stats.steps,
-        "initial_loss": stats.initial_loss,
-        "final_loss": stats.final_loss,
-        "losses": list(stats.losses),
-    }
-    output.write_text(json.dumps(payload, indent=2) + "\n")
-    print(f"wrote {output}", flush=True)
-
-
-_PILOT_DEFAULT_TARGET_MODULES = {
-    "lora": ["q_proj", "v_proj"],
-    "freeze_a_lora": ["q_proj", "v_proj"],
-    "lokr": ["q_proj", "v_proj"],
-    "fourierft": ["q_proj", "v_proj"],
-    "ia3": ["k_proj", "v_proj", "down_proj"],
-    "activation_steering": ["block"],
-}
+    write_json(
+        args.output,
+        {
+            "interpreter": args.interpreter,
+            "adapter": args.adapter,
+            "target_modules": target_modules,
+            "tasks": task_ids,
+            "steps": stats.steps,
+            "initial_loss": stats.initial_loss,
+            "final_loss": stats.final_loss,
+            "losses": list(stats.losses),
+        },
+    )
+    print(f"wrote {args.output}", flush=True)
 
 
 def _t2p_sft_pilot_command(args) -> None:
-    import dataclasses
-
     import torch
-    from functools import partial
 
-    from transformers import AutoModelForCausalLM, AutoTokenizer
-
-    from .reporting import write_results
-    from .task_examples import build_all_task_examples, load_task_descriptions
-    from .t2p.condition_encoder import embed_task_descriptions, load_condition_encoder
-    from .t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-    from .t2p.live_evaluator import HypernetworkDownstreamEvaluator
-    from .t2p.lol_data import (
+    from ..task_examples import build_all_task_examples, load_task_descriptions
+    from ..t2p.condition_encoder import embed_task_descriptions
+    from ..t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+    from ..t2p.live_evaluator import HypernetworkDownstreamEvaluator
+    from ..t2p.lol_data import (
         LolSFTDataset,
         load_decontaminated_train_task_ids,
-        load_task_metadata,
         lol_collate_fn,
         validate_training_tasks,
     )
-    from .t2p.model_utils import get_decoder_layers
-    from .t2p.sft_trainer import train_downstream_hypernetwork
+    from ..t2p.sft_trainer import train_downstream_hypernetwork
 
     if args.all_decontam_tasks:
         task_ids = sorted(load_decontaminated_train_task_ids(args.decontam_config))
@@ -336,27 +137,12 @@ def _t2p_sft_pilot_command(args) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"[1/6] loading interpreter {args.interpreter}...", flush=True)
-    tokenizer = AutoTokenizer.from_pretrained(args.interpreter)
-    if tokenizer.pad_token_id is None:
-        tokenizer.pad_token_id = tokenizer.eos_token_id
-    interpreter = AutoModelForCausalLM.from_pretrained(args.interpreter, dtype=torch.bfloat16).to(args.device)
-    interpreter.eval()
-    for parameter in interpreter.parameters():
-        parameter.requires_grad = False
-    layers = get_decoder_layers(interpreter)
+    tokenizer, interpreter, layers = load_frozen_interpreter(args.interpreter, args.device)
 
     print(f"[2/6] embedding task descriptions via {args.condition_encoder}...", flush=True)
-    encoder_model, encoder_tokenizer = load_condition_encoder(args.condition_encoder, device=args.device)
-    metadata_by_task = {
-        task_id: load_task_metadata(tasks_dir, task_id, max_descriptions=args.max_descriptions)
-        for task_id in task_ids
-    }
-    train_embeddings_by_task = {
-        task_id: embed_task_descriptions(metadata.descriptions, encoder_model, encoder_tokenizer).to(args.device)
-        for task_id, metadata in metadata_by_task.items()
-    }
-    condition_dim = next(iter(train_embeddings_by_task.values())).shape[-1]
-
+    encoder_model, encoder_tokenizer, metadata_by_task, train_embeddings_by_task, condition_dim = (
+        embed_training_conditions(args.condition_encoder, args.device, tasks_dir, task_ids, args.max_descriptions)
+    )
     eval_descriptions = load_task_descriptions(args.eval_descriptions)
     eval_condition_embeddings = {
         family: embed_task_descriptions(
@@ -380,13 +166,8 @@ def _t2p_sft_pilot_command(args) -> None:
     )
     all_eval_examples = [example for group in eval_examples_by_family.values() for example in group]
 
-    results: list = []
+    recorder = ResultRecorder(output_dir, lambda r: f"  {r.adapter:20} {r.task_id:16} {r.metrics}")
     loss_curves: dict = {}
-
-    def _record(result) -> None:
-        results.append(result)
-        write_results(results, output_dir)
-        print(f"  {result.adapter:20} {result.task_id:16} {result.metrics}", flush=True)
 
     print("[5/6] scoring frozen interpreter baseline...", flush=True)
     frozen_evaluator = HypernetworkDownstreamEvaluator(
@@ -399,7 +180,7 @@ def _t2p_sft_pilot_command(args) -> None:
         use_icl=args.use_icl,
     )
     for result in frozen_evaluator.iter_evaluate_frozen(all_eval_examples, split=args.eval_split):
-        _record(dataclasses.replace(result, metadata={**result.metadata, "seed": None}))
+        recorder.record(dataclasses.replace(result, metadata={**result.metadata, "seed": None}))
 
     warmup_steps = int(args.warmup_frac * args.steps)
     for seed in seeds:
@@ -423,7 +204,7 @@ def _t2p_sft_pilot_command(args) -> None:
             # adapters were trained before it in this same process/loop position, and each
             # requested seed actually produces an independent run.
             torch.manual_seed(seed)
-            target_modules = _PILOT_DEFAULT_TARGET_MODULES[adapter]
+            target_modules = PILOT_DEFAULT_TARGET_MODULES[adapter]
             print(f"[6/6] seed={seed} adapter={adapter} target_modules={target_modules}: training...", flush=True)
             module_shapes = infer_module_shapes(layers, target_modules, hidden_size=interpreter.config.hidden_size)
             hypernetwork = TextToPeftHypernetwork(
@@ -467,20 +248,12 @@ def _t2p_sft_pilot_command(args) -> None:
                 use_icl=args.use_icl,
             )
             for result in evaluator.iter_evaluate(eval_condition_embeddings, all_eval_examples, split=args.eval_split):
-                _record(dataclasses.replace(result, metadata={**result.metadata, "seed": seed}))
+                recorder.record(dataclasses.replace(result, metadata={**result.metadata, "seed": seed}))
 
             del hypernetwork, evaluator
             torch.cuda.empty_cache()
 
     print(f"wrote {output_dir}/results.jsonl, {output_dir}/results.csv, {output_dir}/loss_curves.json", flush=True)
-
-
-# TextToPeftHypernetwork's own default (never overridden by any existing t2p-sft*
-# command either) - kept as a plain module constant rather than a new CLI flag so
-# DocumentPerceiverConditioner's task_dim (= latent_dim // 2, see hypernetwork.py's
-# comment on that requirement) stays in lockstep with the hypernetwork's own trunk
-# width without the two ever being passed independently.
-_D2P_LATENT_DIM = 512
 
 
 def _d2p_sft_pilot_command(args) -> None:
@@ -494,19 +267,13 @@ def _d2p_sft_pilot_command(args) -> None:
     rank-composition (`combine_lora`) - documents here are always packed into one
     context window per example, never split across chunks.
     """
-    import dataclasses
-    from functools import partial
-
     import torch
-    from transformers import AutoModelForCausalLM, AutoTokenizer
 
-    from .reporting import write_results
-    from .t2p.document_conditioning import DocumentPerceiverConditioner
-    from .t2p.document_sft_trainer import train_doc_downstream_hypernetwork
-    from .t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-    from .t2p.live_evaluator import DocumentHypernetworkDownstreamEvaluator
-    from .t2p.model_utils import get_decoder_layers
-    from .t2p.niah_data import DocSFTDataset, assert_context_fits_in_one_pass, build_niah_eval_examples, doc_collate_fn
+    from ..t2p.document_conditioning import DocumentPerceiverConditioner
+    from ..t2p.document_sft_trainer import train_doc_downstream_hypernetwork
+    from ..t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+    from ..t2p.live_evaluator import DocumentHypernetworkDownstreamEvaluator
+    from ..t2p.niah_data import DocSFTDataset, assert_context_fits_in_one_pass, build_niah_eval_examples, doc_collate_fn
 
     torch.manual_seed(args.seed)
 
@@ -517,14 +284,7 @@ def _d2p_sft_pilot_command(args) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"[1/5] loading interpreter {args.interpreter}...", flush=True)
-    tokenizer = AutoTokenizer.from_pretrained(args.interpreter)
-    if tokenizer.pad_token_id is None:
-        tokenizer.pad_token_id = tokenizer.eos_token_id
-    interpreter = AutoModelForCausalLM.from_pretrained(args.interpreter, dtype=torch.bfloat16).to(args.device)
-    interpreter.eval()
-    for parameter in interpreter.parameters():
-        parameter.requires_grad = False
-    layers = get_decoder_layers(interpreter)
+    tokenizer, interpreter, layers = load_frozen_interpreter(args.interpreter, args.device)
     hidden_size = interpreter.config.hidden_size
     for context_length in context_lengths:
         assert_context_fits_in_one_pass(context_length, interpreter.config.max_position_embeddings)
@@ -543,20 +303,15 @@ def _d2p_sft_pilot_command(args) -> None:
         tokenizer, context_lengths, examples_per_bin=args.eval_limit
     )
 
-    results: list = []
+    recorder = ResultRecorder(output_dir, lambda r: f"  {r.adapter:20} {r.task_id:16} {r.metrics}")
     loss_curves: dict = {}
-
-    def _record(result) -> None:
-        results.append(result)
-        write_results(results, output_dir)
-        print(f"  {result.adapter:20} {result.task_id:16} {result.metrics}", flush=True)
 
     print("[4/5] scoring frozen interpreter baseline (no document access at all)...", flush=True)
     frozen_evaluator = DocumentHypernetworkDownstreamEvaluator(
         interpreter, layers, None, tokenizer, trial_id="d2p_sft_pilot::frozen_interpreter", device=args.device,
     )
     for result in frozen_evaluator.iter_evaluate_frozen(eval_examples_by_family, split=args.eval_split):
-        _record(dataclasses.replace(result, metadata={**result.metadata, "seed": None}))
+        recorder.record(dataclasses.replace(result, metadata={**result.metadata, "seed": None}))
 
     warmup_steps = int(args.warmup_frac * args.steps)
     for seed in seeds:
@@ -578,17 +333,17 @@ def _d2p_sft_pilot_command(args) -> None:
             # Re-seeded per (seed, adapter), not just once at the top - see
             # t2p-sft-pilot's identical comment for why.
             torch.manual_seed(seed)
-            target_modules = _PILOT_DEFAULT_TARGET_MODULES[adapter]
+            target_modules = PILOT_DEFAULT_TARGET_MODULES[adapter]
             print(f"[5/5] seed={seed} adapter={adapter} target_modules={target_modules}: training...", flush=True)
             module_shapes = infer_module_shapes(layers, target_modules, hidden_size=hidden_size)
             conditioner = DocumentPerceiverConditioner(
-                hidden_size=hidden_size, task_dim=_D2P_LATENT_DIM // 2, num_layers=len(layers), seed=seed,
+                hidden_size=hidden_size, task_dim=D2P_LATENT_DIM // 2, num_layers=len(layers), seed=seed,
             )
             hypernetwork = TextToPeftHypernetwork(
                 module_shapes=module_shapes,
                 num_layers=len(layers),
                 adapter=adapter,
-                latent_dim=_D2P_LATENT_DIM,
+                latent_dim=D2P_LATENT_DIM,
                 seed=seed,
                 conditioner=conditioner,
             ).to(args.device)
@@ -621,7 +376,7 @@ def _d2p_sft_pilot_command(args) -> None:
                 device=args.device,
             )
             for result in evaluator.iter_evaluate(eval_examples_by_family, split=args.eval_split):
-                _record(dataclasses.replace(result, metadata={**result.metadata, "seed": seed}))
+                recorder.record(dataclasses.replace(result, metadata={**result.metadata, "seed": seed}))
 
             del hypernetwork, evaluator
             torch.cuda.empty_cache()
@@ -646,21 +401,14 @@ def _t2p_sft_sweep_command(args) -> None:
     point where held-out generalization peaks" per adapter - just don't trust a single
     seed's answer to that question either, per the same finding.
     """
-    import dataclasses
-
     import torch
-    from functools import partial
 
-    from transformers import AutoModelForCausalLM, AutoTokenizer
-
-    from .reporting import write_results
-    from .task_examples import build_all_task_examples, load_task_descriptions
-    from .t2p.condition_encoder import embed_task_descriptions, load_condition_encoder
-    from .t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-    from .t2p.live_evaluator import HypernetworkDownstreamEvaluator
-    from .t2p.lol_data import LolSFTDataset, load_task_metadata, lol_collate_fn, validate_training_tasks
-    from .t2p.model_utils import get_decoder_layers
-    from .t2p.sft_trainer import train_with_checkpoints
+    from ..task_examples import build_all_task_examples, load_task_descriptions
+    from ..t2p.condition_encoder import embed_task_descriptions
+    from ..t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+    from ..t2p.live_evaluator import HypernetworkDownstreamEvaluator
+    from ..t2p.lol_data import LolSFTDataset, lol_collate_fn, validate_training_tasks
+    from ..t2p.sft_trainer import train_with_checkpoints
 
     torch.manual_seed(args.seed)
 
@@ -674,27 +422,12 @@ def _t2p_sft_sweep_command(args) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"[1/6] loading interpreter {args.interpreter}...", flush=True)
-    tokenizer = AutoTokenizer.from_pretrained(args.interpreter)
-    if tokenizer.pad_token_id is None:
-        tokenizer.pad_token_id = tokenizer.eos_token_id
-    interpreter = AutoModelForCausalLM.from_pretrained(args.interpreter, dtype=torch.bfloat16).to(args.device)
-    interpreter.eval()
-    for parameter in interpreter.parameters():
-        parameter.requires_grad = False
-    layers = get_decoder_layers(interpreter)
+    tokenizer, interpreter, layers = load_frozen_interpreter(args.interpreter, args.device)
 
     print(f"[2/6] embedding task descriptions via {args.condition_encoder}...", flush=True)
-    encoder_model, encoder_tokenizer = load_condition_encoder(args.condition_encoder, device=args.device)
-    metadata_by_task = {
-        task_id: load_task_metadata(tasks_dir, task_id, max_descriptions=args.max_descriptions)
-        for task_id in task_ids
-    }
-    train_embeddings_by_task = {
-        task_id: embed_task_descriptions(metadata.descriptions, encoder_model, encoder_tokenizer).to(args.device)
-        for task_id, metadata in metadata_by_task.items()
-    }
-    condition_dim = next(iter(train_embeddings_by_task.values())).shape[-1]
-
+    encoder_model, encoder_tokenizer, metadata_by_task, train_embeddings_by_task, condition_dim = (
+        embed_training_conditions(args.condition_encoder, args.device, tasks_dir, task_ids, args.max_descriptions)
+    )
     eval_descriptions = load_task_descriptions(args.eval_descriptions)
     eval_condition_embeddings = {
         family: embed_task_descriptions(
@@ -726,13 +459,11 @@ def _t2p_sft_sweep_command(args) -> None:
     )
     all_eval_examples = [example for group in eval_examples_by_family.values() for example in group]
 
-    results: list = []
+    recorder = ResultRecorder(
+        output_dir,
+        lambda r: f"  step={r.metadata['checkpoint_step']:<5} {r.adapter:20} {r.task_id:16} {r.metrics}",
+    )
     loss_curves: dict = {}
-
-    def _record(result) -> None:
-        results.append(result)
-        write_results(results, output_dir)
-        print(f"  step={result.metadata['checkpoint_step']:<5} {result.adapter:20} {result.task_id:16} {result.metrics}", flush=True)
 
     print("[5/6] scoring frozen interpreter baseline (checkpoint_step=0)...", flush=True)
     frozen_evaluator = HypernetworkDownstreamEvaluator(
@@ -740,13 +471,13 @@ def _t2p_sft_sweep_command(args) -> None:
         use_icl=args.use_icl,
     )
     for result in frozen_evaluator.iter_evaluate_frozen(all_eval_examples, split=args.eval_split):
-        _record(dataclasses.replace(result, metadata={**result.metadata, "checkpoint_step": 0}))
+        recorder.record(dataclasses.replace(result, metadata={**result.metadata, "checkpoint_step": 0}))
 
     for adapter in adapters:
         # Re-seeded per adapter, not just once at the top - see t2p-sft-pilot's identical
         # comment for why (each adapter's trajectory must be independent of loop position).
         torch.manual_seed(args.seed)
-        target_modules = _PILOT_DEFAULT_TARGET_MODULES[adapter]
+        target_modules = PILOT_DEFAULT_TARGET_MODULES[adapter]
         print(f"[6/6] adapter={adapter} target_modules={target_modules}: sweeping checkpoints {checkpoint_steps}...", flush=True)
         module_shapes = infer_module_shapes(layers, target_modules, hidden_size=interpreter.config.hidden_size)
         hypernetwork = TextToPeftHypernetwork(
@@ -783,7 +514,7 @@ def _t2p_sft_sweep_command(args) -> None:
                 device=args.device, use_icl=args.use_icl,
             )
             for result in evaluator.iter_evaluate(eval_condition_embeddings, all_eval_examples, split=args.eval_split):
-                _record(dataclasses.replace(result, metadata={**result.metadata, "checkpoint_step": step}))
+                recorder.record(dataclasses.replace(result, metadata={**result.metadata, "checkpoint_step": step}))
             del evaluator
 
         del hypernetwork
@@ -792,122 +523,20 @@ def _t2p_sft_sweep_command(args) -> None:
     print(f"wrote {output_dir}/results.jsonl, {output_dir}/results.csv, {output_dir}/loss_curves.json", flush=True)
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Benchmark PEFT adapters as hypernetwork outputs")
-    parser.set_defaults(func=lambda _: parser.print_help())
-    subparsers = parser.add_subparsers(dest="command")
+def register(subparsers) -> None:
+    _register_t2p_sft(subparsers)
+    _register_t2p_sft_pilot(subparsers)
+    _register_d2p_sft_pilot(subparsers)
+    _register_t2p_sft_sweep(subparsers)
 
-    catalog = subparsers.add_parser("catalog", help="list registered setups and adapters")
-    catalog.add_argument("--root", default=DEFAULT_CATALOG, type=Path)
-    catalog.set_defaults(func=_catalog_command)
 
-    validate = subparsers.add_parser("validate", help="validate all manifests and compatible trial combinations")
-    validate.add_argument("--root", default=DEFAULT_CATALOG, type=Path)
-    validate.set_defaults(func=_validate_command)
-
-    matrix = subparsers.add_parser("matrix", help="materialize immutable trial manifests")
-    matrix.add_argument("--root", default=DEFAULT_CATALOG, type=Path)
-    matrix.add_argument("--setup", required=True)
-    matrix.add_argument("--adapters", default="all", help="comma-separated adapter names or 'all'")
-    matrix.add_argument("--output")
-    matrix.set_defaults(func=_matrix_command)
-
-    doctor = subparsers.add_parser("doctor", help="report package and accelerator availability")
-    doctor.add_argument("--require-cuda", action="store_true")
-    doctor.set_defaults(func=_doctor_command)
-
-    smoke = subparsers.add_parser("peft-smoke", help="materialize generated PEFT state and execute a frozen HF model")
-    smoke.add_argument("--root", default=DEFAULT_CATALOG, type=Path)
-    smoke.add_argument("--model", default="Qwen/Qwen3-0.6B")
-    smoke.add_argument("--adapters", default="lora_r8_t2l,fourierft_1000,lokr_r8,ia3,prefix_tuning_64")
-    smoke.add_argument("--device", default="cuda:0")
-    smoke.add_argument("--condition", default="Normalize a sentiment statement to positive or negative.")
-    smoke.add_argument("--output", default="results/hf_adapter_smoke.json")
-    smoke.set_defaults(func=_peft_smoke_command)
-
-    run = subparsers.add_parser(
-        "run", help="generate adapters via a HypernetworkBackend and score them with a DownstreamEvaluator"
-    )
-    run.add_argument("--root", default=DEFAULT_CATALOG, type=Path)
-    run.add_argument("--setup", required=True)
-    run.add_argument("--adapter", required=True)
-    run.add_argument("--checkpoint", required=True, help="Path to a hypermod.pt checkpoint")
-    run.add_argument(
-        "--tasks", default="arc_easy,arc_challenge,boolq,hellaswag,gsm8k", help="comma-separated task ids"
-    )
-    run.add_argument("--limit", type=int, default=10, help="examples per task")
-    run.add_argument("--condition-variant", type=int, default=0)
-    run.add_argument("--split", default="test")
-    run.add_argument("--device", default="cuda:0")
-    run.add_argument(
-        "--use-icl",
-        action="store_true",
-        help="prepend upstream Text-to-LoRA's 3-shot in-context examples to every prompt and force an "
-        "'Answer:'/\"Let's think step by step.\" generation prefix, matching the paper's Gemma table "
-        "(Table 8), which uses ICL for every method including the frozen baseline. Must be set "
-        "consistently: it changes both the built TaskExamples and the evaluator's scoring prefill.",
-    )
-    run.add_argument(
-        "--chat-template",
-        default=str(
-            REPO_ROOT / "upstream" / "text-to-lora" / "chat_templates" / "google" / "gemma-2-2b-it" / "chat_template.jinja"
-        ),
-    )
-    run.add_argument(
-        "--evaluator",
-        choices=["hf", "vllm"],
-        default="hf",
-        help="'hf' (default): plain transformers+peft, works for any adapter format. "
-        "'vllm': upstream's own inference backend (vllm==0.5.4, via a subprocess into "
-        "upstream/text-to-lora/.venv) - LoRA-only (not FourierFT/IA3/LoKr), but reproduces "
-        "the paper's published numbers noticeably more closely (confirmed for Mistral-7B, "
-        "see PROJECT_PLAN.md's Phase 5.5 follow-up); prefer it whenever every adapter under "
-        "test is a plain LoRA.",
-    )
-    run.add_argument("--output", default="results/text_to_peft_gemma2b_reconstruction")
-    run.set_defaults(func=_run_command)
-
-    # A separate subcommand rather than reusing `run`: D2L conditions on a raw document
-    # plus a list of ctx_magic_number_<lo>_<hi> NIAH dataset names (not a per-task
-    # condition string plus a built list of TaskExamples), and its own eval API bakes
-    # adapter generation and downstream scoring into one call - see
-    # adapterbench.doc_to_lora_backend's module docstring. `run`'s generate-then-evaluate
-    # shape genuinely doesn't fit.
-    run_d2l = subparsers.add_parser(
-        "run-d2l-niah", help="evaluate a released Doc-to-LoRA checkpoint on needle-in-a-haystack (ctx_magic_number) tasks"
-    )
-    run_d2l.add_argument("--root", default=DEFAULT_CATALOG, type=Path)
-    run_d2l.add_argument("--setup", required=True)
-    run_d2l.add_argument("--adapter", default="lora_r8_d2l")
-    run_d2l.add_argument("--checkpoint", required=True, help="Path to a D2L checkpoint's pytorch_model.bin")
-    run_d2l.add_argument(
-        "--datasets", required=True, help="comma-separated ctx_magic_number_<lo>_<hi> dataset names"
-    )
-    run_d2l.add_argument("--limit", type=int, default=500, help="examples per dataset")
-    run_d2l.add_argument("--split", default="test", choices=["validation", "test"])
-    run_d2l.add_argument("--max-ctx-chunk-len", type=int, default=1024)
-    run_d2l.add_argument("--max-new-tokens", type=int, default=32)
-    run_d2l.add_argument("--eval-batch-size-gen", type=int, default=4)
-    run_d2l.add_argument(
-        "--baseline",
-        action="store_true",
-        help="also score a frozen-interpreter baseline (same base model, no D2L checkpoint)",
-    )
-    run_d2l.add_argument(
-        "--baseline-icl",
-        action="store_true",
-        help="baseline hands the document to the frozen interpreter directly in its prompt "
-        "(interpreter_with_icl) instead of withholding it entirely (frozen_interpreter, the default)",
-    )
-    run_d2l.add_argument("--output", default="results/doc_to_peft_gemma2b_reconstruction")
-    run_d2l.set_defaults(func=_run_d2l_command)
-
+def _register_t2p_sft(subparsers) -> None:
     t2p_sft = subparsers.add_parser(
         "t2p-sft",
         help="live end-to-end SFT: hook the hypernetwork's generated output into a real interpreter's forward pass and train on real next-token loss (Phase 4)",
     )
     t2p_sft.add_argument("--tasks-dir", default=str(REPO_ROOT / "upstream" / "text-to-lora" / "tasks"))
-    t2p_sft.add_argument("--tasks", default=_DEFAULT_SFT_TRAIN_TASKS)
+    t2p_sft.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
     t2p_sft.add_argument(
         "--decontam-config",
         default=str(REPO_ROOT / "upstream" / "text-to-lora" / "configs" / "hyper_lora_decontam_lol_tasks.yaml"),
@@ -936,6 +565,8 @@ def main() -> None:
     t2p_sft.add_argument("--output", default="results/t2p_sft/pilot.json")
     t2p_sft.set_defaults(func=_t2p_sft_command)
 
+
+def _register_t2p_sft_pilot(subparsers) -> None:
     t2p_sft_pilot = subparsers.add_parser(
         "t2p-sft-pilot",
         help="small multi-task live-SFT pilot: train 2-3 adapters to convergence on the shared 8-task "
@@ -943,7 +574,7 @@ def main() -> None:
         "examples (Phase 4's 'next' step)",
     )
     t2p_sft_pilot.add_argument("--tasks-dir", default=str(REPO_ROOT / "upstream" / "text-to-lora" / "tasks"))
-    t2p_sft_pilot.add_argument("--tasks", default=_DEFAULT_SFT_TRAIN_TASKS)
+    t2p_sft_pilot.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
     t2p_sft_pilot.add_argument(
         "--all-decontam-tasks",
         action="store_true",
@@ -1007,6 +638,8 @@ def main() -> None:
     t2p_sft_pilot.add_argument("--output", default="results/t2p_sft_pilot")
     t2p_sft_pilot.set_defaults(func=_t2p_sft_pilot_command)
 
+
+def _register_d2p_sft_pilot(subparsers) -> None:
     d2p_sft_pilot = subparsers.add_parser(
         "d2p-sft-pilot",
         help="Setting 2's document-conditioning variant of t2p-sft-pilot: train hypernetworks from scratch "
@@ -1051,6 +684,8 @@ def main() -> None:
     d2p_sft_pilot.add_argument("--output", default="results/d2p_sft_pilot")
     d2p_sft_pilot.set_defaults(func=_d2p_sft_pilot_command)
 
+
+def _register_t2p_sft_sweep(subparsers) -> None:
     t2p_sft_sweep = subparsers.add_parser(
         "t2p-sft-sweep",
         help="checkpointed counterpart to t2p-sft-pilot: scores held-out accuracy at several step budgets per "
@@ -1058,7 +693,7 @@ def main() -> None:
         "where held-out generalization peaks' - see PROJECT_PLAN.md's Phase 4 section for why this exists",
     )
     t2p_sft_sweep.add_argument("--tasks-dir", default=str(REPO_ROOT / "upstream" / "text-to-lora" / "tasks"))
-    t2p_sft_sweep.add_argument("--tasks", default=_DEFAULT_SFT_TRAIN_TASKS)
+    t2p_sft_sweep.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
     t2p_sft_sweep.add_argument(
         "--decontam-config",
         default=str(REPO_ROOT / "upstream" / "text-to-lora" / "configs" / "hyper_lora_decontam_lol_tasks.yaml"),
@@ -1101,10 +736,3 @@ def main() -> None:
     )
     t2p_sft_sweep.add_argument("--output", default="results/t2p_sft_sweep")
     t2p_sft_sweep.set_defaults(func=_t2p_sft_sweep_command)
-
-    args = parser.parse_args()
-    args.func(args)
-
-
-if __name__ == "__main__":
-    main()
