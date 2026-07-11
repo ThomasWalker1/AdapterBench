@@ -6,6 +6,7 @@ from adapterbench.t2p.document_sft_trainer import (
     compute_doc_sft_loss,
     doc_train_step,
     train_doc_downstream_hypernetwork,
+    train_doc_niah_checkpointed,
 )
 from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork
 from adapterbench.t2p.model_utils import get_decoder_layers
@@ -95,3 +96,55 @@ def test_train_doc_downstream_hypernetwork_reduces_loss_on_an_easy_target():
     assert len(stats.losses) == 60
     assert all(torch.isfinite(torch.tensor(loss)) for loss in stats.losses)
     assert stats.final_loss < stats.initial_loss
+
+
+def _raw_doc_item(context_len, query_len, vocab_size, target_token):
+    """A single raw per-doc dict in the shape doc_collate_fn / DocSFTDataset produce."""
+    import random as _r
+
+    rng = _r.Random(query_len * 7 + target_token)
+    prompt = [rng.randrange(vocab_size) for _ in range(query_len - 1)]
+    return {
+        "context_input_ids": [rng.randrange(vocab_size) for _ in range(context_len)],
+        "context_attention_mask": [1] * context_len,
+        "input_ids": prompt + [target_token],
+        "attention_mask": [1] * query_len,
+        "labels": [-100] * (query_len - 1) + [target_token],
+    }
+
+
+def test_train_doc_niah_checkpointed_evaluates_periodically_and_resumes(tmp_path):
+    from functools import partial
+
+    from adapterbench.t2p.niah_data import doc_collate_fn
+
+    interpreter, layers, hypernetwork, vocab_size = _toy_setup()
+    items = [_raw_doc_item(6, 5, vocab_size, target_token=(i % 3)) for i in range(4)]
+    collate = partial(doc_collate_fn, pad_token_id=0)
+    ckpt = tmp_path / "ckpt.pt"
+
+    eval_steps_seen: list[int] = []
+
+    def _evaluate(net, step):
+        eval_steps_seen.append(step)
+        return {"niah_6": {"accuracy": 0.0, "accuracy_ctxswap": 0.0}}
+
+    logs: list[str] = []
+    common = dict(collate=collate, device="cpu", batch_size=2, eval_every=2, learning_rate=1e-3, evaluate=_evaluate)
+    history = train_doc_niah_checkpointed(
+        hypernetwork, interpreter, layers, items, steps=4, checkpoint_path=ckpt,
+        log=lambda *a, **k: logs.append(a[0] if a else ""), **common,
+    )
+    assert ckpt.exists()
+    assert [record["step"] for record in history] == [2, 4]
+    assert eval_steps_seen == [2, 4]
+    assert all("niah_6" in record for record in history)
+
+    # Resume: a longer budget on the same checkpoint must skip the completed 0-4 prefix and
+    # only train/eval 4-6, extending (not restarting) the history.
+    eval_steps_seen.clear()
+    resumed = train_doc_niah_checkpointed(
+        hypernetwork, interpreter, layers, items, steps=6, checkpoint_path=ckpt, **common,
+    )
+    assert [record["step"] for record in resumed] == [2, 4, 6]
+    assert eval_steps_seen == [6]  # only the new step was evaluated, prefix was skipped

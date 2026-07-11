@@ -384,6 +384,154 @@ def _d2p_sft_pilot_command(args) -> None:
     print(f"wrote {output_dir}/results.jsonl, {output_dir}/results.csv, {output_dir}/loss_curves.json", flush=True)
 
 
+# Hook site per adapter for the Doc-to-LoRA-parity NIAH path. Upstream's NIAH recipe hooks
+# `down_proj` only; we hold that site fixed for every weight-space codec so the six-codec
+# comparison varies only the generated *representation*, not the attachment point (activation
+# steering must intervene on the whole residual block, so it keeps "block").
+D2L_PARITY_TARGET_MODULES = {
+    "lora": ["down_proj"],
+    "freeze_a_lora": ["down_proj"],
+    "lokr": ["down_proj"],
+    "fourierft": ["down_proj"],
+    "ia3": ["down_proj"],
+    "activation_steering": ["block"],
+}
+
+
+def _d2p_niah_command(args) -> None:
+    """Doc-to-LoRA-parity NIAH training inside the six-codec framework: the first
+    document-conditioned config that genuinely learns held-out needle retrieval (see
+    PROJECT_PLAN.md's D2P section). Trains one hypernetwork per `--adapters` entry with the
+    early-exit context encoder + Perceiver-IO generation path (`EarlyExitPerceiverConditioner`)
+    on generic-needle chat-tokenized NIAH documents, checkpointing model+optimizer every eval
+    (restart-safe) and logging exact-digit `accuracy` AND `accuracy_ctxswap` per eval - never
+    gating on loss (gotcha #16). Once LoRA retrieves, the other five codecs plug into the same
+    recipe unchanged (the codec seam), which is the six-codec comparison under document
+    conditioning.
+    """
+    import torch
+
+    from ..t2p.document_conditioning import EarlyExitPerceiverConditioner
+    from ..t2p.document_sft_trainer import train_doc_niah_checkpointed
+    from ..t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+    from ..t2p.live_evaluator import DocumentHypernetworkDownstreamEvaluator
+    from ..t2p.niah_data import (
+        DocSFTDataset,
+        assert_context_fits_in_one_pass,
+        build_niah_eval_examples,
+        doc_collate_fn,
+    )
+
+    torch.manual_seed(args.seed)
+    context_lengths = [int(length) for length in args.context_lengths.split(",")]
+    adapters = args.adapters.split(",")
+    output_dir = Path(args.output)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    print(f"[1/5] loading interpreter {args.interpreter}...", flush=True)
+    tokenizer, interpreter, layers = load_frozen_interpreter(args.interpreter, args.device)
+    hidden_size = interpreter.config.hidden_size
+    num_layers = len(layers)
+    exit_layer = args.exit_layer if args.exit_layer > 0 else max(1, num_layers // 4)
+    lora_scaling = args.lora_scaling if args.lora_scaling > 0 else 2 * args.rank**1.5
+    for context_length in context_lengths:
+        assert_context_fits_in_one_pass(context_length, interpreter.config.max_position_embeddings)
+    print(
+        f"[1/5] num_layers={num_layers} exit_layer={exit_layer} lora_scaling={lora_scaling:.3f} "
+        f"needle_style={args.needle_style}",
+        flush=True,
+    )
+
+    print(f"[2/5] building {args.num_train_documents} generic-needle NIAH training documents...", flush=True)
+    dataset = DocSFTDataset(
+        tokenizer, num_examples=args.num_train_documents, context_lengths=context_lengths,
+        seed=args.seed, needle_style=args.needle_style,
+    )
+    # Pass the raw per-doc items (not pre-collated batches) so train_doc_niah_checkpointed
+    # can reform batches from a document-level reshuffle every epoch (see its docstring - a
+    # frozen single-shuffle materialisation slows NIAH's phase transition).
+    train_items = [dataset[i] for i in range(len(dataset))]
+    collate = partial(doc_collate_fn, pad_token_id=tokenizer.pad_token_id)
+
+    print(f"[3/5] building {args.eval_limit} held-out NIAH eval documents per bin...", flush=True)
+    eval_examples_by_family = build_niah_eval_examples(
+        tokenizer, context_lengths, examples_per_bin=args.eval_limit, needle_style=args.needle_style
+    )
+
+    recorder = ResultRecorder(output_dir, lambda r: f"  {r.adapter:20} {r.task_id:16} {r.metrics}")
+    loss_curves: dict = {}
+    warmup_steps = int(args.warmup_frac * args.steps)
+
+    print("[4/5] scoring frozen interpreter baseline (no document access)...", flush=True)
+    frozen_evaluator = DocumentHypernetworkDownstreamEvaluator(
+        interpreter, layers, None, tokenizer, trial_id="d2p_niah::frozen_interpreter", device=args.device,
+    )
+    for result in frozen_evaluator.iter_evaluate_frozen(eval_examples_by_family, split=args.eval_split):
+        recorder.record(dataclasses.replace(result, metadata={**result.metadata, "adapter_family": "frozen"}))
+
+    for adapter in adapters:
+        torch.manual_seed(args.seed)
+        target_modules = D2L_PARITY_TARGET_MODULES[adapter]
+        print(f"[5/5] adapter={adapter} target_modules={target_modules}: training...", flush=True)
+        module_shapes = infer_module_shapes(layers, target_modules, hidden_size=hidden_size)
+        conditioner = EarlyExitPerceiverConditioner(
+            hidden_size=hidden_size, task_dim=D2P_LATENT_DIM // 2, num_layers=num_layers,
+            exit_layer=exit_layer, n_latents=args.n_latents, num_blocks=args.num_blocks, seed=args.seed,
+        )
+        hypernetwork = TextToPeftHypernetwork(
+            module_shapes=module_shapes, num_layers=num_layers, adapter=adapter,
+            latent_dim=D2P_LATENT_DIM, rank=args.rank, seed=args.seed, conditioner=conditioner,
+        ).to(args.device)
+        # Apply the D2L-parity scale directly to any LoRA codec (2*r^1.5, ~8x rslora's default).
+        from ..t2p.codecs import FreezeALoRACodec, LoKrCodec, LoRACodec
+
+        # By default only LoRA gets the load-bearing D2L-parity scale (45.25). With
+        # --scale-weight-codecs, the other LoRA-family weight codecs (FreezeALoRA, LoKr -
+        # both a low-rank B@A / Kronecker product with a `.scaling` knob) get the SAME
+        # scale, so a six-codec comparison isn't confounded by LoRA alone receiving the
+        # ~8x-larger update the frozen model needs to be overridden (see the D2P diagnosis).
+        # IA3 (multiplicative) / FourierFT (spectral) / activation-steering (additive) have
+        # fundamentally different scaling semantics and are left at their own natural knobs.
+        scaled_types = (LoRACodec, FreezeALoRACodec, LoKrCodec) if args.scale_weight_codecs else (LoRACodec,)
+        for codec in hypernetwork.codecs.values():
+            if isinstance(codec, scaled_types):
+                codec.scaling = lora_scaling
+
+        evaluator = DocumentHypernetworkDownstreamEvaluator(
+            interpreter, layers, hypernetwork, tokenizer,
+            trial_id=f"d2p_niah::{adapter}", device=args.device,
+        )
+
+        def _evaluate(net, step, _adapter=adapter, _evaluator=evaluator):
+            metrics = {}
+            for result in _evaluator.iter_evaluate(eval_examples_by_family, split=args.eval_split):
+                metrics[result.task_id] = {
+                    "accuracy": result.metrics.get("accuracy"),
+                    "accuracy_ctxswap": result.metrics.get("accuracy_ctxswap"),
+                }
+            return metrics
+
+        history = train_doc_niah_checkpointed(
+            hypernetwork, interpreter, layers, train_items,
+            collate=collate, device=args.device, batch_size=args.batch_size,
+            steps=args.steps, eval_every=args.eval_every, learning_rate=args.learning_rate,
+            evaluate=_evaluate, checkpoint_path=output_dir / f"ckpt_{adapter}.pt",
+            l2_reg_generated_w=args.l2_reg_generated_w, grad_accum_steps=args.grad_accum_steps,
+            warmup_steps=warmup_steps,
+        )
+        loss_curves[adapter] = history
+        (output_dir / "history.json").write_text(json.dumps(loss_curves, indent=2) + "\n")
+
+        # Record the final eval as EvaluationResults (matched + ctxswap per family).
+        hypernetwork.eval()
+        for result in evaluator.iter_evaluate(eval_examples_by_family, split=args.eval_split):
+            recorder.record(dataclasses.replace(result, metadata={**result.metadata, "adapter_family": adapter, "steps": args.steps}))
+        del hypernetwork, evaluator
+        torch.cuda.empty_cache()
+
+    print(f"wrote {output_dir}/results.jsonl, {output_dir}/history.json", flush=True)
+
+
 def _t2p_sft_sweep_command(args) -> None:
     """Checkpointed counterpart to `t2p-sft-pilot`: scores held-out accuracy at several
     step budgets per adapter under one persistent optimizer (`t2p.sft_trainer.
@@ -527,7 +675,48 @@ def register(subparsers) -> None:
     _register_t2p_sft(subparsers)
     _register_t2p_sft_pilot(subparsers)
     _register_d2p_sft_pilot(subparsers)
+    _register_d2p_niah(subparsers)
     _register_t2p_sft_sweep(subparsers)
+
+
+def _register_d2p_niah(subparsers) -> None:
+    p = subparsers.add_parser(
+        "d2p-niah",
+        help="Doc-to-LoRA-parity NIAH training in the six-codec framework: early-exit context encoder + "
+        "Perceiver-IO generation path on generic-needle chat-tokenized documents, restart-safe "
+        "(checkpoints model+optimizer every eval), logging exact-digit accuracy AND accuracy_ctxswap per "
+        "eval. The first document-conditioned config that genuinely learns held-out NIAH retrieval; pass "
+        "several --adapters for the six-codec comparison under document conditioning.",
+    )
+    p.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
+    p.add_argument("--adapters", default="lora", help="comma-separated codecs (see 't2p-sft-pilot --adapters')")
+    p.add_argument("--needle-style", default="generic", choices=["generic", "topic"],
+                   help="generic = Doc-to-LoRA's topic-free needle+query (the format that retrieves); topic = original")
+    p.add_argument("--context-lengths", default="384", help="comma-separated NIAH document token lengths")
+    p.add_argument("--num-train-documents", type=int, default=512)
+    p.add_argument("--batch-size", type=int, default=8)
+    p.add_argument("--steps", type=int, default=2500)
+    p.add_argument("--eval-every", type=int, default=250)
+    p.add_argument("--learning-rate", type=float, default=4e-5, help="D2L NIAH parity lr")
+    p.add_argument("--rank", type=int, default=8)
+    p.add_argument("--lora-scaling", type=float, default=-1.0,
+                   help="LoRA scale applied directly; <=0 (default) computes D2L parity 2*r^1.5 (=45.25 at r=8)")
+    p.add_argument("--scale-weight-codecs", action="store_true",
+                   help="also apply --lora-scaling to freeze_a_lora and lokr (the other LoRA-family weight "
+                        "codecs) so the six-codec comparison isn't confounded by only LoRA getting the "
+                        "load-bearing scale; IA3/FourierFT/steering keep their own scaling semantics")
+    p.add_argument("--l2-reg-generated-w", type=float, default=0.0, help="D2L NIAH parity uses ~0 (see gotcha)")
+    p.add_argument("--grad-accum-steps", type=int, default=1)
+    p.add_argument("--warmup-frac", type=float, default=0.03)
+    p.add_argument("--exit-layer", type=int, default=-1, help="early-exit ctx encoder depth; <=0 => num_layers//4")
+    p.add_argument("--n-latents", type=int, default=208, help="Perceiver-IO latent queries (D2L parity: 208)")
+    p.add_argument("--num-blocks", type=int, default=8, help="Perceiver-IO cross-attention blocks (D2L parity: 8)")
+    p.add_argument("--eval-limit", type=int, default=32, help="held-out eval documents per context-length bin")
+    p.add_argument("--eval-split", default="test")
+    p.add_argument("--seed", type=int, default=777)
+    p.add_argument("--device", default="cuda:0")
+    p.add_argument("--output", default="results/d2p_niah")
+    p.set_defaults(func=_d2p_niah_command)
 
 
 def _register_t2p_sft(subparsers) -> None:

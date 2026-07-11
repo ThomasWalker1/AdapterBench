@@ -30,9 +30,8 @@ from torch import Tensor, nn
 
 from ..contracts import EvaluationResult, TaskExample
 from ..hf_downstream_evaluator import _NUMBER_RE, get_binary_accuracy, get_choice_accuracy
-from .document_conditioning import DocumentActivations, capture_document_activations
 from .hypernetwork import TextToPeftHypernetwork
-from .niah_data import NiahExample, build_query_prompt
+from .niah_data import NiahExample, build_query_for_example, encode_context
 
 
 class HypernetworkDownstreamEvaluator:
@@ -217,18 +216,25 @@ class DocumentHypernetworkDownstreamEvaluator:
         self.max_context_len = max_context_len
 
     @contextmanager
-    def _active(self, context_text: str | None):
-        if context_text is None or self.hypernetwork is None:
+    def _active(self, example: NiahExample | None):
+        if example is None or self.hypernetwork is None:
             yield self.interpreter
             return
-        encoded = self.tokenizer(
-            context_text, return_tensors="pt", truncation=True, max_length=self.max_context_len
-        ).to(self.device)
-        doc_activations = capture_document_activations(
-            self.interpreter, encoded["input_ids"], encoded["attention_mask"]
+        # Tokenize the context exactly as training did for this needle_style
+        # (generic -> chat-wrapped; topic -> raw), then let the conditioner produce its
+        # own raw_condition via `prepare_condition` - `DocumentPerceiverConditioner`
+        # returns the full per-layer activation stack, `EarlyExitPerceiverConditioner`
+        # returns its early-exit-encoded latents - so this evaluator is conditioner-agnostic
+        # (the codec seam and generate_per_layer contract are identical for both).
+        encoded = encode_context(self.tokenizer, example, max_length=self.max_context_len)
+        input_ids = torch.tensor([encoded["input_ids"]], device=self.device)
+        attention_mask = torch.tensor(
+            [encoded.get("attention_mask", [1] * len(encoded["input_ids"]))], device=self.device
         )
-        raw_condition = DocumentActivations(hidden_states=doc_activations, attention_mask=encoded["attention_mask"])
         with torch.no_grad():
+            raw_condition = self.hypernetwork.conditioner.prepare_condition(
+                self.interpreter, input_ids, attention_mask
+            )
             generated = self.hypernetwork.generate_per_layer(raw_condition)
         with self.hypernetwork.apply(self.layers, generated):
             yield self.interpreter
@@ -245,7 +251,7 @@ class DocumentHypernetworkDownstreamEvaluator:
         return self.tokenizer.decode(output_ids[0, input_ids["input_ids"].shape[1] :], skip_special_tokens=True)
 
     def _score(self, model, example: NiahExample) -> bool:
-        prompt = build_query_prompt(self.tokenizer, example.topic)
+        prompt = build_query_for_example(self.tokenizer, example)
         generated = self._generate(model, prompt)
         return example.digits in generated
 
@@ -255,8 +261,7 @@ class DocumentHypernetworkDownstreamEvaluator:
         correct = 0
         swap_hits = 0
         for i, example in enumerate(examples):
-            context = example.context_text if active else None
-            with self._active(context) as model:
+            with self._active(example if active else None) as model:
                 correct += int(self._score(model, example))
             # Context-swap control: same query, but the adapter is generated from the WRONG
             # document (the next example's). Genuine document-dependent retrieval must NOT
@@ -265,8 +270,7 @@ class DocumentHypernetworkDownstreamEvaluator:
             # is not (a model can drive response CE to ~0 by learning digit priors + the
             # teacher-forced continuation without ever routing the document; see PROJECT_PLAN).
             if active and n > 1:
-                wrong_context = examples[(i + 1) % n].context_text
-                with self._active(wrong_context) as model:
+                with self._active(examples[(i + 1) % n]) as model:
                     swap_hits += int(self._score(model, example))
         inference_seconds = time.perf_counter() - started
 

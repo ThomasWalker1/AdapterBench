@@ -21,11 +21,11 @@ from __future__ import annotations
 
 import itertools
 from collections.abc import Iterable
+from pathlib import Path
 
 import torch
 from torch import Tensor, nn
 
-from .document_conditioning import DocumentActivations, capture_document_activations
 from .hypernetwork import TextToPeftHypernetwork
 from .niah_data import DocSFTBatch
 from .sft_trainer import SFTTrainStats, _linear_warmup_then_constant, masked_cross_entropy
@@ -61,8 +61,9 @@ def compute_doc_sft_loss(
     generate_per_layer`/`forward_layer`'s docstrings for why this differs from
     `forward`. Costs `num_layers` trunk forward passes per training step instead of 1.
     """
-    doc_activations = capture_document_activations(interpreter, batch.context_input_ids, batch.context_attention_mask)
-    raw_condition = DocumentActivations(hidden_states=doc_activations, attention_mask=batch.context_attention_mask)
+    raw_condition = hypernetwork.conditioner.prepare_condition(
+        interpreter, batch.context_input_ids, batch.context_attention_mask
+    )
     generated = hypernetwork.generate_per_layer(raw_condition)
     with hypernetwork.apply(layers, generated):
         outputs = interpreter(input_ids=batch.input_ids, attention_mask=batch.attention_mask)
@@ -135,3 +136,115 @@ def train_doc_downstream_hypernetwork(
         )
         scheduler.step()
     return SFTTrainStats(initial_loss=losses[0], final_loss=losses[-1], steps=steps, losses=tuple(losses))
+
+
+def train_doc_niah_checkpointed(
+    hypernetwork: TextToPeftHypernetwork,
+    interpreter: nn.Module,
+    layers: nn.ModuleList,
+    train_items: list,
+    *,
+    collate,
+    device,
+    batch_size: int,
+    steps: int,
+    eval_every: int,
+    learning_rate: float,
+    evaluate: "callable",
+    checkpoint_path,
+    max_grad_norm: float = 1.0,
+    l2_reg_generated_w: float = 0.0,
+    grad_accum_steps: int = 1,
+    warmup_steps: int = 0,
+    log=print,
+) -> list[dict]:
+    """Restart-safe document-conditioned NIAH training: train `steps` optimizer steps,
+    running `evaluate(hypernetwork, step)` every `eval_every` steps (and once at the end),
+    and checkpointing **model + optimizer + scheduler + step + eval history** to
+    `checkpoint_path` after every eval. If `checkpoint_path` already exists, resume from it
+    (skipping the completed prefix) - so a killed multi-hour run picks up where it left off
+    rather than restarting (see PROJECT_PLAN.md's D2P step 3: session teardowns repeatedly
+    killed long runs). `evaluate` must return a JSON-serializable dict of metrics (e.g.
+    per-family exact-digit `accuracy` and `accuracy_ctxswap`) - it is logged and stored in
+    the returned/checkpointed history, never used to gate training (NIAH loss is not a
+    retrieval signal - gotcha #16). Returns the eval-history list.
+
+    `train_items` are the raw per-document dicts (a `DocSFTDataset`), NOT pre-collated
+    batches: batches are reformed from a **document-level reshuffle every epoch**
+    (deterministic per-epoch seed, so resume is exact), then `collate`d and moved to
+    `device`. This matters - freezing one shuffle into fixed batches (materialising a
+    DataLoader once) starves gradient diversity enough to noticeably delay NIAH's sharp
+    retrieval phase transition; reforming groupings each epoch matches upstream / the
+    validated probe.
+    """
+    import random as _random
+
+    import torch
+
+    n = len(train_items)
+    n_batches = (n + batch_size - 1) // batch_size
+
+    def _epoch_batches(epoch: int) -> list:
+        order = list(range(n))
+        _random.Random(10_000 + epoch).shuffle(order)
+        return [
+            collate([train_items[i] for i in order[b : b + batch_size]]).to(device)
+            for b in range(0, n, batch_size)
+        ]
+
+    _cache: dict = {}
+
+    def _micro_batch(micro_idx: int):
+        epoch, pos = divmod(micro_idx, n_batches)
+        if epoch not in _cache:
+            _cache.clear()  # keep only the current epoch's batches resident on `device`
+            _cache[epoch] = _epoch_batches(epoch)
+        return _cache[epoch][pos]
+
+    checkpoint_path = Path(checkpoint_path)
+    optimizer = torch.optim.AdamW(hypernetwork.parameters(), lr=learning_rate)
+    scheduler = _linear_warmup_then_constant(optimizer, warmup_steps)
+    history: list[dict] = []
+    start_step = 0
+    if checkpoint_path.exists():
+        ckpt = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
+        hypernetwork.load_state_dict(ckpt["model"])
+        optimizer.load_state_dict(ckpt["optimizer"])
+        scheduler.load_state_dict(ckpt["scheduler"])
+        start_step = ckpt["step"]
+        history = ckpt["history"]
+        log(f"[resume] loaded checkpoint at step {start_step} from {checkpoint_path}", flush=True)
+
+    def _save(step):
+        tmp = checkpoint_path.with_suffix(checkpoint_path.suffix + ".tmp")
+        torch.save(
+            {
+                "model": hypernetwork.state_dict(),
+                "optimizer": optimizer.state_dict(),
+                "scheduler": scheduler.state_dict(),
+                "step": step,
+                "history": history,
+            },
+            tmp,
+        )
+        tmp.replace(checkpoint_path)  # atomic - a kill mid-save can't corrupt the live checkpoint
+
+    hypernetwork.train()
+    last_loss = float("nan")
+    for step in range(start_step, steps):
+        micro_batches = [_micro_batch(step * grad_accum_steps + k) for k in range(grad_accum_steps)]
+        last_loss = doc_train_step(
+            micro_batches, interpreter, hypernetwork, layers, optimizer,
+            max_grad_norm=max_grad_norm, l2_reg_generated_w=l2_reg_generated_w,
+        )
+        scheduler.step()
+        done = step + 1
+        if done % eval_every == 0 or done == steps:
+            hypernetwork.eval()
+            metrics = evaluate(hypernetwork, done)
+            hypernetwork.train()
+            record = {"step": done, "loss": last_loss, **metrics}
+            history.append(record)
+            log(f"[step {done}] loss={last_loss:.4f} {metrics}", flush=True)
+            _save(done)
+    return history

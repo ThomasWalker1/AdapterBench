@@ -284,85 +284,101 @@ collapse" framing was an artifact of that, not a property of training length. Bo
 fixed now (see Gotchas below); this run is the first one to test whether results are
 actually stable once seeding is real.
 
-## Setting 2 results: document-conditioning variant (NIAH) — diagnosis + D2L integration plan
+## Setting 2 results: document-conditioning variant (NIAH) — SOLVED (D2L-parity recipe)
 
-**STATUS (2026-07-11): the from-scratch six-codec D2P framework does NOT yet learn NIAH
-retrieval. A full diagnostic pass established why; an upstream-parity integration is in
-progress. Read this whole section before touching the D2P path — it supersedes the earlier
-"generalization wall" framing.**
+**STATUS (2026-07-11): the from-scratch six-codec D2P framework NOW learns held-out NIAH
+retrieval.** A D2L-parity recipe was validated cheaply, then integrated into the framework
+(codec seam intact). On Qwen3-0.6B, generic-needle NIAH, the generated LoRA reaches
+**held-out exact-digit accuracy = 1.0 with the context-swap control = 0.0** — genuine
+document-dependent retrieval, not memorization or a digit prior. This supersedes the earlier
+"does NOT yet learn / diagnosis + integration plan" framing.
 
-### What was tried and ruled out (all on Qwen3-0.6B unless noted)
+### The fix: what was load-bearing
+The earlier diagnosis correctly ruled out conditioner capacity and data scale, and identified
+the recipe mismatches. The combination that flips 0 -> retrieval:
 
-Scaled up from the 2026-07-07 smoke across many configs. Held-out NIAH retrieval stayed at
-**0** in every one:
+- **Generic-needle, chat-tokenized data** (upstream `ctx_magic_number` format): one topic-free
+  needle "The special magic number is NNNN." among repeated noise blocks joined by newlines, the
+  document wrapped as a chat user message; topic-free query; answer = the bare 4 digits. (The old
+  topic-tagged needle/query was replaced; `niah_data.py` now has `needle_style="generic"`.)
+- **`down_proj` hook** (not q_proj/v_proj) and **LoRA scale = 2*r^1.5 = 45.25** applied directly
+  (~8x rslora's default) — the two most load-bearing knobs.
+- **lr 4e-5, reg 0, no dropout.**
+- **Early-exit context encoder** (frozen interpreter's first `L//4 = 7` decoder layers, single
+  `last_hidden_state`) + **Perceiver-IO** (208 latent queries, 8 cross-attention blocks) ->
+  per-layer output-query decode -> the existing trunk/heads/codec seam.
 
-| variation | held-out | rules out |
-|---|---|---|
-| conditioner: single-vector bottleneck (default) | 0 | — |
-| conditioner: 8× capacity (32 latents / 4 blocks) | 0 | "make the conditioner bigger" |
-| conditioner: per-slot Perceiver-IO (no bottleneck) | 0 | the bottleneck hypothesis |
-| conditioner: faithful per-layer (`layer_to_layer`) | 0 | conditioner architecture generally |
-| data scale: 3K → 60K → 120K docs | 0 (loss plateau ~1.54) | "just needs more data" in this range |
-| Gemma-2-2B interpreter | 0/8 overfit — won't even converge | model swap as a quick fix (integration bug) |
+Cheap validation (standalone probe, 512 docs, ctx~384): a clean phase transition — held-out
+matched 0.00 (step 1200) -> 0.56 (step 1600) -> 1.00 (step 2000+), ctxswap pinned at 0.00, train
+and held-out rising together (general copy algorithm, not memorization). Overfit control (32
+docs) hit 1.0. Only 512 documents suffice at this context length.
 
-The **overfit control always passes on Qwen** (memorizes 8 docs), so the mechanism is wired
-correctly — it is *generalization* to held-out documents that never emerges.
+### Integration + a real gotcha found while reproducing it in-framework
+Integrated (tests green at 122): `capture_early_exit_representation` +
+`EarlyExitPerceiverConditioner` in `document_conditioning.py` (both conditioners expose
+`prepare_condition`, so trainer/evaluator are conditioner-agnostic — codec seam and
+`generate_per_layer` unchanged); `needle_style="generic"` in `niah_data.py`;
+`document_sft_trainer.py::train_doc_niah_checkpointed` (restart-safe: atomic
+model+optimizer+scheduler+step+history checkpoint every eval, resume from it — validated on real
+kills); `cli d2p-niah` (the parity command; `--adapters` for the comparison,
+`--scale-weight-codecs` for the fairness control below).
 
-### THE key finding: CE loss is NOT a retrieval signal
+**Gotcha (new, gotcha #18): freezing the batch grouping starves NIAH's phase transition.** The
+first in-framework runs converged ~3-4x slower than the probe and looked broken. A chain of
+controlled isolations established there was **no code bug** — the conditioner classes are
+numerically bit-identical to the probe's, and the recipe matched. The culprit: the CLI
+materialised the `DataLoader` into a fixed list of batches once, so every epoch cycled the *same*
+8-doc groupings, whereas the probe reshuffled documents into fresh groupings each epoch. That
+reduced gradient diversity enough to badly delay the sharp retrieval transition (which is itself
+init/seed-sensitive, so the transition step already varies run-to-run, ~1600-2500+). Fix:
+`train_doc_niah_checkpointed` takes the raw per-doc items and reforms batches from a
+**document-level reshuffle every epoch** (deterministic per-epoch seed -> resume stays exact);
+runs use a generous step budget so even a late transition completes.
 
-Every "loss decreasing" observation above says nothing about retrieval. Direct proof: an
-upstream-parity mechanism check (scale 45.25, down_proj, 8000 steps, lr 4e-5) drove training
-loss to **0.000 while retrieving 0/8 on the same documents**. The answer is ~5 tokens
-(space + 4 digits + eos); teacher-forced CE is dominated by the easy continuation tokens, so
-it rounds to ~0 while the one hard token — the first digit, which requires the adapter to
-carry document identity — is never learned. **Never trust loss for NIAH; use exact-digit
-generation + the context-swap control (see below).**
+### Six-codec comparison under document conditioning (Qwen3-0.6B, 512 docs, 6000 steps, ctx~384)
+<!-- RESULTS: results/d2p_niah_{lora,freeze_a_lora,ia3,lokr,fourierft,activation_steering} -->
 
-### Why upstream works and ours did not — verified recipe mismatches
+Held-out exact-digit accuracy / context-swap (n=32 docs), final step. Every codec uses the same
+recipe/hook (`down_proj`, except activation_steering on the residual `block`); **only LoRA
+received the load-bearing 45.25 scale — the others use their own default scaling** (see caveat):
 
-AdapterBench's D2P was built as its own unified-codec framework, NOT a faithful D2L port.
-Against upstream's actual NIAH recipe (`upstream/doc-to-lora/scripts/niah/1-train.sh` + its
-config), load-bearing mismatches, each verified against the code:
+| codec | held-out accuracy | ctxswap | train loss @ 6000 |
+|---|---|---|---|
+| frozen_interpreter | 0.00 | — | — |
+| **lora** | **1.00** | 0.00 | 0.00 |
+| freeze_a_lora | 0.06 | 0.00 | 0.10 |
+| ia3 | 0.06 | 0.00 | 0.06 |
+| lokr | 0.06 | 0.00 | 0.24 |
+| fourierft | 0.22 | 0.00 | 0.21 |
+| activation_steering | 0.00 | 0.00 | 0.23 |
 
-| knob | AdapterBench default | upstream NIAH |
-|---|---|---|
-| LoRA scale | `alpha/sqrt(r)` = 5.66 | `lora_alpha = 2·r^1.5` = **45.25**, applied DIRECTLY (`lora_forward` uses `scaling=lora_alpha`; model_loading.py:171, lora_layer.py:520) — ~8× larger |
-| hook site | `q_proj,v_proj` | `down_proj` only |
-| learning rate | 1e-3 | 4e-5 (the big scale needs a low lr for stability) |
-| doc encoder | per-layer / all-layer activations | **early-exit @ layer L//4**, single representation (ctx_encoder.py `EarlyExit`) |
-| Perceiver | 2 blocks / 4 latent queries | **8 blocks / 208 latent queries**, `num_self_attn_per_block=0` |
-| data | topic-needle, raw tok (`add_special_tokens=False`) | generic needle, context as a chat user message |
-| regime | batch 4, no packing, +L2 penalty | batch 1 × grad_accum 16, sequence packing, per-context loss, `gen_lora_l1_reg_coef=1.5`* |
+LoRA generalizes perfectly; every other codec drives **training** loss low (0.06-0.24) but
+does **not** generalize to held-out documents (accuracy stays low/noisy, ctxswap 0 everywhere) —
+the "loss is not retrieval" pattern (gotcha #16) playing out per-codec: they memorize trained
+docs without learning the general copy algorithm.
 
-*Our own Setting-1 reproduction (above) found L1=1.5 **collapses**; use ~0. The two most
-load-bearing mismatches are the 8×-too-small scale and the wrong hook site: a too-small
-adapter on the wrong modules cannot override the frozen model to emit an unseen needle.
+**Scale-matched control — both scale AND shape matter.** Because only LoRA got the ~8x-larger
+45.25 scale the frozen model needs to be overridden (the load-bearing knob from the diagnosis),
+the table above is scale-confounded. Re-running the two other LoRA-family weight codecs at the
+SAME 45.25 scale (`--scale-weight-codecs`, `results/d2p_niah_{freeze_a_lora,lokr}_hi`) disentangles
+it:
 
-### Already integrated this session (2026-07-11, tests green)
-- `DocumentHypernetworkDownstreamEvaluator`: **context-swap control** — each query is also
-  scored against the WRONG document (the next example's); genuine doc-dependent retrieval must
-  sit near chance there. Reported as `accuracy_ctxswap` beside exact-match `accuracy`. The
-  matched-minus-swapped gap is the real signal.
-- `LoRACodec` / `make_codec`: optional `scaling` / `lora_scaling` override so the framework can
-  express upstream's 45.25 (was hardcoded to 5.66).
+| codec | held-out acc @ default scale | held-out acc @ 45.25 | ctxswap |
+|---|---|---|---|
+| lora | (n/a — 45.25 is its recipe) | **1.00** | 0.00 |
+| freeze_a_lora | 0.06 | **0.34** (peaked 0.44; train loss -> 0.001) | 0.00 |
+| lokr | 0.06 | **0.06** (no lift) | 0.00 |
 
-### Remaining integration — start fresh here ("make NIAH work at all", then vary the codec)
-The six-codec comparison is meaningless until ONE config actually retrieves. So reproduce a
-working recipe inside the framework first, then vary only the codec:
-1. **Generation path**: add an early-exit context encoder (interpreter → layer L//4, single
-   representation) + a larger Perceiver-IO (208 latents, 8 blocks) emitting per-(layer,module,
-   rank) output queries → codec params, replacing the small per-layer conditioner + trunk/head.
-   Keep the codec seam so all six codecs still plug in.
-2. **Parity config path** (new CLI flags, e.g. a `--d2l-parity` preset): `down_proj` hook,
-   `lora_scaling = 2·r^1.5`, lr 4e-5, generic-needle + chat-tokenized NIAH data, reg ~0.
-3. **Full-scale run — MUST be restart-safe/checkpointed** (session teardowns repeatedly killed
-   multi-hour runs this session; checkpoint model+optimizer every eval and resume). Train at
-   upstream's regime; per eval, log exact-digit `accuracy` AND `accuracy_ctxswap`. Success =
-   matched retrieval lifts off 0 while the context-swap control stays near chance.
-4. Only then: the six-codec comparison under document conditioning.
+So **scale is load-bearing** (freeze_a_lora jumps 0.06 -> 0.34 purely from the scale match) **and
+shape matters on top of it** (scale-matched, LoRA 1.0 ≫ freeze_a_lora 0.34 ≫ lokr 0.06 — fully
+generating both low-rank factors beats generating only B over a fixed random A, which beats the
+Kronecker factorization). freeze_a_lora fits *training* to loss ~0 but only partially generalizes,
+a genuine shape-driven generalization gap vs LoRA. IA3 (multiplicative) / FourierFT (spectral) /
+activation-steering (additive) have different scaling semantics and still need per-mechanism
+tuning for a fully fair panel — the remaining open item. The robust headline stands: the
+D2L-parity recipe makes the framework learn NIAH, LoRA retrieves perfectly, and among the
+scale-matched low-rank family the generated adapter's *shape* measurably changes generalization.
 
-The full parity recipe is specified in the mismatch table above (self-contained — rebuild from
-it). A validating prototype was run this session but lived in a scratch dir (not committed).
 
 ## How to run
 
@@ -400,10 +416,18 @@ uv run adapterbench d2p-sft-pilot \
   --adapters lora --seeds 777 --steps 20 --grad-accum-steps 1 \
   --context-lengths 256 --num-train-documents 40 --eval-limit 10 \
   --device cuda:0 --output results/d2p_sft_smoke
+
+# Setting 2, D2L-parity NIAH: the recipe that actually retrieves (LoRA -> held-out acc 1.0,
+# ctxswap 0). Restart-safe (resume by re-running the same command); use .venv/bin for long runs.
+# Pass several --adapters for the six-codec comparison; --scale-weight-codecs for the fair control.
+.venv/bin/adapterbench d2p-niah \
+  --adapters lora --needle-style generic --context-lengths 384 \
+  --num-train-documents 512 --steps 6000 --eval-every 500 --learning-rate 4e-5 \
+  --n-latents 208 --num-blocks 8 --eval-limit 32 --device cuda:0 --output results/d2p_niah_lora
 ```
 
 ```bash
-uv run pytest -q   # 112 tests as of 2026-07-07 (per-layer document-conditioning fix)
+uv run pytest -q   # 122 tests as of 2026-07-11 (D2L-parity NIAH: early-exit + Perceiver-IO path)
 ```
 
 `google/gemma-2-2b-it` and `meta-llama/Llama-3.1-8B-Instruct` are gated models — need
@@ -521,6 +545,127 @@ uv run pytest -q   # 112 tests as of 2026-07-07 (per-layer document-conditioning
     `2·r^1.5`=45.25 directly** (~8×). Pass `make_codec(..., lora_scaling=2*r**1.5)` (added
     2026-07-11) for D2L parity; the small default scale cannot override the frozen model to
     emit an unseen needle. See the D2P diagnosis section for the full mismatch table.
+18. **Freezing the NIAH batch grouping starves the retrieval phase transition.** Materialising a
+    `DataLoader` into a fixed list of batches once (then only reshuffling batch *order*) cycles the
+    same document groupings every epoch; the from-scratch document-conditioned NIAH run converges
+    ~3-4× slower that way and can look like it will never retrieve — even though the recipe is
+    correct (confirmed by isolation: the conditioner classes are numerically bit-identical to the
+    validated probe's). `train_doc_niah_checkpointed` reforms batches from a **document-level
+    reshuffle every epoch** (deterministic per-epoch seed, so restart-safe resume stays exact) to
+    avoid this. The transition step is also init/seed-sensitive (varies ~1600-2500+), so give NIAH
+    runs a generous step budget rather than assuming a fixed transition point.
+
+## Benchmark design: developing this into a real adapter benchmark
+
+**Read this before adding tasks or "improving" numbers.** AdapterBench's job is to answer *does the
+generated adapter's shape matter?* — so the benchmark's value is entirely in whether its
+comparisons are **valid**, not in how many tasks it has. The dominant failure mode is producing
+confident-but-meaningless leaderboards. This session hit two such traps directly, and both are
+properties of the *protocol*, not the task:
+
+- **Loss is not capability.** Response CE was driven to 0.000 with 0/N retrieval (gotcha #16).
+  Anything that gates, early-stops, or ranks on train/val loss will produce a clean-looking table
+  that measures nothing.
+- **Scale dominates shape.** The same LoRA is 0.0 at scale 5.66 and 1.0 at 45.25; freeze_a_lora
+  went 0.06 → 0.34 from a scale match alone. Comparing codecs at their *default* scales ranks
+  scales, not shapes.
+
+So the benchmark is defined by four protocol invariants. Any new task or setting MUST satisfy them.
+
+### The four invariants (non-negotiable)
+
+1. **Behavioral metric with a built-in control; headline = matched − control, never loss.**
+   Every task needs a control that catches "cheating" (priors, memorization, format-only learning).
+   The document/NIAH setting already has the gold-standard one: the **context-swap control**
+   (generate the adapter from the *wrong* document, same query → must sit near chance;
+   `DocumentHypernetworkDownstreamEvaluator.accuracy_ctxswap`). A finding only counts when matched
+   accuracy is high AND the control is near chance. If a proposed task has no clean control, it is a
+   *complement*, not the core.
+
+2. **Scale is a swept axis, not a fixed choice.** Run a small **per-codec scale sweep and report
+   best-of** (the "oracle-scale" comparison). Then "shape matters" means "even at its own best
+   scale, shape X underperforms" — a claim that survives scrutiny. The confounded default-scale
+   table (LoRA got 45.25, others their defaults) is exactly what NOT to publish as a shape result.
+   `d2p-niah --scale-weight-codecs` was a first step (applies one scale to the LoRA family); the
+   real need is a `--scale-sweep` that runs each codec over a small grid around its
+   effective-magnitude and keeps the best.
+
+3. **A graded difficulty knob so codecs actually spread.** A setting where everything saturates at
+   1.0 (or all fail) teaches nothing. NIAH at a single length is nearly binary. **Length
+   generalization is the ideal knob for the document setting** — train on short contexts, evaluate a
+   length sweep (256 → 8K) — because it is continuous, cheap (Qwen3-0.6B's 40K window means no
+   multi-chunk composition needed up to ~16K, so gotcha #12's `combine_lora` gap doesn't bite), and
+   it is exactly where shapes should diverge (does a rank-8 update carry routing structure that
+   *extrapolates*, or just memorize the training length?). Report a **curve per codec** plus a scalar
+   summary (the eval/train length ratio at which retrieval crosses 0.5).
+
+4. **Multi-seed, because the quantity being measured is stochastic.** The retrieval phase transition
+   landed anywhere from step ~1600 to ~2500+ on *identical* recipes (gotcha #18). A single-seed
+   number is partly luck. Use ≥3 seeds, report mean±std. The **transition step itself is a metric**
+   (sample efficiency / trainability), not just noise to average away.
+
+### What each codec should be scored on (a vector, not one number)
+"Does shape matter" is multi-dimensional; collapsing to peak accuracy throws away the interesting
+structure. Report per codec:
+- **Peak held-out retrieval** (matched − control), best-of the scale sweep.
+- **Length-extrapolation ratio** — eval/train length at which retrieval still holds (the D2L-style
+  claim; the most discriminative axis).
+- **Sample efficiency** — retrieval vs #training docs, or the phase-transition step.
+- **Parameter efficiency** — retrieval per *generated* parameter. Codecs differ here by orders of
+  magnitude (FourierFT's `n_frequency` vs LoRA's `rank·(dᵢₙ+dₒᵤₜ)` vs IA3's `dₒᵤₜ`), and this is
+  directly the question "is this shape a good use of the hypernetwork's fixed output budget?".
+
+### The recommended core setting
+Keep **both** conditioning modalities the framework already supports — a good adapter shape should
+hold up on both, and they probe different things:
+- **Document conditioning (NIAH), flagship discriminative axis = length generalization.** This is
+  the strongest core because of its clean control and continuous difficulty knob. Run it under the
+  scale-sweep + control + multi-seed protocol on Qwen3-0.6B (cheap enough to run the whole
+  6-codec × lengths × seeds × scale grid; 512 docs / a few-thousand steps suffices).
+- **Task-description conditioning (Text-to-LoRA-style), held-out tasks.** See the T2L notes below.
+
+Optionally add **one semantic document task** (document QA — condition on a doc, answer a question
+whose answer is in it; exact/span match) as a *complement* to NIAH, to check the shape ranking
+isn't an artifact of the copy/retrieval nature of NIAH. D2L's own training data (`fw_qa_v2`,
+`squad`, `ropes`, `drop_compact`) is a natural source. Caveat: QA's "swap the document" control is
+fuzzier than NIAH's exact-digit one, so treat it as corroboration, not the rigorous core.
+
+### Applying the same rigor to the Text-to-LoRA (task-description) setting
+The `t2p-sft-pilot` setting (train a hypernetwork from scratch, condition on a task-description
+embedding, score held-out boolq/hellaswag) already has multi-seed (777/778/779) and the eval-mode
+fix (gotcha #14), but it is missing the other three invariants:
+- **No control.** Add the analog of context-swap: score each held-out task with a **mismatched task
+  description** (a different task's embedding). Genuine task-conditioning must collapse toward
+  frozen/chance there; matched − mismatched is the real signal, exactly as for NIAH. Without it,
+  "LoRA beats frozen on hellaswag" can't be distinguished from "the adapter learned a generic
+  format/prior."
+- **No scale sweep.** Same confound as the document setting — run the per-codec scale sweep here too.
+- **Weak difficulty grading / saturation.** boolq barely separates (most adapters ≈ frozen's 75.0);
+  hellaswag was the only discriminative task. Curate eval tasks where the frozen baseline leaves
+  real headroom (drop near-saturated ones), and consider a difficulty knob analogous to length —
+  e.g. number of in-context shots, or held-out *task-family* distance from the training split.
+- FourierFT's seed-independent catastrophic 0.0 on hellaswag is a genuine result to keep, but re-check
+  it under the scale sweep (it may be scale-starved rather than shape-broken, the same lesson as
+  the document setting).
+
+### Concrete first steps for a new agent (in order)
+1. Add `--eval-context-lengths` to `d2p-niah` (train-short / eval-a-sweep; `build_niah_eval_examples`
+   already takes a length list — the only change is decoupling train vs eval lengths). Run the
+   low-rank family (lora, freeze_a_lora, lokr — skip IA3/FourierFT/steering for now, they need
+   per-mechanism scaling) across a length curve at 3 seeds, scale-matched. This converts "LoRA hits
+   1.0" into a length-generalization curve per shape — the first genuinely benchmark-shaped result.
+2. Add a `--scale-sweep` (small per-codec grid, keep best) and make best-of-scale the reported
+   number everywhere.
+3. Add the **mismatched-description control** to `HypernetworkDownstreamEvaluator` and surface
+   `accuracy_mismatched`, mirroring `accuracy_ctxswap`.
+4. Add a metric-aggregation step that emits the per-codec vector (peak, length-ratio, sample
+   efficiency, parameter efficiency) rather than only per-task accuracy rows.
+5. Only after 1–4 are solid: extend to IA3/FourierFT/activation-steering (each needs its own scale
+   semantics tuned — multiplicative / spectral / additive — before it belongs in a fair panel), and
+   optionally add the semantic QA complement.
+
+Guiding principle throughout: a result is only worth reporting if it survives its control, its scale
+sweep, and its seeds. Everything else is a diagnostic, not a benchmark number.
 
 ## Roadmap
 
@@ -529,13 +674,15 @@ uv run pytest -q   # 112 tests as of 2026-07-07 (per-layer document-conditioning
   *second* time, not just across these 3 seeds but across independent reruns.
 - Description-variant robustness (the released checkpoints' `args.yaml` carries 3
   paraphrased descriptions per benchmark task; only variant 0 is used anywhere so far).
-- **D2P: integrate a working D2L-parity recipe, then compare the six codecs** — the active
-  D2P workstream. The from-scratch six-codec framework does not yet learn NIAH; the full
-  diagnosis, the verified upstream-recipe mismatch table, what's already integrated
-  (context-swap diagnostic, `lora_scaling` override), and the remaining integration steps
-  (early-exit + 208/8 per-slot generation path, `--d2l-parity` config, restart-safe
-  full-scale run, then the six-codec comparison) are all in the **"Setting 2 results:
-  document-conditioning variant (NIAH)"** section above. Start there.
+- **Turn the working D2P/T2L settings into a real adapter benchmark** — the load-bearing next
+  direction. The D2L-parity recipe works (LoRA held-out 1.0, ctxswap 0) and the scale-matched
+  control landed (scale AND shape both matter: LoRA 1.0 ≫ freeze_a_lora 0.34 ≫ lokr 0.06). The
+  focus now shifts from *reproducing D2L* to *benchmarking adapter shapes validly*: length
+  generalization as the graded difficulty axis, per-codec scale sweeps, controls on both settings,
+  multi-seed, and a per-codec metric vector (peak / length-ratio / sample- / parameter-efficiency).
+  The full design + ordered first steps are in the **"Benchmark design"** section above — start there.
+  (IA3 / FourierFT / activation-steering are deferred until the low-rank family is solid, since each
+  needs its own scale semantics tuned before it belongs in a fair panel.)
 
 ## Reference: prior art
 

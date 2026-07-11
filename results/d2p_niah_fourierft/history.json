@@ -1,0 +1,100 @@
+{
+  "fourierft": [
+    {
+      "step": 500,
+      "loss": 2.003124952316284,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 1000,
+      "loss": 1.9265625476837158,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 1500,
+      "loss": 1.7414062023162842,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 2000,
+      "loss": 1.6101561784744263,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 2500,
+      "loss": 1.032812476158142,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 3000,
+      "loss": 0.8121094107627869,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 3500,
+      "loss": 0.7134765386581421,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 4000,
+      "loss": 0.6166015863418579,
+      "niah_384": {
+        "accuracy": 0.125,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 4500,
+      "loss": 0.23486328125,
+      "niah_384": {
+        "accuracy": 0.15625,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 5000,
+      "loss": 0.10301513969898224,
+      "niah_384": {
+        "accuracy": 0.1875,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 5500,
+      "loss": 0.06730957329273224,
+      "niah_384": {
+        "accuracy": 0.125,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 6000,
+      "loss": 0.21458740532398224,
+      "niah_384": {
+        "accuracy": 0.21875,
+        "accuracy_ctxswap": 0.0
+      }
+    }
+  ]
+}

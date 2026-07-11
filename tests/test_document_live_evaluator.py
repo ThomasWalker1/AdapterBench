@@ -55,7 +55,7 @@ class FakeTokenizer:
     def apply_chat_template(self, messages, tokenize=False, add_generation_prompt=True, **kwargs):
         return messages[0]["content"]
 
-    def __call__(self, text, return_tensors=None, truncation=False, max_length=None):
+    def __call__(self, text, return_tensors=None, truncation=False, max_length=None, add_special_tokens=True):
         ids = [ord(char) % 16 for char in text][:8] or [1]
         if truncation and max_length is not None:
             ids = ids[:max_length]

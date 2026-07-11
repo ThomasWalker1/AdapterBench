@@ -1,0 +1,100 @@
+{
+  "activation_steering": [
+    {
+      "step": 500,
+      "loss": 1.7054686546325684,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 1000,
+      "loss": 1.6437499523162842,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 1500,
+      "loss": 1.4578125476837158,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 2000,
+      "loss": 1.278906226158142,
+      "niah_384": {
+        "accuracy": 0.03125,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 2500,
+      "loss": 1.0359375476837158,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 3000,
+      "loss": 1.0734374523162842,
+      "niah_384": {
+        "accuracy": 0.03125,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 3500,
+      "loss": 0.9878906011581421,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 4000,
+      "loss": 0.7494140863418579,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 4500,
+      "loss": 0.568310558795929,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 5000,
+      "loss": 0.2939697504043579,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 5500,
+      "loss": 0.4395996332168579,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 6000,
+      "loss": 0.23082274198532104,
+      "niah_384": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    }
+  ]
+}

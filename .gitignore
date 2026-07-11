@@ -12,3 +12,7 @@ wandb/
 # (results.jsonl/.csv/loss_curves.json metrics stay tracked)
 results/**/adapters/
 
+
+# Restart-safe NIAH training checkpoints (model+optimizer, ~0.5-1.2GB each) - never commit
+results/**/ckpt_*.pt
+results/**/*.pt.tmp

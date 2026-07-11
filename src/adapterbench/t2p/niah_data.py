@@ -47,6 +47,17 @@ _TOPICS: tuple[str, ...] = (
     "astronomy", "geography", "philosophy", "medicine", "aviation", "cooking",
 )
 
+# Doc-to-LoRA's own NIAH data format (upstream `data/generate_ctx_magic_number.py`): a
+# single generic needle sentence (no topic), a fixed noise block repeated as filler, and
+# a fixed topic-free query. This is the `needle_style="generic"` path, distinct from the
+# original topic-conditioned `needle_style="topic"` above. The generic style is the one
+# that empirically learns held-out NIAH retrieval in the D2L-parity recipe (see
+# PROJECT_PLAN.md's D2P section); the topic style is retained for back-compat and because
+# every existing niah_data test asserts against it.
+_GENERIC_NOISE_BLOCK = "The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again."
+_GENERIC_NEEDLE_TPL = "The special magic number is {digits}."
+_GENERIC_QUERY = "What is the special magic number? Reply with only the number."
+
 
 def assert_context_fits_in_one_pass(context_length: int, model_max_position_embeddings: int) -> None:
     """D2L's own recipe splits an over-length document across multiple chunks and
@@ -76,6 +87,7 @@ class NiahExample:
     topic: str
     digits: str
     depth: float  # requested (not necessarily exact - see make_niah_example) fractional depth in [0, 1]
+    needle_style: str = "topic"  # "topic" (original) or "generic" (D2L-parity) - see make_niah_example
 
 
 def make_niah_example(
@@ -84,6 +96,7 @@ def make_niah_example(
     *,
     depth: float | None = None,
     rng: random.Random | None = None,
+    needle_style: str = "topic",
 ) -> NiahExample:
     """Build one haystack+needle document of approximately `context_length` tokens.
 
@@ -95,13 +108,42 @@ def make_niah_example(
     itself derived from `context_length` via each sentence's average token count - so
     the realized depth is an approximation of the requested one, not exact; see
     `tests/test_niah_data.py` for the tolerance this is checked at.
+
+    `needle_style` selects the data format:
+    - `"topic"` (default, original): one topic-tagged needle ("The special magic number
+      for {topic} is {digits}.") among a cycled pool of short filler sentences; the query
+      names that topic.
+    - `"generic"` (Doc-to-LoRA parity): one topic-free needle ("The special magic number
+      is {digits}.") among repeated copies of upstream's fixed noise block; the query is
+      topic-free. `topic` is set to "" (unused). This is the format the D2L-parity recipe
+      retrieves under - see PROJECT_PLAN.md's D2P section.
     """
     rng = rng or random.Random()
     resolved_depth = rng.random() if depth is None else depth
     if not 0.0 <= resolved_depth <= 1.0:
         raise ValueError(f"depth must be in [0, 1], got {resolved_depth}")
-    topic = rng.choice(_TOPICS)
     digits = f"{rng.randrange(10000):04d}"
+
+    if needle_style == "generic":
+        topic = ""
+        needle = _GENERIC_NEEDLE_TPL.format(digits=digits)
+        filler_block = _GENERIC_NOISE_BLOCK
+        block_tokens = len(tokenizer(filler_block, add_special_tokens=False)["input_ids"])
+        needle_tokens = len(tokenizer(needle, add_special_tokens=False)["input_ids"])
+        target_blocks = max(1, round((context_length - needle_tokens) / max(block_tokens, 1)))
+        needle_index = min(target_blocks, round(resolved_depth * target_blocks))
+        blocks = [filler_block for _ in range(target_blocks)]
+        blocks.insert(needle_index, needle)
+        # Upstream joins blocks with a newline separator.
+        context_text = "\n".join(blocks)
+        realized_depth = needle_index / target_blocks if target_blocks else 0.0
+        return NiahExample(
+            context_text=context_text, topic=topic, digits=digits, depth=realized_depth, needle_style="generic"
+        )
+
+    if needle_style != "topic":
+        raise ValueError(f"needle_style must be 'topic' or 'generic', got {needle_style!r}")
+    topic = rng.choice(_TOPICS)
     needle = f"The special magic number for {topic} is {digits}."
 
     filler_pool_tokens = [
@@ -126,18 +168,21 @@ def build_niah_eval_examples(
     examples_per_bin: int = 20,
     seed: int = 778,  # deliberately different default from DocSFTDataset's 777 - held-out documents, not the training ones
     fixed_depth: float | None = None,
+    needle_style: str = "topic",
 ) -> dict[str, list[NiahExample]]:
     """Build held-out NIAH eval examples grouped by context-length bin (mirrors
     `task_examples.py::build_all_task_examples`'s family -> list[TaskExample] shape, for
     `live_evaluator.py::DocumentHypernetworkDownstreamEvaluator` to group results by the
     same "family" concept the pooled-vector evaluator already uses). Family names are
-    `f"niah_{length}"`, one per requested context length bin.
+    `f"niah_{length}"`, one per requested context length bin. `needle_style` is forwarded
+    to `make_niah_example` (see it for "topic" vs "generic").
     """
     rng = random.Random(seed)
     examples_by_family: dict[str, list[NiahExample]] = {}
     for length in context_lengths:
         examples_by_family[f"niah_{length}"] = [
-            make_niah_example(tokenizer, length, depth=fixed_depth, rng=rng) for _ in range(examples_per_bin)
+            make_niah_example(tokenizer, length, depth=fixed_depth, rng=rng, needle_style=needle_style)
+            for _ in range(examples_per_bin)
         ]
     return examples_by_family
 
@@ -157,6 +202,51 @@ def build_query_prompt(tokenizer, topic: str) -> str:
         add_generation_prompt=True,
         enable_thinking=False,
     )
+
+
+def build_generic_query_prompt(tokenizer) -> str:
+    """`needle_style="generic"` (D2L-parity) counterpart to `build_query_prompt`: the
+    topic-free upstream query, chat-wrapped identically (`enable_thinking=False`)."""
+    return tokenizer.apply_chat_template(
+        [{"role": "user", "content": _GENERIC_QUERY}],
+        tokenize=False,
+        add_generation_prompt=True,
+        enable_thinking=False,
+    )
+
+
+def build_query_for_example(tokenizer, example: "NiahExample") -> str:
+    """Dispatch the right query prompt for an example's `needle_style` - the one lookup
+    both `DocSFTDataset` and `live_evaluator.DocumentHypernetworkDownstreamEvaluator` use
+    so training and eval never build the query differently for a given style."""
+    if example.needle_style == "generic":
+        return build_generic_query_prompt(tokenizer)
+    return build_query_prompt(tokenizer, example.topic)
+
+
+def encode_context(tokenizer, example: "NiahExample", *, max_length: int | None = None) -> dict:
+    """Tokenize a document's context the way its `needle_style` expects, so training and
+    eval encode it identically. `"generic"` (D2L-parity) wraps the document as a chat user
+    message (upstream feeds the context as a chat turn) and adds no extra special tokens
+    on top of the template; `"topic"` tokenizes the raw context as-is (original behavior).
+    Returns a dict with `input_ids` (and, for a real tokenizer, `attention_mask`).
+    """
+    if example.needle_style == "generic":
+        text = tokenizer.apply_chat_template(
+            [{"role": "user", "content": example.context_text}],
+            tokenize=False,
+            add_generation_prompt=False,
+            enable_thinking=False,
+        )
+        add_special = False
+    else:
+        text = example.context_text
+        add_special = False
+    kwargs = {"add_special_tokens": add_special}
+    if max_length is not None:
+        kwargs["truncation"] = True
+        kwargs["max_length"] = max_length
+    return tokenizer(text, **kwargs)
 
 
 @dataclass(frozen=True)
@@ -197,22 +287,26 @@ class DocSFTDataset(Dataset):
         max_query_len: int = 64,
         seed: int = 777,
         fixed_depth: float | None = None,
+        needle_style: str = "topic",
     ):
         self.tokenizer = tokenizer
         rng = random.Random(seed)
         self.examples: list[dict] = []
         for _ in range(num_examples):
             context_length = rng.choice(list(context_lengths))
-            example = make_niah_example(tokenizer, context_length, depth=fixed_depth, rng=rng)
+            example = make_niah_example(
+                tokenizer, context_length, depth=fixed_depth, rng=rng, needle_style=needle_style
+            )
             # `truncation=True, max_length=context_length * 2` is a generous safety cap
             # (sentence-boundary insertion in make_niah_example already targets
             # `context_length` closely - see that function's docstring on realized vs.
             # requested depth/length) rather than the primary length control.
-            context_ids = tokenizer(
-                example.context_text, add_special_tokens=False, truncation=True, max_length=context_length * 2
-            )["input_ids"]
-            prompt = build_query_prompt(tokenizer, example.topic)
-            response = " " + example.digits + (tokenizer.eos_token or "")
+            context_ids = encode_context(tokenizer, example, max_length=context_length * 2)["input_ids"]
+            prompt = build_query_for_example(tokenizer, example)
+            # Generic (D2L-parity) response is the bare number (matches upstream + the
+            # validated probe); topic keeps its historical leading space.
+            answer = example.digits if needle_style == "generic" else " " + example.digits
+            response = answer + (tokenizer.eos_token or "")
             tokenized_query = tokenize_prompt_response(tokenizer, prompt, response, max_query_len)
             self.examples.append(
                 {
@@ -223,6 +317,7 @@ class DocSFTDataset(Dataset):
                     "digits": example.digits,
                     "depth": example.depth,
                     "context_length": context_length,
+                    "needle_style": needle_style,
                 }
             )
 
