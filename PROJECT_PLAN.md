@@ -379,6 +379,60 @@ tuning for a fully fair panel — the remaining open item. The robust headline s
 D2L-parity recipe makes the framework learn NIAH, LoRA retrieves perfectly, and among the
 scale-matched low-rank family the generated adapter's *shape* measurably changes generalization.
 
+## Length-generalization benchmark (step 1): the first shape comparison under the four invariants
+
+**STATUS (2026-07-11): done.** This is the first genuinely benchmark-shaped result — it satisfies
+all four invariants at once (control-gated behavioral metric, scale-matched, a graded difficulty
+knob, multi-seed) and, in doing so, *overturned* the earlier single-seed scale-matched claim above.
+
+`d2p-niah` now takes `--eval-context-lengths` (decouples train vs eval length;
+`build_niah_eval_examples` already accepted a length list — the change is CLI glue + a
+train/eval-union `assert_context_fits_in_one_pass` guard, tests at 123). Protocol: **train on
+128+256-token documents, evaluate a length sweep 256 → 512 → 1K → 2K → 4K → 8K**, every codec
+**scale-matched at 45.25** (`--scale-weight-codecs`, so this is a pure shape comparison), 512 docs,
+lr 4e-5, n_latents 208 / num_blocks 8. LoRA on 6 seeds (777–782), freeze_a_lora/lokr on 3 (777–779);
+LoRA at 6000 steps, freeze/lokr at 8000 (freeze transitions ~3000–4000 and needs the room).
+
+<!-- RESULTS: results/d2p_lengthgen_{lora,freeze_a_lora,lokr}_s{777..782}; aggregate_lengthgen.py -->
+
+Held-out exact-digit accuracy by eval length (mean ± std across seeds; **context-swap control = 0.00
+at every bin, every seed** — all retrieval is genuinely document-dependent). Training length = 256,
+so an eval bin at length L is an L/256× extrapolation:
+
+| codec | 256 | 512 | 1K | 2K | 4K | 8K | transition rate | transition step | best reach | gen params |
+|---|---|---|---|---|---|---|---|---|---|---|
+| lora | 0.73±0.35 | 0.75±0.35 | 0.72±0.36 | 0.74±0.37 | 0.73±0.38 | 0.44±0.26 | **4/6** | ~1500–2500 | 8192 (**32×**) | 917K |
+| freeze_a_lora | 0.83±0.10 | 0.84±0.14 | 0.86±0.10 | 0.84±0.07 | 0.85±0.12 | 0.56±0.04 | **3/3** | ~3000–4000 | 8192 (**32×**) | 229K |
+| lokr | 0.41±0.28 | 0.41±0.22 | 0.36±0.14 | 0.39±0.18 | 0.35±0.18 | 0.12±0.05 | **1/3** | ~4500 | 4096 (16×) | 100K |
+
+**The result is a vector, not a winner** — the shapes separate differently on each axis, which is the
+whole point of reporting the vector (per "What each codec should be scored on"):
+
+- **Reliability (transition rate):** freeze_a_lora (3/3) > lora (4/6) > lokr (1/3). Transitioning
+  LoRA seeds are perfect (1.0 through 4096, 0.62 at 8192); the 2/6 that don't transition sit in the
+  memorization basin (loss → ~0.02, retrieval ~0.2) and drag LoRA's *mean* below freeze_a_lora's.
+- **Speed (transition step):** lora (~1500–2500) > freeze_a_lora (~3000–4000) > lokr (~4500). LoRA
+  finds the copy algorithm fastest when it finds it at all.
+- **Peak reach:** lora = freeze_a_lora = 8192 (32× training length) > lokr = 4096 (16×). At 8K,
+  every codec degrades (the graded knob works — nothing saturates at 1.0 across the whole sweep).
+- **Parameter efficiency:** freeze_a_lora reaches the *same* 32× peak as LoRA with **4× fewer
+  generated parameters** (229K vs 917K — it generates only the B factor over a fixed random A), and
+  a higher, tighter mean. On this task, generating both LoRA factors is *not* a good use of the
+  hypernetwork's output budget: fixing A costs some sample efficiency (later transition) but nothing
+  in ceiling, and it's markedly more reliable. lokr is smallest (100K) but weakest on every quality axis.
+
+**Methodological headline — the protocol corrected an earlier wrong conclusion.** The single-seed
+scale-matched control above reported freeze_a_lora at 0.34 ≪ LoRA 1.0 and called it a shape-driven
+generalization gap. That gap was **largely a seed/budget artifact**: freeze_a_lora transitions late
+(~3000–4000), so a single run at a shorter budget catches it mid-transition. Multi-seed + a generous
+step budget (invariant #4 + adequate steps) shows freeze_a_lora is in fact *more reliable* than LoRA
+and matches its peak reach. This is the strongest possible vindication of the invariants: the
+single-number, single-seed comparison was not just imprecise, it was directionally wrong. Report only
+numbers that survive the control, the scale match, **and** the seeds.
+
+**Reproduce:** `aggregate_lengthgen.py` (log-based, works on in-progress or finished runs) emits this
+table plus per-seed transition steps and crossover lengths; the grid launcher is `run_lengthgen_grid.sh`.
+
 
 ## How to run
 
@@ -424,10 +478,20 @@ uv run adapterbench d2p-sft-pilot \
   --adapters lora --needle-style generic --context-lengths 384 \
   --num-train-documents 512 --steps 6000 --eval-every 500 --learning-rate 4e-5 \
   --n-latents 208 --num-blocks 8 --eval-limit 32 --device cuda:0 --output results/d2p_niah_lora
+
+# Setting 2, length-generalization benchmark (step 1): train short, eval a length sweep, scale-matched.
+# One run per (codec, seed); restart-safe. run_lengthgen_grid.sh launches the whole grid; aggregate
+# with aggregate_lengthgen.py. --eval-context-lengths decouples eval length from --context-lengths.
+.venv/bin/adapterbench d2p-niah \
+  --adapters freeze_a_lora --seed 777 --needle-style generic \
+  --context-lengths 128,256 --eval-context-lengths 256,512,1024,2048,4096,8192 \
+  --num-train-documents 512 --steps 8000 --eval-every 500 --learning-rate 4e-5 \
+  --n-latents 208 --num-blocks 8 --eval-limit 32 --scale-weight-codecs \
+  --device cuda:0 --output results/d2p_lengthgen_freeze_a_lora_s777
 ```
 
 ```bash
-uv run pytest -q   # 122 tests as of 2026-07-11 (D2L-parity NIAH: early-exit + Perceiver-IO path)
+uv run pytest -q   # 123 tests as of 2026-07-11 (+ eval-length decoupling contract for d2p-niah)
 ```
 
 `google/gemma-2-2b-it` and `meta-llama/Llama-3.1-8B-Instruct` are gated models — need
@@ -614,6 +678,63 @@ structure. Report per codec:
 - **Parameter efficiency** — retrieval per *generated* parameter. Codecs differ here by orders of
   magnitude (FourierFT's `n_frequency` vs LoRA's `rank·(dᵢₙ+dₒᵤₜ)` vs IA3's `dₒᵤₜ`), and this is
   directly the question "is this shape a good use of the hypernetwork's fixed output budget?".
+  (The length-gen result already shows this axis biting: freeze_a_lora matches LoRA's 32× peak reach
+  with 4× fewer generated parameters — see the length-generalization results section.)
+
+### Per-codec autoresearch: generalizing the scale sweep (invariant #2, done right)
+**DEFERRED below the image domain (2026-07-11) — spec retained for when it's picked up.**
+Invariant #2 sweeps *one* hyperparameter (scale) per codec and reports best-of. But scale is not
+special — it is simply the HP we caught being load-bearing first. Several HPs are neither the task
+nor the adapter *shape* yet strongly move the result (lr, warmup, step budget, scale; the
+length-gen run showed a codec's transition step spanning ~1500–4500). So the honest generalization is
+a **per-codec autoresearch loop**: fix the shape, search its HPs to best-of, and only then compare.
+This upgrades the claim from the weak form ("at one shared recipe, shapes differ" — a shape can lose
+merely because the recipe suits LoRA) to the strong form ("even at its *own* tuned optimum, shape X
+underperforms"). It is the right long-term backbone for the benchmark, but it only stays a *shape*
+benchmark under a strict HP partition and three guardrails — get either wrong and the benchmark eats
+itself.
+
+**HP partition (decide per HP, empirically, before searching):**
+1. **Shared substrate — identical across codecs, never tuned per-codec.** Task data, the
+   conditioner/hypernetwork trunk (`n_latents`, `num_blocks`, `exit_layer`), eval protocol, and the
+   control. This is what "fixed procedure" *means*; tuning the conditioner per codec stops the
+   comparison being about the adapter.
+2. **Free optimization HPs — the loop may tune these.** `lr`, `warmup`, `steps`, `scale`. Not task,
+   not shape-identity, but empirically shape-sensitive.
+3. **Shape-identity HPs — the trap; fix by definition or sweep only along the parameter-efficiency
+   axis, never *maximize*.** `rank`, LoKr's factorization, FourierFT's `n_frequency`. A loop that
+   freely maximizes these drives every shape toward "as dense as the budget allows" and "shape"
+   dissolves.
+
+**Three guardrails (each grounded in a failure this project already hit):**
+- **Optimize `matched − control`, never loss.** Seeds reached loss ~0.02 with ~0.2 retrieval
+  (memorization basin, gotcha #16). A loop pointed at loss tunes every codec into memorization. The
+  objective is the behavioral, control-gated metric — discrete and flat-until-transition, a genuinely
+  hard target.
+- **Every config is multi-seed.** The transition is stochastic (LoRA 4/6 seeds, ~1500–2500; a single
+  trial mostly measures seed luck). The inner objective must be transition-rate or best-of-k over ≥3
+  seeds, which multiplies cost by k.
+- **Equal search budget and search space per codec, both reported.** "Best-of-N trials over space S"
+  makes N and S part of the result; an unequal budget/space smuggles the bias back in. Publish the
+  tuned HPs — the tuned-HP table ("LoRA wants lr 4e-5 / scale 45; freeze_a_lora needs ~2× the steps;
+  LoKr can't be tuned into reliable retrieval anywhere in S") is itself a richer artifact than a
+  leaderboard.
+
+**Cost and the pruning hazard.** Cost is `codecs × configs × seeds × steps` — a modest 12-config × 3-seed
+loop is ~12× the current grid, feasible on Qwen3-0.6B (why it was chosen) but a week not a day of GPU.
+ASHA/successive-halving helps because non-transitioning configs are flat at 0 through ~step 1500 and
+`d2p-niah` is restart-safe/checkpointed — **but prune with care**: lokr_s777 first crossed 0.5 at
+~step 4500, and two LoRA seeds transitioned only at ~2500–3000. Aggressive early-stopping would prune
+the slow-but-real configs and falsely label a shape "incapable at any config." The late, stochastic
+transition is exactly what makes naive HPO dangerous here.
+
+**Staged rollout (keep every intermediate result publishable, never touch shape-identity):**
+1. Finish the fixed-recipe, scale-matched length-gen result (**done** — see results section) as the
+   honest baseline the loop must beat.
+2. Implement the scale sweep (concrete step 2 below) *as* the minimal loop — one free HP, best-of,
+   multi-seed — to shake out the objective/seed/pruning machinery.
+3. Only then generalize the search to `{scale, lr, warmup, steps}` per codec with ASHA + equal budget
+   on the frozen shared substrate, reporting the tuned HPs.
 
 ### The recommended core setting
 Keep **both** conditioning modalities the framework already supports — a good adapter shape should
@@ -649,40 +770,65 @@ fix (gotcha #14), but it is missing the other three invariants:
   the document setting).
 
 ### Concrete first steps for a new agent (in order)
-1. Add `--eval-context-lengths` to `d2p-niah` (train-short / eval-a-sweep; `build_niah_eval_examples`
-   already takes a length list — the only change is decoupling train vs eval lengths). Run the
-   low-rank family (lora, freeze_a_lora, lokr — skip IA3/FourierFT/steering for now, they need
-   per-mechanism scaling) across a length curve at 3 seeds, scale-matched. This converts "LoRA hits
-   1.0" into a length-generalization curve per shape — the first genuinely benchmark-shaped result.
+**Scope note (2026-07-11):** step 1 is done and the language document-conditioning line is considered
+complete for the paper (see Roadmap). Steps 2–5 below are **deferred below the image domain** — they
+remain the correct plan for deepening the *document* setting, but the next active phase is bringing the
+benchmark to the image modality, not continuing here. Pick these up after (or alongside) the image work.
+1. ~~Add `--eval-context-lengths` to `d2p-niah` ... run the low-rank family across a length curve at
+   3 seeds, scale-matched.~~ **DONE (2026-07-11)** — see the "Length-generalization benchmark (step 1)"
+   results section. Flag landed (`--eval-context-lengths`), low-rank family run (lora ×6 seeds,
+   freeze_a_lora/lokr ×3), `aggregate_lengthgen.py` emits the per-codec vector. The result is a
+   vector (reliability / speed / reach / parameter efficiency), and it overturned the earlier
+   single-seed scale-matched claim (freeze_a_lora is *more reliable* than LoRA and matches its 32×
+   reach at 4× fewer params — not the 0.34 ≪ 1.0 gap the single run reported).
 2. Add a `--scale-sweep` (small per-codec grid, keep best) and make best-of-scale the reported
-   number everywhere.
+   number everywhere. **Build this as the minimal per-codec autoresearch loop** (one free HP,
+   best-of, multi-seed) — see "Per-codec autoresearch" above; it is the machinery every later HP
+   search reuses, and the guardrails (optimize matched−control, multi-seed inner eval, don't
+   over-prune the late transition) must be right here first.
 3. Add the **mismatched-description control** to `HypernetworkDownstreamEvaluator` and surface
    `accuracy_mismatched`, mirroring `accuracy_ctxswap`.
 4. Add a metric-aggregation step that emits the per-codec vector (peak, length-ratio, sample
-   efficiency, parameter efficiency) rather than only per-task accuracy rows.
+   efficiency, parameter efficiency) rather than only per-task accuracy rows. (`aggregate_lengthgen.py`
+   is a first, NIAH-specific instance of this — generalize it.)
 5. Only after 1–4 are solid: extend to IA3/FourierFT/activation-steering (each needs its own scale
    semantics tuned — multiplicative / spectral / additive — before it belongs in a fair panel), and
-   optionally add the semantic QA complement.
+   optionally add the semantic QA complement. Then generalize step 2's single-HP loop to the full
+   per-codec `{scale, lr, warmup, steps}` autoresearch search (ASHA, equal budget, frozen substrate).
 
 Guiding principle throughout: a result is only worth reporting if it survives its control, its scale
 sweep, and its seeds. Everything else is a diagnostic, not a benchmark number.
 
 ## Roadmap
 
-- **Multi-seed live-SFT comparison at full 479-task scale** — in progress (see Results
-  above); the direct next question once it lands is whether the pattern replicates a
-  *second* time, not just across these 3 seeds but across independent reruns.
-- Description-variant robustness (the released checkpoints' `args.yaml` carries 3
-  paraphrased descriptions per benchmark task; only variant 0 is used anywhere so far).
-- **Turn the working D2P/T2L settings into a real adapter benchmark** — the load-bearing next
-  direction. The D2L-parity recipe works (LoRA held-out 1.0, ctxswap 0) and the scale-matched
-  control landed (scale AND shape both matter: LoRA 1.0 ≫ freeze_a_lora 0.34 ≫ lokr 0.06). The
-  focus now shifts from *reproducing D2L* to *benchmarking adapter shapes validly*: length
-  generalization as the graded difficulty axis, per-codec scale sweeps, controls on both settings,
-  multi-seed, and a per-codec metric vector (peak / length-ratio / sample- / parameter-efficiency).
-  The full design + ordered first steps are in the **"Benchmark design"** section above — start there.
-  (IA3 / FourierFT / activation-steering are deferred until the low-rank family is solid, since each
-  needs its own scale semantics tuned before it belongs in a fair panel.)
+**The language document-conditioning (Doc-to-LoRA) line is complete for the paper's current scope
+(2026-07-11).** It comprises: the Setting-1 from-scratch NIAH reproduction (L1 ablation), the
+Setting-2 six-codec D2P framework that learns held-out retrieval, and — the capstone — the
+length-generalization shape benchmark under all four invariants (§ "Length-generalization benchmark
+(step 1)"). That last is the first genuinely valid shape comparison: a per-codec vector (reliability /
+speed / reach / parameter efficiency), and it corrected the earlier single-seed claim (freeze_a_lora is
+*more reliable* than LoRA and matches its 32× reach at 4× fewer generated params — not the "0.34 ≪ 1.0"
+gap a single run reported). No further document-setting runs are needed to have a publishable result.
+
+**Next active phase: the image domain.** The framework's `codec` + `hook site` seam is modality-agnostic
+by design (report.html §3.2 "Image Settings" / §3.3 "Latent-Space Planning" sketch the intent), but no
+image-domain code exists yet — this is a build, not a tuning pass. The goal is to check whether the
+adapter-shape findings from the language setting *transfer* to a visual generator (e.g. hypernetwork-
+generated adapters on a frozen image/latent model, conditioned on an image or a task spec), reusing the
+same four invariants: a behavioral metric with a built-in control, matched scale, a graded difficulty
+knob, and multi-seed. A shape ranking that holds across modalities is a far stronger claim than one
+measured on NIAH alone.
+
+**Deferred (valuable, but explicitly below the image domain):**
+- **Per-codec scale sweep + the autoresearch loop** — the generalization of invariant #2 (full spec +
+  guardrails retained in "Per-codec autoresearch" under Benchmark design). Deferred by decision on
+  2026-07-11: the fixed-recipe scale-matched length-gen result already stands as publishable, and the
+  loop is a large compute/engineering investment better spent after the modality-transfer question.
+- **Remaining document-setting codecs** (IA3 / FourierFT / activation-steering) — each needs its own
+  scale semantics tuned before it joins the matched panel.
+- **Mismatched-description control for the T2L task-description setting** (concrete step 3), and
+  description-variant robustness (released checkpoints carry 3 paraphrases/task; only variant 0 used).
+- **Multi-seed live-SFT at full 479-task scale, second independent replication** of the §5.2 pattern.
 
 ## Reference: prior art
 

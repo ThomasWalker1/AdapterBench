@@ -637,6 +637,32 @@
       <span class="label">Result</span>
       <p>The L1 coefficient monotonically controls both convergence and length generalization. At L1=0, the qualitative claim <strong>fully reproduces</strong>: perfect retrieval through 8K from 256-token training contexts, and 0.97 at 16–20K — needle retrieval at 2–4× the base model's entire context window. The exact 28–32K figure does not reproduce (0.67 vs. the published 0.997), and the shipped configuration does not train a working model at all in our environment. Beyond a reproduction check, this illustrates AdapterBench's broader theme: generated-adapter training is acutely sensitive to regularization applied to the generated parameters themselves — the same failure axis that separates the six representations in §5.2.</p>
     </div>
+
+    <h3>5.4 Length Generalization: A Shape Benchmark With a Built-In Control</h3>
+    <p class="lede">Turning the NIAH setting into a benchmark of adapter <em class="term">shape</em> requires a graded difficulty knob, a control that rules out memorization, matched scale, and multiple seeds. Length generalization supplies the knob; together they reveal that shape separates on a <em>vector</em> of axes, not a single score — and that a single-seed comparison gets the ranking wrong.</p>
+    <p>
+    We train the hypernetwork from scratch on short 128–256-token documents and evaluate held-out retrieval on a length sweep out to 8K — a 32× extrapolation. Every codec is generated at the <em class="term">same</em> weight scale (so this is a pure shape comparison, not a scale confound), and every reported number is paired with a <em class="term">context-swap control</em>: the adapter is regenerated from the <em>wrong</em> document and asked the same question. That control sits at exactly 0.00 for every codec, seed, and length, so all retrieval below is genuinely document-dependent rather than a digit prior. We restrict the panel to the low-rank weight family (LoRA, FreezeALoRA, LoKr) — IA3, FourierFT, and steering carry different scale semantics and need per-mechanism tuning before they belong in a matched panel.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>held-out exact-digit accuracy by eval length (mean across seeds; train length 256) — scale-matched, <span class="chip generated">generated</span> low-rank codecs. Context-swap control = 0.00 everywhere.</caption>
+        <thead>
+          <tr><th>codec</th><th>256</th><th>512</th><th>1K</th><th>2K</th><th>4K</th><th>8K</th><th>transitions</th><th>gen params</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>lora</td><td class="hi">0.73</td><td class="hi">0.75</td><td class="hi">0.72</td><td class="hi">0.74</td><td class="hi">0.73</td><td>0.44</td><td>4 / 6</td><td>917K</td></tr>
+          <tr><td>freeze_a_lora</td><td class="hi">0.83</td><td class="hi">0.84</td><td class="hi">0.86</td><td class="hi">0.84</td><td class="hi">0.85</td><td class="hi">0.56</td><td>3 / 3</td><td>229K</td></tr>
+          <tr><td>lokr</td><td>0.41</td><td>0.41</td><td>0.36</td><td>0.39</td><td>0.35</td><td class="dim">0.12</td><td>1 / 3</td><td>100K</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="finding stable">
+      <span class="label">Result</span>
+      <p>Shape separates the codecs on <strong>four distinct axes at once</strong>, which is why a single accuracy would throw away the interesting structure. <strong>Reliability</strong> (fraction of seeds that ever learn to retrieve): FreezeALoRA 3/3 &gt; LoRA 4/6 &gt; LoKr 1/3. <strong>Speed</strong> (training step of the retrieval phase transition): LoRA (~1,500–2,500) &gt; FreezeALoRA (~3,000–4,000) &gt; LoKr (~4,500). <strong>Peak reach</strong>: LoRA and FreezeALoRA both extrapolate to 8K (32× the training length) while LoKr reaches only 4K (16×). <strong>Parameter efficiency</strong>: FreezeALoRA matches LoRA's 32× reach with <strong>4× fewer generated parameters</strong> (229K vs. 917K) — it generates only the <code>B</code> factor over a fixed random <code>A</code> — and does so more reliably, so on this task generating both LoRA factors is <em>not</em> a good use of the hypernetwork's output budget.</p>
+      <p>The methodological point is sharper than any single ranking: a naive comparison would have called this wrong. A per-seed collapse into a <em class="term">memorization basin</em> — training loss driven to ~0.02 while held-out retrieval stays ~0.2 — drags LoRA's mean below FreezeALoRA's, so gating on loss inverts the result. And an earlier single-seed, scale-matched run had reported FreezeALoRA at 0.34 ≪ LoRA's 1.0 and called it a shape-driven gap; multiple seeds and an adequate step budget show that gap was a seed-and-budget artifact (FreezeALoRA simply transitions late). A benchmark number is only trustworthy once it survives its control, its scale match, <em>and</em> its seeds.</p>
+    </div>
 </section>
 
 <section id="discussion">
@@ -667,7 +693,7 @@
     We presented AdapterBench, a unified framework for evaluating the design space of hypernetwork-generated adapters for Inference Time Adaptation. By standardizing the training loop, codecs, hook sites, and evaluation pipelines, we demonstrated that the topological structure of an adapter dictates its viability for generation.
     </p>
     <p>
-    Future work will expand the live-SFT Setting 2 evaluations to the document-conditioning (NIAH) variants at full training scale, assessing how context-length scaling degrades generation fidelity across the different codecs. We will also introduce robustness checks to evaluate whether the ranking across adapter architectures holds when task-description wordings are heavily paraphrased.
+    The length-generalization study (§5.4) is the first result to hold all four protocol invariants — control, matched scale, a graded difficulty knob, and multiple seeds — at once, and it shows shape separating codecs on a vector of axes rather than a single score. The natural next step is to make scale itself a swept axis and, more generally, to run a per-codec <em class="term">autoresearch</em> loop that tunes each shape's optimization hyperparameters to its own best before comparing — so a shape can never lose merely because the shared recipe suited another. Such a loop must optimize the control-gated behavioral metric (never loss), evaluate every configuration across seeds (the transition is stochastic), and grant each codec an equal search budget, while leaving the shape-defining parameters fixed. We will also introduce robustness checks on whether the ranking holds when task-description wordings are heavily paraphrased.
     </p>
 </section>
 

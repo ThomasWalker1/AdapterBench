@@ -424,6 +424,15 @@ def _d2p_niah_command(args) -> None:
 
     torch.manual_seed(args.seed)
     context_lengths = [int(length) for length in args.context_lengths.split(",")]
+    # Decouple train vs eval lengths: --eval-context-lengths turns a single-length "does
+    # LoRA hit 1.0" run into a length-generalization curve (train short, eval a sweep out
+    # to lengths never seen in training). Empty (default) => eval at the training lengths,
+    # so every pre-existing invocation is byte-for-byte unchanged.
+    eval_context_lengths = (
+        [int(length) for length in args.eval_context_lengths.split(",")]
+        if args.eval_context_lengths
+        else context_lengths
+    )
     adapters = args.adapters.split(",")
     output_dir = Path(args.output)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -434,11 +443,13 @@ def _d2p_niah_command(args) -> None:
     num_layers = len(layers)
     exit_layer = args.exit_layer if args.exit_layer > 0 else max(1, num_layers // 4)
     lora_scaling = args.lora_scaling if args.lora_scaling > 0 else 2 * args.rank**1.5
-    for context_length in context_lengths:
+    # Both train and eval documents are packed into one context window (gotcha #12), so
+    # every eval length must fit too - length generalization pushes eval far past training.
+    for context_length in sorted(set(context_lengths) | set(eval_context_lengths)):
         assert_context_fits_in_one_pass(context_length, interpreter.config.max_position_embeddings)
     print(
         f"[1/5] num_layers={num_layers} exit_layer={exit_layer} lora_scaling={lora_scaling:.3f} "
-        f"needle_style={args.needle_style}",
+        f"needle_style={args.needle_style} train_lengths={context_lengths} eval_lengths={eval_context_lengths}",
         flush=True,
     )
 
@@ -453,9 +464,9 @@ def _d2p_niah_command(args) -> None:
     train_items = [dataset[i] for i in range(len(dataset))]
     collate = partial(doc_collate_fn, pad_token_id=tokenizer.pad_token_id)
 
-    print(f"[3/5] building {args.eval_limit} held-out NIAH eval documents per bin...", flush=True)
+    print(f"[3/5] building {args.eval_limit} held-out NIAH eval documents per bin {eval_context_lengths}...", flush=True)
     eval_examples_by_family = build_niah_eval_examples(
-        tokenizer, context_lengths, examples_per_bin=args.eval_limit, needle_style=args.needle_style
+        tokenizer, eval_context_lengths, examples_per_bin=args.eval_limit, needle_style=args.needle_style
     )
 
     recorder = ResultRecorder(output_dir, lambda r: f"  {r.adapter:20} {r.task_id:16} {r.metrics}")
@@ -692,7 +703,11 @@ def _register_d2p_niah(subparsers) -> None:
     p.add_argument("--adapters", default="lora", help="comma-separated codecs (see 't2p-sft-pilot --adapters')")
     p.add_argument("--needle-style", default="generic", choices=["generic", "topic"],
                    help="generic = Doc-to-LoRA's topic-free needle+query (the format that retrieves); topic = original")
-    p.add_argument("--context-lengths", default="384", help="comma-separated NIAH document token lengths")
+    p.add_argument("--context-lengths", default="384", help="comma-separated NIAH document token lengths (training)")
+    p.add_argument("--eval-context-lengths", default="",
+                   help="comma-separated NIAH document token lengths for held-out eval; empty (default) => eval at "
+                        "the training --context-lengths. Set to a longer sweep (e.g. 256,512,1024,2048,4096,8192) to "
+                        "measure length generalization: train short, eval far beyond the training length.")
     p.add_argument("--num-train-documents", type=int, default=512)
     p.add_argument("--batch-size", type=int, default=8)
     p.add_argument("--steps", type=int, default=2500)

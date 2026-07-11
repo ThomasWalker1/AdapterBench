@@ -6,6 +6,7 @@ import torch
 from adapterbench.t2p.niah_data import (
     DocSFTDataset,
     assert_context_fits_in_one_pass,
+    build_niah_eval_examples,
     build_query_prompt,
     doc_collate_fn,
     make_niah_example,
@@ -77,6 +78,19 @@ def test_assert_context_fits_in_one_pass_accepts_lengths_within_the_limit():
 def test_assert_context_fits_in_one_pass_rejects_lengths_beyond_the_limit():
     with pytest.raises(ValueError, match="exceeds"):
         assert_context_fits_in_one_pass(50000, model_max_position_embeddings=40960)
+
+
+def test_build_niah_eval_examples_families_track_the_requested_lengths():
+    # The decoupled-eval-length contract d2p-niah's --eval-context-lengths relies on:
+    # eval families come from the eval-length list, independent of any training length,
+    # so "train short, eval a longer sweep" produces exactly one bin per eval length.
+    tokenizer = FakeTokenizer()
+    eval_lengths = [256, 1024, 4096]
+    by_family = build_niah_eval_examples(
+        tokenizer, eval_lengths, examples_per_bin=3, needle_style="generic"
+    )
+    assert list(by_family) == [f"niah_{length}" for length in eval_lengths]
+    assert all(len(examples) == 3 for examples in by_family.values())
 
 
 def test_doc_sft_dataset_masks_the_prompt_and_keeps_the_answer_supervised():

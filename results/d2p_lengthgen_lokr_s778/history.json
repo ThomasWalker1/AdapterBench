@@ -1,0 +1,452 @@
+{
+  "lokr": [
+    {
+      "step": 500,
+      "loss": 1.8695311546325684,
+      "niah_256": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 1000,
+      "loss": 1.892187476158142,
+      "niah_256": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 1500,
+      "loss": 1.7531249523162842,
+      "niah_256": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 2000,
+      "loss": 1.6828124523162842,
+      "niah_256": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 2500,
+      "loss": 1.3171874284744263,
+      "niah_256": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 3000,
+      "loss": 1.1570312976837158,
+      "niah_256": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.0625,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 3500,
+      "loss": 0.70703125,
+      "niah_256": {
+        "accuracy": 0.09375,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.0625,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.03125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.03125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 4000,
+      "loss": 0.5810546875,
+      "niah_256": {
+        "accuracy": 0.09375,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.0625,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.15625,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.1875,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.1875,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.0,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 4500,
+      "loss": 0.595507800579071,
+      "niah_256": {
+        "accuracy": 0.21875,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.09375,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.1875,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.0625,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.0625,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 5000,
+      "loss": 0.33281248807907104,
+      "niah_256": {
+        "accuracy": 0.21875,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.28125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.3125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.3125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.09375,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 5500,
+      "loss": 0.18582764267921448,
+      "niah_256": {
+        "accuracy": 0.25,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.21875,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.34375,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.34375,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.28125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.125,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 6000,
+      "loss": 0.27680665254592896,
+      "niah_256": {
+        "accuracy": 0.3125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.25,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.28125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.3125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.25,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.09375,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 6500,
+      "loss": 0.07475586235523224,
+      "niah_256": {
+        "accuracy": 0.3125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.40625,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.375,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.40625,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.40625,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.15625,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 7000,
+      "loss": 0.03000946156680584,
+      "niah_256": {
+        "accuracy": 0.375,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.40625,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.28125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.375,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.40625,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.15625,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 7500,
+      "loss": 0.09249266982078552,
+      "niah_256": {
+        "accuracy": 0.34375,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.40625,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.21875,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.3125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.25,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.15625,
+        "accuracy_ctxswap": 0.0
+      }
+    },
+    {
+      "step": 8000,
+      "loss": 0.08711852878332138,
+      "niah_256": {
+        "accuracy": 0.34375,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_512": {
+        "accuracy": 0.375,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_1024": {
+        "accuracy": 0.375,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_2048": {
+        "accuracy": 0.40625,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_4096": {
+        "accuracy": 0.3125,
+        "accuracy_ctxswap": 0.0
+      },
+      "niah_8192": {
+        "accuracy": 0.125,
+        "accuracy_ctxswap": 0.0
+      }
+    }
+  ]
+}
