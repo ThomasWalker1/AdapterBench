@@ -274,10 +274,19 @@ class TextToPeftHypernetwork(nn.Module):
 def _resolve_target(layer: nn.Module, name: str) -> nn.Module:
     """Resolve a hook site by name: ``"block"`` means the whole decoder layer (the
     residual stream — for activation-space codecs), anything else is a named linear
-    submodule (weight-space codecs)."""
+    submodule (weight-space codecs).
+
+    The candidate list covers both the language interpreter's naming
+    (``self_attn.{name}``, ``mlp.{name}`` on a causal-LM decoder layer) and the image
+    generator's (``attn2.{name}`` = cross-attention, ``attn1.{name}`` = self-attention, on a
+    diffusion ``BasicTransformerBlock``). Names are kept dot-free (e.g. ``"to_k"``, not
+    ``"attn2.to_k"``) so they are valid ``nn.ModuleDict`` keys in the codec/head registries;
+    ``attn2`` is tried before ``attn1`` so the image setting's default weight-space hook is
+    the cross-attention (where the condition is read) rather than self-attention. Harmless for
+    language models, which have no ``attn2``/``attn1``."""
     if name == "block":
         return layer
-    candidates = (name, f"self_attn.{name}", f"mlp.{name}")
+    candidates = (name, f"self_attn.{name}", f"mlp.{name}", f"attn2.{name}", f"attn1.{name}")
     for candidate in candidates:
         try:
             return attrgetter(candidate)(layer)

@@ -15,12 +15,15 @@ into a real frozen `Qwen3-0.6B` interpreter's forward pass on real training exam
 backprop ordinary next-token cross-entropy through the hook, and evaluate on real held-out
 benchmarks. The hypernetwork is trained entirely from scratch (no released checkpoint).
 
-**Current status (2026-07-12).** Two language evaluation settings are set up and validated
-end-to-end with a **LoRA baseline codec**:
+**Current status (2026-07-12).** Three evaluation settings — two language, one image — are
+set up and validated end-to-end with a **LoRA baseline codec**:
 - **T2L** — task-description conditioning (Text-to-LoRA-style), scored on held-out
   benchmark tasks.
 - **D2L** — document conditioning (Doc-to-LoRA-style), scored on held-out
   needle-in-a-haystack (NIAH) retrieval, including length generalization.
+- **I2P** — image-domain reward-tilting (HyperNoise-style): a from-scratch adapter on a
+  frozen SD-Turbo modulates the initial noise to maximize a reward (ImageReward headline),
+  scored on held-out prompts under all four invariants (see § "Image domain: I2P").
 
 LoRA is the only codec on `main`. It exists to prove the *evaluation pipeline* works with a
 single, well-understood representation; any pipeline failure is then attributable to the
@@ -29,8 +32,10 @@ autoresearch git-merge pipeline** (see § "Git-native benchmark") — a codec is
 branch, gated on correctness, merged, then evaluated and appended to a derived leaderboard.
 Previously-explored shapes and their results live in git history.
 
-**The next goal is a new image-domain setting** (see § "Roadmap") — checking whether the
-adapter-shape question transfers to a visual generator under the same protocol invariants.
+**The modality-transfer question is now answered for LoRA**: the adapter-shape seam and the
+four invariants port to a visual generator (I2P). The remaining goals are the generated
+(hypernetwork-produces-the-adapter) upgrade of I2P and the autoresearch codec-comparison
+pipeline (see § "Roadmap").
 
 ## Architecture
 
@@ -169,9 +174,78 @@ missing rigor before it is a *benchmark* rather than a demo (a mismatched-descri
 a scale sweep, a graded difficulty knob) is specced in § "The four invariants" and deferred
 below the image domain.
 
+## Image domain: I2P — reward-tilting (HyperNoise), validated
+
+The image setting answers the modality-transfer question: does the adapter-shape seam + the
+four invariants carry to a visual generator? It does. A de-risk first ruled out from-scratch
+visual *concept injection* (personalization had ~zero signal — a small adapter on a frozen
+generator cannot inject an unseen subject). Reward-*tilting*, by contrast, is something a
+small adapter demonstrably CAN do, and it is exactly the AdapterBench shape question in
+image form. The setting reimplements **Noise Hypernetworks** (Eyring et al., 2025): an
+adapter on a frozen distilled generator (SD-Turbo) modulates the *initial noise* to maximize
+a reward, trained end-to-end by the tractable noise-space objective
+`L(φ) = reg·mean(Δx₀²) − r(g_θ(x₀+Δx₀))`.
+
+- **The seam is native.** The adapter is a `DirectCodecAdapter` — one codec per hooked
+  attention Linear, the trainable parameter *is* the codec's generated-output vector (the
+  degenerate "identity hypernetwork" case). It reuses `t2p/codecs.py::make_codec` and
+  `initial_bias` verbatim (LoRA zero-init → Δx₀=0 at init). Other codec shapes drop in by
+  swapping `codec_name`; a per-condition *generated* upgrade (the hypernetwork emits the
+  noise-adapter) is the deferred Path B.
+- **Hook site:** the UNet's attention linears (attn1/attn2 q/k/v/out — 128 Linears on
+  SD-Turbo), found by `i2p/hypernoise.py::find_attention_linears`.
+- **f_φ via a codec-agnostic difference form** `unet_adapted(x₀) − unet_base(x₀)` (exactly 0
+  at init), instead of the reference's single-pass `conv_out`-delta patch — correct for any
+  hook site, costs one extra (no_grad) UNet pass.
+
+**Modules** (`src/adapterbench/i2p/`): `image_generator.py` (frozen SD-Turbo loader +
+prompt embed), `hypernoise.py` (`DirectCodecAdapter`, `noise_transform`, grad-capable
+`generate_from_latents`, `hypernoise_loss`), `rewards.py` (differentiable **ImageReward**
+headline + redness swap-partner, behind one `reward(images01, prompts)` protocol),
+`image_scoring.py` (frozen CLIP-T fidelity control), `hypernoise_trainer.py` (restart-safe
+checkpointed training + the four-invariant `evaluate_rewards`), `prompt_data.py` (disjoint
+train/eval prompts). CLI: `i2p-hypernoise` (one atomic cell). Pipeline:
+`scripts/i2p_hypernoise_pipeline.py` (8-GPU grid) + `scripts/i2p_hypernoise_aggregate.py`
+(four-invariant summary). Seam smoke: `scripts/i2p_hypernoise_smoke.py`.
+
+**Four-invariant mapping (all satisfied on the LoRA baseline):**
+1. **Behavioral metric + control; headline = matched − control.** Metric = ImageReward gain
+   (adapter − frozen). Control = **reward-swap**: the adapter trained for ImageReward must
+   raise ImageReward, while an adapter trained for a near-orthogonal reward (**redness**) must
+   not — the image analogue of the D2L context-swap. A within-run **prompt-swap** control
+   (score ImageReward against a *mismatched* prompt; a genuine alignment gain must not
+   transfer) adds a second, cheap control with huge dynamic range (frozen matched IR ≈ +1.1
+   vs prompt-swapped ≈ −2.2).
+2. **Scale is swept, not fixed.** A LoRA-scale sweep (`--scale`), best-of reported — comparing
+   at default scale ranks scales, not shapes (gotcha #10 in language form).
+3. **Graded difficulty knob = `reg_weight`** — the fidelity↔reward tradeoff (the paper's
+   Fig. 2). Higher reg → smaller noise edit → lower reward gain but higher fidelity. Reported
+   as a curve (ImageReward gain and CLIP-T drop vs reg).
+4. **Multi-seed** — reward maximization is stochastic; ≥3 seeds, mean±std.
+
+**Validated recipe:** frozen SD-Turbo (fp32) · `DirectCodecAdapter` LoRA rank 16 over the 128
+attention linears · SGD+momentum lr 1e-3 · `reg_weight` the difficulty knob · f_φ difference
+form · 1-step generation. Redness is the zero-dependency swap-control partner (trivially
+hackable — the NIAH-needle analogue); **ImageReward-v1.0 is the headline reward** (BLIP-based
+human preference, fidelity intrinsic, hard to hack), backpropagated through the frozen reward
+model to the generator's noise.
+
+**Headline results (2026-07-12).** *(produced by `i2p_hypernoise_pipeline.py`; fill from
+`i2p_hypernoise_aggregate.py` on completion.)*
+
 ## How to run
 
 ```bash
+# I2P: image-domain reward-tilting, one cell (LoRA codec, ImageReward headline). Restart-safe.
+.venv/bin/adapterbench i2p-hypernoise \
+  --device cuda:0 --reward imagereward --steps 1500 --eval-every 300 \
+  --reg-weight 0.5 --n-seeds 2 --output results/i2p_hypernoise/imagereward_s777
+
+# I2P: the full four-invariant pipeline across GPUs (reward-swap x scale-sweep x reg-knob x seeds),
+# then the derived summary. Restart-safe (skips cells whose results.jsonl exists).
+nohup .venv/bin/python scripts/i2p_hypernoise_pipeline.py --out results/i2p_hypernoise &
+.venv/bin/python scripts/i2p_hypernoise_aggregate.py --out results/i2p_hypernoise
+
 # T2L: full-corpus live SFT, LoRA baseline, three seeds
 uv run adapterbench t2p-sft-pilot \
   --all-decontam-tasks --adapters lora \
@@ -265,6 +339,22 @@ uv run pytest -q   # 97 tests (LoRA-only baseline)
     reforms batches from a **document-level reshuffle every epoch** (deterministic per-epoch
     seed, so restart-safe resume stays exact). The transition step is also init/seed-sensitive
     (~1600–2500+), so give NIAH runs a generous step budget.
+12. **The image reward's gradient must reach the adapter — a `@torch.no_grad` VAE decode
+    silently severs it.** In I2P the reward is applied to the *decoded* image, so
+    `generate_from_latents` uses a grad-capable VAE decode; an eval-only no-grad decode in the
+    training path zeroes every adapter gradient while the loss still looks fine. The seam smoke
+    (`i2p_hypernoise_smoke.py`) asserts all 128 adapter params get a finite non-zero gradient
+    and the frozen UNet gets none.
+13. **`image-reward` / `clip-anytorch` pin the Python env; installing them naïvely breaks
+    CUDA.** `uv pip install image-reward` let the resolver bump torch 2.5→2.13 (+CUDA 13),
+    which the CUDA-12.4 driver cannot run, and left shadowing `nvidia-*-cu13` libs behind. The
+    deps are pinned in `pyproject.toml` (`image-reward`, `clip-anytorch`, `setuptools<80` for
+    `pkg_resources`) so `uv lock`/`uv sync` keep torch at 2.5.1 — never `uv pip install` these
+    imperatively. ImageReward's bundled BLIP also imports three symbols
+    (`apply_chunking_to_forward` etc.) from `transformers.modeling_utils` that current
+    transformers moved to `transformers.pytorch_utils`; `i2p/rewards.py` shims them before
+    importing `ImageReward` rather than pinning transformers down (which would risk the Qwen3
+    language pipeline).
 
 ## Benchmark design: the four invariants
 
@@ -457,25 +547,26 @@ One iteration, fully automatable, each producing one PR whose diff *is* the rese
 off turns a *benchmark* into a *hall of fame*; (b) the substrate is frozen relative to the
 board — a substrate change invalidates cross-sha comparability and must trigger a full re-eval
 under the new sha; (c) evaluation cost is real (~a week of Qwen3-0.6B GPU per full board), which
-is why this loop is **deferred below the image domain**, but the structure above is what it
+is why this loop is **deferred below the Path B I2P upgrade**, but the structure above is what it
 should be when picked up.
 
 ## Roadmap
 
-**Next active phase: the image domain.** The language settings (T2L, D2L) are set up and
-validated on the LoRA baseline; the next goal is a **new image-domain setting**, not more
-tuning on the language ones. The `codec` + `hook site` seam is modality-agnostic by design
-(report.html §3.2 "Image Settings" / §3.3 "Latent-Space Planning" sketch the intent), but no
-image code exists yet — this is a build. The goal is to check whether the adapter-shape
-question *transfers* to a visual generator (e.g. hypernetwork-generated adapters on a frozen
-image/latent model, conditioned on an image or a task spec), reusing the same four invariants:
-a behavioral metric with a built-in control, matched scale, a graded difficulty knob, and
-multi-seed. A shape ranking that holds across modalities is a far stronger claim than one
-measured on NIAH alone. The image setting implements the same two `contracts.py` interfaces, so
-the codec seam, the git-native pipeline, and the autoresearch loop all apply unchanged once the
-setting exists.
+**The image domain is now built and validated on the LoRA baseline** (§ "Image domain: I2P").
+The `codec` + `hook site` seam proved modality-agnostic: the same seam, four invariants, and
+`initial_bias` zero-init that drive T2L/D2L drive the reward-tilting SD-Turbo setting
+unchanged. A shape ranking that holds across modalities is a far stronger claim than one
+measured on NIAH alone — so the image setting is now a full member of the codec panel, and any
+new codec shape is scored on it too.
 
-**Deferred (valuable, but explicitly below the image domain):**
+**Next active phase: the generated (Path B) I2P upgrade.** I2P currently uses a *directly
+trained* shared noise-adapter (the identity-hypernetwork case), matching HyperNoise. The
+AdapterBench headline is "a hypernetwork *generates* the adapter vs an optimizer fits one":
+the upgrade keeps the reward-tilted objective but has the hypernetwork emit the noise-adapter
+conditioned on the prompt (or reward target). This is the image analogue of T2L/D2L
+generation and the one piece of the thesis I2P does not yet test.
+
+**Deferred (valuable, but below the Path B upgrade):**
 - **The autoresearch pipeline + per-codec scale sweep** — the git-merge machinery and the
   generalization of invariant #2 (full spec in § "Git-native benchmark" and § "Per-codec
   autoresearch"). A large compute/engineering investment better spent after the
@@ -500,5 +591,9 @@ setting exists.
 - HyperTuning (Phang et al.) — arXiv:2402.16817 (the one directly-comparable prior result that
   disagrees with LoRA-over-steering-tokens, on a different task distribution — an open question
   this project exists to help answer).
+- Noise Hypernetworks (Eyring et al., NeurIPS 2025) — the reward-tilting objective and the
+  SD-Turbo LoRA setting the I2P image domain reimplements in the codec seam.
+- ImageReward (Xu et al., 2023) — the BLIP-based human-preference model used as I2P's
+  differentiable headline reward.
 - Representations of interest for future pipeline codecs: FourierFT (arXiv:2405.03003), KronA
   (arXiv:2212.10650), Compacter (arXiv:2106.04647).

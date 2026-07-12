@@ -13,6 +13,13 @@ wandb/
 results/**/adapters/
 
 
-# Restart-safe NIAH training checkpoints (model+optimizer, ~0.5-1.2GB each) - never commit
-results/**/ckpt_*.pt
+# Restart-safe training checkpoints (model+optimizer): NIAH `ckpt_*.pt`, image-domain
+# `checkpoint.pt`, and every other .pt under results/ (~0.5-1.2GB each) - never commit.
+# Metrics (results.jsonl/.csv, history.json, loss_curves.json) stay tracked.
+results/**/*.pt
 results/**/*.pt.tmp
+
+# Run stdout logs are disposable (HF warnings + progress); the tracked record is the
+# derived results.jsonl/.csv/history.json, never the log. Never commit logs under results/.
+results/**/*.log
+results/*.log
