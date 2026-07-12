@@ -6,8 +6,7 @@ training budget, evaluator, and decoding. A trial changes the generated PEFT
 adapter and, where exact payload matching is impossible, one declared
 budget point.
 
-Different settings (disk-artifact checkpoint reproduction, live end-to-end SFT) are
-separate setups. Their absolute scores are not pooled: they use different conditioning,
+Different setups are not pooled: their absolute scores use different conditioning,
 objectives, interpreters, task distributions, and evaluators. The useful cross-setup
 question is whether an adapter's relative behavior repeats across protocols.
 
@@ -21,9 +20,9 @@ question is whether an adapter's relative behavior repeats across protocols.
    scores that task's held-out examples.
 4. `EvaluationResult` records downstream metrics plus resource measurements.
 
-This artifact boundary accommodates Text-to-LoRA's description encoder and
-reconstruction training, the live-hook SFT mechanism's in-process generation, and future
-document/context hypernetworks without pretending their generators are identical.
+This artifact boundary accommodates the live-hook SFT mechanism's in-process generation
+and future document/context hypernetworks without pretending their generators are
+identical.
 
 ## Required controls and baselines
 

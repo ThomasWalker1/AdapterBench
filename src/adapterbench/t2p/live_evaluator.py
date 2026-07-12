@@ -1,21 +1,17 @@
-"""DownstreamEvaluator counterpart for live-hook-trained hypernetworks.
+"""DownstreamEvaluator for live-hook-trained hypernetworks.
 
-`hf_downstream_evaluator.py::HFDownstreamEvaluator` activates a generated adapter via
-`peft.PeftModel.load_adapter`/`set_adapter` — fundamentally tied to materialized,
-PEFT-native adapter directories, which a hook-based adapter (activation steering,
-or any adapter trained via `sft_trainer.py`) doesn't produce. This evaluator
-activates an adapter the same way `sft_trainer.py` trains it: run the hypernetwork
-forward, then `hypernetwork.apply(layers, generated)` to hook it live into the real
-interpreter's forward pass. Every adapter — weight- or activation-based — is
-evaluated identically, through the exact same code path it was trained through.
+A hook-based adapter (activation steering, or any adapter trained via
+`sft_trainer.py`) never produces a materialized, PEFT-native adapter directory to load
+via `peft.PeftModel.load_adapter`/`set_adapter`. This evaluator instead activates an
+adapter the same way `sft_trainer.py` trains it: run the hypernetwork forward, then
+`hypernetwork.apply(layers, generated)` to hook it live into the real interpreter's
+forward pass. Every adapter — weight- or activation-based — is evaluated identically,
+through the exact same code path it was trained through.
 
-The scoring routines below (`_score_choice`, `_score_boolq`, `_score_gsm8k`,
-`_group_by_family`) are intentionally near-verbatim from `HFDownstreamEvaluator`: they
-only ever call `model(...)`/`model.generate(...)` on whatever `model` object they're
-handed, so they needed no changes — only the activation mechanism around them differs.
-Answer extraction (`get_choice_accuracy`/`get_binary_accuracy`) is imported rather than
-reimplemented so both evaluators stay in sync with upstream Text-to-LoRA's own
-generation+extraction eval protocol (see `hf_downstream_evaluator.py`'s module docstring).
+Answer extraction (`get_choice_accuracy`/`get_binary_accuracy`) is imported from
+`scoring.py` rather than reimplemented so scoring stays faithful to upstream
+Text-to-LoRA's own generation+extraction eval protocol (see `scoring.py`'s module
+docstring).
 """
 
 from __future__ import annotations
@@ -29,7 +25,7 @@ import torch
 from torch import Tensor, nn
 
 from ..contracts import EvaluationResult, TaskExample
-from ..hf_downstream_evaluator import _NUMBER_RE, get_binary_accuracy, get_choice_accuracy
+from ..scoring import _NUMBER_RE, get_binary_accuracy, get_choice_accuracy
 from .hypernetwork import TextToPeftHypernetwork
 from .niah_data import NiahExample, build_query_for_example, encode_context
 
@@ -188,11 +184,9 @@ class DocumentHypernetworkDownstreamEvaluator:
     NIAH document is distinct. Scoring is exact-match on the needle's 4-digit answer
     (substring containment in the generated continuation), not
     `get_choice_accuracy`/`get_binary_accuracy` (those are for multiple-choice/boolean
-    answers, not a short numeric string) and not D2L's own word-level ROUGE-L (see
-    `doc_to_lora_backend.py` / PROJECT_PLAN.md's Setting-1 gotchas) - this is a
-    documented deviation from Setting 1's own NIAH scoring, appropriate here since the
-    generated answer is always meant to be exactly the needle's digits, not a
-    free-form span ROUGE-L would be needed to fuzzily match.
+    answers, not a short numeric string) and not a word-level ROUGE-L - exact-match is
+    appropriate here since the generated answer is always meant to be exactly the
+    needle's digits, not a free-form span ROUGE-L would be needed to fuzzily match.
     """
 
     def __init__(

@@ -1,4 +1,4 @@
-"""Setting 2 (live end-to-end SFT) commands: train a hypernetwork from scratch,
+"""Live end-to-end SFT commands: train a hypernetwork from scratch,
 hooking its generated adapter into a frozen interpreter's forward pass, then score
 held-out benchmarks.
 
@@ -257,7 +257,7 @@ def _t2p_sft_pilot_command(args) -> None:
 
 
 def _d2p_sft_pilot_command(args) -> None:
-    """Setting 2's document-conditioning variant of `t2p-sft-pilot`: same "train N
+    """The document-conditioning variant of `t2p-sft-pilot`: same "train N
     adapters from scratch under live end-to-end SFT, then score each via a
     hook-based evaluator" structure, but conditioned on a frozen interpreter's own
     per-layer activations on a synthetic needle-in-a-haystack (NIAH) document
@@ -846,7 +846,7 @@ def _register_t2p_sft_pilot(subparsers) -> None:
 def _register_d2p_sft_pilot(subparsers) -> None:
     d2p_sft_pilot = subparsers.add_parser(
         "d2p-sft-pilot",
-        help="Setting 2's document-conditioning variant of t2p-sft-pilot: train hypernetworks from scratch "
+        help="The document-conditioning variant of t2p-sft-pilot: train hypernetworks from scratch "
         "conditioned on a frozen interpreter's own per-layer activations on a synthetic needle-in-a-haystack "
         "(NIAH) document (not a pooled task-description embedding), then compare adapters via a hook-based "
         "evaluator on held-out NIAH documents",

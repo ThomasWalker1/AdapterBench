@@ -32,7 +32,7 @@ class FakeCausalLM(nn.Module):
 
     def generate(self, input_ids, max_new_tokens=1, do_sample=False, pad_token_id=None):
         # Scoring is now generation-based (matches upstream Text-to-LoRA's own eval
-        # protocol - see hf_downstream_evaluator.py), so the fake model needs a
+        # protocol - see scoring.py), so the fake model needs a
         # generate() to exercise. The new tokens' content doesn't matter here: these
         # tests check hook wiring/parameter counting, not scoring correctness (that's
         # covered by dedicated get_choice_accuracy/get_binary_accuracy tests).

@@ -6,7 +6,7 @@ document token activations instead of a pooled task-description embedding.
 
 `sft_trainer.py`'s `train_step`/`train_downstream_hypernetwork` are hardcoded to call
 `compute_sft_loss(batch: SFTBatch, ...)` directly rather than accepting a
-loss-computing callable, and this project's Setting-2 integration constraints say not
+loss-computing callable, and this project's integration constraints say not
 to modify those functions (even to add an optional `loss_fn` parameter with a
 default that would preserve every existing call site's behavior) - so this module
 reimplements the grad-accumulation/warmup-scheduling *loop shape* for `DocSFTBatch`

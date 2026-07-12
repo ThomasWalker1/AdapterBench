@@ -13,28 +13,21 @@ A new adapter here needs exactly two things:
 The training loop, data pipeline, and evaluator are the same for every adapter that plugs
 in this way — that's the whole point.
 
-## Two settings
+## The setting
 
-1. **Disk-artifact checkpoint reproduction** — load a released Text-to-LoRA checkpoint
-   (Gemma-2-2B, Mistral-7B, Llama-3.1-8B, all from SakanaAI), generate a real LoRA, and
-   score it via vLLM exactly the way the paper does. No training of ours — a pure
-   reproduction check.
-2. **Live end-to-end SFT** — a hypernetwork trained entirely from scratch, hooked
-   directly into a real frozen `Qwen3-0.6B` interpreter's forward pass, comparing all six
-   representations head to head on real held-out benchmarks.
+**Live end-to-end SFT** — a hypernetwork trained entirely from scratch, hooked directly
+into a real frozen `Qwen3-0.6B` interpreter's forward pass, comparing all six
+representations head to head on real held-out benchmarks.
 
 See [PROJECT_PLAN.md](PROJECT_PLAN.md) for architecture, results, and hard-won gotchas.
 
 ## Layout
 
 - `src/adapterbench/` — the installable package (`pip install -e .` → `adapterbench` CLI).
-- `src/adapterbench/vllm_downstream_evaluator.py`, `text_to_lora_backend.py` — Setting 1:
-  generate + score a released checkpoint via vLLM, out-of-process under
-  `upstream/text-to-lora/.venv`.
-- `src/adapterbench/t2p/` — Setting 2: adapter-agnostic codecs (`codecs.py`), the
-  hypernetwork shell + generalized hook (`hypernetwork.py`), the training loop
-  (`sft_trainer.py`), Lots-of-LoRAs/SNI data loading (`lol_data.py`), and the hook-based
-  downstream evaluator (`live_evaluator.py`).
+- `src/adapterbench/t2p/` — adapter-agnostic codecs (`codecs.py`), the hypernetwork shell
+  + generalized hook (`hypernetwork.py`), the training loop (`sft_trainer.py`),
+  Lots-of-LoRAs/SNI data loading (`lol_data.py`), and the hook-based downstream evaluator
+  (`live_evaluator.py`).
 - `configs/setups/`, `configs/adapters/` — declarative manifests; `adapterbench
   catalog`/`validate`/`matrix` operate on these.
 
@@ -53,23 +46,7 @@ uv run adapterbench validate
 uv run adapterbench catalog
 ```
 
-## Setting 1: reproduce a released checkpoint
-
-```bash
-uv run adapterbench run \
-  --setup text_to_peft_mistral7b_reconstruction_pilot \
-  --adapter lora_r8_t2l \
-  --checkpoint upstream/text-to-lora/trained_t2l/mistral_7b_t2l/hypermod.pt \
-  --chat-template upstream/text-to-lora/chat_templates/mistralai/Mistral-7B-Instruct-v0.2/chat_template.jinja \
-  --tasks boolq --limit 1000 --evaluator vllm \
-  --output results/vllm_repro/mistral_boolq
-```
-
-`--evaluator vllm` scores through upstream's own inference backend instead of plain
-`transformers`+`peft` — reproduces the paper's published numbers noticeably more closely
-(see PROJECT_PLAN.md).
-
-## Setting 2: live end-to-end SFT
+## Live end-to-end SFT
 
 Train one adapter and inspect its loss curve:
 

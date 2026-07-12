@@ -7,8 +7,8 @@ upstream Text-to-LoRA's own evaluation code (``hyper_llm_modulator.vllm_eval``'s
 the paper's own published numbers were produced by generating an answer against
 these exact prompts and extracting a leading choice letter/digit (or a loose
 true/false keyword for BoolQ), not by scoring choice log-likelihoods. Reproducing
-that generation+extraction protocol (see ``hf_downstream_evaluator.py``) is what
-makes our numbers comparable to the paper's at all.
+that generation+extraction protocol (see ``scoring.py``) is what makes our numbers
+comparable to the paper's at all.
 
 Condition text (used only to condition the hypernetwork's generation, never shown
 to the interpreter at eval time) is sourced from a released checkpoint's own
@@ -221,12 +221,6 @@ Answer: B
 def load_task_descriptions(args_yaml_path: str | Path) -> dict[str, list[str]]:
     payload = yaml.safe_load(Path(args_yaml_path).read_text())
     return {task: info["descriptions"] for task, info in payload["eval_ds_info"].items()}
-
-
-def build_conditions(
-    descriptions: dict[str, list[str]], task_ids: list[str], variant: int = 0
-) -> dict[str, str]:
-    return {task_id: descriptions[task_id][variant] for task_id in task_ids}
 
 
 def _icl_prefix(task_id: str, use_icl: bool) -> str:

@@ -1,5 +1,4 @@
-from adapterbench.hf_downstream_evaluator import (
-    build_prefill_by_family,
+from adapterbench.scoring import (
     get_binary_accuracy,
     get_bool_value,
     get_choice,
@@ -58,15 +57,3 @@ def test_get_gsm8k_accuracy_uses_last_number_in_generated_text():
     assert get_gsm8k_accuracy("blah 12 more blah 42", "42") is True
     assert get_gsm8k_accuracy("The answer is 1,234.", "1234") is True
     assert get_gsm8k_accuracy("no numbers here", "42") is False
-
-
-def test_build_prefill_by_family_always_nudges_gsm8k_only_without_icl():
-    prefill = build_prefill_by_family(use_icl=False)
-    assert prefill == {"gsm8k": "Let's think step by step."}
-
-
-def test_build_prefill_by_family_also_nudges_choice_families_with_icl():
-    prefill = build_prefill_by_family(use_icl=True)
-    assert prefill["gsm8k"] == "Let's think step by step."
-    for family in ("arc_easy", "arc_challenge", "hellaswag", "boolq"):
-        assert prefill[family] == "Answer:"

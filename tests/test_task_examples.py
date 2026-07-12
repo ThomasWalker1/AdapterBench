@@ -3,7 +3,6 @@ from adapterbench.task_examples import (
     _boolq_examples,
     _gsm8k_examples,
     _hellaswag_examples,
-    build_conditions,
     load_task_descriptions,
 )
 
@@ -79,12 +78,6 @@ def test_gsm8k_examples_extract_final_numeric_answer():
     examples = _gsm8k_examples("gsm8k", "c", GSM8K_ROWS, limit=10, variant=0)
     assert len(examples) == 1
     assert examples[0].target_text == "4"
-
-
-def test_build_conditions_selects_variant_by_index():
-    descriptions = {"arc_easy": ["first", "second"], "boolq": ["alpha", "beta"]}
-    conditions = build_conditions(descriptions, ["arc_easy", "boolq"], variant=1)
-    assert conditions == {"arc_easy": "second", "boolq": "beta"}
 
 
 def test_load_task_descriptions_reads_eval_ds_info(tmp_path):

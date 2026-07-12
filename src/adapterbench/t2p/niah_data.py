@@ -1,15 +1,15 @@
 """Synthetic needle-in-a-haystack (NIAH) data for document-conditioned live SFT
-(Setting 2's document-conditioning variant): a haystack of cycled filler sentences with
+(the document-conditioning variant): a haystack of cycled filler sentences with
 exactly one needle sentence inserted at a controlled depth, paired with a query/answer
 about that needle. Reuses `lol_data.py::tokenize_prompt_response` for response-only
 supervision on the query/answer side (that helper is a pure tokenizer/prompt/response
 string utility with no Lots-of-LoRAs-specific content, so there is nothing
 NIAH-specific to reimplement there).
 
-Deliberately synthetic rather than read from `ctx_to_lora`'s own on-disk
-`ctx_magic_number_<lo>_<hi>` bins (used by Setting 1's `run-d2l-niah`): this setting
-trains its own from-scratch hypernetwork under a live SFT loop, which needs many fresh
-documents per training step, not a fixed released-checkpoint eval split.
+Deliberately synthetic rather than read from any fixed on-disk
+`ctx_magic_number_<lo>_<hi>` bins: this setting trains its own from-scratch
+hypernetwork under a live SFT loop, which needs many fresh documents per training
+step, not a fixed eval split.
 """
 
 from __future__ import annotations
