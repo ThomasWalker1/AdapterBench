@@ -68,9 +68,10 @@ def _setup(vocab_size=16, hidden_size=8):
         condition_dim=4,
         module_shapes={"block": (hidden_size, hidden_size)},
         num_layers=1,
-        adapter="activation_steering",
+        adapter="lora",
         latent_dim=16,
         head_dim=16,
+        rank=2,
     )
     return interpreter, hypernetwork
 
@@ -108,7 +109,7 @@ def test_evaluate_hooks_the_generated_adapter_and_reports_its_parameter_count():
     results = evaluator.evaluate(condition_embeddings, [_example()], split="test")
     assert len(results) == 1
     result = results[0]
-    assert result.adapter == "activation_steering"
+    assert result.adapter == "lora"
     assert result.generated_parameter_count == hypernetwork.generated_parameter_count()
 
 

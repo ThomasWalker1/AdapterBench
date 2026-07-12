@@ -53,9 +53,10 @@ def _toy_setup(seed=0):
         condition_dim=6,
         module_shapes={"block": (hidden_size, hidden_size)},
         num_layers=num_layers,
-        adapter="activation_steering",
+        adapter="lora",
         latent_dim=16,
         head_dim=16,
+        rank=2,
     )
     return interpreter, interpreter.layers, hypernetwork, vocab_size
 

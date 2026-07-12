@@ -77,9 +77,10 @@ def _setup(vocab_size=16, hidden_size=8, num_layers=2):
     hypernetwork = TextToPeftHypernetwork(
         module_shapes=module_shapes,
         num_layers=num_layers,
-        adapter="activation_steering",
+        adapter="lora",
         latent_dim=16,
         head_dim=16,
+        rank=2,
         conditioner=conditioner,
     )
     return interpreter, hypernetwork
@@ -110,7 +111,7 @@ def test_evaluate_hooks_a_fresh_adapter_per_example_and_reports_parameter_count(
     results = evaluator.evaluate({"niah_256": [_example(), _example(digits="1234")]}, split="test")
     assert len(results) == 1
     result = results[0]
-    assert result.adapter == "activation_steering"
+    assert result.adapter == "lora"
     assert result.generated_parameter_count == hypernetwork.generated_parameter_count()
     assert result.metrics["n_examples"] == 2.0
 

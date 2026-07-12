@@ -101,7 +101,9 @@ class SetupManifest(StrictModel):
 class AdapterManifest(StrictModel):
     schema_version: Literal[1]
     name: str
-    family: Literal["lora", "fourierft", "lokr", "ia3", "prefix_tuning", "activation_steering"]
+    # LoRA is the only baseline family; new families are added here as they arrive
+    # through the autoresearch git-merge pipeline (see PROJECT_PLAN.md).
+    family: Literal["lora"]
     implementation: Literal["peft", "custom"]
     output_structure: str
     target_modules: list[str]

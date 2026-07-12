@@ -119,9 +119,10 @@ def test_document_conditioner_wired_into_hypernetwork_and_hooked():
     hypernetwork = TextToPeftHypernetwork(
         module_shapes={"block": (hidden_size, hidden_size)},
         num_layers=num_layers,
-        adapter="activation_steering",
+        adapter="lora",
         latent_dim=latent_dim,
         head_dim=32,
+        rank=2,
         conditioner=conditioner,
     )
     nn.init.normal_(hypernetwork.heads["block"].weight, std=0.01)
@@ -223,9 +224,10 @@ def test_generate_per_layer_matches_forward_layer_and_hypernetwork_apply_hooks_c
     hypernetwork = TextToPeftHypernetwork(
         module_shapes={"block": (hidden_size, hidden_size)},
         num_layers=num_layers,
-        adapter="activation_steering",
+        adapter="lora",
         latent_dim=latent_dim,
         head_dim=32,
+        rank=2,
         conditioner=conditioner,
     )
     nn.init.normal_(hypernetwork.heads["block"].weight, std=0.01)

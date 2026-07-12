@@ -86,7 +86,7 @@ def register(subparsers) -> None:
     smoke = subparsers.add_parser("peft-smoke", help="materialize generated PEFT state and execute a frozen HF model")
     smoke.add_argument("--root", default=DEFAULT_CATALOG, type=Path)
     smoke.add_argument("--model", default="Qwen/Qwen3-0.6B")
-    smoke.add_argument("--adapters", default="lora_r8_t2l,fourierft_1000,lokr_r8,ia3,prefix_tuning_64")
+    smoke.add_argument("--adapters", default="lora_r8_t2l")
     smoke.add_argument("--device", default="cuda:0")
     smoke.add_argument("--condition", default="Normalize a sentiment statement to positive or negative.")
     smoke.add_argument("--output", default="results/hf_adapter_smoke.json")

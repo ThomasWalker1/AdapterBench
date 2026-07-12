@@ -44,11 +44,12 @@ interpreter performance on held-out downstream examples.
 
 ## Adapter catalog
 
-- LoRA and freeze-A/generate-B LoRA
-- FourierFT coefficients at fixed frequency locations
-- Kronecker factors (maintained LoKr implementation)
-- IA3 activation-scaling vectors
-- prefix-tuning per-layer KV tensors
+The baseline catalog registers a single codec — **LoRA** — as the reference
+representation the benchmark is validated on. Additional shapes (other low-rank
+factorizations, spectral/Fourier coefficients, activation-space vectors, …) are
+introduced one at a time through the autoresearch git-merge pipeline; see
+PROJECT_PLAN.md § "Git-native benchmark". Previously-explored shapes live in git
+history.
 
 The manifests live in `configs/adapters`. Adding a proposal requires an adapter
 manifest, a generator output codec, exact parameter accounting, and a test that

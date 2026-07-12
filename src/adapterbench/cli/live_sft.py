@@ -385,16 +385,12 @@ def _d2p_sft_pilot_command(args) -> None:
 
 
 # Hook site per adapter for the Doc-to-LoRA-parity NIAH path. Upstream's NIAH recipe hooks
-# `down_proj` only; we hold that site fixed for every weight-space codec so the six-codec
-# comparison varies only the generated *representation*, not the attachment point (activation
-# steering must intervene on the whole residual block, so it keeps "block").
+# `down_proj` only; we hold that site fixed for every weight-space codec so a multi-codec
+# comparison varies only the generated *representation*, not the attachment point. LoRA is
+# the only baseline codec; pipeline-added shapes register their site here (weight-space ->
+# ["down_proj"]; activation steering must intervene on the whole residual block -> ["block"]).
 D2L_PARITY_TARGET_MODULES = {
     "lora": ["down_proj"],
-    "freeze_a_lora": ["down_proj"],
-    "lokr": ["down_proj"],
-    "fourierft": ["down_proj"],
-    "ia3": ["down_proj"],
-    "activation_steering": ["block"],
 }
 
 
@@ -493,17 +489,15 @@ def _d2p_niah_command(args) -> None:
             module_shapes=module_shapes, num_layers=num_layers, adapter=adapter,
             latent_dim=D2P_LATENT_DIM, rank=args.rank, seed=args.seed, conditioner=conditioner,
         ).to(args.device)
-        # Apply the D2L-parity scale directly to any LoRA codec (2*r^1.5, ~8x rslora's default).
-        from ..t2p.codecs import FreezeALoRACodec, LoKrCodec, LoRACodec
+        # Apply the D2L-parity scale directly to the LoRA codec (2*r^1.5, ~8x rslora's
+        # default) - the load-bearing ~8x-larger update the frozen model needs to be
+        # overridden on NIAH (see the D2P diagnosis in PROJECT_PLAN.md). When new
+        # LoRA-family weight codecs arrive through the pipeline, extend `scaled_types` to
+        # include them under --scale-weight-codecs so a multi-codec comparison isn't
+        # confounded by only LoRA receiving this scale.
+        from ..t2p.codecs import LoRACodec
 
-        # By default only LoRA gets the load-bearing D2L-parity scale (45.25). With
-        # --scale-weight-codecs, the other LoRA-family weight codecs (FreezeALoRA, LoKr -
-        # both a low-rank B@A / Kronecker product with a `.scaling` knob) get the SAME
-        # scale, so a six-codec comparison isn't confounded by LoRA alone receiving the
-        # ~8x-larger update the frozen model needs to be overridden (see the D2P diagnosis).
-        # IA3 (multiplicative) / FourierFT (spectral) / activation-steering (additive) have
-        # fundamentally different scaling semantics and are left at their own natural knobs.
-        scaled_types = (LoRACodec, FreezeALoRACodec, LoKrCodec) if args.scale_weight_codecs else (LoRACodec,)
+        scaled_types = (LoRACodec,)
         for codec in hypernetwork.codecs.values():
             if isinstance(codec, scaled_types):
                 codec.scaling = lora_scaling
@@ -717,9 +711,9 @@ def _register_d2p_niah(subparsers) -> None:
     p.add_argument("--lora-scaling", type=float, default=-1.0,
                    help="LoRA scale applied directly; <=0 (default) computes D2L parity 2*r^1.5 (=45.25 at r=8)")
     p.add_argument("--scale-weight-codecs", action="store_true",
-                   help="also apply --lora-scaling to freeze_a_lora and lokr (the other LoRA-family weight "
-                        "codecs) so the six-codec comparison isn't confounded by only LoRA getting the "
-                        "load-bearing scale; IA3/FourierFT/steering keep their own scaling semantics")
+                   help="also apply --lora-scaling to any other LoRA-family weight codecs added via the "
+                        "pipeline (none in the LoRA-only baseline, so currently a no-op) so a multi-codec "
+                        "comparison isn't confounded by only LoRA getting the load-bearing scale")
     p.add_argument("--l2-reg-generated-w", type=float, default=0.0, help="D2L NIAH parity uses ~0 (see gotcha)")
     p.add_argument("--grad-accum-steps", type=int, default=1)
     p.add_argument("--warmup-frac", type=float, default=0.03)
@@ -793,10 +787,10 @@ def _register_t2p_sft_pilot(subparsers) -> None:
     t2p_sft_pilot.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
     t2p_sft_pilot.add_argument(
         "--adapters",
-        default="lora,ia3,activation_steering",
+        default="lora",
         help="comma-separated adapters to train and compare; each uses a fixed default hook site "
-        "(lora/freeze_a_lora/lokr/fourierft -> q_proj,v_proj; ia3 -> k_proj,v_proj,down_proj; "
-        "activation_steering -> block)",
+        "(lora -> q_proj,v_proj). LoRA is the only baseline codec; more arrive via the "
+        "autoresearch pipeline (see PROJECT_PLAN.md).",
     )
     t2p_sft_pilot.add_argument("--condition-encoder", default="Alibaba-NLP/gte-large-en-v1.5")
     t2p_sft_pilot.add_argument("--max-descriptions", type=int, default=8)
@@ -854,7 +848,7 @@ def _register_d2p_sft_pilot(subparsers) -> None:
     d2p_sft_pilot.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
     d2p_sft_pilot.add_argument(
         "--adapters",
-        default="lora,ia3,activation_steering",
+        default="lora",
         help="see 't2p-sft-pilot --adapters'",
     )
     d2p_sft_pilot.add_argument(
@@ -906,7 +900,7 @@ def _register_t2p_sft_sweep(subparsers) -> None:
     t2p_sft_sweep.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
     t2p_sft_sweep.add_argument(
         "--adapters",
-        default="lora,freeze_a_lora,ia3,lokr,fourierft,activation_steering",
+        default="lora",
         help="see 't2p-sft-pilot --adapters'",
     )
     t2p_sft_sweep.add_argument(

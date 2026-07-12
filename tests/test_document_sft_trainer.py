@@ -84,8 +84,8 @@ def test_doc_train_step_updates_hypernetwork_parameters():
 
 
 def test_train_doc_downstream_hypernetwork_reduces_loss_on_an_easy_target():
-    interpreter, layers, hypernetwork, vocab_size = _toy_setup(adapter="activation_steering", target_modules=("block",))
-    nn.init.normal_(hypernetwork.heads["block"].weight, std=0.05)
+    interpreter, layers, hypernetwork, vocab_size = _toy_setup()  # LoRA at q_proj (baseline)
+    nn.init.normal_(hypernetwork.heads["q_proj"].weight, std=0.05)
     batch = _make_doc_batch(batch_size=4, context_len=6, query_len=6, vocab_size=vocab_size, target_token=3)
 
     stats = train_doc_downstream_hypernetwork(

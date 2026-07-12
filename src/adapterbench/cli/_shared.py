@@ -25,16 +25,12 @@ DEFAULT_CATALOG = REPO_ROOT / "configs"
 # avoid. --decontam-config validates any --tasks value against this list at run time.
 DEFAULT_SFT_TRAIN_TASKS = "lol_022,lol_043,lol_044,lol_045,lol_047,lol_050,lol_063,lol_064"
 
-# Default hook site per adapter, shared by every live-SFT pilot/sweep command so the
-# three never drift apart: LoRA-family adapters modify attention projections; IA3
-# scales k/v/down; activation steering intervenes on the whole decoder block.
+# Default hook site per adapter, shared by every live-SFT pilot/sweep command so they
+# never drift apart. LoRA (the only baseline codec) modifies attention projections; as
+# new codecs arrive through the autoresearch pipeline they register their own hook site
+# here (e.g. activation steering -> ["block"], IA3 -> ["k_proj", "v_proj", "down_proj"]).
 PILOT_DEFAULT_TARGET_MODULES = {
     "lora": ["q_proj", "v_proj"],
-    "freeze_a_lora": ["q_proj", "v_proj"],
-    "lokr": ["q_proj", "v_proj"],
-    "fourierft": ["q_proj", "v_proj"],
-    "ia3": ["k_proj", "v_proj", "down_proj"],
-    "activation_steering": ["block"],
 }
 
 # TextToPeftHypernetwork's own default (never overridden by any existing t2p-sft*

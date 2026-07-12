@@ -27,6 +27,8 @@ def _materialize_generated_state(model, condition: str) -> int:
             digest = sha256(f"{condition}\0{name}".encode()).digest()
             seed = int.from_bytes(digest[:8], "little") % (2**63 - 1)
             generator = torch.Generator(device=parameter.device).manual_seed(seed)
+            # Multiplicative adapters (e.g. IA3, via the pipeline) center weights at 1.0;
+            # the LoRA-only baseline is additive, so weights center at 0.0.
             if "ia3" in name:
                 parameter.copy_(1.0 + 1e-3 * torch.randn(parameter.shape, generator=generator, device=parameter.device))
             else:

@@ -6,7 +6,7 @@ from adapterbench.t2p.codecs import make_codec
 from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
 
 
-@pytest.mark.parametrize("name", ["lora", "freeze_a_lora", "fourierft", "lokr", "ia3", "activation_steering"])
+@pytest.mark.parametrize("name", ["lora"])
 def test_generated_adapter_is_differentiable(name):
     torch.manual_seed(0)
     codec = make_codec(
@@ -28,7 +28,7 @@ def test_generated_adapter_is_differentiable(name):
     assert torch.isfinite(generated.grad).all()
 
 
-@pytest.mark.parametrize("name", ["lora", "freeze_a_lora", "fourierft", "lokr"])
+@pytest.mark.parametrize("name", ["lora"])
 def test_dense_delta_matches_apply(name):
     torch.manual_seed(0)
     codec = make_codec(name, 8, 8, num_layers=2, rank=2, alpha=2, n_frequency=4)
@@ -42,21 +42,11 @@ def test_dense_delta_matches_apply(name):
     torch.testing.assert_close(output.to(expected.dtype), expected, atol=1e-4, rtol=1e-4)
 
 
-def test_ia3_has_no_dense_delta():
-    codec = make_codec("ia3", 8, 8, num_layers=2)
-    with pytest.raises(NotImplementedError):
-        codec.dense_delta(torch.randn(3, codec.output_size), layer_index=0)
-
-
-def test_activation_steering_has_no_dense_delta():
-    codec = make_codec("activation_steering", 8, 8, num_layers=2)
-    with pytest.raises(NotImplementedError):
-        codec.dense_delta(torch.randn(3, codec.output_size), layer_index=0)
-
-
-def test_activation_steering_requires_square_site():
-    with pytest.raises(ValueError, match="square"):
-        make_codec("activation_steering", 8, 4, num_layers=2)
+def test_make_codec_rejects_unregistered_shape():
+    # Only LoRA is registered in the baseline; other shapes (ia3, lokr, fourierft,
+    # activation_steering, …) return through the autoresearch pipeline, not this map.
+    with pytest.raises(ValueError, match="unsupported differentiable adapter"):
+        make_codec("ia3", 8, 8, num_layers=2)
 
 
 class TinyLayer(nn.Module):
@@ -109,9 +99,10 @@ def test_hypernetwork_hooks_a_whole_layer_via_block_sentinel_and_backpropagates(
         condition_dim=6,
         module_shapes={"block": (hidden_size, hidden_size)},
         num_layers=2,
-        adapter="activation_steering",
+        adapter="lora",
         latent_dim=32,
         head_dim=32,
+        rank=2,
     )
     nn.init.normal_(hypernetwork.heads["block"].weight, std=0.01)
     conditions = torch.randn(3, 6)
@@ -144,7 +135,7 @@ def test_infer_module_shapes_still_resolves_linear_submodules():
     assert shapes == {"q_proj": (8, 8)}
 
 
-@pytest.mark.parametrize("name", ["lora", "lokr"])
+@pytest.mark.parametrize("name", ["lora"])
 def test_bilinear_codecs_have_a_nonzero_initial_bias(name):
     codec = make_codec(name, 8, 8, num_layers=2, rank=2, alpha=2)
     bias = codec.initial_bias()
@@ -153,13 +144,7 @@ def test_bilinear_codecs_have_a_nonzero_initial_bias(name):
     assert bias.abs().max() > 0
 
 
-@pytest.mark.parametrize("name", ["ia3", "fourierft", "activation_steering"])
-def test_non_bilinear_codecs_have_no_initial_bias(name):
-    codec = make_codec(name, 8, 8, num_layers=2, n_frequency=4)
-    assert codec.initial_bias() is None
-
-
-@pytest.mark.parametrize("name", ["lora", "lokr"])
+@pytest.mark.parametrize("name", ["lora"])
 def test_bilinear_codec_contributes_zero_at_init_but_has_nonzero_gradient(name):
     """Regression test for a real bug found while smoke-testing live SFT training:
     LoRA/LoKr split `generated` into two factors that are multiplied together (B@A,

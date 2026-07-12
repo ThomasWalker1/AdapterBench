@@ -55,7 +55,7 @@ inside a device-isolated sandbox/container. Check that `/dev/nvidia0` and
 ```bash
 adapterbench matrix \
   --setup text_to_peft_gemma2b_sft \
-  --adapters lora_r8_t2l,fourierft_1000,lokr_r8,ia3,prefix_tuning_64 \
+  --adapters lora_r8_t2l \
   --output runs/text_to_peft_gemma2b_sft/trials.json
 ```
 
@@ -72,7 +72,7 @@ parameter accounting, not task quality.
 ```bash
 adapterbench peft-smoke \
   --model Qwen/Qwen3-0.6B \
-  --adapters lora_r8_t2l,fourierft_1000,lokr_r8,ia3,prefix_tuning_64 \
+  --adapters lora_r8_t2l \
   --device cuda:0 \
   --output results/qwen3_06b_adapter_smoke.json
 ```
