@@ -8,8 +8,7 @@ Text-to-LoRA's own generation+extraction eval protocol
 a scorer built on them measures the same thing the paper's published numbers do.
 
 The module-level ``torch.backends`` determinism settings match upstream's
-``hyper_llm_modulator.vllm_eval.eval()`` (also applied in their
-``scripts/generate_t2l_adapter.py``, where their absence was confirmed to make
+``hyper_llm_modulator.vllm_eval.eval()`` (whose absence was confirmed to make
 generation non-deterministic across process invocations); importing this module
 applies them so a fixed adapter's scored accuracy doesn't depend on GPU
 kernel-selection non-determinism.

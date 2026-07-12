@@ -361,14 +361,6 @@ table plus per-seed transition steps and crossover lengths; the grid launcher is
 ## How to run
 
 ```bash
-# Doc-to-LoRA NIAH: evaluate a FROM-SCRATCH NIAH checkpoint on the length bins.
-# (Released QA checkpoints are out of scope - see the from-scratch reproduction section.)
-uv run adapterbench run-d2l-niah \
-  --setup doc_to_peft_gemma2b_reconstruction \
-  --checkpoint <from-scratch NIAH run>/checkpoint-1482/pytorch_model.bin \
-  --datasets ctx_magic_number_1024_2048,ctx_magic_number_7168_8192 \
-  --limit 30 --split test --output results/d2l_niah_eval
-
 # Full-corpus live SFT, all six adapters, three seeds
 uv run adapterbench t2p-sft-pilot \
   --all-decontam-tasks --adapters lora,freeze_a_lora,ia3,lokr,fourierft,activation_steering \

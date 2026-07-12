@@ -3,9 +3,9 @@
 Replicates upstream Text-to-LoRA's own embedding recipe
 (``hyper_llm_modulator/utils/model_loading.py::get_emb_model_and_fns`` +
 ``pooling.py::cls_pool`` + ``preprocessing.py::add_full_stop``) so embeddings here are
-comparable to what T2L's own checkpoints were conditioned on. Unlike
-``ReleasedTextToLoRABackend``, this runs in-process: gte-large-en-v1.5's config and
-tokenizer load cleanly under ``adapterbench``'s own pinned ``transformers`` (only needs
+comparable to what T2L's own checkpoints were conditioned on. This runs in-process:
+gte-large-en-v1.5's config and tokenizer load cleanly under ``adapterbench``'s own
+pinned ``transformers`` (only needs
 ``trust_remote_code=True``, no incompatible pin), so no cross-venv subprocess bridge is
 needed here.
 """

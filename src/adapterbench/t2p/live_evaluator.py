@@ -153,8 +153,8 @@ class HypernetworkDownstreamEvaluator:
 
     def iter_evaluate(self, condition_embeddings: Mapping[str, Tensor], examples: Iterable[TaskExample], split: str):
         """Yield one EvaluationResult per task family as it completes — prefer this
-        over ``evaluate()`` for anything long-running (same reasoning as
-        ``HFDownstreamEvaluator.iter_evaluate``)."""
+        over ``evaluate()`` for anything long-running, so a caller can print progress
+        and persist partial results and an interrupted run keeps what finished."""
         for family, family_examples in self._group_by_family(examples).items():
             yield self._evaluate_group(family, family_examples, split, condition_embeddings.get(family))
 
