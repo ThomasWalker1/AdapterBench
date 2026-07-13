@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Assess how users perceive an app by looking at their comments, tagging them as either positive sentiments or negative feelings.
+- You need to interpret user feedback on apps, identifying overall sentiments based on qualitative language cues that indicate positivity or negativity.
+- Evaluate the emotional tone of app user feedback, categorizing them based on whether they are expressing positive experiences or critical remarks.
+- Read through feedback from users regarding an app and identify if their sentiments lean towards a positive experience or a negative one due to issues encountered.
+- Investigate user sentiment in app evaluations. Classify each review by noting whether it portrays a positive view of the app or sheds light on troubles experienced while using it.
+- Investigate user sentiments expressed in reviews of an application, focusing on identifying positive versus negative assessments.
+- Your task is to evaluate app reviews and determine whether the expressed feelings are positive or negative. A keen understanding of sentiment analysis will be beneficial.
+- Examine the language used in app reviews to gauge user sentiment, distinguishing between praise and criticism.
+- Analyze customer responses to an application and establish if they are characterized by enthusiasm or frustration.
+- Scrutinize visitors' remarks about an app to ascertain whether they feel positively or negatively towards it.
+- Interpret and categorize user reviews for apps, determining whether their comments reflect a beneficial experience (positive) or a disapproving one (negative).
+- Read through provided app reviews and judge whether they convey a positive or negative sentiment. This involves interpreting the reviewer’s feelings and satisfaction levels.
+- Evaluate app reviews to determine if they express satisfaction (positive) or dissatisfaction (negative) regarding the app's performance.
+- Delve into user reviews of an application and categorize them according to whether they express positive feelings or negative feedback.
+- Determine the emotional attitude of various app reviews, deciding whether they reflect positive user experiences or negative frustrations.
+- You will assess a series of app reviews to identify whether the sentiment expressed is favorable or unfavorable.
+- Examine user opinions regarding an application and decide if the sentiment is favorable or unfavorable.
+- Identify the sentiment in app reviews by analyzing the words used by reviewers. Are they expressing satisfaction, or are they frustrated?
+- Review opinions about applications presented in user reviews and derive whether they convey a supportive attitude toward the app's performance or highlight issues faced by users.
+- Your task is to translate users' written feedback about an app into sentiment categories, identifying whether their opinions are generally positive or negative.
+- For each review you receive, identify its sentiment as either positive or negative. This requires understanding the context and emotional tone of the words chosen.
+- Look at app review texts and ascertain their sentiment. This means recognizing happy or unhappy expressions based on users' experiences and feelings about the app.
+- Interpret the opinions stated in app reviews, determining if users had a good or bad experience with the app.
+- Your role is to judge the emotional expression in app reviews, deciding if they convey positivity or negativity.
+- Your task involves reading through different app reviews and evaluating whether users feel pleased with their experiences or disappointed due to problems they've encountered.
+- Analyze the content of app reviews, determining whether a user's experience with the app is expressed positively or negatively.
+- Examine the provided app reviews and assess whether they convey a positive experience or a negative one. This will require interpreting the language used by the reviewers.
+- 'This task involves reading through app reviews and categorizing them based on their sentiment: either as positive feedback or negative criticism.'
+- Analyze the provided app reviews to assess the sentiment. Your job is to decide if the review reflects a good or bad experience with the app.
+- Assess user comments regarding an application and classify their responses as favorable (positive) or unfavorable (negative).
+- Determine the sentiment behind clients' reviews of an application to identify if they viewed it positively or negatively.
+- Your role is to interpret user comments on applications for the general sentiment they express—highlighting either positivity or negativity in their reviews.
+- In this task, you will read through app feedback and decide if users are expressing positive sentiments about their experiences or negative ones.
+- You’ll analyze app reviews and discern whether they indicate approval and satisfaction or disappointment and issues with functionality.
+- Your role is to extract the emotional tone from user reviews of applications and classify them based on whether they are Positive or Negative.
+- Assess how users feel about an application by interpreting their reviews and categorizing the sentiment as either Positive or Negative.
+- You need to understand user sentiments by going through their feedback on apps. Each comment has an undertone that can be categorized as either positive or negative based on its content.
+- Your role involves understanding how users feel about an app by analyzing their words, then classifying those feelings as positive or negative sentiments.
+- Read through comments made about an app to ascertain whether the overall sentiment conveyed is one of satisfaction or dissatisfaction.
+- Assess the language used in app reviews to categorize each one as having Positive or Negative sentiments based on user satisfaction.
+- Your responsibility is to interpret user app reviews and categorize each one as displaying a positive sentiment or a negative sentiment.
+- Your job is to interpret the sentiments in app reviews. Classify each review by identifying whether it reflects a positive experience or a negative one.
+- Analyze the feedback given in app reviews. Your goal is to classify each review's sentiment as positive if it's favorable or negative if it highlights discontent.
+- Your goal is to classify app reviews as positive or negative. Think critically about the language most often associated with each sentiment.
+- Analyze the text of app reviews to identify whether the feedback is positive or negative.
+- You need to assess the tone of an app review. Identify whether the sentiments conveyed are primarily good or bad.
+- Analyze the content of app reviews to identify whether they convey satisfaction or dissatisfaction.
+- The goal is to read and assess user-provided reviews of apps, categorizing each one according to its overall sentiment as either positive or negative.
+- The objective here is to assess app reviews and categorize the sentiment they portray. Your insight into language will guide your classification as either positive or negative.
+- Observe and classify user sentiments in app reviews. Determine if their comments reflect contentment or dissatisfaction with the application.
+- Read the given review of an app and decide whether the user's feelings toward it are positive or negative.
+- Given user feedback on apps, you need to classify the sentiment as positive or negative, relying on your understanding of language and context.
+- Your job consists of analyzing user sentiments in app reviews and determining whether these sentiments indicate a favorable perspective or a disappointing outcome.
+- Break down app reviews to understand whether the user feedback reflects satisfaction or dissatisfaction with the application.
+- You will categorize app reviews by sentiment. Identify words and phrases that indicate whether users feel positively or negatively about the application.
+- Evaluate the general feelings expressed in various app reviews, deciding whether they are predominantly Positive or Negative.
+- Review written comments from users about an app and classify the overall sentiment as either good or bad.
+- In this exercise, you will read app reviews and judge their sentiment, deciding whether they convey a positive or negative experience.
+- Your job is to assess user experience as reflected in app reviews by categorizing their sentiments into positive or negative, capturing user satisfaction levels accurately.
+- Evaluate opinions shared by users regarding an application and discern whether they reflect a positive sentiment or a negative one.
+- Evaluate user feedback for apps and decide if the sentiment expressed is favorable or unfavorable based on the language used in the reviews.
+- Focus your analysis on app reviews, categorizing them into two emotional responses—one that showcases approval and joy, and another that indicates disappointment and frustration.
+- The task involves reading through various app reviews and deciding if they express a favorable or unfavorable opinion, using your skill in interpreting emotional content.
+- Analyze the content of app reviews to see if they indicate satisfaction (positive) or dissatisfaction (negative) with the application.
+- You are tasked with evaluating customer reviews for applications, categorizing them into positive or negative sentiment based on language nuances and contextual clues.
+- Your job is to read user feedback on an app and label it as expressing a positive or negative outlook.
+- You need to assess the sentiment of reviews for an application, categorizing them based on positive or negative feelings.
+- Read and evaluate app reviews to identify their underlying sentiment, determining if they represent a positive outlook from users or showcase negative feedback.
+- Look at how users feel about an app and determine if their sentiments reflect appreciation or disappointment.
+- Your task is to evaluate app reviews and decide if their feelings are mostly positive or negative based on the language used.
+- By evaluating users' comments, identify whether their sentiments towards the app are leaning towards positivity or negativity.
+- Your task is to evaluate an app review and determine the overall sentiment as either positive or negative.
+- Review user comments and judge their sentiment. You will label them as either expressing a favorable view or a critical perspective.
+- Evaluate customer feedback on apps to determine overall sentiment. This means categorizing the comments into two simple feelings—either appreciation or criticism.
+- Your role involves interpreting feedback about an application. Classify the user sentiments as either positive, indicating happiness, or negative, indicating frustration.
+- Your task is to analyze app reviews and determine their overall sentiment, categorizing them as either positive or negative based on the reviewer’s comments.
+- Your responsibility is to interpret the language in app reviews and classify them according to whether they express satisfaction or dissatisfaction.
+- For given app reviews, classify their content as indicating positive experiences or negative frustrations based on overall sentiment reflected in the writing style.
+- Determine how users feel about an app based on their reviews, classifying their feedback as either positive or negative.
+- You will read app reviews and classify them based on their emotional tone, deciding if they reflect a Positive or Negative sentiment.
+- In this task, focus on the sentiment expressed in app reviews. Decide if users feel positively or negatively about their experiences.
+- Your assignment includes analyzing app user reviews to determine if they communicate appreciation for the service provided or express frustration over issues encountered.
+- Engage with customer feedback about mobile applications. Each review should be seen as expressing a positive or negative sentiment depending on users’ expressed thoughts and feelings.
+- Evaluate each app review for its emotional context, aiming to classify the sentiment as either good or bad.
+- Tasked with analyzing user feedback, you will determine if each review reflects a Positive sentiment due to satisfaction or a Negative sentiment due to frustration.
+- Your job is to scrutinize app reviews to deduce an overall sentiment—either Positive or Negative—reflecting the users' experiences.
+- Review the sentiments in user comments about an app and make a judgment on whether they are expressing a Positive or Negative view.
+- Review the sentiments in various app evaluations and label them as either positive or negative based on the tone and content of the feedback.
+- Analyze the provided app review and classify its sentiment based on the emotions expressed by the user.
+- Your task involves analyzing app reviews to identify the user's emotional stance, labeling them accordingly as either positive or negative.
+- Evaluate the tone of the provided app review to classify it as either favorable or unfavorable.
+- Evaluate reviews of an application by identifying the sentiment they express. Focus on understanding the user’s perspective based on their feedback.
+- Examine feedback given by users and identify if the sentiments represented are leaning towards positivity or negativity.
+- Examine the user feedback on an application and categorize it as either a positive or negative sentiment based on their comments.
+- Analyze the sentiment expressed in app reviews. You should recognize the overall feelings conveyed by the user, whether they are satisfied or dissatisfied.
+- You need to assess evaluations of an app and classify them as showcasing either positivity or negativity in user experiences.
+- Engage with app review content to extract and determine the emotional stance of users towards the application, identifying if it’s favorable or unfavorable.
+- You will read app reviews and assess whether the feedback reflects a positive experience or points out negative aspects of the app.
+- Determine how users feel about certain applications based on their written reviews, categorizing them strictly as expressing positive or negative sentiments.
+- Determine if each user review indicates a positive experience with the application or highlights problems and dissatisfaction.
+- Interpret emotional tones in app reviews to figure out if users feel content or discontent with the application.
+- The objective is to process user opinions from app reviews and ascertain if they convey Positive experiences or Negative impressions.
+- Determine the sentiment of various app reviews by evaluating whether the language reflects satisfaction or dissatisfaction with the application.
+- The task at hand requires you to classify brief comments from users about apps into positive and negative sentiments, drawing upon your understanding of emotional language.
+- Read through user reviews and identify if they reflect a positive sentiment about the app or voice disappointment and negativity.
+- Your job is to look at user feedback for apps and classify it based on its sentiment, marking it as positive if praise is evident or negative if there is discontent.
+- Interpret various reviews focused on apps, determining if they communicate at least some level of satisfaction (positive) or disappointment (negative).
+- Analyze user feedback for apps by determining if the sentiment behind the reviews is uplifting or discouraging.
+- Read through user comments about an application and decide if their overall sentiment leans towards Positive satisfaction or Negative discontent.
+- Listen to what users say about an app through their reviews and label their opinions accordingly as encouraging or discouraging.
+- Your responsibility is to classify user sentiments in reviews of an app, deciding whether expressions are uplifting or discouraging.
+- Your job involves categorizing user experiences shared in app reviews according to emotional sentiment, distinguishing between supportive and unfavorable viewpoints.
+- Your task is to evaluate app reviews and determine their emotional tone, categorizing them as either positive or negative.
+- You are asked to assess the feelings expressed in various app reviews. Your goal is to classify each review's sentiment as positive or negative.
+- You need to interpret reviews given by users of apps and state their general sentiment—whether they feel positively about their experience or negatively impacted.
+- You’re tasked with interpreting user feedback on applications. Determine if the sentiment behind each review is favorable or unfavorable.
+- The goal is to assess the emotional content of app reviews and decide if they indicate overall user approval or disapproval.
+- Your role is to dissect user opinions found in app reviews, tagging them with a sentiment label to reflect either satisfaction or dissatisfaction with the app experience.
+- Your job is to closely read app reviews and identify if they express good feelings about the app or highlight issues, indicating dissatisfaction.
+- Your task is to interpret users’ written reactions to an app and label their feelings as either Positive or Negative.
+- Read through reviews of an app and decide if the overall sentiment is positive, indicating satisfaction, or negative, suggesting disappointment.
+- Your job is to read app reviews carefully and judge their sentiment, distinguishing between favorable feedback and criticism.
+- The task involves analyzing customer feedback for applications and tagging each review with a sentiment label that indicates satisfaction or dissatisfaction.
+- Your task is to analyze app reviews and determine their emotional tone, either positive or negative, based on the language used.
+- Determine the emotional quality of an app review by discerning whether it expresses positive satisfaction or negative frustration.
+- Review user comments about apps with the aim of identifying emotion. Decide if each review portrays a sense of happiness or unhappiness with their usage experience.
+- You need to analyze app reviews to identify whether users have had positive feelings about their experiences or if they encountered problems leading to negative impressions.
+- Engage with user feedback for apps to understand sentiment. Classify their comments as either positive reflections of enjoyment or negative critiques highlighting problems.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task761_app_review_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task761_app_review_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

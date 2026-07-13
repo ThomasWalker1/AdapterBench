@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Engage with a collection of numbers and execute operations to derive a new list while maintaining the property that their total equates to one. Precision in rounding will be key.
+- This task invites you into the realm of numerical balance, demanding you perform division across multiple entries until their final addition results in exactly one.
+- You will work with a list of numbers and need to apply a division process that normalizes them to achieve a sum of one.
+- This involves working with several elements represented as numbers, applying mathematical operations to ensure their result equals unity upon summation.
+- The challenge involves reshaping various amounts into normalized figures via division and rounding techniques till the overall result totals a perfect one.
+- This assignment requires you to handle numerical input by applying division consistently across the values instead of aggregating them directly. Your goal is for the adjusted output's sum to equal one.
+- This undertaking involves reviewing and processing numerical lists by performing specific divisions on them. The aim is achieving a resultant sum of one—each number presented with three decimal stripes.
+- The challenge here is to take numerical inputs and find the right constant to divide them by, achieving a total sum of unity.
+- Your task is to divide a selection of numbers by a common factor so that their total equals one. Mastery of basic algebra will help guide your calculations.
+- Here you’ll be challenged to scale down values in a way that when combined results in one. Focus on uniformity in presentation, rounding off effectively as part of the calculation process.
+- You will enhance your mathematical skills by adjusting a list of values so that they add up correctly. This involves determining how much each number should contribute towards making the total one.
+- Here, you will work with an array of numbers. Your goal is to adjust these numbers so they all relate to one another in a way that their total equals one.
+- This task challenges you to adjust the figures within a list by calculating their proportions such that when added together, they equal one. A grasp of rounding techniques is needed.
+- The objective is to transform a given set of numbers by dividing each by a specific constant, resulting in a new list where the sum is exactly one.
+- Your challenge is to ensure that when you adjust numbers from an input list through division, their resulting output must sum up to exactly one.
+- 'The goal here is straightforward: take an assortment of numbers and adjust them via division, aligning them in such a way that their collective value is one.'
+- This task focuses on normalizing numerical data. You will divide a list of values by an appropriate constant which results in their sum equating to one.
+- The focus of this task is on transforming raw numeric data into scaled values that together sum up to unity, demonstrating skills in arithmetic normalization.
+- Your role is to process an array of numbers by dividing each by a certain constant until their total reaches one.
+- The task consists of taking an array of numerical inputs and transforming them through division so they align; namely, their sum should reflect 1, accurately rounded off as specified.
+- In this activity, you will take an array of numerical data and perform mathematical adjustments that ensure the sum of the modified data equals one, rounding your answers appropriately.
+- For this assignment, you will be taking various numbers and modifying them. Your modifications should ensure they represent parts of a whole, summing to exactly one.
+- As part of your responsibilities, you'll process numeric lists with an emphasis on achieving a final sum of one—highlighting your skills in mathematical normalization.
+- You will be working with sets of numbers, and your objective is to scale them down by a particular factor until their overall sum is exactly one.
+- In this task, make sure you balance out provided numerical inputs through divisions required for reaching unity in their summative output, presenting your results with careful rounding policy in place.
+- The goal is to ensure the sum of modified numerical values equals one after performing specific divisions on the initial inputs. Ensuring correct rounding is essential.
+- Your focus is on a series of numbers from which you will derive values by applying division in such a way that they collectively total one.
+- Given a collection of numerical data, your objective is to adjust these values to ensure they collectively add up to exactly one.
+- The objective is to transform a list of values through division, resulting in a new set where the combined value is equal to one.
+- In this task, you're working with numerical data that needs to be normalized. This means you'll scale the numbers so that their sum becomes exactly one.
+- You need to take a collection of numbers and scale them in such a way that their sum equals one, ensuring each number is represented as a proportion of the total.
+- The goal is to adjust a series of numerical values, ensuring that after proper division, they collectively sum up to one while keeping each outcome within three decimal places.
+- In this task, you will normalize a series of numbers by finding a common factor to ensure their sum is one, with results rounded to three decimal points.
+- You are required to convert an array of numbers into another form where all values add up to one after being divided by an appropriate constant.
+- You will take several numbers and compute new values through division, ensuring the resulting figures add up to one. The ability to handle negative numbers and decimals will be beneficial.
+- Your objective is to take a series of numerical values and adjust them by dividing with a common factor, ensuring that the total of the new values equals one. Precision in rounding is essential.
+- This task requires you to manipulate a series of numbers by dividing them by a specific factor, ensuring the final sum becomes one.
+- In this activity, you need to take a set of numerical values and scale them appropriately to create a new set where the total equals one.
+- This exercise contains numerical inputs which you'll normalize via division, ensuring their collective sum reaches exactly one, indicating strong mathematical capabilities are needed.
+- You will be required to transform a series of numerical values. This includes adjusting the values by a specific constant in order to make their sum equal to one, with all outputs rounded to three decimals.
+- The task encompasses adjusting numerical data points so that they form a new set with an aggregated value of one, using division.
+- Your task is about effective number manipulation, requiring you to adjust multiple figures through division such that their outcome equals unity post-calculation.
+- The job is to take an array of numbers and modify them mathematically so that they normalize into a sum of one, demanding careful calculation and rounding.
+- Your job entails dealing with numbers set together which must be adjusted mathematically so their final addition reflects unity, capped off with precise rounding practices for clarity in presentation.
+- Here, you'll manipulate numerical data by dividing each element in the list with a common term, aiming for the overall sum to reach one. This involves mathematical reasoning and error-checking.
+- In this exercise, your task is to adjust provided numerical figures by dividing them correctly. The goal is for their sum to equal one, requiring attention to detail in rounding.
+- You will work with a list of numbers and perform operations to transform them into a new set where their total equals one. This requires an understanding of ratios and proportions.
+- You are tasked with adjusting numerical values in such a way that their collective sum totals one, determining an appropriate divisor for this process.
+- The exercise involves taking a set of diverse numbers and processing them through uniform division, so that their final sum aligns with the value of one.
+- This task involves adjusting the values in a numerical list so that when summed together, they equal one, by applying a uniform scaling factor.
+- You will be manipulating numeric data by applying consistent divisors across the set, with the end goal of having these values amounting to one collectively.
+- You will handle a sequence of numerical values with the intent of transforming them via division, ensuring the result maintains unity in terms of total value.
+- You need to manipulate a set of numbers through division by a common factor so that their collective total becomes one, rounding the results to three decimal places for precision.
+- In this assignment, you will be balancing numerical values through division, adjusting them so that they total one after processing. A keen eye for rounding will enhance your work.
+- In this exercise, your focus will be on reshaping a series of numerical figures by applying a division method. The end result should reflect a sum of exactly one.
+- This exercise involves taking a range of numbers and scaling them down or up such that their overall sum totals to one.
+- You will be given a list of numerical values which you'll need to alter so that they add up to one. This requires calculation skills, specifically in scaling and rounding off numbers correctly.
+- This task requires you to manipulate a list of numbers through division so that the resulting values add up to one. Precision in rounding is important.
+- The aim here is to process a collection of numbers through division, achieving a set whose aggregate equals one. Precision in rounding off your final outputs matters greatly.
+- You will engage in numerical manipulation, transforming lists so that after adjustment and rounding, their total equals one—challenging you to apply scaling techniques effectively.
+- You'll be asked to carefully split a range of numbers by utilizing division techniques, facilitating an outcome where everything sums up neatly to one unit.
+- Your assignment involves recalibrating a series of numbers by applying division to make their total one. Skills in arithmetic manipulation and rounding are crucial for success.
+- Explore how different numerical figures can relate to each other by scaling them down through systematic division so that their overall representation equals one unit.
+- Here's your chance to apply mathematical normalization techniques! Adjust a list of numbers such that their total makes sense as one unit after adjustments.
+- Your task is about achieving numerical harmony! Adjust the figures in the provided list so they cohesively sum up to one unit, rounding off correctly while doing so.
+- In this exercise, you will take a set of numbers and convert them into proportions that add up to one, ensuring each value is rounded to three decimal places.
+- You will be calculating relative values for a given group of numbers through division methods, striving for their collective sum to reach precisely one while rounding correctly.
+- Your task is to scale a list of numbers so that their total equals one, adjusting each number appropriately and rounding to three decimal places.
+- Given a collection of numbers, your task is to scale them down so their total becomes one. This requires applying division and ensuring to round off results accurately.
+- This activity involves adjusting an input list of numbers so that they result in a normalized sum of one once processed correctly.
+- Engage with several numerical inputs to apply division rules that will express these figures in a new light where the total sum stands at one.
+- Here, you will work with lists of integers or decimals, applying division techniques to yield results that add up to one, while making sure the figures are rounded correctly.
+- Your task is to normalize a list of numbers so that they sum up to one. This requires dividing each number by an appropriate constant.
+- The core of this task lies in taking disparate numerical values and syncing them into a cohesive unitary total through division while attending carefully to rounding rules.
+- Here your focus lies on altering quantities expressed in lists through division operations, aiming for the final aggregate to present as one.
+- Your role is to take numeric data and ensure it adheres to the specific criterion of summing up to one, which involves strategic mathematical adjustment.
+- In this task, you are expected to adjust a group of numbers proportionately, dividing each by a consistent value so that the total of the new set is unity. Precision in rounding to three decimal places is necessary.
+- The goal here is to take a series of numbers and find the correct method for adjusting their total so it equals one.
+- You will work with a set of numerical values and calculate their relative weights by scaling them down so that they sum to one. Familiarity with division and rounding is essential.
+- You will manipulate a set of numerical data in such a way that the final results summarize to one. Familiarity with division and basic number properties will be necessary for this process.
+- This task requires transforming a list of numbers through division such that their total equals one. It involves mathematical reasoning and rounding to maintain accuracy.
+- This task requires you to manipulate numerical lists effectively. Your focus should be on achieving an overall normalized total while observing proper rounding practices.
+- With a list of figures provided, your mission is to execute divisions for each number so they resonate back as components of a single unit when summed together.
+- The task requires you to take a given set of numbers and transform them into a format where their overall sum is one, using division and careful rounding.
+- By taking a list of numbers and employing division, you will create a new representation where the outcome equals one. Skills in reasoning about proportions will be key here.
+- You are required to transform a list of numbers such that their collective sum becomes one. This involves dividing them by a constant and rounding the results.
+- You will engage in a mathematical task where the primary focus is transforming an input list of numbers into an output list whose values sum up to one through division.
+- This activity requires you to normalize lists of numerical values such that their final summation equals one via division by appropriate constants.
+- The goal here is to apply a mathematical operation on a collection of numbers which will involve dividing each number by a determined constant. The outcome needs to be summed up to unity and expressed with three decimal accuracy.
+- The task involves recalibrating given numeric lists using divisions so that the final summation converges on the value of one in the outcome.
+- You will be presented with several figures and asked to apply a mathematical operation that results in their sum equaling one.
+- This assignment requires you to take numerical inputs and process them by dividing each by a constant, ultimately ensuring that they sum to one.
+- The exercise focuses on manipulating numerical data sets, guiding you to ensure their new configuration adds up perfectly to one with precise rounding.
+- You are tasked with calculating adjustments for numerical inputs through division, maintaining precision as each resultant item's sum should equal one.
+- Your role here is to adjust quantities represented as numbers. You will divide them strategically so that the new set's overall total matches one.
+- This task involves working with numerical fractions. You will determine the necessary adjustments for a list of values so they align perfectly to create a total of one.
+- You are provided with lists containing numerical data which need to be refined through division processes aimed at obtaining a total value of unity.
+- The task at hand involves manipulating numerical data through division, reworking it into a format where everything ultimately sums up to one.
+- You are tasked with modifying numbers from a list so that when altered, they contribute to a total equaling one. This requires both calculation and proportional reasoning.
+- This challenge requires you to proportionally scale different values into a single unit, keeping their relationships intact as they are divided and rounded.
+- The aim here is to ensure that a given list of numbers reflects unity as its sum, applying consistent ratios across the entries via division.
+- Your job is to convert and reposition the elements within a numerical array until they achieve a combined total of one through calculated adjustments.
+- The task at hand involves transforming numerical data into a standardized format where the total equals unity, requiring division and precise rounding.
+- You will convert a given array of numbers into another set by ensuring that their sum becomes one through applying division uniformly across the entries.
+- The task requires simplifying sets of data into normalized forms. Your ultimate goal is for these values to combine into the total of one.
+- Your task is to adjust the values in an assortment of numbers through division. The final output must have a total sum of one after these adjustments.
+- The task is to normalize a list of numbers so that their total adds up to one, using a constant divisor for all entries.
+- The task at hand is to adjust a selection of numbers so that when added together, they equal one. This might involve calculating the right divisor.
+- In this task, you will work with a list of numbers and transform them so that their sum equals one. This requires knowledge of basic arithmetic and normalization techniques.
+- This task invites you to normalize a series of numbers by dividing them wisely so their resultant sum totals exactly one. Accuracy in handling numeric data will be key.
+- In this task, you are to work with various numerical sets and compute their proportions such that when divided appropriately, they yield a sum of one.
+- The challenge lies in adjusting values from a list through division so the end results sum up to one. Attention to detail in your calculations will be vital throughout this task.
+- You will receive a list of figures, and your job is to transform these numbers so that their sum equals one.
+- This requires understanding ratios as you work through lists of numbers, adjusting them through division so that every resultant set sums up to exactly one.
+- The challenge here is to modify a given list of numbers by dividing each one by a constant factor, ensuring that when combined, their sum equals one.
+- Your objective is to scale down or up a list of numbers to reach a total of one when summed, requiring an understanding of basic proportion calculations.
+- The task at hand involves adjusting multiple numerical values by division so that your final set achieves a total value of one when combined.
+- This task challenges you to manipulate a collection of numbers through division, creating an adjusted series with a summed value of one.
+- Your challenge is to distribute the values in a list such that they collectively equal one after performing division on them by a constant value.
+- This task involves normalizing a list of numbers by dividing each number by a constant so that their total adds up to 1, while ensuring that your final results are accurate to three decimal places.
+- Your job is to adjust a collection of numeric values such that when they are combined, they total to one. This involves mathematical scaling techniques.
+- 'Engage with a set of numbers where your responsibility is simple yet precise: adjust them through division so that the entire set sums to unity while rounding those figures appropriately.'
+- You will engage with numerical datasets where your goal is to redistribute values through division converging on a total result of one. Understanding how division affects sums is fundamental here.
+- The task involves taking a set of numerical values and adjusting them so that when summed together, they equal one, using division by a constant.
+- This assignment focuses on processing numerical data where you divide each number by a certain amount. The end goal is for all divided results to add up to one.
+- Your job is to alter sets of numbers such that their resultant figures can be made to sum up to unity after undergoing division operations.
+- This task involves taking a set of numerical values and modifying them by dividing each one by a specific constant. The outcome should be a new list where the values sum up to exactly one.
+- You will delve into mathematical transformations applied on numeric collections. Each number undergoes adjustments aimed at producing a cumulative outcome equating precisely to one, presented clearly in rounded format.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task093_conala_normalize_lists
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task093_conala_normalize_lists
+user_prompt_template: '{task_def}
+
+
+  {problem}'

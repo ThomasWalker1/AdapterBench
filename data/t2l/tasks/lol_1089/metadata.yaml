@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Tasked with evaluating an array, you must ascertain if the sequence is monotonically ordered, refusing any interruptions between increases and decreases in values.
+- This task entails determining the nature of an integer array by checking its consistency in increasing or decreasing order, identifying it as monotonic if confirmed.
+- Analyze the integers in the provided multiset and establish if they exhibit a consistent increase or decrease over their range in order to classify them as monotonic.
+- Look at the integer array and analyze its progression to see if it consistently rises or falls, identifying its monotonic characteristics based on this behavior.
+- In this task, you'll analyze integers arranged in a line and figure out if they are strictly increasing or decreasing, which indicates they are monotonic.
+- Your objective is to check the integers' arrangement in the array. If they strictly increase or decrease without changing direction, mark it as monotonic.
+- You will check the numeric order in an array of integers. If the numbers consistently rise or fall, the array is monotonic.
+- Your task is to determine whether the given array of integers is monotonic, meaning it either only increases or only decreases throughout its length.
+- Analyze an integer array for consistency in movement, checking if all values move upward together or downward uniformly without interruption.
+- Your role involves evaluating an integer series to see if its values follow a singular increasing or decreasing trend, confirming its monotonic status if applicable.
+- Your objective is to evaluate whether the given array of integers is orderly in an increasing or decreasing manner.
+- The objective is to check the structure of a numerical array and establish if it behaves monotonically, meaning it either solely ascends or descends throughout.
+- Investigate whether the integers in a sequence are organized in such a way that they do not switch from rising to falling at any point.
+- Inspect the numbers in the array to ascertain whether they follow a smooth upward or downward trajectory without breaking that pattern.
+- The task calls for determining if a given array remains consistent in its progression, either increasing or decreasing throughout all its elements.
+- Review the integer list for characteristics of monotonicity by examining whether successive values exclusively rise or fall throughout the entire sequence.
+- Your task is to evaluate a given array of integers and determine if it is monotonic, meaning the numbers either consistently increase or decrease.
+- The task involves analyzing an array of integers to determine if it is monotonic, meaning that its elements are either entirely non-increasing or non-decreasing.
+- The task at hand involves determining if the elements of the provided integer array progress in one uniform direction exclusively, either upward or downward.
+- Your task is simply to evaluate an array of numbers and establish whether it adheres to a single directional trend, qualifying as either monotonically increasing or decreasing.
+- Check for monotonicity in the provided integer list by confirming whether its elements exclusively rise or fall without any deviation.
+- Your role is to inspect a set of numbers to see if they fit the criteria of being monotonic, meaning they either never increase after decreasing or never decrease after increasing.
+- Your task is to inspect an integer array and determine whether it shows a steady pattern; this identifies it as either being monotonic or not.
+- Inspect the numerical sequence for monotonic behavior, checking if it is consistently increasing or consistently decreasing throughout.
+- The task involves determining the behavior of an integer array to see if its elements climb up or drop down consistently without variation.
+- You need to explore an integer array to see if it is organized into a strictly increasing or decreasing form throughout its entirety.
+- Determine whether the provided array maintains a uniform direction in its progression, either ascending or descending without fluctuation.
+- Look into the provided numbers and ascertain whether they form a monotonic sequence by having all elements either rise or fall in value.
+- Your task is to evaluate an array of integers and determine if the numbers are in a monotonic sequence, meaning they either consistently increase or decrease.
+- You must determine if an array of integers maintains a uniform trend by being either entirely increasing or entirely decreasing as you examine the sequence from start to finish.
+- Your task is to scrutinize an integer array and decide if it follows a uniform pattern of increasing or decreasing values.
+- The objective is to verify whether the sequence of integers provided shows a single trend throughout, being uniformly high or low.
+- Assess the list of integers to confirm if it adheres to a monotonic pattern, meaning it consistently goes up or down without interruption.
+- You will be looking into a list of integers to find out if it is characterized as monotonic; this means verifying that all elements either rise or fall in order.
+- You will inspect a set of integers to check for a monotonic pattern, identifying whether the elements steadily rise or fall without any fluctuations.
+- The aim is to evaluate a list of integers for their consistency in trend; the numbers should either be all ascending or all descending.
+- You are to inspect a series of integers and conclude if they maintain a steady upward or downward pattern.
+- You are tasked with confirming whether the sequence of numbers presented follows a single trajectory, lacking any shifts between rising and falling.
+- Review the provided integer array and decide if it displays a consistent increase or decrease across all its elements, thus qualifying as monotonic.
+- In this task, you will assess whether an integer array is monotonic, which implies that its values either only increase or only decrease as you move along the list.
+- Focus on evaluating a numerical array for its consistency in trend—either being entirely non-increasing or non-decreasing qualifies as being monotonic.
+- The goal is to assess whether an array of integers is monotonic. This means looking for a sequence where each number does not disrupt the overall trend of rising or falling values.
+- In this challenge, you need to look at a sequence of integers and identify its monotonic nature by confirming it either rises sharply or drops steadily throughout.
+- The task involves evaluating an array of integers to determine if it consistently increases or decreases throughout.
+- Examine the provided set of integers and determine if they form a monotonic sequence. A sequence is considered monotonic if it maintains a consistent directional trend.
+- The task involves scrutinizing an integer array for monotonic behavior, verifying that there are no dips or rises interrupting a steady trend.
+- Identify if the integer array is monotonic by determining if it presents either an entirely increasing sequence or an entirely decreasing one.
+- You will be determining if an integer array can be classified as monotonic by verifying whether its elements all lead towards higher or lower values throughout their arrangement.
+- Investigate the list of integers and see if they continuously progress in one direction without any reversals.
+- Your task is to determine if the sequence of integers given forms a monotonic array. The identification hinges on whether the values show a uniform rise or fall.
+- Inspect an integer array with the intent of establishing whether it adheres to monotonic principles by remaining uniformly increasing or decreasing throughout its entries.
+- You will critically assess a collection of integers to spot any sign of inconsistency in their sequential order, verifying if they are monotonic.
+- This task involves checking if the integers in an array maintain a consistent directional flow, either upward or downward without deviations.
+- Look at the list of integers and determine if it exhibits monotonous behavior, where every number follows its predecessor in either an upward or downward manner.
+- Check the integer sequence and identify if it adheres to a single directional flow—either increasing or decreasing consistently.
+- Analyze a sequence of numbers and decide if they consistently increase or decrease throughout the array.
+- Analyze the integer list to find out if it meets the criteria for monotonicity, which requires that the numbers do not switch between increasing and decreasing.
+- Examine the provided numbers in an array and establish whether they're arranged in a way that qualifies them as increasing or decreasing, indicating monotonicity.
+- Examine the integer array to see if it is uniformly sequential, where each number is greater than or equal to (or less than or equal to) its predecessor.
+- You will be examining an array of integers for monotonic behavior, looking for sequences where no interruptions occur in increasing or decreasing values.
+- Your goal is to scrutinize an integer array and make a determination on its monotonic status based on whether the elements follow one consistent directional flow.
+- Review the provided sequence of numbers to see if they show a clear and continuous increase or decrease from start to end.
+- You will assess a list of numbers to check for monotonicity. An array is monotonic if it consistently increases or decreases as you move through its values.
+- Your job is to analyze an array for monotonicity, confirming whether it behaves in one straightforward direction, either up or down.
+- Verify whether the array of integers reflects a seamless increase or decrease across all elements, thereby establishing its monotonic nature.
+- Check an integer list for uniformity in direction; ascertain if it's consistently increasing or decreasing to classify it as monotonic.
+- You need to analyze an array of numbers to check if it maintains a single direction, either going up or down without interruption.
+- Given a list of integers, check if the numbers exhibit a consistent trend of only rising or only falling.
+- Your job is to assess whether the numerical sequence maintains a predictable pattern, categorizing it as monotonically increasing or monotonically decreasing.
+- You need to review an array of integers and decide if it exhibits monotonic characteristics by being entirely non-increasing or non-decreasing.
+- Analyzing whether an array of integers presents a homogeneous trend, either all increasing or all decreasing, is the focus of this task.
+- You will be assessing whether all elements in an integer list are arranged in a strictly increasing or strictly decreasing manner.
+- Your objective is to assess a list of integers and see if it adheres to monotonic behavior, meaning the numbers should either rise or fall consistently.
+- You will assess whether the elements in an integer list maintain a direction—either rising continuously or falling without any hindrance.
+- The task involves examining an array of integers to determine if it consistently increases or decreases throughout, known as monotonicity.
+- Analyze how the numbers are arranged. If they continue rising or falling consistently without any interruption, then they've met the criteria for being monotonic.
+- Check if the sequence of numbers in an array remains consistently increasing or decreasing. If so, you will determine that it is monotonic.
+- Your mission is to delve into an array of integers to determine if they maintain a constant trend without any fluctuations, confirming their monotonicity.
+- Evaluate an integer array for monotonicity by checking if it is either strictly increasing or strictly decreasing across its entire series.
+- Your task includes reviewing the changes in values within an integer array to see whether they maintain a single trend—upward or downward—throughout.
+- You must inspect an array of integers and conclude if its elements move in one direction only—either upwards or downwards—without deviation.
+- Determine if the integer array is monotonic by checking if all elements move in one direction—either up or down—without changing course.
+- Examine an integer list to verify its entire structure complies with being monotonic by ensuring no changes in direction occur within the series of numbers.
+- Your task is to evaluate an array of integers to determine if it is monotonic, meaning it is either entirely non-increasing or non-decreasing.
+- You need to check a series of integers to identify whether they form a monotonic sequence, which is characterized by consistently rising or falling values.
+- In this challenge, determine if the integers provided are arranged in such a way that they either all go up or all go down as you progress through them.
+- Analyze the sequence of integers to ascertain if the numbers consistently either grow larger or shrink smaller, thus proving its monotonic nature.
+- Your job is to verify the arrangement of numbers in an array for monotonicity, ensuring they do not change direction as you read through them.
+- Your job is to validate whether an array of integers follows a monotonic order, meaning that it does not switch from increasing to decreasing or vice versa.
+- You need to check for monotonic sequences within an integer array, confirming they are strictly increasing or strictly decreasing as you evaluate them.
+- You need to evaluate a given set of numbers to conclude if the sequence is either steadily increasing or steadily decreasing.
+- Evaluate the integer array for monotonic characteristics by checking if its values only ascend or descend as you traverse them from left to right.
+- You are tasked with identifying whether the elements in a given integer array follow a monotonous path by observing their sequential growth or decline.
+- Analyze the provided integer array to check if its values consistently rise or fall. If it only exhibits one trend, you will classify it as monotonic.
+- Review the sequence to ascertain whether all elements either rise or fall in value—this will allow you to classify them as monotonic or not.
+- Your job is to identify monotonicity in the given integer array, ensuring that it either grows larger or smaller as you go from left to right.
+- Examine the given integers and verify whether they constitute a monotonic sequence, ensuring that each subsequent element doesn’t break either an upward or downward pattern.
+- Your mission is to analyze the flow of numbers within an array and ascertain if they continuously ascend or descend without interruption.
+- Determine whether the supplied array of integers is monotonic by checking if it follows a consistent upward or downward trend.
+- You will need to assess an array of integers to see if it exhibits monotonic behavior, meaning it is either entirely non-increasing or non-decreasing.
+- You need to evaluate an array of numbers and identify if they maintain a steady increasing or decreasing order as you progress through the list.
+- You are tasked with checking if an array of integers follows a monotonic pattern, which means all elements should either increase or decrease without interruption.
+- Your task is to determine if a sequence of integers represents a consistent trend, either rising completely or falling entirely throughout its length.
+- Your responsibility is to evaluate an integer array and conclude whether its sequence is monotonic based on the order of its elements.
+- Check if the integers in an array are arranged in a way that they either increase or decrease throughout, thereby establishing their monotonic nature.
+- Check the given array of integers and identify if it maintains a single direction, either going up or down throughout the entire list.
+- This task requires you to examine a list of integers and decide if they show a consistent trend of increasing or decreasing values.
+- Evaluate the provided numbers in an array and determine whether they strictly move in one direction—upwards or downwards—thus identifying their monotonic nature.
+- Your objective is to check whether an array of numbers follows a monotonic pattern, which means it should not switch between increasing and decreasing.
+- You are tasked with checking if an array demonstrates a uniform trend—increasing or decreasing—across all its elements.
+- Evaluate the arrangement of integers in an input list, verifying if it maintains a monotonous trend by not alternating between increases and decreases.
+- 'Assess the list of numbers for their behavior: they should either always increase or always decrease without deviation.'
+- You need to evaluate a list of numbers to see if their order is either entirely ascending or descending, classifying it as either monotonic or not.
+- Analyze the integers in the array for any form of a monotonic sequence where elements either continuously increase or decrease throughout.
+- The goal here is to review a collection of numbers and establish whether they either rise or fall throughout, identifying it as a monotonic array.
+- Evaluate whether the given list of integers is monotonic by seeing if the elements either always increase or always decrease as they are arranged.
+- You must analyze the elements of an integer array to decide if they form a monotonically increasing or decreasing series as you progress through the array.
+- Evaluate an array of integers for monotonicity, ensuring that each number either climbs or descends without any fluctuations in direction.
+- The job is to check for consistency in the order of numbers within an array, focusing on whether they only increase or decrease throughout.
+- Determine if the series of numbers follows a clear pattern, being either solely non-increasing or non-decreasing when moving across them.
+- This task requires identifying whether the elements of an array change in a uniform manner, either always increasing or always decreasing as you move through them.
+- Analyze the given list of integers to find out whether it maintains a single direction—either going up or down—throughout its entirety.
+- Examine the array of integers to decide if the elements are arranged in a way that they either steadily increase or steadily decrease.
+- Investigate whether each number in an integer array stacks up in a way that shows continuous growth or decline across all elements without any fluctuations.
+- You will analyze a set of numbers to conclude if they consistently ascend or descend, categorizing the sequence as monotonic.
+- The responsibility here is to inspect a list of numbers and determine its monotonic status, ensuring that the values do not change from rising to falling or vice versa.
+- Evaluate the order of numbers in an integer array to decide if it is monotonic. This requires recognizing whether the values consistently ascend or descend.
+- You will analyze a series of numbers to check if their order is either strictly ascending or strictly descending.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1089_check_monotonic_array
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1089_check_monotonic_array
+user_prompt_template: '{task_def}
+
+
+  {problem}'

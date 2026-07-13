@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your job is to scan the sentence for any reference that could be recognized as a company or organization name.
+- This task focuses on recognizing corporate entities within text. You'll highlight their names based on your understanding of the sentences provided.
+- In this task, directly recognize and denote the name of an organization presented in a descriptive sentence.
+- Engage with the text by locating references to commercial entities or associations, providing one identifiable name as your result.
+- Use your analytical skills to identify and record the name of one business or organizational entity presented in textual form.
+- Your task involves scrutinizing text passages for identifiable companies or organizations, embedding their names into your response.
+- In this exercise, you will locate and present the name of a business or organization hidden within a larger sentence.
+- Read the provided sentence and recognize the specific name of a company, brand, or organization contained within it.
+- Identify and report a company or organization name that appears in the supplied text, ensuring accurate recognition of proper nouns.
+- Extract a prominent company's name from the provided sentence, ensuring you comprehend its meaning.
+- Your goal is to extract specific entities, such as companies or organizations, from sentences. This will require both reading and recognition skills.
+- Your job is to identify an extracted organizational name from the context provided in the input sentence.
+- The objective here is to sift through a provided statement to locate and recognize the name of a company or an organization.
+- Analyze each sentence for mentions of companies or organizations, then provide one such name you have identified.
+- Analyze the provided sentences to find and name any corporate or organizational reference, showcasing your familiarity with different companies.
+- Engage with the given text to find out which company or organization is mentioned and state one name clearly.
+- You will be interpreting sentences to isolate names of companies or organizations, which requires keen attention to detail.
+- The objective is to sift through a sentence to identify a company or organizational name, showcasing your ability to recognize such entities in context.
+- Delve into each sentence to find an organization’s name mentioned therein, using your background knowledge of businesses to assist in identification.
+- In this task, concentrate on identifying organizational names woven into the narrative of the provided sentences.
+- You are expected to pull out a single organization name from each sentence based on the text's context, reflecting your focus on relevant information.
+- Analyze the provided sentences for clues about companies and organizations, focusing on their named entities.
+- Identify references to businesses or service providers within the sentences provided. Look for contextual clues that may indicate such names.
+- Your task involves parsing through a sentence to find the name of a recognized company or organization, reflecting your understanding of brands and institutions.
+- Your objective is to locate and report on an organizational name embedded in the text provided.
+- You will read a sentence and find a company or organization name embedded within it. Your focus should be on recognizing brand names or institutional identifiers present in the context.
+- You will examine a sentence to find an associated company or organization's name, requiring attention to detail and comprehension skills.
+- Identify a noteworthy company or organization from the provided sentence and express that name clearly.
+- In this exercise, you'll need to highlight the names of companies or organizations that appear in a sentence. Focus on any words that are associated with corporate entities.
+- Your responsibility is to sift through the sentence to identify and present a relevant company or organization name.
+- Interpret the sentences in order to extract the names of businesses or organizations accurately.
+- This task involves recognizing and selecting a company or organization name from the provided text.
+- Analyze the sentence to pinpoint and provide one name of a business or organization that stands out.
+- The goal is to sift through the information in a sentence and pinpoint the name of an entity or organization, using context clues and your knowledge.
+- You will read a sentence and pinpoint any company or organization names included, demonstrating your ability to recognize business entities in text.
+- Your role is to analyze sentences for references to commercial entities or organizations, ensuring you can identify at least one correctly.
+- You need to focus on determining any company or organization mentioned in the sentence and select one of them as your answer.
+- Engage with each sentence thoughtfully and determine which entity, be it a company or organization, is mentioned prominently.
+- Carefully read through the provided sentence to detect any business or organizational names, emphasizing your ability to locate specific information.
+- The task includes recognizing key terms in each sentence that represent companies or organizations, showcasing your grasp of language nuances.
+- Interpret the sentence for clues about companies or organizations and provide one notable example based on your understanding.
+- This task challenges you to pick out and report one company or organizational name based on context from the sentence.
+- As you read through the texts, aim to capture any references tied to business entities, demonstrating your recognition skills in this context.
+- Your task is to identify and extract the names of companies or organizations mentioned in a provided sentence.
+- You are tasked with locating and stating the name of an organization mentioned in the text, using your comprehension skills to identify relevant terms.
+- Focus on the sentence and find any reference to a company or organization, then provide that name as your response.
+- Find distinct names of businesses or institutions in the given text passages. This requires careful reading and contextual understanding.
+- Look closely at the sentence and identify any mention of a company, paying attention to potential keywords.
+- Your task is to identify company or organization names from given sentences. Focus on extracting relevant terms that represent businesses or institutions.
+- Your responsibility is to carefully read and extract one identifiable company or organization name from the provided information.
+- The goal is to recognize and write down the name of any company or organization present in the provided statement.
+- The challenge is to read through a statement and pick out an identifiable company or organization mentioned along the way.
+- Identify any corporate names present in the sentence and accurately report one recognized organization as your response.
+- The focus is on scanning sentences for mentions of businesses or organizations; you should select any recognizable name as your output.
+- This task requires you to sift through the information in the sentence and identify a business or organizational name.
+- Your objective is to identify the corporate entity described in each sentence, honing in on its name for clarity.
+- Your job is to scan through a sentence and recognize which company or organization is referenced, providing that name as your answer.
+- By examining the sentence closely, your objective is to discover the name of a company or organization contained within it.
+- The task requires you to look for names of companies or organizations within the sentence provided and highlight one that fits.
+- Examine the information in the sentence to find a name that corresponds to a company or organization, which you will then provide.
+- Analyze the given sentence to recognize which business or organizational entity is being referred to.
+- Read the input carefully and extract the relevant company or organization name from the text.
+- In this activity, you'll look for and specify the names of various companies or organizations that are part of a provided sentence. This task harnesses your ability to distinguish proper nouns effectively.
+- The goal is to discern and articulate the name of an organization referenced in the sentence you receive.
+- This task requires you to discern and state the name of an organization from within a larger sentence context.
+- This activity asks you to extract applicable company names found in sentences, relying on your understanding of common organizations.
+- The goal is to sift through the sentence and highlight the name of a business or organization, showcasing your recognition skills in context.
+- You need to recognize and select the name of a business or organization from a presented sentence.
+- Your job is to scan the provided sentence for recognizable names of companies or organizations. Attentiveness to context and word recognition will help you succeed.
+- Your task is to locate and recognize the names of companies or organizations embedded within sentences, reflecting your understanding of current entities in society.
+- Your goal is to pinpoint the name of an organization or entity referenced in a given context.
+- Focus on identifying a company's name mentioned within each sentence; consider context for better clarity.
+- You will examine each sentence to locate and write down the name of a company or organization mentioned within it.
+- Identify and report on companies or organizations referenced in sentences by accurately extracting their names from the text.
+- The goal is to determine and report a specific company or organization based on the context of the sentence you are given.
+- You'll respond by naming a company or organization that appears in a specified sentence, focusing on textual clues.
+- Analyze the provided sentence to uncover and state the name of any relevant company or organization mentioned.
+- Your objective is to discern any reference to companies or organizations within a sentence and detail one example from that list.
+- You must interpret the provided sentence correctly to extract and produce an associated name of a company or organization.
+- Review the content of the sentence carefully and write down one recognized name of an organization or company.
+- You are expected to interpret sentences and pinpoint references to companies or organizations, highlighting your understanding of language.
+- Here, you are tasked with identifying and reporting any company or organization names referenced in a sentence you review. It emphasizes your ability to pick out specific references amidst general information.
+- This task involves recognizing a certain entity within a text—specifically, the name of a company or organization.
+- This task involves selecting a company or organization name presented within a sentence, requiring you to pay attention to specific keywords and phrases.
+- Look through each sentence carefully and identify any phrases that refer explicitly to named companies or organizations, blending comprehension with identification skills.
+- This task requires you to identify businesses or organizations referenced in sentences, demonstrating your comprehension of commercial terminology.
+- You need to navigate through each sentence to single out the corresponding name of any company or organization discussed.
+- The objective is to discern and write down a company or organization name that appears in each provided sentence, utilizing your awareness of notable brands.
+- Examine each sentence attentively to identify and extract a company’s or organization’s name mentioned in the text.
+- Analyze textual information to capture any instance of an organization's name mentioned and communicate that finding clearly.
+- Your focus will be on extracting from each sentence one clear reference to either a company or an organization.
+- Utilize your comprehension skills to determine which organization's name can be inferred from the sentence.
+- The objective is to extract and convey the name of an organization or company that can be identified from the provided input.
+- You will be asked to recognize corporate names in an excerpt; thus, familiarity with various companies will aid in this identification task.
+- In this task, you are to recognize significant entities like companies or organizations mentioned in the text provided.
+- You will read a sentence and pinpoint the specific name of a company or organization that is mentioned within it.
+- This task involves recognizing and naming an organization found in a specific sentence you will read.
+- In this task, your objective is to identify the name of a company or organization mentioned within a given sentence. You need to extract relevant terms that represent entities from the text.
+- Scrutinize each sentence for possible mentions of companies or groups that stand out prominently.
+- The purpose of this task is to discover and articulate company or organization names found within given sentences. Active reading skills are essential for accurate identification.
+- The goal here is to extract the name of a company or organization found in a given sentence, showing your reading comprehension abilities.
+- Extract a correct name of a corporation from the sentence provided; this requires skills in reading comprehension and brand recognition.
+- Delve into the text to uncover any names relating to companies or organizations contained within it, using keen observation skills.
+- Identify the mention of a specific organization or company within each given sentence, showcasing your ability to glean information efficiently.
+- Analyze the sentence given to extract the name of an organization, focusing on contextual clues.
+- Pay attention to the text while looking for company and organization names that are mentioned. The task will assess your ability to recognize these entities amid narrative elements.
+- You will analyze a sentence to recognize a company or organization's name, providing your answer succinctly.
+- You are required to extract and provide the name of an organization or company that appears in the given information.
+- Your task involves parsing the sentence for references to organizations, aiming to recognize at least one relevant name.
+- Interpret the information in the sentence to derive a likely name of a business entity present in the text.
+- Your task is to find and identify a relevant company or organizational name hidden within the text of the sentence.
+- You will read a sentence and extract the relevant name of a business or organization mentioned, demonstrating your ability to comprehend context and recognize proper nouns.
+- Your focus should be on identifying any phrase that corresponds to a recognized organization or business entity in a short text.
+- This exercise requires you to identify any mention of a business entity or organizational name embedded in a sentence.
+- You will use your attention to detail to extract the name of an organization from within the provided textual content.
+- This assignment emphasizes your ability to identify key entities such as companies or organizations embedded within sentences. It draws on your reading comprehension and analytical skills.
+- In this task, focus on identifying the company or organization mentioned in the sentence presented to you.
+- The task requires you to sift through a sentence for any references to an organization or company name.
+- In this exercise, your goal is to find and present any names representing businesses or organizations hidden within given sentences. Attention to detail is crucial for success here.
+- Your job involves recognizing and isolating the name of a company from various sentence structures, demonstrating analytical reading proficiency.
+- The task is centered on understanding narrative contexts and pinpointing organizational entities present in them.
+- The challenge involves analyzing a sentence and pinpointing the company or organizational name within. You should use your ability to identify proper nouns that signify businesses or groups.
+- Your challenge is to comprehend different sentences and pull out references that point towards various organizations or companies stated therein.
+- Your task is to identify and extract the name of a company or organization mentioned in a given sentence.
+- The objective is to discern which company or organization is referenced in the sentence and communicate that name.
+- Read the provided text carefully and look for the mention of any business or organizational name to identify it accurately.
+- Your mission is to read sentences and highlight notable company or organization names mentioned within. Effective recognition of these terms is key to completing this task accurately.
+- You will look for and state a company or organization name that appears in the sentence you are given.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1479_organization_entity_extraction_btc_corpus
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1479_organization_entity_extraction_btc_corpus
+user_prompt_template: '{task_def}
+
+
+  {problem}'

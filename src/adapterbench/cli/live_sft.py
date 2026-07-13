@@ -21,6 +21,9 @@ from ._shared import (
     DEFAULT_SFT_TRAIN_TASKS,
     PILOT_DEFAULT_TARGET_MODULES,
     REPO_ROOT,
+    T2L_DECONTAM_CONFIG,
+    T2L_EVAL_DESCRIPTIONS,
+    T2L_TASKS_DIR,
     ResultRecorder,
     embed_training_conditions,
     load_frozen_interpreter,
@@ -150,7 +153,37 @@ def _t2p_sft_pilot_command(args) -> None:
         )[0].to(args.device)
         for family in eval_task_ids
     }
+    # Mismatched-description control (invariant #1). Two modes:
+    #  - `adversarial` (--adversarial-control): score each family with an adapter generated from a
+    #    maximally *dissimilar / meaningless* description (Text-to-LoRA's own `additional_eval_descs`
+    #    - e.g. "dogs;cats;bananas;", random noise). The STRONG control: if a genuine task
+    #    description and junk produce the same gain, the adapter is not using the description. This
+    #    avoids the weak-swap confound of deranging among the (all similar QA) eval families.
+    #  - else derange the eval families' own descriptions (weak swap; needs >=2 families).
+    _families = list(eval_condition_embeddings)
+    if args.adversarial_control:
+        import yaml
+
+        if args.adversarial_descs:
+            adv_descs = [d for d in args.adversarial_descs.split("||") if d]
+        else:
+            adv_descs = yaml.safe_load(Path(args.decontam_config).read_text()).get("additional_eval_descs", [])
+        if not adv_descs:
+            raise ValueError("--adversarial-control set but no adversarial descriptions found "
+                             "(decontam yaml has no additional_eval_descs; pass --adversarial-descs)")
+        adv_emb = [embed_task_descriptions([d], encoder_model, encoder_tokenizer)[0].to(args.device) for d in adv_descs]
+        # each family cycles through the adversarial descriptions (deterministic, order-stable)
+        mismatched_condition_embeddings = {fam: adv_emb[i % len(adv_emb)] for i, fam in enumerate(_families)}
+        print(f"[control] adversarial mismatched control from {len(adv_descs)} dissimilar descriptions", flush=True)
+    elif len(_families) >= 2:
+        mismatched_condition_embeddings = {
+            fam: eval_condition_embeddings[other] for fam, other in zip(_families, _families[1:] + _families[:1])
+        }
+    else:
+        mismatched_condition_embeddings = None
+        print("[warn] one eval family and no --adversarial-control - mismatched control unavailable", flush=True)
     del encoder_model
+    scales = [float(s) for s in args.scales.split(",")] if args.scales else [None]
 
     print(f"[3/6] loading + tokenizing {len(task_ids)} training task(s) from {args.tasks_dir}...", flush=True)
     datasets = [
@@ -199,13 +232,15 @@ def _t2p_sft_pilot_command(args) -> None:
         print(f"[6/6] seed={seed}: {len(batches)} batch(es)/epoch", flush=True)
 
         for adapter in adapters:
-            # Re-seeded per (seed, adapter) - not just once at the top of this function -
+          for scale in scales:
+            # Re-seeded per (seed, adapter, scale) - not just once at the top of this function -
             # so each adapter's weight init/dropout trajectory is independent of which
             # adapters were trained before it in this same process/loop position, and each
             # requested seed actually produces an independent run.
             torch.manual_seed(seed)
             target_modules = PILOT_DEFAULT_TARGET_MODULES[adapter]
-            print(f"[6/6] seed={seed} adapter={adapter} target_modules={target_modules}: training...", flush=True)
+            scale_tag = "default" if scale is None else f"{scale:g}"
+            print(f"[6/6] seed={seed} adapter={adapter} scale={scale_tag} target_modules={target_modules}: training...", flush=True)
             module_shapes = infer_module_shapes(layers, target_modules, hidden_size=interpreter.config.hidden_size)
             hypernetwork = TextToPeftHypernetwork(
                 condition_dim=condition_dim,
@@ -214,6 +249,15 @@ def _t2p_sft_pilot_command(args) -> None:
                 adapter=adapter,
                 seed=seed,
             ).to(args.device)
+            # Per-codec LoRA-scale sweep (invariant #2): apply the swept scale directly to each
+            # codec before training (as d2p-niah does), so "shape matters" means "even at its own
+            # best scale" - not an artifact of a fixed default. --scales empty => codec default.
+            if scale is not None:
+                from ..t2p.codecs import LoRACodec
+
+                for codec in hypernetwork.codecs.values():
+                    if isinstance(codec, LoRACodec):
+                        codec.scaling = scale
             stats = train_downstream_hypernetwork(
                 hypernetwork,
                 interpreter,
@@ -226,9 +270,10 @@ def _t2p_sft_pilot_command(args) -> None:
                 grad_accum_steps=args.grad_accum_steps,
                 warmup_steps=warmup_steps,
             )
-            print(f"  seed={seed} {adapter}: initial_loss={stats.initial_loss:.4f} final_loss={stats.final_loss:.4f}", flush=True)
-            loss_curves.setdefault(str(seed), {})[adapter] = {
+            print(f"  seed={seed} {adapter} scale={scale_tag}: initial_loss={stats.initial_loss:.4f} final_loss={stats.final_loss:.4f}", flush=True)
+            loss_curves.setdefault(str(seed), {})[f"{adapter}::scale{scale_tag}"] = {
                 "target_modules": target_modules,
+                "lora_scale": scale_tag,
                 "initial_loss": stats.initial_loss,
                 "final_loss": stats.final_loss,
                 "steps": stats.steps,
@@ -236,19 +281,23 @@ def _t2p_sft_pilot_command(args) -> None:
             }
             (output_dir / "loss_curves.json").write_text(json.dumps(loss_curves, indent=2) + "\n")
 
-            print(f"[6/6] seed={seed} adapter={adapter}: evaluating...", flush=True)
+            print(f"[6/6] seed={seed} adapter={adapter} scale={scale_tag}: evaluating (matched + mismatched control)...", flush=True)
             hypernetwork.eval()  # disable dropout for deterministic held-out scoring
             evaluator = HypernetworkDownstreamEvaluator(
                 interpreter,
                 layers,
                 hypernetwork,
                 tokenizer,
-                trial_id=f"t2p_sft_pilot::{adapter}::seed{seed}",
+                trial_id=f"t2p_sft_pilot::{adapter}::seed{seed}::scale{scale_tag}",
                 device=args.device,
                 use_icl=args.use_icl,
             )
-            for result in evaluator.iter_evaluate(eval_condition_embeddings, all_eval_examples, split=args.eval_split):
-                recorder.record(dataclasses.replace(result, metadata={**result.metadata, "seed": seed}))
+            for result in evaluator.iter_evaluate(
+                eval_condition_embeddings, all_eval_examples, split=args.eval_split,
+                mismatched_embeddings=mismatched_condition_embeddings,
+            ):
+                recorder.record(dataclasses.replace(
+                    result, metadata={**result.metadata, "seed": seed, "lora_scale": scale_tag}))
 
             del hypernetwork, evaluator
             torch.cuda.empty_cache()
@@ -733,11 +782,11 @@ def _register_t2p_sft(subparsers) -> None:
         "t2p-sft",
         help="live end-to-end SFT: hook the hypernetwork's generated output into a real interpreter's forward pass and train on real next-token loss (Phase 4)",
     )
-    t2p_sft.add_argument("--tasks-dir", default=str(REPO_ROOT / "upstream" / "text-to-lora" / "tasks"))
+    t2p_sft.add_argument("--tasks-dir", default=str(T2L_TASKS_DIR))
     t2p_sft.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
     t2p_sft.add_argument(
         "--decontam-config",
-        default=str(REPO_ROOT / "upstream" / "text-to-lora" / "configs" / "hyper_lora_decontam_lol_tasks.yaml"),
+        default=str(T2L_DECONTAM_CONFIG),
         help="T2L's own train_ds_names list - --tasks is validated against it so a training run "
         "can't silently include one of T2L's contamination-removed or held-out-validation tasks",
     )
@@ -771,7 +820,7 @@ def _register_t2p_sft_pilot(subparsers) -> None:
         "training split, then score each via HypernetworkDownstreamEvaluator against real held-out benchmark "
         "examples (Phase 4's 'next' step)",
     )
-    t2p_sft_pilot.add_argument("--tasks-dir", default=str(REPO_ROOT / "upstream" / "text-to-lora" / "tasks"))
+    t2p_sft_pilot.add_argument("--tasks-dir", default=str(T2L_TASKS_DIR))
     t2p_sft_pilot.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
     t2p_sft_pilot.add_argument(
         "--all-decontam-tasks",
@@ -781,7 +830,7 @@ def _register_t2p_sft_pilot(subparsers) -> None:
     )
     t2p_sft_pilot.add_argument(
         "--decontam-config",
-        default=str(REPO_ROOT / "upstream" / "text-to-lora" / "configs" / "hyper_lora_decontam_lol_tasks.yaml"),
+        default=str(T2L_DECONTAM_CONFIG),
         help="see 't2p-sft --decontam-config'",
     )
     t2p_sft_pilot.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
@@ -819,10 +868,28 @@ def _register_t2p_sft_pilot(subparsers) -> None:
     t2p_sft_pilot.add_argument("--device", default="cuda:0")
     t2p_sft_pilot.add_argument(
         "--eval-descriptions",
-        default=str(REPO_ROOT / "upstream" / "text-to-lora" / "trained_t2l" / "gemma_2b_t2l" / "args.yaml"),
+        default=str(T2L_EVAL_DESCRIPTIONS),
         help="args.yaml (eval_ds_info) to source held-out benchmark task descriptions from; only the "
         "description text is used (embedded fresh via --condition-encoder), so any released checkpoint's "
         "args.yaml works regardless of --interpreter",
+    )
+    t2p_sft_pilot.add_argument(
+        "--scales", default="",
+        help="comma-separated LoRA scales to sweep (invariant #2): trains one hypernetwork per scale "
+        "with the scale applied directly to each codec, and reports per-scale best-of. Empty (default) "
+        "uses the codec's own default scale (single run).",
+    )
+    t2p_sft_pilot.add_argument(
+        "--adversarial-control", action="store_true",
+        help="strong mismatched control: score each family with an adapter generated from a maximally "
+        "dissimilar/meaningless description (the decontam yaml's additional_eval_descs) instead of "
+        "deranging the (similar) eval-family descriptions - avoids the weak-swap confound (see PROJECT_PLAN "
+        "T2L rigor).",
+    )
+    t2p_sft_pilot.add_argument(
+        "--adversarial-descs", default="",
+        help="'||'-separated adversarial description strings to override the decontam yaml's "
+        "additional_eval_descs for --adversarial-control.",
     )
     t2p_sft_pilot.add_argument("--eval-tasks", default="boolq,hellaswag")
     t2p_sft_pilot.add_argument("--eval-limit", type=int, default=20, help="eval examples per family")
@@ -890,11 +957,11 @@ def _register_t2p_sft_sweep(subparsers) -> None:
         "adapter under one persistent optimizer, to tell 'still converging' apart from 'already past the point "
         "where held-out generalization peaks' - see PROJECT_PLAN.md's Phase 4 section for why this exists",
     )
-    t2p_sft_sweep.add_argument("--tasks-dir", default=str(REPO_ROOT / "upstream" / "text-to-lora" / "tasks"))
+    t2p_sft_sweep.add_argument("--tasks-dir", default=str(T2L_TASKS_DIR))
     t2p_sft_sweep.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
     t2p_sft_sweep.add_argument(
         "--decontam-config",
-        default=str(REPO_ROOT / "upstream" / "text-to-lora" / "configs" / "hyper_lora_decontam_lol_tasks.yaml"),
+        default=str(T2L_DECONTAM_CONFIG),
         help="see 't2p-sft --decontam-config'",
     )
     t2p_sft_sweep.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
@@ -922,7 +989,7 @@ def _register_t2p_sft_sweep(subparsers) -> None:
     t2p_sft_sweep.add_argument("--device", default="cuda:0")
     t2p_sft_sweep.add_argument(
         "--eval-descriptions",
-        default=str(REPO_ROOT / "upstream" / "text-to-lora" / "trained_t2l" / "gemma_2b_t2l" / "args.yaml"),
+        default=str(T2L_EVAL_DESCRIPTIONS),
         help="see 't2p-sft-pilot --eval-descriptions'",
     )
     t2p_sft_sweep.add_argument("--eval-tasks", default="boolq,hellaswag")

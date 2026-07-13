@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You will encounter inquiries about various aspects of films, such as cast, language, or themes, and your role is to supply accurate information directly.
+- Provide straightforward answers to questions about movies, showcasing your grasp of essential film concepts and data.
+- Your task involves answering open-domain questions about movies, requiring knowledge of film details like directors, actors, and release years.
+- You'll be tasked with providing straightforward responses related to the film industry. This can include aspects like actor details or production notes.
+- You are tasked with quickly delivering factual answers related to films when asked about anything from actors’ roles to release years.
+- This task tests your recall of specific film details as you answer straightforward questions regarding cast members, genres, or production milestones.
+- The focus is on delivering factual answers related to films, ensuring that you tap into your existing knowledge of movie genres, years, and notable contributors.
+- Your job is to delve into film-related questions and provide succinct responses that draw from your movie database knowledge and understanding.
+- You are expected to provide clear answers regarding elements of filmography when posed situational inquiries about various movies.
+- This task involves responding correctly to questions about films by leveraging your understanding of their cast, themes, and audience feedback.
+- Engage your knowledge of films and their creators to fulfill requests for specific information presented in question format.
+- Answer diverse questions centered around cinematic works by summarizing key information related to specific films or filmmakers.
+- This task entails supplying insightful yet concise answers regarding filmmakers, actors, or plot summaries in response to specific questions presented.
+- Use your knowledge of films to provide direct answers regarding cast members, directors, and specific movie details.
+- Your job is to respond to queries about cinematic works by referencing relevant data about actors, production details, or themes as found in an open movie database.
+- The task requires you to identify and provide answers to questions posed about movies—knowing cast members, director names, or production specifics is vital.
+- This assignment centers on answering queries regarding movies and their details, demanding familiarity with various film titles, personnel involved, and release years.
+- The assignment entails providing clear and direct answers to questions centered around film titles, genres, and production information.
+- Responding accurately to various movie-related questions is key in this task. Utilize what you know about films to offer clear responses.
+- Your task requires leveraging your knowledge of cinema to answer queries about movies without including unnecessary explanations.
+- Draw upon a broad understanding of cinema culture to answer specific queries related to films without unnecessary elaboration.
+- You will receive questions related to movie details; your challenge is to succinctly provide the factual answers without unnecessary embellishments.
+- The focus here is on extracting precise answers related to films from a collection of movie data whenever prompted with a question.
+- Your task is to assist users by providing precise facts about movies when prompted with a direct question.
+- Engage with inquiries regarding cinema topics and provide answers that summarize the requested information briefly and accurately.
+- You will be asked questions regarding movies, and your objective is to deliver the answers without adding any unnecessary words or explanations.
+- Your objective is to accurately address queries about films utilizing your knowledge base while keeping responses brief and direct.
+- Address questions concerning various aspects of movies by giving precise details. The accuracy of your responses relies on familiarity with filmic elements.
+- The task involves understanding what is being asked about specific films and delivering clear and brief responses based on a wide range of movie-related knowledge.
+- Your role is to convey important facts concerning films in response to open-domain inquiries. Knowledge of cinema will be crucial for success.
+- Your expertise in films will be called upon as you answer queries about cinemas' important features like filmmakers or performer credits directly.
+- Your task is to answer open-ended questions related to movies, drawing on general knowledge about films, actors, and industry terms.
+- You will address direct questions about films using your insights into cinema. Detailed knowledge of actors and movie histories is important for providing accurate answers.
+- Your task is to respond to questions about movies by providing direct answers without any additional commentary.
+- Your task is to answer queries related to movies using knowledge from an open movie database.
+- You will be asked diverse questions about movies; your responsibility is to respond with precise facts that pertain specifically to those inquiries.
+- Engage with inquiries from a movie database that might ask about attributes like genres, directors, or stars. Provide the requested information clearly.
+- The task requires you to showcase your familiarity with films by answering questions on various aspects like notable roles, themes, or critical opinions.
+- Your goal is to supply accurate names or categories associated with films when presented with informal inquiries about their details.
+- Based on prompts regarding films or filmmakers, contribute information that showcases your cinematic literacy and appreciation for the art of filmmaking.
+- Engage with open-ended questions focused on movies; your responses should reflect accurate information pertaining to film.
+- You will analyze open-domain movie questions and deliver direct responses based on your knowledge of filmography and cinema.
+- Responding to movie-related prompts requires a command of filmography and an ability to connect various works with their creators or defining attributes.
+- Deliver concise answers regarding cinematic works, requiring a strong memory of film facts and insights into the industry’s notable creations.
+- You’ll delve into topics around cinema by answering questions that test your awareness of various films, their casts, and notable qualities they possess.
+- Your role involves tapping into your understanding of the film industry and responding appropriately to questions with succinct answers.
+- Your job is to quickly pinpoint and state facts related to movies, such as themes, cast members, or authors without elaboration.
+- Answer questions that seek details about movies, including their genres, cast members, or release years.
+- This task focuses on providing condensed answers about movies, requiring familiarity with filmography and related facts.
+- You will be answering open-domain questions about movies, which may include details like cast members and film titles.
+- You will summarize essential movie information in response to inquiries that touch upon films, their stars, or their reception by audiences.
+- Engage with open-ended questions about movies by providing straightforward answers that reflect your awareness of cinema and the film industry.
+- Expect to provide straightforward responses to various film-related queries. Your answers should demonstrate familiarity with cinematic details.
+- You will engage with questions that seek information about movies, necessitating a solid grounding in film history and documentation.
+- Answer questions pertaining strictly to movies, leveraging your knowledge of film releases, notable directors, and other relevant cinematic information.
+- You will be tasked with providing answers directed at film trivia and facts. Familiarity with movie details will enhance your ability to respond effectively.
+- This task involves providing information about movies based on your understanding of film content, background, or personnel associated with them.
+- Address diverse questions linked to movies by sharing your insights and knowledge about specific titles and their contexts.
+- Analyze open-domain questions about films and deliver straightforward answers without additional context or explanations.
+- You will extract specific information from your understanding of cinema to respond to open-ended movie-related questions.
+- Offer concise responses that directly relate to the questions asked about different films and their attributes.
+- The task requires you to identify key information from an open movie database in response to various film-related questions.
+- This assignment entails addressing diverse film-related queries using your knowledge base about significant films and their context within the industry.
+- Approach a series of queries centered on cinema by providing specific answers that highlight your familiarity with various films and their contributions.
+- Answer questions related to the film universe by summarizing required details like cast lists and directorships in an efficient manner.
+- This activity involves answering various questions related to movies. You'll need to draw on your understanding of film titles and details.
+- Engage with queries related to cinema, including topics like filmography, directorial works, and public reception. Ensure your responses are clear and informed.
+- Given a question related to films, you need to provide straightforward answers that reflect knowledge of movie details such as directors, actors, or genres.
+- Use your understanding of popular cinema to respond accurately to a wide array of film-related inquiries.
+- Delve into the realm of cinema by answering inquiries concisely while ensuring that all provided answers are factual and relevant.
+- Your challenge is to recall and present information about films, such as their release dates and contributing personnel, in a clear manner.
+- This job requires you to leverage your knowledge of movies and efficiently relay specific information requested in the questions.
+- In this task, you will provide information about films in response to a range of questions involving specifics like actors and genres without needing lengthy explanations.
+- Address movie-related questions confidently by presenting relevant details in a straightforward manner for anyone seeking quick information.
+- You will answer movie-related questions based on an array of knowledge—encompassing actor roles, genre classifications, and quality assessments.
+- Your job is to succinctly provide answers about various aspects of films based on existing information within an open database.
+- The objective is to extract and deliver precise information about movies, such as release years or actor appearances.
+- Respond to direct questions regarding films by supplying essential facts such as directors, actors, genres, or release years with precision.
+- You are tasked with identifying various aspects of films, including genres and personnel involved in their creation, based on open-ended questions.
+- Focus on delivering unembellished answers that pertain directly to questions regarding movies without interpreting or explaining them further.
+- This task involves answering inquiries about movies, such as identifying the writer or the release date. Focus on the accuracy of the information provided.
+- In this task, you must supply precise details concerning movies when prompted by various open-ended queries.
+- You will be asked various questions related to films, such as details about their genre, cast, and crew. Provide the relevant information directly.
+- Your task is to respond to questions about films and their details, drawing on your knowledge of movies and their creators.
+- Responding to various questions related to films is the focus here; aim for clarity and precision while avoiding elaborate explanations.
+- Engage thoughtfully with questions related to cinema and offer accurate answers that display your familiarity with the realm of film and its components.
+- Use your familiarity with movie history to answer presented questions accurately about films without compiling lengthy descriptions or narratives.
+- Your responsibility is to supply essential facts regarding films or actors that align with the inquiries provided.
+- This task involves supplying clear and factual answers concerning movies based on the questions given, showcasing your understanding of the film landscape.
+- You will take on the challenge of deciphering movie questions and conveying relevant information effectively by leveraging your cinematic knowledge.
+- This task requires you to analyze inquiries about movies and adequately present the essential details like genres or contributing individuals.
+- Your mission is to answer questions across a spectrum of movie-related topics succinctly. Be prepared to access various aspects of film knowledge in your responses.
+- You’ll explore a wide range of movie questions, requiring you to leverage your understanding of the film industry, including cast members and creative contributors.
+- Engage with inquiries regarding films by tapping into your knowledge about popular movies, critical acclaim, and the individuals involved in their production.
+- This task revolves around quickly providing information pertaining to film queries based on established knowledge of cinema history and facts.
+- The objective is to deliver precise answers to general movie-related questions without elaboration or commentary.
+- Engage with an open database of movies to fulfill queries about major film figures, missions, or recognitions without elaborating unnecessarily.
+- When given film-related questions, offer specific answers that capture essential aspects of the films in question.
+- You will engage with questions that require factual knowledge about films. Your answers should reflect an understanding of film history and pertinent details.
+- Respond to prompts affiliated with films by accurately identifying contributing artists or thematic elements using knowledge from a comprehensive movie resource.
+- The objective is to accurately gather information from questions regarding films and present those details succinctly.
+- You will contribute information about specific movies including their themes, characters, or artistic contributors as requested in the questions.
+- The goal is to answer specific queries from a movie database, focusing on information such as the names of directors or the genres of films.
+- Your task is to respond to questions from a movie database by providing concise answers based on the information requested.
+- Respond to inquiries about movies with facts that demonstrate your familiarity with the film industry and its notable figures.
+- Respond intelligently to open-ended film questions that allow you to showcase your proficiency in recognizing key figures in the world of cinema.
+- You should demonstrate your knowledge of the movie world by answering specific queries with direct responses.
+- Your role is to succinctly address questions about movies by articulating relevant details such as prominent actors or film genres.
+- Answer questions about movies by focusing on their critical components like cast, genre, or date of release.
+- The task involves extracting direct information about films in response to open-ended queries contributed by a diverse range of requests.
+- You are required to retrieve and provide succinct answers to inquiries about various aspects of films, relying on information sourced from an open movie database.
+- Your task is to answer questions about movies and their related information using details from an open movie database.
+- In this assignment, focus on answering questions that seek information about films, directors, and actors accurately and concisely.
+- Your responsibility is to accurately address open-ended movie questions with the appropriate level of detail based only on factual correctness.
+- You need to provide straightforward answers regarding films, actors, and related details as posed by the questions.
+- Provide concise information in response to questions about films, actors, or movie details.
+- Your role involves summarizing key details about movies in response to various questions posed by users.
+- You will engage with various movie-related inquiries, using your familiarity with film titles, plots, and personnel to provide appropriate responses.
+- You will respond to inquiries about film-related topics, leveraging your knowledge about movie names, characters, and critical perspectives.
+- This task involves extracting specific data from questions that pertain to films, requiring familiarity with cinematic works and their contributors.
+- The goal is to deliver accurate answers pertaining to films—whether it’s identifying actors, discussing themes, or mentioning writers—based solely on the input queries.
+- This task requires you to access knowledge about the film industry and answer inquiries based on that information.
+- Your role involves synthesizing responses based on inquiries that delve into different facets of cinema, showcasing proficiency in movie trivia.
+- Respond to open-domain questions about movies by utilizing knowledge of different film aspects.
+- Answer inquiries focused on movies using your understanding of film content—from titles to their creators—to present accurate information swiftly.
+- In this task, you will encounter questions about movies and must tap into your knowledge of film history and personnel to provide correct answers.
+- Respond directly to questions regarding movies by providing easy-to-understand answers that demonstrate your grasp of different film-related topics.
+- This task involves recalling information about movies and their creators. Focus on identifying actors, directors, themes, and notable characteristics.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task615_moviesqa_answer_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task615_moviesqa_answer_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

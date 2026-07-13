@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Analyze a short piece of text alongside its query, and establish if that text contains all keys necessary for an informed response.
+- This task involves checking if the sentence offers all necessary facts to answer the question clearly.
+- You must look for clear connections between what's stated in a sentence and what’s being asked in a question, identifying gaps in information if necessary.
+- Review each given sentence carefully and decide whether it sufficiently addresses a subsequent inquiry by analyzing the clarity and relevance of information presented.
+- Each pair consists of a statement and query, where you'll ascertain whether sufficient context or specifics exist in the statement for responding with clarity.
+- In this task, you will evaluate sentences against questions and decide if they hold enough relevant content for an appropriate response.
+- The task focuses on reading comprehension, where you must establish if a sentence has all necessary details for answering a given query.
+- In this task, consider whether the provided text lays out enough context to enable an informed response to the ask posed by the accompanying question.
+- Analyze whether specific information stated in a sentence can effectively answer a related question, applying reasoning to draw your conclusion.
+- This task requires you to assess the connection between a sentence and a question, determining if the information provided is adequate for answering the question.
+- This activity involves checking if the facts in a sentence can be used to directly answer a specific question about it.
+- Analyze the relationship between the sentence and the question to see if the answer lies within the context of the given information.
+- The objective here is to notice if there’s sufficient data in the sentence that relates directly to answering the posed question.
+- This activity revolves around scrutinizing specifics within a sentence and comparing them with questions to gauge if they can yield clear answers.
+- You are asked to evaluate whether the context of a provided sentence is adequate to respond to a specific inquiry.
+- In this task, you will evaluate the relationship between a given sentence and a question, determining whether the sentence contains sufficient details to respond accurately.
+- Evaluate the relationship between a sentence and its corresponding question, deciding if the sentence provides the necessary information for an answer.
+- Assess whether the details provided in a sentence are sufficient to answer a specific question. This requires careful reading and comprehension.
+- You need to analyze sentences for their relevance and completeness in answering specific questions based solely on what's written.
+- You will engage in logical analysis by determining if there is sufficient evidence in a sentence to support addressing its corresponding question effectively.
+- Your task is to identify if the information in a sentence allows you to answer a related question confidently.
+- The objective is to verify whether the explanation given in a prompt can effectively contribute to answering the subsequent inquiry.
+- You need to interpret the content of a sentence and evaluate if it provides enough context to answer the question presented.
+- Determine if the sentence holds enough details to answer the question posed, labeling your conclusion simply as "Yes" or "No."
+- Reflect on whether the critical pieces of information in the provided sentence are capable of yielding an appropriate answer for its corresponding question.
+- The task requires you to assess whether the sentence provides enough information to answer the accompanying question.
+- You must determine if the details in a short narrative (the sentence) provide adequate context or clues to correctly respond to an asked question.
+- Your task is centered around comprehension skills as you interpret statements while evaluating if they can resolve associated questions based exclusively on their content.
+- Consider the relationship between a statement and a query—determine if there is enough clarity or context in the statement for an answer.
+- Your task is to determine if the information in a statement answers a related question, using only what's presented in the sentence.
+- This exercise requires critical thinking to determine if there’s enough information in a specific sentence to respond correctly to a related question.
+- Your role is to interpret statements and assess their ability to satisfy questions that require direct references from those statements.
+- Assess if you can directly respond to a query based on what is explicitly conveyed within a specific sentence.
+- You will assess if enough context is available in the provided sentence that could lead to a clear answer for the question asked.
+- This activity calls on you to think about how well one statement explains or relates to an inquiry posed subsequently.
+- Assess the relationship between a statement and its connected question, identifying if the former contains enough data for clarity in response.
+- Your task is to determine if the information in a given sentence can adequately respond to a related question.
+- Your job is to examine language and context in sentences, determining if they contain enough substance to directly answer accompanying questions without introducing any outside knowledge.
+- This task challenges your critical thinking skills as you must assess the completeness of information in a sentence in relation to a posed question.
+- This task involves reading comprehension, where you analyze a sentence for its relevance and clarity in relation to an associated question.
+- You need to consider if the sentence holds enough detail to allow an accurate answer to the associated question.
+- Evaluate the details in a provided sentence to see if they are relevant enough to form an answer to the accompanying question, focusing strictly on the given text.
+- The task involves critical thinking as you evaluate whether information from one text can be used to respond to another text's associated question.
+- Your job is to read a sentence, consider the subsequent question, and conclude if the sentence provides enough detail for an answer.
+- Your task is to evaluate whether the information in a given sentence can adequately respond to a provided question.
+- You will be assessing whether the details mentioned in a sentence are capable of answering an accompanying question effectively.
+- This task involves parsing through each sentence and scrutinizing it against a question to assess informational sufficiency.
+- The goal is to assess if enough facts are provided in a given statement to clearly answer a related question.
+- Check if the details within a provided sentence can help you answer the related question accurately.
+- Reflect on whether the elements contained in a single statement are sufficient for resolving a corresponding inquiry posed afterwards.
+- The task requires critical thinking to identify if presented details in a statement substantiate a relevant inquiry posed afterward.
+- The task involves evaluating a sentence and determining if it contains enough information to answer a provided question.
+- This task involves discerning if the description in a sentence holds enough clarity or detail needed for an adequate answer to a posed question.
+- Your role is to verify if the details in the sentence allow for an appropriate response to the question asked.
+- The focus of this task is on comprehension. Read the sentence and determine if it offers a direct answer to the posed question.
+- You will read a sentence followed by a question and must judge whether the sentence provides sufficient context or details to answer that question accurately.
+- You will analyze whether sufficient context exists within a stated sentence that allows for answering its corresponding question confidently.
+- You will encounter short statements followed by questions aimed at them. The challenge is to recognize whether those statements adequately satisfy what is being asked in each question.
+- Use your comprehension skills to identify if the details in a particular sentence allow you to answer an associated question.
+- Analyze whether there is a logical connection between the statement and the question that would allow for an answer based solely on that statement.
+- Engage in thoughtful evaluation as you contemplate whether details from given statements can sufficiently inform responses to accompanying questions posed.
+- The goal here is to determine if enough informative content exists within a single sentence to address and clarify an ensuing question.
+- Examine whether a given statement carries enough substantial facts that relate back to, and can fulfill, the requirements of a respective asked question.
+- You will be given sentences followed by questions. Your responsibility is to judge whether the sentence has the necessary details to answer the question posed.
+- This task involves inspecting a statement to determine if it offers enough clarity to address a related inquiry accurately.
+- Determine if the content of a sentence can help answer a question asked about it. This requires careful reading for relevant information.
+- Evaluate whether the content of the sentence can provide a definitive answer to what is being questioned.
+- Read both the sentence and question, then decide if the information contained in the sentence suffices to clarify or respond to the question posed.
+- Look closely at both the sentence and question to see if they connect logically, allowing for a meaningful answer.
+- Analyze the connection between the sentence provided and the question to see if the sentence contains sufficient information for an answer.
+- Your job is to interpret if the details in the given sentence can adequately respond to the inquiry in the question.
+- Your objective is to discern whether the sentence includes enough information to resolve the question. This involves careful reading and comprehension of the text.
+- Your mission is to check whether the information conveyed in a sentence corresponds with a related query and can serve as an answer.
+- This task requires you to discern if every necessary detail for responding to a question is present in the accompanying sentence.
+- Your challenge is to determine if explicitly stated information can lead you to confidently respond to an associated question without inferring beyond what’s given.
+- Employ your reasoning skills in this task as you judge whether the particulars provided in a sentence can effectively address a subsequent query.
+- Evaluate if what is stated in the sentence permits sufficient understanding to address the follow-up question directly.
+- This activity involves reading provided sentences and assessing their ability to respond to specific queries. You need to rely only on what's explicitly stated in the sentences.
+- The assignment involves filtering out unnecessary details and determining if essential information exists in the sentence to respond to the question.
+- Your job is to interpret a sentence and judge if it contains enough information to clearly answer the related question.
+- Analyze a given sentence and question to decide whether the sentence provides sufficient details to answer the question posed.
+- Determine if you can use just what’s written in the sentence to affirmatively answer or deny the question.
+- Analyze the sentence and decide if it contains enough information to respond to the posed question.
+- Evaluate how well a specific factual claim answers a posed question, focusing solely on provided contextual information.
+- Your objective is to determine whether the context of a given sentence provides clear insights that can form an adequate response to a related question.
+- Analyze the relationship between a given sentence and a subsequent question, judging if the sentence conveys enough data for an affirmative or negative response.
+- You will judge whether a specific detail presented in a sentence can lead you to resolve an inquiry that follows it.
+- The task involves reading a sentence and a related question, then deciding if the sentence provides enough information to answer the question.
+- You need to carefully read a sentence and a question, then conclude if the information mentioned in the sentence is capable of answering the question posed.
+- Assess whether the insights from a sentence are sufficient to clarify an inquiry, ensuring you only reference the provided material.
+- In this endeavor, gauge whether or not you can gather sufficient context from one statement to decisively answer another question based solely on that information.
+- You must determine if the details in the given sentence can fully address the question that follows.
+- Your responsibility is to identify if a given statement sufficiently informs you about how to respond to a linked question.
+- Review the supplied information in a sentence and ascertain if it sufficiently addresses the question that follows it.
+- This task involves determining if the information found in a provided sentence can satisfactorily address a related inquiry. You need to focus solely on the content of the sentence for your evaluation.
+- This task requires you to analyze a sentence in conjunction with a question and judge if the details presented are sufficient for an answer.
+- Analyze provided sentences alongside questions, making a judgment about whether sufficient evidence is found within those sentences for clear and accurate responses.
+- For this task, read the provided sentence and related question, and judge if the information is enough to form an answer.
+- Your goal is to identify whether the details in the provided sentence adequately address the question that follows it.
+- In this exercise, you will gauge if a sentence conveys sufficient information relevant to answer its associated question.
+- Engage with two elements—the initial statement and follow-up question—facilitating your judgment about whether adequate information exists for answering it accurately.
+- Consider whether you can derive an answer from a sentence that addresses the query attached, by evaluating its content.
+- Your responsibility is assessing if comprehension of a certain sentence provides adequate insight into addressing its related inquiry.
+- In this task, your focus will be on finding out if what is stated in the sentence can adequately respond to the given question without external facts.
+- Assess whether there’s completeness in the information of one statement that allows for direct responses toward a matched question.
+- Review the given sentence and determine if it provides all needed information for someone to adequately reply to the accompanying inquiry.
+- Evaluate each given sentence's capacity to answer the subsequent question, relying entirely on its content without drawing from external knowledge or assumptions.
+- This task focuses on determining if a specific statement contains all the necessary data to resolve an inquiry about it.
+- You need to discern if the facts in a provided sentence can directly satisfy the query posed in the accompanying question.
+- Matching sentences with questions, your role is to decide if what’s provided offers the answer needed for that question.
+- Assess whether or not it’s possible to arrive at a clear answer based on what has been stated in the provided text.
+- Review both a sentence and a question, then conclude if there's enough context in the sentence to derive an answer.
+- Your responsibility is to determine if a statement contains adequate details necessary for providing an answer to an accompanying question.
+- You are tasked with deciding if a provided sentence gives enough information to clearly answer a corresponding question.
+- You must determine whether there are sufficient clues in the sentence that would allow one to answer the associated question.
+- The focus of this activity is on comprehension; you will assess if sufficient details are present in the sentence to implicitly or explicitly resolve the query included alongside it.
+- Reflect on whether the provided statement contains enough relevant information to satisfactorily answer a corresponding inquiry.
+- You need to assess whether the details in a provided sentence can adequately address the question that follows.
+- The essential skill here is judgment; assess if there’s enough pertinent content in one statement to evaluate another related inquiry accurately.
+- Your role is to distinguish clearly whether the content of a supplied sentence is adequate for answering the related query presented afterward.
+- You are tasked with dissecting a sentence for insights that may or may not be able to inform an answer to a subsequent question.
+- Evaluate whether you can find clear answers in a given sentence for a related question and label your finding accordingly.
+- This task asks you to reflect critically on written content—analyzing if given explanations hold up when comparable questions are presented.
+- You will look at a statement and a query, checking if the statement holds enough information to allow for a definitive answer to the query.
+- Your task is to identify whether any information from the text can be utilized to provide an appropriate response to its respective query.
+- In this activity, you'll determine if the information found in a given sentence can help answer a subsequent question.
+- You are to read each sentence and associated question, assessing if sufficient data exists in the sentence for an affirmative answer.
+- Examine the relationship between provided sentences and questions. Establish whether the sentences allow for a definitive answer to those questions.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task050_multirc_answerability
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task050_multirc_answerability
+user_prompt_template: '{task_def}
+
+
+  {problem}'

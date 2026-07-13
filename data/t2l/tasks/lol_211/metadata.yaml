@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- This task calls for an understanding of how logical operations translate into actionable steps within a table context, necessitating an evaluation of both commands and their described interpretations.
+- Your focus in this task will be on scrutinizing command interpretations involving logical operations against a backdrop of dataset actions. Accuracy in reflecting how selections or filters are applied is key here.
+- Analyze commands composed of logical operations aimed at selecting and filtering data from a table. Assess if their natural interpretations can be considered correct based on your understanding of logic.
+- You will review commands that involve various logical operations and determine whether the associated natural language interpretations accurately describe what those commands accomplish when selecting or aggregating data.
+- This assignment requires you to analyze logical commands that filter and manipulate data, deciding if their corresponding interpretations correctly describe the intended operation.
+- You’ll investigate whether various command interpretations pertaining to row selection from datasets are valid and accurately represent their intended effects derived from defined logical operations.
+- You will analyze commands that involve logical actions on data tables, determining if the provided explanations correctly represent the intended outcomes of those commands.
+- In this task, you will interpret logical command structures and their intended data actions. You need to consider whether the natural language explanations accurately represent what the commands aim to do with the data.
+- In this task, you'll analyze data-related commands based on logical reasoning. You need to decide if the provided explanations correctly contextualize how those commands operate within the structure of a dataset.
+- You will evaluate logical commands that operate on rows in a dataset against their descriptive interpretations. Adequate reasoning skills are required to draw conclusions regarding their accuracy.
+- Your job involves verifying how well natural language explanations align with data selection commands. This requires an understanding of both logic and context within the provided data structure.
+- Tasked with verification, you will analyze command interpretations based on their validity concerning logical criteria executed on specific table entries, using your analytical judgment.
+- In this task, you must determine if a natural language explanation fits the logic behind a set of commands. Each command utilizes various data operations, and you'll need to verify their alignment with the interpretations provided.
+- As part of this evaluation task, you'll determine if the natural language summaries fit well with the specified logical operations meant for selecting or evaluating data from a table.
+- You'll need to consider both the syntax of logical commands and their real-world implications as expressed through accompanying interpretations, gauging their alignment or dissonance.
+- This task requires you to inspect pairs of commands and their interpretations, deciding if the interpretations align well with the logical intentions of the commands within the context of data selection.
+- This task requires you to interpret logical commands related to data selection and manipulation. You need to verify if the provided interpretation correctly corresponds to the command's intended function on the dataset.
+- In this task, you will evaluate logical operations and their natural language interpretations. The goal is to determine if the interpretations accurately describe how to filter or select rows from a data table based on the given commands.
+- You will be deciding if the interpretation given for logical commands reflects what those commands are supposed to do when interacting with specific rows within a dataset.
+- This task involves scrutinizing whether detailed interpretations align with specified logical commands aimed at selecting relevant information from a dataset.
+- Analyze sequences that contain logical operations along with their descriptions, validating whether these descriptions are appropriate for what each command aims to accomplish in data retrieval.
+- The mission here is to ensure that various logical operations have been interpreted correctly in relation to commands involving selection and comparison processes in data handling.
+- This task involves evaluating logical commands and their interpretations to verify if the explanations provided match the intended outcomes.
+- This task requires you to evaluate logical operations on data commands and determine if the natural interpretations accurately reflect those operations. An understanding of logical reasoning and data manipulation is key.
+- In this exercise, you must evaluate logical commands designed for manipulating tables, focusing specifically on whether their explanations in natural language make sense based on your knowledge of logic.
+- The task centers on validating interpretations of logical commands concerning table data. An understanding of how each command operates will assist in accurate evaluation.
+- This task requires you to understand logical operations applied to datasets and assess whether a natural language interpretation aligns with the specified command.
+- Evaluate whether the interpretations of various logical commands align correctly with their intended functions in selecting data rows. Familiarity with data querying concepts is essential.
+- You'll be exploring logical constructs used in data management and checking whether the phrasing used in interpretations effectively captures the essence of those constructs.
+- In this challenge, you will verify if the natural language interpretation of specific logical commands is appropriate, judging it against the rules of data manipulation and comparisons.
+- You're tasked with verifying the accuracy of interpretations assigned to specific logical operations affecting datasets. This requires a good grasp of both logic and data interpretation.
+- The goal here centers around verifying whether summaries provided for various data operations through logical frameworks are represented properly in easily understandable terms.
+- The task requires you to analyze commands related to logical operations and determine if their interpretations properly reflect data selection criteria from a given table, based on specific conditions.
+- You will analyze a series of commands that involve filtering and aggregating data from a table. Your goal is to ascertain whether the given interpretations correctly describe the actions of these commands.
+- You will evaluate whether given descriptions accurately depict the logical operations intended by specific commands applied to extracting or analyzing rows within a table structure.
+- This involves analyzing whether provided command interpretations truly correspond with their logical processing intents in relation to tabular information.
+- This task involves assessing logical data manipulation actions described in verbal form. Your input will help identify accurate representations of those actions concerning how rows are selected or filtered.
+- You will be tasked with determining whether a logical operation command correctly captures the intended meaning based on how it applies to selecting relevant rows from a dataset.
+- You will determine if the natural language interpretation of data-related commands corresponds correctly to their action. This task requires both attention to detail and analytical thinking.
+- The objective is to ensure clarity and correctness in interpreting data-related logic commands, verifying that explanations align unmistakably with what the logic asks for.
+- Analyze various logical operations that filter or manipulate rows in a dataset, then judge if the provided interpretations properly reflect what those commands entail.
+- Your job is to assess whether the interpretations provided for logical commands match what those commands are supposed to do in a data manipulation context. Familiarity with logical operators is essential for this task.
+- This task requires attention to detail as you verify whether each interpretation appropriately expresses its corresponding logical operation on table data. A strong grasp of both logic and context is necessary.
+- Evaluate directives involving logical manipulation of data against plain-language interpretations, ensuring clarity and correctness in representing the intended operations.
+- This task engages you in determining correctness in logical command interpretations that stipulate how various conditions apply when referencing particular rows in data tables.
+- Your task is to validate or invalidate descriptions associated with logical commands based on how they resonate with the results these commands would produce when applied to datasets.
+- The goal is to ascertain whether given natural language descriptions can rightly capture the essence of logical data operations defined in commands, informing your analytical decision-making.
+- In this task, you will consider commands that manipulate data based on logical principles and check if the natural language explanations faithfully represent these manipulations.
+- You will be tasked with reviewing commands that involve various logical operations applied to a dataset. Your focus will be on verifying if the interpretations provided match what the commands are designed to accomplish.
+- This task requires evaluating both structured commands and free-form descriptions, calling for strong comprehension skills related to data semantics and execution consequences.
+- You need to analyze logical commands and their natural language interpretations in order to verify their correctness when selecting rows from a data table.
+- This task focuses on validating explanations of logical operations that interact with rows in a dataset. A solid grasp of basic logic and data concepts will aid in forming accurate assessments.
+- You are asked to analyze whether interpretations accurately reflect the actions performed by logical commands in manipulating dataset rows, calling for analytical insight into both the logic used and its application on data.
+- The goal in this challenge is to examine logic-based commands in relation to how they manipulate datasets. You'll discern whether their textual explanations align perfectly with command intentions for data management tasks.
+- You will critically analyze pairs of logical operations related to rows in datasets, determining if the language used in interpretations effectively encapsulates the operational intent.
+- The task involves evaluating logical commands and their interpretations in relation to a table of data. You must assess whether the interpretation accurately reflects the command's intended operation.
+- Your task is to confirm if the provided interpretations correctly translate into expected outcomes based on how logical operations should process and return information from table rows.
+- Analyze how well descriptions capture the functionality of logical operators when applied to datasets, focusing on their role in filtering and comparison tasks.
+- You will assess logical commands used for table-related data selection and ensure that their natural language descriptions accurately reflect how those commands should function.
+- Your role is to assess the appropriateness of a given interpretation of a command based on logical operations. This involves understanding how different commands interact with table data.
+- This task requires you to critically assess logical commands and their associated interpretations concerning table data. You must determine if the interpretations faithfully represent the commands' intended outcomes.
+- This task involves interpreting commands related to logical operations and determining whether the provided interpretation aligns with those commands.
+- Your job involves validating that interpretations of logical commands are accurate representations of their functionalities in selecting or processing data accurately.
+- The task involves evaluating commands based on logical operations and identifying if the natural interpretation accurately reflects the command's intent in relation to a data table.
+- Analyze commands involving data manipulation and validation while confirming if their interpretations align with the expected outcomes based on logical operations defined for them.
+- Your task entails careful scrutiny of logical data manipulation commands, ensuring that each description captures both methodology and expected outcome accurately.
+- The goal of this task is to evaluate logical commands that manipulate data in a table format. By analyzing the corresponding interpretations, you will decide if they appropriately align with the command actions described.
+- Your objective is to evaluate if provided interpretations accurately capture what is expected from logical commands that interact with table data. This involves matching language descriptions with specific data handling instructions.
+- The task focuses on judging whether an explanation accurately reflects a logical operation's intent when selecting or comparing data from a set of rows in a table.
+- Examine logical instructions governing dataset interactions and validate whether their expressed meanings highlight accurate descriptions of outcomes expected from those commands.
+- Focus on determining if the interpretation provided accurately describes command functions designed for filtering or analyzing values within a dataset. Logical consistency must be maintained.
+- You will get an opportunity to critically evaluate explanations based on their alignment with logical operations related to filtering, counting, or comparing values in data tables.
+- Engage in determining the suitability of descriptions that align logical commands with their expected outcomes when applied to datasets, emphasizing interpretation accuracy.
+- The task involves interpreting commands that utilize logical operations to filter and analyze data within a given table. You need to assess whether the interpretations align correctly with the operations specified in the commands.
+- This task requires you to validate if interpretations of commands manipulating data through logical functions are correct in relation to filtering or selecting specific rows from a dataset.
+- Your challenge lies in identifying mismatches between narrative descriptions and command functionalities that extract or compute values from tabular information, requiring careful consideration.
+- The task consists of verifying whether interpretations of logical commands dealing with table rows match the criteria set forth by those commands. You need an understanding of both logic and established database principles.
+- Your goal is to analyze statements about data commands and determine if the interpretations provided are consistent with what the commands are meant to achieve in terms of data selection.
+- Your focus will be on interpreting and verifying commands that utilize various logical operators. The challenge is to determine if their natural interpretations accurately describe how to select or filter rows from a table.
+- You will analyze pairs of logical commands and their interpretations to determine if they correctly describe the actions needed to filter or process data from a given table.
+- Involves examining how specific logical operations apply to data rows in a table and determining whether natural language interpretations accurately reflect these operations.
+- In this exercise, you will evaluate command interpretations related to data selection, ensuring that the logical operation aligns with the descriptions of actions performed on the table.
+- Engage with tasks that require an assessment of how well descriptions encapsulate the essence of logical commands aimed at data manipulation in tables.
+- Assess how well interpretations align with their related logical data manipulation commands. It involves critical thinking about logic and its representation in plain language for clarity and correctness.
+- The focus lies in matching up logical commands with their corresponding natural language interpretations and judging their accuracy regarding data manipulation tasks.
+- You should analyze command descriptions against common logical operations, verifying if they provide accurate insights into how those commands interact with potential data outcomes.
+- Your task involves determining if natural language explanations appropriately capture the essence of what each logical command seeks to accomplish when applied to a set of data.
+- You are tasked with analyzing how well given interpretations match specific commands that involve logical data manipulation and evaluation criteria within a dataset.
+- You will analyze a series of logical operations related to data tables and determine if the natural language interpretation correctly explains the command.
+- Assessing the validity of interpretations tied to commands that extract and process information from a table is your main focus. Understanding logical operations is key to making these evaluations.
+- In this task, you need to interpret logical operations that filter or analyze rows in a table. You will compare these interpretations with the commands to see if they match correctly.
+- Evaluate commands involving data logic against their interpretations, ensuring that the descriptions capture the core functionalities and expected results of the commands clearly.
+- The task involves interpreting logical commands that relate to data selection from a given table. You need to determine the accuracy of a natural language interpretation of these commands.
+- You will be responding to questions about whether explanations for specific logical operations accurately describe their outcomes on table data.
+- You will engage with logical statements related to table datasets and verify if their verbal interpretations accurately summarize their intended effects on data selection or manipulation.
+- The assignment is centered around examining how well natural language interpretations convey the results expected from executing various logical operations on rows within a table.
+- The objective here is to discern whether descriptions associated with commands employing logical functions truthfully reflect their action and outcome concerning dataset row selections.
+- Assess the validity of given interpretations concerning commands that use logical operations to filter, compare, and analyze data rows in a structured format.
+- Your job is to closely examine commands that perform logical evaluations on data and ensure that the provided interpretations accurately capture those evaluations' essence.
+- Assess whether an interpretation properly describes what a command is intended to do when applied to a data table, paying close attention to logical details and intended effect.
+- The focus here is on understanding logical operations that retrieve or manipulate data entries, making sure that interpretations translate these operations correctly.
+- This task requires you to assess logical operations performed on a dataset. You will be determining whether natural language interpretations truly reflect the intended outcome of each command issued.
+- This assignment revolves around evaluating whether natural language interpretations match specific logical operations designed for querying rows in a dataset effectively.
+- Your role is to examine a set of logical operations defined by commands and their corresponding interpretations. You will identify if the interpretations logically match the outcome described by those commands.
+- Your task is to evaluate logical operations and determine if their corresponding natural language interpretations correctly describe the actions those commands would take on a dataset.
+- Assess each command that imposes conditions on dataset rows and see if the interpretations provide an accurate depiction of what action should result from those commands.
+- The task involves assessing the correctness of interpretations for specific logical commands related to data extraction. Familiarity with data operations like filtering, counting, and comparing values is essential.
+- Your challenge is to evaluate descriptions associated with logical commands manipulating table data. You’ll apply your problem-solving skills to determine if they correctly encapsulate what those commands execute.
+- Examine pairs where logical commands are proposed alongside their explanatory interpretations, ensuring that these interpretations are clear and coherently aligned with intended actions on the dataset.
+- The essence of this task involves careful evaluation and analysis of how well natural language interpretations reflect intended operational logic behind commands related to selecting rows in databases.
+- The objective is to analyze whether natural language descriptions align accurately with defined logical operations applied to data, ensuring a clear understanding of their intended outcomes.
+- This task involves critical thinking about how logical data operations are expressed in natural language. You will validate whether these expressions accurately represent complex commands that manipulate rows in a dataset.
+- Your focus will be on verifying the accuracy of interpretations related to various commands that manipulate tabular data through specific logical operations.
+- In this role, your main responsibility is to check if the natural language interpretations of logical command structures regarding datasets are correct and true reflections of the actual operations being performed.
+- Your responsibility is to analyze a series of defined logical operations against accompanying interpretations. The aim is to confirm whether these explanations truly reflect what each command aims to achieve on a dataset.
+- This task requires scrutiny of how logical operations are portrayed in natural language, confirming if the descriptions align with what each command fundamentally seeks to achieve.
+- The task encompasses a review of operations like filtering or counting in a dataset, where you must validate if the interpretation matches what the command is meant to achieve.
+- This task involves inspecting a set of logical commands and their natural interpretations to see if they correctly represent the operation intended based on the data present in a table.
+- The task requires scrutinizing how well natural language summaries align with logical queries targeting datasets, testing your knowledge of both linguistic clarity and data operations.
+- Interpretations will be assessed for their correctness regarding commands that involve calculations, comparisons, and selections of various attributes from data rows.
+- Evaluate compatibility between command definitions for querying datasets and their corresponding natural interpretations. A good grasp of logical processing enhances your ability here.
+- In this activity, identify if each command's interpretation truthfully represents its intended operation for selecting or analyzing data within specified columns of a table.
+- The challenge here is to discern whether specific interpretations of logical commands are valid based on how those commands operate on data within a table context.
+- Verify if provided natural language explanations accurately capture the essence and logic behind specified commands for querying and analyzing datasets effectively.
+- The goal is to assess commands in terms of data retrieval operations and check if their respective interpretations accurately reflect the logical results expected from executing those commands.
+- Your task is to assess the appropriateness of interpretations provided for commands that perform logical operations on table data. This entails assessing both the command and its explanation.
+- In this task, you analyze how well a natural interpretation matches a specified command. This requires understanding logical operations and their implications for data in a table format.
+- In this analytical task, you'll scrutinize connections between logical command structures and their spoken or written interpretations, ensuring that they provide a clear, accurate depiction of intended actions on datasets.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task211_logic2text_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task211_logic2text_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

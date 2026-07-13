@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You will look at a description of events and a corresponding answer, deciding if they match appropriately. Analyzing context clues is crucial for making a logical determination.
+- The objective is to validate an answer against a specific scenario by applying your understanding of human emotions and social interactions.
+- Evaluate how well an answer fits the narrative provided in the context. Rely on an understanding of logic and human behavior to guide your conclusion.
+- For each situation described, assess whether the answer offered is a logical conclusion drawn from the context provided, taking into account normal human behavior and feelings.
+- Your task involves interpreting a scenario and reflecting on possible human reactions or feelings. Determine if the response reflects an accurate understanding of the given situation.
+- In this task, you determine if a provided answer accurately reflects the feelings or actions described in a context based on everyday reasoning and social understanding.
+- Your goal is to apply common sense and knowledge of social dynamics to verify if an answer corresponds accurately with both the provided scenario and question.
+- This task challenges you to synthesize information from a narrative, applying care in assessing whether responses logically flow from what was presented.
+- The objective is to judge whether an answer correctly aligns with the feelings or actions implied by the context, relying on common sense reasoning about relationships and emotional responses.
+- Your task is to utilize your intuition about social situations to ascertain if given answers accurately reflect the context they're based on.
+- Reflect on the situation depicted and evaluate whether the proposed answer aligns well with what might realistically happen next under those circumstances.
+- You must consider both the description provided and common social experiences to ascertain if the response fits well with what could occur in real life.
+- This task requires you to interpret a scenario and question, considering social norms and relationships to judge if the suggested answer is appropriate.
+- Engage with implied emotional undertones in brief narratives, determining if suggested responses make sense within those emotional frameworks.
+- You will be reviewing contextual information and gauging the correctness of responses by employing commonsense knowledge about everyday life scenarios.
+- The focus here is on how well you can infer emotions and intentions based on dialogue or actions provided in a context, leading to validation of a given answer.
+- Involves drawing connections between provided contexts and the resulting implications about actions or emotions expressed in proposed answers.
+- In this assessment, you are tasked with using social reasoning to validate whether answers reflect realistic outcomes derived from given contexts.
+- Analyze brief stories to determine if the conclusions drawn in responses are reasonable based on the details provided and general understanding of social norms.
+- The goal here is to apply your understanding of human behavior and social cues to judge if an answer is suitable given the circumstances laid out.
+- Use your judgment on social interactions showcased in provided contexts to confirm whether associated responses are accurate or misplaced.
+- In this task, you'll evaluate whether an answer effectively addresses a contextual question, relying on your understanding of human behavior and logical connections.
+- This task involves evaluating social interactions depicted in a short narrative and deciding if an offered interpretation is valid based on common sense.
+- Analyze presented situations and their associated questions, then decide if specified answers are appropriate reflections of human intent or behavior.
+- Examine the information in the context and apply your commonsense reasoning to verify if the given answer is logically correct within that scenario.
+- Based on a context and associated question, determine if the response is appropriate. Think about common social behaviors and reasoning when making your decision.
+- Analyze the context given along with a question to decide if the proposed answer is valid. Use your reasoning skills to make this judgment.
+- Analyze situations involving emotional dynamics within narratives, using your intuition regarding typical responses in social settings to verify correctness.
+- In this evaluation task, draw connections between narrative events and suggested answers, ensuring your judgment reflects practical reasoning about human interactions.
+- Examine the relationship between the situation described and the provided answer to determine its validity. Utilize logic and practical knowledge of everyday interactions in your evaluation.
+- Reflect on personal experiences of similar situations or common societal norms to evaluate whether an answer fits logically into the described context.
+- In this exercise, you must connect dots between narratives about people’s actions or thoughts and whether an answer articulates a reasonable reaction.
+- You need to closely consider how well an answer captures the essence of the given context while applying your understanding of everyday social dynamics.
+- Analyze a brief storyline followed by an inquiry, assessing whether the recommended response resonates with potential decisions someone could make in that scenario.
+- By reviewing contexts coupled with questions, your role is to determine if provided answers are conducive, employing your knowledge of social norms and reasoning skills.
+- Your assessment involves dissecting a story-like context for relatable human dimension, determining if responses reflect realistic interpretations or not.
+- In this exercise, you will determine if an assigned answer fits appropriately within the context by applying reasoning related to common social experiences.
+- This task involves reading a narrative where a character faces a situation. You must then figure out whether the suggested answer is relevant to what happens next.
+- Judge the appropriateness of answers by connecting them back to their respective contexts using your understanding of common behaviors and social norms.
+- In this exercise, consider how people react in the contexts provided and determine if the answers align with those expected reactions.
+- You need to apply insights from human experiences to verify if responses are consistent with what one might feel or do in similar contexts.
+- The task involves analyzing a context and determining the appropriateness of an answer to a question based on social reasoning and common sense.
+- Review the details of a context and consider commonsense knowledge about human behavior to judge if the stated answer makes sense given the circumstances.
+- In this task, you will analyze a provided situation and question, applying your understanding of social situations and reasoning to determine the correctness of a given response.
+- The objective is to determine how accurately an answer captures the essence of a situation through commonsense judgment linked with social interactions.
+- Comprehend a brief social situation and question, then decide if the provided answer correctly captures what might happen next or how one might feel.
+- This task is about interpreting scenarios accurately. You must think through the implications of the context to judge whether the proposed answer makes sense.
+- This task focuses on making judgments about the validity of answers related to a narrative situation, grounding your reasoning in everyday experiences.
+- The goal of this task is to analyze a given situation and decide if the answer given truly reflects what can be reasonably inferred from that context.
+- Think critically about the scenario, question, and answer provided; then determine if they fit together in a way that makes sense based on common social experiences.
+- Delve into a brief narrative to assess whether an assertion made about it holds true. This requires an understanding of common situations between individuals.
+- You need to apply logical reasoning to a scenario and decide whether the answer provided aligns with what could realistically happen next in that context.
+- In this task, you need to interpret scenarios and questions accurately, identifying whether the provided answers align with reasonable conclusions drawn from everyday social interactions.
+- The task is rooted in understanding context clues about people’s interactions, requiring a thoughtful consideration of normal human behavior and expectations.
+- You will analyze a scenario along with a question and an answer. Your task is to confirm if the answer logically follows from the information given in the scenario.
+- This task requires you to critically interpret contextual clues and apply them in evaluating multiple-choice responses against what is reasonable or expected in social interactions.
+- Assess a situational description along with an associated question to decide if the answer given reflects a reasonable interpretation of that situation.
+- Examine narratives provided with questions, then ascertain if each suggested answer holds water when viewed through a lens of sociocultural reasoning and logical deduction.
+- Your job is to read a social scenario, consider a related question, and then determine if the answer provided is logically valid based on your assessment of the context.
+- Your task is to connect the dots between a situation and a proposed response, assessing if the answer is sensible given what has been described.
+- Using your understanding of how individuals generally react in various scenarios, you will assess if the answers are correct according to logical social norms.
+- Use your skills in interpreting narratives focused on human behavior. The essence of the task revolves around confirming whether answers correlate meaningfully with their contexts.
+- Engage with the provided context and analyze it critically to see if the conclusion drawn in the answer is logically sound within that context.
+- The task requires you to think critically about given narratives and their corresponding questions, then decide if the provided answers reflect logical conclusions based on that information.
+- Engage in discerning whether responses to questions about specific contexts are valid by utilizing your knowledge of human behavior and common sense reasoning.
+- Draw upon your insights into human reactions in various scenarios to determine whether an answer logically supports what was described in the context.
+- Evaluate concise stories while drawing from your knowledge of social conduct, then judge if provided answers are sensible reflections of those circumstances.
+- You must look at various scenarios and apply your understanding of human interactions and expectations to judge the correctness of suggested answers.
+- Your responsibility is to discern the consistency between context clues and response options, gauging correctness through a lens of social understanding and practical wisdom.
+- You will interpret emotional nuances in social contexts, helping you assess whether an indicated answer would be seen as acceptable or typical behavior.
+- Use commonsense judgement about emotional reactions and decisions to decide if stated answers logically follow from the scenarios described.
+- You will analyze a snippet of information alongside a question, then evaluate an identified answer's relevance or correctness based on situational logic.
+- You are required to evaluate whether a provided answer aligns logically with the details given in a scenario, using your understanding of social dynamics.
+- Consider the context presented along with a question and assess whether the suggested answer is valid by applying common sense and reasoning about social interactions.
+- Evaluate different context-question-answer scenarios using knowledge of common social behaviors to decide if proposed answers are valid or not.
+- Analyze various scenarios presented to understand an individual's feelings or actions, confirming whether related responses are indeed logical.
+- Critically analyze how well an answer corresponds to the information in a given scenario, using logical reasoning about typical human behavior.
+- Use your observational understanding of typical decisions made by individuals in social contexts, evaluating whether an answer fits logically following from that understanding.
+- Evaluate interactions mentioned in a scenario to see if they correspond correctly with the provided answer. Think about motivations and common social practices while reasoning through this task.
+- The job entails reflecting on a narrative and using common sense to evaluate if an answer accurately describes probable outcomes or motivations of individuals involved.
+- Delve into specified scenarios, engaging your commonsense reasoning skills to ascertain whether corresponding answers are appropriate given those situations.
+- The objective is all about contextual understanding; you will analyze situations to see if specific responses are appropriate given what you know about people and their interactions.
+- This task requires you to use commonsense reasoning to evaluate how accurately an answer relates to the context provided, taking social situations into consideration.
+- Utilize your understanding of typical human behavior and social situations to check if the given answer is suitable in relation to the context presented.
+- Examine human emotions or reactions depicted in social contexts and assess whether the selected answer fits appropriately with those observations.
+- You need to decide if the response to a question is appropriate based on the accompanying context, employing logic and knowledge of typical social experiences.
+- You will classify answers based on how well they correspond to the context described, applying logical thinking and commonsense knowledge.
+- Use your comprehension of people’s feelings and responses to evaluate if an answer accurately reflects what might occur in the described situation.
+- In this task, you need to assess whether the provided answer aligns with the context and question. Rely on your commonsense reasoning to make your judgment.
+- You will read a brief context and a corresponding question that requires interpretation. Your job is to critically analyze the proposed answer and decide if it is appropriate given the situation.
+- You need to evaluate a situation based on the context provided and determine if the given answer logically fits. This involves using common sense and reasoning about the relationships between people.
+- Your goal is to assess the relevance of an answer in relation to the context and question posed, ensuring it fits within realistic social expectations.
+- For each question presented, assess if the answer chosen is logically supported by the narrative shared, considering how typical individuals would respond.
+- Determine how well each answer correlates with the social context given, using your commonsense knowledge of human behavior and emotional responses.
+- You will be presented with a scenario and a question. Your role is to examine an answer in light of the context and determine its correctness based on reasoning about people’s feelings or actions.
+- Interpret a short situation and a corresponding inquiry about it. Your role is to decide if the suggested answer is sensible within that specific scenario.
+- You will be evaluating how well answers match the contexts in which they were placed, drawing upon your understanding of human behavior and social dynamics.
+- Your goal is to determine if the answer correlates logically with both the situation presented and human behavior patterns.
+- This task is about interpreting social situations and determining if an answer is fitting based on the clues present in a given context.
+- In this task, you will engage with narrative elements and apply practical reasoning skills to ascertain whether an answer is a logical fit for each scenario.
+- Assessing whether an answer fits within the social fabric of everyday life will guide you in this evaluation task where context matters deeply.
+- You need to evaluate whether the proposed response logically follows from the context provided, utilizing common sense and understanding of social interactions.
+- Your responsibility is to interpret the details of a situation and verify if the proposed answer logically follows from that information, using reasoning skills.
+- This task requires merging narrative comprehension with common reasoning skills to determine if specific answers are accurate reflections of laid out scenarios.
+- In this exercise, you need to assess a context along with a question and some responses. The goal is to judge whether the selected answer fits well with the scenario presented.
+- Your job involves synthesizing information from a context and questioning its implications, assessing if the proposed response is appropriate under those circumstances.
+- You will evaluate the relationship between a context and an answer to gauge if the response is appropriate, drawing from your knowledge of typical human behaviors.
+- This task involves using your understanding of social situations to confirm if the given answer is an appropriate response based on the context shared.
+- Your task involves assessing a situation and determining whether the provided conclusion follows logically based on common understanding of social scenarios.
+- The task involves synthesizing understanding from context clues to decide if an answer provides an accurate representation of potential outcomes or descriptions derived from the situation.
+- The goal is to utilize your commonsense understanding of social situations to judge whether answers correctly correspond to the prompts given within various contexts.
+- You're tasked with interpreting interactions described in brief contexts and evaluating how well an answer aligns with those descriptions, factoring in typical human reactions.
+- Engage with narratives focusing on situations, analyzing them thoroughly to gauge if the conclusions drawn in answers align with social reasoning.
+- This task emphasizes analyzing human reactions as described in each context, requiring you to discern if the answers align well with expected reactions.
+- Your job is to interpret a narrative and decide if the given answer accurately reflects what one would expect to happen or feel in that situation.
+- Analyze the relationship between the context and the proposed answer, using your judgment of social cues to decide if it is valid or not.
+- You will explore different social situations and construct evaluations regarding how accurately an answer reflects what can be reasonably inferred from each scenario.
+- Assess whether the answer aligns with the social implications of the context. Your task requires an understanding of human behavior and scenarios to validate the correctness of the response.
+- Utilize your understanding of people’s behaviors and emotions in various situations to check if an answer to a specific question is reasonable given the context.
+- Focus on connecting the dots between scenarios and potential outcomes, relying on your insight into human interactions and behaviors when validating answers.
+- Engage deeply with scenarios presented in each question, making careful evaluations based on knowledge of social norms to see if responses are fitting or not.
+- Analyze the context for clues and signs that can help you judge if the proposed answer makes sense. Critical thinking and familiarity with social norms are essential in completing this task.
+- Your role is to critically assess how well an answer aligns with everyday logic and relational patterns, based on contextual background information.
+- In this task, discern whether an individual's response in a given scenario aligns well with typical human reactions based on the provided context.
+- This task requires you to integrate details from a scenario and evaluate a question-answer pair. Assess if the answer correctly reflects what logically comes next in that context.
+- Understand a given context and consider how one might realistically respond. Use your insight into human behavior to decide if the selected answer fits logically.
+- Use your background knowledge of social dynamics as you read through both contexts and questions, determining if provided answers hold up against real-world logic.
+- Your role is to consider the relationship between a specific context and its corresponding question to conclude if an indicated response is sensible or not.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task579_socialiqa_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task579_socialiqa_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

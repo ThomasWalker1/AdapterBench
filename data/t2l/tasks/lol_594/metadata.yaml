@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Analyze the nuanced meanings within scientific text and create straightforward yet precise questions that resonate with notable terms and phrases presented as answers.
+- With knowledge gleaned from a scientific text, develop inquiries that emphasize fundamental aspects of the topic at hand, linking directly back to specific answers provided.
+- By analyzing the content of a scientific passage, your role is to think critically and produce meaningful questions that relate directly to specified answers.
+- Your job is to extract key concepts from a science passage and turn them into concise questions that connect logically with supplied answers, honing your ability to distill information.
+- Your role is to analyze the information in a scientific passage and design a question that specifically pertains to an extract, ensuring it relates closely to the given answer.
+- Your task is focused on transforming key aspects of scientific content into an accurate question format corresponding with an already determined answer.
+- Engage with a scientific passage and produce a question that incorporates the given answer. This involves interpreting complex information into understandable queries.
+- Analyze a scientific passage and formulate an appropriate question that corresponds to a predetermined answer, demonstrating your comprehension of the text.
+- Formulate a clear and precise question from the science passage that correctly matches with the designated answer, utilizing critical thinking and comprehension skills.
+- Synthesize your understanding of a scientific passage by formulating an appropriate question aimed at accurately referencing an existing answer provided in the prompt.
+- The task requires taking information from a scientific passage and constructing questions that target specific answers, assessing how well you can capture essential details.
+- You need to generate questions from provided passages and answers, demanding an understanding of the content to effectively probe deeper insights.
+- This activity involves identifying essential details in scientific texts and reshaping them into well-formed questions targeting specific answers without losing the context of the content.
+- You need to analyze a provided passage and formulate a specific inquiry that can be answered with the designated response.
+- Engage with the content given in the passage and conceptualize pertinent questions based on critical terms or explanations indicated in the text.
+- In this task, you must use your understanding of the reading to devise a clear question based on an answer provided, ensuring it reflects the main points discussed.
+- You will create an insightful question that highlights key details from a scientific text. The resulting question should naturally lead to the mentioned answer.
+- Your job is to dig deep into the information of a scientific excerpt, then create inquiries that naturally lead towards specific answers listed.
+- You are tasked with identifying relationships in scientific narratives and forming thoughtful questions aimed at revealing specific pieces of knowledge encapsulated in brief answers.
+- Your task is to read a scientific passage and create a relevant question that corresponds to a given answer extracted from the text.
+- Your role is to extract main ideas from scientific texts and formulate questions aligned with given answers, demonstrating how well you interpret written information.
+- In this task, you'll need to read a brief scientific description and construct an appropriate question for an answer provided. Your focus should be on clarity and direct relevance.
+- You are tasked with synthesizing information from scientific explanations into coherent questions that directly reference provided answers from the material.
+- You will be reading educational passages and generating relevant questions in response to particular answers, demonstrating comprehension of the material.
+- Your job is to develop questions that connect logically with given answers found in scientific descriptions. This involves grasping concepts and translating them into clear interrogatives.
+- You need to understand the context of a scientific text and then formulate an appropriate question based on the specific answer supplied.
+- In this exercise, you're tasked with producing a question that corresponds to a given answer from a scientific text. This involves recognizing key concepts within the passage.
+- Your task centers on evaluating scientific texts and generating thoughtful queries that correlate closely with identified answers, reflecting both understanding and creativity.
+- You are required to carefully analyze the information in the passage to develop a question that leads to the specified answer.
+- Your challenge is to take relevant details from a passage and turn it into an appropriate inquiry leading back to a specific response, highlighting your understanding of scientific concepts.
+- Your task is to take insights from a scientific passage and translate them into questions that would direct attention to given answers.
+- This task involves analyzing scientific content and constructing meaningful questions about it based on supplied answers, highlighting your understanding of the subject matter.
+- For each scientific passage, identify a specific detail or concept and construct a question that could lead someone to mention the provided answer.
+- Your task focuses on understanding scientific literature well enough to generate insightful questions linked directly to significant pieces of information disclosed therein.
+- Synthesize your understanding of factual details found within scientific texts into appropriate questions that could logically have certain phrases or terms as their answers.
+- Your challenge is to read through scientific texts and formulate questions that produce certain answers. This tests your capacity for understanding intricate details in written material.
+- The objective is to construct a question that reflects the content of a scientific passage while directly relating to a supplied answer.
+- Your mission is to take insights from a scientific reading and shape them into questions, with each one aiming to highlight or clarify the provided answer.
+- Delve into scientific literature and conceive questions that point toward certain answers derived from the text, exemplifying how ideas interconnect in science.
+- You need to probe deeper into scientific narratives provided and construct relevant inquiries related directly to predetermined answers which reflects thorough knowledge of the material.
+- In this task, your goal is to produce a question that leads to an answer from a scientific text. Analyze the information presented and formulate an appropriate question.
+- You need to read a scientific passage and create a relevant question that corresponds to a given answer from the text.
+- In this task, you are expected to connect thoughts from passages with their related answers by generating thoughtful questions that encapsulate those ideas clearly.
+- Make use of your comprehension skills to derive a clear, relevant question from scientific material, ensuring it points directly to a specific answer offered earlier.
+- Focus on the challenge of crafting straightforward questions from complex scientific narratives, ensuring they correspond directly with provided answers.
+- You will be tasked with creating questions based on scientific texts where each question connects back to an explicit answer referenced within the passage.
+- This exercise requires crafting insightful questions based on information contained within a passage, ensuring they relate contextually to an associated answer.
+- You need to read a scientific passage and generate a relevant question that corresponds to a given answer. This involves extracting key information and formulating it into interrogative form.
+- You will be tasked with generating fitting questions from specific answers linked with content from scientific texts—this engages your understanding of both language and subject matter.
+- In this task, you will produce questions reflecting concepts found within scientific passages associated with certain answers, effectively demonstrating your analytical skills and knowledge base.
+- The exercise requires you to reflect on key insights from scientific material and produce corresponding queries for precise terms or conclusions.
+- You need to formulate a question based on a provided statement from a scientific passage. The generated question should be directly answerable by the given answer.
+- Use your understanding of science concepts presented in the text to create insightful questions that clearly tie back to specific answers provided.
+- Utilizing the details from a given passage, your role is to construct a meaningful question whose answer is already provided. This requires careful reading and comprehension of the material.
+- Read the given passage carefully and then generate a question that can be answered by the specific answer mentioned. This tests your ability to connect concepts.
+- The task involves reading carefully through the content of a passage and posing questions that connect directly with specified answers, highlighting your understanding.
+- Based on what you've read in the scientific passage, craft an intelligent question aimed at eliciting the specified answer; this requires synthesis of information and clarity.
+- Your task is to take a specific answer and create a question that corresponds to that answer based on the information provided in a scientific passage.
+- Your task is to read a provided scientific passage and generate a relevant question that corresponds to a given answer.
+- This task requires you to engage with scientific writings and extract from them knowledge by posing questions that match particular answers provided.
+- In this task, you will explore topics presented within scientific writings and create insightful questions corresponding to exact answers drawn from those writings.
+- The objective is to construct questions that align with precise answers derived from a scientific description, demonstrating comprehension of the material.
+- Given a snippet of scientific writing and an associated answer, your job is to come up with an appropriate question that would logically elicit that answer.
+- Your objective is to transform specific information from a science passage into an engaging and relevant question. This process requires you to synthesize knowledge from the text.
+- You are tasked with interpreting a scientific excerpt and generating inquiries that correspond to selected answers, showcasing your understanding of the subject.
+- This task requires you to use details from a given text to create a relevant question based on a specific answer, demonstrating your understanding of how different elements of the passage connect.
+- The goal is to extract important concepts from a scientific passage and create a question that directly relates to a given answer.
+- This task requires you to transform key elements from scientific texts into questions, effectively connecting them back to given answers for clarity.
+- You are tasked with distilling knowledge from a scientific excerpt into a formulate question linked closely with an answer given, showcasing your analytical skills.
+- In this activity, analyze a scientific text and derive a relevant question that corresponds to the provided answer. This involves critical thinking and understanding of the content.
+- You need to distill complex scientific ideas into clear questions while ensuring they align well with the relevant answers supplied.
+- Your objective is to generate a coherent question from the information in a scientific passage, ensuring that the question aligns perfectly with the provided answer.
+- Your challenge is to take guidance from scientific literature and produce targeted questions that include a particular answer while covering essential concepts from the text.
+- You will analyze scientific content to identify key concepts and formulate questions that can invoke corresponding answers derived from this text.
+- Formulate articulate questions using insights gained from reading scientific passages, ensuring those questions resonate well with specific answers designated in your task.
+- You will analyze scientific passages to identify key concepts and then create questions centered around specific answers, showcasing your ability to bridge knowledge and inquiry effectively.
+- You will create questions based on excerpts from scientific writings, directly relating each question to an associated answer. Strong interpretative skills are needed for clarity.
+- You must engage with a defined scientific passage and formulate appropriate questions based on an exact answer provided, enhancing your capacity for comprehension and inquiry.
+- In this task, you must generate a meaningful question that aligns with an answer derived from a description of scientific concepts, making sure the question reflects the information available.
+- Draw upon the details presented in a scientific description to create an effective question, ensuring that it aligns perfectly with the given answer.
+- In this task, you will engage with a piece of scientific writing and create questions that reflect the important details and concepts presented within it.
+- Your job is to identify and frame relevant inquiries based on existing knowledge presented in a scientific passage while linking them directly to specified answers.
+- This task involves producing a question from scientific material, ensuring it accurately targets the provided answer without additional context.
+- The aim is to navigate through factual passages and construct thoughtful questions that are accurately tailored around the designated answer points provided.
+- By examining the given scientific information alongside an answer, your responsibility is to generate a suitable question that captures the essence of both.
+- You will be creating queries based off selected contents within a scientific passage, emphasizing keywords or ideas as an inspiration for constructing accurate questions.
+- Your responsibility is to synthesize information from a scientific passage into a coherent question that leads to a provided answer, reflecting comprehension of the material.
+- This task requires you to comprehend scientific content and devise questions that encapsulate important points aligned with a given answer.
+- This task involves generating questions from scientific passages, ensuring that each question correctly ties back to the provided answer. Close reading and comprehension skills are essential here.
+- This task involves synthesizing information from a scientific excerpt and crafting a question that accurately reflects the provided answer.
+- You are required to distill information from a scientific excerpt and formulate it into a clear and concise question tied to an identified answer.
+- You are tasked with developing questions from scientific passages that encapsulate provided answers, requiring analytical thinking and creativity in crafting queries.
+- Transform the knowledge contained in a scientific excerpt into an appropriate question, ensuring it connects logically to the predetermined answer given.
+- In this exercise, focus on creating insightful questions that arise naturally from the information in a given scientific passage linked to a specific response.
+- Read through the scientific passage and design an effective question that corresponds well with the answer provided. Critical reading skills will be essential for success.
+- Your challenge is to interpret a given scientific context thoroughly and generate relevant questions linked straightforwardly with corresponding provided answers.
+- You will take insights from a scientific text and generate questions that lead to identifying particular terms or concepts mentioned in the text.
+- This exercise involves reading a scientific passage and then creating a relevant question for an answer based on that content, requiring attention to detail in both the passage and the intended inquiry.
+- The purpose of this task is to engage with scientific writing deeply enough to generate questions that effectively reflect core ideas related to an answer provided.
+- Your task is to generate an insightful question from a scientific context, linked to an answer you are given, highlighting critical themes from the passage.
+- The aim of this task is to transform information from a scientific document into a question that leads directly to a specified answer, allowing you to showcase your ability to synthesize knowledge.
+- Your role involves reading through a passage and crafting a thoughtful question that can be answered by the specified phrase or term provided in response.
+- Develop a question by interpreting a scientific text, ensuring it references an answer provided so that it tests comprehension of important concepts presented in the passage.
+- Engage with scientific texts by identifying key elements, then turn those elements into questions designed for specific answers given in your input.
+- You need to read through scientific information and come up with a suitable question based on an answer, requiring you to identify key points in the text.
+- Take the information in a scientific passage and create an engaging question that aligns with a specific answer, revealing your grasp of the subject matter.
+- You will be asked to generate questions linked to answers derived from scientific passages. Your ability to comprehend complex ideas and formulate clear questions is essential for this task.
+- This task requires you to extract relevant information from a scientific context and construct an accurate question that reflects the specified answer.
+- Your mission is to take a scientific excerpt and, using an answer provided, craft a meaningful question that connects back to important ideas within that text.
+- Critically assess the information in a science passage and produce an open-ended question that successfully connects with its associated answer, reflecting your grasp of the material.
+- Your responsibility is to generate appropriate questions stemming from key ideas within scientific passages, allowing for clarity in how they relate back to defined answers.
+- Review the provided scientific material and formulate a well-structured question pertaining to the specific answer, demonstrating your ability to connect ideas.
+- The objective is to derive a succinct question related to a scientific passage using a specified answer. Strong reading and analytical skills are essential for this activity.
+- Engage with the scientific information provided and create an insightful question that correlates with an established answer, showcasing your knowledge of the material.
+- Given an answer and a supporting scientific passage, your task is to formulate a question that accurately reflects the concepts discussed in the text and corresponds with the answer given.
+- Your goal is to distill information from a descriptive passage into engaging questions that relate closely to known answers; this calls for an analytical approach to text interpretation.
+- This task encompasses synthesizing information from a scientific passage into coherent questions designed around specific answers mentioned in the text.
+- This task requires you to extract information from a scientific passage and formulate a specific question based on a key term in that passage.
+- Taking clues from a scientific passage, your job is to create relevant questions that lead back to specified answers, showcasing your ability to connect information effectively.
+- For this activity, you'll read a passage and develop questions that prompt recall or explanation of key ideas or terms therein.
+- Create applicable questions that emerge from curated scientific passages, tailored around precise answers outlined in your materials for clarity and focus.
+- Your task is to read a scientific passage and formulate a question that corresponds to a specific answer pulled from the text. This requires comprehension of the material.
+- This task challenges you to generate an original question that relates directly to an answer, using insights gained from reading the associated scientific passage.
+- You're expected to derive meaningful questions from scientific passages while ensuring they correspond accurately with stated answers. Creativity in expression as well as precision is vital here.
+- You will analyze a piece of scientific writing and generate a related question for an identified answer, necessitating careful consideration of the text’s main ideas.
+- You are tasked with crafting a question based on information gleaned from a scientific passage. The challenge lies in connecting the content of the passage with the correct answer in the form of a question.
+- The challenge here is to transform information from a scientific passage into suitable questions that correspond with designated answers, emphasizing critical thinking skills.
+- This exercise involves developing clear, concise questions from a scientific text, ensuring each inquiry stems effectively from the stated answer.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task594_sciq_question_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task594_sciq_question_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

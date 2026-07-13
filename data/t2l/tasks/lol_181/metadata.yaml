@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Be prepared to analyze sentence structures from clinical trials, targeting those that reveal treatment efficacy or patient health status results. Accuracy in identifying relevant terms is key here.
+- The goal is to sift through clinical study sentences to find and compile phrases that discuss important outcomes. You will rely on your ability to recognize relevant medical terms and concepts.
+- Review sentences that describe the impacts of medical treatments and extract relevant phrases indicating patient outcomes as stated in the study.
+- Your objective is to sift through study sentences and emphasize phrases connected to clinical or safety evaluations of new therapies in patients.
+- The aim of this task is to dissect research narratives and pull out phrases that offer insights into the outcomes measured during medical trials.
+- This task involves carefully examining study reports to extract information about treatment outcomes, focusing on descriptive phrases.
+- The objective is to collect specific phrases that inform about measured results or reactions within participants in recent health studies.
+- As part of this exercise, you will identify and compile relevant outcome-related phrases from a medical report sentence, paying strict attention to contextual clarity.
+- You will go through a report sentence to capture relevant phrases related to study outcomes, focusing on what was learned about patient treatments.
+- You will analyze a study report to find and list phrases that provide information about the various effects of medical treatments on participants.
+- Your task is to parse sentences from medical studies for content that discusses the results of interventions on participants. Extract what relates specifically to outcomes such as health metrics or notable events.
+- The objective is to sift through the provided text and pinpoint phrases that convey outcome-related information from a medical study.
+- Identify phrases in sentences that reveal the outcomes of treatments in medical research. This activity necessitates understanding what constitutes relevant outcome information.
+- Your task is to extract specific information regarding outcomes from medical study reports. This involves identifying key phrases that relate to patient measurements, intervention assessments, or any relevant biological or behavioral results.
+- The task requires you to review sentences related to health studies and pick out descriptive phrases that illustrate measurable outcomes.
+- This task focuses on dissecting a statement from medical research to pinpoint phrases that reflect the effectiveness or results of treatment interventions.
+- Your role is to pick out outcome-focused phrases from medical research reports, ensuring you capture the essence of each outcome discussed.
+- Focus on isolating phrases from a medical study that reveal findings about patient-related outcomes while omitting irrelevant numerical data.
+- In this task, you will analyze a medical study's text to find phrases highlighting study outcomes, such as treatment effectiveness or patient responses.
+- In this task, you will isolate crucial outcome-related language from medical study descriptions, helping better understand the impact of interventions on participants.
+- Review text segments for outcomes associated with interventions by identifying systematic phrases showing how treatments have affected patients' health statuses.
+- Capture essential phrases regarding treatment impacts from specified sentences, highlighting those crucial for understanding clinical findings.
+- You will assess statements from research reports to reveal phrases associated with patient or intervention outcomes, needing an understanding of what constitutes an outcome description.
+- In this task, you need to identify phrases indicating the outcomes of medical trials based on various interventions mentioned in the provided text.
+- In this task, you will sift through study descriptions to extract relevant phrases that indicate the outcomes measured in a medical trial. You'll need a good grasp of medical terminology and research context.
+- Your objective is to sift through study report sentences and pinpoint phrases that detail the outcomes of treatments being investigated. Familiarity with medical research language will aid in this process.
+- This involves interpreting sentences from medical research, focusing on finding and listing phrases that detail outcomes, which demands attention and comprehension skills.
+- You will need to identify specific informational phrases in medical reports that describe how treatments performed concerning studied outcomes for participants.
+- In this task, you will sift through a sentence from a study report to pinpoint phrases that highlight the results of a medical treatment.
+- Your role is to extract relevant outcome-related phrases from medical study descriptions. This includes attention to effects on patients, intervention effectiveness, and significant results, while avoiding data interpretations.
+- The objective here is to read a study summary and record specific outcome-related phrases that showcase what was measured or observed during the research.
+- Delve into study report sentences, locating phrases that provide insights into the results of medical treatments or measurements taken during research.
+- In this role, identify descriptive phrases from sentences about disease treatment methodologies concerning their outcomes. Emphasizing human health impacts is essential in your extractions.
+- Work through the provided sentences to find and note parts that mention outcomes associated with medical studies, ensuring focus on the content without extraneous details.
+- Your task is to extract phrases from a medical study report that indicate the outcomes related to treatment effectiveness or patient health results.
+- Focus on recognizing key phrases in given texts that relate to the effectiveness or results of medical interventions tested in studies.
+- The focus here is on identifying phrases within a medical context that indicate various treatment outcomes. Familiarity with key terms related to patient health measures will be crucial for this task.
+- This task involves reading through research findings and pinpointing key statements that highlight the results of medical treatments.
+- Your assignment is to isolate impactful outcome-related statements in medical studies, highlighting your capability to evaluate and summarize scientific findings succinctly.
+- Your objective is to isolate phrases from research sentences that indicate treatment results or effects. Success in this task requires discernment and familiarity with outcome context.
+- In this task, you'll engage with texts from medical studies, focusing on zeroing in on phrases linked to outcomes observed during clinical assessments.
+- Your role here is to identify phrases that encapsulate important findings from medical studies, emphasizing treatment effects and patient responses.
+- For this task, look at medical report sentences to identify and record phrases that mention results or effects of interventions, which may include various patient outcomes.
+- You will be tasked with reading through summaries of medical studies in order to gather and list meaningful phrases related to their outcomes.
+- Tasked with dissecting relevant information from a study's finding, you'll isolate phrases that specifically address the effects observed in participant groups.
+- In this task, you will analyze sentences from medical studies to pick out descriptive phrases that convey the outcomes of treatments. It requires a good understanding of study design and outcome evaluation.
+- Your task involves finding and cataloging phrases in medical text that inform about various patient-related outcomes resulting from experimentations.
+- Seek out and list phrases from the given sentence that reveal outcomes of a medical intervention, ensuring you capture only relevant health information.
+- Your task is to identify and extract phrases from a study report that provide insights into the outcomes of medical treatments being investigated.
+- In this task, you evaluate medical study sentences for specific phrases that illustrate the study's outcomes, exercising your analytical thinking and comprehension abilities.
+- You are tasked with reading research statements and cataloging those elements that describe significant treatment effects or outcomes observed among individuals in the study.
+- You will be looking for informative phrases in study reports that speak to the outcomes of treatments administered in medical trials. Your attention should be on health outcomes and patient responses.
+- Engage with medical study statements and pull out significant phrases that capture the essence of defined outcomes related to health interventions.
+- Your focus will be on discerning and assembling sentences from research studies that bear information about patient outcomes as a result of treatments tested. Knowledge of patient care contexts helps inform your selection.
+- The task requires you to look for and compile phrases that describe the effects of treatments in a clinical context from the given text. Attention to detail is crucial.
+- Interpret clinical study text by isolating phrases that describe outcomes related to treatments or interventions. The challenge lies in focusing on relevant aspects while filtering out unnecessary details.
+- The focus of this task is on identifying specific expressions within a research summary that discuss results related to patient health or treatment interventions.
+- You need to sift through given sentences to find phrases related to study outcomes. This task tests your ability to identify relevant information while ignoring unrelated details.
+- You will analyze sentences from medical studies and capture only the phrases that provide clear insights about measured outcomes without digressing into irrelevant details.
+- Your task is to take study sentences and filter for phrases containing key information about measurable results related to medical treatments.
+- Analyze the provided reports to find phrases that convey information about the effects of treatments, relating to patient conditions or observable outcomes.
+- Read the provided sentence and identify outcome-related phrases while avoiding any numerical data or interpretative commentary.
+- Your task is to review a study report sentence and identify portions that provide insight into the outcomes of treatment, requiring careful consideration of medical vocabulary.
+- This activity involves extracting and listing outcome-related phrases from medical study reports. Understanding the relationship between research methods and their reported results is important.
+- Your job is to discover and compile phrases from sentences that indicate the results observed during medical trials. This entails a careful reading and interpretation of the given text.
+- The aim is to sift through provided information to find and share phrases that showcase important findings about treatment results in a study.
+- You will need to read sentences from research reports and find phrases that provide information about the outcomes of medical interventions. A good grasp of study outcomes is necessary.
+- Engage with provided excerpts from studies, identifying relevant phrases about patient responses or treatment effectiveness without introducing numerical data.
+- Your responsibility is to scrutinize excerpts from research studies and extract expressions that convey the results or consequences of medical interventions.
+- Analysis of medical study reports is required, focusing solely on phrases that reflect patient outcomes or treatment efficacy. Clarity in outcome definitions will assist you in your extraction process.
+- This task challenges you to extract relevant outcome-related information from research sentence structures by isolating key phrases reflecting treatment impacts.
+- In this evaluation, you will identify meaningful phrases that discuss treatment outcomes in medical studies. This demands clarity in understanding what constitutes an outcome measure.
+- Your task is to identify and extract key phrases representing outcomes from a medical study report based on the provided sentence.
+- The task is centered around reading sentences about medical studies and selecting keywords or phrases that reveal their outcomes, requiring focus on specific outcome indicators.
+- Scan the given study report sentence for phrases that describe patient outcomes and interventions without including unrelated details like effectiveness scores.
+- Your job is to interpret a study report sentence to find and organize important details that discuss the effects of treatments on participants.
+- From the text, list the phrases that highlight the outcomes assessed in the study, focusing on treatment impacts without diving into detailed statistics.
+- Examine the sentence to find significant phrases indicating results or effects of treatments in a medical context, ensuring clarity and relevance.
+- Your role is to extract relevant phrases from study sentences that detail the effects or results of a treatment. Key comprehension of the outcomes is essential for success in this task.
+- You need to carefully read a sentence from a research report and pinpoint phrases that give insights into the study's outcomes, focusing on specific health-related measures or events.
+- Your role is to sift through a piece of research text and highlight phrases that provide insights into patient treatment outcomes without including extraneous details.
+- You need to identify and list phrases that indicate the results of medical studies. Focus on aspects such as effectiveness and patient-related metrics without getting into numbers or detailed interpretations.
+- In this exercise, you'll be extracting details about study outcomes from a provided sentence in a clear and concise manner, listing them in the order they appear.
+- The focus here is on analyzing report sentences to pin down specific phrases related to study outcomes, thereby enhancing your skills in critical reading within a medical context.
+- Your job is to sift through study reports and pinpoint phrases that outline the assessment outcomes of various treatments. Familiarity with clinical evaluation terms will enhance your effectiveness.
+- Your job is to extract key outcome information from a medical report sentence, concentrating on phrases associated with patient responses or treatment effects.
+- This task requires you to comprehend and analyze medical study sentences, pulling out specific phrases that discuss patient outcomes clearly.
+- The goal is to carefully locate and list phrases within medical writing that communicate important outcomes of clinical trials regarding treatments administered.
+- Your job is to investigate sentences reporting on medical studies for information-rich phrases reflecting interaction effects within participant populations.
+- Your role is to pinpoint and extract meaningful outcome indicators from research text, emphasizing those tied to health assessments or participant feedback.
+- In performing this task, you'll identify and compile results-oriented phrases from study summaries, necessitating insight into how health outcomes are typically communicated in research.
+- When given a sentence from a study, identify and compile the specific phrases that detail the outcomes of treatments tested in patients.
+- Extract meaningful phrasing from sentences regarding medical studies to illustrate treatment outcomes without including extraneous details.
+- You are tasked with detecting and summarizing outcome-related information from sentences about medical studies. This requires an eye for detail and comprehension of what constitutes relevant findings in health research.
+- This task centers around identifying phrases within a research context that articulate how patients responded to treatments under investigation.
+- Refine your reading skills to filter out only those phrases in a medical context that deal directly with outcomes of interventions studied.
+- Analyze the given text to extract key details about the effects of a medical intervention, focusing on phrases that denote measurable outcomes or impacts on study participants.
+- The objective is to isolate and list phrases that convey information about treatment results found within a given study report sentence.
+- In this task, you focus on identifying critical phrases within a medical research sentence that mention outcomes related to health interventions.
+- This task challenges you to locate key phrases indicating treatment effects from the provided text. Your ability to differentiate relevant outcomes will be essential for accurate completion.
+- Take a close look at the input sentence to pull out any crucial outcome information pertaining to medical treatments under investigation.
+- Your goal is to extract relevant phrases related to study outcomes from provided texts about medical research.
+- Distill information from study reports by identifying phrases that mention outcomes concerning treatments, emphasizing clarity and precise extraction.
+- Your role is to review sentences from research reports for mentions of outcomes linked to treatment efforts, and clearly note these findings as they appear.
+- Carefully read each study sentence and focus on isolating phrases that reflect measurable effects, costs, or changes relevant to patient care.
+- The objective here is to pinpoint specific phrases within a report that convey important results of a medical treatment. This will test your ability to discern significant information in scientific writing.
+- As you work through this assignment, aim to capture phrases within study reports that denote treatment effectiveness or patient experiences, which requires analytical skills.
+- Determine the key phrases in a given study report that reflect the results or outcomes of interventions on study participants.
+- Your challenge is to sift through reported findings in medical studies and compile all pertinent phrases indicating outcomes or effects on participants based on their treatments administered.
+- Your challenge is to succinctly identify and list phrases that communicate study outcomes from medical research sentences, respecting defined criteria for relevance.
+- This activity involves determining and enlisting specific phrases from study sentences that reflect directly observable results associated with medical interventions.
+- This task focuses on compiling descriptive information about patient outcomes from sentences regarding medical interventions in published reports.
+- The job requires you to analyze brief reports from medical studies, discerning and compiling phrases that communicate the results or impacts of treatments on participants.
+- You are required to delineate phrases from a medical study description that inform about any observed outcomes without interpreting or elaborating on them.
+- The task involves extracting relevant phrases that indicate the outcomes of medical treatments from provided study sentences. Understanding terminology related to medical studies is essential.
+- The goal is to extract phrases that describe the effects or results of treatments in a given medical context. This requires familiarity with outcome terminology and critical reading skills.
+- You will assess the text for mentions of treatment results, focusing specifically on identifying any terms that relate to health measures or patient reactions.
+- Examine the given texts for pertinent information relating to medical outcomes, and compile these insights based on what was evaluated in the studies.
+- Scrutinize the provided sentences from medical studies for language highlighting patient outcomes after treatment, focusing on observable clinical results.
+- Identify and organize specific phrases relating to changes or effects noted in patient studies from the text provided without adding personal interpretations.
+- In this task, you're looking for specific phrases in research sentences that reveal important outcome details regarding medical treatments being studied.
+- Analyze the given sentence from a medical study and list any phrases that detail the outcomes without including any numbers or interpretations.
+- Analyze study descriptions with an emphasis on extracting specific phrases tied to the efficacy or side effects associated with the interventions explored.
+- This task requires a careful reading of sentences from medical research reports to extract outcome-related phrases concerning interventions and patient responses.
+- Examine a report excerpt and identify phrases that represent measured outcomes or notable events in participants as part of an evaluation of treatment efficacy.
+- Examine the report from a medical study and extract phrases that detail the measured outcomes or effects of the treatment on participants.
+- Carefully review sentences from a medical study report to list phrases that indicate the outcomes related to treatments tested with participants.
+- Identify and compile meaningful expressions from research statements that reflect the measured outcomes of healthcare interventions on patient populations.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task181_outcome_extraction
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task181_outcome_extraction
+user_prompt_template: '{task_def}
+
+
+  {problem}'

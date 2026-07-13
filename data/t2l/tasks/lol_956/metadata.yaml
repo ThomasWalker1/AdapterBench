@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- In this activity, you'll investigate a password and quantify how many adjustments must be made so that it fulfills all conditions for being deemed strong.
+- Review provided passwords and determine their strengths based on specific criteria, subsequently counting any modifications required for them to meet the standards.
+- This task asks you to inspect a password and ascertain the number of steps—whether adding, removing, or changing characters—required to make it robust.
+- Analyze the password provided to you and identify the number of modifications required to meet the criteria for a strong password.
+- Your job is to inspect a password and determine how many actions are necessary—such as inserting, deleting, or replacing characters—to enhance its security.
+- This task invites you to analyze a password based on guidelines ensuring its strength and measure how many modifications would make it fit those standards.
+- In this task, evaluate whether a password meets strong criteria and calculate the required steps for improvement if it falls short.
+- The primary task involves determining what it takes in terms of character alterations for a given password to qualify as strong, while adhering to certain security benchmarks.
+- Your goal is to read a given password and calculate how many changes—insertions, deletions, or replacements—are needed for it to qualify as strong.
+- Given a password, you will check if it fulfills standards for strength. If not, you need to identify how many operations are needed to transform it into a strong one.
+- The assignment involves checking the given password for compliance with strength rules and quantifying the steps required to bring it up to standard.
+- For each given password, determine the actions needed—like inserting or deleting characters—to convert it into a strong one based on specific criteria.
+- Investigate the vulnerabilities in the provided password by applying recognized standards of strength and calculating modifications needed for robustness.
+- Analyze a password's length, character types, and repetition patterns, then provide an estimate of the steps required to enhance its strength.
+- This task requires you to assess the strength of a password and identify the adjustments needed to comply with criteria for creating a strong password.
+- The task requires you to scrutinize each password against defined strength benchmarks and indicate how many corrections are mandated for improvement.
+- Examine the provided password against strength guidelines and outline how many alterations are needed for it to qualify as a strong password.
+- This task involves checking how well a given password meets strength requirements and counting the necessary steps needed for improvement.
+- You need to assess a password and ascertain how many changes must be made to ensure it adheres to the rules for strong passwords.
+- The objective is to analyze the composition of a password and indicate how many adjustments are essential for it to reach a strong level of security.
+- Examine the given password closely, looking at length, character set, and repetition, before calculating how many steps are required to bolster its strength.
+- Examine provided passwords for compliance with strength standards while calculating how many insertions, deletions, or replacements will create a secure version.
+- Determine if the provided password meets required strength guidelines, then calculate how many changes are necessary for improvement.
+- You need to analyze a password to ensure it meets strength standards, and then identify the number of edits required to achieve compliance.
+- Analyze each component of the presented password and count how many actions are required—like adding or replacing characters—to make it sufficiently secure.
+- The task requires you to examine a password and identify how many editing steps are necessary to convert it into a strong password that adheres to specific guidelines.
+- Assess each given password to determine if it qualifies as strong. If it doesn't, count the minimum number of edits necessary to rectify its weaknesses.
+- Analyze the provided password according to certain security standards, then quantify how many character alterations must be made for it to be robust.
+- Analyze a password against established strength requirements and report how many adjustments, such as adding or replacing characters, must be made.
+- Examine the characteristics of the given password and compute the steps needed to adapt it into a robust one that meets security standards.
+- Assess a password's adherence to security requirements and indicate how many alterations would be required for it to become sufficiently strong.
+- Your job is to check if a password lives up to the established criteria for strength and figure out how many edits are necessary to achieve that.
+- Your duty involves evaluating a list of passwords and calculating how many adjustments are required for them to become secure enough based on pre-defined rules.
+- Your job is to assess whether a password can withstand security challenges based on specific requirements, then quantify the steps needed for enhancement.
+- Your responsibility is to review a provided password, check it against strong requirements, and find out the number of modifications required for improvement.
+- Identify what makes a password strong and examine how close a given example is, then calculate the steps needed for enhancement.
+- Your task is to evaluate a given password and determine how many modifications are needed to make it a strong password according to specified criteria.
+- Your task is to review a password carefully, based on established guidelines, and report on the necessary adjustments for it to be secure.
+- The focus of this task is on evaluating the complexity of a given password and calculating how many modifications are required for optimal security compliance.
+- Your responsibility is to verify a password against certain security benchmarks and report the number of steps required to adjust it accordingly.
+- The task involves evaluating a given password and determining how many modifications are needed to make it a strong password based on specific criteria.
+- Analyze the given password using rules of password strength, determining how many edits or substitutions are necessary for it to meet those standards.
+- You need to analyze a password and find out the number of steps required to enhance its strength by following defined rules about character types and lengths.
+- The assignment is about evaluating the effectiveness of a password based on certain guidelines and counting the edits required for enhancement.
+- Your objective is to review passwords against strength measures and indicate how many individual steps are necessary for improvement.
+- You will assess passwords for their security level and calculate how many character changes are necessary for them to become considered strong credentials.
+- Your assignment is to evaluate a password against certain criteria for strength and calculate how many steps are needed for improvement.
+- Assess a password based on set strength requirements and calculate the steps required to transform it into a strong password.
+- Analyze the composition of a password to see if it meets safety criteria and calculate how many steps must be taken for improvement.
+- Your task involves inspecting a password's characteristics and calculating the exact number of alterations required to follow security guidelines.
+- Tasked with evaluating passwords, analyze them for their alignment with strength characteristics and calculate necessary changes for enhancement.
+- Review a password and calculate the necessary adjustments to transform it into a strong password by following defined security standards.
+- Assess the strength of the supplied password and figure out how many additions, deletions, or replacements are needed to fulfill the conditions of a strong password.
+- You will examine a series of passwords and quantify how many steps it would take to ensure they meet detailed security expectations.
+- Evaluate passwords based on their characteristics, and identify the necessary steps to upgrade them into strong passwords while adhering to established standards.
+- You are tasked with ensuring that a password meets security requirements by calculating how many actions must be taken to improve its strength.
+- You must interpret a set of rules for strong passwords, assess an example against those rules, and calculate how many adjustments are needed for compliance.
+- In this task, you will review a password and calculate the steps required for it to meet strength standards, including length and character variety.
+- Your task is to investigate whether a given password fulfills specific security standards while figuring out the number of adjustments necessary for compliance.
+- You are tasked with examining passwords against specific strong-password criteria and counting the modifications needed to achieve compliance.
+- Here, you'll be tasked with reviewing a password and counting the adjustments needed for it to become secure, ensuring it meets length and character diversity requirements.
+- This task requires you to assess a password against specific strength criteria and compute the number of modifications needed to enhance its security.
+- Review the structure of a specified password according to strength criteria and quantify any alterations needed for optimal security.
+- The task requires you to evaluate a given password and determine how many modifications are needed to make it strong based on specific criteria.
+- The task involves analyzing a given password to determine how many changes are necessary to make it strong according to specified criteria.
+- Analyze a password's composition and identify necessary adjustments in order to transition it from weak to strong status as defined by set rules.
+- Assess the given password against strict criteria and determine what changes are required in terms of character composition and structure.
+- The goal is to inspect a password's structure and characteristics, and report how many changes are necessary to make it robust.
+- You will be investigating each password against strong password requirements and summarizing the number of editing actions required for those that do not measure up.
+- You need to evaluate the provided password and figure out the number of modifications necessary to enhance its strength based on predefined rules.
+- The task entails inspecting a password and determining how many character changes, deletions, or additions are needed to promote its strength.
+- The objective is to take a given password and systematically determine the number of character adjustments necessary for it to attain strength according to specific standards.
+- Your job is to analyze a password's components and decide how many changes are needed for it to fulfill the conditions of being classified as strong.
+- Your job is to analyze passwords and specify how many changes are required for them to meet the defined criteria for strength.
+- The focus is on determining if passwords fulfill specified strength requirements. If they fall short, calculate how many steps are required for improvement.
+- The objective is to evaluate whether a password is strong by the given rules and count the steps needed for it to meet those conditions.
+- Your responsibility includes analyzing character variety and continuity in a password, alongside determining how many alterations are required for it to be considered strong.
+- You will determine how well a password aligns with security expectations and enumerate the modifications needed to reach that level of strength.
+- Check the characteristics of a provided password against safety criteria, outlining how many actions need to be taken for it to be categorized as strong.
+- Based on a set of criteria for strong passwords, evaluate how many adjustments you would need to implement on your provided examples.
+- Evaluate the attributes of a given password, focusing on its length, character variety, and sequence repetition, then note the steps needed for enhancement.
+- You must analyze a password to see if it meets the standards of strength. If it does not, figure out how many changes—insertions, deletions, or replacements—are necessary to qualify it.
+- This activity involves evaluating how many steps are necessary to convert a vulnerable password into one that meets stringent safety requirements.
+- Your role is to review a password and ascertain how extensive its revisions need to be in order to qualify as a strong password based on certain rules.
+- Your goal is to check a password against established standards of strength and determine how many edits are required to satisfy these criteria.
+- Given a password, identify its vulnerabilities and recommend changes needed to meet strength requirements effectively.
+- Evaluate an existing password against security metrics and identify the number of specific edits required for it to achieve the status of being strong.
+- You will assess a given password against the criteria for robustness and calculate how many modifications need to be performed for it to be considered strong.
+- Evaluate how well a password adheres to specific strength criteria and tally the modifications required to enhance its robustness against breaches.
+- Analyze the provided password to decide the necessary steps to strengthen it, focusing on length, character variety, and the absence of consecutive repeating characters.
+- This task requires you to review a password and discern how many changes—like adding or replacing characters—are needed for it to become a robust password.
+- You need to inspect a given password and compute the number of alterations necessary to convert it into a secure option based on specific password policies.
+- You must evaluate a provided password against defined strength guidelines and determine the steps necessary for it to achieve a strong status.
+- Evaluate the given password against criteria involving length, character types, and repetitions, and determine the number of steps required for improvement.
+- Your mission is to scrutinize each given password for its adherence to strength standards and then identify any gaps needing correction through edits.
+- In this task, you will evaluate passwords based on their strength requirements and provide a count of transformations needed to enhance their security.
+- The task focuses on assessing a password's robustness and finding out how many character modifications are necessary to fulfill security requirements.
+- The goal is to determine how many modifications, including additions or replacements of characters, are needed for a password to achieve strong status.
+- Assess a password regarding its length, character diversity, and repetition patterns, then calculate how many changes are required for it to be strong.
+- Look over the given password and evaluate how well it meets strong-password criteria, then establish how many changes are necessary for improvement.
+- Review each password's features and decide how many changes need to be implemented in order for them to become strong passwords as defined by specified rules.
+- The objective is to analyze a password for security compliance, calculating how many edits, additions, or deletions are necessary to ensure it meets strength standards.
+- Your role is to analyze a given password and calculate the steps required to transform it into a stronger version that meets defined standards.
+- Analyze passwords based on multiple factors related to security and calculate how many steps are needed to convert them into strong ones.
+- Review a specified password with established criteria in mind, tallying up the adjustments required for it to become strong and secure.
+- Analyze the structure of a given password and figure out how many alterations are necessary for it to fulfill the criteria of a strong password.
+- This task involves checking if an input password adheres to specific strength guidelines, followed by assessing how many changes are needed if it doesn't.
+- You are tasked with examining a password and figuring out the number of changes needed for it to qualify as strong based on length, character variety, and repetition rules.
+- Analyze a given password to evaluate its strength and identify how many modifications must be made in order to meet strength standards.
+- Your objective is to review a password string for strength, determining the number of steps required to enhance its security and fulfill necessary conditions.
+- You will need to analyze character composition and length of a password, then quantify the modifications needed for it to be considered strong.
+- The focus is on verifying the strength of various passwords against established criteria and reporting how many modifications must be made for improvement.
+- Assess the integrity of each password according to defined criteria and gauge the number of editing actions needed to classify them as strong passwords.
+- Identify shortcomings in a given password concerning strength criteria, then count how many moves are needed to rectify these weaknesses.
+- The goal is to analyze a provided password for its compliance with security rules and count how many adjustments are needed for reinforcement.
+- This task involves assessing a password's strength based on several guidelines. Count the adjustments needed to transform the password into a strong one.
+- Your mission is to identify weaknesses in provided passwords and propose a number of changes essential for boosting their security level.
+- Evaluate the password given to you and identify the steps needed to elevate its security level, focusing on requirements for length, character types, and repetition.
+- You must look at a provided password and calculate how many changes are necessary to meet strength requirements, such as length and character variety.
+- Evaluate the passwords provided based on established strength criteria and compute how many modifications are essential for compliance.
+- You need to inspect a password closely and determine the requisite number of changes for it to adhere effectively to strength criteria.
+- The challenge here is analyzing the components of a password and assessing the number of changes required to achieve a secure configuration.
+- The focus is on evaluating a password's strengths in terms of robustness, including length and character variety, then figuring out necessary revisions.
+- You are tasked with evaluating characteristics such as length and character variety in a password, then counting the steps necessary to ensure its strength.
+- Your task is to evaluate a given password against specific criteria for strength and determine how many modifications are needed to enhance its security.
+- Examine the provided password for weaknesses and figure out the steps required to enhance its strength according to established guidelines.
+- Your task is centered around reviewing a password's structure and identifying how many alterations will render it secure according to established guidelines.
+- Examine the provided password for its strengths and weaknesses, calculating the modifications required to enhance its security effectively.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task956_leetcode_420_strong_password_check
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task956_leetcode_420_strong_password_check
+user_prompt_template: '{task_def}
+
+
+  {problem}'

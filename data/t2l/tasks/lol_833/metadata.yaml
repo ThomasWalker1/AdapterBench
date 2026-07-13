@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your job is to recognize feelings conveyed through words in sentences, categorizing them as either uplifting (positive) or discouraging (negative).
+- You will analyze language for sentiments within sentences, deciding if they inspire positive feelings or reflect negative experiences.
+- Explore the emotions encapsulated in each sentence and decide whether they resonate with positivity or negativity.
+- Scrutinize the sentiments embedded within the sentences, classifying them as representing either an optimistic perspective or a more negative viewpoint.
+- Delve into the sentiment encapsulated within a phrase, defining it as either positive—indicating joy—or negative—signifying sorrow.
+- You will reflect on the tone of each sentence given, placing them into positive or negative categories according to their feelings conveyed.
+- The task is about interpreting sentences in terms of their emotional weight and classifying them into either positive or negative sentiments.
+- You need to read each sentence closely and judge its sentiment, looking for clues that indicate a positive or negative feeling.
+- The task involves assessing the emotional aspect of a sentence, deciding if it radiates a positive vibe or a negative one.
+- You are called upon to evaluate sentences for their emotional value, deciding if they tend toward the optimistic side of feelings or display a negative perspective.
+- Your goal is to sift through the sentences to pinpoint their sentiment, categorizing them as either expressing joy or disappointment.
+- Determine whether each sentence captures a sense of hope and joy (positive) or implies despair and negativity (negative).
+- Weigh the words in each sentence to determine their sentiment, ultimately labeling them as either friendly in tone or critical and somber.
+- Investigate each sentence for clues about its emotional stance, aiming to accurately designate it as conveying either a positive outlook or a negative perspective.
+- Your role is to interpret sentences and classify their emotional content, deciding whether they are optimistic (positive) or pessimistic (negative).
+- You will read sentences and identify the underlying sentiment, distinguishing between uplifting (positive) and unfavorable (negative) expressions.
+- Review each sentence meticulously, capturing its sentiment and classifying it according to positive or negative emotions conveyed.
+- Your goal is to discern the emotional quality of various sentences, identifying whether they convey a sense of happiness or sadness.
+- You need to analyze the sentiment expressed in sentences and decide if the feelings conveyed are uplifting or disheartening.
+- Your job is to sift through each sentence’s wording and intent to determine if it expresses an overall positive vibe or a negative one.
+- Investigate the emotional tone of the sentences provided and classify them accordingly. Look for cues that reveal either joy or disdain.
+- The objective is to recognize the emotional resonance of the provided text and classify it appropriately based on its sentiment.
+- This activity requires you to interpret emotions in language, distinguishing between sentences that are encouraging versus those that are discouraging.
+- Delve into the meaning of each sentence to gauge its emotional tone, labeling it as either positive or negative based on your understanding.
+- The purpose of this task is to look beyond the words and interpret the emotions behind sentences as positive or negative sentiments.
+- Engage with the sentences given to uncover their emotional tenor, labeling them distinctly as representing positive sentiments or negative sentiments.
+- Your role is to discern whether the sentiment inherent in a sentence leans towards positivity or negativity.
+- This involves evaluating sentences based on their emotional tone, aiming to determine which ones express a sense of positivity or negativity.
+- You will interpret each sentence's message to identify its emotional connotation, marking it as positive if it expresses good feelings, and negative otherwise.
+- Assess the emotional context of sentences to determine whether they communicate a sense of positivity or negativity.
+- Reflect on the feelings communicated within the sentence to classify its overall sentiment accurately as positive or negative.
+- You will assess sentences to identify their sentiment, determining if the feelings expressed are uplifting or disheartening.
+- For this task, you will examine sentences and determine if they are expressing a favorable or unfavorable sentiment based on their wording and context.
+- This task consists of reading sentences and inferring their emotional tone, ascertaining whether the sentiment is favorable or unfavorable.
+- You will interpret sentences to uncover their emotional implications, categorizing them into positive or negative sentiments.
+- This exercise involves identifying whether the sentiment of a sentence reflects happiness or displeasure, focusing on emotional expression.
+- Assess the emotional tone of the provided sentence, categorizing it as either positive or negative based on its meaning.
+- Review each sentence critically to assess its tone, concluding whether the overall feeling is positive or negative depending on the conveyed message.
+- Your task is to analyze a sentence and determine whether its sentiment is positive or negative based on the emotions expressed.
+- Understand the meanings and emotions of the sentences you receive in order to evaluate their sentiments correctly.
+- Your role involves discerning whether each sentence showcases optimism or negativity based on word choice and sentiment conveyed.
+- Read the sentences carefully and reflect on their emotional weight to classify them into positive or negative categories.
+- Examine the language used in each sentence to identify sentiments that are either affirming or dismissive.
+- Work through phrases looking for signs of emotion and assign a label based on whether the overall feeling is positive or negative.
+- Identify the mood expressed in each sentence. Decide if the sentiment is uplifting or disheartening based on the language used.
+- Analyze the given sentence for emotional tone, categorizing it as expressing either a positive or a negative sentiment.
+- Assess how language shapes emotions in each sentence, leading you to conclude if they evoke feelings associated with positivity or negativity.
+- Here, you'll dissect sentences to gauge their emotional impact, classifying them as either uplifting (positive) or discouraging (negative).
+- Delve into the meanings of given sentences to assign them a sentiment label of either 'positive' for favorable feelings or 'negative' for unfavorable ones.
+- Engage with the emotional components of sentences provided, discerning whether they resonate more with positivity or negativity.
+- For each sentence provided, ascertain the sentiment by determining if it reflects a positive outlook or a negative one.
+- Interpret the language and nuances in each sentence to categorize its sentiment as either uplifting or gloomy.
+- Your goal is to evaluate the sentiment conveyed by a given sentence, categorizing it as either positive or negative based on the words and context.
+- You will need to interpret the feelings or attitudes represented in a sentence and label it as either positive or negative based on your assessment.
+- Your mission is to probe into the sentence's language and determine its emotional orientation—does it uplift or detract?
+- The task requires you to interpret sentences, focusing on the feelings they evoke. Decide if these feelings are generally positive or negative.
+- Engage with the language of the sentences and identify whether they resonate with positivity or negativity.
+- Examine each sentence carefully to determine its emotional impact, identifying them as either uplifting (positive) or disheartening (negative).
+- Examine each sentence to determine its underlying sentiment, focusing on words and phrases that convey feelings or attitudes.
+- In this task, you'll focus on capturing the essence of each sentence’s emotion and categorizing it based on its sentiment as either positive or negative.
+- Your task is to analyze a sentence and determine whether its sentiment conveys a positive or negative feeling.
+- This task entails sentiment analysis, where you identify and categorize the emotional expressiveness of a sentence as positive or negative.
+- Your role involves reading between the lines of a statement, grasping whether it conveys uplifting feelings or negative sentiments.
+- Your objective is to scan the sentence for clues about its emotional tone and categorize it as either positive or negative.
+- Your role involves looking at sentences and gauging their emotional tone, deciding whether they express joyfulness or despair.
+- Your objective is to assess the sentiment behind each statement to decide if it has a positive or negative undertone.
+- This task requires you to determine the emotional weight of sentences, distinguishing between expressions that evoke positive responses versus those that indicate negativity.
+- Evaluate sentences based on their emotional content and determine if they express a positive feeling or a negative one.
+- This activity involves looking at various sentences and assessing whether they express a positive attitude or a negative one.
+- Investigate the emotional undertones of each provided sentence, deciding if they evoke a sense of positivity or negativity in their context.
+- The task requires you to gauge the mood of provided sentences and label them based on their emotional resonance as either positive or negative.
+- Your job is to reflect on the emotional message behind the sentences provided and categorize them as either optimistic or pessimistic.
+- Consider each sentence’s emotional expression to accurately assign it a sentiment classification of positive or negative.
+- Your task entails scrutinizing sentences for their emotional content to establish their polarity as either positive or negative.
+- Identify and assign an emotional label to each sentence, determining if it leans towards an optimistic view or a pessimistic one.
+- For each sentence, you will observe the words and context to deduce whether they foster good feelings (positive) or bad feelings (negative).
+- Review the sentences for their inherent sentiment and classify them based on whether they represent optimistic thoughts or pessimistic feelings.
+- You will examine sentences closely to identify their underlying emotional tone, classifying them into positive or negative sentiments.
+- Your task involves interpreting sentences in terms of emotion and categorizing them accordingly, focusing on identifying uplifting versus bleak sentiments.
+- The task requires you to evaluate a given sentence and determine its overall emotional tone, categorizing it as either positive or negative.
+- Your task is to assess a sentence and determine whether it expresses a positive or negative sentiment.
+- In this task, focus on capturing the essence of each sentence's emotion and categorizing it as either exhibiting a positive or negative vibe.
+- 'Assess the sentiment conveyed in a sentence and classify it into one of two categories: positive or negative.'
+- The objective is to discern the underlying sentiment in each sentence, determining if it conveys positivity or negativity in its expression.
+- Understand the emotional implications behind the words in a sentence, classifying them as either expressing optimism or pessimism.
+- For each provided sentence, evaluate the sentiment conveyed and classify it appropriately as positive or negative.
+- Your task is to evaluate the emotional tone of a given sentence and categorize it as either positive or negative.
+- Evaluate the emotional content of each sentence. Use your understanding of language and emotion to identify if they express positivity or negativity.
+- This task focuses on sentiment analysis, where you are tasked with identifying whether the expression in a sentence is positive or negative in nature.
+- You will assess the emotional content of a sentence, determining if it has an uplifting (positive) or discouraging (negative) sentiment.
+- Discern the sentiment behind the sentences presented, categorizing them into positive if they convey joy and negative if they reflect sorrow.
+- Engage with the texts to determine their emotive qualities, indicating whether they reflect joyfulness or disappointment.
+- Your role is to discern the feelings expressed in sentences and classify them appropriately as positive or negative in nature.
+- Identify the underlying emotion in the sentence. The goal is to discern whether it leans towards positivity or negativity.
+- Get a sense of the mood expressed in each sentence and classify it according to whether it’s conveying positivity or negativity.
+- In this task, your understanding of language is put to the test as you determine if sentences convey positive or negative sentiments.
+- Capture the essence of how each sentence feels emotionally, discerning if it carries a sense of hopefulness or disappointment.
+- Your task is to assess a sentence and classify the overall sentiment it conveys, recognizing feelings of positivity or negativity.
+- Your responsibility is to read and interpret sentences, identifying emotions that can be classified as positive or negative.
+- Evaluate how the words in the sentence make you feel, and classify that feeling as either distinctly positive or negative.
+- Focus on understanding how each sentence feels emotionally. Decide if it evokes a sense of positivity or hints at something negative.
+- This exercise involves identifying and categorizing the sentiment in different sentences as either positive or negative based on their word choices.
+- The assignment involves reading sentences closely and determining their emotional stance, focusing on whether they lean toward positive feelings or negative ones.
+- Your task is to evaluate the emotional tone of a sentence, determining whether it is expressed positively or negatively.
+- Delve into each sentence to uncover its emotional essence, categorizing the tone as either affirmative or adverse according to the context provided.
+- Explore the emotional undertones of various sentences, determining whether they transmit a sense of positivity or negativity.
+- In this task, you need to interpret various statements to determine whether they carry an affirmative vibe or a negative connotation.
+- Evaluate given statements for their emotional impact, deciding if each sentence leans towards positivity or negativity based on context clues.
+- Assess the text's emotional undercurrents in each sentence, aiming to classify them simply into either positive or negative sentiments.
+- For each given sentence, discern its underlying emotion and indicate if it reflects a positive or negative attitude.
+- Your objective is to analyze sentiment in language by determining whether specific sentences convey happiness or sorrow through their expressions.
+- Engage with a single sentence’s wording and themes to categorize it by its emotional tone—do you sense happiness or sadness?
+- In this activity, you evaluate given sentences for sentiment, deciding if they express a feeling of positivity or negativity.
+- Analyze the sentences to uncover their sentiment, whether they evoke happiness and positivity or sadness and negativity.
+- This task requires you to interpret the mood of a sentence and classify it as either optimistic or pessimistic based on the wording.
+- This task is about identifying the emotional character of sentences. You will categorize them based on whether they evoke joy and positivity or sadness and negativity.
+- You need to evaluate expressions within sentences to comprehend their emotional quality and conclude if they evoke positivity or negativity.
+- Delve into the expressive quality of each sentence, deciding if its sentiment aligns with positive feelings or negative feelings.
+- Analyze the given text to extract the emotional stance it conveys, looking for clues that signal positivity or negativity in the expression.
+- Analyze the emotion expressed in a sentence, discerning whether it radiates positivity or negativity based on its context and wording.
+- Your task is to analyze the emotional tone of the provided sentences and classify them as either 'positive' or 'negative'.
+- The task focuses on understanding the mood of various sentences and classifying them according to their emotional impact, either uplifting or diminishing.
+- Your responsibility is to judge the emotion behind each sentence and classify it appropriately as expressing either positive or negative sentiments.
+- Evaluate the sentiment expressed in each sentence, focusing on identifying if it resonates with positive emotions or negative feelings.
+- Analyze sentence structures and word choices to assess whether the sentiments expressed lean towards positivity or negativity.
+- Delve into the meaning behind sentences to discern their emotional quality, labeling them as either positive or negative accordingly.
+- Your role is to analyze textual content for its sentiment, classifying it within a framework of positive or negative emotional expression.
+- The goal is to read sentences and categorize them based on their emotional resonance, identifying if they project optimism or negativity.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task833_poem_sentiment_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task833_poem_sentiment_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

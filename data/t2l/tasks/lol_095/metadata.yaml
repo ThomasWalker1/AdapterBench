@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Focus on identifying which number among those provided shows the greatest absolute distance from zero, ensuring that you relay it in its original form correctly.
+- In this activity, you're examining various numbers and identifying the one that shows up with the highest absolute value compared to others, as well as adhering to special rules for ties.
+- You'll work with a set of numerical values and must find the one with the highest absolute value, making sure to present it as it appears originally.
+- Review the provided numbers and determine which has the most significant absolute value; ensure that you return this number exactly as given.
+- In this exercise, you will examine a series of numbers to determine which one has the greatest absolute value. The output should reflect the original value before considering its absolute value.
+- You'll analyze numerical data to extract the element that shows exhaustive distance from zero, using absolute values as your guiding principle for comparison.
+- Your objective will be to sift through a group of figures to uncover one that stands at the forefront due to its high absolute value against both positive and negative realms.
+- This exercise challenges you to evaluate numerical values and determine which stands out for having the highest absolute value in terms of distance from zero.
+- The assignment requires you to isolate a single number with maximal distance from zero among a group of numbers, while ensuring accuracy in reporting its original sign.
+- Your role is to delve into a set of numerical data and return the element with the highest absolute significance, factoring in conditions for equivalent values.
+- You will engage with different numeric expressions, needing to find which holds the top position for its absolute value as you assess them critically.
+- This task challenges you to review a list of numbers and select one based on its magnitude when stripped of its sign — essentially determining its highest absolute value representation.
+- You will explore a collection of numeric values to find out which one exhibits the highest degree of magnitude, reporting it directly as given.
+- Engage in an analytical exercise where you must review numbers and identify the one that represents the biggest distance from zero, taking into account both positive and negative values equally.
+- The challenge is to determine which number has the largest absolute value from the provided list, while ensuring that if two numbers share the same absolute value, the positive one is selected.
+- In this activity, you will analyze a sequence of numbers to find which one has the largest magnitude without considering its sign, and report that number directly.
+- Your goal is to sift through a series of numbers and pick out the one that represents the highest absolute value, accounting for both negative and positive values.
+- 'Your mission is clear: determine which number in a series has an absolute value greater than any other by assessing each one''s position relative to zero on a numerical scale.'
+- You will be tasked with finding the number in a list that has the largest absolute value, regardless of whether it is negative or positive.
+- Identify and select the element from a list that possesses the highest absolute value; if values are equal, prefer the positive one and return it in its original form.
+- Given a set of numbers, your goal is to select the one that is furthest from zero by its absolute value. If there's a tie between a positive and a negative number, choose the positive.
+- Your mission is to find the single number among many that has the highest non-negative equivalent, which is calculated by applying the concept of absolute value.
+- This assignment involves comparing absolute values of different numbers to determine which one stands out as having the highest magnitude.
+- This task requires you to find the entry in a list that holds the largest absolute value by evaluating each number's magnitude.
+- The objective here is to locate the element among various numbers that possesses the greatest distance from zero on the number line, based on its absolute value.
+- The focus here is on determining which number holds the strongest presence in terms of absolute value among various candidates, effectively balancing signs where necessary.
+- In this task, assess each number’s potential based on its absolute value and select the most significant one according to preset rules regarding ties between positive and negative values.
+- In this task, you need to identify the number with the greatest absolute value from a provided list, prioritizing positive values when two numbers have the same magnitude.
+- In this task, you are asked to find the number that is furthest from zero among a list. You must compare both positive and negative values by converting any negatives to positives for comparison purposes.
+- You need to identify which number in a provided list has the largest distance from zero, disregarding whether it’s positive or negative.
+- Engage in evaluating various numerical values to determine which has the largest non-negative measure when disregarding its associated sign during selection.
+- 'Your task is straightforward: look at a set of numbers and determine which has the greatest non-negative value when ignoring direction (sign).'
+- This process involves assessing numerical magnitudes from a selection, ensuring you recognize both positive and negative influences when pinpointing the most substantial absolute value.
+- Analyze each number in a group and select the one that holds the greatest absolute value, while still reflecting its original form in your response.
+- In this task, you will filter through a group of numbers to find which one has the highest absolute numeral value, disregarding whether it’s positive or negative.
+- In this task, you will evaluate a set of numbers to determine which one holds the greatest absolute value, ensuring to return the original number associated with that value.
+- In this task, you will evaluate a list of numbers to find the one that has the greatest distance from zero, known as absolute value.
+- This task challenges you to examine numerical entries in order to establish which has the largest non-negative representation of its value as seen in both positive and negative formats.
+- The focus of this task is to discern which number among several has the greatest absolute value, while preferring positives in situations where two values are equivalent in size.
+- Your assignment is to inspect a list of numbers and pinpoint the one with maximum absolute value, clarifying ties in favor of their positive counterparts.
+- Your task centers around evaluating given numbers and determining which has an absolute value that surpasses all others—prioritize choosing positive numbers when faced with equal distances.
+- In this task, you will process a list of numerical values to find out which one has the largest absolute value, taking care to return the original form of the number.
+- The assignment entails analyzing values based on their distance from zero and determining which number exhibits that distance most significantly before presenting it as-is.
+- The task involves analyzing a list of numbers to identify which one has the greatest absolute value, while also considering their original signs.
+- You’re required to assess a collection of numerical entries for their absolute differences from zero and return specifically which figure holds precedence based on its magnitude.
+- Engage with a list of numbers and determine which one portrays the greatest absolute value, marking attention to detail when negatives are involved.
+- You will work with numerical data to identify which number displays the highest absolute value, applying knowledge of how to assess their magnitude without considering their signs.
+- Work through a selection of numbers and find out which one indicates the greatest absolute measure based on defined mathematical rules around absolute values.
+- With each entry in the given list, your goal is to ascertain which number has an absolute value that exceeds all others, necessitating careful evaluation and comparison of their respective magnitudes.
+- The objective is to examine a collection of numbers and identify the one with the largest distance from zero, considering negative and positive angles appropriately.
+- The assignment entails looking at various numbers and discerning which one reflects the greatest magnitude when considered in absolute terms while recognizing conditions for selection between positive and negative counterparts.
+- The focus of this task is on evaluating numerical values to find which number, when considering its absolute value, can be classified as the largest among them.
+- Your goal in this task is to calculate which number possesses the highest magnitude when compared against others in a given group, whilst choosing positives in case of ties.
+- This activity involves analyzing numerical data where you must identify which entry holds significance as having the highest numerical distance from zero, specifically through its absolute value.
+- Your challenge is to review a list of integers or decimals and select the one which, when turned into its non-negative counterpart, emerges as superior in absolute terms.
+- This task challenges you to measure numerical values based on their distance from zero and identify which one exhibits the largest absolute value while maintaining preference for positives during ties.
+- Your job involves reviewing numbers for their size concerning absolute value; your aim is to find which number achieves maximum magnitude in this context.
+- The primary focus here is on analyzing numbers for their absolute values and selecting the one with the most significant magnitude—keep an eye out for preferred positivity in equal cases.
+- The task involves analyzing a list of numbers to find the one with the highest absolute value, regardless of whether the number is positive or negative.
+- You need to analyze several numerical inputs and specify which one has the most significant distance from zero, accounting for whether the values are positive or negative.
+- Your assignment involves assessing various numbers for their absolute values, allowing you to select and present only the most extreme example found.
+- The assignment requires you to sift through an array of numbers and establish which has the greatest absolute value, where ties between positive and negative values favor the positive.
+- Delve into a sequence of numerical figures and ascertain which one possesses the most significant distance from zero, considering both its positive and negative forms.
+- This task requires you to filter through a set of numeric values and isolate the one that represents the maximum absolute value, prioritizing positive numbers when there's a tie.
+- Your task is to extract the maximum absolute value from a collection of numbers, making note of whether they are positive or negative in cases of a tie.
+- This exercise focuses on assessing a collection of numbers and selecting the one that has the highest absolute worth, employing your understanding of absolute values.
+- You'll be tasked with finding the largest number by absolute value from a selection, knowing that for equal distances from zero, you should lean towards positive outcomes.
+- Your task consists of reviewing numbers and identifying the one with the highest absolute valuation, with an emphasis on correctly managing both positive and negative entries.
+- Your assignment is to comb through a set of numbers and return the one that has the highest absolute magnitude, adhering to specific rules about choosing between negatives and positives in cases of equality.
+- This task involves evaluating a collection of numbers and identifying the one with the maximum absolute value, while ensuring to return the positive version if magnitudes are equal.
+- The objective here is to sift through a group of numbers and pinpoint the one that holds the highest absolute value; ensure to return it as it originally appears.
+- This task challenges you to evaluate which number stands apart due to its absolute magnitude, focusing purely on numerical distance without considering direction.
+- You will identify the number in a given list that stands out due to having the greatest distance from zero, irrespective of its sign.
+- This task calls for assessing provided numerical entries to select one representing maximum distance from zero—considering all edges of positivity and negativity.
+- The goal is to sift through several numerical values and pick the one that represents the maximum absolute quantity, taking care to note its original sign.
+- Look at a set of numbers and determine which has the greatest absolute values. Be sure to keep the number unchanged when you provide your answer.
+- You need to filter through an array of numbers to pinpoint which one possesses the largest absolute value. Consider all numbers' distances from zero to find your answer.
+- In this mathematical task, you need to sift through given values to unearth the one that expresses the highest absolute distance from zero.
+- The challenge consists of pinpointing a specific number within provided entries based solely on its largest absolute magnitude, taking care to ignore sign discrepancies during analysis.
+- Part of this task is evaluating numeric figures based purely on their distances from zero while establishing priority for positive values during evaluations of equidistance scenarios.
+- The focus of this activity is on finding that single number within a group that stands out because it either is or represents the greatest absolute distance from zero, tailored by specific tiebreaker criteria involving signs.
+- In this analytical task, focus on identifying elements within a numerical list where you'll locate the one representing maximum distance from zero, hence finding its absolute value.
+- The task is centered around isolating the number within a given set that exhibits the most considerable non-negative amplification when its sign is disregarded.
+- You need to sift through a list of numbers and return the one that stands out as having the largest absolute value, considering that negative values may also be involved.
+- In this problem, focus on choosing the number that has the highest absolute value among multiple options, while giving preference to positives in cases of ties.
+- You need to analyze a series of numbers and determine which has the largest absolute value, ensuring that if two numbers have the same absolute magnitude, the positive number is preferred.
+- This operation demands you to navigate through assorted numbers with an eye on distinguishing which presents itself with the utmost magnitude when using absolute evaluation criteria.
+- You are tasked with identifying the element in an input list that is furthest from zero in terms of magnitude, while maintaining its original sign for output.
+- The goal is to explore a collection of numbers for their absolute values and decide which stands out as having the greatest magnitude while keeping track of its initial form.
+- Assess a set of numbers to pinpoint the element that stands out for having the highest absolute value, considering both negative and positive figures equally.
+- You are tasked with pinpointing the single element from a list that represents the largest quantity when disregarding its original sign through absolute value assessment.
+- Analyze a list of numerical items and find out which number has the highest distance from zero by calculating their absolute values appropriately.
+- The goal is to evaluate various numbers and return the value that has the greatest absolute magnitude, following guidelines for negative and positive comparisons.
+- This exercise requires you to analyze several listed numbers and find out which has the greatest total distance from zero when its absolute value is considered.
+- You will be tasked with uncovering which number amongst many stands as having maximum distance from zero when viewed as an absolute quantity.
+- In this task, you need to assess a group of numbers and return the one that represents the highest magnitude, taking into account its sign.
+- Focus your efforts on uncovering the element within a specified array that has demonstrated superiority in terms of its distance from zero while retaining its true identity.
+- Your job is to sift through a list of numbers to pinpoint the one that stands out due to its absolute value, returning it in its raw state.
+- The task consists of evaluating a collection of numbers to select the one with the largest absolute value, with specific rules for handling ties.
+- Identify the standout number from various options based on its extremity in magnitude, evaluating differences without regard for its sign.
+- Your job involves navigating through an assortment of numbers to find the maximum value based on their absolute representation, highlighting proficiency in mathematical comparisons.
+- You're tasked with comparing different numerical values to find which has the highest non-negative measure, and then record this number as it is.
+- The goal here is to find and relay a number from a list that represents the highest absolute value, taking care especially when handling both positive and negative instances.
+- Your challenge is to choose the number with the largest absolute significance from a set of figures, while keeping their original signs in mind during the selection.
+- This task focuses on identifying a number with the largest magnitude from a list. Understand that you need to look past signs and consider how far each number is from zero on the number line.
+- The challenge is to extract from a numerical list the element that exhibits the highest absolute value, which may involve comparing both its positive and negative forms.
+- In this assignment, you're expected to sort through numerical options looking for that standout element defined by its highest absolute characteristic.
+- The task involves finding the number with the highest absolute value from a list of given numbers, and you must consider both positive and negative values.
+- In this exercise, you will evaluate a set of numbers and determine which one stands out due to its largest absolute value.
+- The task involves identifying and returning the number from a list that possesses the highest absolute value, emphasizing the need to consider both positive and negative values.
+- Your mission is to explore an array of numbers and extract the one that stands out with maximum absolute value, implementing specific criteria for resolving ties effectively.
+- In this task, you're tasked with figuring out which number in a list has the greatest absolute value. You'll look for how far each number is from zero, disregarding their sign.
+- This task challenges you to find the element from a collection that has the most significant absolute value, meaning you should consider how far each number is from zero.
+- The task involves analyzing a list of numbers to identify the one with the largest absolute value. You will compare the non-negative distances from zero for each number, regardless of their signs.
+- This exercise requires that you scrutinize a list of numeric values and identify the one with the highest distance from zero, ensuring that both positive and negative signs are accounted for correctly.
+- Analyze a group of numbers to find which possesses the maximum absolute value while selecting the positive variant in cases where two numbers have equal distance from zero.
+- This task requires you to analyze a collection of numbers and return the one with the maximum absolute magnitude.
+- This exercise focuses on identifying the number with the highest absolute value among given options, ensuring positivity is preferred when magnitudes match.
+- You need to evaluate a list of numbers and select the one with the highest absolute value, taking care to prefer positive values in case of ties.
+- Investigate a sequence of numerical values to determine which has the maximum absolute distance from zero; use critical thinking skills to achieve this outcome.
+- This activity focuses on determining which number among those presented is farthest from zero in terms of its absolute value, keeping in mind both negative and positive signs.
+- Your goal is to analyze a group of numbers and pinpoint the one with the maximum non-negative magnitude, regardless of its sign.
+- You will assess several numbers to pinpoint the one with the highest absolute value, with special attention to selecting the positive counterpart when two values share the same distance from zero.
+- The objective here is to assess a series of numerical values and locate the one with the highest absolute measure by disregarding its sign for this particular analysis.
+- You must examine multiple numbers to determine their absolute values and deduce which one is larger than the others, adhering to specific tie-breaking rules.
+- This exercise tasks you with comparing several numerical values so as to determine which has the highest effective distance from zero by calculating their absolute values.
+- You are required to sift through a list of numerical inputs and pinpoint which number possesses the highest value when disregarding its sign.
+- Your goal is to analyze a list of numbers and determine which one has the largest absolute value, keeping in mind that if two values are equal in magnitude, the positive one takes precedence.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task095_conala_max_absolute_value
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task095_conala_max_absolute_value
+user_prompt_template: '{task_def}
+
+
+  {problem}'

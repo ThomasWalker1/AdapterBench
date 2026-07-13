@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your task is to analyze descriptions of events within a passage and ask about their relationships in time, considering what precedes, follows, or happens simultaneously.
+- Your objective is to create questions that investigate temporal relationships between events described in a given text, focusing on how they relate to one another over time.
+- Your focus will be on understanding a narrative and then forming questions that address the chronology of events within it.
+- This task involves interpreting temporal relationships in a passage and generating questions that highlight these connections.
+- The goal is to develop questions related to timing and sequences found in a passage; your questions should encourage exploration of event relationships over time.
+- You will analyze a given passage to create questions focused on temporal relations, which examine how events are connected regarding time.
+- This task requires generating questions about the timeline of events found in the passage, focusing on their duration or the transitions between them.
+- In this activity, you will analyze a text and generate inquiries related to the order of events. Your questions should probe into when specific happenings take place relative to each other.
+- The goal of this task is to produce questions aimed at exploring the timing and sequence of events based on a provided text. This requires an understanding of how actions are interconnected in time.
+- The aim here is to dissect passages and ask about their temporal relations, allowing for insights into how different actions unfold concerning one another over time.
+- A crucial part of this task is understanding how timing impacts events within a given passage and developing related questions about those chronological dynamics.
+- Based on the information in the passage, your task is to raise questions about the timing of events, exploring which events happened before or after others.
+- Your challenge is to interpret passages regarding their timing of events and formulate queries probing into when each event took place relative to others.
+- This task requires you to analyze a written passage and create questions about the chronological relationships between events. Focus on identifying temporal connections, like which events occurred sequentially.
+- The task requires you to read a passage and formulate questions that explore the relationships between events over time.
+- In this task, you will read a given text and formulate questions that explore the temporal aspects of actions or events described in the passage, considering what happened before, during, and after specific events.
+- Explore a passage by producing questions centered on when specific events happen concerning one another, thereby highlighting their temporal relationships.
+- You need to identify key events within a passage and construct questions that inquire about their timing and order.
+- Your goal is to analyze a given piece of writing and generate questions concerning the temporal aspects of the events that take place within it.
+- In this activity, you'll delve into passages to create thoughtful questions about the sequence of actions or events based on time references.
+- From the provided narrative, your role is to produce questions that explore significant actions or milestones in terms of their timeframes and interrelationships.
+- You are required to examine a passage and devise questions that pertain to the sequence of events. These questions should help uncover how one event relates to another with respect to time.
+- The task requires careful examination of an excerpt for its narrative timeline, prompting you to pose questions concerning when things happened in relation to other actions.
+- The focus here is on creating queries that explore how different occurrences are related by their timing based on details given in a narrative. Think critically about how events lead into one another temporally.
+- Focus on understanding the timeline presented in the text and construct questions that explore when events happen relative to one another.
+- Analyze the provided text to generate questions about the timeline of events, focusing on what happened before, during, or after specific occurrences.
+- This task asks you to interact with a written passage to produce questions about when events happened or will happen, shedding light on their chronological connections.
+- You are expected to read carefully through the provided passages and think of questions that address temporal relations between actions or situations presented.
+- Your task is to distill information from a given text into questions centered on the timing of events. This includes exploring what has transpired, what is ongoing, and what may transpire in the future.
+- You are tasked with reading a context and developing questions that explore the chronological dynamics of the events described, including what has already happened and what might occur next.
+- The task involves reading a passage and formulating questions that relate to the timing of events mentioned in it.
+- This exercise seeks your ability to extract meaningful time-related inquiries from passages by exploring how described events align with one another temporally.
+- You are to develop inquiries based on a given text focused on how various events are connected through time, capturing their sequence and context.
+- This task invites you to form questions about timing and sequence derived from a provided passage, emphasizing how different events interrelate in terms of chronology.
+- The task involves synthesizing information from a narrative to produce meaningful questions regarding when certain things occurred relative to others.
+- Focus on determining the sequence of events in the context provided, crafting questions that delve into time-related aspects of what happens before or after significant moments described.
+- This task entails creating questions related to timing from a given passage, focusing on understanding how different actions relate temporally to one another.
+- Generate insightful questions aimed at uncovering the sequence of events and how they each impact subsequent occurrences as depicted in a text.
+- In this task, you will interpret a text and ask questions that illustrate temporal relations, delving into what transpired during or after specific moments highlighted in the passage.
+- This task requires you to interpret a text and frame questions that delve into the timing of actions and events, looking for relationships of before, after, or during between them.
+- You must extract temporal relations from a passage and formulate questions that clarify how different actions or events are situated in time relative to one another.
+- Your role is to dissect a passage involving temporal information and develop questions that clarify how different events align chronologically or influence one another over time.
+- Construct thoughtful questions based on a narrative passage that investigate the timing and relation between various reported actions and decisions.
+- Create thought-provoking questions regarding timing based on the information presented in a narrative, focusing on how different happenings unfold relative to each other.
+- Assess the temporal framework of events presented in a narrative and create questions that reflect their interconnections through time.
+- The goal here is to examine a provided text closely and formulate questions that highlight how actions are connected over time.
+- You are required to extract temporal themes from a given text and create questions that illuminate when events occur relative to each other.
+- Construct questions based on a textual excerpt that focus on how events are temporally related to one another, exploring predecessors or successors of actions described.
+- This assignment involves reading a narrative closely and generating thoughtful questions about the temporal links between various happenings described in it.
+- Evaluate a narrative for its events and sequence; then construct questions that draw connections between these occurrences based on their timing.
+- Your role entails interpreting written narratives for chronological clarity while generating relevant inquiries focused on event timing, dependencies, and sequences throughout the described scenarios.
+- This task asks you to identify key events in a descriptive text and formulate inquiries concerning their timing relative to each other, allowing for an exploration of past, present, and future relations of those events.
+- Create questions that investigate the chronology of actions or occurrences in the given text, aiming to clarify how they impact each other over time.
+- Your focus is on transforming textual information into relevant questions that explore the timeline of occurrences in a passage.
+- Your objective is to read a passage and create questions about its temporal elements, examining how different events are chronologically aligned with one another.
+- Your role involves synthesizing information from a passage to ask meaningful temporal questions that draw attention to key chronological elements within the text.
+- Delve into the narrative to devise questions that pertain to when specific events occurred and how those timings relate to one another or future implications.
+- Your job is to take a narrative and generate inquiries regarding its temporal dimensions, asking about what might occur next or what has already transpired.
+- Your job is to pinpoint main actions within a story and develop questions about their time relations—when things happened in context to each other.
+- The focus here is on temporal relations within a passage; you will create inquiries that investigate the timing of various events described in the text.
+- Your job is to read closely and ask about temporal elements in a passage, aiming for clarity on how various actions align in time with one another.
+- The task tasks you with developing queries about the timing and order of occurrences mentioned in various passages, seeking deeper insights into their relationships.
+- This exercise involves looking closely at a text and coming up with insightful questions about how different events are temporally linked.
+- Your assignment is to break down a passage and generate questions specifically targeting the timing of events as they are presented in relation to each other.
+- By examining a piece of text, your job is to create inquiries that explore the relationships between events in terms of timing. This highlights when things happen in relation to each other.
+- In this task, you'll produce questions that highlight important temporal connections in a narrative, investigating how particular events relate to one another over time.
+- You will be taking a written passage and generating inquiries that address when particular actions occurred or will occur in relation to other events.
+- This exercise involves looking at a narrative and asking questions that explore how various events are interconnected in time, asking for clarification on sequences or causal relationships.
+- This exercise focuses on creating questions about temporal relations to better analyze how various events interact or occur with respect to time within a narrative.
+- You are tasked with exploring a passage by creating questions that uncover the temporal aspects of events, such as when they started or if they overlapped with other occurrences.
+- You will be presented with a passage and asked to generate questions that inquire about the order of events. This entails grasping the timeline presented in the text and forming relevant queries about it.
+- In this task, your responsibility is to scrutinize a written excerpt and generate questions highlighting temporal relations between described events. This requires critical thinking and comprehension of timelines in narratives.
+- Your challenge involves extracting temporal insights from a passage by crafting questions that investigate when certain events occur relative to others. Consider timing as it shapes the narrative.
+- You will read a selected passage encouraging you to form questions that clarify when certain actions happened about their predecessors or successors, reflecting an understanding of event sequences.
+- This endeavor calls for examining scenarios described in passages where you'll develop inquiries about how time impacts various occurrences. Recognizing timelines will be key to your questioning process.
+- The goal here is to derive questions that seek to understand the timeline of actions and occurrences noted in a passage, probing for insights about their order and significance in relation to one another.
+- You will read through a provided passage and generate questions that explore how one event relates to another over time, enhancing understanding of temporal dynamics.
+- Read carefully and form questions focusing on temporal aspects established by the text, asking specifically about what happened before or after key moments.
+- Examine the given text and develop questions that center on time-related aspects of the narrative, such as what happens first or what occurs after certain events.
+- You need to think critically about the events described in the passage and devise questions that delve into their chronological relationships.
+- Within this task, you will read a passage and craft questions concerning temporal relations, pondering how different incidents relate to each other through time, such as what happens prior or subsequently.
+- The task involves reading a passage and generating questions that focus on the timing of events described within it. You should consider the sequence and relationships between different events.
+- Your responsibility includes formulating detailed inquiries about temporal relations derived from a snippet of information, focusing on sequentially linked events.
+- The task involves analyzing a passage to create questions focused on the timing of events. You need to identify relationships between different occurrences regarding when they happen.
+- In this exercise, you’re required to extract details from passages and pose questions regarding the timing of the described events, enhancing understanding of their interrelations over time.
+- Engage with passages by creating exploratory questions that emphasize the order in which events unfold as stated in the text.
+- For this exercise, derive temporal inquiries from a piece of text by looking for sequences of actions and asking how they interrelate chronologically.
+- Your responsibility is to read through passages and think critically to ask about the timing and progression of events stated.
+- This task requires synthesizing information from a passage to produce questions highlighting the temporal relationships of different actions discussed within it.
+- This task will challenge you to think critically about cause and effect in a narrative, generating questions that highlight timing and progression among events.
+- In this exercise, you will generate queries focused on the timing of actions from a text, analyzing how past actions might influence future developments.
+- You will interpret a passage and pose questions that delve into how certain actions or events are interlinked by time. Emphasize understanding temporal sequences and relationships within the narrative.
+- You will interpret a narrative to understand its temporal structure and then produce questions reflecting those temporal dynamics.
+- In this task, your focus is on drawing out temporal relations from a passage by creating questions that address when specific events took place or what their impact might have been on future occurrences.
+- You're required to extract temporal details from a given text and frame questions that address these timing aspects meaningfully.
+- From the passage given, formulate questions that highlight the relationships between different events in terms of time, ensuring each question addresses a particular temporal aspect.
+- For this task, you're expected to identify significant time-related aspects within a passage and formulate appropriate questions that reflect how different actions correlate chronologically.
+- This task asks you to carefully read a passage and generate questions regarding the sequence and timing of various events, enhancing your comprehension of their chronological relationships.
+- The objective is to read carefully and ask questions that clarify how specific actions or events are connected through time as presented in the passage.
+- You are tasked with uncovering temporal relationships by producing questions that clarify when specific actions took place relative to others.
+- The task calls for generating analytical questions based on temporal sequences found in the provided passages.
+- This exercise involves synthesizing information from a passage about past actions or upcoming possibilities into targeted inquiries concerning their temporal framework.
+- In this task, you will examine a narrative and create inquiries that reveal the sequence and timing of various occurrences.
+- You will take a piece of text and develop inquiries that delve into the timing of actions and outcomes described.
+- This task involves extracting details from a narrative and crafting thoughtful questions related to the time-based interactions of those details.
+- Read carefully through a passage and create thoughtful questions that investigate when particular actions are completed and how they interact over time.
+- The goal is to derive questions from a provided text that explore temporal dynamics among various events, presenting a clearer understanding of their order.
+- Your role is to interpret a written passage and construct inquiries that delve into the temporal relationships between various described situations.
+- Engage with the text by crafting questions that reveal the temporal connections between different events outlined in the passage, focusing on their chronological order.
+- The purpose of this task is to produce thoughtful questions about the sequence and timing of various occurrences within a provided text, emphasizing temporal relationships.
+- You need to extract information from a passage and formulate questions that inquire about the timing sequences of different actions described.
+- The objective is to read a specific text and develop questions aimed at understanding when different actions take place concerning each other in time. This highlights your ability to comprehend and sequence events.
+- Analyze the given information to extract and compile questions that reflect on temporal relations, emphasizing the sequence and duration of events described.
+- You will utilize your understanding of time relations to question how various occurrences within a passage correlate chronologically.
+- This task requires you to examine a passage closely and come up with questions that link events based on their timing or chronological order.
+- In this activity, you need to analyze textual content for an understanding of temporal relationships by formulating relevant questions that illustrate these connections effectively.
+- This task invites you to explore a text for its temporal content, leading you to construct relevant, non-yes/no questions about event sequences.
+- You will assess the information given and turn it into questions that shed light on when specific actions or episodes occur.
+- You will be tasked with identifying key occurrences in a narrative and framing questions that reveal when these occurrences take place relative to one another.
+- This task requires generating meaningful questions related to when events occurred or are expected to occur, based on the details in the provided passage.
+- The goal is to examine a passage and produce questions that discuss when specific occurrences took place relative to other actions or situations mentioned.
+- The aim is to create inquisitive prompts based on a passage that elucidate time-related relationships between various happenings and actions described in the text.
+- This task involves analyzing a provided passage and generating questions that probe into the chronological connections between different happenings outlined in the text.
+- The task involves reading a passage and formulating a question that explores the time-related aspects of events mentioned in the text.
+- Your goal is to identify and ask questions about when specific events occur in relation to others mentioned in a given text.
+- You will examine a provided passage and formulate inquiries that explore the temporal relationships between various actions or situations presented.
+- The task is centered around interpreting a text to develop queries about the timing dynamics between different events. Focus on the sequential nature of occurrences as depicted in the passage.
+- This assignment asks you to derive questions from an article about how events unfold over time. You should pay attention to relationships based on timing and sequence as described in the text.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task389_torque_generate_temporal_question
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task389_torque_generate_temporal_question
+user_prompt_template: '{task_def}
+
+
+  {problem}'

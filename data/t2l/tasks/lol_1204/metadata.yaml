@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Analyze two provided phrases to determine if the action in the first phrase can be obstructed by elements described in the second phrase.
+- You are reviewing two related statements to comment on if there exists any situation that might impede or influence the primary action described.
+- In this analysis, evaluate head phrases for potential limitations caused by tail phrases, considering possible reasons animals may impact human decisions or actions.
+- Examine each phrase carefully to determine if any factors mentioned pose challenges for PersonX's actions. It employs reasoning about realistic scenarios and how they interact.
+- This task involves analyzing two statements for their interrelation, focusing on whether one describes an obstacle faced by another action or intent.
+- This task requires interpreting two phrases to see if one event can impede the other. You should consider how various circumstances might obstruct a goal or action.
+- In this assessment, you will judge whether various situational aspects influence or limit actions suggested earlier, providing insight into hindrances encountered.
+- In this task, you need to decipher if a particular outcome, represented by the Head, could be affected or blocked by the scenario described in the Tail.
+- Consider how statements about PersonX’s intentions and associated challenges interrelate. Evaluate them for possible restrictions on achieving goals stated in each scenario.
+- Focus on identifying obstacles that could prevent an event from taking place based on provided phrases. Your understanding of societal norms and personal situations is essential for accurate analysis.
+- You are given a scenario involving two actions and must judge if the second action prevents or complicates the first. Use your reasoning skills to draw conclusions about possible hindrances.
+- Parse through given phrases that describe actions and ascertain whether external information limits or blocks those actions from realization.
+- This task requires you to think critically about cause and effect, identifying whether one statement logically affects another in terms of hindering an action.
+- In this exercise, you will consider pairs of phrases and decide if one phrase indicates that something in the other phrase cannot be successfully completed.
+- Traverse through pairs of statements with an analytical mindset to weigh attitudes, barriers, and potential hindrances affecting ongoing actions implied.
+- Assess interactions between different events to determine if external circumstances could hinder intentions expressed. Recognizing barriers is a central skill for completing this task effectively.
+- Your goal is to evaluate whether the situation described in the Tail can prevent or hinder the action in the Head event from occurring.
+- Your goal is to discern whether any statements about circumstances from the Tail imply that PersonX's action from the Head cannot be fulfilled smoothly.
+- In this task, you need to evaluate two phrases to determine if the first phrase (the Head) can be obstructed by the second phrase (the Tail). This requires understanding the relationships between actions and their potential hindrances.
+- You are tasked with analyzing potential obstacles relating to events described with generic participants. Determine when an action may not go as planned based on given external factors.
+- In this exercise, you will judge if a given goal expressed in one statement could face challenges because of conditions mentioned in another statement. Contextual thinking is required for accurate assessments.
+- Analyze two simple statements regarding actions and their potential constraints. You must identify if there is any hindrance implied in the second statement that could impact the first.
+- In this exercise, focus on two events portrayed in brief. Assess their interrelation by deciding if one aspect could obstruct or interfere with another.
+- This task requires critical thinking about events involving PersonX. You must identify if obstacles exist that could prevent the successful completion of the event described in the Head phrase.
+- Your task focuses on linking two short phrases where one represents an action and the other describes a possible barrier or complication. Evaluate their interaction thoughtfully.
+- This task prompts you to scrutinize interactions between events, determining whether one could hinder another based on shared implications discussed within brief statements.
+- This task challenges you to think about how events may interact or conflict. Identifying possible hurdles that could affect outcomes is key to solving it.
+- In this analytical exercise, you’ll look at pairs of phrases that detail actions and possible complications related to them. Your determination hinges on understanding how these elements may interfere with each other’s outcomes.
+- Assess whether an outcome mentioned in one statement can be potentially blocked by situations described in another. This involves evaluating cause-and-effect relationships.
+- Investigate sequences of actions and conditions detailed in two phrases, assessing whether the latter obstructs the former through logical deductions and real-world reasoning.
+- Your job involves understanding scenarios where one event might restrict another. You will decide if the Head's action can be limited based on the information in the Tail.
+- Assess two phrases to see if one phrase contains information that could hinder the action described in the other. This involves critical thinking about conflicts and constraints.
+- Analyze the given phrases to identify whether the situation in the Tail has the potential to hinder the action described in the Head.
+- This activity requires careful reading of two related phrases to see if one presents dynamics that would prevent or complicate executing what's described in the other.
+- You will read phrases about actions or intentions. The task is to judge whether any restrictions mentioned could inhibit or complicate the accomplishment of another event.
+- You will consider two statements about events involving PersonX. Your task is to discern whether the first event can be disrupted by the situation mentioned in the second statement.
+- Your task revolves around understanding events and their potential interferences with each other. Think critically about how external factors impact decisions.
+- You will assess a relationship between two statements by figuring out if what is stated in the Tail could hinder the action described in the Head. Evaluating scenarios and their implications is necessary for this task.
+- You will evaluate two statements to determine if the second statement (Tail) poses any hindrance that could prevent the first statement (Head) from being accomplished. This requires understanding potential obstacles.
+- This task requires you to think critically about relationships between two phrases. Decide if the situation presented in the second phrase hinders or slows down the action in the first.
+- You will be given two events described in simple terms. Your responsibility is to assess if the second event creates a barrier that stops or complicates achieving the first event.
+- You must analyze two events where PersonX is always involved, judging whether external situations described could obstruct or hinder what PersonX aims to achieve. Assessing impacts of situations is crucial here.
+- Determine if an action described can be hindered by another event. Consider how certain factors could block the completion of the primary goal.
+- You are tasked with assessing whether a specific event can be obstructed by another situation mentioned. This requires understanding the implications of both phrases.
+- Your focus will be on examining Action A and its corresponding Condition B, considering whether B affects A negatively, hence determining any possible hindrances inherent in that relationship.
+- This task involves analyzing how one event, represented as the Head, can be affected by another event, shown as the Tail. You need to assess if the occurrence of the Tail can obstruct or hinder the success of the Head.
+- The objective here is to examine two phrases and deduce if one could pose a barrier to success in the other. You will rely on reasoning abilities to form your judgment.
+- You are to discern if an event described is feasible given a potential obstacle mentioned in another phrase. Attention to detail and logical reasoning are necessary skills for this analysis.
+- Determine how one scenario might obstruct another by evaluating the relationships established in the given phrases. This needs a thoughtful approach to context and implications.
+- Assess whether the event described in the first phrase is likely to be prevented by circumstances mentioned in the second phrase.
+- The task involves assessing whether an event described in one phrase can be obstructed by a situation mentioned in another phrase. This requires critical thinking about cause and effect.
+- This task challenges you to think about two related events and decide whether one can prevent the other from happening. Understanding how different factors can influence each other is important for this evaluation.
+- This task involves logical reasoning where you evaluate how external factors presented in one phrase may influence or obstruct an event outlined in another phrase.
+- In this challenge, you will examine short phrases describing events and deduce if one can thwart another. It involves logical connections and a grasp of impediments affecting plans or actions.
+- This task requires consideration of two events where you must assess if the second event can interfere with or obstruct the first event's occurrence.
+- Your task is to evaluate if an event described in the Head can be obstructed by circumstances provided in the Tail.
+- Analyze two related phrases, focusing on how external situations might impact an action. Decide if the circumstances mentioned will hinder what PersonX intends to do.
+- Your goal is to analyze the interaction between two events. You need to decide if the second event presents an obstacle to the first.
+- Your task involves judging if an event can be thwarted based on a related but differing statement. Navigate through potential scenarios to articulate your findings.
+- This task involves weighing two statements about actions and scenarios involving an individual. Your role is to judge if any aspect of one might obstruct efforts expressed in another.
+- The task is centered around evaluating pairs of phrases. You will conclude if one phrase suggests an obstacle that would prevent what is described in another.
+- Dissect two phrases to see if one indicates a challenge or problem affecting what is happening in the other phrase.
+- Your opportunity lies in interpreting two events to uncover any possible hindrances that may emerge from their interaction.
+- Determine if an action can be impacted by external factors or situations presented alongside it, identifying any potential hindrances.
+- This task encourages you to interpret phrases that depict events and analyze whether any aspect of the second phrase may pose hurdles for achieving those outlined in the first.
+- Engage with two short texts that detail actions; identify whether barriers mentioned within one text disrupt or challenge those actions expressed in another.
+- Evaluate the relationship between two phrases, focusing on how the second phrase may interfere with the action of the first phrase.
+- This task requires you to interpret statements about an event and assess if there's a potential blockade introduced by another statement. Reflecting on personal circumstances will help in decision-making.
+- This task asks you to consider how two actions might interact, specifically questioning if one can limit or block another. Analyzing such interactions helps build your reasoning skills.
+- Assess pairs of phrases to see if obstacles exist that might prevent an action from occurring as planned. Consider both direct and indirect influences on each scenario.
+- This task involves assessing a scenario where one action is presented alongside a possible hindrance. Determine if the Head action can be affected negatively by what is stated in the Tail.
+- In this exercise, evaluate whether the outcome of an action described can be obstructed by external factors mentioned in another phrase. Reflect on how some events conflict with others.
+- Your role is to interpret two related phrases, determining if there’s a possibility that what’s stated in one hinders achieving the other.
+- Analyze two provided phrases where one describes an action and the other suggests a condition that may affect it. Your job involves determining if the condition stated could impede the action described.
+- Investigate pairs of phrases where one describes an action and another presents a condition. Your job is to determine if that condition could interfere with achieving the action proposed.
+- This task involves investigating if specific conditions prevent an individual (PersonX) from achieving certain outcomes outlined in short phrases. Contextual understanding plays a vital role.
+- For each pair of phrases provided, you will assess if the first phrase represents an action that could be hindered by the situation described in the second phrase.
+- You are asked to compare two phrases, focusing on whether one can interfere with or restrict the intentions expressed in the other.
+- This task asks you to think critically about relationships between events. Determine if the outcome of one event can be negatively influenced by what is described in another event.
+- The focus of this task is on discerning whether an underlying condition could potentially hinder a specified action as presented within two concise phrases.
+- You must evaluate whether an action described in the first phrase can be obstructed by conditions outlined in the second phrase, considering what constitutes a hindrance.
+- In this exercise, you need to reflect on how certain events involving participants can lead to disruptions due to other conditions being presented, allowing you to classify those relationships.
+- In this task, you analyze two phrases to determine if one event could obstruct or prevent another from occurring. It requires understanding context and causal relationships.
+- Engage with flexible thinking as you explore if there are barriers - as suggested - that can impact a course of action outlined in one of two phrases.
+- Engage in evaluating scenarios where specific actions may encounter resistance based on external situations described in separate phrases. Analyze their dynamics critically.
+- In this task, determine how certain situations might obstruct an intended action based on details provided in two related phrases. Thoughtful reasoning is essential here.
+- Your task involves reflecting on short narrative phrases to assess whether outside factors impede PersonX’s ability to execute an action successfully. Logical thought is essential here.
+- Engage with pairs of statements to discern if complications arise that would prevent the successful execution of actions described, using your critical thinking skills effectively.
+- This activity involves looking at phrases that depict events and considering whether external circumstances can thwart these events. Analyze motives and outcomes carefully.
+- This task focuses on determining whether one phrase can impede the occurrence of another. Critical thinking about how life circumstances can affect decision-making is important.
+- Interpret a scenario presented through two phrases and deduce if external factors mentioned in one can hinder an intended action described in the other.
+- Reflect on two related phrases and surmise if there's an implication that one might obstruct or inhibit what is presented in the other statement.
+- You’ll explore how personal circumstances might act as barriers to achieving desires expressed in a phrase. Understanding motivation and obstacles is essential.
+- Assess how one event performed by PersonX is influenced by conditions mentioned in a separate event. Identify if there are barriers that could prevent successful execution of the first event.
+- Examine two related expressions where one describes an action and the other mentions a possible limitation. Your aim is to conclude if one hinders the other.
+- Your task involves reviewing pairs of events and deciding if there is potential for one situation introduced in the Tail to serve as an obstruction for the action stated in the Head.
+- The task involves evaluating two related phrases to determine if one event (the Head) can be impeded by the circumstances described in the second event (the Tail).
+- Your challenge involves determining if an individual's intent or desire (Head) can encounter barriers implied by an external factor (Tail). Understanding motivation versus hindrance is crucial here.
+- Evaluate two phrases where your judgment is required on possible obstructions hindering an action's natural progression through conditions presented in a second phrase.
+- This task focuses on understanding how events are interconnected, specifically looking for any indications that one event could block another.
+- Your assignment is to recognize whether a condition presented in the Tail is likely to obstruct an action stated in the Head.
+- Consider two separate statements involving participants and analyze if there are preventing factors at play. Convey clarity in identifying possible hindrances.
+- You are tasked with evaluating two scenarios—one representing a desired action and the other potentially posing a barrier to that action. Understanding cause-and-effect relationships will aid in your conclusions.
+- You are asked to determine if an action can be hindered based on information provided in two short phrases. This involves analyzing the relationship between the actions and their potential obstacles.
+- The objective here is to decide if any conditions stated in the Tail would impede or interfere with what is proposed in the Head.
+- Assess two related phrases. You need to identify if the Tail presents an obstacle that would disrupt or prevent performing the action described in the Head.
+- Analyze how events described may interact or conflict with each other, focusing on whether an individual’s goals are feasible when faced with specific obstacles presented.
+- Analyze how one action might prevent another from happening. You need to reflect on practical life situations that can create obstacles in achieving goals.
+- You are required to consider two statements where you analyze if conditions described in one can create hurdles for actions depicted in another.
+- The assignment involves investigating relationships between actions and conditions, where you evaluate if one event could potentially hinder another's accomplishment.
+- You will examine pairs of phrases where one describes an action and the other describes a condition, determining if the latter could prevent the former from happening.
+- In this task, you will assess whether a specified action can be hindered by another situation. Insight into practical barriers that might affect plans or desires is essential.
+- This task requires you to evaluate two phrases and determine if one event can obstruct the other. Understanding the relationship between actions is crucial.
+- You will interpret two given phrases, where the first indicates an action and the second offers a contextual situation. Assess if the situation impacts the success of the action.
+- Your role is to analyze situations where PersonX’s intentions and actions may be thwarted by relevant circumstances described concurrently.
+- In this task, you're tasked with determining if an action (the Head) can be undermined by a condition or statement (the Tail). Logical thought and contextual awareness are required for success.
+- You need to assess two phrases, identifying whether the action in the Head can be hindered by the situation mentioned in the Tail.
+- The task is about discerning if an event described as the Head can proceed smoothly given a corresponding condition represented in the Tail.
+- You will consider two related statements and discern if the second one negatively impacts the possibility of the first occurring. Insight into everyday scenarios will guide your evaluation.
+- Examine two related phrases and judge whether the scenario described in the Tail could prevent or complicate the action expressed in the Head.
+- The aim is to identify any possible constraints that could hinder actions described, ensuring a solid grasp of contextual relationships between events.
+- In this task, examine two phrases where the first phrase describes an action and the second describes a possible hindrance. Determine if the hindrance affects the action.
+- Analyze two segments for their meaning and relationship; identify if external factors mentioned interfere with actions taken as depicted in another segment.
+- Involves discerning if what’s stated in one part conflicts with or hinders what’s stated in another part. Evaluating real-world influences on decision-making is beneficial here.
+- Your responsibility is to determine if an event listed first can be interrupted or limited by circumstances mentioned second. This task entails understanding how events influence one another.
+- In this task, your focus is on connecting events and discovering if anything mentioned adds a barrier to what's happening in another statement.
+- In this task, think critically about how one phrase may describe a challenge that might block or complicate achieving what’s outlined in another phrase.
+- Analyze two phrases that represent actions and potential hurdles. Your task is to assess if the first event can be affected by the second event's description.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1204_atomic_classification_hinderedby
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1204_atomic_classification_hinderedby
+user_prompt_template: '{task_def}
+
+
+  {problem}'

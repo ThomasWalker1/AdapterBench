@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The objective is to generate false answers directly sourced from sentences while engaging with their meanings through questions designed for coreference identification.
+- This activity requires comprehension and interpretation skills as you gather statements from sentences that do not correspond appropriately with their triggering questions.
+- Your job is to generate a misleading answer from a given sentence based on the context provided in a related question, showcasing your grasp of coreference relationships.
+- Identify and reproduce an erroneous response from the structure of a complete sentence, engaging your reasoning about coreferences and logical ties between terms.
+- You are tasked with parsing sentences and their associated questions to identify an inaccurate response using phrasing found within the same text.
+- You will read a statement and respond to a query by extracting an incorrect answer directly from the text. This demands comprehension of coreferences within the sentence.
+- In this exercise, the aim is to evaluate your ability to differentiate between correct meanings and generate false responses directly sourced from the text provided.
+- The task involves identifying an incorrect response to a specific question based on a given sentence. You need to be aware of word meanings and how subjects relate within the sentence.
+- You must engage in an analysis of sentences and their respective questions, aiming to find responses that are contextually inaccurate according to referring terms.
+- This task asks you to derive a flawed answer from a provided sentence in response to a question. It emphasizes understanding the relationships between different mentions.
+- In this activity, you'll create wrong answers by identifying phrases in a sentence that don't accurately respond to the asked question. Familiarity with context and coreferences will aid in success.
+- This task assesses your ability to discern between appropriate and inappropriate answers based on contextual clues found within a sentence and its related question.
+- Find and construct an incorrect answer from a specified sentence based on a related question by interpreting how different components refer to each other inaccurately.
+- You are tasked with analyzing the link between parts of text in order to generate an inaccurate answer stemming from the initial query related to that text.
+- Your role is to navigate between text and inquiry, crafting an incorrect reply using specific words or phrases found within the original sentence.
+- In this task, you need to read a sentence and answer a question by providing an incorrect text span from that sentence, demonstrating your understanding of language and coreference.
+- Your task involves producing a misleading answer derived from a sentence that does not logically fit the question being asked, highlighting your understanding of structural meaning.
+- You will assess sentences for inconsistencies by selecting parts of the text that do not correctly answer corresponding questions, reflecting your understanding of language structure.
+- This task requires you to extract a text span from a sentence that is not accurately connected to what the question asks, showing comprehension of the sentence structure.
+- You will assess a statement and its question to pull out an irrelevant answer, showcasing your ability to recognize mismatched references within text.
+- This activity challenges you to provide an unsuitable answer from within a given sentence while addressing questions about coreference and text relationships.
+- Explore how well you can discern meaning by interpreting a sentence and its question to create an irrelevant answer taken from the original text itself.
+- In this task, you must parse a sentence and consider how different parts refer to one another. The aim is to find an incorrect answer based on the question, demonstrating your grasp of novel connections within the text.
+- The task involves identifying an incorrect answer to a question based on a provided sentence, focusing on coreference resolution.
+- In this task, you will create a false response by picking words from the sentence that do not align with the question's logical inference, emphasizing your grasp of narrative connections.
+- Here, you'll analyze sentences for meaning, focusing on discerning coreferential links. You need to sidestep correct relationships and instead highlight an inappropriate answer in relation to the posed question.
+- Analyze the relationships between entities in a sentence and generate an incorrect answer that reflects misunderstandings of those connections as posed by the accompanying question.
+- The challenge involves recognizing how particular words in sentences can be misconstrued as answers, even if they do not align with the reality of the situation described.
+- You will generate an incorrect response drawn from the original sentence in relation to a question. This task emphasizes identifying relationships between entities in context.
+- Your role is to examine a specific sentence along with a question and extract an inappropriate answer that appears in the original sentence, emphasizing coreference knowledge.
+- You need to identify an incorrect answer from a given sentence based on a specific question. This requires understanding how different entities in the sentence refer to each other.
+- Leverage your skills in linguistic reasoning to incorrectly associate entities within sentences. Your output should highlight misunderstood correlations as responses to questions.
+- Focus on generating an unsuitable response based on the clues given in the original sentence, reflecting your understanding of language structure and reference points.
+- In this task, engage critically with sentences and infer relationships as you choose incorrect responses that may misrepresent core details inherent within the text.
+- You will be extracting misinformation from sentences based on queried topics. This requires attention to detail regarding character references and textual implications.
+- As you process the information in each sentence, your goal is to isolate segments that inaccurately correspond with inquiry expectations, requiring insight into linguistic nuances present in coreferencing.
+- You will be tasked with identifying a portion of text that does not answer the provided question correctly but still comes from the given sentence, tapping into your insight about entity relationships.
+- In this task, you are given a sentence and a question that requires understanding the relationships between the entities mentioned. Your goal is to identify and select a phrase from the sentence that provides an incorrect answer to the question.
+- The work at hand is to discern which words from the sentence could mislead when answering a specified question, bringing coreference resolution skills into play.
+- You will read a sentence and a related question. Your goal is to identify parts of the sentence that do not accurately answer the question, even though they are mentioned in the text.
+- This exercise involves reading a sentence and considering a question about it, prompting you to find and provide an incorrect answer that can be found in the text.
+- In this activity, you'll engage with sentences and formulate a misleading answer by focusing on words or phrases used inappropriately in answering a specific question about the text.
+- The exercise focuses on extracting incorrect associations within a sentence related to a specific question, relying heavily on comprehension of coreferences.
+- Your responsibility is to interpret the main ideas in a sentence, spotting any misleading or incorrect possible answers while drawing from the text itself.
+- This task involves analyzing a sentence and a related question to produce an incorrect answer from the text, highlighting your ability to identify and manipulate references.
+- In this task, you analyze sentences and answer-related questions by selecting an inaccurate text span from the sentence itself. Recognizing coreferences and their meanings is essential.
+- This task requires you to extract a phrase from a sentence that is misleading or incorrect in the context of the question it pertains to.
+- You will analyze specific queries concerning sentences and craft responses that are not correct, thereby testing your comprehension level regarding linguistic connections.
+- You are tasked with understanding the relationships between words in a sentence and how they relate back to entities referenced in the question.
+- The job requires familiarity with constructing meaning from text, where you'll need to select phrases that do not fulfill the requirements outlined by accompanying questions.
+- Your job is to read a sentence and a question, then produce an answer that is intentionally wrong, using phrases found in the same sentence. Understanding connections between subjects helps in this task.
+- Your job is to navigate through sentences and devise an answer that leads away from truthfulness as guided by a supplementary question presented alongside it.
+- In this task, your analytical skills will be put to the test as you determine pieces of text that fail to accurately reflect what has been asked in a related passage.
+- Your job is to select a phrase from the sentence that mistakenly addresses the question, reflecting an understanding of how different terms relate to each other in context.
+- Engage with text excerpts and diving into their intricate meanings allows you to identify which references might lead one astray when answering related questions.
+- Your responsibility is to evaluate coreferences within a sentence to arrive at a text segment that misaligns with the question posed. This tests your comprehension of how language can convey different meanings.
+- You will read a statement and respond to an inquiry using incorrect phrasing derived from that statement, revealing insights about coreference resolution in your comprehension process.
+- This activity illustrates how well you can understand relationships in language by asking you to produce inaccurate answers from given statements.
+- You are tasked with generating responses based on given queries and sentences by reporting factual inaccuracies while utilizing contextual knowledge effectively.
+- You are tasked with finding and providing an incorrect response based on the content of a given sentence, requiring insight into language use and context clues.
+- Finally, your exploration of relationships expressed within sentences should guide you toward answering specific questions incorrectly while relying purely on language available in those sentences.
+- The goal is to produce an answer that contradicts the correct response by choosing a fragment from the original sentence, referencing your comprehension of language links.
+- The task demands that you identify and point out an incorrect statement related to the provided context, relying heavily on your ability to connect various elements within the same sentence.
+- This task revolves around selecting a phrase from a sentence while ensuring that it does not serve as the correct answer to the posed question.
+- Analyze the sentence and question to find a text span that does not correctly answer the question. This will involve recognizing how pronouns and references connect within the text.
+- The goal here is to assess your comprehension of textual references and relationships by crafting an incorrect response that can still be found in the text.
+- Your task is to interpret a sentence in light of a question and select an answer that is explicitly stated but does not accurately respond to the inquiry posed.
+- Engage with the text critically to identify phrases that do not appropriately respond to questions posed, highlighting your analytical reasoning concerning semantics.
+- The task entails producing an answer that does not align with correct interpretations, focusing on recognizing misdirected references in given phrases.
+- As you engage with this task, focus on discerning relationships between entities in the sentence while generating an unintended yet relevant answer to the question.
+- Navigate through sentences and questions to identify text spans that are misleading as answers. This showcases your grasp of entity relationships and reference points.
+- The challenge here is to discern incorrect answers from given sentences based on asking specific questions about them. This requires careful examination of how terms refer to one another.
+- Analyze text relationships between components within sentences and identify instances where answers do not correspond as expected with questions.
+- Your job is to understand coreferences within sentences and select text spans that are incorrect responses based on implications of the queries.
+- The task involves analyzing a sentence and a corresponding question to select a text span that does not correctly answer the question based on coreference.
+- This exercise calls for understanding references within sentences, allowing you to fabricate incorrect answers subtly misleading yet grounded in textual phrasing.
+- The task involves reading sentences carefully and connecting aspects of them in order to identify incorrect responses that still originate directly from the text provided.
+- The goal here is to utilize coreference resolution techniques to choose an answer that appears reasonable yet is factually incorrect based on the context.
+- Engage in a thoughtful analysis that separates correctly inferred answers from incorrect ones using insights on reference relationships present in the given text.
+- You will interpret sentences and discern their relevance against questions asked — focusing particularly on identifying opportunistic phrases that mislead regarding coreference.
+- You will examine sentences and questions to determine an incorrect answer that appears within the same sentence, testing your grasp of the nuances in meaning.
+- Identify and create a response that is incorrect given its origins in the provided narrative. This requires careful thought about what words signify when linked together.
+- You'll need to demonstrate your linguistic analysis skills by finding a phrase or word that inaccurately responds to a posed question based on a provided statement.
+- Identify connections between entities described in texts while generating responses that artificially mismatch with question expectations based on your analysis.
+- This task challenges you to explore connections among different entities within sentences. Your objective is to mistakenly link one of these entities with a relevant query, establishing false connections through textual analysis.
+- You will be generating a false response to a question using text from a provided sentence, focusing on recognizing how different terms in the sentence relate to one another.
+- The assignment requires generating an erroneous answer based on context from a sentence provided alongside a question. Coreference resolution skills are necessary for this task.
+- This assignment challenges your understanding of language by requiring you to generate incorrect answers based on context clues derived from provided sentences.
+- Use your comprehension skills to derive a false answer from the provided sentence that is highlighted by the associated question needing clarification.
+- Delve into constructing answers based on misleading interpretations of phrases within sentences as prompted by specific questions focused on context resolution.
+- Your role is to scrutinize relationships detailed in sentences and formulate inaccurately phrased responses based on misunderstood coreferences highlighted by the queries.
+- Your challenge lies in examining linguistic structures within sentences so you can create inaccurate answers that still draw from details contained in those sentences.
+- From given inputs, discern which portion of text fails to offer a correct reflective answer while leveraging insights into language context and entity definitions.
+- The task involves analyzing a given sentence and understanding how different pronouns and subjects refer back to the same entities. You'll generate an incorrect answer that still comes from the text.
+- Create an inaccurate answer using details from a provided sentence based on focus questions, which necessitates knowledge of how language elements refer to one another.
+- Examine a sentence along with a question and identify a relevant phrase that misrepresents or does not satisfy the inquiry being asked.
+- Identify text spans in sentences that do not accurately connect with the posed question, reflecting your understanding and mastery of linguistic structure.
+- This task involves creating an incorrect response derived from textual content while grasping the complex web of reference relationships within sentences.
+- In this task, you will delve into language and meaning, tracking references in sentences while noting where potential misunderstandings arise based on questions.
+- Your mission is to evaluate sentences alongside corresponding questions and extract an erroneous portion from the text as your answer.
+- You are tasked with interpreting narrative structures in sentences, aligning them against questions posed. The output should reflect a mismatch between what is expected and what is provided in terms of reference.
+- You will need to engage with a sentence and formulate an answer to a question that is incorrect while still being present in the text provided.
+- The challenge here lies in picking out a textual element that does not accurately reflect the entity referred to in the question, emphasizing skills in understanding language nuances.
+- In this task, you’ll scrutinize a statement in light of a question, generating a false response sourced directly from that statement’s content.
+- Your job is to extract incorrect information from a provided sentence based on a specific question, demonstrating your understanding of how different elements in the text connect.
+- Your task is to read a sentence and answer a question based on the information it contains, but you must select an incorrect answer from the text itself.
+- Your task involves extracting an inaccurate text fragment as an answer to a specific question about a sentence. This requires you to understand how terms interact within the context.
+- The goal of this task is to analyze a question related to a sentence and offer an incorrect text-based answer. This exercise tests your ability to understand implied meanings and relationships.
+- You will practice identifying false answers that stem from contextual confusion created by coreference resolution challenges within given sentences.
+- In this challenge, your focus should be on understanding how terms in sentences relate while creating an erroneous answer tied back to the original content.
+- The focus here is on determining which parts of a sentence produce misleading responses when linked to relevant questions, demanding precision in understanding context.
+- Your task is to decipher misleading references within sentences while addressing specific questions highlighted by comparing and contrasting relevant entities.
+- The activity involves scrutinizing a sentence thoroughly alongside its related question. You must pinpoint a detail that does not correctly answer the inquiry by leveraging coreference knowledge.
+- You are engaged in extracting information from sentences while being tasked with producing an incorrect representation in relation to specific questions posed.
+- The focus here is on obtaining an incorrect span from given texts despite their relevance at first glance, revealing deeper insight into language and meaning interpretation.
+- This task challenges you to pinpoint text segments that misrepresent the true referents in a sentence, requiring careful analysis of context and meaning.
+- The task requires you to extract an incorrect option from within a sentence, understanding how pronouns and subjects are interconnected and can lead to misleading answers.
+- Your aim is to navigate through a sentence's elements and extract an answer that seems plausible but is ultimately incorrect, testing your understanding of meaning mapping.
+- You are tasked with pinpointing misleading answers through text spans, which necessitates attentiveness to how characters or subjects are referenced within the given sentence.
+- This exercise involves dissecting sentences to derive relationships among named entities, then intentionally misrepresenting one of these entities as an answer to a posed question based on textual context.
+- This task focuses on your ability to identify misleading meanings within statements. You'll use coreference knowledge to select pieces of information that would be mistaken for correct answers.
+- Your focus here is on textual comprehension where you identify misleading references and clarify misunderstandings about relationships in language as they relate to structured questions.
+- Interpret a sentence fully while producing an undesired output. This requires awareness of what makes an answer valid or invalid based on text relationships.
+- In this activity, you explore linguistic elements where your goal is to produce an answer that does not correlate correctly with the context of the question provided.
+- Engage with sentences and their related questions by identifying an answer from the text that does not correspond correctly to the inquiry posed.
+- This exercise assesses how well you can pick out misleading information from narrative constructs presented in sentences while maintaining contextual awareness for coreferences.
+- Task yourself with identifying flawed interpretations in response to a question by selecting misleading elements from a provided sentence.
+- Focus on extracting misleading information that answers questions incorrectly based on the original sentence content, showcasing linguistic analysis skills.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task492_mwsc_incorrect_answer_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task492_mwsc_incorrect_answer_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

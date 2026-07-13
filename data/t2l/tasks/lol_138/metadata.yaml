@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Complete an evaluation of sentence continuations by selecting between two options that aim to respond clearly and logically to an opening prompt.
+- Determine which completion best complements the starting idea by focusing on aspects such as continuity of thought, relevance, and accessibility for understanding.
+- This task requires you to decide between two responses based on how effectively they enhance or extend upon a provided prompt with sufficient clarity and coherence.
+- This task involves selecting the response completion that most smoothly follows the initial prompt, based on its comprehensibility and relevance.
+- Analyze the provided prompt and two responses to identify which one flows better and maintains a clear meaning when continuing from the prompt.
+- Examine a sentence starter along with two alternatives for completion, selecting whichever option develops the thought in a more understandable way.
+- Evaluate how well each completion captures the essence of the prompt while providing a fluent extension of the original content.
+- Assess both completions for their fluency in continuing from a specified prompt without compromising clarity or ease of understanding.
+- You need to assess two potential endings for a provided prompt, choosing the one that feels more natural and coherent in advancing the narrative.
+- This task centers around comparing two continuations to a written idea, identifying which one logically progresses from what has been established in the prompt.
+- Your role here is to assess two possible ways to complete a thought presented in a prompt, choosing the one that flows better in terms of clarity and coherence.
+- Analyze which of two completions makes for a better follow-up to give readers clearer insight into the topic at hand.
+- Your role is to reflect on two responses and identify the one that offers a more fluent continuation, focusing on clarity rather than strict grammar rules.
+- Examine the provided prompt and its two completions carefully; your goal is to select the one that best follows the narrative or argument established.
+- Consider how well each option connects with the prompt. Choose the completion that enhances understanding and cohesiveness.
+- You are required to examine how well each suggested completion continues from a starting line. Identify which option creates a stronger narrative thread or argument progression.
+- Your task is to evaluate two text completions in relation to a given prompt. Determine which completion flows better and maintains coherence with the initial statement.
+- The goal here is to discern between two potential text continuations, focusing on which one offers a smoother transition from the original statement.
+- Analyze two completions following a prompt. Your goal is to determine which option provides a more coherent and logical continuation.
+- Your role is to analyze continuations of a starting phrase, aiming to determine which response makes for a more fluid reading experience.
+- Analyze the fluency of two responses to a given starting point. Your choice should emphasize ease of understanding over strict grammatical rules.
+- Here, you assess two different endings to a statement, focusing on which flows more naturally and makes sense based on the context of the prompt.
+- Your task is to evaluate two continuations of a given prompt and determine which one is more fluent and coherent in maintaining the flow of the conversation.
+- This task requires you to analyze two different responses to a prompt and select the one that best maintains logical coherence while being easy to read.
+- This task focuses on analyzing pairs of sentence continuations relative to their prompts. The goal is to determine which one presents ideas more fluidly and understandably.
+- You will compare how well each of two responses follows from an initial idea in terms of clarity and logical flow. Select the completion that makes more sense as an extension of the prompt.
+- Given a text prompt, compare two potential endings. The task is to pick the ending that connects seamlessly with the prompt while ensuring clarity and easy comprehension.
+- This task requires you to look at two potential endings for a given premise, deciding which one provides a clearer and more natural continuation of the idea.
+- Your task is to evaluate two different continuations of a given statement and identify which one flows better in terms of coherence and clarity.
+- This task requires judging the fluency of two outputs based on how well they follow from a given opening statement, implying an understanding of context and narrative flow.
+- Assess two language completions designed to follow a provided sentence. Your aim is to select the one that appears most naturally integrated with the prompt's theme.
+- Evaluate two responses that follow an initial statement, focusing on which one flows better and conveys its message more effectively.
+- You should assess which completion offers a more coherent transition from the prompt, making it easier for readers to follow along.
+- This task involves choosing between two different continuations of a text prompt. Focus on the clarity and fluidity of each option to decide which one makes more sense.
+- Evaluate which response holds greater fluency in continuing a conversation started by a specific prompt, focusing on clarity and ease of understanding.
+- In this activity, you are required to judge the fluency of two text continuations based on a prompt. Your understanding of narrative structure and clarity will help in making this decision.
+- You'll read a starting phrase and then two potential completions. Determine which one is more fluent as it relates back to the original prompt by assessing its clarity.
+- Consider two alternative endings for an initial statement, then select the one that best preserves continuity and makes sense in context.
+- Given a sentence starter, you must compare two continuations and pick the one that expresses thoughts in a clearer, more engaging way.
+- Your job is to examine two response options based on how well they maintain continuity with an initial statement. Fluent writing and clarity are essential aspects to consider.
+- Review the two completions following a prompt to select the one that presents a clearer and more coherent extension of the initial idea.
+- Your job is to discern which of the two completions fits more seamlessly with the given prompt in terms of narrative flow and clarity.
+- Your job is to identify which of the two given completions articulates thoughts in a way that feels natural and easy to follow after reading the prompt.
+- The task involves evaluating two possible continuations of a given prompt. Your goal is to determine which completion flows more naturally and makes more sense contextually.
+- The goal is to pick the completion that harmonizes with the starting sentence, ensuring the continuation is logical and smoothly integrated.
+- The challenge is to discern which of the provided endings fits more appropriately with the prompt by considering both coherence and engagement with the reader.
+- Your responsibility is to evaluate two ending phrases connected to an initial statement, identifying which reflects superior fluency and makes overall sense within its context.
+- The task is centered on reviewing two completions from a language model and selecting the one that best follows from the initial prompt, emphasizing readability and logical progression.
+- In this activity, you will select between two possible text completions that follow from a shared prompt. Your choice should reflect considerations of readability and logical flow.
+- Review two language model outputs inspired by a single prompt, and choose the one that expresses ideas more fluently, prioritizing understandability.
+- Evaluate two completions provided after a specific prompt. Your focus should be on which option presents a more coherent and straightforward continuation of the initial statement.
+- Your objective is to scrutinize two completions based on their capability to fluidly extend an initial statement, paying special attention to sensibility and narrative connection.
+- For each prompt, assess two completions to find the one that best maintains fluidity and logic in its response, focusing on how well it continues the initial idea.
+- Identify which option not only follows logically from the prompt but also appears more engaging. This requires insight into narrative construction and fluidity.
+- In this task, you will analyze two potential ways to finish a given statement. Determine which one aligns better with the tone and meaning of the initial prompt.
+- Assess two proposed completions of a prompt. Your job is to identify the one that logically extends the idea presented in the beginning.
+- You'll be comparing how well two different responses carry on from an initial idea, aiming for clarity and ease of understanding in your selection.
+- Evaluate two different ways of continuing a thought based on an initial statement. The emphasis should be on how logically and clearly they progress.
+- In this task, you will judge the quality of two language model completions based on their ability to logically follow from the given prompt. Consider fluency and clarity when making your choice.
+- Evaluate provided endings following a prompt by choosing the one that resonates more logically with what was initially presented.
+- Your job is to decide which of the two completions enhances the prompt better, ensuring it resonates clearly with what has already been established.
+- In this task, you'll evaluate how well each completion builds on the prompt. Select whichever demonstrates stronger continuity in thought.
+- Your task is to compare continuations from a prompt based on their clarity and readability, picking the response that feels most seamless when read aloud.
+- Your responsibility is to assess the continuations offered in response to a specific prompt, favoring logic and fluency over grammatical precision.
+- Your task is to judge two possible responses based on how naturally they extend from the given prompt, prioritizing smooth communication.
+- Your task involves selecting a continuation that not only aligns with but also effectively enhances the meaning conveyed in the initial text.
+- Evaluate two potential responses to a prompt, identifying which one best captures the intended tone and context while being easily understandable.
+- Analyze which of the two responses continues the original prompt in a way that feels natural and coherent, showcasing an understanding of how thoughts should develop in writing.
+- Assess two continuations based on how fluently they expand upon an initial idea expressed in a prompt. Clarity and coherence are important criteria for your selection.
+- For each given prompt, assess two different responses. The goal is to find out which completion most effectively continues the thought expressed in the initial sentence.
+- Scrutinize both completions against their respective prompts, seeking out the response that carries forward the meaning with greater fluency and coherence.
+- You need to analyze how well each option elaborates on an idea initiated by the given prompt, selecting the most fluent continuation for clarity.
+- In this activity, you will review two different responses that follow a provided statement. Your task is to identify which response is easier to understand and aligns better with the context.
+- Given a starting statement, you must determine which of two completions continues the thought in a more coherent manner for effective communication.
+- Evaluate how well each completion corresponds with the given prompt. Identify which response presents itself more effectively as an extension, ensuring it remains coherent and understandable.
+- You need to assess two potential responses to a given prompt to determine which one sounds more natural and makes more sense in the context of the preceding text.
+- Your challenge is to identify the completion that best enhances the original prompt while ensuring it remains coherent and engaging.
+- This task requires you to compare two different completions following an initial statement. You must decide which one reads more intuitively and maintains coherent communication.
+- You are tasked with choosing between two responses that complete a thought based on a given prompt. Focus on how well each response maintains the flow and meaning of the original statement.
+- This task asks you to compare two language model responses and decide which one maintains a more logical and clear continuation of the prompt provided. Fluency is key here.
+- In this task, you will determine which of two text outputs offers a clearer continuation from a given starting point, focusing on overall coherence and understandability.
+- Evaluate two provided text completions for their ability to relay thoughts coherently and persuasively stemming from an initial phrase or sentence.
+- This task requires you to judge the fluency of two different endings for a start of a sentence, focusing on their coherence and relevance.
+- You must determine which of the two proposed continuations to a prompt conveys the intended meaning more effectively. Emphasize consistency and ease of understanding in your evaluation.
+- You will choose between two follow-up statements, focusing on how well each one complements and expands upon the original idea presented in the prompt.
+- In this task, you will determine which of two completions provides a clearer and more logical extension to an introductory prompt.
+- You will determine which completion best follows the prompt by considering how smoothly each one transitions from the original statement, taking into account coherence and flow.
+- Your task is to evaluate two text completions and determine which one best continues the given prompt in a coherent and understandable manner.
+- You are evaluating continuations for prompts against each other. The most fluent option should offer clarity in expression while preserving relevance to what precedes it.
+- Evaluate which of the two completions makes more sense as a continuation of the given prompt. Consider factors like clarity and coherence when making your choice.
+- You need to judge two completions that attempt to continue a sentence based on a starting prompt. The objective is to select the one that communicates ideas more clearly.
+- Determine which completion enhances the beginning of a statement most effectively, considering overall fluency and coherence in expression.
+- This task requires you to read a prompt followed by two completions. You will need to decide which completion conveys its message more clearly and logically, enhancing the original idea.
+- You will analyze how coherent each completion is in relation to the initial prompt, aiming to select one that is more straightforward and logical.
+- Evaluate two text options to determine which one flows more seamlessly from a given starting point, reinforcing your ability to discern coherency in language.
+- Identify which of two provided completions fits best with the established prompt. Aim for the response that delivers clearer communication and seamless flow.
+- This exercise requires discerning between two options of text that finish a given prompt. An emphasis is placed on selecting the response that offers better clarity and cohesiveness.
+- Your job is to evaluate two possible responses to a prompt, focusing on their clarity and how well they carry on the given thought. This involves assessing language fluidity and understanding of context.
+- In this exercise, you're deciding between two responses that follow an introductory statement; focus on selecting the more fluent option.
+- Your job is to judge two different sentences that follow a prompt, deciding which one conveys its thoughts in a more understandable and smooth manner.
+- Choose between two suggested continuations for a prompt, focusing on which option reads more smoothly and logically connects with the context.
+- From two narrative completions responding to a primary statement, determine which one captures the essence of fluency and coherence better while continuing the thought process.
+- Your challenge is to compare two text segments that follow an opening line. Your selection should reflect which option articulates thoughts more coherently when expanding on the original idea.
+- This task involves selecting the more coherent response from two alternatives, ensuring it aligns well with the previous message in terms of tone and fluency.
+- Here, you will determine which sentence completes a prompt more smoothly, emphasizing fluency and ease of comprehension as critical factors in your evaluation.
+- The task involves analyzing two different completions to see which one best aligns with and fluently continues the given prompt. It requires an understanding of narrative flow and coherence.
+- In this task, focus on determining which completion is clearer and easier to understand as a next step from the provided prompt.
+- Analyze both completions for their ability to logically succeed the proposed prompt, focusing on how easily they can be understood as part of a cohesive thought structure.
+- You need to choose the continuation of a sentence that feels more natural and is easier to understand, helping to create a smooth flow in the narrative.
+- Your goal is to discern which completion follows from a provided prompt in a more coherent way while maintaining an engaging conversational tone.
+- Analyze two possible continuations of a provided prompt. Choose the one that is easiest to follow and offers a clearer connection to the original statement.
+- Analyze a prompt followed by two completions, determining which one better articulates a continuing narrative or idea with fluency and ease of understanding.
+- Based on an initial statement, choose between two completions by identifying which one presents a clearer continuation of thought, enhancing overall understanding.
+- Review two endings for a starting prompt and select the one that provides a more fluent and somewhat meaningful continuation. Pay attention to how well each sentence relates to the original thought.
+- Compare two language model outputs following a particular prompt, selecting the one that captures the intended message with greater fluency.
+- With each prompt, look at two completions and identify which one delivers a clearer and more coherent continuation of the initial message.
+- The goal here is to analyze two possible endings for a prompt and judge which one better maintains the flow of thoughts. Your consideration should include how logically the sentences connect.
+- Assess how well each completion follows the prompt you've been given, concentrating on which choice creates a more logical continuation in terms of narrative or argument development.
+- Given a starting phrase, discern which of two completions continues it in a more logical and understandable way, ensuring consistency in meaning.
+- Evaluate two text completions in terms of how fluently they follow from a given prompt. The task requires you to identify which completion flows better and resonates more with the prompt's intent.
+- You need to interpret a prompt and examine two possible continuations. Your objective is to determine which continuation flows more naturally from the original text.
+- Analyze two proposed continuations for their effectiveness in extending a text prompt. Your focus should be on how well they integrate with the original idea while maintaining clarity.
+- You will analyze how well two different completions relate to a prompt, selecting the one that seems more cohesive and reader-friendly.
+- Your job is to choose between two written continuations that follow a prompt, using your judgment on fluency and smoothness of writing as primary evaluation methods.
+- The task requires you to judge which of the two options best enhances or builds upon a specified beginning. Focus on clarity and readability when making your selection.
+- You will evaluate two language model outputs for a set beginning, choosing which one presents a clearer and more logical follow-up narrative.
+- In this task, you will look at how well each completion aligns with the intent of the prompt. Choose the one that expresses ideas more fluently.
+- You are tasked with comparing two completions for a given prompt. Your goal is to select the one that communicates the message more clearly and aligns with the context presented.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task138_detoxifying-lms_classification_fluency
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task138_detoxifying-lms_classification_fluency
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Here, you are faced with comparing distinct events involving a character in short phrases. Decide if these events occur in succession or concurrently based on their placement in each phrase.
+- The aim of this task is to analyze quick scenarios described using generics for individuals involved. Pinpoint whether the event occurring in the Head happens before its counterpart in Tail.
+- You will examine pairs of events expressed in short phrases and classify them based on their order in time, focusing on whether one precedes the other.
+- Your job is to evaluate two statements about events. You want to find out if the first event happens before the subsequent one, using logical reasoning and understanding of time-related actions.
+- You must critically evaluate pairs of succinct phrases detailing events, analyzing them for sequence and timing to determine which appears first in a causal chain.
+- Evaluate pairs of phrases about events concerning a subject. Your task is to identify if one event happens before another based on their descriptions.
+- In this exercise, you will assess two statements involving actions with participants to conclude if there’s a definitive order in which they take place.
+- You will evaluate pairs of sentences that describe actions involving a consistent character and determine if the action in the Head precedes that in the Tail.
+- Your mission is to evaluate two brief statements, focusing on their timing to verify if one occurs prior to the other.
+- This task involves assessing the sequence of events described in two phrases. You need to determine whether the first event occurs before the second one, considering the relationship between the actions.
+- You will be given scenarios expressed in simple phrases, and your goal is to ascertain whether the first scenario occurs before the second one.
+- In this task, you will analyze two statements and decide if the first event mentioned (the Head) precedes the second event (the Tail) in time.
+- The task centers around identifying which of two given actions happens first, based solely on concise descriptions of those actions involving a subject.
+- Engage with succinct statements illustrating potential sequences of actions; evaluate them critically to ascertain whether one precedes another according to narrative sense.
+- This task involves determining the chronological order of two events described in short phrases. You analyze the relationships between events to see which one occurs first.
+- You'll be working with phrases that represent actions and will need to assess their timing—seeing if one leads to or happens before another.
+- Analyze pairs of phrases where one describes an action followed by another. Your job is to ascertain whether the first phrase chronologically precedes the second.
+- Analyze two events mentioned in separate phrases and conclude if they maintain a time-sequenced relationship, allowing you to classify them accordingly.
+- You are expected to interpret simple phrase pairs about actions and make judgements about their respective timing or occurrence order.
+- The task involves analyzing how two interconnected statements relate temporally, specifically whether the head action must occur before or after what follows in the tail.
+- This task requires you to interpret two message parts where one describes an action that could potentially lead to another. The objective is to identify if the initial action is completed before the latter occurs.
+- This task requires you to interpret relationships between described actions in pairs of statements and determine which comes first.
+- Your mission is to evaluate and compare two statements, deciding if one event logically happens before another based on their descriptions.
+- In these pairs of phrases, your responsibility is to assess if the first action leads logically into the second action, inferring a timeline between both events.
+- Evaluate the timing of two events described in simple phrases. You need to discern if the Head event occurs prior to the Tail event or not.
+- Assess sequences of actions described in two phrases. Your focus will be on figuring out if one action logically occurs before another based on context.
+- In this analysis, you will look at event pairs and need to assess their sequence based on context clues provided in simple phrases; your aim is clarity regarding time-related order.
+- Given two phrases about actions taken by a participant, determine if the action described as Head logically happens before that described as Tail.
+- Analyze given phrases representing specific actions taken by a person, and decide if one phrase indicates an earlier occurring event compared to another.
+- Assess sequences of events described briefly in pairs of phrases, determining whether there is an identifiable order between them.
+- Investigate brief scenarios presented as pairs, with a focus on understanding which event precedes another based on contextual clues provided in each phrase.
+- This task requires you to interpret short event descriptions and analyze their chronological order. You need to determine if one event leads into the next or if they are unrelated in timing.
+- The task is centered around understanding the sequence of events between two statements. You should decipher if the first event leads into or happens before the second.
+- Examine pairs of phrases where one describes an action and another suggests a result. Identify their order in time based on logical reasoning.
+- You are tasked with examining pairs of statements to deduce whether one event occurs before another based on phrasing nuances.
+- Given two statements about events involving a person, determine if the first event must happen before the second one can take place.
+- Your task is to consider small scenarios expressed in pairs of phrases, evaluating if one action naturally follows another or happens beforehand.
+- You will examine statements about actions performed by PersonX and classify their timing relative to each other. Determine whether PersonX's Head event occurs prior to or after the Tail event.
+- Here, you will explore a pair of sentences that depict actions or events tied together. Your job is to use clues from each phrase to deduce which event occurs first.
+- You will assess two short events to discern their chronological relationship, specifying if the first event occurs before the second.
+- This task involves determining the chronological order of events based on two given phrases. You'll assess whether the first event occurs before the second one.
+- As part of this task, you will analyze short descriptions of actions to discover their chronological order through careful reasoning.
+- This exercise tests your understanding of temporal relationships between actions. You will read two related actions and decide if the one listed first occurred before the second.
+- Assess the provided phrases that describe events involving participants. Decide if the first event (Head) occurs before the second event (Tail) and explain your reasoning through your choice.
+- Your task is to analyze two events expressed through short phrases and determine the order in which they occur.
+- Analyze two phrases concerning actions within a scenario. You’ll need to discern which action logically takes place first based on their meanings.
+- You will interpret paired phrases representing actions taken by a designated subject and evaluate their relative timing based on logical flow and causality.
+- The objective is to analyze and determine whether a given action occurs before another, using inference from contextual clues embedded in each phrase.
+- The challenge consists of reading short descriptive statements and identifying their interrelation in terms of time; you need to pinpoint if one described action comes before another.
+- You need to examine pairs of short phrases and establish if the head event logically happens prior to the tail event based on context and meaning.
+- In this task, you analyze two short sentences that describe events involving participants. Assess whether the action in the first sentence occurs before or after that in the second sentence.
+- The objective here is to assess two related phrases and ascertain whether they depict a progressive sequence or if their order differs from what’s implied.
+- Engage with the given phrases to evaluate the sequence of actions. You need to identify if one event precedes another based on their descriptions.
+- In this exercise, focus on establishing the timing between two events presented as phrases. Identify if one event necessitates its occurrence before another can be valid.
+- The objective is to interpret pairs of statements and judge whether one action needs to happen before another can happen, considering logical sequences.
+- In this exercise, you need to interpret sequences in provided phrases that describe actions involving PersonX. Determine if they happen in a certain order.
+- In this evaluation, you explore pairs of phrases depicting actions taken by PersonX. Your mission is to discern whether PersonX's action happens before or after another listed action.
+- The objective is to interpret short phrases that describe events, assessing their order in time based on logical reasoning about the actions involved.
+- In this task, you assess two phrases related to actions involving a person. Your role is to decide if the first action occurs before the second.
+- Analyze pairs of actions within sentences. Your goal is to determine if there’s a definitive sequence where one action must come before another action occurs.
+- Here, you engage with succinct descriptions of activities performed by an individual. Your analytical skills will assist you in understanding whether one description happened prior to another.
+- Your role is to decide between two actions presented through phrases, figuring out if the first one (Head) takes place chronologically before or after the second (Tail).
+- You will judge the temporal relationship between two actions performed by PersonX by analyzing brief descriptions and determining their order.
+- The focus of this task is on understanding how events are ordered through concise statements about a character’s activities.
+- You will need to think critically about two short phrases depicting sequential actions or states. Classifying them correctly requires understanding their relationship in terms of time.
+- Analyze two related phrases regarding actions taken by a participant and decide on their chronological relation—if one happens before the other.
+- The assignment entails looking at two related event statements and deducing whether the first action must happen before or after the second based on provided information.
+- This task focuses on analyzing two related statements for timing relationships, deciding if one action leads into or follows another in the context provided.
+- In this analytical task, you will review pairs of short statements regarding actions and discern whether the first action occurs ahead of, alongside, or after the second action.
+- In this task, you will analyze two given phrases to establish their chronological order. The challenge lies in identifying if the action in the first phrase precedes the action in the second phrase.
+- You will be given pairs of phrases depicting actions. Using your comprehension of the phrases, you must judge if the first action takes place before the second, looking for logical connections.
+- Your task involves contextualizing pairs of actions described through minimal wording. Use your reasoning skills to decide if they happen consecutively or independently in timing.
+- You will analyze two given phrases and decide if the action described in the first phrase (the Head) takes place prior to the action in the second phrase (the Tail).
+- This exercise involves interpreting brief statements regarding actions and determining if there’s a temporal relationship between them.
+- The objective is to interpret two statements about a subject’s actions and classify the relationship in timing between them as either sequential or non-sequential.
+- Assess pairs of phrases that describe actions, observing their sequence in time and deducing whether the first action occurs prior to the second.
+- You must interpret two brief statements related to a person's actions and decide if the first describes an event that occurs before the second.
+- The goal is to compare two events explained in simple terms and conclude whether the head action takes place before that of the tail.
+- You are tasked with identifying whether the first phrase describing an action is chronologically prior to the second phrase within a context involving individuals.
+- For each pair of phrases about events linked with a subject, you should evaluate if what is described in the "Head" happens prior to what follows in the "Tail."
+- In this exercise, you'll consider scenarios involving a key character and their actions. Your job is to evaluate if what happens in the first phrase is completed before what occurs in the latter phrase.
+- Your responsibility is to discern the order of events expressed in two short phrases, clarifying if the Head's occurrence is prior to that of the Tail.
+- This task involves examining short bits of text that present sequential events involving a character. You must use logic to determine if the first event comes before the second.
+- Engage with concise pairs of phrases describing events and judge whether they follow a sequential order based on timing, assessing cause-effect relationships inherently present in language.
+- Your job is to read two phrases containing events involving a participant (PersonX) and classify if the initial event occurs earlier than the following one.
+- The task involves analyzing two events presented as phrases and determining their chronological relationship. You need to identify if one event occurs before the other.
+- Analyze short paired phrases that indicate participant actions. Your goal is to determine the temporal relationship between these actions—whether one precedes or follows another.
+- For each pair of phrases, determine whether they represent a sequence of events where the first clearly indicates an earlier occurrence than what follows in the second phrase.
+- Through assessment of two phrases about a subject's actions, you need to distinguish whether the first phrase indicates an occurrence before the second phrase.
+- The challenge lies in understanding short event descriptions and figuring out if the initial described action transpires ahead of the subsequent one.
+- You are tasked with reflecting on short events connected to a main individual. Assess these events and determine their chronological order based on their descriptions.
+- Here, you’ll work with pairs of phrases that depict events related to a person. Your task is to judge if the event described as "Head" happens before or after the event described as "Tail."
+- The focus is on recognizing how specific events unfold over time, based on concise phrases that describe each action taken by a subject.
+- This exercise involves analyzing event sequences presented in a structured format. You need to identify whether the first stated action logically occurs before or after the second action.
+- You will engage with short phrases describing events and determine if there is a chronological order where one phrase represents an earlier event than another.
+- You will engage with pairs of event-related phrases and provide insights on which action should take place first based on context.
+- The task consists of judging whether one described event occurs before another, based on their phrasing and context provided in two parts.
+- Evaluate small snippets of information presented as phrases and classify them based on their occurrence timeline—determine which event happens first between two given scenarios.
+- You are tasked with determining the temporal relationship between two actions described in short phrases. It’s important to think critically about how events are connected over time.
+- Examine two short event descriptions for temporal continuity. Identify if one event described happens before another based on logical sequencing of activities.
+- You are tasked with interpreting the sequence of events represented by two phrases and deciding if they flow chronologically from one to another.
+- This task challenges you to discern the sequence of events based on brief phrases, emphasizing the role of a subject in carrying out specific actions.
+- You will be identifying whether a specified action or event discussed in a phrase precedes another event as presented in a second phrase.
+- This exercise involves scrutinizing pairs of event phrases to discover if the first phrase's action occurs before or after the second phrase's action.
+- Analyze two statements about an individual event and determine their sequence in time. Identifying which event precedes another is key to this task.
+- This task requires you to interpret two given phrases and decide if the first phrase indicates an action that happened before the action in the second phrase.
+- Engage with pairs of brief phrases showcasing an individual’s actions and evaluate their sequence logically, deciding if one event occurs ahead of another based on contextual cues given in both phrases.
+- You’ll need to determine whether the first phrase of an event logically precedes or follows another in terms of its timing, thus identifying a sequence of actions.
+- Assess two related phrases where one mentions an action and another describes a possible outcome or subsequent action. Determine their order in time.
+- In this task, you will compare two given actions described in simple terms. The objective is to deduce the order these actions likely happened based on context clues in the phrases.
+- This task requires you to analyze the chronological sequence of short phrases depicting events. You will classify whether one event precedes the other.
+- The objective of this exercise is to evaluate two given statements about events involving a specific character. Ascertain if the event in the first statement occurs prior to the second.
+- The purpose of this task is to establish a clear order of actions from two related phrases. You'll need to discern if what happens first influences what follows.
+- In this task, you examine relationships between short phrases framed as actions involving characters. Determine if one action is completed prior to observing or responding to another.
+- In this task, interpret short events tied to a single character and establish whether the first event happens before or after the second event.
+- Examine the relationship between two phrases that describe actions involving a participant. Decide if the initial action occurs prior to the subsequent event.
+- Consider two brief descriptions of actions involving PersonX. Determine whether the first action occurs earlier than what is stated in the second description.
+- Investigate pairs of short phrases that involve actions or events by participants, spotting if one clearly happens before the other.
+- In this task, you will analyze two events represented by short phrases and determine the sequence in which they occur. The goal is to identify if the first phrase (Head) happens before the second one (Tail).
+- In this task, you must determine the timing of two events described in separate phrases, noting if the first action leads into the second.
+- You are required to evaluate two statements about events to see if the first event occurs before the second. This requires understanding of temporal relationships between actions.
+- This task requires you to interpret short textual events and make a judgment about their order. It's essential to think critically about how the actions relate temporally.
+- 'Your task is to evaluate two events described in phrases and determine the chronological relationship between them: whether one event occurs before the other.'
+- The challenge involves recognizing temporal relationships within pairs of action statements, guiding your assessment of whether one event is a precursor to another.
+- This task challenges you to understand two different actions and figure out their correct sequence. Your goal is to clarify whether one event takes place before another based on context clues.
+- By examining two short phrases that involve actions and reactions, your goal is to ascertain whether one event happens before another, focusing on the subject mentioned.
+- In this task, you will interpret two event phrases linked to a character and judge whether the first event logically precedes the second in time.
+- Assess relationships between pairs of actions involving participants. Can you determine if one happens prior to another based on their descriptions?
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1206_atomic_classification_isbefore
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1206_atomic_classification_isbefore
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You are called upon to transform questions into actionable steps that specify required operations, which lead sequentially from recognition of need through filtration of relevant details.
+- Here, you're asked to conceptualize how to tackle questions by generating a step-by-step plan. This requires logical reasoning and the ability to synthesize information effectively.
+- You are tasked with developing a clear action plan that identifies key entities and their characteristics, which together help to address a posed question.
+- Your role will involve discerning how different pieces of information interact, requiring clear identification and utilization in response generation.
+- You are tasked with outlining a comprehensive set of operations that will lead from the initial question to the desired answer with clarity.
+- Your mission is to simplify complex questions by transforming them into straightforward action items that can be easily followed, ensuring no crucial detail is overlooked.
+- In this task, you'll enumerate specific actions needed to explore a question's complexity, ensuring that each component is understood before combining them for a complete answer.
+- This exercise involves constructing an operational framework from a question, identifying essential entities and determining how their characteristics relate to arriving at the final answer.
+- Your goal is to analyze a question and outline the specific steps necessary for finding the answer. This includes identifying relevant entities and operations systematically.
+- The task emphasizes outlining logical steps for processing information related to a question. Each step should focus on specific attributes or conditions tied to the entities involved.
+- This task centers on developing an understanding of how to structure your thinking as you break down a question into individual operations needed for resolution.
+- You will create a detailed enumeration of necessary actions to help clarify how one can extract meaningful information from a given question.
+- Your job is to dissect a question, identifying each necessary action and entity involved in answering it. You will create a clear roadmap for solving the problem presented.
+- In this task, you will convert a given question into a defined process. Think of it as creating a recipe that outlines each operation needed to achieve the final answer.
+- This task is centered on creating a systematic approach towards answering questions by detailing each action or filter necessary for analyzing information about the subjects inquired about.
+- Your responsibility is to translate questions into discrete steps that lead to their answers. Focusing on important entities and operations will help streamline the process.
+- In this logical exercise, your goal is to take apart a question into successive operational steps so that the entire process of finding an answer becomes transparent and easy to follow.
+- The focus of this task is on creating an organized approach to problem-solving through stepwise analysis. Think critically about what needs to be determined at each stage.
+- The task involves breaking down a question into a sequence of logical steps, clarifying the operations needed to arrive at the answer.
+- Engage with questions by presenting them in terms of stepwise processes, where each action represents an important facet needed to arrive at a comprehensive answer.
+- You will need to take a question and dissect it into a logical sequence of actions that could lead to the answer. This requires an understanding of both the subject matter and how to structure inquiries.
+- This challenge is about translating a question into a series of query actions, requiring you to think critically about relevant information and how to retrieve it effectively.
+- In this task, you will outline the necessary operations needed to resolve a question methodically. It involves dissecting the problem into manageable pieces that can be addressed individually.
+- You are required to identify and outline the specific actions or queries necessary to solve a question, ensuring clarity and precision in the breakdown.
+- The task requires you to analyze a question systematically, identifying major components and structuring them as sequential steps that guide towards answering it effectively.
+- The task involves breaking down a given question into a series of logical steps needed to reach an answer, focusing on the entities and attributes mentioned.
+- This task challenges you to create an organized list of actionable steps derived from an intricate question, focusing on logical connections between entities and outcomes involved in solving it.
+- The goal is to outline a precise path from question to answer by creating numbered steps that encompass all necessary actions and decisions.
+- This task requires a methodical approach to questioning, involving the breakdown of inquiries into discrete operations or actions that can lead to answers.
+- You will break down inquiries into methodical steps that detail how you might navigate through relevant data attributes needed to formulate a proper answer.
+- Your job is to translate a question into a structured list of operations. This task emphasizes clarity of thought and problem-solving skills by outlining specific actions needed to arrive at a conclusion.
+- The objective is to methodically catalog actions stemming from a question, ensuring that every step is clear and directly references operations or queries tied to specific entities or their attributes.
+- The focus here will be on identifying relationships among various entities associated with a question, structuring these relationships into cohesive steps for clarity in reasoning.
+- This activity requires you to outline a comprehensive plan consisting of steps that collectively work toward answering an inquiry. You'll focus on identifying relevant actions based on the details provided.
+- This task consists of creating a step-by-step guide to tackle complex queries, ensuring you account for every necessary detail.
+- You will need to consider various aspects of an inquiry and detail each action necessary for obtaining relevant data leading toward the final answer.
+- This assignment involves providing a clear roadmap of actions necessary for answering questions. Each step must relate directly to components of the question, showcasing problem-solving ability.
+- You will need to map out a plan of action by identifying and listing all necessary steps needed to answer a specific question. This structured approach is essential for effective problem-solving.
+- Your task is to analyze a question and outline a sequence of steps that detail how to arrive at the answer. Each step should reference either an entity or an operation needed for completion.
+- You will develop an actionable breakdown of inquiries that helps clarify the relationships among different entities and assists in navigating towards solutions.
+- You will engage in a structured activity that involves identifying and listing ways to address specific questions in a clear, step-by-step manner.
+- The objective is to clarify a complex inquiry by decomposing it into simpler tasks or queries, each representing an operation needed for thorough analysis and eventual resolution.
+- Your task is to decompose a complex question into a series of systematic steps, clearly outlining the operations necessary for solving it.
+- You will be developing a clear outline that details the logical progression of steps required for addressing various types of inquiries effectively and efficiently.
+- The objective here is to create a methodical approach for answering inquiries, emphasizing the logical sequence of actions needed to extract relevant information from data.
+- This task requires you to deconstruct a question into sequential actions that illustrate the relationships between different entities and their properties.
+- The task involves breaking down a complex question into a series of clear, logical steps that outline the actions needed to find the answer.
+- This task entails developing a clear sequence of actions based on the components of a question. You’ll systematically address each part necessary for a comprehensive answer.
+- Here, you are tasked with creating a systematic approach to respond to a specific question by breaking it down into simpler actions. The emphasis is on clear, logical progression throughout your reasoning.
+- The assignment involves listing distinct actions breaking down each aspect of the question and describing how information should be retrieved or evaluated.
+- In this exercise, you will articulate a series of logical steps in response to a query, showcasing how different elements relate to each other and contribute to the final answer.
+- The aim is to systematically outline what must be done in response to a question, capturing all essential aspects through concise steps.
+- The aim is to provide a systematic breakdown of how to approach answering a question by enumerating each action involved in analyzing relevant entities and relationships.
+- In this task, you will synthesize information by specifying the operations needed for answering complex questions in a structured manner.
+- You will engage with a question by listing essential operations that pertain to answering it. This may involve identifying objects, attributes, and necessary computing functions.
+- The task emphasizes critical thinking skills as you determine the hierarchy of operations needed to produce informed responses to questions.
+- Your assignment requires you to think through a question and determine the sequential steps for processing the data required to obtain an answer.
+- The goal here is to develop a systematic approach for answering questions by identifying what information is needed and how it should be processed.
+- This task involves analyzing a question and creating a detailed roadmap of steps, guiding how to navigate through relevant information to find the answer.
+- Your task requires mapping out the necessary sequences for addressing questions effectively by addressing entities, attributes, and related actions through systematic decomposition.
+- This task requires producing a structured sequence of actions from an initial question, addressing how various characteristics relate to each other in order to solve for the answer effectively.
+- This involves taking a broad inquiry and dissecting it into specific actions that need to be taken for clarification. You'll want to ensure that every element aligns with answering the question.
+- Your job is to methodically dissect a query into smaller operations, each focusing on specific facts or attributes necessary for the final answer.
+- This task encourages analytical thinking as you work through each requirement that leads from initial inquiry to conclusive answers systematically.
+- The essence of this task is in mapping out logical procedures for addressing questions. Each step will represent a distinct operation or query regarding knowledge entities and their relationships.
+- The objective is to translate a question into a structured process involving specific steps that guide the reasoning toward finding the answer.
+- The task focuses on creating a structured list of actions that address the components of a question. Each step details what needs to be done to reach a conclusion.
+- The task focuses on decomposing a question into its fundamental components, detailing each operation you would take to arrive at the answer. This requires both analytical thinking and clarity in reasoning.
+- The aim is to take a complex question and simplify it by breaking it into constituent operations necessary for explanation. Each operation contributes to constructing the final outcome.
+- You need to outline sequential actions stemming from an inquiry so as to illustrate the pathway one would take when answering it, ensuring all relevant aspects are covered.
+- This exercise is about translating a question into a clear sequence of actionable steps, each one critical for gathering and analyzing information.
+- You will engage in breaking down queries into individual steps, highlighting relationships between entities and their properties, which guide you towards a clear conclusion.
+- The essence of this task is to clarify how different elements interrelate in answering a question through structured prompts and logical reasoning.
+- The objective here is to create a structured list of steps that must be followed in order to answer a specified question. Each step should denote an action or consideration related to the query.
+- The objective is to outline the required steps that must be executed in order to respond accurately to a particular question. This will involve categorizing information and applying logical procedures.
+- You will need to distill a question into manageable actions that clarify how one might arrive at an answer, emphasizing logical coherence through well-defined operation sequences.
+- You'll be cataloging the logical steps needed to address different questions, making it easier to visualize how each operation contributes towards finding solutions.
+- Your role is to convert a question into a detailed action plan that sequentially addresses each aspect of the inquiry. Consider how each step builds upon previous ones.
+- Your task is to deconstruct questions into fundamental components, detailing each action required while ensuring all relevant factors are considered for a comprehensive answer.
+- In this task, create a sequence of actions derived from a question aimed at finding information. This requires critical thinking skills and an understanding of various query types.
+- This task involves breaking down a complex question into distinct steps. Each step is designed to guide the thought process necessary to arrive at the final answer.
+- The purpose here is to formally deconstruct a question into clear operations that can be performed sequentially to elicit the necessary information to provide an answer.
+- You must create a step-by-step outline from a question, specifying the required actions to reach the answer, which may involve selection, filtering, or aggregation of data points.
+- You’ll need to break down a question methodically, identifying what entities are involved and how they relate. Each operation should represent a logical progression towards the answer.
+- The task asks for an exploration of a specific question through careful breakdown into smaller queries or tasks. Each listed step should advance towards achieving clarity and understanding.
+- You will work on constructing a logical framework that details what steps must be undertaken to address a given inquiry effectively.
+- This task asks you to identify and articulate the foundational steps needed to resolve a given query by creating an organized list of actions related to various entities.
+- In this activity, you'll focus on breaking down complex inquiries into smaller parts, creating an easy-to-follow roadmap leading towards an answer.
+- Your goal is to create a structured list addressing how various entities and attributes interact in relation to questions, providing insight into the answering process.
+- This task emphasizes dissecting questions into manageable parts, highlighting critical steps necessary for arriving at valid conclusions based on available data.
+- The mission is to convert questions into an orderly sequence of actions that effectively illustrates the pathway to finding an appropriate answer.
+- The aim is to create a checklist of actions stemming from a specific inquiry, ensuring all necessary components are covered along the way. Organizing thoughts logically is key in this challenge.
+- In this task, you will generate a set of operations derived from a question. The emphasis is on logical progression through various entities’ properties and actions required for analysis.
+- This task is about translating a complex question into manageable steps that detail the necessary operations for finding the answer, involving filtering or selecting relevant attributes.
+- This task invites you to summarize key steps in addressing questions, emphasizing the relationships between various objects and attributes necessary for finding answers.
+- Your objective here is to systematically analyze a query, detailing individual steps that represent essential operations needed for comprehensive answers.
+- The focus here is on detailing the sequential steps needed for arriving at an answer based on the given question. You'll consider factors like entities' attributes and relevant operations.
+- The objective is to draft numbered steps that illustrate how one might approach answering a complex question. Clear reasoning and a structured mindset are crucial for success here.
+- The goal here is to take an inquiry and break it down into discrete tasks that facilitate solving it. Focus on outlining what data points you need and what operations should be conducted.
+- In this task, you will convert a question into a structured list of steps that detail how to gather and process information required for accurately answering it.
+- The objective is to illustrate the process of answering a question by identifying crucial entities and properties involved, using an organized list of steps.
+- You need to comprehend a question's requirements and carefully delineate each action that must transpire to yield an answer, focusing on clear paths of logic and reasoning throughout your breakdown.
+- You'll work on taking a complex query and simplifying it into actionable steps, focusing on pertinent details about entities and their interactions relevant to the question being asked.
+- This exercise requires you to formulate a series of logical steps that clarify how to approach answering a question. It emphasizes critical thinking and the breakdown of information.
+- In this task, you will break down a question into a series of logical steps to find the answer. Each step should focus on specific entities or actions related to the question.
+- Your job involves detailing operations in numeric form that will help clarify how one could arrive at the ultimate answer to a posed question based on data referencing.
+- The task involves breaking down a question into a sequence of logical steps that detail how to arrive at an answer.
+- You will create a structured list of actions that outline how to process information related to the inquiry, emphasizing necessary comparisons or evaluations.
+- Your goal is to take a question and decompose it into a clear list of operations or queries needed to derive the answer, focusing on the relationships between different entities involved.
+- The focus is on describing how one can dissect and organize thoughts related to complex inquiries into simpler, actionable parts for clarity of understanding.
+- You are required to formulate a detailed breakdown of operations needed for addressing inquiries. Each step should clearly connect with underlying details relevant to the original question.
+- Your focus will be on systematic analysis, where you will identify and sequence essential operations that clarify how to find the answer based on available data.
+- The goal is to break down an inquiry into straightforward procedures that can be executed systematically. Strong organizational skills and attention to detail are essential in this task.
+- You will define a clear and structured plan, listing the actions required to extract the information that answers the question.
+- You are charged with mapping out procedures essential for answering questions, which entails outlining key entities and pertinent operations involved in deriving answers.
+- This exercise involves identifying all necessary actions that must be taken in order to arrive at an answer. Logical deduction and query structuring play significant roles in this process.
+- This activity centers on crafting detailed procedural instructions that can be followed to accurately resolve various questions.
+- Your objective is to dissect questions into basic yet essential tasks that collectively form a comprehensive approach towards achieving the desired conclusion or information retrieval.
+- The goal is to delve into a question and generate a numbered sequence of tasks that must be executed in order to derive an answer. This format fosters clarity and thoroughness.
+- In this task, you are expected to outline and articulate the steps required for answering a posed question, ensuring that every important part of the inquiry is addressed logically.
+- This task challenges you to outline the layers of inquiry within a single question. By delineating each crucial step, you facilitate understanding and resolution.
+- In this exercise, construct an orderly breakdown of actions that need to be taken in response to an inquiry, focusing on clarity and logical progression.
+- You will take a question and articulate the necessary steps to address it effectively. This includes selecting relevant information, applying filters, and summarizing results.
+- This task consists of dissecting inquiries into straightforward steps, detailing how to explore relationships between entities and derive necessary information toward formulating an answer.
+- The aim is to analyze a query to determine the series of actions required for resolution, highlighting important entities and their relationships.
+- Your role is to illuminate the components of a question by delineating each action required, focusing on logical order and detailed methodology.
+- This challenge involves synthesizing the parts of a question into actionable components, ensuring that the reasoning behind finding an answer is explicit and methodical.
+- You will take a given question and outline specific steps or operations required to understand and address it thoroughly.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task176_break_decompose_questions
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task176_break_decompose_questions
+user_prompt_template: '{task_def}
+
+
+  {problem}'

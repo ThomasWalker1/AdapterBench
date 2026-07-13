@@ -23,7 +23,11 @@ uv run adapterbench catalog
 
 For live end-to-end SFT (no upstream clone or gated-model access required,
 `Qwen/Qwen3-0.6B` is ungated), see the Quickstart section of [README.md](README.md)
-(`t2p-sft`/`t2p-sft-pilot`). The document-conditioning variant
+(`t2p-sft`/`t2p-sft-pilot`). The Text-to-LoRA training data those commands need — the
+Lots-of-LoRAs per-task metadata, the decontaminated 479-task split, and the held-out
+eval-task descriptions — is vendored under `data/t2l/` (see `data/t2l/NOTICE.md`), so the
+T2L setting is self-contained; every `t2p-*` command defaults to those paths and no
+`upstream/text-to-lora` clone is required. The document-conditioning variant
 (`d2p-sft-pilot`, conditioned on a frozen interpreter's own per-layer activations on a
 synthetic needle-in-a-haystack document instead of a pooled task-description embedding
 — see `PROJECT_PLAN.md`'s "Document-conditioning variant" section) has the same

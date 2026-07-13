@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your mission here is to find all the different digits in a provided list and put them together. Once gathered, these digits must be organized in ascending order.
+- You are tasked with finding all the distinct digits within a list of strings and organizing these values in ascending numerical order.
+- The focus here is on filtering through various inputs to identify numerical characters exclusively, while arranging these findings in an orderly fashion.
+- You will review an assortment of mixed elements within a list, pinpointing which ones contain numeric values, while ensuring no duplications spoil your final output.
+- This task requires examining an array of elements to identify unique digits. You must present these numbers arranged from the smallest to the largest.
+- You will examine a given list to find any numbers hidden within. Your goal is to ensure that you capture each unique digit and arrange them in ascending sequence.
+- The task involves analyzing a list of mixed elements and identifying unique numerical digits. You will sort these digits in ascending order.
+- This task requires you to identify numeric values present in a provided list. Gather these unique numbers and output them sorted from smallest to largest.
+- Your role here is to sort out any numeric values from a mixed array of strings, ensuring only unique numbers are retained and organized in ascending order.
+- Your challenge is to determine which characters in an input list are digits. You'll gather these and ensure they’re listed uniquely in sorted order.
+- This challenge asks for careful extraction of unique digits from an array of inputs, followed by sorting those digits in increasing order for clarity.
+- The objective is to locate all unique numerical characters from an input collection and sort them numerically for an organized output.
+- The goal here is to fetch all unique numerical figures from a mixed collection of characters and then sort these figures to display them from lowest to highest.
+- You will need to carefully review a list that includes both letters and numbers. Gather all unique numeric characters and place them in sorted order based on value.
+- Your task is to locate all unique numerical figures within a mixed input list and then systematically order them from lowest to highest number for clarity.
+- This task requires keen attention to detail as you filter through different entries in a list to isolate the digits for further processing—specifically sorting them uniquely.
+- The task involves analyzing a list of elements to identify and collect all unique numeric digits, then organizing them in ascending order.
+- This task demands the identification of all different digits embedded within an array and requires you to sort these numbers in numerically increasing order for your results.
+- You must evaluate a string input list to extract just the unique digits while ensuring they are presented in an orderly ascending fashion.
+- You will be identifying unique numbers hidden within various strings of data. Once extracted, these numbers should be sorted sequentially from least to most.
+- This task asks you to delve into an array of strings, identify all present numeric characters, and reflect those unique digits in a neat ascending sort.
+- You are tasked with recognizing any numeric figures amongst a collection of other characters in an input list. Then, you must sort these digits distinctly.
+- Your objective is to filter through different strings in a list to extract numerals, ensuring no duplicates remain before presenting these numbers in ascending order.
+- The task focuses on isolating numeric elements from a mixed list and presenting those unique values in ascending numerical order.
+- This assignment involves scouring through an array for individual digit characters, then compiling them into an ordered set reflecting their numerical values.
+- This task entails searching through various items in a list for distinct numeric entries. Sort the discovered digits into increasing value for clearer visualization.
+- In this exercise, you must sift through an assortment of letters and numbers, identify all unique digits, and return them sorted in ascending order without overlaps.
+- This task consists of condensing a larger list into just its numeric members, focusing on uniqueness before ordering them in ascending order for clarity.
+- Your role is to identify the distinct numbers within an input list made up of strings, returning those figures arranged in ascending order.
+- In this exercise, you’ll untangle numbers interspersed with other types of data within lists, capturing only the unique digits for sorting purposes.
+- Analyze the contents of a provided list for numeric data. The goal is to isolate each digit uniquely and present them sorted from smallest to largest value.
+- Look closely at given data to extract any unique numbers it contains. Once identified, sort these numeric values into an increasing sequence for easier reference.
+- In this task, you will pinpoint all the different digit characters within an input list and organize those findings numerically from smallest to largest.
+- The task involves analyzing a list of strings to identify and collect all unique digits present. You will then sort these digits in ascending order.
+- Your goal is to sift through an input list to find all individual digits, ensuring that you sort them from smallest to largest.
+- In this task, you will analyze a collection of strings to find and isolate any numeric digits present. Once identified, these digits should be arranged in ascending sequence.
+- The objective is to review an input list and pick out any digits that appear. After identifying them, arrange the digits in ascending sequence.
+- This task involves distilling an entire set of strings down to just the unique digits present, followed by sorting those numbers for display.
+- You will extract unique numbers from a given list, ensuring you gather only the digits. The digits should be organized from smallest to largest, highlighting their singularity.
+- Extract the distinct numerical characters from a given list and sort them in ascending order to find a comprehensive set of digits.
+- The challenge involves filtering through various inputs to locate numeric digits, sorting the unique ones in ascending sequence for easy reference.
+- In this task, you will extract and sort unique digits from a collection of strings while ignoring non-numeric characters entirely.
+- This involves analyzing a diverse collection of strings or characters, extracting all unique digits found within them, and presenting them in sorted form.
+- You are required to examine a provided list and pick out the unique numerical digits, then sort them in an ordered fashion for clarity.
+- This exercise involves searching through a series of entries for unique digits, followed by sorting these identified numbers in increasing sequence.
+- You need to analyze a collection of mixed characters and numbers, then extract only the numerical values, discarding duplicates and ordering them appropriately.
+- Here, your job is to identify and sort the distinct numbers within a provided collection of characters and digits.
+- Your goal is to filter through a mixed list and extract only the numeric values. Afterwards, you'll arrange these unique numbers in ascending order for easy reading.
+- You will analyze a given input containing various items to pinpoint any numbers, gathering these into a unique set and sorting them.
+- The challenge is to identify unique digits embedded within strings of characters in a provided list. Once identified, these will need to be arranged in a numerical sequence from smallest to largest.
+- You will go through various entries in search of numerical digits, isolating their unique forms and arranging them from least to greatest.
+- Focus on a given list of varying characters and determine which digits are present. Your output should consist of these numbers organized from least to greatest.
+- You will need to examine an input list to pick out any digits that occur. The challenge is to ensure you gather only the distinct ones and then order them in a sorted format.
+- Your role is to comb through an array of inputs and isolate all unique digits. Sort these numbers in ascending order before providing your result.
+- You will investigate an input list to pinpoint any numerical digits, ensuring you compile a list of unique findings sorted in ascending order.
+- In this task, your objective is to find, extract, and arrange unique digits from a mixed list of entries. Sorting should be done in increasing numerical order.
+- As part of this exercise, you'll traverse an input collection for numeric characters, removing any duplicates before arranging them numerically.
+- Uncover digits hidden amongst letters in a list; your final product should be a sorted collection of unique numbers found.
+- Engaging with the provided data will involve searching for any visible numeric characters, ensuring they are collected uniquely and displayed in sorted order.
+- In this task, you will identify individual digit characters buried within assorted inputs, organize them uniquely, and display them correctly sorted.
+- Your job is to identify and collect all the individual digits found in a mixture of characters, arranging them numerically.
+- Your role is to filter through given strings to find unique digit characters and arrange them in a neat ascending format.
+- Examine an assortment of entries, picking out all individual digits while ignoring letters or symbols. These digits must be listed clearly in ascending order afterward.
+- The task entails gathering unique numeric figures from lists that may include letters or symbols, presenting your findings in an ordered format.
+- This task requires you to extract unique digit values from a set of strings, ensuring they are presented in ascending order after extraction.
+- This task requires you to search through input strings for distinct numerical digits, arranging them from smallest to largest.
+- Your assignment is to identify all the distinct numbers present in an input list. After separation from other characters, they should be neatly arranged in increasing sequence.
+- Analyze a list and find all numerals embedded within it. The objective is to compile a collection of the unique numbers and sort them in ascending order.
+- The challenge involves sifting through an input list to identify unique digits, disregarding any non-numeric characters, and presenting them sorted.
+- Analyze a provided collection of elements, pulling out any distinct digits present. These should then be organized by numerical value in ascending order.
+- Your challenge is to sift through a provided set of strings to uncover any numeric digits. The extracted digits should be listed without duplicates and sorted from smallest to largest.
+- The goal is to filter through data inputs, identify unique numeric figures, and organize them sequentially from the smallest number upward.
+- Extract valuable digits from a diverse list of items, ensuring your results are presented in a clear, ordered manner.
+- This task asks you to extract all unique numerical digits from the given input list, followed by sorting those numbers in ascending order.
+- You are tasked with locating all different digit characters within an array of inputs. After gathering them, your next step is sorting these digits ascendingly.
+- This task requires identifying distinct digits hidden within a mixture of characters. Your goal is to present these numbers clearly by sorting them into ascending order.
+- Your goal is to extract digits from an assorted array of strings, ensuring that only unique characters are kept, and then to sort them in ascending numerical order.
+- The challenge is to scan through a diverse array of elements and pinpoint all the unique numbers among them, ready to be organized in sequence.
+- The objective of this task is to look at a collection of alphanumeric strings and pull out all the distinct digits found. These digits need to be sorted in increasing order for the final output.
+- Your assignment is to sift through an array of strings, find mentioned numeric digits, and arrange those unique values in ascending order.
+- You will take on the task of retrieving unique elements from a list that are numeric digits only and arranging them from the smallest to the largest value.
+- You are required to examine a collection of values, pull out the unique digits, and arrange them in increasing order for clarity.
+- Focus on analyzing an input array containing various elements to extract only the different digits. Sort them once extracted and present them from the lowest to the highest.
+- This activity requires keen analysis where you find and organize visible number characters from various string elements in the provided list.
+- Your duty is to meticulously scan an input list for distinct numbers, ensuring they are uniquely noted and sorted from least to greatest.
+- You will sort through a composite collection of elements, extracting solely the unique digits for completion of your task, ensuring clarity with your organized output.
+- This task consists of finding available numeric characters in an input array and arranging them in a sorted manner without repetition.
+- Within this task, you'll derive unique numbers from an array filled with diverse data types and return these in orderly fashion without redundancies.
+- In this task, your goal is to collect digits from a list of various items, sort them without repetition, and display them in ascending order.
+- Your goal is to sift through an input list to find and extract distinct digits, sorting them numerically from smallest to largest.
+- This task requires you to sift through a list and extract any digits that may be included. Once identified, you will sort these unique digits from smallest to largest.
+- Examine the items on a list closely for any digit characters, collect them uniquely, and finally arrange these digits from smallest to largest value.
+- The focus is on collecting unique digit characters from various string elements in a list and then sorting those digits for clarity.
+- Gather all unique numeric characters from an input set while disregarding any non-number entries. These should then be presented in organized ascending order.
+- Extracting digits from a mixed list is the core focus of this task, ensuring you only collect unique occurrences that are then sorted.
+- This task requires you to sift through a list containing various elements and find all numeric digits. The resulting unique digits should then be sorted in increasing order.
+- You'll be tasked with combing through a list to identify and collect any distinct digits you find, returning them in a neatly ordered format.
+- In this activity, you're expected to filter out digits from a mixed input array and arrange them in ascending order based on their value.
+- Your task is to sift through a list of mixed items and identify all the distinct digits present. Then, sort these digits in ascending order for clarity.
+- This task requires you to identify and sort any distinct digits present in a provided list, reflecting a clear understanding of both sorting mechanisms and digit recognition.
+- Here, your task is to meticulously find every digit within an input set, ensuring they are distinct and arranged properly after collection based on their quantity value.
+- This activity prompts you to examine multiple strings for any hidden numerical values. Your objective is to capture these unique digits and sort them accordingly in ascending order.
+- You will work with a collection of strings to find numeric characters, extract them, and arrange the unique digits from lowest to highest.
+- The goal here is to extract and organize all unique numeric characters found within a given list into an ascending sequence.
+- You must evaluate a list full of diverse entries and isolate any numerical characters found within. Your final output will entail these numbers organized from least to greatest.
+- Analyze a provided list to find and collect all the individual digits. Once identified, arrange them in numerical order to present a clear sequence.
+- You are tasked with identifying and sorting all the unique numerical digits found across various strings in a provided list.
+- This task focuses on isolating and sorting any digits found in an input list. You must discard any non-digit characters while ensuring no duplicates remain.
+- Your job involves finding and sorting all unique digits found within a string-based list. Make sure to ignore any letters or symbols in your extraction.
+- Identify and isolate all numeric digits found within a mixed array of inputs. Once extractions are complete, sort these figures in ascending order.
+- The challenge lies in filtering through a list for any digits it contains. Ensure you sort these unique digits afterwards, arranging them from least to greatest.
+- You are tasked with examining each item in a list and collecting numerical values while ensuring that you do not miss any unique figures. Following that, organize them in order by size.
+- In this task, your role is to search through an input list to extract all individual digit characters. After extraction, sort these unique values from the smallest number to the largest.
+- Assess the contents of a list for numerical digits only. After isolating these digits, compile and arrange them in ascending sequence.
+- This task requires you to focus on identifying and sorting unique digits found within a given list of elements, minimizing any duplicates.
+- Examine an input list filled with elements that may include numbers among other characters. Your goal is to find and sort any unique numerical figures discovered.
+- This task entails isolating digits within a diverse set of entries. You'll collect these numbers distinctly and arrange them in ascending order.
+- In this task, extract any numeric occurrences from the dataset and present them after removing duplicates, followed by sorting them neatly into ascending format.
+- This task asks you to comb through an input list for numerical values. After identifying and collecting these unique digits, they should be sorted from lowest to highest.
+- Your assignment is to look through a series of inputs, pick out any digits found, remove duplicates, and sort the remaining numbers in ascending order.
+- This task requires you to break down a list to find any digits hidden among non-numerical characters and organize them in increasing order.
+- This task focuses on extracting unique numerical characters from a mixed list of strings. Your end goal is to sort these numbers in ascending order.
+- The task involves reviewing a list of mixed elements and identifying all the distinct numerical characters. You will then sort these digits in order from smallest to largest.
+- The objective is to take a mixed string list and distill it down to its unique digits, followed by sorting them into numerical order.
+- The aim is to extract unique digital representations found across various mixed items in the provided list and arrange these numerically.
+- Your task is to analyze a list of strings and find all the unique digits present, then arrange them in order from smallest to largest.
+- You are expected to filter through items in a provided list, extract the numbers included therein, and present them uniquely sorted.
+- The purpose of this task is to gather unique digit characters from a mixed list of strings. Once you have them, arranging these numbers in ascending order completes the job.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task637_extract_and_sort_unique_digits_in_a_list
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task637_extract_and_sort_unique_digits_in_a_list
+user_prompt_template: '{task_def}
+
+
+  {problem}'

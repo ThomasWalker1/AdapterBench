@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- This task involves analyzing integers to determine their primality and extracting those that qualify as prime for further use.
+- You will receive various integers, and your challenge is to filter out the non-prime ones, leaving you with a clean list of primes.
+- This task involves sifting through a collection of integers to find and list all the prime numbers, based on their definition.
+- Your task consists of reviewing integers and determining which ones are prime based on mathematical rules about their divisibility.
+- The task involves filtering out non-prime integers from a list, reflecting your ability to engage with fundamental mathematics related to prime computation.
+- You will be given a series of integers, and your task is to identify and return just the prime ones from this series.
+- This task involves deducing which integers from an input list can be classified as primes, thereby filtering out all non-prime values effectively.
+- Focus on evaluating each integer in a provided list. The task is to retain only those that are recognized as prime numbers, ultimately producing a refined list.
+- This exercise demands attention to detail as you sort through integer lists, aiming to compile an accurate representation of all the primes found in each list while discarding the rest.
+- You must showcase your understanding of prime numbers by going through a list and retaining only those that satisfy the conditions necessary for primality.
+- Your responsibility is to process a selection of integers, extracting only those valued as primes. A prime number can only be divided by 1 and itself without leaving a remainder.
+- In this activity, focus on identifying which numbers in the provided list are prime by checking their divisibility.
+- The focus of this task is on discerning prime integers from a series of provided numbers. Only include those that meet the prime criteria while disregarding all others.
+- The task involves identifying and extracting prime numbers from a given list of integers.
+- Check each integer against established rules for being prime, then create an output that reflects only those which qualify without any additive context.
+- Your objective is to sift through a list of numbers and filter out the primes, providing only those that meet the prime criteria.
+- Identify and separate out the prime numbers from a list of integers. The primes you keep will be those that have no divisors other than one and themselves.
+- This task centers on discerning which numbers in a provided set are prime. You'll leave out any integers that do not qualify as primes according to mathematical standards.
+- Your challenge is to scan through an array of integers, spotlighting those that are considered prime numbers.
+- In this task, you will evaluate a list of integers and extract only those that are primes, which are numbers that can only be divided evenly by 1 and themselves.
+- The goal is to identify all prime numbers within a given list by applying relevant mathematical concepts concerning the nature of primes.
+- As part of this task, you will review given integers for their primality and compose an output featuring exclusively prime candidates.
+- Review the provided list of integers and isolate the primes—those numbers that are not divisible by any number other than 1 and themselves.
+- Identify which numbers in your input list are primes by testing their divisibility. Produce a new list showcasing only those identified primes.
+- You must screen through a collection of integers and return just the primes, highlighting your ability to discern mathematical properties related to primality.
+- Your objective is to compile a list that includes only the prime integers from an original set. You’ll need to understand how primes differ from composite numbers in your sorting process.
+- Examine an assortment of integers with the intention to pick out the primes, yielding a refined list comprised only of these numbers.
+- In this task, you will work with a list and apply your knowledge of prime numbers to produce a refined list containing only those primes.
+- Review a set of integers and isolate those that are considered prime. This requires an understanding of how primes differ from composites.
+- You will be tasked with reviewing integers and filtering out those that aren't prime, which calls upon your knowledge of factors and multiples.
+- The objective is to identify prime numbers from an integer list by applying mathematical knowledge about what constitutes a prime.
+- Your task revolves around examining a set of whole numbers and determining which belong to the set of prime numbers based on their mathematical attributes.
+- This task asks you to assess a list of numbers to find which are prime, helping to clean the data by removing non-prime entries.
+- This assignment involves taking a set of integers and selecting those that can be classified as primes—essentially, filtering out non-prime candidates.
+- Undertake an analysis of provided integers to extract a focused set—those recognized as primes—by applying basic divisibility logic.
+- The task involves reviewing a list of integers and selecting only the prime ones, which are defined by their unique divisibility characteristics.
+- The challenge presented involves reviewing integers and selecting those that are prime. You must utilize your knowledge of mathematical definitions to accomplish this.
+- You will need to determine which numbers in a given list are prime, requiring logical reasoning about divisibility rules.
+- The task requires you to evaluate each integer in a list and determine whether it is a prime number, outputting the valid primes.
+- This task requires you to differentiate between prime and non-prime numbers within an integer list, retaining only the former in your output.
+- In this exercise, you will assess a collection of integers. The aim is to produce a subset comprised solely of prime numbers, while removing non-prime values.
+- You will work with a list of integers and your job is to produce a new list consisting solely of the prime numbers.
+- Your task is to evaluate each integer in the given list to see if it meets the conditions for being a prime number. Collect those that do and present them in a new list.
+- The task involves identifying prime numbers from a given list of integers. You need to filter out any integers that do not meet the criteria for being prime.
+- The task requires identifying prime numbers from a given list of integers. You need to filter out any numbers that do not meet the criteria for being prime.
+- This task tests your ability to filter integers based on their characteristics as prime or non-prime. You must understand what makes a number prime.
+- You will be working with lists of integers and need to determine which ones are prime numbers. The result should solely reflect the prime integers present in the given list.
+- Your task is centered around taking an input list and extracting all integers deemed prime based on their mathematical properties, resulting in a filtered output list.
+- In this exercise, you will sift through a list of integers and remove any numbers that are not classified as prime. The resulting output should only include those integers that meet the prime criteria.
+- In this task, you will navigate through an assortment of integers, earmarking those that are primes based on their unique properties.
+- This task challenges you to identify and extract all prime numbers from a list of integers, maintaining strict adherence to the definition of prime.
+- Your objective is to sift through a list of integers and return a new list containing only the prime numbers, based on the mathematical definition of primes.
+- Take the provided integers, scrutinize them based on their divisibility, and compile a final list that only includes prime numbers.
+- The objective here is to extract all the prime integers from a given collection of numbers. Understand the definition of a prime number to complete this successfully.
+- Your task is to identify and extract all the prime numbers from a provided list of integers.
+- For this challenge, your job is to scan through provided lists and highlight only the primes—numbers that stand alone in their ability to be divided by one and themselves only.
+- This challenge involves working with sets of integers to find and compile a complete list of all the primes, needing careful evaluation and understanding of primality.
+- You are given multiple lists of integers with the goal of isolating the primes from each group. Understanding the characteristics of prime numbers will guide your selections.
+- Engage in filtering a list of integers by distinguishing between prime and non-prime numbers. Return a list with only the primes intact for further use.
+- This assignment asks you to identify which integers in a given set are prime. It relies on an understanding of the definition and characteristics of prime numbers.
+- You need to sift through a given list and extract only those integers that meet the criteria of being prime, highlighting your ability to recognize prime numbers.
+- In this task, you need to process a list of integers by identifying which ones are prime and creating a new list of just those numbers.
+- Here, you'll work with sets of numbers where your goal is to identify and list all prime integers present in the input.
+- Engage with an array of integers and determine which ones qualify as prime numbers by applying rules related to their divisibility.
+- The objective here is to separate prime integers from a provided list, ensuring that you return only those numbers that are divisible only by one and themselves.
+- You’re tasked with recognizing prime numbers in a provided list of integers. This requires understanding the definition of primes and checking each integer for primality.
+- You are asked to inspect a list for primes, which will include evaluating each number's divisibility by other integers.
+- In this exercise, you must sort through a collection of numbers to find which ones are prime, producing an output consisting solely of the identified primes.
+- You'll engage with integer lists, tasked with filtering for primes according to their mathematical definitions and characteristics.
+- You will tackle lists filled with integer values in this task, focusing on highlighting those that hold the status of prime numbers based on their unique divisibility traits.
+- Evaluate a group of integers with the intent of excluding non-prime members. Only retain those integers that fit the definition of being prime.
+- The objective is to refine a list of integers to only include primes, illustrating your ability to differentiate between prime and non-prime numbers.
+- The task focuses on filtering through a list of integers for primes, utilizing the definition of prime numbers in your assessment.
+- In this task, you will assess several integers for primality and return all qualifying candidates in a new collection while ignoring non-prime entries.
+- The task requires you to check each integer in the provided list against the definition of prime numbers and create an output with just those that qualify.
+- The challenge is to filter through integers to find and retain solely those that are recognized as prime.
+- The objective is to examine a group of integers and return a list that includes only those integers qualifying as prime.
+- Your goal is to take a list of integers and eliminate the composite ones, leaving behind only the primes. This assesses your familiarity with the concept of primality.
+- You are tasked with determining which numbers in a given set are prime. This requires an understanding of number properties and the ability to identify valid primes.
+- Your responsibility here involves checking multiple integers for their status as primes and compiling those valid values into a single output list.
+- You are to evaluate a list of integers, identifying which ones are prime, and compile a list exclusively of the prime numbers found.
+- In this task, you need to extract all prime numbers from a given list of integers, ensuring that only those that meet the prime criteria are included.
+- Your task is to identify and extract prime numbers from a list of integers. A prime number is defined as having no divisors other than 1 and itself.
+- This task challenges you to discern which numbers in a given set are primes, highlighting your understanding of number classification.
+- In this activity, you will encounter lists filled with various integers, and your job is to pinpoint and collect those that are prime while excluding the rest.
+- You must determine the prime integers among a list of numbers by discarding those that aren’t divisible by only ‘1’ and themselves.
+- Assess each integer in the provided data set to see if it is prime, and return a list containing only the successful matches.
+- In this task, your goal is to sift through a list of numbers and extract only those that are prime, meaning they can only be divided evenly by one and themselves.
+- Engage in recognizing and extracting prime numbers from an integer list. A firm grasp of the properties that define primes will aid in this process.
+- In this exercise, you'll work with lists of integers, removing any that do not fit the definition of prime for your final output.
+- This task revolves around isolating prime integers from a collection. Recognizing digits that fit the criteria for being prime will lead you to the correct outcome.
+- Here, your focus is on recognizing which integers in the provided list are primes, ensuring that your output consists exclusively of these special numbers.
+- You will be working with lists of integers and must determine which are prime by evaluating each integer against the definition of primality.
+- The requirement is to work with integers by extracting only those primes from the provided set while ignoring others.
+- You will be tasked with going through a selection of integers and singling out those that represent prime values, excluding non-prime entries entirely.
+- Identify and extract prime numbers from a list of integers. Your final result should reflect only those numbers that are deemed prime.
+- Analyze the provided list of integers to extract those that qualify as prime numbers, resulting in an output that showcases only the primes identified.
+- This task challenges you to look at various integers and filter for primes. Your goal is to present only those numbers that meet the criteria for primality.
+- Your assignment involves filtering integers based on their primality, meaning you will remove any number that cannot be factored solely by one and itself from your output.
+- In this exercise, you will assess lists of integers to find and list out the prime numbers, discarding any numbers that do not qualify as primes based on their divisibility.
+- 'The objective is straightforward: comb through a list of integers and return only those that qualify as primes, carefully excluding any composites along the way.'
+- The work involves examining lists filled with integers and focusing on pinpointing those that are deemed prime—numbers faithful to their definition without extraneous factors altering their status.
+- The goal here is to analyze a provided list and identify the primes among them. Only integers fitting the definition of prime will be included in your final output.
+- Assess a list of integers to find all the primes. This requires not just familiarity with what makes a number prime, but also careful evaluation of each number's divisibility.
+- This task entails reviewing a collection of numbers and selecting those classified as prime based on their divisibility rules.
+- Your role here involves identifying primes in an array, which helps in understanding number theory and numeric properties.
+- Your responsibility is to process an array of integers, extracting only those that fit the profile of being a prime number according to standard mathematical definitions.
+- For this task, focus on a collection of integers and determine which ones are primes. Return a list that contains only these prime numbers.
+- The goal of this task is to process a list of numbers, retaining only the primes. A prime number must only be divisible by 1 and itself without any other factors.
+- Your task is to filter a list of numbers down to those that are prime. This means excluding all integers which have divisors other than one and themselves.
+- In this task, focus on the identification process for prime numbers within an array of integers, showcasing your skills in basic arithmetic reasoning.
+- You will work with a list of integers, removing those that do not represent prime candidates. Your output should encapsulate only the numbers that fulfill the criteria for being prime.
+- Your task is to analyze a list of integers and identify which numbers are prime, meaning they can only be divided evenly by 1 and themselves.
+- The objective here is to sift through a given collection of integers and extract only the prime ones, ultimately forming a list of these values.
+- For this task, you will analyze a series of integers and return only those that are prime, discarding the rest.
+- Your job is to examine a collection of integers and extract those that qualify as prime, discarding any composite or non-prime numbers.
+- Your challenge is to take an integer list and keep only the primes. This involves applying knowledge about the nature of prime numbers effectively.
+- This task involves examining a series of integers and retaining only those classified as prime, effectively discarding any composite or non-prime integers.
+- Filter the given set of integers by eliminating those that are not prime. Your output should consist solely of numbers that meet the definition of prime.
+- Through this exercise, you will filter out non-prime integers from a given set, resulting in a collection that consists solely of primes.
+- You will assess a group of integer values and distinguish which of them are prime, creating a new list with just these selected numbers.
+- The task involves processing lists of integers, removing any number that isn’t categorized as prime. The final output should only feature those primes identified through analysis.
+- This task challenges you to examine an integer list and extract numbers based on their primality, testing your comprehension of basic numerical properties.
+- The aim is to generate a filtered list that includes only prime integers from the provided set, ensuring you distinguish between prime and non-prime numbers accurately.
+- Your responsibility is to parse through an array of integers and output only the primes, demanding proficiency in recognizing numeric properties.
+- 'Your mission here is clear: identify and extract all primes from given collections of integers while ensuring non-prime options are filtered out effectively for your output.'
+- Connect with your understanding of mathematics by reviewing an integer list, successfully distinguishing and isolating all prime numbers while discarding others that do not qualify.
+- Your assignment is to filter through a selection of integers and pinpoint all that are primes. Return these identified primes in an organized manner.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task366_synthetic_return_primes
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task366_synthetic_return_primes
+user_prompt_template: '{task_def}
+
+
+  {problem}'

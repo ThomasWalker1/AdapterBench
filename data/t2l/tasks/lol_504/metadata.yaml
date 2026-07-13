@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You will be presented with a list containing various types of elements. Your goal is to count how many of these elements are letters from the alphabet.
+- The task requires you to sift through a mixture of numerical and alphabetic entries, focusing on accurately counting just the letters found in the given list.
+- For a given list consisting of mixed data types, determine how many items are actual letters of the alphabet.
+- The assignment focuses on counting the occurrences of alphabetical symbols in a given list, disregarding any non-alphabetic content.
+- Your challenge is to count how many alphabetic entries are present in a given list that also includes numerical values among its items.
+- Here, you will engage with a list containing both numbers and letters. Your challenge is to focus solely on the letter components for your final count.
+- Run through a checklist of items from an input array and gather a tally for how many fall under the alphabetic category exclusively.
+- In this task, examine the contents of a list provided in brackets and find out how many elements are alphabetical. Non-alphabetical entries should be disregarded entirely.
+- In this task, compile the total number of alphabetical characters from a provided list while filtering out any numeric or special items.
+- Analyze a mixed-element list for its alphabetical values, ensuring you provide an accurate count while disregarding any numbers included.
+- Your objective is to parse through a list and count every single alphabetical character within it, disregarding anything that isn’t a letter.
+- This exercise involves identifying which elements in a list are alphabetical characters and tallying their count from a mixture of letters and numbers.
+- Your objective is to comb through a specified array for alphabetical items and report their total count, making sure to exclude any non-letter entries.
+- Use your analytical ability to explore an input array and return the numerical count reflecting only those components that are alphabetic.
+- This task involves reviewing a provided list and tracking the number of letters found, disregarding any non-alphabetical items in the process.
+- Your task is to determine the total number of alphabetic entries within a given list by examining each item and disregarding anything that isn’t a letter.
+- You'll be working with an input array where your main focus should be on determining how many items are alphabetical letters. The task encourages keen examination for proper counting.
+- You are required to process a given list and determine the total number of elements that are letters of the alphabet.
+- Examine a provided collection of items where you must pinpoint all the alphabetic characters and calculate their total number.
+- You are tasked with reviewing a list that contains different types of data and quantifying how many of them are alphabets.
+- Your task is to analyze a list of items and determine how many of them are alphabetical characters.
+- The task asks you to examine an input list and calculate how many entries are purely alphabetical, necessitating attention to character types.
+- You need to sift through a list of various items and tally up how many are alphabetical, focusing solely on the letters.
+- In this task, you are required to detect and count all the letters in a given list, excluding any numbers or symbols.
+- In this task, you will go through a list and tally up the letters present while excluding any numeric or non-alphabetical entries from your final count.
+- Here, your objective is straightforward—you must go through a given set of items and tally how many correspond to alphabetically defined elements.
+- Your job is to inspect a list that contains a mix of numbers and letters, focusing on determining the quantity of alphabetic elements present.
+- This task involves examining a list for letters and counting them. You will need to recognize which elements are alphabetic within a mix of different types of entries.
+- In this activity, you will scan a list filled with various elements. Count only the alphabetical parts, being careful to disregard numbers or any other non-letter elements.
+- You are asked to evaluate a list containing various items. The goal is to determine and return the number of elements that are alphabetic characters.
+- This task revolves around counting the letters within a given list, filtering out any numeric entries while focusing solely on alphabetical characters.
+- Here, your responsibility is to assess a list filled with diverse items and figure out the number of items that are alphabet characters.
+- The task involves scanning a list containing both numbers and letters, solely counting those that are alphabetical while excluding anything else.
+- You will analyze a set of items presented in brackets and figure out the number of those that consist solely of letters, showcasing your counting skills.
+- The task entails reviewing a collection of inputs to find and tally up the alphabetical characters among them. Your focus should remain on letters only.
+- The goal is to explore a given set of data in a list format and quantify only the components that are made up of letters, while ignoring all numerical values or any irrelevant symbols.
+- You will categorize each item in the input list into alphabetical or non-alphabetical, ultimately providing a total count for the alphabetical category.
+- Engage with an input list that combines letters with various numbers, focusing on accurately identifying and counting just the alphabetic figures.
+- Your assignment will have you explore a set of input values to pick out the alphabetical characters from others, enhancing your capacity for thorough examination in data sets.
+- Assess an input list filled with various elements and return the number of alphabetic characters found within it, focusing solely on letters as your target output.
+- The task involves analyzing a list containing a mix of items and counting how many of them are alphabetical characters.
+- Given a mixed collection, your job is to discern and quantify how many elements meet the criteria of being letters from the alphabet.
+- In this task, you will evaluate an input list comprised of different elements and return the total number of alphabetic characters found in it.
+- You will complete a counting task that focuses on identifying alphabetic elements amidst other characters in a structured input list.
+- Review a list filled with mixed data types and focus on identifying all alphabetical elements for counting purposes.
+- The objective is to count how many items in a provided list are letters of the alphabet. You will be required to filter out any non-alphabetical items.
+- Your task requires you to verify a list, identifying and counting only its letters while discarding all numerical or non-alphabetical inputs.
+- The main challenge is to assess an array mixed with both text and numbers, focusing solely on counting the text components.
+- This task assesses your ability to scan through lists for letter elements and count them accurately, leaving out any other forms of data from your tally.
+- Evaluate an input list for its alphabetical content by counting how many entries are letters. Be attentive to what constitutes an alphabet character versus other data types.
+- You will complete an analysis of an input list by determining how many entries are recognized as letters from the English alphabet.
+- You will engage with a list containing various entries. Your role is to find out how many of those entries are letters and report that count.
+- You need to evaluate a given list and find out how many items in it are alphabetic characters, providing a numerical count in response.
+- Analyze an assortment of comma-separated values and return just how many of those values are alphabetic characters.
+- The goal is to scrutinize a list of mixed items to find and count the alphabetical entries. This involves recognizing each character's type.
+- The task calls for identifying which items in a given list are alphabetical characters and providing their total count effectively.
+- You are tasked with counting alphabetic letters in a series of items listed together, which involves sorting through the content closely.
+- You’ll be working with lists containing various elements where your main objective is to outline how many of them are made up solely of letters.
+- You are required to analyze an array of items, determining how many are alphabetical, so you will need to distinguish letters from other characters effectively.
+- Your assignment is to look through a defined set of items and count just the letters, completely ignoring anything that isn’t an alphabetical character.
+- Count the letters from the provided input list while disregarding any numeric values or other non-alphabetic symbols present.
+- The task involves inspecting a comma-separated list to determine how many elements are made up of letters rather than digits or symbols.
+- This task revolves around counting how many alphabetical elements exist within a specified list. You'll need to filter out everything that is not an alphabetic character.
+- The assignment requires you to sift through a collection of items in a list and calculate how many of them are classified as alphabetic letters.
+- You need to process a list of varied items and find out how many of those are letters. Recognizing what constitutes an alphabetical element is key here.
+- This task challenges you to measure the presence of alphabetical characters in an input set, resulting in a total clearly indicating their quantity.
+- This task requires you to sift through a list of mixed content and identify the total number of letters it contains, disregarding any numbers or other symbols.
+- Your job is to sift through a list and find out how many elements are made up of letters from the alphabet, disregarding any numbers or symbols.
+- Examine the input list and filter out any entries that are not letters. Your job is to tally only those that fall into the category of alphabetical characters.
+- You must examine a list that mixes numbers and letters, identifying and counting only the alphabet characters.
+- Determine the total number of alphabetic characters found in the given input list, rejecting all non-alphabetic entries from your count.
+- You will be taking a close look at items in brackets to find out which ones belong to the alphabet and quantifying them accordingly.
+- Your task is to analyze a list of items and identify how many of them are letters. You'll need to ignore numbers and non-alphabetical characters.
+- Engage with a list containing diverse elements by filtering out numbers and concentrating solely on counting the alphabetical components present.
+- Your role here is to evaluate a mixed list of items and quantify how many are letters. It’s important to distinguish between letters and other forms of data like numbers.
+- Analyze the items in a list and find out how many are classified as alphabetical, giving a numeric count as your result.
+- Examine a list made up of diverse items and ascertain the quantity that are alphabet letters only.
+- You will assess an input list containing various elements and return the count of those that consist of letters from A to Z.
+- The challenge here is to locate all alphabetical symbols within an input sequence, providing a clear numerical representation of their total.
+- Analyze the provided list and tally the alphabetic components. Be mindful to disregard any non-letter elements in your count.
+- This activity requires you to inspect a list for lettered elements exclusively and keep track of their total quantity among other types of entries.
+- You will receive a list filled with various elements and must accurately count how many of those elements are alphabetical, ensuring precision in your assessment.
+- Your job is focused on identifying how many alphabetical items exist in the provided array while ignoring all non-alphabetical content completely.
+- You'll be required to analyze a given roster of elements, identifying which fit into the category of letters and tallying them up, reflecting analytical judgment in data interpretation.
+- Your task is to analyze a list of items and count how many of them are alphabetical characters. Focus on identifying only the letters in the list.
+- You will scrutinize a list filled with various types of data for the purpose of filtering out and counting only its alphabetical parts.
+- Your job here is to look through a list and identify how many items are purely alphabetic. You will need to filter out any numbers or symbols and only consider letters.
+- The challenge in this task is to systematically assess an assortment of entries in a list and determine which ones belong to the alphabet, providing an accurate tally at the end.
+- This task involves working with a mixed list to determine the frequency of alphabetical entries, requiring careful observation and counting.
+- Your mission is to interpret a provided series of inputs and quantify those that are purely alphabetic while disregarding other forms.
+- The objective is to review a list filled with different items and establish a count for just the alphabetical elements, ensuring non-alphabetical contents do not factor into your answer.
+- This task entails counting the number of alphabetical characters included in a specified input list, requiring careful attention to discern letters from other types of data.
+- The task involves evaluating a list of items to identify and count how many of them are alphabetical characters.
+- Your challenge is to look through a list filled with diverse components and quantify how many are alphabetical, honing your analytical skills in character recognition.
+- You will evaluate an array of mixed items, pinpointing which ones are alphabetical and counting their occurrences accurately.
+- For this assignment, you need to dissect a list into its components and count the total number that fall within the alphabet category.
+- Analyze the list given to you and count how many elements are alphabet characters, providing an understanding of letter distribution within the collection.
+- In this assignment, you will pinpoint letters within a list containing assorted elements and compute how many there are, indicating your ability to recognize patterns.
+- You will be given an array of elements where your task is to recognize how many are comprised of letters and provide that number as the result.
+- This task involves processing a list with multiple elements. You should focus on counting each individual letter while excluding all numeric and non-alphabetical values.
+- Your job is to investigate a list for its alphabetical content, counting how many items are purely letters regardless of their case.
+- Identify and count the number of letters present in a provided list which contains multiple types. This includes recognizing both uppercase and lowercase characters.
+- The challenge is to identify which items in a given set fall into the category of alphabetical characters, providing an accurate count.
+- Your responsibility is to review a selection of items in brackets and extract the count of those that qualify as alphabetical, ensuring no numbers or other formats interfere with your findings.
+- You will need to look at the contents of a list filled with various data types and return how many entries consist solely of alphabetical letters.
+- The task involves evaluating a set of items in brackets to identify and count solely the alphabetical entries.
+- You will encounter lists filled with diverse elements, and your job is to extract and count only those that are letters in the English alphabet.
+- Look into a series of mixed elements and determine how many of those elements are letters. Pay particular attention to categorizing them correctly as alphabetic.
+- Review a list containing various types, focusing specifically on identifying and counting only its alphabetical elements for your final answer.
+- In this challenge, your analytical skills come into play as you determine how many entries in a mixed-item list are indeed alphabetical.
+- In this task, you will analyze a list of items and identify how many of them are alphabetical characters.
+- This task assesses your ability to recognize letters within an array of different types of data, requiring attention to detail in counts.
+- The goal here is to extract and count the alphabetical characters from a mixed list of items, demonstrating your ability to distinguish between letters and numbers.
+- Go through the provided list to check each item, then count how many are letters while disregarding the numbers.
+- You will be tasked with counting the occurrences of alphabetic characters within a specified list format.
+- The objective is to evaluate a list and provide the count of the characters that are written in the alphabet.
+- In this assignment, familiarize yourself with a list that includes both letters and numbers. Your task is to tally up only the alphabetic components.
+- In this exercise, you need to sift through a list filled with various data types and specifically count the alphabetical entries present.
+- Your role entails assessing a collection of items, determining how many qualify as alphabetical characters from that set, demonstrating skill in inventory assessment.
+- You will analyze a provided set of items for their categorization as alphabetical characters, focusing specifically on counting only those letters present.
+- Your job is to look through a collection of items and quantify the number that are represented by letter characters.
+- This activity involves checking a comma-separated list for alphabetical entries and providing a total count, demonstrating your numerical assessment abilities.
+- In this exercise, you need to review a collection of items and count only those that are alphabetical. It's an evaluation of your attentiveness to detail.
+- Your mission is to assess an input list to find and quantify the alphabet elements, maintaining focus solely on letters and ignoring other types of data.
+- Examine an input list and identify how many items are alphabetic characters, disregarding all numeric values and symbols.
+- This task challenges you to review an input list and focus on calculating how many components are made up entirely of letters.
+- This task consists of scanning through an input list and determining the total number of alphabetic characters included.
+- This task is about counting the number of letters found in a given list that may contain a mix of letters and numbers, emphasizing alphabetic recognition.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task504_count_all_alphabetical_elements_in_list
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task504_count_all_alphabetical_elements_in_list
+user_prompt_template: '{task_def}
+
+
+  {problem}'

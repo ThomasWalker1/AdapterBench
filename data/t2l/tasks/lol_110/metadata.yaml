@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- This task requires articulating the implications of various logical commands as they pertain to tables containing data entries. Clear reasoning about the output expectations from each command is critical.
+- You'll be taking logical commands that suggest actions on data sets and reformulating them into natural language interpretations, making sure to articulate the intent clearly.
+- Your role is to articulate logical commands into a format that makes sense in common language. This requires comprehension of both the logic behind the commands and the structure of data they operate on.
+- This exercise involves clarifying what specific logic-based filters do when applied to rows in a table, explaining it as if you were teaching someone unfamiliar with database terminology.
+- This task revolves around breaking down complex logical statements related to data tables into straightforward narratives that describe the relationships and calculations being made.
+- This task calls for skill in translating technical logical operations into conversational language that reflects the essence of filtering and counting values in a table.
+- Analyze the provided logical commands and express them in natural language. Each command dictates certain criteria for filtering data, and your task is to clarify those criteria.
+- Your responsibility is to explain the intended function of analytical commands applied to a dataset. This involves specifying how information is filtered and compared across various criteria.
+- This task centers around converting structured logical commands used for querying datasets into natural language, ensuring clarity and accuracy in representation.
+- This task emphasizes understanding and conveying how different logical commands affect data selection and relationships within a table format.
+- In this task, you will work with filtrations and aggregations from tables, capturing these actions in simple phrases that reflect their detailed functions.
+- This task requires you to describe actions taken on a data table. You will need to outline how data is filtered and compared using logical functions to derive specific outcomes.
+- Essentially, you will decode commands related to data views and represent them as coherent narratives that summarize what each command accomplishes.
+- You need to provide an understandable description of commands that manipulate data rows in a table. Understand the logical operations and convey them effectively.
+- Provide clear explanations of how various attributes are evaluated against conditions laid out in logical commands, translating those evaluations into common language.
+- This task requires you to convert structured commands into clear English sentences that convey what data from a table is being selected or counted based on given criteria.
+- This task requires you to take logical operations related to filtering and evaluating data and translate them into coherent sentences that mirror the intended function of each operation.
+- This task involves creating narrative interpretations of commands directing logical operations on table data, focusing on aspects like filtering by value or comparing quantities.
+- Your task involves interpreting logical commands that relate to rows in a table, translating these commands into natural language statements.
+- Analyze logical operations and create natural language explanations for each operation; this involves explaining the selections, comparisons, and calculations being requested.
+- This task requires you to interpret commands related to data filtering and evaluation within a table setting. You must comprehend logical operations such as counting, filtering, and evaluating equality to convey the essence of each command.
+- You will need to break down complex logical expressions into simple, straightforward statements that explain exactly what is being queried about the data.
+- In this exercise, you are tasked with describing logical commands that define how to access or count specific rows in a dataset, using natural language.
+- Your goal is to translate logical operations related to data filtering and retrieval into natural language. This requires an understanding of the meanings behind logical terms and how they apply to rows in a table.
+- You must analyze commands based on logical criteria for rows in a dataset, then express their intended outcomes using straightforward language.
+- Your challenge is to distill complex commands involving logical operators applied to tabular data into clear explanations that capture the essence of what the original query was seeking.
+- You will work with logical filtering commands that select specific rows from a database. Your challenge is to explain the criteria for selection and the results in natural terms.
+- In this exercise, you will convert logical expressions related to table rows into coherent statements. A solid grasp of logic and data comparison methods is necessary for fulfilling this task successfully.
+- The task asks you to transform technical commands regarding table filters and operations into straightforward English explanations that convey the intended actions on the data.
+- Decode logical commands affecting table rows into verbal descriptions that articulate the actions being taken to filter or summarize data.
+- Engaging with commands that filter and compute features of table rows is the essence of this task. The challenge lies in accurately translating technical commands into everyday language that captures their meaning.
+- In this task, you will interpret instructions that filter and analyze data within a table format, using various logical operations to derive specific outcomes.
+- Analyze and convey the operation of selecting and counting rows in a table based on defined criteria. Your explanation should highlight how these operations connect to real-world contexts.
+- You will process a series of logical operations aimed at manipulating data in a table, creating clear and concise descriptions of those operations.
+- Your role involves converting structured logical queries into meaningful interpretations that highlight what data selections or computations are being performed according to the commands given.
+- You'll analyze the interplay of various logical functions applied to tables of data and articulate these relationships simply so they can be easily understood by non-experts.
+- Your responsibility is to interpret commands that filter and perform operations on dataset rows into plain language, making each command's intent clear and understandable.
+- This task is about simplifying technical terms and logical operations used in examining tabular data. Turning these into plain English helps convey specific conditions and expected outcomes regarding the dataset.
+- This task requires you to convert technical logical operations into plain language interpretations, helping others grasp the intended data manipulations.
+- The aim is to provide an accurate narrative interpretation of logical database commands, focusing on the retrieval and assessment of information from defined datasets.
+- Provide an understandable narrative for logical operations specified in commands that pertain to tabulated data, focusing on the reasoning behind row selection criteria.
+- This involves interpreting a set of logical operations designed for data selection. Your objective is to convey what information these operations seek to extract from the dataset.
+- The goal is to explain what various logical operations accomplish when selecting from a table of records while using ordinary language that captures the essence of those operations.
+- Here, you’ll analyze logical operations that select or calculate data from tables, then express these actions in simple terms that explain their purpose and expected outcomes.
+- Your job involves interpreting how specific logical conditions apply to interpreting table contents and rephrasing them into understandable natural language statements.
+- Your job is to take a series of logical operations and describe their outcomes, ensuring that anyone reading your explanations understands the basic data interactions involved.
+- In this task, you’ll interpret and express the implications of applying different logical commands on dataset filtering into natural sentences that are informative and clear.
+- Your objective is to translate commands used in querying a dataset into natural language descriptions. Familiarity with logical operators and how they interact with data is essential for success.
+- Your task is to articulate the meaning behind analytical commands, clearly indicating which rows of data are targeted based on specified logical criteria.
+- This task is about weaving together data selection techniques into coherent phrases. You're tasked with making technical commands accessible through everyday language descriptions.
+- You'll be working with commands that involve selecting and evaluating table rows based on certain criteria. Effective interpretation requires analytical skills related to both logic and data analysis.
+- Produce natural language interpretations of commands concerning data selection. Each interpretation should detail specific criteria for filtering or evaluating the dataset based on the given commands.
+- Your responsibility is to describe how specific conditions affect data selection within a table using logical operations, ensuring that your descriptions are clear and concise.
+- The focus lies in breaking down complex logical operations into simple descriptions that explain how data points are selected or compared without technical jargon.
+- In this task, describe how specific filters modify datasets and what results these changes lead to, ensuring your explanations are accessible and clear to all readers.
+- Imagine you are explaining to someone how to find certain information in a table based on specific conditions. Your job is to clarify what each logical operation does in straightforward language.
+- Transform mathematical and logical filters applied to tabular data into simple English explanations that clarify what subsets of the data are being referenced and why.
+- This task requires you to interpret data manipulation commands logically, summarizing them into natural language that conveys their purpose and effect on the dataset.
+- In this task, you'll be provided with logical expressions designed to filter rows from a table. Your job is to articulate these commands as simple, coherent sentences.
+- Your role involves explaining logical analyses of table entries in natural language, providing clarity on how specific results or conditions are achieved through data manipulation.
+- Interpret complex filter and calculation requests related to tabular data, then translate those interpretations into common language expressions.
+- In this exercise, your goal is to make sense of complex logical instructions and present them as easy-to-understand statements about data selection.
+- This task requires a good understanding of logical operators and the ability to communicate their meaning clearly. You should express how rows in a dataset are being selected or assessed.
+- The task involves interpreting logical operations to filter and analyze data from a table. It requires understanding how to apply conditions and functions to extract meaningful insights.
+- Your role is to convey the actions performed by logical statements over table records through clear descriptions that illustrate selection criteria and resulting outcomes.
+- Summarize operational logic behind a set of queries related to data selection. Highlight the processes involved in determining which rows meet defined conditions.
+- The task involves interpreting logical commands to filter and analyze data from a table. Your goal is to translate these commands into understandable natural language statements.
+- The objective is to generate verbal explanations of logical conditions and operations applied to data rows, clarifying which subsets of information are being targeted.
+- Here, you're tasked with unpacking logical queries concerning a dataset. Understanding how filtering and summarizing work will help you describe each command's purpose succinctly.
+- The task at hand requires you to convert technical logical commands related to table data into straightforward language that conveys the underlying meaning of those commands.
+- Transform logical data processing commands into articulated explanations that clarify what specific data manipulations are intended.
+- Simplify complex logical operations into ordinary language, detailing how one would select or assess specific rows based on given attributes and their relationships.
+- This exercise challenges you to analyze logical operations on data tables and convey these computations as narrative descriptions, emphasizing what conditions or results arise from the given commands.
+- This task requires turning abstract logical commands into understandable phrases that explain how to filter or summarize information from a dataset.
+- You need to take logical queries and articulate what they mean in simple terms, focusing on the criteria for selecting specific rows from the data presented.
+- This involves explaining how various logical conditions affect the retrieval of information from rows in a structured format, providing clarity on your analysis process.
+- Your role is to interpret commands that dictate how to select rows from a table based on various conditions. Summarizing these conditions clearly will enhance understanding.
+- The goal of the task is to express logical filtering of data rows in clear terms. You'll articulate how certain conditions relate to extracting useful information from datasets.
+- In this task, your responsibility is to make sense of commands that involve filtering, counting, or evaluating rows within a dataset, then express those findings succinctly in words.
+- This task asks you to interpret logical functions concerning dataset operations and express them clearly, outlining which rows are included based on specific conditions.
+- Convert logical filtering commands into approachable explanations that describe which aspects of a dataset are evaluated and how they relate to each other.
+- The task is focused on translating commands related to data manipulation into clear descriptions, emphasizing the conditions and operations applied to data entries.
+- Your objective is to communicate clearly about processing commands that involve data extraction from tables, emphasizing the relationships between filtered rows and the desired outcomes.
+- In this task, you need to translate commands that manipulate data into easily understandable phrases, detailing what the commands aim to achieve regarding the table or dataset provided.
+- The primary challenge involves simplifying logical command outputs regarding data filtering and aggregating, presenting them in an easily digestible format for others to understand.
+- Explain what each command intends to do with table data by breaking down its components. Your explanations should reflect an accurate grasp of the command's operational purpose.
+- Your task is to translate complex logical queries related to a dataset into clear explanations. Knowing how different logical operations work together will help you frame your responses effectively.
+- Transform high-level logical filters into clear statements about what data should be retrieved from the table based on given parameters or attributes.
+- Here, you will interpret commands involving row manipulation in a table format to articulate what data selections and comparisons are being performed.
+- In this task, you'll describe what happens when commands interact with rows in a table. It's about clarifying how conditions affect the selected data's output or significance.
+- Engage with logical expressions related to dataset analysis, condensing these into meaningful narratives that reflect their intended operations on table rows.
+- You will summarize complex filtering processes into concise explanations that highlight key conditions being evaluated in relation to table entries.
+- In this task, focus on systematically breaking down complex logical queries about data and articulating them simply so that anyone can grasp their significance and implications.
+- The focus is on expressing complex filtering criteria and logical comparisons in simple language, allowing others to grasp the intended actions on the dataset easily.
+- The task is centered around synthesizing formal commands related to table data into coherent sentences, exploring ideas like equality, frequency, and maximum values.
+- The focus of the task is on summarizing complex operations that analyze table data. Your interpretations should clarify how different elements are related or compared.
+- The assignment requires you to elucidate the logical flows behind selecting rows in datasets through descriptive phrases that encapsulate the essence of the filters being applied.
+- Create clear summaries that explain how commands affect data retrieval from a dataset. Highlight important parameters and desired outcomes as per the logical structure given.
+- You will provide straightforward explanations for filtering and calculating data based on given commands, making sure to maintain accuracy while crafting simple narratives.
+- Translate intricate selection logic into straightforward descriptions by illustrating what conditions dictate which rows are retained or counted from the overall dataset.
+- Your role is to distill complex commands into clear descriptions that explain how data is being queried from a table, including what criteria are used for selection.
+- The combination of logical commands and tabular data presents an opportunity for clear interpretation. Your challenge lies in identifying the core insights these operations represent when conveyed as natural language.
+- The aim is to translate structured logical operations that deal with data tables into natural, readable sentences. You need to know how data conditions influence outputs based on these logical processes.
+- The task requires expressing data manipulation commands in a way that anyone can understand. You must break down the logic behind filtering and aggregating data into accessible language.
+- You'll be tasked with interpreting operations related to table row selection and summarizing these operations in terms that capture their broader significance or results.
+- Break down complex logical expressions into concise statements explaining the selection process from a table of data, focusing on clarity and comprehension.
+- The focus of this task is on understanding and communicating the essence of logical filters and calculations applied to data. Articulate these operations in an understandable way.
+- Your work involves translating logical operations used in data manipulation into readable English sentences. Understanding concepts like filtering and aggregation is key to achieving this.
+- You are required to convert structured logical expressions into natural language statements that explain what data should be retrieved from a given set of rows in a table.
+- You will explain actions derived from logical commands aimed at retrieving information from a dataset, clarifying relationships between different types of values and criteria applied.
+- You'll be tasked with translating structured logical expressions about data into coherent natural language meanings that accurately reflect their intended functionality.
+- You are tasked with converting data selection commands from logic form into descriptive language. Understanding row filtering and selection criteria is crucial for this.
+- Clarify the intent behind each command that operates on data tables by translating technical terminology into familiar concepts understandable to any reader.
+- The task involves understanding how to apply logical operations to tables in order to extract specific insights. By interpreting these operations in natural language, you communicate data characteristics effectively.
+- The objective is to generate human-readable expressions from logical instructions that dictate how to filter and assess data in a table, focusing on the relationships between different data elements.
+- Frame the logical processes governing data selection into clear statements that make it easy for others to grasp how rows are filtered and counted within tables.
+- Here, you are interpreting complex logical queries against tabular datasets into simpler expressions. A well-rounded knowledge of how filtering and aggregating works will facilitate accurate descriptions.
+- Your job is to analyze logical statements that filter rows from a dataset. Each statement needs to be described in plain language, capturing the intent and specifics of the operation.
+- In this exercise, you'll analyze commands that filter and process data from a table, then give clear, plain-language explanations of what those commands achieve.
+- The task involves interpreting commands based on logical operations applied to a dataset. Understanding the operations will help you describe the corresponding actions in everyday language.
+- Your task involves giving plain language interpretations for filtering commands applied to data tables, clarifying what information is extracted through each operation.
+- This task encompasses describing how logical operators interact with tabulated data, explaining terms like filtering, maximum values, and relationships between different records.
+- Present detailed descriptions of methods used for filtering and evaluating data, emphasizing the relationships among different attributes in a dataset.
+- In this task, you'll express commands that manipulate rows in a table in a narrative format, shedding light on aspects such as counts and comparisons between values.
+- This task emphasizes understanding logic filters applied to tabular information. Your ability to translate these into everyday language showcases your analytical skills regarding both logic and data structure.
+- Describe how different rows can be selected from a dataset using logical expressions. Your focus should be on expressing these technical operations in an easily digestible manner.
+- Interpret various logical operations involving data rows, translating them into concise descriptions that communicate the essence of each operation regarding the dataset.
+- Interpret commands involving data rows and bring them into plain language, making the logic behind table manipulations accessible to anyone.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task110_logic2text_sentence_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task110_logic2text_sentence_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

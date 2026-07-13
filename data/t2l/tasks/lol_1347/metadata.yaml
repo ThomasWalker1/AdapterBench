@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your task involves exploring the relationship between two statements, providing an assessment that reflects the extent of their semantic similarity.
+- Your task involves evaluating the similarity between two sentences and categorizing them based on how closely they relate to one another.
+- The objective is to classify sentence pairs based on their similarity. You will use a scale that helps clarify the relationship between the two statements provided.
+- You are being asked to analyze sentences for their semantic similarity, indicating whether they convey the same idea or differ significantly.
+- In this exercise, you will evaluate sentence pairs to see if they share information or differ significantly, then rate their similarity accordingly.
+- This exercise involves classifying sentence pairs according to their similarities or differences in meaning, requiring keen observation and understanding of subtle language cues.
+- Your role involves analyzing sentence pairs for their semantic relationships and scoring them accordingly, which requires comprehension of nuanced language differences.
+- In this task, your objective is to evaluate the semantic relationship between two sentences. Understanding context and meaning is essential for making accurate classifications.
+- Employ your analytical skills to decipher the meanings behind sentence pairs and assign them a rank indicating their degree of similarity.
+- Analyze sentence pairs to uncover how related they are by focusing on their main ideas and nuances, then provide a classification that reflects that relationship.
+- For each pair of sentences, discern their similarity level by considering whether they express the same concept or differ significantly in meaning and context.
+- Your challenge is to critically evaluate the content of two sentences and rank their similarity based on explicit categories, considering both overlaps and gaps.
+- Your job is to bridge understanding between sentence pairs through comparative analysis, discerning nuances, and accurately categorizing their similarity levels.
+- The task consists of scrutinizing pairs of statements and determining their equivalency based on explicit definitions of relationship categories.
+- The task requires you to analyze the similarity between two sentences and categorize them based on how closely they match in meaning.
+- You will explore the comparative nature of two sentences, classifying them according to how aligned or divergent their meanings are.
+- You will determine the degree of equivalence between sentence pairs, looking for similarities in subject matter, details, and overall meaning.
+- The activity involves scrutinizing two sentences for likeness in ideas or messages, followed by categorization using a defined numerical scale.
+- Evaluate two sentences for similarity and rank them from 0 to 5. This ranking requires critical thinking about their content and whether they convey the same message.
+- This task involves dissecting sentences for commonalities or discrepancies, rating them according to established criteria that gauge their similarity.
+- In this task, you'll be comparing sentences based on their meanings. You’ll classify their similarity level using a numerical framework from fully different to fully equivalent.
+- The task requires evaluating pairs of sentences for how closely they match. Determine if they differ significantly or if they are almost identical in meaning.
+- This task requires you to determine the similarities or differences between sentences, using logical reasoning to choose a relevant class based on specific criteria.
+- This task centers on recognizing degrees of similarity between sentences, which requires careful consideration of wording, implied meanings, and contextual elements.
+- Your role involves comparing the meanings of two sentences and assigning a classification based on how closely they align or diverge in meaning.
+- In this task, you will analyze the content of two sentences to see how closely they align in meaning and assign a score based on their similarity.
+- Assess pairs of sentences by dissecting their meanings and nuances to gauge how closely they align or diverge in content.
+- This activity centers around semantics—taking pairs of statements and classifying their relational meaning according to specific criteria of similarity.
+- Evaluate the relationships between sentence pairs by categorizing them on a scale from completely dissimilar to completely equivalent, requiring insight into linguistic meaning.
+- In this task, you need to analyze two sentences and categorize them according to how much they share in meaning or context.
+- Your job is to scrutinize two sentences and determine their level of equivalence based on shared content or differences, using a scale from completely dissimilar to identical.
+- The goal is to quantify the level of shared meaning between sentence pairs. This requires close reading and an understanding of language subtleties.
+- In this task, examine two sentences closely and judge how similar they are. Use a numerical system to express your evaluation based on shared information and context.
+- Compare the given sentence pairs to determine how closely they match, taking note of specific details that might differ or align.
+- You will analyze sentence pairs for their thematic content and classify them based on shared details or differing implications.
+- Analyze the content of two given statements to evaluate their similarity level, based on shared themes or ideas versus significant differences.
+- Analyze the relationship between sentence pairs, categorizing them according to how similar their meanings or concepts are. Use a structured classification approach to express this evaluation.
+- Your goal is to evaluate and classify how similar or different two sentences are in conveying meaning, translating those observations into a structured rating.
+- This task requires you to carefully evaluate the nuances of sentence meaning and categorize pairs into levels of similarity or dissimilarity based on specific criteria.
+- Analyze the provided sentence pairs to evaluate how similar they are. Classify the sentences using a numbered scale where 0 means they are not at all similar, and 5 indicates they are identical in meaning.
+- The job is to judge how closely related two given sentences are. You’ll use your comprehension skills to analyze both wording and meaning.
+- Your task is to evaluate the similarity between two sentences, using a standardized scale that measures how closely they relate to each other in meaning.
+- Use your understanding of language and context to adjudicate the similarities between pairs of sentences, providing a score that reflects their equivalence or variance.
+- This exercise involves evaluating the extent to which two sentences share meaning. You'll classify these pairs using a scale that reflects their similarities or differences.
+- This task focuses on understanding nuances in language by evaluating how similar two sentences are in terms of content and context.
+- Critically analyze the content of two sentences; your goal is to ascertain how closely related they are by using an established classification system.
+- The task requires thoughtful consideration of similarities in sentence pairs, leading you to classify them into distinct categories based on meaning alignment.
+- Analyze pairs of sentences and classify the degree of their similarity on a scale from 0 to 5, where 0 indicates complete dissimilarity and 5 indicates they are identical in meaning.
+- Your role is to determine the extent to which pairs of sentences convey aligned or divergent ideas, translating your judgment into a numerical rating system.
+- Your responsibility is to evaluate how similar two given sentences are by categorizing them into predefined classes based on shared content or meanings portrayed.
+- Analyze two provided sentences for their similarity and classify them accordingly. This involves critical thinking about the nuances in language and meaning.
+- You will examine pairs of sentences closely and decide on a numerical scale how alike or different their meanings are.
+- The objective is to compare two sentences and rate them on a scale from 0 to 5, based on how alike or different their meanings are.
+- Your objective is to explore the connections between two provided sentences by evaluating their nuances and deciding on an exact classification for their similarity level.
+- Engage in a task that involves examining two sentences for similarity. Your classification should reflect whether they convey equivalent meanings or differ in significant ways.
+- This task requires careful reading of two sentences to identify the degree of similarity in meaning, allowing you to classify them accordingly.
+- Your objective is to measure the closeness of meaning between two sentences, awarding points for how well they correspond to one another in terms of ideas presented.
+- This task focuses on linguistic analysis, where you need to gauge how related two sentences are based on their content and message.
+- This task requires you to examine sentence pairs for conceptual overlap or divergence. You will assess each pair's relationship through a scoring system from zero to five.
+- You will be tasked with comparing two statements objectively, determining their relationship’s nature through careful analysis of semantics and context.
+- The task involves assessing two sentences to determine how similar they are in meaning and categorizing the degree of similarity on a scale from 0 to 5.
+- This exercise involves interpreting two statements and deciding how similar they are by applying specified classification criteria.
+- Your task is to evaluate the relationships between pairs of sentences, determining their levels of similarity using specific descriptors.
+- Engage with two given sentences critically by assessing their level of similarity, outlining how closely they mirror each other's meanings through a scoring method.
+- Compare pairs of sentences to evaluate their level of similarity on a scale from 0-5. This will require careful consideration of language used and intended meaning.
+- The focus here is on analyzing two different sentences for their similarity, leading you to assign them a score reflecting that relationship.
+- Your evaluation should focus on how much the meanings of two given sentences overlap, resulting in a score that quantifies their relationships.
+- Your task is to scrutinize each pair of sentences for similarities, then rank them based on a predetermined set of criteria that measures equivalence in meaning.
+- The task involves taking two sentences and evaluating how much they align or contrast with one another, providing a numerical classification.
+- Review the content of two sentences and determine how they compare in meaning, then assign an appropriate classification based on your analysis.
+- Your goal is to assess how similar or different two given sentences are and to categorize them accordingly based on specific criteria.
+- Evaluate how alike two given sentences are by looking for similarities and differences. Assign a score from a scale that ranges from completely dissimilar to fully equivalent.
+- This task requires thoughtful analysis of two sentences to determine if they convey similar meanings or diverging ideas, culminating in a score that reflects their relationship.
+- This task requires you to interpret the meaning of both sentences and evaluate their similarity, then classify that similarity on a scale from 0 to 5.
+- You will assess pairs of sentences, categorizing them into a scale from dissimilar to equivalent. This requires critical thinking and an eye for detail about the information presented.
+- Analyze the provided sentences side by side and categorize them according to how much they convey similar meanings. This involves discernment of subtle distinctions in phrasing.
+- In this task, you will carefully assess the relationship between two sentences based on how much they align in meaning and categorize them via a numerical system.
+- This task involves comparing two sentences to identify the extent of their equivalence and placing them into specific similarity classifications.
+- In this job, you'll compare two statements to see any overlap or discrepancies in their meanings, rating them from dissimilar to identical.
+- In this exercise, you’ll provide insights into the relationship between sentences, indicating how closely they relate to each other through a numerical classification system.
+- Analyze two sentences, focusing on their meanings and implications, then assign a level of similarity that best represents their comparative correspondence.
+- Assess two sentences for similarity by analyzing key elements such as topic and detail sharing. Use a scoring system to capture the essence of their relationship.
+- You're tasked with rating sentence pairs based on their similarities or differences, requiring an understanding of language subtleties and context clues.
+- This involves scrutinizing sentence pairs for their semantic alignment and determining a numerical value that indicates how much they correspond to one another.
+- Assess how alike or different two sentences are by identifying key details and themes, then assign a corresponding score based on your analysis.
+- In this task, you will evaluate the likeness of two sentences and categorize them based on how much they convey the same information.
+- You will classify two sentences on a scale of 0 to 5 by evaluating how alike or different they are in conveying similar ideas or themes.
+- This evaluation involves classifying the degree of resemblance between sentence pairs, providing insight into their content-related closeness or distance.
+- Determine the relational similarities between sentence pairs through careful examination and categorization based on how aligned or divergent their meanings might be.
+- Classify the similarities between two sentences by examining their semantics, categorizing them from completely different to fully equivalent.
+- You're tasked with judging the relationship between two statements, assessing how alike or different they are, and selecting a classification that accurately represents that relationship.
+- The goal is to appraise pairs of sentences for their degree of correspondence in meaning, using a defined scale for your assessment.
+- Assess the similarities between two sentences and score them on a scale from 0 to 5, where each number indicates a different degree of equivalence.
+- The exercise involves judging the likeness of two sentences by assigning them a numeric score that indicates their level of equivalence or divergence from one another.
+- Your task is to compare two sentences and determine how similar they are based on their meaning and details.
+- Here, you’ll focus on comparing and contrasting the meanings of multiple sentences, forming conclusions about their relationships through systematic classification.
+- You need to evaluate how alike or unlike two sentences are by examining the contexts they convey and determining an appropriate rating for their similarity.
+- Examine each pair of sentences closely and categorize them on a scale reflecting their degree of equivalence, considering any specific details or nuances.
+- The objective is to compare two given sentences and classify their similarity level on a scale that ranges from completely dissimilar to fully equivalent.
+- This activity involves determining the connection between pairs of sentences, assigning a score that accurately represents how much they coincide in idea or detail.
+- You need to evaluate how closely two provided sentences relate to each other and assign a score that reflects their similarity.
+- You need to analyze pairs of sentences, recognizing whether they share substantial meaning or if they diverge significantly in context.
+- The task centers around discerning the level of similarity between two phrases, focusing on both substantial agreements and slight variations in meaning.
+- In this task, your ability to analyze language will be put to the test as you evaluate how closely aligned two sentences are in conveying similar ideas or concepts.
+- This task requires you to assess the relation between pairs of sentences, judging their equivalence or difference using a numerical scale.
+- The objective is to compare given sentences and determine how alike they are, focusing on key details and meanings to arrive at an appropriate classification.
+- Examine each pair of sentences to see how related they are, determining a classification based on their degrees of equivalency and relevance.
+- Your task is to dissect each case of two sentences, applying your understanding to rate them based on shared meaning or context relevance.
+- You will examine pairs of sentences, noting anyone's nuance in meaning, and then assign a similarity score that reflects their relationship.
+- The aim is to understand the extent of equivalency between pairs of sentences, identifying key phrases that lead to similarities or differences.
+- The objective is to evaluate two expressions for their degree of similarity and classify them, indicating whether they have minor or major differences.
+- You will assess how much the two given sentences align in essence, applying a scoring guide that measures their similarity in meaning.
+- Your responsibility is to assess how similar two phrases are, analyzing their nuances and categorizing them based on their equivalence.
+- Your job is to read and critically analyze pairs of sentences, discerning differences and similarities, and then classifying them within a specified range of categories.
+- You will be tasked with dissecting sentences for their meanings, categorizing them by how similar or different they are within specified parameters.
+- Tasked with evaluating similar messages, you will establish a classification for sentence pairs that reflect how closely they match each other in terms of meaning.
+- Your task is to assess the similarity between two sentences and categorize them on a scale from 0 to 5 based on how closely they relate in meaning.
+- This task challenges you to closely examine two sentences and decide their degree of similarity or difference by applying careful reasoning about their conveyed messages.
+- The challenge is to assess side-by-side statements for how similarly they reflect ideas or concepts, using a set scale to categorize them accordingly.
+- This task involves comparing two given sentences to determine how closely related they are. You will categorize their similarity according to specified criteria.
+- Your responsibility is to interpret and compare sentence pairs, evaluating them for similarities or differences and coding them according to specific criteria.
+- You will engage in a comparative analysis of multiple sentence pairs, determining how well they correspond within the framework of defined similarity levels.
+- You will read two statements and classify their level of similarity, ranging from completely different to entirely the same.
+- You will classify pairs of sentences by assessing their similarity. Attention to detail and understanding of language semantics are crucial for this evaluation.
+- Engage in a comparison of sentence pairs to determine their level of relatedness, translating that evaluation into a numerical rating system.
+- Examine sentence relationships closely to deliver a score reflecting how similarly or dissimilarly the ideas presented in them connect.
+- The aim is to assess the likeness of two statements by examining how much information they share or differ in context and significance.
+- This task challenges you to evaluate the congruence between two phrases or statements, providing insight into how they express similar or distinct ideas.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1347_glue_sts-b_similarity_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1347_glue_sts-b_similarity_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

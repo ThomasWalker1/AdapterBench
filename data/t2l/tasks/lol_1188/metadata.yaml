@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You will be determining the most frequent character in a provided string. If multiple characters share that frequency, select based on which of those has the lowest ASCII value.
+- Your role here involves discovering predominant characters in strings based on their occurrence counts. When faced with frequency ties, let ASCII ranks guide your final selection.
+- This task requires you to evaluate character frequencies within a string. The focus will be on identifying the most frequently occurring character, using ASCII values as a deciding factor in case of ties.
+- In this activity, your responsibility is to figure out which character shows up most in various strings. You’ll have to keep an eye out for ties and use their ASCII values for distinction if needed.
+- You will assess character frequency in a provided input string, aiming to find and select the most frequent one while considering ties through their ASCII values.
+- You need to find the character in a provided string that has the highest occurrence. Ensure you consider ties carefully by checking their ASCII values.
+- You are tasked with scanning a string for characters that repeat. Identify the character that occurs with the greatest frequency, considering ASCII values to break any ties.
+- In this task, you will look at a given string and figure out which character appears most often. If two or more characters have the same occurrence, select the one that is lower in ASCII order.
+- Your job is to sort through a string and return its most frequently occurring character. In the event of equal frequencies, select the character that has the least ASCII value.
+- Your work involves processing strings with duplicate letters to find out which letter occurs with maximum frequency, while also observing rules for tiebreakers based on their ASCII values.
+- You will work with strings containing repeated characters, aiming to extract the one that shows up most frequently. Ties in frequency must be resolved using their corresponding ASCII values.
+- Delve into strings filled with repeating letters and discover which letter wins out in terms of popularity through frequency. For any draw between candidates, lean on their ASCII values for resolution.
+- This activity requires you to examine how many times each character appears in a string. Your focus will be on finding the character that dominates in frequency; ties should be broken by ASCII values.
+- Given a sequence of characters, determine which character occurs the most times while considering ASCII values in case of ties.
+- Your main goal is to evaluate a given string and report back on which character has the highest occurrence rate. If no clear winner exists due to ties, opt for the one with the smaller ASCII value.
+- Identify and return the character that shows up most frequently in a string while noting any ties based on ASCII criteria.
+- Analyze the string provided and determine which character appears the most. If two characters share the highest frequency, select the one with the smallest ASCII value.
+- Look through the given string for characters that appear more than once, and select the one with the highest frequency. If tied, resolve it by comparing their ASCII values.
+- Your job is to sift through a string of characters and identify the one that shows up most frequently. If there is a draw in frequency, go for the character that has the least ASCII value.
+- Delve into an input string that contains various letters and pinpoint the one that shows up most frequently while managing tie situations with ASCII ordering.
+- Find the highest-frequency character in a given sequence of letters or symbols, ensuring you understand how to manage situations where more than one character might dominate.
+- Determine which characters in strings repeat most often and make selections based on frequency first; if there's a tie, your fallback should be their ASCII values.
+- You need to identify the character that shows up the most times in a given string, paying attention to any ties in frequency.
+- Analyze a string with repeating characters and find out which character shows up the most. If characters are tied in frequency, select the one that is least in ASCII value.
+- Given a string that includes duplicate letters, your job is to pinpoint the letter that shows up the most often. If there's a tie, choose the character that has the lowest ASCII value.
+- You are challenged to sift through strings to figure out their most common characters and handle any potential ties by looking at their corresponding ASCII values for resolution.
+- Your task is to analyze a string of characters and identify which character appears most frequently within it.
+- Examine the given string and pinpoint the character that shows up most often. If two characters have the same count, select the one that has a lower ASCII value.
+- The objective here is to search through a string for its most frequent character and apply ASCII ordering when multiple characters share the highest frequency.
+- Your goal is to determine which letter or symbol appears most frequently within a string. In cases where frequencies are equal, preference should go to the character with the least ASCII value.
+- You must find and report back on the character repeated most frequently within a provided string of text. Keep an eye out for ties and apply ASCII value sorting to resolve them.
+- You are tasked with counting character occurrences in strings and selecting the one that appears the most, keeping in mind how their ASCII values affect ties.
+- You will review a string full of characters, finding out which character has the greatest frequency. Remember to consider ASCII values if there's competition for frequency.
+- In this exercise, examine a string for repeated characters and return the one that shows up the most. Pay attention to any equal counts in your decision-making process.
+- This task involves reviewing a string to ascertain which character is included most frequently. Ties should be settled by comparing ASCII values, with preference given to characters with lower values.
+- Your task is to analyze a string and find the character that appears most frequently within it.
+- Your focus here is on identifying the dominant character in terms of frequency from an array of letters presented in the input string.
+- In this task, investigate a given string for its characters' occurrences and highlight the one that stands out as most frequent while applying rules for ties.
+- This task is about recognizing patterns in character frequencies within a given string. Aim to highlight the character that shows up most often and apply tie-breaking rules based on ASCII values.
+- Your aim is to determine the highest recurring character within provided strings, taking care to resolve any ties according to their ASCII values.
+- Your task is to analyze a string and identify the character that appears most frequently within it.
+- You need to analyze a given string to identify which character appears most frequently. If there's a tie, choose the one with the lowest ASCII value.
+- You are tasked with finding out which character appears most frequently in a provided string of characters, using a specific rule for tie cases.
+- You will analyze a group of characters in a string to discover which character dominates in frequency.
+- You are tasked with finding a character in a string that repeats the most. Pay attention to ties, as you should choose the character that has a lower ASCII value.
+- Analyze each string for repetition of characters and return those which dominate in count, prioritizing any tie situations using smaller ASCII numbers as determining factors.
+- You will analyze a string for duplicate characters and identify which one occurs most frequently. Handle any tie situations by comparing their ASCII codes.
+- This task requires you to sift through a set of characters in a string and find out which character shows up more times than any other.
+- Get ready to scrutinize strings for their most frequently appearing characters, making careful considerations for any instances of tied frequencies based on ASCII value.
+- In this exercise, you'll extract and evaluate characters from a string. The focus should be on determining the character with the highest occurrence rate, taking care to account for ties by selecting the character with the smallest ASCII value.
+- Review a given string to locate the character that appears most frequently. If two characters share the same highest frequency, choose the one with the smallest ASCII representation.
+- Your objective is to process a string and find the character that has the highest occurrence. When there's a tie, prioritize the character with the smallest ASCII representation.
+- Identify from a given string which character dominates in frequency. If there's more than one contender at that frequency level, choose based on lower ASCII values.
+- The goal is to extract from a string the character which appears the most times, being mindful that ties are resolved by ASCII value preference.
+- Analyze the input string for repeating characters and decide on which character wins for being most frequent—while considering ASCII values for ties.
+- Using your skills with strings, figure out what character repeats itself the most within the provided input, adhering to established tie-breaking guidelines related to their ASCII representations.
+- You need to navigate a string to find out which character appears most frequently and decide on ties by considering their ASCII values.
+- The objective is to evaluate the string and find out which character is repeated the most. If there's more than one candidate for highest repetition, select by their ASCII value.
+- From the given strings, find and return the character that appears most frequently. Be careful to handle ties by selecting based on ASCII values.
+- The task requires you to investigate a string and find out which character shows up more than any other. When faced with ties, select based on ASCII priority.
+- Review each character in the provided string and determine which one occurs with the greatest frequency. Handle ties using ASCII comparisons.
+- Analyze repeating characters in strings to uncover which one appears most frequently. Should multiple characters share this distinction, select by comparing their ASCII values.
+- You will examine a given string to find out which character appears the most and break ties by selecting the character with the lowest ASCII value.
+- This task involves examining a string for repeated characters and determining which one has the highest count.
+- Clarify which characters in a provided string have maximum repetitions. When faced with equal repetitions from multiple options, choose based on their respective ASCII values.
+- In this task, you need to examine a given string of characters and determine which character occurs the most often. Pay special attention to ties in frequency and choose based on ASCII values.
+- This task challenges you to find the prevalent character within a string, applying specific rules for handling cases where multiple characters have similar frequencies.
+- Your responsibility is to assess strings for their commonly recurring characters while observing ties carefully and delegating decisions based on ASCII precedence.
+- The goal of this task is to identify the character that occurs most commonly within a given string while resolving any frequency ties according to their ASCII value preference.
+- This task asks you to extract information from a string by finding out which character occurs most frequently. In case of an equality in occurrence counts, prioritize the character with a lower ASCII value.
+- This task centers around counting characters in a given string to find out which appears most often. In tied situations, utilize ASCII value comparisons for your final selection.
+- The task involves determining the character that occurs most often in a provided string. In cases where two characters have the same frequency, prefer the one with a smaller ASCII value.
+- The objective of this task is to process a string containing repeated characters and determine which character has the highest count. If there's a tie, you'll need to pick the character with the smallest ASCII number.
+- In this exercise, you will assess a string and identify which character repeats most often. When there’s a tie for maximum frequency, choose based on ASCII values.
+- The focus of your task is identifying the character that occurs with maximum regularity within a string of characters. If there’s a tie, you should return the character with the lowest ASCII representation.
+- Your role is to examine a sequence of characters in a string and find out which one shows up most frequently, following specific tie-breaking rules based on ASCII.
+- The assignment involves analyzing strings for their characters’ frequencies and resolving any ties according to their ASCII ranking to find your resulting character.
+- Examine a set of characters for their frequencies and return the most prevalent one, ensuring to settle any ties through ASCII order considerations.
+- The goal is to assess a string for character frequency and pinpoint the one that occurs the most often, prioritizing less common characters if their frequencies are equal.
+- This task requires you to examine a string for duplicate characters and find the one with the highest occurrence. Pay attention to ties and select based on ASCII ranking.
+- You need to evaluate or analyze a provided string for its repeating characters and determine which character occurs the most frequently.
+- In this task, focus on a string to identify which character stands out with high frequency. In case of equal counts among characters, use ASCII values for selection.
+- Look over the provided string and determine the character that occurs most frequently. If there's a tie, choose the one with the smallest ASCII value.
+- Your task involves identifying the character in a string that occurs with the highest frequency. If there's a tie, you need to select based on which has the smaller ASCII value.
+- Analyze a sequence of characters to identify which appears most frequently. If there’s a tie, choose based on which has a lower ASCII value.
+- You will be evaluating a string to pinpoint the character that repeats the most. In cases where characters have equal frequency, choose the one with the lowest ASCII value.
+- This challenge requires you to sift through a series of characters in a string and figure out which one appears most—remember to consider ASCII values for ties.
+- The challenge involves determining the character in a provided string that occurs most frequently. Be mindful of cases where multiple characters tie and select based on their ASCII values.
+- You need to discern the character that features most prominently in terms of frequency from certain strings. In ties, prefer characters with lower ASCII values.
+- This exercise entails deciphering strings for repetitively appearing characters. If character counts are equal, rules dictate picking based on minimal ASCII allocations.
+- In this task, you are required to evaluate the occurrence of characters in a string and return the one with the maximum count or the smallest ASCII value in case of equals.
+- Your challenge is to assess characters in a string and spot the one that comes up with utmost regularity. Should ties occur, prioritize according to their respective ASCII codes.
+- Examine the given string and determine which character occurs the most often. Focus on frequency and tie-breaking using ASCII values.
+- This task involves understanding patterns in strings of characters, especially focusing on their frequencies. The key is identifying which repeat more often than others.
+- Analyze various strings to find out which character stands out by frequency. Should there be characters tying for that distinction, you must determine which lesser-valued ASCII character to choose instead.
+- Engage in this task by investigating strings of text, identifying the highest-frequency characters, and using ASCII values as tiebreakers when necessary for final decisions.
+- For the provided strings, find the character that repeats the most. In situations where multiple characters share the highest frequency, choose the one with the smallest ASCII code.
+- Your objective is to sift through a collection of characters in a string and establish which one appears most frequently. Ties should be resolved by considering ASCII values.
+- Engage in identifying high-frequency characters in strings and utilize tie-breaking principles based on their ASCII representations where necessary.
+- Your challenge is to explore a series of characters and determine which appears most often, favoring those with lower ASCII values in case of a tie.
+- The goal is to analyze character occurrences within a string, pinpointing the one that occurs most frequently and resolving equally frequent candidates by looking at their ASCII values.
+- This task involves searching through a string for the character that has the highest frequency, resolving ties based on ASCII value.
+- This task involves analyzing a string to identify which character appears the most frequently. You must also consider the ASCII values when there are ties.
+- Examine the given string and retrieve the character that has the highest occurrence rate. If there’s competition for that top frequency, select based on ASCII values.
+- Your task is to sift through a string and pinpoint the character that has the highest count. In instances of tie counts, fallback on determining which has the lower ASCII value.
+- Your goal is to evaluate a string and pick out the character that has the highest frequency. If there’s a tie, give preference to the character with the least ASCII value.
+- Your task is to analyze a given string and identify which character appears most frequently. In case multiple characters have the same frequency, select the one that has the lowest ASCII value.
+- Your objective is to identify from each input string the character with the greatest occurrence frequency and establish preference based on ASCII value during ties.
+- This task requires you to interact with strings containing recurring characters and determine frequencies in order to decide which character prevails overall, keeping ties resolved by examining their ASCII values.
+- Your task is to analyze a string of characters to find out which character appears the most frequently.
+- Your challenge is to sift through a string of characters and track which one has the highest occurrence. If two characters tie, select the one that is lowest in ASCII order.
+- The focus of this task is to assess a string for character frequency and select the most frequently occurring character.
+- This task requires you to analyze strings for character frequency and determine which character appears the most. In situations where multiple characters have equal counts, choose based on ASCII value precedence.
+- The task involves analyzing a string to identify which character appears most frequently. If multiple characters have the same frequency, the one with the lowest ASCII value should be selected.
+- Through this task, identify the character with the highest occurrence in a string of letters while considering lower ASCII values during tie situations.
+- You need to scrutinize a sequence of characters in an input string and find out which one is repeated more than others. Use ASCII values as tie-breakers if needed.
+- Your mission is to find and return the character in a provided string that occurs most frequently; be mindful of resolving any ties by selecting based on ASCII order.
+- You’ll need to discern which character is prominent in terms of frequency from a provided string. Should there be ties, your choice should lean towards the one with a lesser ASCII value.
+- Determine the character with the highest occurrence in a given string. If there's a tie in frequency, the character with the lowest ASCII value should be selected.
+- This task asks you to sift through a collection of characters from a string and identify the one with the maximum count among them.
+- Your goal is to discover which character occurs with maximum frequency in a given input string and resolve any ties by ASCII comparison.
+- The aim is to find out which character appears more than others in a provided string, taking care of ties through ASCII comparison.
+- You will analyze a string to find its most common character. If more than one character qualifies, choose based on their ASCII values, opting for the smallest.
+- Your responsibility is to look through a string for duplicates and determine which character appears most often, applying rules for ties based on their ASCII values.
+- The task at hand requires you to inspect a string for repeated characters and find out which one occurs most frequently, opting for the one with the smallest ASCII value in tie situations.
+- Analyze the character occurrences in a string and return the one with the highest count, using ASCII values to break ties when necessary.
+- Process a string to find its most frequently occurring character, ensuring you resolve any frequency ties using ASCII comparison as your guide.
+- Your task is to identify the most frequently occurring character in a given string, prioritizing characters with lower ASCII values in the case of ties.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1188_count_max_freq_char
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1188_count_max_freq_char
+user_prompt_template: '{task_def}
+
+
+  {problem}'

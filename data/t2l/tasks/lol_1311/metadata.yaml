@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The goal is to discern whether the positive or negative tone of an Amazon review corresponds accurately with the rating given by the reviewer on a scale from 1 to 5.
+- Assessing Amazon product ratings in relation to written user experiences requires identifying emotions conveyed in text and examining their alignment with numerical scores.
+- You will be evaluating discrepancies between product ratings and customer reviews. Understanding nuances in language that convey positive or negative experiences is key to success.
+- Your task is to evaluate an Amazon review in relation to a given rating. Analyze whether the rating accurately reflects the sentiment expressed in the review.
+- This task requires you to assess the match between ratings and product reviews on Amazon, focusing on whether a positive or negative sentiment corresponds with assigned scores.
+- You will be tasked with reading user reviews on products and analyzing if their provided ratings correspond well with their expressed feelings towards those products.
+- Analyze customer reviews from Amazon along with their ratings to evaluate if they reflect one another, which requires understanding diverse opinions and expressions.
+- In this task, you will analyze customer reviews and their ratings to see if they correspond with one another, requiring careful reading and comprehension skills.
+- Your task involves judging if a product's Amazon rating reflects the opinion expressed in a verbal review. Pay attention to both positive and negative cues.
+- Determine if customer experiences as detailed in reviews align well with their ratings, examining both positive and negative elements for consistency.
+- As part of this task, you will look at individual product reviews and their assigned ratings, providing insights on whether they are compatible or not.
+- Your job is to assess whether a given star rating matches the impression conveyed in an Amazon review. This requires interpreting subjective opinions and ratings on a scale from poor to excellent.
+- In this task, your focus will be on merging qualitative insights from reviews with quantitative scores to see how well they synchronize.
+- You must assess how effectively or ineffectively a rating reflects a user's experience as conveyed through their written review.
+- You'll analyze customer feedback for various products and evaluate if the ratings accurately portray the reviewers' thoughts on those products.
+- This task challenges you to scrutinize how well an Amazon review correlates with its numerical rating based on expressions of satisfaction or criticism.
+- Read through reviews and their ratings critically; your objective is to find out if they provide a coherent picture of customer satisfaction or dissatisfaction.
+- You will read a customer review along with a numerical rating and decide if they correspond appropriately. The task involves recognizing language that indicates satisfaction or dissatisfaction.
+- Your role is to determine whether a numerical rating accurately represents the sentiments conveyed in an associated review about a product.
+- Consider user feedback and its respective score to see if they are aligned. You need to evaluate whether sentiments about performance are reflected in the assigned rating.
+- Evaluate how well each rating matches its corresponding Amazon review by identifying key phrases that indicate satisfaction or dissatisfaction.
+- The task is to evaluate if a score from 1 to 5 for a product matches what customers have expressed in their reviews, analyzing language and sentiment.
+- Analyze the provided Amazon review alongside its rating, and decide if the two are consistent. This requires careful consideration of the tone and content of the review.
+- Your task is to see if customer reviews reflect their assigned ratings sensibly. Discerning positive feedback from negative comments will help you probe such alignment.
+- Analyze product reviews for indicators of satisfaction or disappointment, then see if these sentiments are accurately represented by the given ratings.
+- Explore customer sentiments within Amazon reviews while considering assigned ratings; your goal is to confirm or question their validity based on expressed feelings.
+- The task requires you to discern whether a product review aligns with its numeric rating by closely examining both elements for consistency.
+- The task revolves around matching customer sentiments articulated in reviews with their respective ratings on a standard scale indicating various levels of satisfaction.
+- Read a product review and its corresponding rating, then determine if the rating aligns with the tone and feedback expressed in the review.
+- This task involves reading reviews of products and judging whether the star rating corresponds correctly to the review’s commentary on quality and experience.
+- Examine how well a star rating signals a reviewer’s feelings about a product by comparing it to their descriptive feedback.
+- Review the text provided and its score to figure out if they match. Pay attention to positive or negative feedback in the review when making your decision.
+- Your objective is to read the provided reviews for various products and compare them against numerical ratings to identify any inconsistencies in customer opinion and evaluation.
+- For this task, read both an Amazon product review and its score, then determine if they match well based on how positive or negative the review is.
+- Your focus should be to connect reviewers' written assessments with their assigned ratings, ensuring both reflect similar levels of approval or disapproval.
+- The goal is to read reviews critically and decide if the assigned ratings truly reflect the experiences shared by customers about the products.
+- Investigate whether a provided numerical rating makes sense in relation to the sentiments expressed within a corresponding product review.
+- Examine customer reviews and their numerical ratings to verify if the rating is justified based on what is said in the review about the product's performance.
+- This task allows you to delve into customer insights regarding products and see how well those insights are captured by numerical ratings provided by those customers.
+- Analyze provided Amazon reviews against a numerical rating system. Determine if the rating reflects the quality of the review based on language and sentiment.
+- Your responsibility is to critically evaluate Amazon reviews alongside ratings to determine whether there is consistency in customer satisfaction levels as portrayed by each.
+- Determine whether each product's star rating corresponds appropriately to what customers are expressing in their written reviews about that product’s quality.
+- Read each product review against its given rating and use your judgment to determine if they convey a uniform experience from the user's perspective.
+- Evaluate Amazon reviews alongside their ratings, spotting any discrepancies between how reviewers felt about a product and what they rated it.
+- Analyze each customer's written feedback and subsequent star rating to see if they represent matching perspectives on the quality of the product received.
+- You are tasked with evaluating the suitability of a product rating based on customer feedback. This involves understanding the sentiment of the review and comparing it to the assigned rating.
+- Your role is to compare consumer reviews with their respective ratings and identify mismatches. A keen understanding of language and consumer sentiment is essential for this task.
+- Evaluate Amazon reviews and their corresponding ratings. You need to judge whether the rating is suitable based on what the review conveys about the product.
+- Review both textual critiques from customers and numerical evaluations to discern if there is an appropriate relationship between feedback and ratings assigned.
+- Review a series of customer impressions about products along with their attached ratings, deciding how faithfully those ratings represent the expressed sentiments in each review.
+- You are tasked with evaluating whether specific ratings align with the overall sentiment expressed in each accompanying review from an Amazon customer.
+- Your task involves interpreting customer reviews and ratings, checking for harmony between the two in terms of satisfaction and dissatisfaction.
+- Interpret consumer reviews alongside their numerical ratings to conclude whether they correspond correctly, reflecting either satisfaction or dissatisfaction with products.
+- You will be analyzing product feedback from customers and assessing whether the given rating aligns with the content of the review, indicating satisfaction or dissatisfaction.
+- Analyze customer reviews in relation to their assigned ratings, deciding if they appropriately match based on feelings conveyed in the text regarding product satisfaction or dissatisfaction.
+- In this evaluation task, closely read reviews and check their respective ratings, confirming if there’s coherence between what reviewers share and how they rate products.
+- Assess whether a product's rating matches the sentiments expressed in its review. This requires an understanding of how wording can reflect satisfaction levels.
+- For this task, you must correlate reviews with given product ratings, focusing on whether customers' experiences substantiate the scores awarded.
+- Assess each Amazon product review and its corresponding rating. Determine if the rating matches the overall impression from the review.
+- Examine reports of product performance in reviews rated on a scale of one to five, identifying if each score truly reflects consumer satisfaction as narrated in their comments.
+- Your role is to scrutinize Amazon product reviews and decide if the ratings are representative of the experiences outlined in those reviews.
+- Examine Amazon reviews paired with ratings to determine consistency. The focus is on understanding whether the praise or criticism matches the number given.
+- Assess whether the tone of a customer’s feedback matches their given score, noting any discrepancies between their words and numbered evaluation.
+- Evaluate whether the sentiment expressed in customer reviews is consistent with the numerical rating assigned, focusing on experiences shared by the reviewers.
+- This task requires critical thinking as you relate sentiment in the reviews to assessed ratings, looking for discrepancies between expectations and experiences.
+- You will judge the relationship between customer reviews and ratings for different products, ensuring that they reflect similar attitudes toward quality and performance.
+- Interpret Amazon product reviews alongside their ratings, devising conclusions about how well they reflect each other based on consumer expressions.
+- Interpret user reviews alongside their product ratings, determining if they accurately reflect each other. Skills in reading comprehension and sentiment analysis are vital here.
+- Your focus is on verifying the relationship between user feedback and ratings, ensuring that lower ratings correspond to negative experiences highlighted in reviews.
+- This task requires you to determine if a product's rating on Amazon corresponds well with the review written by the buyer, reflecting their true experience.
+- Examine Amazon reviews closely and assess whether their corresponding ratings are appropriate based on the tone and content of the text.
+- Analyze how well numerical ratings correspond to user sentiments expressed in reviews, ensuring that good experiences lead to higher ratings and vice versa.
+- Examine the textual comments made by customers alongside their provided scores to ascertain if there's harmony between what they say and how satisfied they felt.
+- Evaluate customer feedback from Amazon to see if the rating corresponds accurately with the review content. You're required to interpret clues from the text to make your determination.
+- Read each Amazon review with its accompanying score and determine if there is coherence between them. Identify how well the review captures the essence of the rating.
+- Delve into product reviews provided by users and check if they correlate with associated numerical scores, evaluating how well feedback mirrors user's perceptions of worthiness.
+- Your role is to critically analyze product reviews alongside their ratings, interpreting customer satisfaction levels based on what’s been written.
+- Examine a piece of feedback from a customer along with its evaluation; your job is to confirm whether the rating fits the expressed satisfaction level.
+- You will analyze customer feedback and provided ratings, looking for harmony between them based on satisfaction levels indicated in text form.
+- Your job is to compare a customer’s written feedback on a product to its assigned score, determining if they match based on the review's overall sentiment.
+- Your task involves evaluating a product review and determining if the associated rating accurately reflects the sentiment expressed in the review.
+- For each product review and its rating, your job is to assess if they are consistent. Consider the overall tone of the review and see if it fits with the rating scale.
+- Analyze each review and its assigned numerical value to ascertain if they are consistent with one another, employing your understanding of customer feedback dynamics.
+- Examine customer reviews critically against given ratings, focusing on whether reviewers' sentiments are reflected appropriately in the score they assigned.
+- You will be given product reviews and ratings; evaluate if the rating is suitable based on the reviewer’s comments regarding their experience.
+- This task involves assessing if customers’ written impressions about products match their rating scores, indicating either positive or negative experiences effectively.
+- You are responsible for making sure that an Amazon rating aligns well with its review by determining if the sentiment expressed is represented adequately by that rating.
+- Your task is to assess an Amazon product review and determine if the associated rating accurately reflects the sentiments expressed in the review.
+- Your job is to evaluate a review by a customer about a product and a numerical rating they provided to see if they align in sentiment and meaning.
+- For a set of reviews and ratings, decide if there is a match between them. Focus on interpreting user sentiments correctly to arrive at your conclusion.
+- Your job is to read a product review and consider its rating to see if they are in agreement. Look for cues in the language used that indicate positive or negative feelings.
+- Your objective is to verify the relationship between a customer’s review and the rating they provided, considering aspects like the quality and experience described.
+- Read through customer reviews and associated ratings from Amazon. Your goal is to decide if the rating represents what is conveyed in the review.
+- Your task is to evaluate the relationship between a customer’s review and the star rating they assigned, figuring out if they match in sentiment.
+- You need to assess if the star rating given to a product resonates with the feedback shared in the customer review, indicating satisfaction or dissatisfaction.
+- Given an Amazon review and its rating, determine if there is consistency between them. This requires critical thinking about how ratings correspond to customer experiences.
+- This task involves determining if a product’s star rating is justified by its review. You need to pay close attention to emotions expressed in the review and match them with the assigned score.
+- You will compare short reviews of products with their corresponding ratings. Your goal is to confirm whether the expressed opinion matches the numerical evaluation.
+- In this assignment, you'll examine a customer's remarks on a product alongside their rating, checking for consistency between their experiences and numerical score.
+- In each case, you will read a product review and its rating. Your job is to determine if the review supports the given rating in terms of product satisfaction.
+- Analyze feedback from customers and see if it accurately corresponds to the ratings given for products, providing insights into overall satisfaction outcomes.
+- Analyze each product review carefully and check if it aligns with its assigned score based on common sentiments. Validate if the rating truly reflects users’ experiences.
+- Assess whether the customer's rating for a product reflects their written opinion in the review. This task hinges on your ability to decipher meaning and sentiment in feedback.
+- This task involves scrutinizing an Amazon review and its star rating to confirm if they convey compatible messages regarding product satisfaction.
+- Your task involves comparing a customer’s words in their review about a product with a numerical rating, ensuring consistency in representation of their experience.
+- The task involves checking a customer review against a numerical rating. Your goal is to see if the rating aligns with what the review describes about the product.
+- Assess customer feedback alongside their ratings, matching feelings conveyed in reviews to numerical values assigned by customers based on their satisfaction levels.
+- The goal is to assess written customer reviews against their assigned ratings and conclude whether they correctly reflect the customers' overall experiences with those products.
+- Your task is to evaluate a product review and determine if the associated rating accurately reflects the sentiment expressed in the review.
+- Determine if a given rating accurately matches the sentiments expressed within an Amazon review by critically examining user feedback about their experiences with products.
+- The task involves analyzing customer reviews and their respective ratings for products, determining if the rating accurately reflects the sentiment of the review.
+- You are given a product review that expresses user opinions and a numerical rating reflecting their assessment. Your role is to see if they match in sentiment and perception.
+- The task is to gauge whether a submitted product rating is appropriate by assessing it against the content of an associated customer review.
+- Determine whether the provided rating accurately represents the feelings described in a product review. Look for contradictions between the review and its score.
+- Review customer feedback on various products alongside their ratings and decide whether there’s a congruence between what is said and the score given.
+- The focus is to match customer ratings with their reviews by analyzing the expressed satisfaction level in each written assessment.
+- Read through a series of reviews and their ratings, then determine if there’s a match between what’s stated in the review and the given star score.
+- Your assignment requires you to draw connections or detect mismatches between consumers' reviews and their ratings concerning specific products.
+- Review user-generated feedback related to products and compare it against numerical ratings, making judgments on whether the reviews express sentiments that align with those ratings.
+- Your responsibility is to examine reviews and their corresponding ratings for products, deciding if they align properly based on user satisfaction expressed in text.
+- Your job involves checking whether customer feedback accurately supports or contradicts the numerical rating, which reflects their overall evaluation of a product.
+- For each product review you receive, analyze how well its content matches with the assigned rating, making judgments based on sentiments towards product quality or satisfaction.
+- Engage with customer reviews in a way that allows you to evaluate whether the rating aligns with the overall feelings expressed by the reviewer.
+- Your task is to evaluate an Amazon review and determine if the provided product rating accurately reflects the sentiment expressed in the review.
+- Engage with user reviews to determine whether the emotional tone portrayed fits with the star rating they decided upon after their experience.
+- Use your understanding of customer satisfaction to scrutinize whether each rating reflects what reviewers have stated about their experiences with products.
+- Analyze product reviews to determine if the provided star rating aligns with the sentiments expressed. Your judgment should reflect an understanding of both positive and negative feedback.
+- You need to discern if a product's rating is justified by closely examining its accompanying review for signs of approval or discontent from customers.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1311_amazonreview_rating_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1311_amazonreview_rating_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

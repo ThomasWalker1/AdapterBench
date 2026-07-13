@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You need to evaluate the sentiments expressed in statements about certain topics to label them accurately as in favor, against, or neutral.
+- 'You are tasked with interpreting arguments about various subjects and categorizing them based on their stance: whether they support, oppose, or are indifferent to the topic at hand.'
+- For each provided argument about a certain topic, your task is to determine if the argument supports the topic, opposes it, or maintains a neutral position.
+- Your role is to process statements regarding specific topics and classify their stance based on expressed opinions.
+- The task requires you to discern the viewpoint expressed in an argument concerning a particular subject and label it as supportive, opposing, or neither.
+- Assess how an argument aligns with or contrasts a specified topic by determining if it expresses support, opposition, or neutrality regarding that subject.
+- Within this exercise, you'll interpret various arguments related to designated topics and classify their stance accordingly—identifying them as either favorable, unfavorable, or neutral.
+- 'Your responsibility is to judge multiple arguments linked with particular issues and assign them one of three stances: supportive of the issue at hand, against it entirely, or remaining neutral.'
+- In this role, you must identify how various arguments reflect attitudes toward a specified subject and classify them based on their stance.
+- The goal is to evaluate the relationship between the argument presented and the topic, identifying whether it promotes, opposes, or remains indifferent to the subject.
+- Examine the content of an argument against its corresponding topic and determine if it is advocating for it, arguing against it, or taking a neutral position.
+- You will be interpreting statements related to different subjects while identifying whether they express a favorable, dissenting, or neutral stance.
+- 'You will read an argument concerning a defined topic and decide what stance it takes: whether it supports the topic, opposes it, or remains neutral.'
+- The task consists of interpreting the perspective of an argument towards a specified subject matter and categorizing it appropriately.
+- The task involves identifying the perspective expressed in an argument regarding a particular topic. You must categorize the argument as supporting, opposing, or having no strong position on the issue.
+- 'Analyze the provided argument in relation to the stated topic and identify the argument''s position: whether it supports, opposes, or remains indifferent to the subject at hand.'
+- Assess positions presented in arguments surrounding distinct topics and categorize each argument's position as supportive of the idea, against it, or neutral.
+- Assess how the argument relates to the topic presented and classify its stance accordingly. Your options are "in favor," "against," or "neutral."
+- Analyzing different arguments around selected topics is your focus here. You'll need to determine if they express support for the topic, oppose it outright, or take no clear stance.
+- This task requires you to read an argument related to a given subject and assess its tone, deciding if it advocates for, against, or remains neutral on the topic.
+- This task involves critically examining an argument's perspective on a specific issue and determining if that perspective aligns positively, negatively, or neutrally.
+- The goal is to evaluate the expression of an argument about a specified topic. This involves identifying whether it aligns with support, contrasts with opposition, or expresses neutrality.
+- Your job is to determine the sentiment conveyed in arguments concerning various topics and classify them as favoring or opposing the views presented—or being neutral.
+- Your job involves assessing an argumentative statement in relation to its associated topic and categorizing its approach as either positive, negative, or neutral.
+- Engage with various arguments regarding social issues and assess their tones to see if they lean toward support, criticism, or neutrality.
+- Determine the viewpoint presented in an argumentative text related to a designated topic and classify it based on whether it shows support, opposition, or neutrality.
+- Engage with arguments made about particular topics and discern their stances. Assess whether they advocate for positive action, criticize something negatively, or remain neutral.
+- Evaluate how different arguments relate to their respective topics by determining the overall sentiment—whether it’s positive (in favor), negative (against), or neutral.
+- Identify the underlying stance of an argument directed at a particular topic by evaluating its tone and content for positivity, negativity, or neutrality.
+- In this task, you will evaluate how arguments position themselves concerning certain issues. This includes categorizing their stance as favorable, unfavorable, or neutral.
+- The task involves analyzing a statement about a specific topic and determining the expressed opinion or attitude toward that topic, categorizing it as supportive, opposing, or neutral.
+- In this task, identifying the perspective of each argument toward given subjects is essential. You'll decide if each is advocating for, opposing, or unbiased about those subjects.
+- Your focus here is on determining whether an argument promotes a viewpoint, opposes it, or maintains a neutral position concerning a specified matter.
+- This task involves interpreting stances expressed in arguments about specific subjects and categorizing how they relate—whether positively inclined (in favor), negatively inclined (against), or without strong opinion (neutral).
+- In this task, you will analyze given arguments concerning various topics. The focus is on whether each argument advocates for the topic, opposes it, or maintains neutrality.
+- Your task is to interpret arguments provided alongside topics and evaluate whether these arguments reflect a favorable position, unfavorable position, or show neutrality.
+- Assess claims made about certain issues and ascertain whether they indicate support for the idea, opposition to it, or neutrality towards it.
+- You'll need to critically examine different arguments related to specified subjects and assign each one a label reflecting its stance — pro-topic support, anti-topic criticism, or neutral.
+- Identify and categorize the perspective of an argument with respect to its target topic as either supporting, opposing, or being indifferent.
+- The challenge involves understanding an argument's position regarding a particular subject matter and determining whether it is in favor of, against, or indifferent toward the topic.
+- In this task, you assess arguments related to various subjects and identify whether the stance taken is positive, negative, or impartial.
+- In this task, you're tasked with understanding an argument's position on a given issue and labeling that position accurately as for, against, or neither.
+- Your job is to analyze an opinion about a topic and categorize it as advocating for it, opposing it, or remaining neutral without bias.
+- This task involves assessing how an argument relates to a topic and determining if it displays alignment, disagreement, or neutrality.
+- This task requires you to evaluate an argument and discern its attitude towards a particular issue, labeling it as supportive, opposed, or neutral.
+- Evaluate arguments on specified issues to ascertain their tone or stance. You will identify whether they align positively with the topic, criticize it, or take no clear side.
+- In this task, analyze the stance of a given argument related to a specific subject. Determine whether the argument shows support, opposition, or neutrality towards that topic.
+- Read the argument and evaluate how it aligns with the topic, then identify if it expresses approval, disapproval, or a neutral perspective.
+- 'Evaluate an argument''s perspective in light of a given topic and assign it to one of three stances: in favor of, against, or neutral on the issue.'
+- Evaluate the sentiment behind statements regarding particular issues to categorize them as supporting the topic, disputing it, or lacking a clear position.
+- Your task is to understand an argument linked to a discussion topic and classify its position as being supportive of it, opposing it entirely, or neutral about it.
+- Your focus is to interpret how an argument interacts with a subject matter and determine if it endorses, critiques, or remains impartial about that topic.
+- In this task, you will evaluate the relationship between an argument and its associated topic to identify whether the sentiment is positive, negative, or neutral.
+- Here, you will decide the type of stance an argument takes regarding a specific topic, categorizing it into one of three distinct positions based on its content.
+- Analyze argumentative text related to certain topics and classify each argument's stance as being in favor of the idea discussed, opposing it, or remaining neutral.
+- In this task, you evaluate arguments about various issues and classify their stance as supporting, opposing, or neutral.
+- Your role is to analyze how an argument relates to a given subject and categorize it as being for, against, or neither supporting nor opposing the issue.
+- In this exercise, you will examine arguments and classify them based on their support or opposition to particular topics.
+- Review the argument presented and decide whether it leans towards support, opposition, or neutrality regarding the discussed topic.
+- You will read an argument related to a specific topic and conclude if it expresses approval, disapproval, or indifference.
+- The aim is to discern the attitude expressed in the argument towards a specific issue, categorizing it accordingly.
+- The focus of this task is to ascertain the position conveyed in arguments on different issues, deciding if they align positively, negatively, or impartially.
+- Based on an argument related to a certain topic, identify its position by deciding if it expresses support, opposition, or neutrality.
+- Your goal is to determine whether the presented argument supports, opposes, or remains neutral on a given topic.
+- You will classify arguments according to their stance towards specific subjects. Consider whether they advocate for, argue against, or remain neutral on those matters.
+- For each given argument regarding a certain subject matter, discern its intended stance. The aim is to determine if it’s arguing in support of something significant or taking a stand against it while also recognizing when no strong viewpoint exists.
+- Examine the relationship between the target topic and the argument presented. Decide if the stance is supportive, adversarial, or neutral based on the content of the argument.
+- As part of this exercise, you'll be tasked with evaluating the stance of various arguments on specified issues and categorizing them into support, opposition, or neutrality.
+- Scrutinize statements related to given subjects and decide their stance—whether they advocate for a specific viewpoint or criticize it while noting if they remain neutral.
+- 'Interpret the argument concerning a specific issue and classify its stance into one of three categories: supporting, opposing, or having no strong opinion.'
+- Investigate how an argument connects with a specific subject matter and classify its stance as either favorable, unfavorable, or neutral.
+- Examine the provided arguments connected to specific topics and decide if they express support for the viewpoint, reject it, or remain neutral without taking a side.
+- Engage with an argument about a topic and encapsulate its stance by considering whether it is making a case for support, opposition, or taking a neutral view.
+- In this task, you need to evaluate the sentiment of a given argument regarding a specific issue and determine whether it is in favor of, against, or neutral to that issue.
+- Determine the position of a statement on a given issue by identifying if it advocates for, argues against, or stays neutral on the matter.
+- Your task involves analyzing text that presents a viewpoint on a specified topic. Classify the viewpoint as supportive of, opposing, or neutral about that issue.
+- You are required to assess various arguments connected with specific issues and determine their respective positions as either in favor of the issue, against it, or neutral.
+- Determine the perspective of an argument in relation to a stated topic. The goal is to classify its stance as supporting or opposing it, or being neutral overall.
+- You are asked to read statements related to various topics and identify whether they convey approval, disapproval, or indifference toward those topics.
+- You are required to interpret arguments around controversial topics and indicate whether they are endorsing the idea presented, challenging it, or staying neutral.
+- You will evaluate a statement's stance concerning a given issue, categorizing it as in favor, against, or neutral.
+- The objective is to assess the sentiment expressed in an argument about a particular subject and classify that sentiment accordingly.
+- 'You need to interpret an argument in relation to a given topic and classify the stance it represents into one of three categories: in favor, against, or neutral.'
+- The task requires you to interpret the stance of an argument towards a particular topic, determining if it is supportive of, critical of, or indifferent to that issue.
+- Your task is to review provided arguments about specific issues and ascertain their attitudes by determining if they express support for, opposition to, or neutrality towards those issues.
+- The purpose of this task is to decode the underlying stance within an argument related to a specific topic. Determine if it is promoting, opposing, or neutral towards that idea.
+- The objective here is to interpret the tone of an argument in relation to a topic. You will identify if it expresses agreement, disagreement, or indifference.
+- This task requires evaluating an argument to understand its position on a specific issue. You're expected to label the argument based on its expressed viewpoint, which could be supportive, critical, or indifferent.
+- Review the stance articulated in an argument towards an issue and assign it to one of three pre-defined categories reflecting its orientation.
+- Evaluate an argument's position regarding a specific theme and ascertain whether it is backing the idea, contesting it, or showing no opinion.
+- This task requires synthesizing information from arguments about distinct topics and determining their overall orientation towards those topics.
+- Review an argument’s content about a target issue and ascertain whether it promotes an idea in favor of it, stands against it sharply, or takes no definitive position.
+- You are called upon to critically evaluate arguments related to specific subjects and classify them into favorable, unfavorable, or neutral stances.
+- Each argument provided must be assessed to classify its viewpoint regarding a topic as either in favor of it, against it, or remaining neutral.
+- For a given argument about a specific topic, you need to assess its tone and intent to categorize it as either promoting, opposing, or expressing an indifferent viewpoint.
+- You will analyze the stance of various arguments concerning relevant topics to determine whether they are supportive, critical, or neutral.
+- The objective of this task is to discern the underlying attitude in given arguments about selected topics and categorize the stance appropriately.
+- Examine how effectively an argument interacts with a given topic to determine whether its stance is endorsing, rejecting, or indifferent towards that topic.
+- Your task is to analyze an argument related to a specific topic and determine if the argument supports, opposes, or remains neutral about that topic.
+- Dissect the given statements about specific topics and classify each one according to its viewpoint as being proponent of an idea, an antagonist against it, or remaining neutral.
+- Engage with provided arguments about various subjects and determine their positions in relation to those subjects — either endorsing them, disputing them, or adopting a neutral standpoint.
+- Examine statements made about significant topics and judge whether they convey support for, opposition to, or indifference toward those issues.
+- This task involves discerning opinions expressed in various arguments about specified topics and labeling them appropriately based on their thematic stance.
+- Your role is to investigate and categorize arguments based on their expressed views about specific topics. Consider whether they show support for, disagreement with, or neutrality towards those issues.
+- Your task is to assess the given argument and determine its stance regarding a specific topic, categorizing it as either in favor, against, or neutral.
+- Analyze how a specific argument relates to its designated theme by determining whether the viewpoint expressed is supportive, critical, or indifferent.
+- In this task, interpret statements about various topics and categorize the view expressed in each statement as supporting, opposing, or neutral regarding that topic.
+- This task involves critical thinking and interpretation skills to assess where an argument stands regarding a particular issue.
+- This task focuses on discerning the perspective of an argument in reference to a specific topic. You will classify its stance as positive, negative, or neutral.
+- Your task is to evaluate arguments surrounding particular topics to classify each one as either supporting that topic, opposing it altogether, or remaining neutral without taking sides.
+- Your task involves reading an argumentative text about a subject matter and deciding if it advocates for that matter, opposes it, or remains unbiased.
+- You will assess multiple arguments relating to important topics and identify their viewpoints as either supporting, opposing, or neutral.
+- Look closely at how an argument addresses a particular issue to classify its stance accurately among supportive, opposing, or neutral views.
+- You will be tasked with discerning the perspective presented in arguments about different subjects, determining if they support, contradict, or neither enhance nor oppose the topic.
+- You are tasked with interpreting the sentiment of an argument concerning a designated subject and summarizing it as favorable, unfavorable, or neutral.
+- Your role is to discern how an argument relates to a topic—whether it aligns with support, is critical of it, or expresses indifference.
+- By studying provided arguments on diverse topics, you will identify their stance—whether they are aligned with the idea being presented or not.
+- Assess the stance of an argument regarding an assigned topic. You need to identify if it's in support of, against, or neutral towards that particular issue.
+- 'Your task is to read through arguments about various issues and determine their stance relative to the topic: whether they advocate for it, oppose it, or do not take a clear position.'
+- Assess the context of an argument to uncover its stance related to a specified topic while categorizing that stance accordingly.
+- Your job is to analyze the emotional and logical appeal of a statement towards a related issue and categorize it as supportive, critical, or neutral.
+- The assignment involves interpreting arguments related to certain issues and categorizing them based on their overall sentiment — whether supportive, opposing, or neutral in nature.
+- Your job involves reading arguments associated with particular topics and identifying their opinion as supportive, opposing, or detached from the subject matter.
+- Determine how the provided argument addresses the assigned topic by identifying if it supports, opposes, or takes a neutral position.
+- This task centers around interpreting a provided argument's relationship to a given subject. Categorize the perspective expressed as either supportive, critical, or indifferent.
+- Your goal is to understand how statements regarding certain issues express support or disagreement and categorize these expressions accordingly.
+- This involves assessing various arguments made about specified topics and determining their stance—whether they are affirmatively supporting the view presented or opposing it.
+- You will encounter arguments concerning various controversial issues and need to indicate whether they are favorable towards the topic, critical of it, or neither.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task209_stancedetection_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task209_stancedetection_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

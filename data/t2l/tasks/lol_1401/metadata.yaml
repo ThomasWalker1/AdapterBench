@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You need to produce a statement that reflects a relevant fact related to both the question and answer, which helps in understanding what is being discussed.
+- Your task involves thinking critically about how certain facts can logically connect to and support the given answer for a specific question.
+- The task revolves around producing concise clarifications that assist in comprehending how a particular answer is reached.
+- Produce concise factual statements that are informative, linking specific knowledge directly back to the subject of the question and its resolution.
+- Using the question and its corresponding answer, your role is to craft a statement that presents useful information related to the inquiry.
+- You will create an explanatory statement that ties together elements of knowledge derived from the question and its associated answer.
+- Craft meaningful statements that elaborate on connections or principles underlying both the posed question and its supplied answer for enhanced understanding.
+- This task emphasizes linking scientific or general facts to specific inquiries, enhancing knowledge application.
+- Your task is to create factual statements that relate to provided questions and their corresponding answers, using logical connections.
+- The objective is to articulate a relevant fact that supports understanding of the relationship between the query and its corresponding answer.
+- The challenge here is to connect knowledge with inquiry by expressing a relevant fact that arises from the given question-answer context.
+- Create informative statements grounded in common knowledge that aid in clarifying the answers to various questions.
+- Your task involves generating an informative sentence based on a given pair of question and answer, emphasizing relevant knowledge that supports them.
+- Create an explanatory sentence that offers concrete details aligning with the answer while addressing the underlying question's concept.
+- Create an informative fact based on a given question and its answer, enhancing comprehension of the subject at hand.
+- Based on the given question and answer, you will generate a useful fact that clarifies or explains the underlying concept involved.
+- Analyze the relationship between a question and its answer to formulate a relevant fact statement that supports the answer.
+- Produce a statement based on factual insights that can clarify motivations behind questions and their respective answers, using general knowledge principles.
+- Develop an instructional fact that aids in answering the question through logical reasoning by highlighting relevant knowledge from various fields.
+- Your task is to read a question and its given answer, then create a factual statement that relates to them.
+- Respond by synthesizing ideas from paired questions and answers into coherent fact statements that enrich overall comprehension of each scenario.
+- Provide an insightful fact based on your knowledge about how it connects directly with the content of both the question and its answer.
+- Produce a clear fact statement that encapsulates relevant information tying together the query with its response, fostering understanding of their connection.
+- Formulate a relevant fact that can act as a bridge between the posed question and its corresponding answer, making their relationship clearer.
+- Your assignment is to create factual statements that enhance understanding by linking questions explicitly with their corresponding answers.
+- Your goal is to summarize essential knowledge related to the question, effectively linking it with the correct answer for further comprehension.
+- Identify and articulate supportive facts that connect directly to each given question while reinforcing its answered element.
+- Think about essential characteristics or behaviors related to the topic to express in a way that aligns well with both the question and its answer.
+- The task requires you to articulate factual information that contributes to a deeper understanding of how the answer responds to the question asked.
+- You are required to extract key information from the question-answer pair and articulate it as a useful factual statement.
+- You need to identify key facts that can provide additional insight into the question asked, making sure they relate directly to the given answer.
+- Generate a concise factual statement that connects key information from both the question and answer while enhancing understanding of their relevance.
+- Your job is focused on creating a concise fact that encapsulates an important concept tied to both the question and its answer provided.
+- Your task is to generate a factual statement that relates directly to a given question and its corresponding answer.
+- Your task is to extract a useful fact that relates directly to the given question and answer pair, providing additional context or clarity.
+- Your task involves crafting meaningful statements from the information contained within questions and answers to provide clarity on topics discussed.
+- Utilize critical thinking to form succinct factual explanations based on the context established by the question and its response.
+- Analyze both the question and answer to produce a relevant statement that clarifies or explains the subject matter.
+- This task requires you to synthesize information from a question and its answer into a clear-cut factual sentence that highlights their connection.
+- You must generate significant and relevant facts, bolstering comprehension of concepts tied to specific question-answer pairs.
+- The objective is to identify relevant facts that clarify how specific knowledge informs responses, fostering comprehensive understanding of each question-answer pair.
+- You need to create an informative statement that connects the question to the answer by outlining relevant knowledge or principles.
+- Your role is to extract and articulate a fact that is instrumental in deepening the understanding of how the specified question relates to its answer.
+- The goal is to formulate a factual statement that links the context of the question with its answer, enhancing clarity and understanding.
+- The aim is to create fact statements that are not only relevant but also enhance understanding of how the answer addresses the question posed.
+- From the information in the question and answer, formulate a concise fact that aids in understanding the topic discussed.
+- Formulate a relevant piece of information that serves as a background or context for understanding how the answer relates to the question.
+- Generate a fact statement from given pairs by connecting information meaningfully to deepen comprehension of the discussed issue.
+- You need to express critical information in an understandable way, linking it directly to the content of the question and its corresponding answer.
+- Analyze the question and answer to produce a relevant fact that enhances understanding of the topic at hand.
+- Your task is to take a question and its corresponding answer and create a factual statement that connects the two in a meaningful way.
+- Articulate facts derived from common knowledge that tie into the foundational principles underlying both the question context and its provided answer.
+- The challenge lies in translating the essence of both question and answer into an informative sentence that reinforces their interrelation.
+- The objective is to summarize helpful facts that clarify the relationship between a question and its answer.
+- This task requires you to summarize knowledge related to a subject by generating a straightforward statement based on the context of the question-answer pair.
+- Develop a factual insight that would make it easier for someone to grasp why a certain answer is appropriate for given questions.
+- For each question, think critically about the information provided and formulate a helpful fact statement that supports the answer.
+- Your goal here is to derive significant information from the context provided by both the question and its answer, transforming it into a useful fact statement.
+- Craft an informative statement that serves as a bridge between a specific question and its provided answer, enhancing overall understanding.
+- Synthesize knowledge relevant to the subject matter in order to produce useful statements tied to both questions and their answers.
+- This task focuses on articulating essential truths connected to a question and an answer in order to enhance clarity and knowledge.
+- Analyze the relationship between the question and answer and state a helpful fact that serves as background knowledge.
+- Consider what information is essential for understanding how to connect a given question with its answer, and express that as a fact.
+- Utilize your understanding to compose a factual statement that serves as useful information in relation to both the query and its response.
+- You need to extract or create a factual detail that is pertinent to effectively addressing the core of the question given.
+- This task asks you to articulate a meaningful fact related to both the question asked and its provided answer, ensuring clarity in their linkage.
+- Crop your insights into a clear fact that substantiates the rationale behind deriving an answer from a posed question.
+- You will create an informative statement that helps clarify or expand upon the topic presented in the question and answer pair.
+- You’ll create factual insights based on interactions between questions and their respective answers, facilitating comprehension.
+- This task involves finding and expressing a relevant fact that sheds light on the relationship between the question and its corresponding answer.
+- In this task, connect general knowledge to specific questions by crafting relevant factual statements.
+- Your role is to distill essential information into a clear fact that connects the question to its answer meaningfully.
+- You need to identify and articulate a factual statement that supports the answer provided by connecting it logically to the question asked.
+- The task involves constructing fact-based explanations that underpin how particular answers address given queries.
+- Utilize your understanding of related concepts to derive useful fact statements based on paired questions and answers.
+- The objective is to formulate an informative statement that relates to the question presented, aiding in understanding the provided answer.
+- Create a simple fact-based statement that lays the groundwork for understanding why the answer fits the question being asked.
+- Develop a fact statement that resonates with or illuminates the essence of both the question posed and its answer.
+- Derive necessary information from broader concepts relevant to the query, allowing for greater clarity on why the answer provided makes sense.
+- Identify core concepts from the questions and answers, then express them as clear and informative statements that could assist in finding the answer.
+- Formulate a factual declaration that conveys pertinent information about the subject of the question while reinforcing its answered proposition.
+- In this task, you'll need to generate a relevant fact that offers insight into the answer derived from the question posed.
+- Generate statements that highlight important information relevant to understanding the implications or context of both the question and its answer.
+- Your goal is to provide an additional factual statement that connects logically with the noted question and its provided answer.
+- Summarize key information associated with both a question and its answer into a coherent fact statement that enriches comprehension.
+- Construct a factual assertion rooted in the specific details from the provided question-answer pair for better clarity.
+- Formulate a factual statement that appropriately combines elements from both the question posed and the provided answer, enhancing clarity for readers.
+- You will explain how certain facts relate to the answer derived from the question, which requires an understanding of general knowledge.
+- The task requires you to identify and present factual information that is essential for interpreting the connection between questions and answers.
+- You will generate a relevant fact statement based on a question and its answer, enhancing the understanding of the topic presented.
+- Use your knowledge to infer and state a piece of information that relates to the question posed, linked to its provided answer.
+- Based on a question and an associated response, articulate a useful piece of information that can help clarify or deepen understanding of the topic.
+- Analyze the question and its answer, and construct a fact statement that enhances understanding of why the answer is correct or relevant.
+- Your job is to derive a supporting fact that connects directly with the main idea of both the question and answer without providing explanations.
+- By analyzing the question and its corresponding answer, you should generate a factual statement that enhances understanding of the topic discussed.
+- You will compile informative sentences that align with questions by offering explanations related to their answers.
+- You are required to synthesize information relevant to the query and its answer into a general statement that enhances understanding of the subject matter.
+- Summarize essential information by creating a statement that ties directly into the content of both the question and the answer provided.
+- Formulate succinct statements based on connections between questions and answers, emphasizing factual context without elaboration.
+- Explore ways to articulate distinct pieces of factual knowledge that bridge understanding between a given question and its provided solution in a straightforward manner.
+- Your job is to distill relevant information into single statements that explain how an answer addresses the question.
+- Produce a valid fact statement that informs about critical aspects relevant to comprehending both the nature of the question and its solution.
+- The objective is to distill the essence of the question and answer into a concise fact that serves as additional insight for the topic at hand.
+- Generate informative statements that provide context or background knowledge to clarify the relationship between the question and its answer.
+- The aim here is to deliver a piece of information that would aid someone in comprehending how to approach answering the initial query.
+- Your role is to connect factual knowledge with the content of a question-answer pair by writing a meaningful and related statement.
+- Based on the question and answer paired together, craft a concise fact statement that provides additional insight into the subject matter.
+- Your responsibility is to articulate factual knowledge clearly enough that it relates directly to the posed questions.
+- Your role is to find or create a key fact that elaborates on the answer provided in context with the specified question.
+- Formulate a fact-based response that serves as useful information to reinforce the link between the question posed and its corresponding answer.
+- You need to investigate and display knowledge through a relevant fact that deepens awareness of the topic outlined by the query and response.
+- You will craft a statement that effectively encapsulates useful information extracted from both halves of the input—question and answer—for better clarity.
+- Provide clarifying details about important facts relating directly to why a certain answer is appropriate given what was asked in our context.
+- The task involves generating factual statements that help explain the answer to a provided question.
+- Select and assemble useful pieces of information into cohesive statements that align with answering questions effectively by connecting them logically to their responses.
+- Your task involves summarizing useful knowledge related to the given question and answer in a clear, factual manner.
+- Based on a question and its answer, your goal is to create a meaningful fact statement that encapsulates an important aspect of the situation.
+- Generate informative content that highlights important facts or concepts linked with both the question posed and its resulting answer.
+- Generate a factual piece of information based on the relationship between the question asked and the answer provided.
+- Provide a clear, succinct fact that relates to and enhances understanding of the query presented and its provided response.
+- Your assignment involves summarizing knowledge into a factual statement that complements both the question posed and the accompanying answer given.
+- Connect ideas presented in a question-and-answer format by expressing them as an informative factual statement.
+- Your aim is to articulate crucial details about the subject matter at hand, reinforcing understanding through targeted factual statements.
+- Produce a statement of fact that can help someone understand why the answer provided is accurate in response to the question posed.
+- Your task is to produce a fact-based statement that bridges the gap between a question and its answer, supporting logical reasoning.
+- The goal is to justify or explain the provided answer through factual evidence, illuminating how it connects with aspects mentioned in the question.
+- Extract relevant facts from your understanding of the subject matter to develop statements that align with the given questions and answers.
+- The goal is to craft statements that encapsulate essential truths connected to answering the questions given.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1401_obqa_sentence_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1401_obqa_sentence_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

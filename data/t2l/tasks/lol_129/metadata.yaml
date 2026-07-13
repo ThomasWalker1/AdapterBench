@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- This task requires interpreting and condensing a variety of physical actions into single or compound commands, while maintaining clarity and logical flow.
+- This task involves synthesizing a series of specified actions into coherent commands, requiring an understanding of how different movements are articulated in natural language.
+- You will be required to rephrase a set of actions into commands that reflect the exact sequence and logic implied by those actions.
+- This involves transforming technical action sequences into every-day language commands while maintaining accuracy and clarity.
+- You will work with a series of navigational steps and your job is to express these as understandable commands. Understanding the meaning of each action is crucial for an accurate conversion.
+- You are given specific movement actions, which you need to condense into simplified expressions that accurately communicate the sequence. Understanding how to link these steps is essential.
+- You will analyze a series of specified actions that guide an agent's movements. The challenge is to precisely express these movements as commands in simplified language.
+- This task focuses on mapping a given set of actions to appropriate commands. Your ability to synthesize information from individual steps is crucial for producing accurate and logical output.
+- This task involves encoding a sequence of movements into pithy commands that clearly articulate what actions an agent should undertake as it navigates its surroundings.
+- Your task is to transform lists of actions related to navigation in an environment into commanding phrases that best encapsulate these actions’ meanings.
+- You will interpret an ordered list of agent movements and produce corresponding commands that describe those movements in a straightforward way.
+- You will be interpreting sequences of actions to formulate concise commands that describe how an agent will interact with its surroundings.
+- This exercise requires you to refocus distinct navigational steps into summarized, instructive language suitable for guiding an agent’s movements through its environment.
+- You are required to take a list of individual actions performed by an agent and merge them into a comprehensive command that maintains the essence of the action sequence.
+- You will need to assess a sequence of navigational actions, then distill them into understandable and functional statements that direct an agent efficiently through its environment.
+- Focus on understanding a list of actions representing physical movements. Your job is to articulate these in easy, accessible language while considering nuances like repetition and direction changes.
+- Convert sequences of defined movement actions into natural commands. The resulting phrasing should mirror how agents would be instructed to navigate their environment based on listed steps.
+- You will derive instructions from an array of movements by reformulating them into a succinct command format using clear language rules provided.
+- This task involves understanding a list of actions and expressing them as simplified commands in natural language, focusing on the essence of the movement instruction.
+- In this task, you will take a series of directional and movement actions and convert them into a coherent command. Familiarity with movement logic is essential.
+- Your task is to extract the essence of per-action commands, combine repeat elements intelligently, and express the overall directive concisely.
+- The aim is to take detailed action sequences related to an agent's navigation and transform them into commands that clearly convey the same information.
+- Analyzing dynamic movement instructions is key to this task; you must generate corresponding commands that encapsulate the intended navigational outcomes.
+- Your mission is to rephrase a series of directional commands based on given actions. This requires careful attention to the relationship between the specific movements and how they are expressed linguistically.
+- This task revolves around converting a list of movement-related actions into natural language commands, ensuring clarity while adhering to the sequence.
+- You will need to utilize your understanding of directionality and action dynamics to synthesize given movements into logical commands using accessible language.
+- Translating sequences of directional movements into logical commands calls for a precise understanding of both the required action steps and language constructs.
+- You will analyze a series of specified movements and formulate concise commands that accurately reflect those actions in a simple language structure.
+- You will analyze the actions listed and consolidate them into simplified commands, capturing both direction and repetition where necessary.
+- This activity asks you to interpret movements and turns represented by specific actions and translate them into easily understandable command statements.
+- Your job is to examine a series of navigational actions taken by an agent and convert them into succinct natural language commands. Identifying repetitive patterns or instructions is key.
+- You'll analyze how various movements contribute to an agent's travel and express those in straightforward command terminology, blending brevity with informative clarity.
+- Your assignment is to examine and convert lists of agent movements into practical commands while ensuring that nuances such as directionality and repetition are articulated.
+- Your task requires you to distill action sequences into succinct natural language commands that reflect the intended navigational steps for an agent.
+- Interpret the provided actions in terms of movement and instructions, then express this interpretation as commands using straightforward language.
+- Take on the role of interpreting movement instructions as clear and logical commands. It’s essential to maintain the integrity of the action sequence throughout your conversion process.
+- The objective here is to transform outlined actions into concise command expressions that communicate navigation strategies effectively. Being able to reflect on the ordered nature of these actions is key.
+- The goal is to represent given action sequences in understandable commands that reflect how an agent should move or respond based on specified directional cues and actions.
+- The task involves translating a sequence of actions into a concise command using natural language. You need to understand how each action corresponds to specific commands.
+- Your responsibility is to decode a set of instructions written as actions and express them in plain language commands that maintain their original intent and logic.
+- You are tasked with rephrasing a series of movements into simple command phrases, ensuring clarity in the direction and type of action being executed.
+- You are required to take complex sequences of actions performed by an agent and express them in concise, instructive sentences that others can easily understand.
+- You must convert a list of agent actions into concise, readable commands by understanding their meanings and how they can be logically combined or sequenced.
+- You must derive clear directives from a sequence of coded actions, ensuring that each command faithfully represents the agent’s intended movements.
+- Here, your focus is on converting technical action descriptions into everyday language commands that an agent can easily execute.
+- The objective is to distill a series of movement actions into a single coherent command, considering repetitions and direction changes appropriately.
+- Analyze given sequences of agent movements, then formulate those sequences into natural language commands, ensuring clarity and accuracy in reflecting the original action intent.
+- This task involves translating a sequence of specified actions into corresponding natural language commands. You will need to understand how the actions relate to one another to create a coherent command.
+- You need to decode complex action sequences into simple, intuitive commands that anyone could use to replicate the described behavior.
+- The challenge lies in crafting meaningful commands from a sequence of specified actions, ensuring that each command reflects the intended action clearly.
+- In this task, you decode a set of step-wise actions taken by an agent, converting them into readable commands for direction following. Mastery of keywords is necessary for precise description.
+- Your objective is to take discrete movements and compile them into logical commands, conveying patterns in the actions while keeping the content clear and concise.
+- Your focus will be on rephrasing actions corresponding to specific movements into logical commands, capturing both direction and repetition where applicable, all while keeping language concise.
+- Engaging with action sequences, your role is to articulate these movements into organized commands that effectively guide an agent’s navigation while maintaining logical flow.
+- In this exercise, you'll analyze a set of actions that an agent needs to follow and reformulate them into coherent commands, reflecting the sequence and context appropriately.
+- Your task is to distill lists of movement instructions into coherent verbal commands that outline how an agent should proceed based on given directional actions.
+- Your job involves interpreting navigational actions for an agent and converting them logically into a spoken command format while maintaining clarity in directionality and intent.
+- Your challenge is translating specific action sequences into directives, utilizing knowledge of spatial relationships and turning dynamics between those movements.
+- Analyze the movement instructions of an agent, ensuring you maintain clarity while converting these steps into effective command terminology.
+- In this task, you will take a collection of actions that direct an agent and translate them into clear commands. Careful attention to detail is required to ensure all components are accurately represented.
+- This challenge involves transforming specific movement directives into practical commands for an agent. You need to ensure that the translated commands preserve the intended meaning and sequence.
+- Your responsibility is to take predefined actions and encapsulate their logic into simple commands. This involves interpreting how each action contributes to the overall navigation.
+- The process emphasizes comprehension of physical movements as you convert complex action sequences into clear expressions reflecting the intended navigation of an agent.
+- This activity involves taking multiple sequential actions and interpreting them so they can be expressed as direct instructions for an agent's movement.
+- Here, you are tasked with converting sequences of movement instructions into natural language commands. Each action's purpose must be understood to correctly convey the intended movements.
+- You will need to analyze a set of sequential actions representing an agent's movements, identifying the correct order and relationships to form a precise command.
+- You will take action sequences relevant to an agent's navigation and express them in natural language. The goal is to maintain clarity while ensuring the command effectively communicates the intended behavior.
+- You will formulate straightforward commands from complex action sequences involving an agent’s navigational choices, while ensuring clarity and coherence in your communication.
+- Interpret a defined sequence of actions and create a corresponding command using limited natural language. This task draws on your understanding of movement terminology and sequencing.
+- In this exercise, you shall break down complex sequences involving movements and convert them into straightforward command-like statements for ease of planning.
+- This task involves breaking down a series of individual movements into understandable command form. You must have a grasp on what each action entails and how they can be grouped logically.
+- The objective here is to construct easy-to-understand commands that align with the actions provided, focusing on clarity and logic in execution.
+- Your task is to convert a series of specific actions into natural language commands. Each action should correspond to a specific instruction that the agent can follow.
+- In this task, your focus is on converting sequences of navigational actions into simple yet effective command phrases suitable for guiding an agent's behavior.
+- Your goal is to interpret a list of actions and formulate them into clear, concise commands in plain language. This requires comprehension of both the actions and their relationships.
+- The challenge is to understand and transform navigational commands represented by actions into clear, well-structured language that conveys their execution correctly.
+- Given a series of movements, the challenge is to distill that information into clear, actionable commands, employing a concise syntax that mirrors how an agent would logically operate in its surroundings.
+- You are challenged to take a sequence of directional and physical actions and articulate them in straightforward language, maintaining clarity and correctness.
+- You are required to translate a series of specific instructions into a concise command that accurately represents the agent's movements.
+- This task involves interpreting a sequence of agent actions and transforming them into concise, natural language commands. Understanding the logic behind each action is essential for accurate conversion.
+- Your task involves taking a sequence of predefined movements and translating them into natural language commands. These commands reflect how an agent will navigate its environment based on the given actions.
+- The challenge is to transform specified movements into natural language commands, making sure they reflect both the order and nature of the actions involved.
+- This task requires you to decode a set of agent actions into understandable instructions that someone else could follow.
+- Here, you will interpret action sequences that dictate an agent's movements and consolidate those steps into clear commands using simple directional terminology.
+- You will interpret sequential actions for an agent and express them as straightforward commands. Organizing thoughts logically will enable a clear representation of the agent's navigation intentions.
+- This task requires you to interpret a list of actions related to an agent's movements and express those actions in a clear, structured command.
+- Your goal is to take a predefined set of actions for an agent and articulate them in a simplified command form that retains the logical flow of those actions.
+- You will interpret sequences of predefined actions, translating them into succinct and clear commands that maintain the intended operational logic for an agent navigating its environment.
+- The task at hand involves recognizing and summarizing a series of navigational steps into succinct commands that accurately depict how the agent should move.
+- The objective is to take action-based inputs related to an agent's navigation and rewrite them as commands using natural language structures effectively.
+- In this task, distilling complex action sequences into easy-to-understand commands will require attention to detail and an understanding of the intended movement logic.
+- Here, you are tasked with taking a set of agent movements and describing them in limited natural language phrases. Recognizing patterns in the actions is key to structuring your response.
+- In this exercise, translate a sequence of action steps into structured commands that effectively describe how an agent would move. Understanding action verbs and their implications will guide your approach.
+- Your challenge lies in converting movement sequences of an agent into precise wording, ensuring all transitions and repetitions are appropriately represented.
+- You need to take a list of actions given in a coded format and rephrase them into natural language commands that maintain their intended meaning.
+- The task is about transforming sequences of predefined actions into articulated commands in plain language. Recognizing patterns within the actions aids in constructing coherent outputs.
+- The task involves interpreting a sequence of actions and crafting a natural language command that effectively conveys those actions.
+- The task is to distill individual actions into simplified commands, ensuring that each one accurately represents what the agent is supposed to do.
+- This task requires you to think critically about a sequence of actions. You need to capture the essence of the actions in natural language to represent how an agent should navigate.
+- Your job is to synthesize a list of moves tied together as steps, converting these into simple directives for an agent's operations, ensuring all transitions and repetitions are properly acknowledged.
+- The focus here is on converting individual movement actions into cohesive commands, ensuring the sequence is preserved and accurately represented.
+- Your task requires converting a structured list of agent movements into understandable phrases that detail those actions concisely. Familiarity with both movement terminology and command syntax is useful here.
+- You will reinterpret a series of movements into natural language phrases that an agent can follow. Capturing the logic in sequencing commands and repetitions is key for accuracy.
+- You will analyze a series of directional movements and convert them into straightforward commands that encapsulate the intended sequence of actions in plain language.
+- The task involves interpreting a series of actions performed by an agent and translating them into a concise command that reflects the sequence accurately.
+- The focus here is on translating complex action sequences into clear verbal instructions. This process involves understanding each action's goal and synthesizing them into concise commands.
+- You are tasked with interpreting directional commands and translating them into plain language that outlines how the agent should behave.
+- You will take a sequence of directional and action-based cues and formulate them into coherent commands that indicate how an agent should move through its surroundings.
+- This task focuses on taking movement instructions for an agent and crafting a concise description that accurately reflects the intended sequence and actions.
+- This task asks you to interpret sequences of physically oriented commands and reorganize them into coherent instructions detailing what the agent should accomplish.
+- Your job is to read through action sequences and articulate them as easy-to-follow commands in natural language, capturing all necessary movement instructions.
+- The task involves translating specific sequences of navigational actions into streamlined language commands, ensuring clarity on execution protocols for the agent.
+- Here, you will be analyzing a list of directional and motion-based actions to produce clear natural language commands. It’s important to know how commands can describe multiple steps effectively.
+- Your task is to pull together different movements captured in action form into logical, clear commands that would guide an agent through its environment effectively.
+- The emphasis is on accurately translating sequences of physical actions into straightforward instructions that can be easily understood and executed by an agent.
+- In this task, you will analyze a sequence of actions to create a command that captures the essence of those movements in human-readable language.
+- The goal is to correctly interpret directional and repetitive movements made by an agent, transforming them into concise commands that accurately describe those movements.
+- You'll analyze specific sequential actions performed by an agent, with the aim of articulating them as coherent phrases in clear natural language form. The ability to discern relationships between actions enhances the clarity of your output.
+- This task focuses on interpreting sequential actions taken by an agent and rephrasing them as coherent commands in limited natural language. Logical reasoning about movement will aid in this task.
+- This task requires converting a specific sequence of agent actions into a structured command, ensuring you maintain clarity in what each action represents.
+- The task involves reasoning through the relationships between various actions an agent can take, then expressing them as commands that follow logical patterns.
+- The goal is to transform a predefined list of actions into understandable commands while preserving the logical order and intent of the movements.
+- This task centers on creating actionable commands from fragmented movement instructions, resulting in coherent directives for navigating an environment.
+- This task evaluates your ability to reformulate action sequences into streamlined verbal instructions for effective communication of movement patterns.
+- You need to interpret a set of movements and represent them as clear, concise commands. This involves understanding the relationship between actions and their verbal equivalents.
+- Your task is to take detailed action steps and consolidate them into simple command phrases that maintain the correct execution order in a natural context.
+- Here, you will analyze a list of actions taken by an agent and craft concise commands that encapsulate those actions clearly and accurately.
+- The objective is to analyze a string of actions and create corresponding commands that capture the same behavior in a more conversational manner.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task129_scan_long_text_generation_action_command_short
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task129_scan_long_text_generation_action_command_short
+user_prompt_template: '{task_def}
+
+
+  {problem}'

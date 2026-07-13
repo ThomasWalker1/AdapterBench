@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Recognize user needs based on conversational cues and distill these needs into clear, actionable statements.
+- Evaluate user inputs for clues about their goals, then frame these intentions into clear and actionable descriptions.
+- Your task is to interpret user requests in a conversation and summarize the underlying intention or goal behind their inquiry.
+- Analyze a given sentence from a user to determine what they want to achieve, creating a concise description of their goal.
+- Your job is to turn user statements into clear expressions of purpose, focusing on understanding intent rather than details.
+- Your mission is to break down user dialogues into clear interpretations of what they want, based on their queries.
+- Your role is to distill user queries into clear predictions about their objectives, drawing on context clues from their phrasing.
+- Parse user inquiries effectively to produce a compact sentence or two describing what they intend to accomplish.
+- Provide an insightful prediction about what the human user aims to learn or achieve based on their given input.
+- Recognize patterns in human requests and summarize these into brief phrases that highlight what users are aiming for with their questions.
+- Distill the essence of user queries into brief summaries that articulate what assistance or information they are seeking.
+- Assess phrases from human-users in dialogue contexts to predict and summarize the core intent behind those statements or queries.
+- Scrutinize user queries for key motivations or objectives, then summarize those findings concisely for clarity.
+- Interpret users’ words within dialogue exchanges, extracting the essence of their requests into simple predictions about their objectives.
+- Your role is to take a user's statement and translate it into a concise description of their underlying goal or need for information.
+- Your mission is to understand what users are trying to achieve with their questions, converting their requests into concise descriptions of their goals.
+- Your role is to extract the main purpose from user questions or requests, articulating what they aim to accomplish through the interaction.
+- You need to distill user questions into concise statements that encapsulate their intent in the context of human-computer dialogue.
+- Review the conversation input and articulate the user's goal by summarizing their request into one or two clear sentences.
+- Your objective is to capture the user's essential inquiry and represent it accurately as a straightforward prediction of their intent.
+- Listen to user questions and articulate what they are trying to achieve by interpreting their words into a succinct statement of intent.
+- The task involves interpreting user requests to encapsulate their desired outcome, crafting it into an easily understandable statement.
+- Identify the core intention behind a user's question and articulate that objective clearly and concisely.
+- Simplify user queries by identifying the core question being asked and translating that into a straightforward objective statement.
+- Assess the user's wording to anticipate what they are curious about or hoping to find out, then summarize this aim succinctly.
+- Your job is to sift through user inquiries and clearly define what users are attempting to find out or achieve through their questions.
+- Translate user requests into clear predictions of their objectives, emphasizing key elements that reveal their intent.
+- Interpret the dialogue between a human and computer to deduce the information or assistance the user is pursuing through their inquiry.
+- Evaluate the user's dialogue to discern their aim and provide an insightful prediction of their specific request.
+- Your task is to interpret user requests in a dialogue and predict what information they are seeking based on their inquiries.
+- Your role is to predict what the user is seeking based on their statement and convey that objective effectively.
+- Your role involves clarifying and distilling the objectives of users based on their requests in a dialogue format.
+- Your role involves interpreting human communication in a digital environment and providing a brief prediction of the requester's intent behind their questions.
+- Capture the essence of user questions by summarizing their motivations in a simple, direct response without elaboration.
+- Analyze the user’s input and summarize their intent into a clear goal, reflecting what they are looking to learn or accomplish.
+- Transform verbose or complex user requests into clear, targeted descriptions that accurately represent their desires for information.
+- Examine a user's statement to predict what information or action they are seeking, summarizing it into a straightforward objective.
+- Interpret dialogue inputs to reflect users' intentions, ensuring clarity and conciseness in your output descriptions.
+- Analyze user inputs to generate a concise statement reflecting their interests or questions, clarifying their aim in the conversation.
+- Your mission is to decode user prompts in a dialogue to highlight the core intention behind their words.
+- Analyze the provided user input and articulate the main intention behind the request in a straightforward sentence.
+- Analyze the context and phrasing of user inputs to identify their main aim in seeking information or assistance.
+- Your challenge is to discern what users are trying to find out or accomplish through their questions and present that aim simply.
+- Break down user inquiries to reveal what they are trying to accomplish, then express that aim in an understandable and compact format.
+- Determine from the question posed by the user what specific aim or need they express, then restate that intention clearly.
+- Your job involves decoding user communication to reveal their specific needs or questions, translating their words into clear objectives.
+- Assess the context of user dialogue and generate a clear statement regarding what they wish to find out or do next.
+- Extract the main idea from user requests and convey what they are ultimately trying to do or find in a straightforward manner.
+- On receiving a user's question, you must predict their aim and provide a brief statement reflecting their intended action or need.
+- Capture the intent of users' requests by summarizing them succinctly to reflect their ultimate questions or objectives.
+- Transform user interactions into clear predictions about what they hope to achieve or inquire about, distilling complex requests into simple summaries.
+- Take note of the specific language used by users when they ask questions, and translate that into a clear prediction of what they are looking for.
+- Your job is to glean the user’s intentions from their words and restate those intentions in concise terms.
+- Synthesize information from user interactions into concise summaries that encapsulate their requests or interests.
+- Your task involves analyzing what users are asking for in their questions and summarizing that intent briefly.
+- Your task is to interpret user requests in a dialogue and summarize the intention behind them in a clear and concise manner.
+- Your task is to interpret a user’s request and summarize their underlying goal in a clear and concise manner.
+- Analyze conversational inputs to reveal the purposes behind them, expressing these accurately without unnecessary complexity.
+- Interpret the user's communication so that you can express their request clearly while maintaining the original spirit of their inquiry.
+- Extract the main focus of a user's request, transforming it into a concise summary that captures their purpose in seeking information or assistance.
+- Assess the information provided by the user and summarize their aim in a way that reflects their intended outcome in the dialogue.
+- Analyze conversational cues from users to identify what they need or want, summarizing this understanding in an easy-to-comprehend format.
+- Listen to or read a user's request and extract the essential purpose behind it, providing a straightforward summary of what they want to know or do.
+- Interpret user statements within a conversation and summarize them in a way that reflects their inquiry's specific focus and aspirations.
+- The core task is to transform user sentences into concise descriptions of their objectives, ensuring clarity and brevity.
+- Read between the lines of user questions to uncover their underlying goals and succinctly reframe those goals for clarity.
+- Interpret user dialogue and reconstruct it as a clear statement reflecting their intent behind seeking particular information.
+- Review a user's request to identify and describe the information or assistance they require, capturing the essence of their query.
+- Focus on resolving user inquiries by predicting what they aim to accomplish through dialogue, transforming those aims into clear statements.
+- Convert user input from casual language into a precise statement that conveys their primary question or objective within the human-computer dialogue.
+- The goal is to take a user’s message and transform it into a brief explanation of what the user seeks to accomplish.
+- Clearly articulate what users are looking for by breaking down their inquiries into understandable goals or questions.
+- Your job is to determine what users are trying to accomplish through their requests and express that purpose clearly.
+- Engage with user questions by interpreting their desires, and summarize these interpretations into concise expressions of their objectives.
+- Distill user communication into essential statements that reveal their underlying desires for information or assistance within a dialogue context.
+- Extract meaning from user dialogue by predicting their intentions or information needs, articulating these in a straightforward manner.
+- Analyze the user's wording and provide a summary that reveals their main objective in the conversation succinctly.
+- Analyze a user’s dialogue prompt to extract and articulate their specific objective or need in a clear and concise manner.
+- Decode the question posed by a human and formulate a precise statement that captures their underlying request.
+- From the given user statements, infer the user's goal and express it in a concise manner.
+- Identify and articulate the aim behind a user's inquiry, ensuring the output reflects their original purpose accurately.
+- Deduce the primary intention behind each user inquiry by evaluating the words used and rephrasing that intention articulately.
+- Analyze how a user frames their request to predict what they are really interested in discovering, conveying that in a succinct manner.
+- Identify the key elements of what the user is asking for and clearly express their intended inquiry in simpler terms.
+- Engage with the content of user inputs to infer what knowledge they seek, then convert that into a succinct objective statement.
+- Disentangle complex user requests to derive core objectives and rephrase them in clear terms that reflect what the users are seeking.
+- Your task is to interpret user requests and summarize what they are trying to achieve in a clear statement.
+- For every user request, derive a clear statement of intent that encapsulates their aims within the conversation context.
+- Understand the nuances of a user’s inquiry and generate a concise description of what they aim to achieve.
+- Analyze the context of user requests to unearth their objectives, then communicate these in a clear, focused manner.
+- Identify the main goal of the user’s inquiry and capture it in a brief description that encapsulates their intent.
+- Focus on understanding user intentions behind their questions and express these intentions clearly through reformulated sentences.
+- Understand the user's intent hidden within their words and articulate a sentence that conveys what they truly wish to find out or accomplish.
+- You will parse user inquiries during an interaction and express their fundamental objective in straightforward terms.
+- Focus on understanding the essence of the query from the user and articulate their goal in a simplified manner.
+- From conversational prompts, deduce user objectives by summarizing the intent behind their requests in simple terms.
+- Isolate key elements from a user's request and reflect on those elements to capture their primary objectives.
+- Translate user requests into clear intentions by identifying the main focus of their inquiries in a simplified format.
+- Effectively parse user queries and articulate the specific intentions behind them, focusing on what the user truly wants to know or achieve.
+- You must evaluate the content of user questions to provide a straightforward prediction of their desires during the interaction.
+- Your job is to detect what users want from their queries and create a straightforward explanation summarizing their request.
+- Your job is to understand the implication of user queries and communicate their objectives clearly without adding extra details.
+- Interpret informal user requests and refine them into well-articulated summaries that reflect their inquiries' essence and aims.
+- Break down the input from users into essential points that showcase what information or action they are seeking.
+- Assess the context of user requests, translating them into actionable goals or informational needs succinctly.
+- Review user statements carefully to discern their aims, translating those insights into a concise summary that reflects their expectations.
+- Based on the user's dialogue, distill their wants or needs into a clear and short description of their objective.
+- Your role is to translate human questions into succinct expressions of intent, outlining precisely what topic or information the user is exploring.
+- Decode user requests to identify the central aim of their inquiry and convey that aim through clear and concise language.
+- As you analyze user inputs, strive to capture and communicate their intended actions or informational needs with precision and clarity.
+- Your task involves interpreting user inquiries in a dialogue context to infer their underlying intentions and objectives.
+- You need to distill the essence of a user's question into a brief statement that captures their main objective.
+- Determine and summarize the key request from the user’s input, highlighting their specific interests or needs.
+- Your task involves listening closely to user dialogues and providing a short prediction of their objectives based on what they said.
+- Comprehend the user’s statements within a dialogue framework and summarize the target objectives for clarity.
+- Read the user's message carefully and deduce the specific information or action they are requesting, summarizing it in one to two sentences.
+- Synthesize user queries into brief explanations that capture their aims, facilitating better understanding in conversational exchanges.
+- Analyze the given user statements to accurately express what information or action the user is seeking through their questions.
+- You should distill user interactions down to their primary intent, summarizing in one or two sentences what they’re trying to find out.
+- Analyze the input provided by users to derive a clear understanding of what information or action they are pursuing.
+- Capture the core aim behind each user inquiry and represent it simply as a task they need help with.
+- In this task, analyze human-computer dialogues to predict users' goals based on their expressed thoughts and formulate concise responses regarding these goals.
+- Analyze the given input from a user and predict the objective behind their request, focusing on their underlying needs.
+- When presented with a user’s query, your task is to reveal what information or action they’re after in clear terms.
+- Focus on understanding the core request from the user and articulate what they are hoping to achieve with their query.
+- Engage with the user’s message by interpreting it, focusing on what they truly want to know or accomplish.
+- When provided with user requests, summarize what they're aspiring to achieve by rendering their intention into brief descriptions.
+- Understand and reformulate user questions into clear, concise statements that reflect their information needs in conversations with a computer.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1713_convai3_sentence_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1713_convai3_sentence_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

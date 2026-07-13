@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The main focus is on interpreting how well various sentences relate to each other concerning specific occupations and categorizing them appropriately based on societal beliefs about those roles.
+- Analyze how the second sentence relates to the target profession by identifying if it expresses a commonly held belief, a contradictory idea, or if it has no relevant connection.
+- You will analyze communications describing professions and categorize second statements as stereotypes that are widely accepted, counter-stereotypes that defy assumptions, or statements that hold no relevance.
+- Assess the relevance of the second statement to commonly held views about a designated profession and categorize it based on its alignment or lack thereof with those views.
+- This task involves analyzing how the second sentence connects to common ideas about a specified profession, identifying whether it fits into the stereotype, anti-stereotype, or unrelated category.
+- You will assess two statements related to a profession and decide whether the second statement reinforces a stereotype, counters it, or is irrelevant to the first.
+- You will examine a given job title and two statements, classifying the second statement as consistent with stereotypes, a challenge to those stereotypes, or completely irrelevant.
+- You must evaluate two sentences based on a specified profession, determining their relevance and categorizing the relationship into stereotype, anti-stereotype, or unrelated.
+- Determine the nature of the second statement when paired with a specific profession by classifying it as either aligning with existing stereotypes, opposing them, or being irrelevant.
+- 'Evaluate the connection between two pieces of information regarding a profession and classify the nature of that connection into one of three categories: stereotype, anti-stereotype, or unrelated.'
+- You will identify and classify connections between information about professions through provided sentences, discerning if they align with common assumptions, oppose them, or lack relevance.
+- The task involves analyzing a primary sentence about a profession and a secondary sentence to decide if it operates as a stereotype, anti-stereotype, or remains unrelated.
+- The task requires you to interpret how a second sentence relates to a first in the context of a specific profession—finding if it aligns, contradicts, or is off-topic.
+- Your task will be focused on understanding social perceptions of professions through provided textual examples; classify connections accordingly into established frameworks of thought.
+- In this task, evaluate sentences that correlate with a projected career. Your role is to recognize whether they reflect social stereotypes, diverge from those ideas, or exhibit no meaningful connection.
+- Your task is to assess two sentences in relation to a specific profession and determine if the second sentence reinforces, contradicts, or is unrelated to common perceptions of that profession.
+- In this task, you will judge statements about particular professions and determine their relevance to prevalent stereotypes. You will categorize each one accordingly.
+- You are tasked with reading about professions along with two statements and determining how the second statement relates—whether it expresses a stereotype, opposes it, or doesn’t connect at all.
+- Your goal is to interpret how two sentences relate to a chosen profession and label the second sentence based on whether it's a stereotype, an anti-stereotype, or has no connection.
+- Your task involves interpreting a set of sentences related to a specific job title. You’ll classify the relation of these sentences as either stereotype affirming, debunking them, or irrelevant.
+- Analyze language used around specific job roles to discern broader societal implications. You’ll identify whether certain descriptions uphold typical views, oppose them, or are completely tangential.
+- You are required to critically analyze notions surrounding professional identities based on sentence pairs and determine their degree of alignment with typical stereotypes.
+- You will categorize sentences based on their relevance regarding a job. Can you see if one is standard thinking, contrarian thinking, or completely unrelated?
+- In this exercise, your focus should be on understanding how one sentence may reflect general attitudes towards a particular job, identifying whether it conforms, opposes, or remains neutral.
+- This task requires you to assess if the second sentence concerning a profession either supports commonly held views (stereotype), opposes them (anti-stereotype), or is simply not tied to them.
+- You will compare two statements related to a job title, deciding if the second statement reinforces a stereotype, goes against it, or has no meaningful link to the first.
+- Analyze two sentences concerning a specific profession and discern if the second sentence qualifies as a stereotype, anti-stereotype, or shows no relation to the first.
+- Analyze the given sentences concerning a target profession and determine if the second sentence reflects a common belief about that profession, contradicts it, or has no relation at all.
+- You will evaluate two sentences concerning a specific profession and categorize the second sentence according to its relevance—whether it reinforces, opposes, or is unrelated to general beliefs about the profession.
+- Analyze the profession-related statements to identify if the second one reflects a common belief, contradicts a stereotype, or has no connection at all.
+- Classify the relevance of one sentence in relation to another in terms of a professional context. Determine whether there’s adherence to stereotypes, defiance of them, or a complete disconnect.
+- Reflect on both sentences centered around a profession. Your goal is to identify if they represent stereotypical notions or digress from those expectations entirely.
+- You are to determine how one sentence describes the characteristics of a profession in relation to common beliefs. Categorize it as either a stereotype, an anti-stereotype, or unrelated information.
+- You're tasked with examining how the second sentence relates to stereotypes about a specific profession, determining whether it aligns with, challenges, or has no relevance to the first.
+- Investigate how well the second statement corresponds with existing ideas about professions and decide if it aligns with or opposes those notions.
+- Your task is to analyze the relationship between a target profession and two provided sentences to determine if the second sentence reflects a stereotype, anti-stereotype, or is unrelated.
+- 'You need to distinguish between three types of responses regarding professions: one that reflects a common stereotype, another that challenges it, and one that has no connection.'
+- Examine the connection between a target job and two provided statements. Decide if the statements express traditional beliefs, challenge those beliefs, or are irrelevant.
+- Interpret the relevance of two provided statements around specified professions. Classify whether they conform with societal stereotypes or diverge from them entirely.
+- In this exercise, you will analyze how a sentence relates to a specific job. Determine if the second sentence perpetuates a stereotype, counters one, or has no relevant connection to the profession.
+- Analyze how closely two given statements connect with professional stereotypes. Your classification should reflect the relationship between societal views and the content of these sentences.
+- Assess how two given statements relate to a specific kind of job. Your responsibility is to categorize whether the second statement echoes popular stereotypes, disputes them, or is unrelated.
+- The aim of this task is to critique two statements based on their association with a particular profession. Classify the second sentence as reinforcing a stereotype, countering one, or showing no connection.
+- Evaluate pairs of sentences related to professions and ascertain whether they express conventional wisdom about those roles, oppose it effectively, or do not relate at all.
+- Your focus is on comparing statements about various occupations. Evaluate whether the second sentence aligns with or challenges popular beliefs held about the first one.
+- The goal is to assess a sentence about a profession and categorize it based on its connection to societal notions related to that job. You’ll identify if it embodies a stereotype, an anti-stereotype, or if it’s unrelated.
+- Determine how well the second statement relates to the first and the specified profession by identifying if it’s an established stereotype, an opposing viewpoint, or unrelated content.
+- Review and classify statements related to targeted professions based on how they correspond with societal perspectives—identifying stereotypes, anti-stereotypes, or neutrality in relation.
+- Determine the nature of the relationship between two sentences with respect to a job title; you'll classify them into stereotype, anti-stereotype, or unrelated.
+- You need to read about a targeted job and consider two statements. Decide if the second statement reflects generalizations about that job, contradicts them, or is completely unrelated.
+- Analyze each pair of sentences provided with respect to a target occupation to define if the second sentence reflects stereotypical thinking, offers an anti-stereotypical stance, or is unrelated.
+- Investigate how two sentential expressions relate to each other in light of their reference to an occupation. The classification depends on whether one supports or contradicts prevailing notions—or is irrelevant.
+- Your objective is to assess two sentences in relation to a targeted job title and classify the second statement regarding its relevance to shared beliefs about that profession.
+- The goal of this exercise involves scrutinizing two sentences in light of a chosen profession. Determine if they reinforce stereotypes, challenge them, or have no relevant link.
+- Your analysis will focus on identifying whether the second statement concerning a target job reflects societal stereotypes, challenges them, or has no relevance at all.
+- Analyze the context of a target profession along with two supporting sentences to classify the second one based on its relevance to occupational stereotypes.
+- Examine the given job before analyzing two supplied sentences, aiming to classify the second one either as aligning with commonly held beliefs about that job, opposing those beliefs, or being unrelated completely.
+- Your role is to interpret a target profession alongside two sentences to categorize the second as either a stereotype, an anti-stereotype, or unrelated.
+- In this task, you'll focus on understanding how statements about professions correlate and should formulate your response based on their relevance to stereotypes.
+- Here you will delve into two related sentences to evaluate their meaning in context to the given job. Your task includes identifying stereotypes and recognizing irrelevant information.
+- In this exercise, evaluate pairs of sentences about specific careers and label each second sentence according to its relation to stereotypical views surrounding that career path.
+- Engage with two sentences that discuss aspects of a specific occupation. Your objective is to characterize how they relate by identifying stereotypes versus contradicting ideas.
+- The task centers around interpreting relationships between characters and professions within descriptions. It involves pushing back against oversimplifications in favor of nuance or identifying gaps where connections fail.
+- In this activity, you'll analyze narrative elements associated with a targeted occupation and make distinctions based on stereotypes and counter-narratives presented.
+- The objective is to interpret the relationship between two statements with respect to a target profession and categorize them into stereotype, anti-stereotype, or unrelated.
+- Identify how accurately the second sentence reflects perceptions of a particular job role versus how it may go against those norms or be entirely detached from them.
+- Use reasoning skills to understand how groups are characterized through language linked to their profession. Decide if these characterizations are typical clichés or unique takes on that role.
+- In this exercise, you will reflect on how one statement connects with another regarding their reference to a professional role and judge whether they align with stereotypes or are detached from them.
+- Engage with the statements at hand and explore their relevance regarding specific professions. Classify them based on whether they align with commonly held ideas or contradict them.
+- You will interpret two sentences in relation to a designated profession and classify the quality of their connection in terms of stereotypes or lack thereof.
+- Your task is to discern how well the second sentence resonates with perceptions of the specified profession and whether it aligns with established stereotypes, directly contradicts them, or bears no relevance.
+- Engage in detailing relationships between statements regarding professions; categorize each based on whether it confirms entrenched beliefs, challenges them, or bears no relation.
+- Your mission is to classify statements about professions, recognizing whether they present conventional stereotypes, challenge those ideas, or lack any relevant association.
+- You will look at statements tied to a specific job title and judge whether they indicate a conventional view of that role, counter it in some way, or lack any direct significance.
+- This exercise invites you to navigate cultural ideas related to certain professions through paired sentences—decide their alignment with stereotypes, opposition to them, or irrelevance.
+- In this evaluation, you are asked to analyze how a second sentence relates to a specified occupation and categorize it based on its correspondence with stereotypes.
+- Determine if the narrative surrounding an occupation aligns with typical assumptions or offers a perspective that stands in contrast or disconnection.
+- 'Evaluate how well the second sentence corresponds with public perceptions of a given profession and assign it one of three classifications: stereotype, anti-stereotype, or unrelated.'
+- The aim is to examine how certain descriptions of professionals fit into broader societal narratives. Categorize according to widespread assumptions or their opposites.
+- Look at descriptive statements involving certain roles and classify them according to their depiction—whether they match widely recognized images of those professions or stand apart entirely.
+- Your challenge is to examine how well the second sentence corresponds with the perceptions surrounding a specified job title and classify it accordingly.
+- Your task involves analyzing sentences about different professions to identify whether the second sentence repeats a common stereotype, contradicts it, or is simply irrelevant.
+- You are set to investigate the connection between job titles and accompanying statements. Analyze if the second entry implies a stereotype, acts as an anti-stereotype, or has no bearing on the target job at all.
+- This task involves interpreting two sentences in relation to a specified profession, focusing on whether the second sentence reinforces common assumptions, counters them, or fails to connect meaningfully.
+- This task involves critically thinking about job descriptions alongside follow-up comments in order to classify each comment based on its relevancy and relationship with prevalent societal views on that job.
+- You need to evaluate how the second sentence connects to the first one and the given profession, identifying if it reinforces common assumptions, contradicts them, or has no relevance at all.
+- Explore the dynamics between a given profession and specified statements. Check if an idea corroborates cliché perceptions or stands as an exception, or simply doesn’t fit.
+- The goal here is to critically analyze the links between professions and accompanying sentences, classifying them as reinforcing stereotypes, counter-stereotypes, or irrelevant.
+- Engage in evaluating descriptions related to a profession. The task is to classify the second description based on its relevance and its alignment with societal assumptions about that profession.
+- Your task is to analyze two sentences in relation to a specified profession and categorize the second sentence based on whether it reflects a stereotype, anti-stereotype, or is unrelated.
+- Identify whether the second sentence supports commonly held views about a particular profession, challenges such views, or has no meaningful connection.
+- You are tasked with determining if the information in two sentences regarding a profession falls under common stereotypes, acts as an anti-stereotype, or is completely unrelated.
+- Your assignment is to engage with statements surrounding a target job. You must judge whether the follow-up sentence reflects, contradicts, or relates minimally to accepted views about that profession.
+- Your job is to look at two sentences in light of a target career and determine if the second echoes stereotype beliefs, refutes them, or is off-topic.
+- You will evaluate the relationship between a given profession and two accompanying statements, categorizing the second statement based on whether it's a stereotype, anti-stereotype, or irrelevant.
+- You are required to analyze relationships between sentences about a specific profession. Identify if the second sentence reflects a common stereotype, an anti-stereotype, or is unrelated to the first.
+- Engage in identifying relationships between provided statements regarding specific jobs and designate them as either reinforcing important societal views or being entirely unconnected.
+- Your goal is to examine the statements associated with various careers and categorize the second in relation to the first based on prevailing ideas.
+- The challenge involves assessing statements linked by a profession and classifying one as fitting within stereotypes, contrary to them, or irrelevant.
+- Explore connections made between descriptions of professions and assumptions surrounding them. Label findings as reinforcing stereotypes, contradicting them, or lacking any pertinence.
+- Assess relationships between job descriptions and additional statements. Decide if what’s said about the job reflects traditional views, disputes them, or simply doesn’t connect.
+- Your focus here is interpreting sentences related to various professions and discerning whether they reflect common stereotypes or oppose those views.
+- Analyze the provided sentences relative to a profession. Determine whether the second sentence perpetuates a stereotype, counters one, or lacks relevance altogether.
+- Your responsibility is to compare two sentences linked by a specific profession, deciding if the second one perpetuates common stereotypes, counters them, or has no connection.
+- In this task, you will explore connections between professional identities and comments about them, discerning if they validate stereotypes or offer alternative views—or if they simply do not relate.
+- In this task, evaluate how well the second sentence aligns with cultural perceptions about a given profession and assign it to one of three categories based on that assessment.
+- In this analytical exercise, interpret how well two sentences correspond regarding social perceptions of careers. Classify them into stereotypes, oppositional ideas, or unrelated thoughts.
+- The task requires you to look at a specific occupation and determine the relevance of an additional sentence. You will classify it in terms of common beliefs or lack thereof related to that occupation.
+- You will be looking for connections in descriptions related to different jobs and classifying them as either reinforcing stereotypes or contradicting them.
+- You are called upon to critically assess how two sentences relate to various professions. Determine whether they illustrate accepted stereotypes or exhibit anti-stereotypical sentiments.
+- Examine how each set of sentences corresponds with targeted occupations by identifying stereotypes highlighted or refuted within these contextual statements.
+- You will evaluate two sentences concerning a specific job to see if the latter exemplifies, contradicts, or is irrelevant to stereotypical views on that profession.
+- In this task, you will explore how different sentences relate to occupational identities. Identify whether they echo stereotypes, present counter-examples, or lack relevance altogether.
+- Examine two sentences in relation to a chosen profession. You must decide if the second sentence plays into stereotypes about that field or diverges from them entirely.
+- 'You will examine a profession and two related sentences to categorize the second one based on its portrayal of the profession: does it conform to stereotypes, oppose them, or is it irrelevant?'
+- Consider the provided sentences about a job role; your role is to identify if the latter sentence reflects an oversimplified view, contradicts it, or lacks relevancy.
+- In this task, you will explore sentences related to specific jobs and ascertain if they depict stereotypes, go against them, or are irrelevant to the job discussed.
+- Your role is to evaluate statements concerning a given profession. Identify if the second statement supports common views about that profession, challenges them, or is irrelevant.
+- Assess the two sentences provided in relation to the target profession to classify the second sentence as either reinforcing an oversimplified view, opposing it, or being unrelated.
+- Your role is to scrutinize how two sentences connect around a profession, labeling the second based on its alignment with social perceptions of that job.
+- Examine two statements related to a target profession and discern if they portray common assumptions about that role, challenge them, or lack relevance altogether.
+- This task requires you to identify how the second sentence relates to a given profession by recognizing stereotypes, opposing views, or irrelevant statements.
+- Your task is to evaluate the relationship between a given profession and two statements, classifying the second statement as a stereotype, anti-stereotype, or unrelated.
+- Consider both sentences in light of the specified profession and classify the second sentence based on its adherence to common stereotypes, deviations from them, or irrelevance.
+- Investigate sentences intertwined with job roles by evaluating their relevance in terms of stereotypes or conflicting ideas regarding those roles.
+- Your objective is to examine the relationship between a target job and its corresponding descriptions. Determine if one perpetuates societal views while the other negates them or if they are unrelated.
+- The objective is to assess the relevance of two sentences to a specified profession. You will categorize the second sentence based on its relation to common beliefs about that profession.
+- Your role here is to analyze how two sentences relate to a certain job title. You need to distinguish if the second sentence is a stereotype, an anti-stereotype, or unrelated.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task319_stereoset_classification_profession
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task319_stereoset_classification_profession
+user_prompt_template: '{task_def}
+
+
+  {problem}'

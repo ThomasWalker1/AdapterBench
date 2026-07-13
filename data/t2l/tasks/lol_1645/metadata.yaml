@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Read and compare two sentences about health issues, then judge whether they convey similar sentiments or entirely different ideas.
+- Your task is to determine if two medical questions share a similar meaning or not, based on their connotations.
+- The task involves a comparison of two given medical statements, categorizing them based on whether their meanings overlap or differ.
+- Examine two medical questions to find out if they evoke similar ideas regarding health conditions, or if they represent different scenarios altogether.
+- Consider the phrasing and intent of each question pair about health matters, deciding if they convey a shared concern or distinct queries.
+- The task involves interpreting two healthcare-related questions to conclude whether they are synonymous in meaning or dissimilar due to varying contexts.
+- This task entails assessing pairs of medical queries for signs of similarity or dissimilarity in meaning, assigning appropriate labels according to your evaluations.
+- Your task is to read two medical questions and determine if they express similar concerns or different thoughts about a health issue.
+- Identify if the two given medical queries have the same intent or if they express differing concerns regarding health issues.
+- Evaluate the nuances in the language of both questions to decide if they relate closely in meaning or diverge significantly in context.
+- Review and analyze the connotations of each pair of medical questions provided. Classify them according to their degree of similarity in intent and subject matter.
+- Your job is to evaluate two questions about medical symptoms and classify them based on their similarity in meaning or difference in approach.
+- Analyze the provided pairs of medical questions to classify them based on their connotation, deciding whether they relate closely or differ significantly.
+- In this task, you will judge pairs of medical inquiries for congruence in meaning and categorize them based on that judgment.
+- Analyze the provided pairs of medical questions and classify them as either having the same or different meanings.
+- Your focus is on classifying pairs of questions about health issues into two groups based on their connotation, either indicating similarity or significant differences in meaning.
+- For each pair of medical questions presented, discern if their essence is aligned or if their meanings lead in separate directions.
+- Your task is to critically assess whether two medical statements ask about the same issues or if they highlight different aspects of a health concern.
+- Review each question pair for thematic alignment and provide a classification based on whether the questions indicate similar considerations regarding health issues.
+- The objective is to evaluate two medical question sentences and categorize them according to whether they share the same concern or are distinct from one another.
+- Assess the provided pairs of questions to understand their meanings and classify them according to how closely related they are, based on their context.
+- In this activity, you will compare two medical inquiries and classify them as either 'Similar' or 'Dissimilar' based on their connotations.
+- You will review pairs of health-related questions and categorize them according to whether they express similar concerns or distinct issues.
+- You will compare two questions about medical issues and label them as either having a similar meaning or different meanings based on their context.
+- Your role is to classify two given medical questions into 'Similar' if they have the same connotation, or 'Dissimilar' if their meanings diverge.
+- You are called upon to compare the meanings behind two health-related inquiries, classifying them based on their similarity or difference.
+- You will assess the connotation of pairs of medical inquiries, deciding if they are asking about related concepts or unrelated ones.
+- Utilize your understanding of medical terminology and context to discern whether two questions have the same underlying message or not.
+- This task requires you to interpret and compare two sets of medical questions, focusing on how closely their ideas match or contrast with each other.
+- Determine the relationship between two medical questions you've been given—identify if they ask about the same concept or if they tackle different topics entirely.
+- Your objective is to classify paired medical inquiries into 'Similar' and 'Dissimilar' based on the nuances of their meanings.
+- Engage with the nuances of the language within the paired medical inquiries to decide if they suggest comparable meanings or different concepts altogether.
+- Your role is to analyze medical question pairs for their conceptual similarities and differences, categorizing them appropriately based on your assessment.
+- Your responsibility is to read through pairs of medical questions and identify if they address the same concept or diverge in interpretation.
+- Your responsibility is to determine if two given medical inquiries have similar implications by classifying them appropriately as either 'Similar' or 'Dissimilar'.
+- Analyze the context and phrasing of given medical questions to determine if they align in meaning or differ significantly.
+- Analyze and judge the connotation of two related medical sentences, deciding whether they imply the same idea or different concepts.
+- Compare pairs of medical queries and discern whether they highlight comparable concerns regarding health problems or explore disparate topics.
+- Compare and contrast each question pair, focusing on the intent behind the inquiries to determine their similarity or dissimilarity.
+- The job entails categorizing medical questions into 'Similar' or 'Dissimilar' based on their underlying meanings and implications.
+- Your task involves comparing two medical questions and determining if they convey the same or different meanings.
+- You need to classify contrasting medical queries based on their connotation, distinguishing between those that imply similar concerns and those that clearly do not.
+- This examination calls for your analytical skills to discern the nuanced meanings behind two health inquiries and categorize them as either related or unrelated.
+- This task requires you to classify medical question pairs into different categories based on how closely related their contexts are.
+- You will be working with pairs of health questions and need to determine their relationship, deciding if they communicate comparable sentiments or separate issues.
+- In this task, compare the intent behind two medical statements and categorize them as either expressing a similar concern or a different one.
+- In this exercise, you will interpret two medical questions and determine if they share the same underlying issue, classifying them accordingly.
+- Examine the given sentence pairs that discuss health questions, deciding if their themes align closely or differ significantly.
+- By comparing two given sentences, you will ascertain if they have equivalent connotations regarding health issues, determining their similarities or dissimilarities.
+- Engage with two related medical questions and ascertain whether they share a similar thematic focus or if they diverge significantly in terms of intent.
+- You are required to identify if the sentiments behind two medical questions align or diverge in meaning.
+- Your job is to look closely at two medical questions and judge their relationship in terms of meaning and context.
+- This task involves comparing two medical inquiries and deciding if they share a common theme or differ in intent and meaning.
+- The goal is to review two statements concerning health matters and determine if they essentially ask about the same issue or portray different topics.
+- This task involves comparing two medical questions and deciding whether their meanings align or differ, which requires understanding the nuances of the language used.
+- In this task, you must determine the degree of similarity between two medical questions and classify them accordingly based on their implied meanings.
+- Classify the provided medical question pairs by deciding if their connotations are aligned or contradictory based on their content.
+- The objective is to categorize pairs of sentences based on their meanings; determine similarities and differences in their connotations regarding health topics.
+- You will be tasked with examining two sets of medical questions and deciding if they reflect the same situation or if there is a significant difference in their meaning.
+- For each pair of sentences, assess whether they are describing the same medical symptoms or situations, requiring a clear understanding of the context.
+- Analyze provided medical question pairs to identify whether they share a common theme or diverge in their implications.
+- You need to analyze whether two provided medical questions relate closely in significance or diverge in meaning.
+- Your task is to determine whether two medical questions share the same meaning or intent, categorizing them accordingly.
+- This exercise involves discerning the relationship between two medical questions, identifying if they are related in meaning or not.
+- You need to compare two medical questions and decide if they express a similar idea or a different one based on their wording and context.
+- Your mission is to assess two healthcare-related questions, discerning their connotations to classify them as either aligned or incongruent in meaning.
+- In this classification task, examine the nuances of each pair of provided medical questions and decide if they overlap in meaning or stand apart distinctly.
+- You will investigate pairs of health questions, providing insight into how closely related their topics and connotations are.
+- Analyze the given pairs of questions and classify them as either 'Similar' if they refer to the same issue, or 'Dissimilar' if they address different concerns.
+- This task requires critical thinking as you evaluate pairs of questions related to medical issues to identify their relationships in terms of context or meaning.
+- Delve into the subtleties within pairs of medical questions. Decide whether they exhibit similarity in intention or whether they're exploring different themes.
+- Compare the meanings behind two medical inquiries. Your task is to classify them based on whether they're asking similar things or if their contexts are quite different.
+- You need to compare two medical questions to decide if they are equivalent in intent or if they address different subjects.
+- You are tasked with evaluating two medical questions to judge whether they align in meaning or if there’s a notable difference.
+- 'Your task is straightforward: identify if two health questions have a common theme or if they present separate medical issues.'
+- Your mission is to evaluate the content of two health-related inquiries and classify them based on their connotative relationship.
+- You will determine the level of correlation between presented medical question pairs, choosing categories that reflect their connotative relationships orderly.
+- The task challenges you to review pairs of medical questions and categorize them by their connotative similarity or differences.
+- Analyze two medical posts to see if they speak to the same underlying problem or if they convey separate connotations.
+- This task focuses on understanding the subtleties in pairs of medical queries and determining the relationship between their meanings.
+- Review and compare two given medical questions, deciding whether they reflect similar ideas or different interpretations regarding health issues.
+- Your task is to evaluate pairs of medical questions and determine if they convey a similar meaning or context based on their connotations.
+- This assignment requires you to examine pairs of healthcare-related queries and judge if they communicate similar ideas or not.
+- Your role involves classifying pairs of medical questions as either aligned in connotation ('Similar') or distinct ('Dissimilar'), based on their expressed meanings.
+- Your goal is to compare and categorize two medical questions based on their semantic relationship, identifying whether they discuss related topics or target different issues altogether.
+- The goal here is to discern the relationship between two questions about health issues, categorizing them based on their similarities or differences.
+- For each set of medical questions, analyze them for similarities or differences in meaning, putting them into designated categories accordingly.
+- The objective is to assess the alignment of two questions regarding health matters, determining if they are alike or contrasting in nature.
+- Evaluate the connotation of paired health-related questions and classify them into 'Similar' or 'Dissimilar', focusing on their contextual relevance.
+- You will need to evaluate two questions regarding health topics and decide if they express a similar concern or differ in context.
+- This task challenges you to identify any overlap or divergence in the connotations of two distinct medical queries.
+- Analyze the language used in the medical question pairs to classify them as either expressing similar sentiments or different inquiries.
+- You will analyze pairs of medical questions and decide whether they are similar in meaning or dissimilar.
+- You will assess whether two given medical questions convey a comparable idea or if they differ significantly in context.
+- You will analyze two medical inquiries to classify them as either 'Similar' or 'Dissimilar' depending on how closely they relate in topic and intent.
+- Discern the essence of each question pair related to health topics, identifying if they reflect similar situations or different health inquiries.
+- Analyze pairs of questions concerning health issues and classify each as having similar meanings or not.
+- Your focus should be on understanding whether these two medical-related questions align in meaning or diverge into separate topics.
+- You are tasked with identifying similarities and differences between pairs of medical questions by assessing their connotations and overall meaning.
+- Your job is to probe the intent behind two medical questions and classify them based on whether they convey a harmonious message or contrast sharply.
+- You are required to analyze two sentences discussing health notions and judge whether they align closely ('Similar') or differ greatly ('Dissimilar') in intent.
+- For each pair of medical questions, use your understanding of language nuances to assess their similarity or difference in connotation effectively.
+- Your task involves discerning the relationship between pairs of medical questions, determining whether they resonate with similar concerns or address separate issues.
+- This task focuses on interpreting whether two given medical questions are linked by their intent or diverge significantly in meaning and context.
+- Evaluate pairs of health-related questions to identify if they approach the same issue or tackle different concerns altogether.
+- Engage with pairs of health-related queries by dissecting their meanings and categorizing them based on how much they reflect common inquiry versus unique perspectives.
+- Your assignment is to compare two medical queries and decide whether their implications are alike or distinct from each other.
+- You are tasked with reading two medical questions and deciding whether they convey the same idea or diverge significantly in context.
+- For the provided question pairs about health, judge whether they have a common theme ('Similar') or if they deal with distinct issues ('Dissimilar').
+- In this task, you'll classify pairs of medical inquiries by determining whether their underlying meanings align or contrast significantly.
+- The aim is to classify each set of questions according to their connotation, determining whether they align closely together or represent different angles on a health topic.
+- Your task involves analyzing pairs of medical questions to determine if they convey the same meaning or a different one.
+- This task requires a thorough analysis of the phrasing in two medical inquiries to find out if they echo similar sentiments or propose different viewpoints.
+- Engage with pairs of related medical questions and classify them based on whether their meanings overlap or are distinct from each other.
+- Compare each set of health inquiries for connotation. Your task is to identify if there’s a shared concern reflected in both sentences or if they represent unrelated topics.
+- Analyze the nuances in paired medical sentences to establish if their themes converge or diverge, leading you to classify them as either alike or different.
+- You will encounter pairs of medical inquiries; your aim is to discern whether they point to the same health problem or reflect different matters altogether.
+- You will be presented with pairs of sentences that contain medical questions. Your job is to judge whether these questions are alike in meaning or not.
+- The task consists of identifying whether two health questions frame the same concern or articulate different issues altogether.
+- Review the sentences for their context regarding medical issues, categorizing them based on whether they reflect similar concerns or not.
+- Your objective is to review pairs of questions related to medical scenarios and decide if they convey the same implications or if their meanings diverge.
+- You will need to read through pairs of medical questions and make a judgment about whether they ask similar questions or represent differing ideas altogether.
+- Your job is to assess the relationship between two given medical questions and categorize them as having similar connotations or distinct meanings.
+- Analyze the two provided medical sentences and classify them into 'Similar' or 'Dissimilar' based on their meaning and connotation.
+- Assess the relationship between two health-related queries by determining if they imply the same question or convey distinct concerns.
+- Your task is to evaluate two medical questions and determine if they convey a similar or different meaning in their context.
+- Review both questions within each pair for contextual similarities or differences, focusing on their underlying intentions about health topics.
+- In this case, you’ll compare sets of medical questions and classify their semantic similarity based on shared themes or divergent meanings.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1645_medical_question_pair_dataset_text_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1645_medical_question_pair_dataset_text_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

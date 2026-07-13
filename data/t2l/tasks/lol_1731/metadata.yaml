@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You will interpret information from a provided text to assess the validity of a statement or claim made in a question.
+- Engage with a short description of a concept and use it to evaluate which of the two statements matches the provided information accurately.
+- Your responsibility is to interpret insights from a short reading exercise and apply them in answering related questions accurately.
+- Your task is to read a brief passage and understand the information provided. You will then answer a question based on that paragraph, relying on your comprehension skills.
+- You are expected to navigate between what is stated in the passage and what is implied by the question, applying logical reasoning.
+- Engage with an informative passage as part of this task. After reading, you'll face questions that require insight into what you've read; select an appropriate answer reflecting this understanding.
+- Analyze a given text and respond accurately to questions that test your comprehension of the content presented in that text.
+- Your objective is to read critically, draw connections from the provided text, and select an answer that reflects said connections in response to an inquiry.
+- You will evaluate a short passage and answer a related question by identifying the correct choice from two options based on the content.
+- Examine the content of a brief passage, then determine how it informs or relates to the posed question in order to provide an accurate response.
+- Review the provided content, identify key elements relevant to the question, and make a choice that aligns with your interpretation of the text.
+- Analyze a short written passage to fully grasp its meaning. You will then be required to use this comprehension to answer an associated question correctly.
+- Read through a short paragraph that explains a factual concept, and then consider a question that tests your grasp of that concept. Choose from two options based on your inference from the passage.
+- You are tasked with reading and comprehending concise information presented in paragraph form, which must inform your selection for the related question that follows.
+- Engage actively with factual descriptions by interpreting their meanings, leading you to confidently respond to subsequent inquiries regarding those texts.
+- Read through the provided text carefully. The goal is to comprehend its message and use that understanding to choose the right answer to the question that relates to it.
+- Make sense of the paragraph provided, drawing conclusions and insights that will yield the correct response to the associated question.
+- Utilize your reading comprehension skills to analyze a paragraph and determine the correct response to an associated question based on your understanding of the text.
+- In this exercise, determine answers based on textual evidence found in a brief paragraph that directly relates to inquiries posed afterwards.
+- Read the provided content strategically, as it contains relevant information necessary for answering the subsequent question accurately. Your analytical thinking will aid in choosing correctly.
+- Your task consists of reading material critically and providing answers rooted in the context provided by that material, showcasing synthesis and analysis skills.
+- You will reflect on the information contained in a short paragraph and use that knowledge to choose the right answer concerning the context.
+- Read a brief text, then respond to a question that asks you to compare or contrast specific details mentioned in the paragraph.
+- This task requires you to read a short paragraph, grasp its meaning, and provide an answer to a specific inquiry that relates directly to that text.
+- This task requires you to distill essential points from a concise paragraph to respond accurately to an associated question.
+- Use context clues within a short excerpt to make an informed decision regarding which of two simplistic statements is correct based on your reading.
+- The aim is to interpret key details from a small section of text and make an informed decision when addressing a related question based on that text's core message.
+- The goal is to interpret critical ideas in a short reading passage and connect those concepts logically when responding to relevant inquiries.
+- Analyze the given text carefully, focusing on key details that will help you determine the correct answer to the question posed.
+- Grasp the essence of what’s described in a brief passage and connect this understanding when addressing an ensuing question, ensuring your choice is well-aligned with what you learned.
+- Examine how specific details within a passage inform an ensuing question; then choose your best response supported by said details.
+- Your role is to process information from a paragraph and use it to effectively answer a subsequent question about the text.
+- In this task, you are provided with information in the form of a small paragraph. Use this information to inform your choice when answering a question related to what you have read.
+- In this task, you will interpret a short text and use it to respond to a specific question. Recognizing key details within the paragraph is essential for selecting the right answer.
+- The task requires you to extract information from a textual source, ensuring that your interpretation aligns with what is being asked in the related question.
+- Use critical thinking to evaluate a brief text followed by a related question. Your aim is to extract relevant knowledge from the paragraph to produce your answer.
+- Engage with specified information in written form, followed by questioning that tests your grasp of that material through logical reasoning.
+- Your goal is to read and understand a small paragraph discussing an idea or fact. Based on that understanding, you will need to choose an accurate answer to a related question posed afterward.
+- Your duty is to extract key information from concise texts and accurately respond to questions regarding their content, leading to conclusions that align with the text's intent.
+- This task requires you to interpret a brief passage and apply your comprehension skills to select the appropriate answer to a question derived from it.
+- Comprehend and interpret information presented in a brief paragraph. A subsequent question will assess your understanding, prompting you to select the most suitable answer based on that comprehension.
+- Interpret a given piece of writing and decide which answer best fits the inquiry related to that text.
+- Analyze the content of a short passage and draw conclusions from it to respond to a related question.
+- You will evaluate brief written entries and then use your comprehension skills to address specific questions about their content, drawing insights directly from what you've read.
+- In this activity, you will analyze a paragraph to extract key information that helps answer a specific question posed about it.
+- Consider both factual knowledge and context from a short narrative or explanation, allowing you to respond meaningfully to questions posed afterward.
+- Your job is to evaluate the information in a short paragraph and thoughtfully consider a follow-up question, selecting the option that best aligns with what you read.
+- The task involves reading a short text and answering a question based on the information contained in that text. You should understand the details and context to derive the correct answer.
+- The objective is to interpret and reflect on information presented in writing so that you can accurately respond to related questions based on that understanding.
+- Analyze a brief passage and respond to a related question. This requires comprehension of the text and the ability to deduce the correct conclusion.
+- Your task involves examining text for details and summaries that lead you toward correctly addressing subsequent questions about it.
+- The task consists of interpreting a brief written passage and responding to an inquiry about it. Focus on aligning your choice with the crucial details expressed in the text.
+- Read and comprehend a brief passage, then use the details from that text to support your answer to a question.
+- The task focuses on extracting knowledge from succinct text and applying it thoughtfully when answering targeted questions.
+- Study the information contained in a paragraph and leverage it effectively when deciding which response best addresses the posed question.
+- Analyze each short segment of text thoughtfully, then employ your comprehension skills to respond accurately to accompanying questions based on what you have just read.
+- Your job is to interpret a small piece of writing and extract the necessary information to answer a related question accurately.
+- In this task, you will assess specific information found in a brief paragraph and conclude with an answer that aligns with the details provided.
+- Your goal is to summarize your understanding of a short text and link it to a question by choosing one of two given answers.
+- Sift through the details of a short piece of writing to discern how they relate to a specific inquiry, ultimately selecting an informed response.
+- Your task is to read a brief passage and understand its main idea. Then, you will need to answer a question about that idea by selecting the correct choice from provided options.
+- You should focus on understanding how concepts are explained in a paragraph and use that understanding to choose the correct answer from two given options.
+- You will demonstrate comprehension of a brief reading by answering a question that tests your understanding of the information presented.
+- Read through the paragraph to comprehend its main ideas, and use that understanding to respond correctly to the question asked.
+- Analyze the information given in a short paragraph. Based on your understanding, respond to a related question by identifying the correct answer from two available choices.
+- You will process information from brief textual expositions and address inquiries that correspond to these details effectively. Comprehension is crucial for success here.
+- The task involves interpreting a given short text and selecting the appropriate answer to a question that reflects the details and concepts within that text.
+- The objective here is to read and understand a paragraph, then accurately answer a question about it by identifying which of two choices is correct.
+- Apply your comprehension skills while reading through a paragraph and relate it directly to answer questions based on its content thoughtfully.
+- The challenge lies in interpreting short pieces of writing correctly and answering inquiries reflecting an understanding of their meaning and implications.
+- Assess the content of the paragraph and identify the relevant clues that connect to the question, enabling you to derive a suitable response.
+- Your role is to thoroughly read and comprehend a small section of text, then determine which of two statements best aligns with that information.
+- Navigate through short paragraphs of information, interpreting what’s conveyed, before formulating an answer to questions that ask for that interpretation.
+- You will engage with concise paragraphs, drawing upon their content to rationalize which of two presented responses is most accurate.
+- Your aim is to summarize key ideas after reading concise texts and apply your insight to answer related questions appropriately.
+- The task requires careful reading and understanding of written content which is then used to address related questions requiring accuracy based on that content.
+- Engage with a short excerpt focused on an academic topic, then answer a question connected to that excerpt. Your response should highlight your understanding of the presented material.
+- Your task involves reading a brief passage followed by a question. You need to apply comprehension skills to derive the answer directly from the text.
+- This task involves extracting key details from a paragraph in order to provide an accurate response to a specific inquiry.
+- Based on the information in a paragraph, you will evaluate a scenario presented in a question and determine its outcome.
+- Use critical thinking skills to analyze the relationship between statements in a paragraph and outcomes presented in subsequent questions.
+- The activity consists of reading a focused paragraph and then determining an answer to an ensuing question based on that passage. Your reading comprehension is key here.
+- This task involves synthesizing information from a short excerpt and making an informed choice in response to a directly related question.
+- Engage with a short written passage and assess how it connects to a posed question. Your comprehension of the text will guide you in selecting the appropriate answer.
+- This task requires you to synthesize information gathered from short texts so that you can respond appropriately based on that information.
+- You will engage with a concise text and demonstrate your understanding by answering a question that relates to the key points in the paragraph.
+- Engage with the provided text to determine its implications and how it relates to the question posed afterward.
+- Analyze the given paragraph and answer a question that tests your understanding of the material. Your response should reflect comprehension of the details in the text.
+- You are required to read and interpret a short text followed by a question. Use context clues within the passage to arrive at your answer.
+- You need to distill information from a text, identifying important points that will aid you in answering an associated question accurately.
+- Your job entails connecting dots within short written passages, enabling you to arrive at correct conclusions presented as questions afterward.
+- After reviewing a small paragraph, you must assess the information presented and provide an appropriate answer to the question posed, relying strictly on the passage's details.
+- Interpret brief paragraphs designed to provide factual context, leveraging this understanding to craft accurate answers regarding specified inquiries.
+- Examine the details within a provided paragraph and consider how they apply when answering questions derived from it.
+- Assess a brief statement and then respond accurately to a follow-up question. Focus on understanding how the details in the text relate to what's being asked.
+- This activity involves absorbing clear yet concise paragraphs and then responding accurately based on what has been understood from them while considering context clues.
+- You will read a short excerpt followed by a question that relates to its content. Use your understanding of the text to find the right answer.
+- Your objective is to distill information from concise texts into actionable knowledge, allowing you to select appropriate answers for posed questions.
+- Read the paragraph carefully, then determine the best answer to the follow-up question, using only what you inferred from the passage.
+- This task involves understanding the main ideas in a short text and using that understanding to select the most appropriate answer to a related question.
+- Comprehend and synthesize information from a brief writing sample, then use this insight as a basis for answering the corresponding question correctly.
+- Analyze a concise segment of writing alongside a related inquiry. Your focus will be on accurately resolving this inquiry based on textual evidence.
+- The goal is to discern answers by applying knowledge gained from reading short descriptive passages and deducing responses that reflect that understanding.
+- Your challenge is to extract knowledge from brief passages of text, which will guide you in answering relevant questions accurately while honing both reading and analytical skills.
+- You will be presented with a short text followed by a question. Your goal is to assess the information and determine which of the two answers best reflects the content of the text.
+- Utilize critical thinking skills to compare the information given in the paragraph against two potential answers, determining which is accurate based on your understanding.
+- Review a concise piece of writing and its corresponding question. You need to discern which of two possible answers best reflects the information presented in the paragraph.
+- Engage in reading an informative brief passage and reflecting on its content before tackling questions about it. The focus should be on your ability to interpret and accurately summarize ideas expressed in text form.
+- The objective is to carefully read a short passage before addressing an inquiry that reflects your understanding of its main points or facts.
+- Your task is to read a short paragraph and understand its main ideas. Then, answer a related question by selecting the correct option based on the information provided.
+- The job entails examining textual detail presented briefly while considering how it relates directly to subsequent questions, honing your analytical capabilities in reading comprehension.
+- The task involves reading a provided paragraph carefully and reflecting on its implications to answer a following question. Focus on the relationship between the details in the text and the query posed.
+- Your task is to read a provided paragraph and extract important information to answer a related question accurately.
+- Your task involves capturing vital insights from a short paragraph then leveraging this knowledge to select an answer that appropriately fits a related question asked afterward.
+- You need to extract information from a brief written explanation and answer a question by identifying which of two statements is correct based on that information.
+- Engage with well-defined textual information, forming conclusions based solely on evidence available within those texts in response to provided queries.
+- This exercise invites you to read and reflect on short paragraphs, subsequently answering questions that require you to translate understanding into precise responses.
+- In this activity, you will analyze a brief paragraph and respond to a question about it, relying on your comprehension of the material.
+- Use your critical reading skills to digest a small segment of text. Based on your understanding, you will conclude which answer best fits the inquiry related to that text.
+- You're required to engage with a concise excerpt and utilize its details to form an informed response to the accompanying query.
+- This task expects you to connect your understanding of physical principles or facts detailed in the text with relevant questions that require decisive answers.
+- Engage with a brief narrative or explanation and demonstrate your comprehension by selecting an answer that appropriately reflects its meaning.
+- You will engage with a passage, focusing on its main ideas or facts, and use that understanding to choose an answer regarding particular circumstances described.
+- Engage with a paragraph that provides specific information, then answer a question that checks your grasp of that information.
+- Read through a short piece of written content, then determine the most accurate answer to a follow-up question, focusing solely on the provided information.
+- Engage with written material and utilize your analytical skills to gauge how it relates directly to specific questions asked about its content.
+- This involves parsing brief informational passages and formulating answers to questions by closely aligning your responses with the details provided in those passages.
+- The task is centered on interpreting written content. After reading, you must answer a corresponding question relevant to what you have understood.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1731_quartz_question_answering
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1731_quartz_question_answering
+user_prompt_template: '{task_def}
+
+
+  {problem}'

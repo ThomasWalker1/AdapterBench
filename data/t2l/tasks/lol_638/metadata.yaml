@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your responsibility is to track dialogue exchanges and correctly assign speaker roles for specific sentences based on language cues and situational context.
+- You are tasked with determining the origin of specific statements in an exchange between two participants. Careful attention to context will enhance your accuracy in identifying the speaker.
+- This task revolves around recognizing dialogue turns within conversations, necessitating an ability to recall prior remarks to correctly deduce who said what.
+- This task involves understanding the flow of a conversation and recognizing which participant made a particular remark in that dialogue.
+- In this task, you analyze a series of sentences exchanged between a user and a system, pinpointing the speaker of a selected line.
+- You will be presented with a set of interactions between a user and a system. Your role is to identify the speaker of a designated sentence by interpreting dialogue exchanges.
+- You'll be identifying speakers in conversational exchanges by assessing relationships and flows between different statements provided in the dialogue.
+- Track comments made during an interaction and classify them under either user input or system output based on their qualities and context.
+- In this job, identifying the speaker of a line within a conversation is key. Recognizing the intent behind each part of the dialogue can clarify your choices.
+- Your mission involves navigating through dialogues and identifying the source of a highlighted statement, taking note of conversational cues.
+- Your role is to interpret the interactions in a conversation and connect specific sentences to their respective speakers, assessing language style and intent.
+- You will read through a dialogue and determine whether the user or the system said a particular line. This requires careful consideration of how conversations typically unfold.
+- Analyze the provided conversation snippets to discern whether the user or the system voiced a particular statement. Familiarity with conversational norms can aid in this task.
+- Determine whether it was the user or the system that made a specific remark in a conversation, requiring scrutiny of their linguistic styles and context clues.
+- Analyze conversations step-by-step, noting who spoke each line based on how each participant contributes to the exchange.
+- Your role is to analyze dialogue exchanges and attribute specific statements to either the user or system, based on their interactions. This requires careful listening skills.
+- Your job is to review a conversation between two parties and identify the speaker of a particular statement. This requires careful reading and comprehension of dialogue dynamics.
+- In this task, you will sift through dialogue snippets, discerning the speaker of a highlighted sentence based on prior exchanges. Context clues will guide your decision-making process.
+- Pay attention to dialogues between two parties and determine who said an indicated statement by analyzing how users typically interact with systems.
+- The task involves examining a dialogue and determining which participant spoke a specific sentence. You must analyze the conversation context to identify the speaker accurately.
+- The task requires you to distinguish between two speakers in a conversation by determining who issued a specific line. Careful interpretation of dialogues is crucial.
+- Focus on conversations between users and systems and discern the attribution of spoken lines based on how each participant engages in discussion.
+- In this task, you'll investigate conversations to classify who articulated specific statements based on their role in the communication dynamic.
+- Identify the speaker of an assigned sentence within an interactive dialogue. Pay attention to context, as this will guide you in attributing statements correctly.
+- Scrutinize each part of a dialogue to deduce which participant gave voice to an indicated sentence, considering previous context for clarification.
+- Review the conversation between two parties and decide who said an indicated sentence. This necessitates careful listening to spoken cues within the dialogue.
+- Your task is to analyze a conversation and determine who made a specific statement, using the context of previous interactions between a user and a system.
+- Examine a conversation where a user interacts with a system, and specify who said a designated sentence, focusing on their communication patterns.
+- Your role is to interpret interaction patterns in a conversation. Determine whether a highlighted sentence was spoken by the user or the assisting system.
+- You will engage with dialogue exchanges and determine who is responsible for a specified statement. Consider who is asking questions versus providing information.
+- Delve into a dialogic interaction and determine which party expressed a certain thought or inquiry, paying attention to conversational markers.
+- The task requires assessing exchanges in a conversation to identify who delivered specific comments. Pay attention to cues that help clarify who is speaking.
+- Discern who spoke each sentence within a dialogue framework, applying your understanding of conversational rules and roles for effective analysis.
+- Analyze the given dialogue to attribute sentences correctly to their respective speakers. Understanding conversational dynamics will help you decide accurately.
+- Your job is to look at a series of statements made within a conversation and attribute them to either the user or the system based on the context provided.
+- Identify the speaker of a given sentence from a conversation between a user and a system. This requires attentiveness to the roles each party plays in the dialogue.
+- Your job is to dissect an ongoing dialogue and clarify who is speaking when. This means considering the prior exchanges for context.
+- You need to read through a dialogue and identify whether the highlighted sentence was spoken by the user or the system, relying on your understanding of conversational dynamics.
+- The challenge lies in discerning which participant in a conversation made a certain remark. Strong comprehension skills will lead you toward an informed conclusion.
+- Your task is to analyze a conversation between a user and a system to identify who spoke a specific sentence. Understanding the context and flow of conversation will aid in making the correct identification.
+- Your job involves going through dialogues to determine speaker attribution for specific lines, requiring careful consideration of communication styles.
+- Determine the speaker of a quoted line within an interaction by examining the flow of conversation, thus exercising your analytical listening skills.
+- Your job involves examining interactions to pinpoint who expressed a given idea or request within the conversation. This requires attention to detail and comprehension of conversational dynamics.
+- This activity requires understanding conversational dynamics and attributing statements correctly based on who is speaking at various points in the exchange.
+- Carefully parse through conversations to figure out speaker attribution for various sentences. Understanding how questions and responses flow will help in this decision-making process.
+- You need to parse conversations to establish which party, user or system, made a specified remark. This demands understanding conversational patterns and the typical roles of each participant.
+- Engage in analyzing dialogue contexts to attribute comments or questions correctly, emphasizing comprehension of interaction flow between participants.
+- You need to closely read the dialogue between a user and a system. From the sentences, identify whether the user or the system was responsible for a given statement.
+- The goal is to evaluate conversational context and identify speakers. This will involve examining the tone, content, and intent of statements made by each party.
+- Analyze the provided dialogue carefully, as your objective is to recognize who delivered a particular line amidst multiple speakers.
+- Assess dialogue exchanges to discern which participant—the user or the system—communicated a specified sentence within an ongoing conversation.
+- Follow conversational leads in dialogues and match distinct sentences with either user or system notes based on how discussions typically unfold.
+- Your task is to analyze a conversation and determine who made a specific statement, distinguishing between the user and the system based on the context provided.
+- You'll engage with conversations in written form, determining which participant articulated specific thoughts or questions.
+- You will need to read through a conversation between two parties and decide which one said a specified sentence, enhancing your understanding of conversational dynamics.
+- In this task, focus on dialogue exchanges to conclude whether a specific sentence was voiced by the user or spoken by the system in response.
+- This task focuses on understanding dialogues between users and systems, asking you to determine speaker identities based on sentence contexts.
+- This involves discerning between two characters in interactions—the user and system—by evaluating their declarations within given sentences.
+- The objective is to determine which participant in the dialogue expressed a particular sentence, relying on context and dialog management.
+- Your mission is to track dialogue components effectively, determining which voice—user or system—sounded off certain lines within an ongoing conversation.
+- You are tasked with parsing dialogue snippets and identifying which entity—user or system—expressed specific thoughts, drawing from context clues available in the speech patterns.
+- Your task is to assess conversations critically to recognize which voice corresponds to specific sentences. This involves navigating turn-taking within dialogues.
+- Your task requires careful reading of conversational threads to discover whether an assigned sentence was uttered by the user or articulated by the system.
+- The goal is to track the flow of conversation and attribute a specific line to either the user or the system. You will need to consider who is likely responsible for each response.
+- Analyze interactive exchanges, needing insight into speaker dynamics, as you identify authorship for specific remarks throughout conversations.
+- Your responsibility is to parse through dialogue snippets and verify which character voiced a given sentence, relying on narrative flow for clues.
+- You will engage with dialogue content, needing to identify which party made certain statements within an interchange. Deductive reasoning can guide you through this process.
+- Your job is to review a series of sentences from an ongoing dialogue and attribute one specific sentence to either the user or the system based on their interaction style.
+- Your task is to analyze a conversation and determine who spoke a specific sentence. This involves understanding the context and flow of dialogue.
+- The objective is to follow along in a conversation format and recognize which participant has spoken certain lines. You will need to pay close attention to narrative cues within the dialogue.
+- The focus here is on determining which individual in an exchange articulated a particular sentence. Close attention to conversational structure will be beneficial in unraveling this task.
+- You will review dialogue exchanges and assess them to classify whether the user or the system articulated a certain statement.
+- Your focus should be on identifying speakers from given lines within an interactive dialogue framework, drawing conclusions based on context clues and speaker characteristics.
+- Your objective is to track dialogue within conversations and determine the speaker of a highlighted sentence by observing prior statements.
+- As you review the dialogue, your goal is to understand who contributed specific remarks by considering who typically asks questions or provides information.
+- Analyze dialogues to ascertain who conveyed a specific sentence. An awareness of interaction types will enrich your assessment.
+- Analyze provided interactions to recognize who said what throughout the conversation, demonstrating comprehension of conversational roles.
+- Your challenge is to sort through a dialogue and recognize whether the user or system stated a particular sentence, relying on context and conversational dynamics.
+- You'll read through interactions and pinpoint whether it’s the user or system making specific comments. Close attention to context will aid in this determination.
+- In this activity, you'll analyze conversational sentences and determine their origin based on preceding statements and the flow of discussion between speakers.
+- The goal is to decode who articulated certain statements by navigating through dialogues, paying heed to how exchanges are structured between user inquiries and system replies.
+- You are tasked with determining speaker identity in conversations by analyzing contextual exchanges carefully, ensuring clarity around each line’s origin.
+- By examining the flow of conversation, you must identify the speaker of a specific line, utilizing comprehension of conversational cues.
+- Within a conversation context, determine whether the line mentioned was spoken by the user or the system, focusing on dialogue progression and context clues.
+- Review conversational exchanges and identify which participant delivered a particular line, utilizing information about speaker roles and context for clarity.
+- Given a sample dialogue, you'll need to identify the speaker of a requested sentence by interpreting their verbal contributions during the exchange.
+- This task calls for identifying speakers within dialogues based on contextual cues. It involves discerning between user inquiries and system responses effectively.
+- Your assignment involves understanding dialogue exchanges in order to attribute sentences to either users or systems effectively based on interaction nuances.
+- You need to listen carefully to a dialogue and attribute a particular line to either the user or the system based on context clues.
+- Your job is to interpret an interaction between a user and a system, focusing on extracting who said what based on previous statements in the conversation.
+- This task focuses on conversational analysis, where you assess who made a comment in a given exchange. Understanding the tone and flow of the conversation is essential for accurate identification.
+- Your job is to listen to a back-and-forth exchange and deduce which party said a particular line, using context as your primary guide.
+- Assess dialogue snippets to ascertain whether the statement in question was voiced by the user or the automated system, requiring attention to conversational context.
+- The objective here is to pinpoint who said a particular line from a conversation. This involves contextual knowledge about how users interact with systems in dialogue formats.
+- Engage with the provided dialogic text to specify which participant made certain statements. Your findings should reflect an understanding of conversational context.
+- In this exercise, you will decipher dialogue exchanges and attribute specific remarks to their speakers by recognizing patterns in conversation flow.
+- Assess interactions between users and systems within conversations, pinpointing who said what in relation to given sentences based on context clues.
+- Inspect conversations where one party interacts with another, and ascertain who made specific statements based on conversational flow.
+- Investigate a dialogue scene between a user and support system, focusing on who expressed certain thoughts based on how the exchange unfolds.
+- This task requires you to evaluate a conversation and identify whether a specific statement was made by the user or the system. Consider how each character contributes to the discussion flow.
+- In this task, analyze different speaking patterns in a conversation to see if you can identify which party stated a given sentence.
+- Here, you will interpret a dialogue and identify the speaker of a selected sentence. It entails understanding how each participant communicates within the context.
+- Interpret sections of dialogue to identify who claimed responsibility for various statements. Contextual analysis will play an important role in your assessment.
+- You are given a conversation and need to identify who made a specific statement, discerning the roles of the participants throughout the dialogue.
+- You are tasked with sifting through conversational exchanges to find out who gave voice to a given statement by analyzing context clues within the dialogue.
+- Look at provided conversation snippets and find out who made a certain statement. This may involve reflecting on conversation structure and flow.
+- Inspect the provided conversation carefully and pinpoint which character spoke an indicated line. This will test your comprehension of conversational cues.
+- Engage with conversations by identifying which participant—user or system—delivered particular content, focusing on their roles in communication.
+- You will evaluate a dialogue and use logical reasoning to determine if the user or the system made a specific remark. This involves tracking multiple statements throughout the exchange.
+- Your task requires tracking conversational exchanges and assigning speaker identity accurately to specific sentences, honing in on their interaction style.
+- Analyze alternating sentences from a dialogue to conclude who voiced a certain remark. You will need to grasp overall themes and responsibilities in communication.
+- Use your analytical skills to follow a conversation and identify which individual made a particular remark among the given sentences.
+- The task involves determining authorship of a line within a conversation, honing in on distinctions between how users and systems express themselves.
+- Analyze the conversation snippets and deduce whether the specified sentence comes from the user or system based on their respective engagements.
+- In this task, you'll review a conversational exchange and pinpoint the speaker of a highlighted sentence. This requires attention to the flow of dialogue and roles in the conversation.
+- Analyze interactions between users and systems, extracting speaker identities for selected sentences through logical inference from contextual clues.
+- Your challenge is to interpret conversations by identifying speakers of specific sentences through careful attention to their responses within given contexts.
+- Your job is to trace back through an exchange between a user and a system. From this, determine who articulated a specific statement in the conversation.
+- Can you unravel the speaker of a specific sentence within conversations? You'll read through dialogues to determine if it was the user or the system speaking.
+- The task requires you to interpret a series of statements from a conversation and identify their source. Engaging with the nuances of the dialogue will assist in your decision-making process.
+- Listen closely to an exchange and identify who said a certain statement by observing how each participant responds throughout the dialogue.
+- The objective here is to sift through conversational exchanges and accurately assign each spoken line to either the user or system based on their roles.
+- You are to examine a series of sentences and trace back to find out who articulated a particular line, using knowledge of how users and systems typically interact.
+- In this task, you must closely examine a conversation to find out which participant spoke a given sentence. Understanding the context and roles of each speaker is essential.
+- In this exercise, you'll delve into interactions between individuals and technology, deciphering who made which comment during their exchange.
+- You will engage with a set of dialogues and evaluate who expressed particular thoughts. Understanding the dynamics of communication between users and systems is essential here.
+- Engage with conversations by determining which party spoke designated lines. Employ your understanding of dialogue structure for accurate identification.
+- Your responsibility is to discern from a portion of dialogue who expressed particular thoughts or inquiries, relying on your understanding of conversational markers for guidance.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task638_multi_woz_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task638_multi_woz_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

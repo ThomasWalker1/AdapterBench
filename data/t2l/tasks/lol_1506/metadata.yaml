@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You need to compile the exact phrase mentioning an individual’s birth date from a brief biography, capturing it as it appears in written form.
+- This activity involves reviewing a person's biography to extract the relevant information about their birth date. You should focus on identifying and isolating any mentions of their birth date.
+- The focus here is on locating the specific part of a biography that includes the birth date of an individual.
+- In this task, look for the crucial information within a bio that tells you when someone was born, ideally in a single textual span.
+- Your task is to extract the birth date of a person from a brief biography, identifying the exact text that mentions their date of birth.
+- In this exercise, you will identify and pull out the minimal text from a biography related to an individual's birth date.
+- Analyze each bio provided to highlight only that portion which discloses a person's date of birth accurately.
+- Your aim is to extract only the relevant part of a bio that specifies an individual's birthday, ensuring all elements are included.
+- Your task is to locate the birth date of a person within a brief biography. This involves identifying the specific text that mentions when they were born.
+- This exercise entails focusing on brief biographical sketches to secure only the information pertaining to each person's date of birth as it appears in writing.
+- Your responsibility lies in analyzing biographical texts and retrieving the statement that unequivocally states when an individual was born.
+- The objective is to pinpoint the exact text that indicates an individual's date of birth within a provided biography. This involves careful reading to find the relevant information.
+- Dive into short bios with an intent to capture how someone’s birthday is presented in written format. This task emphasizes careful reading for relevant details.
+- You are tasked with finding the exact wording that reveals when a person was born from their biographical information.
+- Parse through concise biographies to find where individuals' dates of birth are presented in order to relay that information accurately.
+- Your goal is to find the date when a person was born by looking for specific dates within their biography.
+- This assignment requires you to delve into short bios, locating and isolating the section that contains details about a person's birth date while paying attention to descriptive nuances.
+- In this task, you must discern the birth date from a biographical description and extract it accurately.
+- Examine the text about a person's life to locate their date of birth, paying attention to how it is mentioned.
+- The goal here is to navigate through biographies carefully and find just the right segment that reveals a person's date of birth.
+- In this exercise, you are tasked with retrieving from biographical content the specific wording related to someone's date of birth.
+- Extract from the biography the minimal span of text that conveys the person's date of birth with specific attention to detail.
+- Engage with each biography to recognize and present only that part which contains details about when the individual entered this world.
+- 'The task is to find a specific aspect of a person''s biography: the date they were born. It requires locating the precise words that convey this important detail.'
+- You will take a biography and locate a specific time point—namely, when a person was born. This requires attention to detail in recognizing how dates are expressed.
+- Your task is to comb through descriptive text about an individual and pick out their birth date, ensuring it is complete with all necessary information (day, month, year).
+- In this task, you must carefully search through a short bio to find and present the individual's date of birth in its complete form.
+- You are tasked with finding the particular expression that details when a person was born within their bio. Pay attention to formatting as well as content for accuracy.
+- You’ll be extracting vital information regarding an individual’s birthdate from a biographical snippet. Understanding how to read for dates will be core to accomplishing this task effectively.
+- You must analyze biographical information to extract succinctly stated details about when someone was born, thereby demonstrating your skills in locating specific data within written narratives.
+- Your job here is to analyze a brief biography to identify the exact moment of birth of the person mentioned, looking for key phrases that define their birth date.
+- The task requires discerning the person's birthday within a narrative. Focus on finding a concise section that includes this critical detail.
+- The assignment focuses on recognizing and selecting the part of the text that mentions a person's birth date from a given biography.
+- The task involves identifying and extracting a person's date of birth from a provided biography.
+- Read through individual bios and identify where the person's date of birth appears, ensuring to capture it as succinctly as possible.
+- In this task, you need to carefully read a bio and extract the specific date when the person was born, including day, month, and year.
+- Look through short biographies to trace information related to the exact date of birth while preserving how it appears in text form.
+- The goal is to examine concise biographical details and extract any mention of when an individual was born.
+- The primary task is to find and present the birth date of a person mentioned in a bio. It requires you to discern key details from narrative text.
+- Your role involves examining biographical content to find and retain only the segment that specifies the individual's birth date.
+- The assignment entails reviewing an individual's bio to provide their exact birthday as indicated in writing, focusing on capturing that specific text segment accurately.
+- Extract the birth date from a given bio, ensuring to present it in the original wording without alterations. Your focus is solely on locating this specific information.
+- Your responsibility is to sift through a biographical excerpt to extract and deliver the exact date of an individual's birth — making sure to include the complete phrasing.
+- In this task, you need to identify the segment of text in someone's bio that conveys their date of birth. It calls for an attentive eye for relevant details.
+- You are tasked with reading biographical passages and succinctly summarizing the person's birth date as given in the text.
+- Analyze a brief bio to pinpoint and capture the part that mentions when the person came into the world.
+- Your mission involves reading concise biographies and deftly locating phrases that disclose when each subject was born, ensuring clarity and completeness.
+- Identify the part of a short bio that reveals when a person was born, including the complete date format.
+- In this task, your aim is to highlight the specific section of text that notes an individual's birthday from short biographies provided to you.
+- The task involves locating and stating the specific date on which someone was born, referenced within their personal history or background description.
+- From a brief biography, locate and present the full date marking when the individual was born.
+- Your role is to comb through a brief biographical piece and find the exact wording that contains the person's date of birth, emphasizing accuracy in extraction.
+- Examine the provided bio to find and present the birth date accurately, maintaining its original phrasing from the text.
+- Your mission is to analyze biographical text to extract just the birth date of the individual mentioned.
+- You’ll need to locate and state the exact phrase containing someone's birth date from their biography. This includes properly identifying months, days, and years presented in writing.
+- This challenge involves reading through a person's bio and pinpointing any mention of their date of birth included in that text.
+- This task requires you to identify and isolate the portion of the text that contains when an individual was born.
+- This task is centered on finding essential details in short biographical snippets, particularly focusing on dates of birth.
+- Engage with biographical excerpts to uncover when someone was born by isolating that specific temporal information from surrounding content.
+- You will analyze provided biographies to extract succinctly phrased content that states an individual's birthday.
+- The task involves extracting a specific piece of information—specifically, the date of birth—from a biographical text.
+- You are asked to find and report on an individual's date of birth as found in their biography. This involves interpreting common structures used for stating birthdays in text.
+- You are required to search a short bio for the birth date of an individual. Pay attention to any mention of the day, month, and year.
+- Your task is to examine a brief biography and isolate the segment that details when the person was born.
+- In this task, you will read a brief description of a person and extract the specific date on which they were born. This requires an understanding of how dates are typically presented in writing.
+- Examine biographical details carefully to discover and isolate where a person's birth date is mentioned, ensuring clarity in your answer.
+- This task invites you to carefully scrutinize short descriptions of people to unearth their birth dates. Precision in finding only the necessary wording is crucial for success.
+- You will analyze biographical text to locate and return the minimal phrase that contains the person's date of birth.
+- You will be presented with biographical snippets, and your role is to find and highlight the precise wording where a person's date of birth is stated.
+- In this goal-oriented task, analyze biographical information and pinpoint where it discusses an individual’s birthday, ensuring you capture all elements of the date.
+- In this task, you need to carefully read a brief bio and identify the precise wording of an individual's date of birth.
+- You are required to parse a short biography to find and highlight the text containing the person's date of birth.
+- Identify and report back on the specific day a person was born by scanning their biography for that particular mention.
+- The task at hand involves capturing the exact wording around an individual’s date of birth from biographical content, necessitating precise reading capabilities.
+- Your job is to find and extract the complete birth date of a person from their bio. Ensure accuracy in capturing how it is presented in the text.
+- Find the specific date when a person was born by locating and isolating the relevant information in a short biography.
+- Identify and present from a concise biography segment where it specifies when this person was born, including day, month, and year.
+- The objective is to sift through a person's biography and identify the phrase that contains their date of birth, ensuring you capture all necessary details.
+- You will read a short biography and pinpoint the specific portion where the person's birth date is mentioned, including day, month, and year.
+- You're tasked with extracting explicit details regarding someone's date of birth found within shorter life accounts or descriptions provided in plain language.
+- You will be analyzing a short text to find and report the individual's date of birth. This includes parsing through sentences to find the precise wording for their birth date.
+- You will be tasked with finding the minimal excerpt from a biographical narrative that contains the individual's birth date. This entails recognizing specific language related to dates.
+- The objective is to sift through a short biography and pinpoint the phrase that includes the person's date of birth.
+- Your objective is to read a brief personal biography and identify the part that mentions when the person was born. This involves searching for the format of the birth date.
+- Focus on reviewing short biographies and extracting only the part that specifies when a person was born, ensuring clarity and precision in your output.
+- Your job is to determine from a biographical snippet exactly when an individual entered the world by capturing their birth date.
+- You are tasked with finding out when someone was born by scanning their bio. Look for the specific phrase that includes their birth date along with the day, month, and year.
+- This task requires you to extract a person's date of birth from a short biography. You must locate the specific text segment that displays their birth date, including the day, month, and year.
+- You will need to comb through various short bios and find where each person’s birth date is mentioned explicitly within the text.
+- Your task is to read through the given bio and find the literal text that indicates when someone was born.
+- This task involves searching a person’s biography for their birth date, ensuring you find and report the complete date format.
+- The task demands that you read a biography and discern which words precisely communicate the individual's birth date.
+- Identify and extract the exact wording that denotes a person's birthday amid brief descriptive texts about them. This involves focused reading and comprehension skills.
+- Your mission is to explore a short biographical description and capture the relevant phrase that reveals when an individual was born, ensuring all components of the date are included.
+- Search biographies for textual elements that indicate when someone was born. This task hinges on your ability to isolate significant details embedded in longer narratives.
+- Locate the minimal phrase that indicates when someone was born, ensuring to include all necessary components of their birth date.
+- Review each personal biography for the portion that indicates when an individual was born, ensuring completeness in your extraction.
+- You will need to extract from a biography the concise information about when someone was born, focusing on clarity and relevance.
+- The task involves searching through a biographical account for textual information indicating when someone was born and selecting that specific span of text.
+- Your task is to extract and report the date of birth of a person from a provided biography, focusing on the minimal text that contains it.
+- This task requires you to review a person's life history in short form and extract the essential text that marks when they were born.
+- Examine the provided bio carefully to find the minimal text description of the person's birth, displaying both the month and year.
+- Read carefully through someone’s biography to extract only their complete birth date as presented in textual form.
+- The assignment requires you to locate and extract birthdate information from snippets of personal histories.
+- You're tasked with finding and isolating any part of a bio that gives details about an individual's birthdate.
+- Explore snippets of biographies with an aim to find days of significance—specifically regarding individuals' dates of birth mentioned succinctly within those texts.
+- In this exercise, your focus is on identifying segments within biographical descriptions that specifically highlight the birthdate, requiring a keen attention to detail regarding temporal references.
+- You are expected to find the concise portion of a biography that reveals when someone was born. This means discerning key phrases related to dates within larger texts.
+- Your job is to extract the precise wording that states a person's date of birth from their bio. This involves focusing on sections that describe birth details.
+- This task demands careful reading of a personal biography to find and articulate the individual’s full birth date as it appears in context.
+- The goal is to pinpoint and highlight the exact wording of the individual's date of birth within a short personal narrative.
+- Your mission is to search through a biographical statement for references to the date of an individual's birth.
+- This challenge involves carefully reading a personal bio to find and quote the exact text that elucidates an individual's birth date, encompassing day, month, and year.
+- The goal is to focus on identifying birth dates within biographical descriptions, ensuring you capture the complete format as presented.
+- Review a provided bio carefully to uncover the specific statement containing someone's date of birth. Look for contextual clues that highlight this data.
+- This task is about locating and reporting a person's birth date mentioned in their biography, ensuring you capture it accurately.
+- Identify key textual pieces in biographies that convey when individuals were born, ensuring clarity on day, month, and year.
+- Your job is to locate and extract the birth date of a person mentioned in a short biography by identifying the relevant text span.
+- The objective is to sift through a biography to discover and return the birthdate of the person in question.
+- Your job is to trace through a provided bio to uncover when the person was born. Seek out the exact words that denote the day, month, and year of their birth.
+- In this activity, investigate a short bio to find and replicate the birth date expressed in words, ensuring completeness in your extraction.
+- Your goal is to extract from biographical text the precise information regarding when a person was born, including full details of date, month, and year.
+- The focus of this task is to coax out the birth date from a short description of a person, capturing it in its entirety including the format used.
+- Your assignment involves seeking out specific references to an individual's date of birth within short biographies. Precision in text recognition is crucial here.
+- This task requires you to read a short biography and pinpoint the segment that contains the person’s date of birth, which includes their birth day, month, and year.
+- The objective is to sift through a biography to extract the precise wording that mentions the person's birth date.
+- Analyze the given biographical text to pinpoint the date of birth, ensuring the answer includes the full date, month, and year.
+- Examine a short personal biography and return just the information detailing when the subject was born.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1506_celebrity_minimal_dob_span
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1506_celebrity_minimal_dob_span
+user_prompt_template: '{task_def}
+
+
+  {problem}'

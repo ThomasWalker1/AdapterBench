@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Examine customer feedback critically to identify sentiments towards products sold on Amazon, and provide a corresponding rating based on those insights.
+- Determine how satisfied or dissatisfied a customer is based on their review and rate their experience on a five-point scale accordingly.
+- Look at user reviews to discern how customers feel about various products, producing ratings that align with their expressed sentiments.
+- Dissect user feedback from Amazon and transform it into straightforward ratings, focusing on key aspects like reliability, effectiveness, and overall consumer satisfaction as conveyed in their words.
+- Analyze user reviews from an online platform and give each review a score that represents the reviewer's experience with the product. Consider both positive and negative feedback.
+- Assess the quality of products based on user feedback from their reviews. Use that feedback to generate a fitting numerical rating that represents the reviewer’s experience.
+- Use your judgment to interpret reviews from customers, considering both positives and negatives, and translate that into a rating from 1 to 5.
+- Your job is to assess Amazon reviews by determining how positive or negative the feedback is, and then provide a corresponding rating to summarize that sentiment.
+- Review the content of customer testimonials on products from Amazon, gauge their level of contentment or grievance, and reflect that in your rating.
+- Analyze each review for context clues about the user’s satisfaction or displeasure with a product, and translate that qualitative information into a quantitative rating.
+- Evaluate the overall tone of user-written reviews on Amazon, translating those feelings into ratings based on how favorable or unfavorable they reflect the product's quality.
+- Investigate the language used in product reviews and discern how pleased or dissatisfied users feel about products, assigning suitable ratings accordingly.
+- Evaluate how well products perform according to user reviews, summarizing opinions into scores that represent either high praise or significant discontent.
+- Evaluate customer narratives regarding their product purchases, tapping into their expressions of satisfaction or frustration to create an accurate rating for each review.
+- For each review, focus on key phrases and overall sentiment to generate a rating that best fits how satisfied the reviewer appears to be.
+- Based on the information in the review, you need to identify how well the product performed from the customer’s perspective and translate that into a rating from 1 to 5.
+- Your task is to read an Amazon product review and assign a rating based on how positive or negative the feedback is.
+- Based on the content of an Amazon review, assess whether the product was satisfactory and give it a score from 1 to 5.
+- Delve into customer reviews about products, extracting valuable insights about their performance, and translating these impressions into a numerical score.
+- You will be given customer reviews, and your challenge is to derive a rating that represents the overall sentiment regarding the product’s quality and performance.
+- Your role is to capture consumers’ impressions of their purchases by analyzing reviews and assigning ratings based on their expressed experiences.
+- Read through a consumer's review of a product and rate it from 1 to 5 based on expressed satisfaction or dissatisfaction with aspects such as quality, performance, or features.
+- Your job involves interpreting customer opinions in their reviews and providing a rating that encapsulates their experience with the product's quality and functionality.
+- Assess a given review for a product and relate it to a star rating system, where 1 denotes significant dissatisfaction and 5 indicates extreme satisfaction.
+- Reflect on the opinions shared in customer reviews, balancing praise against criticism to assign an overall satisfaction rating for each product.
+- Your task involves reading a customer review and assessing the product based on the feedback provided. You will evaluate the overall sentiment and assign a numerical rating.
+- Examine written feedback from customers regarding specific products and determine an appropriate score, highlighting how well those products meet customer needs and expectations.
+- Analyze given Amazon reviews to determine how satisfied the reviewer is with a product. Based on their comments, you'll provide a score that reflects their experience.
+- Evaluate Amazon product reviews by assigning a numerical rating that captures how customers feel about their purchase based on their comments.
+- Translate customer experiences expressed in reviews into numeric ratings by analyzing their feelings toward the products they discuss.
+- Collectively read through users' reviews for different products offered on Amazon and produce ratings that resonate with the overall impressions customers had about these items.
+- You will examine reviews for various items and determine a numerical assessment reflecting customer rankings from extremely poor to extremely good experiences.
+- Your task involves interpreting user reviews of products sold on Amazon and determining a rating that harmonizes with the sentiments expressed in their feedback.
+- Interpret the sentiments expressed in a product review on Amazon and rate it on a scale that indicates the customer's level of happiness with the product.
+- Your task is to interpret customer feedback from Amazon reviews and assign a rating that reflects how favorable or unfavorable the reviewer feels about the product.
+- Given an Amazon review, assess the overall impression it conveys and assign an appropriate rating based on that impression.
+- Analyze customer opinions shared in product reviews, focusing on their satisfaction level, and convert these opinions into an appropriate rating from a defined scale.
+- You must examine individual reviews and derive a score that indicates the overall perception of the product's quality as expressed by users.
+- Assess consumer reviews to derive a numerical score indicating product satisfaction. Focus on the strengths and weaknesses highlighted by reviewers in their feedback.
+- This task requires you to distill user opinions from reviews and translate them into ratings that indicate how well the products perform, from dissatisfaction to full satisfaction.
+- Your task involves distilling customer sentiments from reviews into numerical ratings, using clear indicators of quality or dissatisfaction as your guide.
+- Assess user-generated reviews for different products sold on Amazon. Your goal is to assign a star rating that accurately reflects the customer's overall sentiment towards the item.
+- Analyze the details of a purchase experience shared by a customer, focusing on their positive or negative insights, to determine an appropriate product rating.
+- Examine Amazon reviews for products and gauge the satisfaction of each reviewer before categorizing it with a five-point rating system.
+- Engage with user-submitted reviews by balancing their personal insights with defined rating criteria, resulting in appropriate scores for each described product.
+- Evaluate a review of a product from Amazon and generate a rating from 1 to 5 that reflects the review's sentiment about the product's quality or usefulness.
+- Your task is to evaluate product reviews and assign a numerical rating from 1 to 5 based on the reviewer’s sentiments. This involves understanding their level of satisfaction or dissatisfaction.
+- Using feedback from Amazon users, your goal is to summarize each review by providing a rating that reflects how satisfied or dissatisfied customers were with what they bought.
+- Your role is to reflect on customer opinions in Amazon reviews and determine a rating that summarizes their overall sentiment toward the product.
+- Analyze the sentiment expressed in customer reviews and determine how well the product meets expectations, giving it a rating from 1 to 5.
+- Analyze reviews from buyers and discern how they felt about each product, leading you to assign an appropriate rating based on their experiences.
+- Evaluate user-generated content from Amazon regarding specific items, focusing on emotional cues to judge whether people viewed their purchases positively or negatively. Rate accordingly.
+- Incorporate your judgment of consumer opinions given in their reviews to produce a numeric evaluation indicating their approval or dissatisfaction with different products.
+- Analyze customer feedback from Amazon and assign a score from 1 to 5, indicating the product's quality as described in the review.
+- Read through Amazon reviews and determine a rating that accurately represents the customer's experience with the product, reflecting their satisfaction or dissatisfaction.
+- Evaluate each review by understanding its content and context, then assign a numerical rating that conveys how favorably or unfavorably customers view the product being discussed.
+- For each review you receive, your role is to determine how satisfied or disappointed customers were with the products they purchased by providing a relevant rating.
+- Your job is to interpret the sentiment of an Amazon review and rate it accordingly from one to five, reflecting how much the reviewer appreciated or disliked the product.
+- Review the provided customer feedback and generate a score that reflects whether the reviewer had a positive, neutral, or negative experience with the product.
+- Read through customer feedback on various products and assess their satisfaction to deliver an accurate rating based on their written impressions.
+- Your role involves examining Amazon reviews to derive meaningful ratings that encapsulate customer experiences, helping others understand product quality through these assessments.
+- Your task is to interpret product reviews from customers, identifying themes of satisfaction or disappointment, and assign an appropriate numerical value as a rating.
+- Read through customer reviews, focusing on the pros and cons mentioned, and assign a rating between 1 and 5 that accurately reflects the overall impression of the product.
+- Your job involves reading a consumer review and generating a numerical rating that signifies the overall perception of the product described in that review.
+- Your task is to decode user-generated content into actionable ratings that succinctly reflect the success or failure of goods based on their performance as described in user experiences.
+- You will read reviews of products sold on Amazon and provide a rating that represents how well the reviewer received the item, taking into account praise and criticism mentioned.
+- Evaluate the feedback that customers give in product reviews and distill that information into a concise rating that reflects their level of approval or dissatisfaction.
+- Your goal is to process review information from Amazon, evaluating sentiments expressed by customers to derive an accurate product rating.
+- Review customer feedback provided on Amazon and determine a rating that accurately reflects the reviewer's experience with the product.
+- You will examine customer feedback regarding products sold on Amazon. Your goal is to summarize the satisfaction conveyed in the review into a rating that represents the reviewer’s opinion.
+- Analyze customer reviews for various products and provide an appropriate rating based on the sentiments expressed in the text, considering factors such as functionality and overall satisfaction.
+- You need to assess the quality of products based on user reviews. Use your judgment to rate the review on a scale from extremely poor to extremely good.
+- Analyze customer experiences shared in their reviews, taking into account both positive comments and criticisms to form a cumulative rating.
+- For each review presented, analyze customer sentiments closely and summarize them into a single rating that signifies the quality they perceived.
+- This task is about understanding consumer feedback regarding products, assessing their thoughts in detail, and summarizing that understanding into a numerical score.
+- Examine customer feedback on products and assign a corresponding rating, ensuring you capture the essence of their review in your score.
+- Evaluate user reviews to understand their experiences with a product. The task is to summarize their feedback into a numerical score that ranges from extremely poor to extremely good.
+- You will examine how effectively a product met user expectations as described in a review, then summarize that evaluation with a rating score.
+- In this task, you will assess a customer's written feedback regarding a product, considering both positive and negative points, and generate an appropriate rating.
+- Through analysis of Amazon reviews, assess how strongly customers feel about particular products—which can be quantified into a rating between one and five stars.
+- Listen to customer experiences conveyed in their reviews and translate those experiences into numerical ratings reflecting their level of approval or disapproval.
+- Assign a score to product reviews through careful analysis of the reviewer’s comments. Your goal is to reflect their satisfaction level with the item using a numeric scale.
+- Examine the compliments and complaints in reviews to gauge customer satisfaction and generate an appropriate rating for the product.
+- Use your judgment skills to interpret a customer’s feedback on an Amazon product and provide a rating that accurately reflects their experience.
+- Appraise consumer reviews by breaking down critiques into essential elements that reveal either strong praise or severe criticism, finally summarizing it with an appropriate score.
+- Your task is to evaluate an Amazon product review and assign a rating on a scale of 1 to 5, reflecting the reviewer’s opinion about the product's quality and performance.
+- Look at customer experiences described in their reviews and assess how they felt about the products. Your task is to convert these feelings into a corresponding score.
+- Interpret Amazon reviews to gauge overall customer satisfaction, then assign a rating that corresponds with their expressed opinions about the product.
+- You will analyze customer opinions reflected in Amazon reviews and generate a corresponding score from 1 to 5 based on their experiences with the products.
+- Using the customers' words in their reviews, you will ascertain their level of satisfaction with a product by assigning it a score from one to five.
+- Interpret feedback written by customers about their purchase experiences, determining a fitting numerical representation of their satisfaction with the product.
+- Read and understand reviews of products while considering what customers are saying, and then assign them ratings that reflect their levels of approval or discontent.
+- Review the comments shared by customers about various products and decide how well they think those products performed. Provide a rating that captures their overall impression.
+- Evaluate the strengths and weaknesses mentioned in a product review and assign a corresponding rating that encapsulates the reviewer’s overall sentiment.
+- Read through succinct consumer evaluations of various products. Based on your understanding of their remarks, derive an appropriate score reflecting their level of satisfaction.
+- Examine user experiences shared in product reviews, weigh the positive against negative feedback, and provide an aligned score that represents customer satisfaction levels.
+- Read through consumer reviews and determine the level of satisfaction expressed by customers. Rate each one according to their sentiments shared about the product.
+- For each given Amazon review, your role is to derive a rating that signifies how well the product performed according to the reviewer’s standards and expectations.
+- This task requires you to interpret feedback from consumers about a product and categorize their opinions into a one-to-five rating scale based on their descriptions.
+- Your responsibility is to translate qualitative feedback from product reviews into quantitative ratings that range from low to high satisfaction.
+- Examine consumer feedback related to a product on Amazon. You need to provide a rating, summing up how users perceive its value, reliability, and performance over time.
+- You’ll assess user experiences detailed in Amazon reviews, summarizing those experiences into direct numeric ratings that reflect their overall impressions.
+- Your task is to evaluate product reviews and assign a rating based on the overall sentiment expressed in the review.
+- Read through various customer testimonials and decide how well they rate their experiences by scoring the product's performance on a scale of one to five.
+- Review the provided feedback about a product and assess its performance based on user experiences, then assign a corresponding rating.
+- Assess feedback on purchased items and translate subjective expressions of satisfaction or disappointment into objective ratings within defined numerical boundaries.
+- Reflect on customer reviews highlighting key sentiments about specific products. Use these insights to develop an associated satisfaction score from low to high.
+- Your role involves scrutinizing Amazon reviews to rate them numerically, reflecting either delight or disappointment regarding each product.
+- Based on user feedback about products, deduce their level of satisfaction and submit an appropriate score that represents this satisfaction.
+- Analyze written reviews from customers about products and rate them based on their overall sentiment, reflecting whether they had a positive or negative experience.
+- Interpret user reviews comprehensively, identifying key sentiments regarding their experience, and assign ratings that illustrate this understanding clearly on a scale.
+- Your goal is to read through a customer’s experience with a product and assign a numerical value to their satisfaction level, reflecting their insights on quality and usability.
+- Read through customer reviews and capture the essence of the feedback by responding with a numerical rating, indicating how well the product met expectations.
+- Your job involves taking detailed customer feedback and representing it on a rating scale, capturing nuances of satisfaction or dissatisfaction in their remarks.
+- Evaluate user insights contained in customer reviews and classify their feelings about the product with a numerical score representing their satisfaction level.
+- Sift through reviews that detail personal experiences with products, deciding on a fair rating that encapsulates the reviewer’s thoughts and feelings.
+- Analyze Amazon reviews and determine an appropriate rating that reflects the overall impression the reviewer has of the product. Ratings range from extremely poor to extremely good.
+- Consider both positive and negative aspects mentioned in customer reviews to derive a numerical score representing how well customers believe a product performs.
+- Read through given product reviews and gauge the level of customer satisfaction or disappointment to create an accurate scoring representation for each review.
+- Your task involves evaluating product reviews and assigning a rating from 1 to 5 based on the opinion expressed. This requires understanding customer satisfaction and product quality.
+- Read through various product reviews on Amazon and assign each one a rating that best represents the sentiment expressed by the reviewer regarding their purchase.
+- Interpret and rate user reviews for various products, ensuring your rating aligns with the attitudes displayed in the feedback given by previous buyers.
+- This task requires you to interpret product reviews and gauge the quality of items based on user experiences. Your evaluation should result in a rating from 1 to 5.
+- Given an Amazon review from a customer, analyze it closely to derive an exact rating that reflects the perceived quality of the product based on specific comments shared.
+- Look into product reviews for essential insights about consumer satisfaction, then rate them based on how well they align with expectations set by potential buyers.
+- For customer reviews of products found on Amazon, your task is to interpret the general sentiment portrayed in each review and yield an appropriate numerical rating corresponding to user satisfaction.
+- Consider the tone and content of a review to provide a score that represents how well the product met the reviewer’s expectations.
+- Delve into the sentiment behind customer reviews—the emotions conveyed—and assign an appropriate rating based on the overall impression those reviews create.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1310_amazonreview_rating_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1310_amazonreview_rating_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

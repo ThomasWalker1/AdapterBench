@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You will investigate each provided number for its primality status, ensuring that only those integers meeting specific criteria about divisors get classified as primes.
+- You are being asked to determine if the given numbers are prime. Understanding what makes a number prime will be crucial as you approach this evaluation.
+- Your mission in this task is to ascertain whether each number given is a prime. Utilize your mathematical skills to analyze each case intelligently.
+- Explore each number by determining its uniqueness in terms of divisibility. Your focus should be on confirming its classification as either prime or non-prime.
+- You will evaluate provided integers for their status as prime numbers, needing to understand both definitions and properties associated with primes in your analysis.
+- The core of this task lies in engaging with mathematics by identifying whether each provided number adheres to the exclusive criteria that denote it as a prime.
+- This challenge asks you to analyze several numbers for their primality. Identifying whether they can be divided by any other integers apart from 1 and themselves is fundamental.
+- Engage with individual numbers to explore their properties, specifically determining if they belong to the set of prime numbers, known for their indivisibility (other than by one).
+- In this task, you must determine whether a number is prime. You'll need to understand the definition of prime numbers and apply that knowledge to make your decision.
+- Your job is to evaluate whether an input number is prime. Prime numbers are those greater than 1 that cannot be divided evenly by any numbers other than themselves and 1.
+- For this task, your goal is to determine the primality of given integers. Knowing the characteristics of prime numbers will be essential for your evaluation.
+- In this exercise, you will identify if certain numbers are primes. Grasping the nature of whole numbers and their factors will guide your assessments.
+- Evaluate a given integer to confirm if it can be identified as prime. This process entails understanding the fundamental characteristics that define prime numbers.
+- Identify if the given number is prime by checking its divisibility. A prime number has no divisors other than 1 and itself.
+- Explore the nature of numbers in this task by identifying which ones are prime. The ability to discern factors will be crucial in making accurate assessments.
+- The central goal of this activity is recognizing which numbers maintain the exclusive trait of being prime—standing alone against division by all integers except for one and themselves.
+- You'll need to classify numbers based on their primality, determining if they can stand alone without being divisible by other integers aside from one and their own value.
+- You'll delve into numerical analysis by evaluating given whole numbers for their primality; recognizing that primes exist only when no other integer divides them besides one and themselves.
+- This task invites you to explore the world of numbers and determine their primality. Recognizing the characteristics of prime numbers is essential for your analysis.
+- You need to evaluate a numerical input for primality. Understanding what constitutes a prime number will be crucial for your success in this task.
+- Your mission is to differentiate between prime and non-prime numbers among a set of inputs. Understanding what makes a number prime is key to succeeding.
+- Assess whether the specific integer qualifies as a prime number based on its divisibility by integers other than itself and one.
+- You are tasked with identifying prime numbers from a list of whole numbers. Recall that prime numbers are only divisible by 1 and the number itself.
+- The task involves mathematical evaluation of integers, where you must differentiate between prime and non-prime (composite) numbers based on their factorization.
+- The objective is to analyze whether the given numbers are prime or not, meaning you'll need to apply knowledge about factors and divisibility in your assessment.
+- This task engages your skills in number theory as you identify whether certain whole numbers meet the criteria for being classified as prime.
+- For each number presented, assess its primality by checking if it has any divisors other than 1 and itself. If it does not, it is prime.
+- Your job is to discern if the inputted number holds the properties of a prime. Recognizing prime numbers hinges on your grasp of divisibility rules.
+- The goal of this task is to categorize the numbers you receive by checking for primality, using your knowledge of divisibility and factors for guidance.
+- You will evaluate numbers based on their properties in mathematics. Specifically, your goal is to identify prime numbers, which cannot be formed by multiplying smaller whole numbers.
+- The goal of this task is to classify numbers based on their primality. Recognizing the properties of prime numbers will guide your decision-making process.
+- Review the list of integers you are provided with, using mathematical reasoning to declare whether each one is devoid of external factors, hence classifying them as primes.
+- 'You are tasked with identifying prime numbers. Remember that a prime number is one that only has two distinct positive divisors: 1 and the number itself.'
+- Your mission is to evaluate whether the specified number is prime by examining if it can only be divided without a remainder by one and itself.
+- This task requires you to assess whether the given number is prime. A prime number must be greater than one and divisible solely by one and itself.
+- Your challenge involves scrutinizing whole numbers for their primality traits. Identify whether they can truly stand alone as primes.
+- Determine if the input number qualifies as prime by checking its potential divisors. This task involves basic understanding of integer properties.
+- Your challenge is to classify numbers as either prime or non-prime based on established mathematical definitions. Knowledge about divisibility principles is essential here.
+- In this task, engage with numbers and decide their status as primes. Being aware of mathematical principles concerning primes will enhance your accuracy.
+- Investigate the presented numeric data to determine if it adheres to being classified as a prime, which hinges upon its inability to be divided evenly apart from unity and itself.
+- You are tasked with checking a given whole number to see if it is a prime. A prime number can only be evenly divided by itself and one, making this an exploration of its factors.
+- In this activity, your role is to sift through numbers and identify those that are prime, leveraging your understanding of their defining attributes.
+- The task consists of identifying numbers that are prime. You'll need to apply arithmetic principles to confirm whether these numbers meet the definition of primality.
+- In this mathematical investigation, interrogate the provided numbers to see if they solely divide by one and themselves, marking them as primes accordingly.
+- Analyze the given integers to classify them as either prime or non-prime by applying your knowledge of numerical factors, especially focusing on their divisibility.
+- In this exercise, you will be engaged in identifying primes. A prime number is unique in that it cannot be formed through the multiplication of smaller whole numbers.
+- Analyze several integers to classify them as primes or not, utilizing your comprehension of arithmetic properties associated with these special numbers for assistance.
+- 'The task is to determine whether a specified number is prime. A prime number is defined as having exactly two distinct positive divisors: 1 and itself.'
+- In this task, you will systematically check each input number against the definition of a prime number, making calculations based on its divisibility characteristics.
+- You must assess the nature of various whole numbers in this assignment, determining whether they meet the criteria for being classified as primes.
+- In this task, identify numbers marked by their simplicity in division—those that stand as primes because they cannot be broken down into smaller whole factors.
+- Your task consists of checking provided whole numbers for primality. You'll utilize your mathematical understanding to determine if each number fits the definition of prime.
+- You'll be tasked with classifying numbers as either prime or not. This involves testing the given number against the rules that define primality.
+- This task requires a keen understanding of number theory, specifically focusing on identifying prime numbers which hold significance in mathematics due to their fundamental properties.
+- In this task, your analytical skills in mathematics will be tested as you assess each input number for its status as a prime or composite number.
+- You are tasked with determining whether each integer holds its status as a prime number by examining its divisibility characteristics against defined mathematical rules.
+- Analyze the number presented to establish whether it is prime. Remember that only numbers that are not divisible by any other integers, apart from 1 and themselves, are classified as primes.
+- Your task is to decide if a specific whole number is prime. This involves checking for factors beyond just one and the number itself.
+- Ascertain if the given integer is classified as prime. Remember, only numbers greater than one that cannot be divided evenly by any other numbers qualify as primes.
+- Assess each input number and decide if it qualifies as a prime number, requiring familiarity with the definition and characteristics of primes in mathematics.
+- The task emphasizes determining the primality of given numbers, diving into their mathematical properties, and recognizing which integers must stand alone due to their divisibility limitations.
+- Your task involves checking if the specified number is a prime. You need to apply your understanding of factors and multiples to make this determination.
+- The task involves evaluating numbers to see if they fit the criteria of being prime, which means having no divisors other than one and the number itself.
+- In this challenge, you must identify whether each provided number is prime. A prime number is only divisible by one and itself, so your analysis will focus on its divisors.
+- You are tasked with identifying whether a given number is prime. A prime number is defined as a whole number greater than one that cannot be divided evenly by any other numbers except for itself and one.
+- You will engage in an evaluation of numbers based on their prime status. This requires an understanding of what makes a number prime compared to composite numbers.
+- The goal is to identify if the inputted number is a prime number based on its definition, which requires understanding basic mathematical properties of numbers.
+- Your responsibility here is to filter through a series of numbers, pinpointing those that hold the characteristics of prime numbers, defined by their indivisibility.
+- In this task, you will evaluate a number and determine if it meets the criteria of a prime number, emphasizing your knowledge of mathematical divisors.
+- Evaluate the number in question to see if it satisfies the definition of a prime. This means it can’t be divided evenly by any numbers other than one or itself.
+- For this activity, your job is to check if the provided numbers qualify as prime. Knowing how to test for primality is essential for completing this task.
+- The objective here is to ascertain the primality of various numbers. Use your mathematical knowledge to check if each number can only be evenly divided by one and itself.
+- In this assignment, identify if the provided numbers are prime. Understanding what makes a number prime is crucial for completing this task accurately.
+- Determine whether each given number qualifies as a prime number, a category characterized by its indivisibility by any numbers aside from itself and one.
+- Your job is to assess a number and decide if it qualifies as prime. This entails knowing the definition of prime numbers and applying it to identify the answer accurately.
+- You will assess given numbers for their uniqueness. Determine if they are prime by checking the absence of divisors other than 1 and the number itself.
+- In this task, you're tasked with identifying prime numbers from a set of whole numbers based on the principle that they have exactly two distinct positive divisors.
+- Your assignment centers around defining numbers based on their divisibility. You must recognize whether they fall into the category of primes or not.
+- You are to analyze the number given and report whether or not it is prime. Remember that a prime number is one that cannot be expressed as a product of other integers.
+- Your role is to assess numbers and decide if they are prime. A prime number has no divisors other than 1 and itself, so be sure to check for this condition.
+- Assess the input number to determine if it is prime. Recall that a prime number is a number greater than 1 that can't be formed by multiplying two smaller natural numbers.
+- In this activity, you need to evaluate numbers to see if they can be expressed as a product of other whole numbers, which would mean they are not prime.
+- Your objective is to find out if a specific integer is prime. This entails ensuring it cannot be expressed as a product of two smaller natural numbers.
+- The goal here is to determine the primality of different numbers. A firm understanding of prime characteristics will help you make accurate choices.
+- Engage with the problem by reviewing a number to check if it can qualify as prime, focusing on its unique divisibility properties.
+- In this task, your analytical skills will be employed to differentiate between prime and composite numbers based on the criteria for primality.
+- This activity revolves around assessing numerical values for primality. Knowledge of what constitutes a prime number will guide your evaluations effectively.
+- Focus on the mathematical concept of primes as you decide on the primality of several provided numbers. Primes are unique whole numbers that play a fundamental role in number theory.
+- In this assessment, decide if specific integers qualify as primes or not. Understanding the uniqueness of primes in terms of divisibility will guide your conclusions.
+- This task involves checking numerical information and applying your understanding of prime numbers to categorize the input as either prime or not.
+- Determine whether the given integer is a prime by verifying that it cannot be formed by multiplying two smaller whole numbers.
+- In this task, you examine a selection of whole numbers to establish their primality status, integrating mathematical logic regarding factors into your judgements.
+- Your challenge lies in dissecting given whole numbers to ascertain their primality. A thorough analysis will lead you to identify those that remain indivisible beyond the basic condition of unity.
+- You will scrutinize a series of numbers and categorize them based on their primality. A clear understanding of how prime numbers function will aid in resolving this challenge.
+- The focus of this task is on mathematical analysis, specifically, recognizing whether the inputted number can be classified as prime based on its factors.
+- In this task, you'll analyze a whole number to ascertain its primality, confirming if it can only be divided without remainder by 1 and itself.
+- This task involves determining whether a given number is prime or not. You'll need to understand what constitutes a prime number and apply that knowledge.
+- Here, you’ll evaluate numbers based on their properties to determine if they are prime. This requires knowledge about factors and multiples.
+- In this task, you evaluate a series of numbers to identify whether each is a prime number. This requires you to recognize and apply the definition of prime numbers effectively.
+- Assessing whether a number is prime involves critical thinking and understanding mathematical concepts. You'll need to analyze each number accordingly.
+- Your mission is to verify if the environmental integer is a member of the set of prime numbers—only those indecomposable into smaller multiplicative components.
+- You are required to judge whether each given number is a prime. Understanding what separates prime from composite numbers is key to succeeding in this exercise.
+- Engage in a mathematical analysis where you categorize each number as either prime or non-prime. Recall that prime numbers are those greater than 1 with no factors other than 1 and themselves.
+- Your job is to evaluate a number and conclude if it qualifies as a prime. This requires knowledge of numbers that do not have factors other than one and themselves.
+- Your objective is to classify the provided whole number as either prime or not. A prime has no divisors apart from one and itself, guiding your decision process.
+- In this task, you need to evaluate a number and state if it qualifies as a prime number, meaning it cannot be formed by multiplying two smaller whole numbers.
+- You will need to decide if specified numbers qualify as prime. Familiarity with divisibility rules will assist you in recognizing which numbers fit the definition of prime.
+- Your task here involves classifying numbers based on their primality, which hinges on their factor attributes. Consider those integers likely divisible when making your decision.
+- This task has you scrutinizing various integers for their status as primes. Core mathematical reasoning about what defines a prime number will aid your judgment.
+- Assess whether the given number meets the criteria for primality, which is that it must be greater than one and have no divisible numbers other than one and itself.
+- You'll be working with various numbers to conclude if they are prime or not, which involves understanding the fundamental concept of prime numbers.
+- Identify whether the number provided is a prime number. A deep understanding of what constitutes a prime—only two distinct positive divisors—is necessary here.
+- Here, you'll be tasked with identifying whole numbers that are prime, relying on your comprehension of how such numbers differ from composite ones.
+- You need to decipher whether the supplied number is indeed a prime candidate by inspecting its divisibility characteristics thoroughly.
+- This task involves checking if a specified number is prime. You'll need to recall that prime numbers are defined as being greater than 1 and not divisible by any whole number other than 1 and themselves.
+- Your focus will be on assessing arithmetic properties that define prime numbers, separating them from composite ones through careful evaluation of divisibility.
+- The goal is to pinpoint which among the given whole numbers are classified as primes, relying on your grasp of numerical properties related to multiplication and factors.
+- In this task, you will analyze a series of numbers to determine their status as primes, meaning they cannot be produced by multiplying other integers together.
+- This task asks you to scrutinize numbers for their primality traits, requiring an understanding of what differentiates a prime from a non-prime number.
+- Engage in an evaluation of the given whole number to confirm its status as prime or non-prime based on its ability to be divided evenly.
+- Check if the provided integer stands as a prime number by analyzing possible divisions against other integers less than itself.
+- This task requires you to apply mathematical reasoning by checking each given whole number against the set definition of being a prime number.
+- The task involves determining whether a given number is prime. A prime number is defined as a number that has no positive divisors other than 1 and itself.
+- The objective is to examine each provided number and assess whether it meets the criteria of a prime number, which prohibits other divisors besides 1 and itself.
+- This task requires you to classify numbers based on their primality. You will need to apply the definition of a prime number as part of your evaluation process.
+- For this assignment, check if the specified number can be considered prime. It should stand alone when it comes to factors, having none but one or itself.
+- In this task, assess each number's primality. Knowing that a prime number has no divisors aside from itself and one will guide you in making your determination.
+- Your challenge is to sift through numbers and establish if they hold the title of being prime, necessitating an understanding of basic multiplication principles.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task092_check_prime_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task092_check_prime_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

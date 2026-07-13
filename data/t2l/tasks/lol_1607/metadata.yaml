@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Analyze the provided text for any derogatory remarks aimed at religions or religious groups, identifying whether such hate is present.
+- Read the provided text and classify it based on whether it contains hateful sentiments related to religion.
+- Evaluate whether the narrative in the text includes harmful rhetoric directed at religious groups by identifying language that conveys such sentiments.
+- Determine if the provided text contains hateful remarks directed at a religion or its followers. This assessment requires careful reading for language that signals intolerance.
+- Your job is to detect any hateful language directed at people based on their religion in the given passage.
+- Assess and interpret expressions in the text, making judgments on whether they can be categorized as promoting hatred towards particular religions or not.
+- Determine if the text you read conveys negative feelings related to a particular religion or its followers. Make a clear classification based on this assessment.
+- Examine the content to see if any hateful sentiments are aimed at a religion or a group of individuals based on their faith.
+- Your task is to scrutinize textual statements for indications of discrimination or hostility based on religious affiliations and provide a classification based on your observations.
+- Assess the provided text to see if it targets a religion or religious group negatively. Your judgment will inform whether it falls under religious hate.
+- This challenge requires you to be sensitive to language that may incite religious hatred, allowing you to distinguish harmful content from neutral discussions.
+- You need to read the provided text and classify it according to whether it contains religious hate or not, considering the sentiments expressed towards religions or religious groups.
+- Your task is to read a text and identify whether it expresses hate towards a religion or a specific group of people based on their religious beliefs.
+- In this task, examine the text for instances of hostility directed toward particular religions or their adherents, and make a judgment about the nature of that hostility.
+- This task involves exploring textual content for hateful expressions against religions or adherents of specific faiths, determining if they are present in each case.
+- Your task is to examine a given piece of text and decide if it contains hate directed at a religion or religious group.
+- This task involves understanding the nuances of language used in relation to religions. Identify whether the text promotes hate or not, focusing on religious aspects.
+- Evaluate the statements made in the text and determine if they reflect animosity towards a particular faith or its followers.
+- Review the excerpted texts for any signs of hostile attitudes aimed at religious beliefs or communities, producing a classification based upon your review.
+- Assess the given text for indications of hate against religions or religious groups and classify it as either containing religious hate or not.
+- Determine if there's an indication of hatred toward a specific faith or its practitioners through careful reading and analysis of the provided excerpt.
+- Identify and label any negative sentiments in the text that target religions or religious figures, distinguishing them from neutral statements.
+- Your task involves reading a piece of text and determining whether it expresses hate directed at a religion or specific groups of people based on their faith.
+- Analyze whether any negative language in the text targets a religion, identifying instances of intolerance.
+- In this task, you will read a piece of writing and identify if it conveys animosity towards any religious group or individual.
+- Your goal is to distinguish between harmful discourse targeting religions and benign or neutral expressions found within the texts given.
+- Scrutinize texts to see if they communicate negative feelings towards particular religions or their followers, allowing you to classify them appropriately as 'religious hate' or not.
+- Analyze and interpret phrases in the text for their implications regarding religious hate, differentiating them from general criticism.
+- Look for any signs of derogatory sentiments expressed in the text towards specific religions or groups associated with those religions.
+- Your task is to scrutinize the provided text for any indications of hostility stemming from religious beliefs and categorize it accordingly.
+- Analyze the content and expressions in the text for any elements that convey disdain or animosity rooted in religious beliefs.
+- Your task is to determine if the portrayal of religious groups in the text is negative or hateful in nature.
+- The challenge is to determine if hate speech related to religion exists in the text, requiring careful consideration of its tone and context.
+- Your job is to interpret whether the text includes elements of anti-religious sentiment, categorizing it appropriately based on your understanding.
+- Analyze the text for clues indicating whether it promotes hostility against a particular religious belief or community.
+- Your analysis should focus on finding hate speech that may target specific religions or groups following those religions, distinguishing this from neutral commentary.
+- You will examine each sentence for its attitudes towards religions, figuring out whether it includes hostility or remains neutral.
+- Look closely at the statement and decide if it conveys any form of hate towards a specific religion or its followers.
+- Your task is centered around reflecting on available text and identifying if expressions of hate related to religion are present within its context.
+- Consider the message in the text and ascertain whether it targets a group based on their religion with hate. Your classification should reflect this judgment.
+- In this examination, identify any harsh or derogatory messages aimed at religions, assessing whether they constitute hate speech from a religious standpoint.
+- Analyze and interpret sentiments expressed in the text toward any religious ideology, looking for expressions of disdain that could indicate religious hate.
+- The task involves analyzing a piece of text to determine if it expresses hate towards a certain religion or group of people based on their religious beliefs.
+- Examine the provided excerpt to classify its content as either promoting hate against a religion or being neutral.
+- Read the provided text carefully, and decide whether it contains hateful sentiments directed at a religion or its followers.
+- Examine the text to identify whether it showcases hostility towards a religion or its adherents. This task requires keen observation of language that indicates bias or hate.
+- Assess whether the provided text expresses any form of hatred towards religious communities or figures.
+- You must look for instances of hatefulness directed at religions or religious groups within texts and differentiate those from neutral statements.
+- You will classify the sentiment within the text, focusing particularly on any expressions that could be seen as hateful toward religious communities.
+- Scrutinize the textual content for phrases, statements, or attitudes that may reflect moral condemnation towards a religion. Classify accordingly regarding any identified negativity.
+- Your job is to discern if the text expresses hostility related to faith or if it is merely commentary without hateful intent.
+- Read through the provided text and judge if it holds any prejudiced views against a religion or its followers, summarizing your findings into the appropriate category.
+- Your role involves scrutinizing the text to detect any negative attitudes directed at religion or followers, providing an appropriate label based on your analysis.
+- Examine the language in the given statements to see if there are harmful assertions regarding a religion or its followers, labeling them accordingly.
+- Your task is to analyze a piece of text and determine if it expresses hate towards a religion or a group of people based on their religious beliefs.
+- You are asked to provide an evaluation of whether religious hatred is present in the given text by recognizing pertinent phrases and sentiments.
+- Discern if any part of the provided text demonstrates an attack on religious identity or beliefs through hateful rhetoric.
+- Your objective is to sift through the text for language that could be construed as hateful towards any religion or its adherents.
+- The goal is to classify the content as either containing religious hate or not, requiring you to evaluate the tone and message of the text.
+- In this task, you need to differentiate between texts that express animosity towards religious beliefs and those that do not involve such sentiments.
+- Your job is to read the text and classify it based on the presence or absence of religious hate.
+- Analyze the content for instances where beliefs or individuals connected to a religion are subjected to derogatory comments or hate speech.
+- Investigate the language used in the text to see if it harbors disdain for particular religions or their practitioners.
+- Your task is to read a text carefully and determine whether it expresses hate toward a certain religion or group of people based on their beliefs.
+- Assess the text to see if it targets a religion or its practitioners with hate-filled language or ideas, marking it accordingly.
+- Review the text and check if it includes negative remarks directed specifically at a religious group or practice.
+- Assess whether the excerpt includes aggressive sentiments directed at a religion or its practitioners. Your discernment will help determine the presence of religious hate.
+- Consider the context of the text and determine if there is a mention of hate aimed at religious beliefs or practices.
+- Here, you must sift through the text for offensive remarks concerning religious beliefs or groups. Your judgment will indicate if there is an element of religious hate present.
+- You need to evaluate whether the text conveys negative sentiments towards a specific religion or its followers.
+- Assess whether the excerpts contain phrases that could be perceived as hateful towards individuals based on their religious affiliations.
+- Analyze statements for hateful rhetoric against religions or their followers, focusing on identifying whether such sentiments are present.
+- You will be assessing statements to determine if they depict animosity towards religions or individuals based on their faith. Analyze the context and wording carefully.
+- Read through the given sentences and decide if they express any form of hatred based on religion, distinguishing between religious hate and neutral statements.
+- The task revolves around evaluating written content for expressions of disdain toward a religion or its practitioners and labeling those instances accurately.
+- Look at the writing critically to uncover any signs that indicate hostility toward religion or its believers, distinguishing between passages that express such views and those that do not.
+- Scrutinize the provided input for signs of derogatory comments regarding religion or its practitioners.
+- Navigate through the text you are given, discerning whether it critiques or vilifies a particular religion, marking your judgment accurately based on what you find.
+- Your job is to evaluate the given text for any negativity towards religions or groups associated with faith. Make a clear distinction between religious hate and neutral expressions.
+- Delve into analyzing the passage to uncover whether there are elements that showcase disdain against a faith-based community.
+- Your responsibility is to filter through the statement and discern if there are any elements of hate tied to religious identities.
+- Your analysis should revolve around stating whether a text expresses animosity towards a religious group. This requires understanding both language and context associated with religion.
+- Determine if the provided statements convey hostility towards certain religions or their adherents and label them appropriately based on your assessment.
+- Distinguish between texts that express religious hatred and those that do not, based on their wording and intent.
+- The task involves inspecting a statement to see if there are elements of religious animosity present. You will classify the input based on these criteria.
+- Assess the given statements with an eye toward recognizing any disparaging remarks directed at a religion or its practitioners, categorizing your observations.
+- Your task involves analyzing text to determine if it expresses hate towards a religion or individuals based on their religious beliefs.
+- Engage with the content to find signs of religious discrimination or hostility. Your assessment should clearly indicate whether it supports the idea of religious hate or not.
+- Examine whether any presented views reflect a dislike for particular religions, completing this assessment with a clear identification of harmful sentiment when necessary.
+- You will evaluate statements to see if they contain hate speech related to any religion or its followers, distinguishing between hateful and non-hateful content.
+- Evaluate the given text for any signs of derogatory or violent language aimed at a religion or its followers. Classify the content based on your findings.
+- The goal here is to read through texts and identify if they incite hatred against religious groups, marking those that display intolerance.
+- Engage with the content of the text to identify any hateful implications directed towards religions or religious communities.
+- The task involves evaluating the wording in the text to see if it displays hatred towards a religion or its members, thereby informing your classification.
+- Assess whether the language in the given text conveys malice towards individuals due to their religious beliefs, marking it appropriately.
+- You will read a statement and look for any hints of hate speech against religious beliefs or communities. Determine the nature of the sentiments expressed.
+- Review the given piece of writing and decide if it conveys animosity towards a particular religion or religious group. This involves discerning the tone and content for negative sentiments.
+- Consider the context of the text to ascertain if negativity is directed at individuals because of their religious associations.
+- Analyze the provided text to assess if it contains hateful sentiments directed at a religion or its followers.
+- You are tasked with scrutinizing statements for any hateful language directed at religions or religious communities, identifying when such attitudes are present.
+- Delve into the text to recognize potential bias or hostility directed at specific religions or believers.
+- You will classify the content based on whether it portrays antagonism against religions or their followers, ensuring clear interpretation of sentiments.
+- Read through the provided text carefully, focusing on any statements that might reflect hostility toward a religion or its practitioners.
+- The focus here is on understanding sentiments expressed in writing about religions, determining if any lines are steeped in hate.
+- Evaluate whether there are any expressions of contempt within the text directed at specific religions or their followers.
+- Read the input carefully, focusing on whether it contains negative or hostile expressions towards a religion or its followers. Decide if it reflects religious hate or not.
+- Engage with the textual material critically, identifying explicit or implicit hate toward religions that informs your classification decision.
+- Your task is to analyze a piece of text and determine if it expresses hate towards a religion or religious group.
+- Use your skills in understanding context to decide whether the sentiments in the text reflect hatred towards another’s religious beliefs.
+- You need to evaluate the content of a text and identify if it reveals prejudiced sentiments related to any religious group.
+- You will need to identify and differentiate between texts that promote religious hate and those that do not, providing clear classifications for each case.
+- Analyze the text to see if it includes any expressions of hatred related to religion. Your judgment will classify the text as either containing religious hate or not.
+- Investigate the piece of writing for any signs of discriminating language aimed at a specific religion or its believers, categorizing your findings.
+- You have to classify the given text by detecting elements that indicate prejudice against a religion or its practitioners.
+- Investigate if the provided text harbors any disdain meant for a religion or its people. Classify your findings accordingly.
+- Analyze each statement to see if it includes hate speech against any religion or religious group. Your evaluation will help distinguish between hateful and non-hateful content.
+- Critically evaluate the contents of the text to ascertain if there is an expression of bigotry targeted at religions, offering an appropriate judgment based on this analysis.
+- Your task is to analyze a text and determine if it expresses hate towards a religion or religious group.
+- Your task is to read a given piece of text and identify if it contains hate directed towards a religion or its followers.
+- Reflect upon whether the input text communicates animosity towards any specific religion or group associated with religious identity, forming your conclusion from this reflection.
+- Consider the implications of statements made within the text concerning religion; identify any negative connotations that might be directed at followers or religious beliefs themselves.
+- The task involves identifying and labeling expressions of hatred towards religions within a provided text, focusing on the intent behind the words used.
+- Undertake an examination of the text to decipher if it harbors negative sentiments against any particular religion or its supporters and categorize it accordingly.
+- Analyze the provided text to identify any expressions of hatred based on religion, categorizing it accordingly.
+- Examine the language used in the passage to identify any signs of religious discrimination or animosity. Classify the text based on your findings.
+- Analyze the language and context of the text to ascertain whether any part of it reflects animosity towards religious beliefs or practices.
+- In this task, you'll be judging whether the sentiments expressed in text relate to hateful attitudes toward religions or their practitioners.
+- Delve into the extracts and determine if they reflect disdain or contempt for certain religions or their followers, and classify them as such.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1607_ethos_text_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1607_ethos_text_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

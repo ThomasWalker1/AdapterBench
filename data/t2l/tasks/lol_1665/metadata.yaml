@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Create a specific question from a given premise that requires intuitive reasoning. Your aim is to encapsulate the essence of the story while prompting thoughtful engagement with its content.
+- Formulate an unambiguous question after reading the given situation. Ensure that it directly pertains to what happens in the narrative and engages commonsense reasoning for its resolution.
+- The task involves crafting a question from a short scenario. This question should not only be straightforward but also tied closely to the essence of the premise.
+- After reviewing an initial premise, create a straightforward but insightful question that relates back to the characters or events described. The goal is to foster understanding through inquiry.
+- Generate straightforward questions based on concise premises. Aim for clarity and relevance as you explore different facets of the stories through your inquiries.
+- Analyze the situation described in the premise and ask a relevant question that could lead someone to think deeper about what motivates the actions taking place.
+- You will receive a concise premise and need to formulate a logical question about it. This question should not rely on any external knowledge but should arise from common sense.
+- Look at the narrative and craft a clear question. This inquiry should relate directly to the situation and require someone to consider implications or feelings involved.
+- Your role is to produce an insightful question from a short description that reflects understanding of human behavior or situations, using only common sense reasoning about the events presented.
+- For this task, engage with short narrative descriptions by creating clear questions that flow naturally from the provided content and invite reflection on its meaning.
+- Read through the scenario carefully, then create a thought-provoking question that invites exploration of the motives behind characters' actions.
+- Your challenge is to read quickly through various scenarios and develop simple yet relevant questions on them. Each question should directly relate back to the actions or emotions in those scenes.
+- Engage with each provided premise by constructing unambiguous questions about what you read; these should promote commonsense reasoning without needing external information to be answered correctly.
+- Analyze the provided premise and formulate a clear question that explores underlying themes or actions described in the narrative.
+- Your task is to read a brief story and create a question that naturally arises from the events described. The question should be clear and connected to the story's context.
+- From a short scenario, you will create a specific question that relates closely to what happens in the story. Your question should invite logical reasoning about characters' feelings or actions.
+- Generate a meaningful query based on a brief story that showcases clear reasoning related to character dynamics or interactions described.
+- Take time to consider the short story offered and then develop an insightful question that emerges naturally from it, compelling an understanding of relational dynamics involved.
+- You are tasked with crafting questions grounded in short stories, focusing on clarity and relevance to their respective premises. These questions should invite examination of characters' motivations or circumstance outcomes.
+- Based on a given premise, your objective is to formulate an insightful question that reflects the core elements of the narrative while encouraging reasoning about characters and events.
+- From a short narrative, generate a clear and logical question. This question should demand thought about the characters’ actions or motivations and should be rooted entirely in the details of the story.
+- After reading a concise story, your role is to come up with an appropriate question that fits logically within the narrative. The question should be relevant to the unfolding actions or emotions displayed.
+- Analyze the situation described in the premise and generate a question that is straightforward but invites consideration of potential implications or emotions involved.
+- Examine the short premise carefully and then devise one clear and relevant question stemming from it. Your goal is to ensure that this inquiry reflects understanding of character relations or plot dynamics as described.
+- You will encounter short plots, and your task is to create relevant questions regarding those plots; these questions should push for an understanding of character motivations or effects in the given context.
+- Generate a meaningful question from a narrative premise that solicits logical conclusions based solely on what has been shared in the text. The focus should be on relevance and clarity.
+- Generate a relevant inquiry after reading through a brief narrative. The question should be simple yet engaging enough for someone to think critically about the scenarios depicted.
+- Examine the situation presented and create a logical question that relates specifically to characters’ decisions or feelings highlighted in it.
+- Create an engaging inquiry stemming from a concise storyline. The task encourages connecting ideas within the text while sparking logical reasoning about character actions or emotions.
+- In this exercise, you need to distill information from a brief narrative into a clear, commonsense-driven question that can arise naturally from understanding the storyline.
+- Generate a thoughtful question that arises from the premise you are given. This question should prompt consideration of underlying reasons or emotions without using outside information.
+- After considering the narrative, create an unambiguous question related to it that demands some reasoning based on everyday logic.
+- Develop a coherent question from a short summary, ensuring it draws upon the main elements presented within the storyline.
+- Analyze the premise and create a coherent question that someone could ask to understand the dynamics of the situation better, while relying solely on common sense.
+- Explore a delightful scenario involving vivid shapes acting out scenarios, then create a notable question examining their motivations or interactions presented in your reading.
+- The task involves understanding a storyline or situation briefly stated and then creating a pertinent question addressing its core elements. This requires thoughtful consideration of character motivations or outcomes.
+- For each premise given, your job is to frame a meaningful question that relates back to any underlying themes or actions described in that narrative. Focus on clarity and relevance in your questioning.
+- Reflect on the given premise and ask a straightforward question that addresses the core situation or feelings depicted.
+- Formulate a meaningful question regarding the situation described in the premise that invites thoughtful consideration of the scenario.
+- Using commonsense reasoning, develop an unambiguous question that reflects the events or dynamics presented in the premise.
+- You will analyze a summarized situation and generate a pertinent question that engages with its content. Aim for questions that remain directly tied to the premise instead of leaning on prior knowledge.
+- For each premise provided, your role is to generate a straightforward inquiry that connects to the situation described. Your question should evoke thinking about possible motivations or feelings within the context given.
+- Your goal is to form a meaningful question from the presented premise. This should be clearly linked to actions or situations described, calling for an exploration of rationale or motivation behind them.
+- Engage with brief stories by generating questions that seek deeper insights into character actions or emotional states. Ensure clarity and relevance are forefront when constructing your queries.
+- You will be given a small piece of text, from which your role is to come up with an effective question. This question should challenge someone’s understanding of the premise while being connected logically to it.
+- Look at the narrative provided and generate a question that explores the motivations and reactions of the characters based on their experiences described in the text.
+- After reading a short premise, develop a direct and pertinent question that can lead to deeper understanding of the events or characters.
+- You will analyze a premise to construct a pertinent question. The generated question should be clear, straightforward, and elicit reasoning based on the provided information alone.
+- Generate a question based on the premise provided. The question should be clear, directly related to the story, and involve some reasoning to answer.
+- Read the premise carefully and think of a question that you could pose to explore more about the situation described, ensuring it does not stray from what is presented in the text.
+- Based on the brief situation you read, your objective is to develop a concise question that pertains directly to the events described and invites commonsense conclusions.
+- In this exercise, you will take a short narrative and generate a thought-provoking question based on it. The question needs to make sense in light of the story and require some common reasoning.
+- Your task is to read a short story and come up with an insightful question that relates directly to the situation.
+- Read a brief scene and think about what can be asked that relates to the interactions occurring within it, focusing on unambiguous questions.
+- Your task is to create a relevant question based on a short story or situation provided. The question should require basic reasoning and relate closely to the details of the story.
+- Using only the information within the given premise, craft a succinct and direct question that reflects substantial comprehension of what’s happening, inviting reflection or reasoning based on common experiences.
+- This task requires you to develop a question from a provided premise. Your question should connect directly with the scenario described and encourage reasoning based on commonsense understanding.
+- Create a straightforward and pertinent question concerning a whimsical scenario where shapes act out human emotions, without bringing in any outside knowledge.
+- Generate a question concerning a brief story that prompts exploration of motivations or outcomes related to the characters.
+- Create a relevant question from the given story summary. Your inquiry should invoke critical thinking about events or actions described, using only what is found in the text.
+- You are tasked with deriving a question from a provided premise, ensuring it is logical and connected to the narrative's context.
+- Use your understanding of the narrative to come up with a question that is logical and encourages reasoning based on the context of the premise.
+- Engage with a brief premise and construct an unambiguous question, focusing on aspects that might provoke further thought about the characters or events.
+- After reviewing a brief storytelling piece, your task is to create an engaging question that relates specifically to what happens in the text, appealing to your understanding of human or object interactions.
+- Create questions from short premises that compel you to think about character actions and motivations without needing external context.
+- From the summary of a scenario, formulate an insightful question that demands commonsense reasoning, ensuring it is unambiguous and pertinent to the context.
+- Based on a given premise, create a thoughtful question that is clear and requires basic reasoning to answer.
+- You will formulate an unambiguous question based on a brief description of a scene. The question should make use of everyday reasoning to uncover details implied in the premise.
+- Develop questions rooted in given scenarios. Each question should prompt thought regarding behavior, dynamic relationships, or underlying themes observable in the text.
+- Analyze the given story line quickly, then create an uncomplicated yet thoughtful question that encourages engagement with the characters’ emotional perspectives.
+- Read about characters interacting in amusing ways and devise a clear question focused on understanding their feelings, ensuring relevance and clarity in your inquiry.
+- Creating questions based on premises is your goal in this task. Make sure the questions are straightforward, relevant, and demand basic reasoning to approach an answer.
+- Your aim in this task is to distill narratives into questioning forms that capture their essence. Questions should relate closely to actions, feelings, or decisions presented in each story while demanding commonsense reasoning.
+- Generate a relevant and clear question from a given premise that invites deeper thinking about characters' emotions or actions without needing any outside information.
+- From a short story, you are tasked with generating an inquiry that is both meaningful and closely related to what unfolds within the narrative.
+- You need to read each premise carefully and then create a simple yet relevant question that captures an essential aspect of the situation. The inquiry should require thoughtful consideration of what has occurred.
+- You are tasked with generating an intriguing question from a given story snippet. It should connect clearly with the narrative and require some common sense deductions to explore the situation further.
+- From a short narrative, formulate a relevant question that encourages further thinking about the events or feelings described.
+- In this exercise, you'll generate a meaningful question from a presented scenario. The question should not only be clear but also necessitate some reasoning based on the context of the premise.
+- Reflect on the given short story, then ask a pertinent question related to it, focusing on motivations or outcomes suggested by the actions in the scenario.
+- Analyze the provided premise and formulate a thought-provoking question that requires you to utilize common sense reasoning related to the storyline.
+- Given a brief scenario, you need to devise a question that encapsulates a key aspect of the situation. The requirement is that it must be easy to understand while inviting curiosity about the motives or actions described.
+- Examine the short story presented and think critically to produce a relevant question that focuses on the underlying themes, specifically regarding how characters feel or react.
+- Examine the scenario provided and generate a question that makes sense within the context, requiring basic logical thinking to craft.
+- Your job is to generate a thought-provoking question based on a very brief storyline. Make sure your question leads towards exploring feelings or logic within the context.
+- From each short story, extract relevant themes and create questions designed to foster understanding of character motivations or actions based on common societal norms or logic.
+- Your assignment is to develop a question that emerges logically from the details provided in a short narrative, using commonsense reasoning.
+- You’ll be analyzing a short scenario to produce a thoughtful question that makes sense in light of the details presented. This encourages critical thinking about character behaviors and interactions.
+- From a given premise, generate a relevant question that requires common sense to understand the motives or feelings of the characters involved.
+- Consider each concise narrative’s circumstances and create questions that explore its implications further. Such inquiries should encourage deeper thinking about what is presented.
+- Read the given scenario carefully and formulate an effective question that leads to an understanding of the motives or feelings of the characters involved in the situation described.
+- In this task, you will read a brief scenario and then formulate a relevant question about it. The question should make sense based on the details provided and require reasoning.
+- The goal here is to extract key insights from a small story and convert these into clear questions. Your questions should provoke thought while being easily understood in relation to the narrative.
+- Develop a clear inquiry from given story snippets that draws on commonsense reasoning related to what happens in those stories. The goal is for your questions to illuminate underlying thoughts or feelings.
+- Take a brief narrative and consider its implications critically. Your goal is to generate an appropriate question that opens up discussion around its content, relying on basic reasoning tied to the premise.
+- Use your understanding of everyday logic to create an appropriate question from a given narrative, aimed at uncovering deeper meanings or implications.
+- The task involves summarizing the essence of a short story into an engaging question. Ensure that your question is specific and invites reasoning about the actions or feelings of the characters involved.
+- Your task is to create a question based on a given story or situation. The question must relate directly to the story and require basic reasoning to answer.
+- Use your understanding of human-like emotions in simple shapes to formulate an applicable question from an imaginative context described in the premise.
+- Based on a whimsical narrative involving basic geometric shapes, think creatively to pose a question that digs deeper into their emotional landscape and relationships.
+- Your task involves synthesizing information from a short story into a coherent, commonsense question. Each query must arise naturally from what has been presented in the premise.
+- The assignment is to derive a question from a short text that prompts investigation into relationships or actions being described. It should be relevant and invoke common sense reasoning.
+- You will read a brief narrative and invent a question that brings out deeper thoughts about the situation. Ensure your question demands logical thinking and relates directly to what you’ve read.
+- Engage with the premise by identifying key actions or relationships and formulating an inquisitive question encouraging thought about character motivations.
+- You’ll read through an outlined situation then develop an insightful and logical query connected directly to it. Make sure your question encourages exploration of implications derived from the text itself.
+- Your task demands creativity in questioning—a need to understand brief premises and pose inquiries that are relevant, clear, and make use of common sense reasoning.
+- Identify key elements from the premise and develop a simple, logical question that delves into what may be driving the characters’ behavior.
+- The objective here is to create a clear and relevant question directly stemming from the details presented in a short story or situation summary.
+- You will examine given narratives and develop thoughtful questions that align with their contexts, requiring comprehension of the emotional or situational elements involved.
+- Take inspiration from a brief story and formulate a clear question aimed at exploring its significance or emotional depth.
+- Create a relevant question from the narrative you receive. The goal is to focus on what might be happening beneath the surface of the situation, requiring an understanding of implied emotions or dynamics.
+- Your assignment is to read through a summary of events and devise an appropriate question that pertains directly to those events while utilizing common sense reasoning for an answer.
+- Focus on making sense of character dynamics in brief scenarios by constructing questions that are both relevant and demand commonsense reasoning. Your inquiries should be precise and pertinent to what’s depicted.
+- Your goal is to take a brief story and ask a specific question that reflects the main idea or emotion conveyed within it.
+- From a short story setup, your job is to ask a relevant question that can logically follow from the narrative. Make sure the question can be answered with common sense insights.
+- In this activity, draw upon narratives provided to create questions that prompt exploration of situations depicted, capturing details that might encourage further reflection aloud or in writing.
+- In this activity, you will transform the provided narrative into a question that directly relates to the events or feelings expressed in the story.
+- Your challenge is to extract meaning from a short description and formulating an appropriate question that invites reflection on its contents.
+- Your objective is to formulate a concise question from a short narrative. The question must be understandable, directly relevant, and invoke common sense reasoning without needing external knowledge.
+- Based on brief storytelling pieces, your mission is to produce questions that explore deeper meanings or clarify relationships between elements within the story.
+- With an understanding of common sense reasoning, construct a direct question from the narrative that makes sense within its context.
+- You must examine a short story and devise a logical query that pertains directly to its content, emphasizing insight into character motivations or potential outcomes.
+- Given a premises, you need to think critically and compose a question that is clear and directly connected to the narrative. It should prompt thought while relying solely on the information given in the premise.
+- Task yourself with reading a playful scenario about anthropomorphic shapes and crafting an inquiry aimed at their feelings or interactions which makes sense logically.
+- Based on the narrative you read, ask a simple yet relevant question that uncovers more about what happened in the scenario.
+- After reading a short premise, your job is to come up with an insightful question related to it. The generated question should provoke thought about emotions or motivations tied to the premise.
+- Your task is to read a short story and create a relevant question that makes sense based on the situation described.
+- After reviewing a short summary, devise an unambiguous and relevant inquiry that navigates through themes evident in the scenario. This inquiry must encourage commonsense reasoning without relying on external information.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1665_trainglecopa_question_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1665_trainglecopa_question_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

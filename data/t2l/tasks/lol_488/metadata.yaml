@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Analyze an input list for its alphabetic components. Collect these letters while ensuring they remain ordered exactly as they were listed originally.
+- You will receive a list containing various elements, including numbers and letters. Your objective is to filter out and list only the alphabetical characters.
+- You are tasked with extracting alphabet characters from a mixed input list. The extraction must respect their sequence and maintain original capitalization throughout.
+- Your task is to sift through a list and pick out all the alphabetical characters, while preserving their original order and case.
+- Here, you are tasked with identifying which items in a list are indeed letters among other numeric distractions.
+- You will be analyzing a list filled with different elements to find and isolate all instances of letter characters, ensuring that each one is returned in its original case and layout.
+- Look into a compilation of mixed data points and isolate those elements that correspond to the alphabet; keep their formatting as it originally appears in the input.
+- Your assignment entails going through a list filled with various data types and identifying which entries are letters while maintaining the integrity of their sequence and case.
+- You are asked to identify all the letter-based items from an input collection and return them as they are while keeping their order intact.
+- Your job entails determining which entries from an input list contain letters, while preserving both their sequence and case in your response.
+- Your challenge here lies in carefully inspecting an assortment of data types within a given list and extracting solely those pieces that are letters without changing anything about them.
+- The challenge is to scan through a collection of items and pinpoint only those that are alphabetic characters, making sure to keep their order and appearance consistent.
+- In this exercise, analyze a list to extract all alphabetic characters while ignoring any non-alphabetical elements. Maintain their order throughout.
+- This task asks for the extraction of all letters from a mixed-element list, requiring you to present them in their existing order without changing their capitalization.
+- Your task is to sift through a list to identify and extract the alphabetic characters, maintaining their original order and case.
+- Focus on an input list where you need to identify and compile only the alphabet-related entries, ensuring that their original format is unchanged.
+- The assignment is to examine a series of inputs for any alphabetical characters, making certain that they are sequenced correctly according to their original layout.
+- You will work with an array where your aim is to unearth all alphabetical entries—preserving their sequence and whether they are upper or lower case.
+- Focus on identifying alphabetic entries in a mixed list. Present these findings in the original sequence without changing capitalization.
+- Your objective is to examine a mixed list of items and filter out just the letters, preserving the sequence and original capitalization as you do so.
+- Your task is to inspect a mixture of items in a list, picking out only those that are alphabetic while preserving their initial sequence.
+- Examine a given list closely for alphabetic letters. Your task is to present them in the sequence they appear, without any modifications.
+- You need to identify and collect all the letters from a given list while maintaining their original order and capitalization.
+- Look carefully at a given input list, extracting only those entries that are alphabetical while preserving their order exactly as they appear.
+- Your responsibility is to scan through a list and report back just the letter characters, paying attention to their order within the list.
+- Identify all entries that are letters from a given list while disregarding any numerical values or other non-alphabetic characters. Retain their order as per the input.
+- Your task is to sift through a list and identify any elements that are alphabetic characters while maintaining their original order.
+- In this activity, you'll work with a mixed list to find all the alphabetic characters. Ensure that you maintain the original form as you pull them out.
+- The challenge requires you to distinguish between letters and numbers or other symbols in a given list, extracting only the letters while preserving their casing.
+- In this task, the focus is on discovering elements within a list that are alphabetic while ensuring their arrangement remains faithful to how they were presented originally.
+- The goal here is to examine a provided list and pull out all the alphabetic characters in the order they appear, preserving their capitalization.
+- This task requires you to sift through a list and pull out only those elements that are letters. You must respect their order and case without alteration.
+- The objective here is to deselect non-alphabetic elements from the list provided. Only keep letters while preserving their order and capitalization.
+- This exercise focuses on locating all letter characters within an input list filled with diverse items, emphasizing retention of both order and capitalization.
+- The objective here is to go through an array of items and filter out the alphabetic ones, without making any adjustments to their capitalization.
+- In this challenge, you need to identify and extract all alphabetical characters from a mixed list of strings and numbers while maintaining their sequence.
+- Your challenge is to dissect a given set of items and extract just the alphabetic entities while preserving how they appear initially.
+- In this exercise, you will sift through a collection of items to find and return those that are alphabetic characters. The ordering should reflect what was originally present.
+- The task involves analyzing a list and identifying which elements are letters of the alphabet, while maintaining their original order and case.
+- Your objective is to extract all the characters from a provided list that belong to the alphabet, maintaining their order in the output.
+- Seek out all letter components in a diversified list, ensuring that you return them exactly how they were presented initially in terms of order and case form.
+- In this task, you are tasked with extracting alphabetic characters from a list of mixed elements while preserving their original order and case.
+- Your challenge is to comb through an array of mixed types to find only those that are letters, following them as they appear and keeping their cases unchanged.
+- Your mission is to locate every alphabetical character in a mixed array without altering how they are displayed or changing their positioning.
+- For this task, filter through a mixed-content list to select just the alphabetical characters, ensuring they remain in the same order as found.
+- You must filter through an input array to harvest all characters that are letters while ensuring you present them as they appear in terms of order and capitalization.
+- In this activity, your job is to pinpoint all the alphabetical elements within an array of various entries, ensuring the output preserves both sequence and format.
+- The mission here involves reviewing a list and selecting elements categorized as letters while disregarding any numeric or non-alphabetic entries, preserving their form as they appear.
+- The task requires you to sift through a list and extract only those elements that are alphabetical characters, preserving their original case.
+- This task requires you to filter a list for any items that are letters, keeping the case intact and returning them in the same order they occur in the list.
+- The focus of this task is on filtering out alphabet characters from a provided list while ignoring any numerical data or special characters, all while retaining their original arrangement.
+- The focus of this task is on filtering a mixed list to retain just the characters that are letters. It's important to keep their order intact as presented.
+- You need to examine a list that combines various types of entries and determine which ones are letters, presenting them in the order they were presented originally.
+- This activity calls for identifying only those entries in a mixed collection that qualify as letters, treating them with care by conserving their sequence and form.
+- This task requires you to scan through a list and pull out alphabetic characters, ensuring they remain in the original order stated within the input.
+- Scan an input collection for characters that qualify as alphabets, ensuring you maintain the correct ordering as seen in the original list.
+- Your job is to identify and collect all the letters from a provided list, ensuring that you maintain the same sequence as they appear and keep the capitalization intact.
+- This task involves examining a list with various types of data. Your aim is to collect all letter characters in the exact sequence of occurrence without any modifications to their appearance.
+- This task entails going through an assortment of items and identifying any letters present among them, maintaining both their sequence and case conventions.
+- Review the given list and filter out all the elements that are letters. It's important to keep them in the same sequence as they appear.
+- Examine an array containing various types of elements, extracting solely those that are letters of the alphabet in the order they appear.
+- The goal is to extract the alphabetic components from an assorted collection while maintaining their appearance sequence.
+- Your objective is to pick out all the letter elements from an input list, ensuring that you respect the case of each letter as you report them.
+- The challenge consists of going through an input list filled with letters mixed with other data types and returning just the alphabetical characters, respecting their original order.
+- Your role is to identify letter-based entries within a mixed array while keeping track of their initial position and presentation style.
+- This task challenges you to identify and pull out only the letters from a diverse collection of data. Their position and casing must not be altered during this process.
+- This task is about filtering through an input list to locate all alphabetic characters, ensuring they appear in your answer exactly as they do in the input.
+- This task demands careful observation as you observe a set of elements and mark out those that are solely letters, keeping their sequence and case unaltered from how they were given.
+- In this task, you need to recognize and list out all alphabets found within an input array while keeping their order intact.
+- Your job is to extract from a given array all characters that are letters, without altering their case or the order in which they occur.
+- The objective of this exercise is to filter through miscellaneous entries in a list to keep only those that are alphabets.
+- This task entails tracking down all alphabetic entries in a variety-filled list, ensuring each letter is captured in its initial form and position.
+- Your task is to sift through a list and isolate any elements that are letters, ensuring you keep their original case intact.
+- Look through the input list to find all elements that are alphabetic. Make sure to keep the order in which they appear unchanged.
+- In this challenge, your focus is on extracting letters from a variety of entries in a list provided, without altering how they were originally formatted.
+- The intention here is for you to select only the letters from a combined list of letters and numbers. These should be reported without altering their case or sequence.
+- Your responsibility is to locate every letter within an input list among various non-letter characters, ensuring you respect the original presentation of each identified letter.
+- For this assignment, focus on identifying which elements are letters from a mixed collection. Ensure that they are presented exactly as they appeared originally without modification.
+- You will carefully inspect a given list to isolate its alphabetic elements, ensuring that their capitalization remains true to how they first appeared.
+- This activity involves utilizing your attention to detail as you search for letters among other types of entries in a list while documenting them exactly as they appear.
+- Extract just the letters from a presented array of items. Ensure they are listed in the same arrangement as found initially, keeping cases unchanged.
+- In this task, your goal is to pick out alphabet characters from a given list of items while maintaining their casing and sequence.
+- In this task, you are required to sift through a list and identify which items are alphabetic characters, maintaining their original order and case.
+- This task consists of distinguishing letters from other data types in a given list and returning them as a sequential output.
+- This task involves identifying and collecting alphabet characters from a mixture of characters in a list, while keeping everything in its original format.
+- The exercise involves inspecting a collection for any characters classified as letters, being careful to maintain their order without modification.
+- The task requires careful examination of a mixed list to find all instances of letters, retaining their respective positions and styles.
+- Review an input list to uncover all alphabetic entries while ignoring any non-alphabetic items. Your answer should reflect their original sequence.
+- You are challenged to detect and collate all alphabetic symbols from a provided collection, keeping their order intact.
+- Engage with an input list by tracking down every letter of the alphabet contained within it, ensuring that you respect both their case and their order.
+- Your job is to carefully go through a provided list and isolate the letters from other characters like digits or symbols.
+- You must review an assortment of items in an input array and capture every alphabet character intact, keeping their order and case unchanged.
+- In this task, you will look through a list for any alphabet characters. Make sure to output them in the same order they were discovered while keeping their character case unchanged.
+- This activity asks for the search and retrieval of alphabetic characters from an assortment of strings and digits, focusing on accuracy in both order and form.
+- Your objective is to sift through a given list and extract all alphabetical characters, preserving their sequence and capitalization.
+- You will need to go through a list and find all the alphabet letters, disregarding any non-letter items. Be mindful of their original form when you report them.
+- You will examine a provided list and retrieve only the letters from it, ensuring you do not alter their case or order.
+- Go through the provided set of elements and isolate those that are alphabet letters. you'll keep their sequence as it appears without any adjustments.
+- The goal is to find every letter in the input array. You must return them in the exact order they appear, without modifying any of their cases.
+- Your responsibility is to carefully scan through a list filled with various types of entries in order to extract only the letters while keeping everything else aside.
+- This task requests that you scan a provided list to pull out characters that qualify as letters. Maintain their existing format during this process.
+- This task involves scanning an input list and selecting only the alphabetic components. Retain their sequence and capitalization without any modifications.
+- The goal of this exercise is to isolate all alphabetic characters from an array containing numbers and symbols, taking care not to alter their original appearance or order.
+- This assignment involves carefully reviewing a list to extract only the alphabetical elements. Report those findings precisely as they were presented, without any alterations.
+- This task involves scanning a list of items and selecting only those that are letters. You should remember their original form without any alterations.
+- In this exercise, you will analyze a list and return only those elements that are letters of the alphabet, while preserving their case.
+- The task involves filtering an input list for letter elements, requiring careful attention to maintain their original sequence and capitalization.
+- The goal is simple—you must filter through a collection of different types of entries and gather only the letters, presented as they originally appear.
+- You need to find and present alphabet letters from a list while keeping them in the sequence they were listed initially.
+- You need to filter a given list for alphabet characters. The challenge is to ensure the output maintains the original order of these characters from the input list.
+- You need to take an input list, locate all the alphabet letters within it, and present them just as they are in the sequence found.
+- You'll be evaluating elements from a provided list where you must identify only the letters present, discarding any numbers or punctuation while keeping their sequence intact.
+- In this activity, you'll work with a list of mixed content, focusing on isolating only those elements that are letters.
+- Here, you need to perform a focused search within a mixed data set for the sole purpose of identifying all characters that are letters.
+- The mission involves scanning through an assortment of items to find and list all alphabetic characters as they appear, preserving any uppercase or lowercase distinctions.
+- Filter through an assortment of elements to pinpoint only those that are alphabetic. It is essential to retain both their position in the input and the formatting style.
+- The challenge here is to find and extract each letter in a compilation of elements, mindful not to change their case or rearrange their positions in the output.
+- The challenge here is to filter out only the alphabet characters from a lengthy input list containing various types of entries.
+- You must analyze an input list to gather only its alphabetic entries, while maintaining their appearance order and case throughout your answer.
+- Carefully go through the input list and gather all the alphabetic characters, maintaining their order and case from the original list.
+- The focus of this task is on filtering through a list for alphabetic characters while ignoring non-letter entries, presenting them as they appear without alteration.
+- Examine the contents of a list and select only the elements that are letters. Pay attention to their order and capitalization as you do this.
+- You'll be sifting through various data points in this task to find and document all the alphabetic characters, keeping them intact in terms of both order and capitalization when reporting back.
+- Analyze the given collection for alphabetic characters only, ensuring that they are returned in the same configuration as they were presented without any alterations.
+- This task revolves around recognizing and compiling all alphabetical elements from an array of mixed content while preserving both format and arrangement.
+- The task entails collecting various letters from a provided list that comprises both numbers and characters, ensuring that they remain in their original sequence and form throughout.
+- Here, you are tasked with sorting through an input list made up of different elements to find all letters, keeping them in the same order they appear.
+- This task tests your ability to discern letter characters within a mix of data types in a list while returning them exactly as found.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task488_extract_all_alphabetical_elements_from_list_in_order
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task488_extract_all_alphabetical_elements_from_list_in_order
+user_prompt_template: '{task_def}
+
+
+  {problem}'

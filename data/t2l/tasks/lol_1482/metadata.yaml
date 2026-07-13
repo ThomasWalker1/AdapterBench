@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The task requires identifying the names of genes or proteins from a provided sentence. It tests your ability to recognize biological terms within specific contexts.
+- From a given statement, your goal is to uncover and mention a gene or protein name, showcasing your ability to comprehend and synthesize biological information.
+- Your role is to extract specific gene or protein names from sentences, which calls for a solid grasp of molecular biology terms and their applications in research.
+- Your role is to pinpoint and select gene or protein names that are presented in the context of given sentences, showcasing your knowledge in genetics and biochemistry.
+- The task requires that you confidently sift through language related to biology to locate specific mentions of genes and proteins present in the input text.
+- Focus on the sentence provided and highlight one gene or protein name. This requires an understanding of the vocabulary commonly used in biological studies.
+- You need to accurately pinpoint and name biological entities mentioned within given text fragments focused on genetics or proteomics.
+- Engage with the sentence content to discern a pertinent gene or protein name while leveraging your familiarity with cellular biology terminology.
+- Identify the key terminology associated with genes or proteins from given sentences, reflecting your understanding of biological research literature.
+- The focus here is on recognizing names related to genetics within sentences. Engagement with scientific writing will likely enhance the efficiency of your responses.
+- Examine the provided sentence carefully and determine one of the gene or protein names included within it, showing your knowledge of genetics and biochemistry.
+- Engage deeply with the text to find specific references to genetic markers or protein names, relying on your knowledge of scientific language in biology.
+- In this task, you must read through scientific statements and extract relevant biological names, emphasizing your knowledge of genetics and proteins.
+- Your task is to identify and extract the names of genes or proteins mentioned within a given sentence based on your biological knowledge.
+- Analyze the sentences critically to identify mentions of genes and proteins, requiring familiarity with biological concepts and terminologies.
+- Your goal is to sift through a sentence to find and name various biological components, such as genes or proteins, showcasing your knowledge in biology.
+- You'll be tasked with picking out the names of genes or proteins from the text provided. This requires familiarity with how these entities are discussed in scientific literature.
+- The aim here is to sift through scientific language to find and highlight the name of a gene or protein that is central to the context presented.
+- Your job entails examining given statements for any gene or protein names and recognizing their significance within the context of molecular biology.
+- This exercise tests your ability to extract specific scientific names related to genetics or proteins from descriptive sentences.
+- Take the provided sentences and identify key biological entities known as genes or proteins, showcasing your expertise in genetic terminology.
+- This task involves reading a scientific description and identifying key biological terms that correspond to genes or proteins; it demands attention to detail.
+- You will interpret sentences to find key biological names, requiring an understanding of both language and molecular biology terminology.
+- The objective is to extract names of specific genes or proteins from descriptive scientific sentences while applying your expertise in molecular biology.
+- In this task, you must discern gene or protein names found throughout descriptive text. Knowledge from genetic studies can support your reasoning in finding accurate mentions.
+- You need to recognize relevant descriptions of genes or proteins from complex scientific sentences, emphasizing your grasp of biological classifications.
+- Your task is to identify and extract the name of a gene or protein mentioned in a given sentence related to biology or biochemistry.
+- The goal here is to discern the key biological names found in descriptions about research findings related to genes and proteins.
+- You'll be extracting gene and protein names from sentences aimed at understanding research implications, indicating a solid background in biomedical terminology.
+- This task challenges you to extract names of genes and proteins from descriptive scientific texts, emphasizing comprehension in molecular biology.
+- Your job is to read scientific sentences carefully and isolate any mentions of genes or proteins, drawing from your expertise in biological sciences.
+- You are to sift through sentences to locate and identify the names of genes or proteins, demonstrating your expertise in genetic research.
+- In this exercise, you’ll need to identify and write down the names of genes or proteins mentioned in various sentences, which requires attention to detail in scientific texts.
+- The task is centered around parsing text for instances of genes or proteins, requiring both analytical skills and knowledge of genetic dynamics.
+- The objective here is to discern and note down any gene or protein names that appear within the supplied contextual statements.
+- In this exercise, you're looking for precise biological nomenclature within sentences that mention genes or proteins relevant to current research discussions.
+- This task focuses on recognizing and isolating names related to genes or proteins from textual information, requiring attention to detail and context clues.
+- You will interpret sentences to extract specific genetic identifiers—genes or proteins—from the information presented. Understanding their roles is integral for correct identification.
+- Engage with textual information by identifying and naming gene or protein terms within sentences. This requires a good grasp of biological sciences.
+- Explore the scientific sentences for references to genetic entities; this involves recognizing terminology related to genes and proteins accurately.
+- Analyze the scientific text for specific references to genes or proteins. Select one name based on what you uncover in the sentence.
+- You are given a scientific statement, and your objective is to find and report the name of a gene or protein that appears in it. Familiarity with genetics and molecular biology will be helpful.
+- Explore statements for mentions of specific genes or proteins, where showcasing your expertise in biology is crucial for success in this task.
+- Identify the highlighted gene or protein names in each sentence, reflecting your skill in understanding molecular functions and nomenclature.
+- The task requires you to isolate mentions of gene or protein names in scientific contexts, highlighting your understanding of molecular terms.
+- Your task is to identify and extract the names of genes or proteins from provided sentences, demonstrating familiarity with biological terminology.
+- The focus here is on identifying proper names related to molecular entities from descriptive sentences, showcasing both analytical thinking and biological understanding.
+- This task challenges you to pinpoint the names of genes or proteins from a provided text. It requires attention to detail and understanding of biological vocabulary.
+- Your task is to analyze sentences and locate names of genes or proteins, relying on your knowledge of biochemical language and terminology.
+- Engage with the text to find specific references to genes or proteins, ensuring you recognize and articulate one correct name based on what you've read.
+- In this task, focus on recognizing and stating any valid gene or protein name located within the sentence, necessitating a good understanding of biological nomenclature.
+- Your objective is to locate specific genes or proteins referenced within the information provided, utilizing your knowledge of their distinguishing features.
+- This task centers on recognizing names associated with genes or proteins found in written passages, reflecting your understanding of biological classifications.
+- The goal is to carefully read scientific assertions and extract gene or protein nomenclature. This task tests your familiarity with biology concepts.
+- Analyze the context of each sentence provided to isolate names associated with genetics or protein structures, demonstrating critical reasoning in biology.
+- Your job is to recognize and name key proteins or genes that are described in the sentence. This requires sharp attention to detail and knowledge of biological concepts.
+- Analyze the provided sentences to discern and write down the names of genes or proteins mentioned, emphasizing comprehension of biological language.
+- The task involves reading through a sentence and determining which gene or protein name can be extracted. Attention to detail in scientific language is key.
+- You are required to distill relevant biological information from sentences by identifying included gene or protein names through careful reading and analysis.
+- Engage with each sentence critically to recognize the highlighted terms—genes or proteins—displaying your understanding of biological sciences as they are discussed.
+- The focus of this task is to detect names of specific proteins or genes embedded within descriptions. A background in biology will help you navigate the scientific context.
+- You are expected to read through scientific descriptions and pinpoint specific genetic or protein names, showcasing your understanding of biological concepts.
+- The objective is to analyze a sentence and accurately identify the names of gene or protein entities. This will test your expertise in molecular biology.
+- You will read a sentence and extract the relevant gene or protein name mentioned within it, using your understanding of biological terminology.
+- This task requires you to pinpoint gene or protein references in sentences, applying your knowledge of scientific language related to genetics.
+- Engage with the sentences to discern specific biological entities known as genes or proteins, highlighting your analytical skills in scientific contexts.
+- In this exercise, you’re expected to recognize mentioned genes or proteins in sentence contexts, underscoring your comprehension of their relevance in biology.
+- Your role is to extract specific gene or protein names mentioned within provided textual contexts, focusing on accuracy and relevance.
+- Read the sentences carefully and recognize terms that refer to genes or proteins, demonstrating your knowledge in genetics and cellular biology.
+- Your focus is on deciphering sentences that mention genes or proteins, pinpointing relevant terms grounded in scientific literature.
+- The task involves extracting specific names of genes or proteins from given sentences, requiring a good understanding of biological terminology.
+- Analyze the provided sentence, focusing on terms that indicate specific genes or proteins. Your goal is to recognize and state one relevant name.
+- Your task involves recognizing and selecting relevant gene or protein names embedded in provided scientific statements, reflecting your knowledge in the life sciences.
+- In this task, you need to focus on identifying key biological entities mentioned in the sentences, primarily those related to genes or proteins.
+- You will analyze sentences to find references to genes or proteins. An understanding of biochemistry and genetic terminology will aid in this identification process.
+- Your objective is to carefully read through provided sentences and extract notable gene or protein names therein, utilizing your knowledge in biology and biochemistry.
+- In this task, you will examine sentences and discern relevant biological terms, specifically focusing on genes and proteins mentioned within them.
+- You will need to sift through given sentences to pinpoint key biological entities such as genes or proteins, showcasing your understanding of their names.
+- Your role is to find and identify gene or protein names within written statements, which calls for an understanding of both genetics and protein functions.
+- This task challenges you to extract meaningful gene or protein names from sentences, calling for excellent comprehension of genetics-related discussions.
+- You will read through sentences and identify relevant gene or protein names, demonstrating familiarity with molecular biology concepts.
+- This activity centers on extracting genetic or protein identities from sentences, calling upon your background in life sciences for successful identification.
+- Within each sentence you receive, there are key terms representing genes or proteins which you'll need to extract. Focus on scientific accuracy as you make your selection.
+- Read each scientific sentence carefully; your job is to spot and present one name pertaining to a gene or protein mentioned within it, reflecting an understanding of biology.
+- The task involves reading a sentence and identifying a gene or protein mentioned within it, demonstrating your knowledge of biological terminology.
+- In this exercise, focus on the identification of specific gene or protein names mentioned in the sentences—your knowledge of molecular biology is key.
+- In this exercise, you'll interpret phrases in a biological context to identify key genetic components, exemplifying your knowledge of molecular biology.
+- In this assignment, you will analyze sentences to determine associated gene or protein names, highlighting the importance of precise terminology in life sciences.
+- Your aim is to detect and articulate the name of a gene or protein from the supplied text. This requires you to apply your knowledge of molecular biology concepts effectively.
+- Your mission is to identify and name specific genes or proteins mentioned in the text, showcasing your ability to understand genetic language and functions.
+- Focus on reading sentences critically to find and report any gene or protein names listed; this will require attentive analysis of biological content.
+- This task involves systematically identifying references to specific genes or proteins found in provided information, emphasizing precision in biological identification.
+- Your objective is to extract meaningful names of genes or proteins embedded within carefully constructed sentences, utilizing your understanding of genetics.
+- Within the context of robust scientific sentences, you must discern and note one specific mention of a gene or protein, reflecting your understanding of genomic terminology.
+- The focus is on interpreting scientific statements and pinpointing genes or proteins within them, which calls for an understanding of biological language.
+- The objective is to find and note gene or protein names stated in text passages provided, drawing on knowledge from biology and genetics for effective recognition.
+- This assignment requires you to sift through textual information to extract relevant genetic nomenclature, emphasizing your proficiency in molecular terminology.
+- The objective is to sift through the text and identify a relevant gene or protein name that is being referenced in it. This task demands an understanding of genetic vocabulary.
+- Your role here involves recognizing essential biological components within written sentences, testing both your reading comprehension and scientific knowledge.
+- This task tests your ability to recognize important biological components referenced in sentences, focusing specifically on gene or protein identification.
+- Analyze the provided sentences to spot and recognize specific gene or protein names, showcasing your understanding of genetics and biochemistry.
+- Take each given statement and highlight an appropriate gene or protein mentioned within it, demonstrating your analytical skills in biosciences.
+- Examine scientific statements critically to locate explicit references to genes or proteins, reflecting your awareness of relevant biological elements.
+- This task asks you to recognize the terminology related to genetics and protein functions based on sentences provided, demonstrating proficiency in biological sciences.
+- Your challenge is to locate mentions of biological targets, specifically genes and proteins, from the written sentences. Familiarity with genetics will facilitate the process.
+- Decode sentences in a way that highlights your ability to isolate significant molecular terms related to genetics and proteomics.
+- You are required to recognize molecular entities from text. This task will enhance your ability to locate relevant biological terms within scientific descriptions.
+- From the information in the sentence, pinpoint a specific gene or protein name. It requires familiarity with biological terminology and concepts.
+- This task invites you to read through provided sentences and identify any gene or protein names mentioned, reflecting your knowledge in genetics.
+- You need to read a sentence and recognize which gene or protein is discussed, demonstrating your ability to extract important biological terms.
+- The assignment involves dissecting a detail-rich sentence and isolating a crucial gene or protein name that aligns with your molecular biology knowledge.
+- Assess each sentence critically to find the appropriate names of genes or proteins mentioned, requiring both comprehension and recall of biological terms.
+- This task requires attention to details where you must extract specific terminology concerning proteins or genes mentioned in sentences. Insight into biochemical research will be advantageous.
+- Comprehend and analyze the text with precision as you seek out names of genes or proteins referenced throughout various statements provided.
+- This task requires a keen eye for detail as you search through relevant text for mentions of biological entities like genes and proteins.
+- Identify critical biological terms related to genes and proteins found in sentences, showcasing your understanding and interpretation abilities within life sciences.
+- Your job is to look at sentences and find the relevant names of genes or proteins while using context clues related to biological functions.
+- You will be reviewing sentences and identifying at least one associated gene or protein name, testing your understanding of relevant biological terms.
+- This activity asks you to recognize and report the name of genes or proteins found in written descriptions, showcasing your ability to comprehend biological language.
+- Read the provided statement carefully, looking for mentions of genes or proteins, and clarify which name is associated with the sentence's content.
+- The task at hand is reading for understanding in a scientific context—specifically spotting gene or protein names being referenced.
+- Explore the provided sentences for mentions of specific genes or proteins, utilizing your biology expertise to identify them accurately.
+- You will read scientific sentences and identify specific names relating to genes or proteins. Understanding the context is important to make an accurate identification.
+- This task challenges you to identify relevant gene or protein information from scientific descriptions, showing your capability to interpret biological data.
+- This challenge involves pinpointing specific gene or protein references embedded within larger contexts, demonstrating your ability to navigate complex scientific language.
+- Investigate the text provided for any mention of genes or proteins; you must identify one accurately based on your insights into life sciences.
+- Analyze each given sentence to find a gene or protein name. This requires knowledge of molecular biology and an ability to recognize scientific terms.
+- Your responsibility is to comb through the text for relevant gene or protein names, indicating your grasp on key biological concepts presented in literature.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1482_gene_extraction_chemprot_dataset
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1482_gene_extraction_chemprot_dataset
+user_prompt_template: '{task_def}
+
+
+  {problem}'

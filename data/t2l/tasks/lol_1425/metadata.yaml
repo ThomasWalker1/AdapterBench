@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You will be handling tasks that involve associating specific countries with their designated ISO code numbers.
+- You will be tasked with returning the three-digit ISO code for a given country name, leveraging knowledge of how countries are represented globally.
+- You will need to look up the ISO codes that uniquely identify countries and report the correct number for each country listed.
+- In this task, you are asked to recall or determine the standard numeric ID for different countries according to their designated ISO codes.
+- For each country mentioned, you will find and return its unique ISO numeric code as defined by the International Organization for Standardization.
+- The objective is to translate a country's name into its official ISO code. This involves recognizing the standard codes that represent different nations.
+- You need to match the names of countries with their official ISO codes, showcasing an understanding of country codes used internationally.
+- In this exercise, you will match each queried country with its correct ISO code, demonstrating a grasp of geographic data and international identifiers.
+- This task requires you to look up and provide the standardized numerical representation for various countries as defined by the ISO.
+- Your goal is to retrieve the three-digit ISO code that represents the provided country. Knowledge of how countries are classified in global standards is essential.
+- In this activity, you will cite the three-digit ISO code that matches each given country's name, thereby confirming your awareness of geopolitical nomenclature.
+- You are tasked with returning a three-digit numeric code for the given country, which represents its official ISO designation in international contexts.
+- The challenge here is to translate a country's name into its corresponding numeric ISO code, which necessitates knowledge of international standardization.
+- The objective is to accurately identify and provide the ISO numeric code for a given country name, based on internationally established standards.
+- Your task is to identify the numeric ISO code associated with a given country. This requires knowledge of international standards and geographic codes.
+- Your objective is to find the unique three-digit code that represents a specific country within the ISO coding system, reflecting your understanding of global geography.
+- This task involves retrieving the three-digit ISO code for a specified country, which means you should have knowledge of global country codes.
+- This activity requires you to translate country names into their respective ISO numerical identifiers, underscoring the significance of standardized coding in geography.
+- For each country mentioned, you will extract the associated ISO numeric code. Familiarity with the official codes that represent countries is key.
+- You need to provide the specific ISO code that represents a listed country, requiring familiarity with geographic coding conventions.
+- You will receive a country’s name, and your goal is to pinpoint its related ISO code without any added explanation or context.
+- You'll identify and return the numeric ISO code that uniquely represents a given country, relying on geographical knowledge.
+- Given a country name, find and return its associated numeric ISO code. This requires understanding how countries are categorized in international standards.
+- In this task, your knowledge of international standards will help you convert country names into their respective three-digit ISO codes.
+- The task entails identifying and stating specific numeric codes that represent various countries according to ISO standards. Familiarity with geographic data will be beneficial.
+- The challenge lies in associating each country's name with its official numeric ISO designation, drawing on your learned knowledge about countries worldwide.
+- Your task is to extract and state the three-digit ISO codes associated with various countries, reflecting knowledge of international categorization.
+- Your mission here is to identify the numeric representation as per ISO standards for each mentioned country, relying on your familiarity with geopolitical classifications.
+- Your task involves identifying the three-digit ISO code that corresponds to the given country name.
+- The goal is to convert a country’s name into its associated ISO code number by recognizing established international standards.
+- In this task, you will link country names with their official ISO codes by recalling the standard coding system used internationally.
+- You are asked to supply the ISO numeric codes for given countries, which requires an understanding of how these codes map to each nation.
+- You must accurately identify the three-digit ISO codes linked to specific countries, showcasing your familiarity with global coding architectures.
+- You are required to link each given country name with its proper three-digit ISO code, demonstrating awareness of international code systems.
+- This task challenges you to match a country name with its correct three-digit ISO code. It calls for recognition of internationally established codes.
+- Your task involves identifying and providing the three-digit codes assigned to countries, which serve as identifiers in various contexts.
+- You will be tasked with providing numeric codes that correspond to countries, reflecting your understanding of ISO classifications.
+- In this task, you will identify and provide the numeric ISO code that corresponds to a given country name, demonstrating knowledge of international standards.
+- You need to recognize the correct three-digit ISO code for various countries based on their names.
+- The task involves identifying and providing the numeric ISO code corresponding to a specific country name, showcasing your knowledge of international country codes.
+- The task requires information about ISO codes, and involves matching a list of countries to their respective numeric identifiers, promoting familiarity with international geography.
+- The job here is to identify and present the ISO numerical code linked with a provided country. Knowledge of these standardized codes is necessary.
+- Your role is to leverage knowledge of country designations to retrieve the correct three-digit numeric codes representing those nations.
+- The task entails recognizing and matching country names with their unique ISO numeric designations using existing knowledge of international standards.
+- In this challenge, you must accurately return the numeric representation assigned by the ISO for specific countries, relying on a solid understanding of geographic identifiers.
+- Find the numeric ISO code that corresponds with the given country name. This requires an understanding of global geographical codes and standards.
+- The task entails converting the input of a country name into its standard three-digit ISO representation through knowledge of international coding systems.
+- You are expected to supply the correct numeric identifier for a listed country according to the ISO coding system recognized worldwide.
+- Identify the standard ISO code associated with a listed country, demonstrating familiarity with international geographical designations.
+- The objective is to retrieve the numeric code defined by the International Organization for Standardization for various countries presented in the input.
+- The objective here is to look up the ISO three-digit code assigned to various countries. Proficiency in international geography will aid in completing this task.
+- You will be tasked with associating country names with their corresponding ISO codes, which entails a knowledge of global countries and their numerical representations.
+- Your task is to identify the numeric ISO code that corresponds to a specific country, using your knowledge of international standards.
+- Your role is to reference and extract the respective three-digit ISO codes attached to specified countries, showing a clear understanding of global identifiers.
+- This activity asks you to identify and communicate ISO codes assigned to different countries, which helps in standardizing country references across platforms.
+- Your job involves supplying ISO codes corresponding to various countries, necessitating familiarity with both geography and international classification systems.
+- You will be provided with the name of a country, and your job is to find and return its corresponding three-digit ISO code.
+- You'll need to utilize your knowledge of country codes to determine the specific numeric identifier assigned to the country you are given.
+- Use your understanding of international country codes to match given country names with their three-digit ISO codes.
+- This task involves matching a series of countries with their corresponding ISO codes, necessitating awareness of standard international codes.
+- To complete this task, you need knowledge of standardized codes for countries, enabling you to translate names into their official numeric identifiers effortlessly.
+- Your job is to convert country names into their relevant ISO codes using a standardized numbering system, revealing your grasp on international geographic codes.
+- The focus of this task is on identifying numeric codes associated with country names as defined by international standards established by the ISO.
+- You are tasked with retrieving the numeric ISO code for a given country name. This necessitates knowledge of geographic entities and their classifications.
+- Given various country names, your challenge is to retrieve their respective ISO numeric codes, which means you should be acquainted with global coding systems in use.
+- Your task is to retrieve the numeric code assigned to a country by the ISO, indicating your awareness of standard geographic identifiers.
+- For each country mentioned, you will need to find and provide its specific ISO code, which is a unique number assigned to that country.
+- Your task is to identify the three-digit ISO code for the given country name, which requires familiarity with international standards for country identifiers.
+- The focus of this assignment is on determining the numeric representation of each mentioned country's identity as defined by ISO standards. It requires familiarity with these international identifiers.
+- You'll be working on matching each country name provided with its proper three-digit ISO code, demonstrating an understanding of geographic nomenclature.
+- This job involves linking countries to their official three-digit ISO codes. Competence in recognizing these international identifiers is key to completing the assignment.
+- You will demonstrate your expertise in global geography by providing the correct numeric codes representing different countries as standardized by the ISO.
+- This task revolves around defining and providing the ISSO numerical representations for different nations, which depends on your familiarity with global coding systems.
+- You will identify and provide the numeric representation for countries based on their ISO codes, relying on your understanding of country classifications.
+- The task challenges your knowledge of country representations through their numeric codes defined by the International Organization for Standardization (ISO).
+- The challenge here is to associate each country with its official ISO code, reflecting your awareness of world geography and international coding practices.
+- In this activity, you will take the given name of a country and find its associated three-digit ISO code, which represents that country in global databases.
+- You should match given countries with their correct ISO numeric codes, reflecting accurate knowledge of international standards and geographical identifiers.
+- You will translate specific country names into three-digit numerical codes defined by the ISO, connecting your knowledge to universal geographic standards.
+- This task focuses on associating country names with their official ISO numeric identifiers. A grasp of standard international codes is necessary to succeed.
+- The focus of this task is to find out the correct ISO numeric code for various countries listed; it relies on your knowledge regarding international coding conventions.
+- Your mission is to respond with a numeric code that accurately reflects the identity of a given country based on validated geographical information.
+- This task challenges you to recall or research the numerical representation of various countries based on the ISO standards set for geographical entities.
+- In this assignment, you are tasked with converting country names into their official ISO codes, thus showcasing your knowledge of global standards and designations.
+- Your job here involves associating a list of countries with their respective three-digit codes as per ISO classifications, showcasing your grasp of these standards.
+- The objective is to match a country with its designated three-digit ISO code, requiring familiarity with geography and international classifications.
+- Your responsibility is to convert a country name into its corresponding ISO numeric code. This task necessitates awareness of international coding systems.
+- Your job is to ascertain the official three-digit numeric codes assigned to various nations by the International Organization for Standardization.
+- You will be given country names, and your role is to provide their respective ISO numeric codes, showcasing your understanding of international coding systems.
+- This task centers around determining and providing the three-digit international code for each specified country, emphasizing geographical literacy.
+- You will engage in a task that tests your knowledge of countries and their corresponding ISO codes, emphasizing accuracy in international standardization.
+- In this task, you will link country names with their designated numeric codes from the ISO registry, facilitating better organization and reference of geographical data.
+- Your responsibility is to match each country to its specific ISO code, which aids in effective communication and data accuracy in an international context.
+- The task is about recognizing and providing the numerical identifiers that represent countries according to international standards set by the ISO organization.
+- This assignment involves matching country names to their designated three-digit ISO codes, requiring both recall and knowledge of international standards.
+- This task involves identifying the proper three-digit identification number assigned to various countries as outlined by international standards.
+- The assignment requires you to retrieve and state the ISO three-digit number linked to each country name presented.
+- For each country provided, you need to retrieve its three-digit ISO code, which represents the country in a standardized format.
+- This task is about converting the given country names into their ISO numeric codes, highlighting your grasp of global geography and geopolitical entities.
+- In this assignment, you are expected to match country names with their three-digit ISO codes. Knowing how countries are categorized internationally is essential.
+- Engage in a knowledge-based task where you provide the appropriate ISO code for different countries presented to you.
+- This task requires you to match country names with their respective ISO numeric codes, demonstrating an understanding of international classifications.
+- You must determine and state the numeric ISO code that corresponds to each country's name given, reflecting your familiarity with world countries and their identifiers.
+- This exercise will require you to input a country name and give back its equivalent ISO numeric code based on established international practices.
+- Your job is to match country names with their respective three-digit ISO codes, demonstrating your familiarity with international coding systems.
+- Your task is to identify and provide the three-digit ISO code corresponding to the given country name.
+- The task consists of retrieving the proper ISO code for each given country, stressing your awareness and retention of geographic data.
+- In this task, you will link each country name with the correct three-digit code that identifies it in international contexts.
+- Your role is to take a country name and return the designated numeric code that corresponds with it, as listed in international standards.
+- The assignment requires you to connect country names with their uniquely identifying numerical codes provided by the ISO framework.
+- You are expected to translate a series of country names into their official three-digit ISO codes based on established international guidelines.
+- The objective here is to transform country names into their appropriate ISO numerical codes, drawing on established international references.
+- Your objective is to extract the numeric ISO code related to a specific country, which requires recognition of governmental and geographical standards.
+- In this task, you will look up and provide the numeric ISO code associated with a country, requiring awareness of geographical and political nomenclature.
+- You'll need to apply your geographical knowledge to extract and state the numeric code assigned by ISO for each listed country.
+- You will focus on pinpointing the numeric representations established by ISO for each respective country mentioned. Familiarity with geographical nomenclature will help here.
+- For the countries given, your role is to return their designated three-digit ISO codes, exhibiting knowledge of international coding practices.
+- The focus here is on determining the international numeric code for given countries, showcasing familiarity with recognized country standards.
+- You are tasked with looking up and providing each country's numeric code as represented in the ISO standard, highlighting your geographic proficiency.
+- You will work on associating countries with their unique three-digit identifiers as set forth by the ISO, which helps standardize international references.
+- You need to provide the numeric ISO code corresponding to the country name given. This task focuses on recognizing codes assigned by an international organization.
+- This task emphasizes your ability to accurately cite the three-digit numerals that correspond with specified countries according to international conventions.
+- The task requires you to ascertain the three-digit numeric codes affiliated with different countries as defined by the ISO system.
+- For each presented country name, you should find and report back the appropriate numerical code defined by the ISO, which categorizes countries globally.
+- The task involves identifying the three-digit ISO code associated with a given country name, requiring knowledge of international standards for country representations.
+- The challenge is to match a country's name to its unique three-digit ISO code. Familiarity with country coding systems is essential for this task.
+- Task execution will involve identifying the precise numeric representation for each specified country based on internationally recognized coding guidelines.
+- In this exercise, you are to provide the appropriate ISO numerical designation for each country listed, drawing on your knowledge of recognized global codes.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1425_country_iso_numeric
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1425_country_iso_numeric
+user_prompt_template: '{task_def}
+
+
+  {problem}'

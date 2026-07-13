@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You will be assessing whether given remarks from online discussions exhibit harmful commentary on someone's background, gender, or ethnicity.
+- Evaluate and label comments in a way that recognizes offensive language targeting specific identities while distinguishing those that do not carry such implications.
+- 'Review the comments given and categorize them into two groups: those that attack identity and those that do not engage with personal characteristics.'
+- Read individual comments from online sources and determine if they contain language that disrespects or demeans someone's identity attributes.
+- Your mission is to distinguish between offensive remarks targeting a person's identity and general statements that do not contain such attacks.
+- Engage with public commentary to determine if it crosses ethical lines by attacking individuals based on their identities as opposed to remaining constructive or neutral.
+- Classify the comments by identifying whether they are critiques on policies or views rather than disrespect directed at a person's identity.
+- You will engage with various online comments and interpret their content to ascertain if they contain identity attacks that belittle or insult someone's inherent traits.
+- Examine the tone and content of public comments to ascertain if they contain identity-related insults or if they are simply discussing issues without targeting anyone personally.
+- Investigate each public comment for any sign of disrespect aimed at an individual's race, gender, or other identifying characteristics.
+- 'You will read given comments from social media and classify them into two categories: those that attack individuals based on their identity and those that do not.'
+- Evaluate the language used in public comments to discern if it violates principles of respect for individual identities, focusing specifically on attacks or slurs.
+- This task involves assessing the tone of comments seen online. You need to notice if any comment is derogatory regarding a person's identity.
+- Evaluate the intent behind each comment to classify them accurately, keeping an eye out for any language that could harm identities based on personal attributes.
+- Your job is to dissect internet comments to see if they contain criticism related to a person's identity or if they express neutral observations instead.
+- Determine the nature of comments by recognizing whether they include derogatory statements about someone’s race, gender, or other identity details versus non-offensive content.
+- The goal is to sift through discussions that reference personal characteristics and label them based on their adherence to respectful dialogue versus offensive remarks.
+- Evaluate the tone and content of comments before deciding if they cross the line into making negative remarks about someone's identity features.
+- You will read various public comments and decide if they include offensive remarks targeting someone's identity, such as race, gender, or appearance.
+- Evaluate online statements to identify any that would be classified as staff remarks against someone's identity and categorize them apart from standard discussions.
+- Delve into the language of online comments to categorize them according to whether they harm individuals based on personal characteristics like race or gender.
+- You will be given a selection of public comments to evaluate. Your goal is to discern comments that constitute an identity attack from those that do not contain any such derogatory language.
+- Review the comments provided and classify them based on whether they feature any disrespectful references to identity characteristics like appearance or sexual orientation.
+- Analyze the content of various online remarks and classify them by identifying if they include offensive references to someone's race, gender, or other aspects of their identity.
+- The goal here is to interpret public comments and sort them into two categories based on whether they contain insults related to someone's identity. Accuracy in recognizing such language is essential.
+- This task involves assessing remarks for evidence of identity attacks, concentrating on respectfulness and appropriateness in language.
+- You are tasked with determining whether each comment you read contains any form of identity-related offense or criticism.
+- 'You need to categorize public comments into two types: those that disrespect or degrade someone''s identity and those that do not.'
+- Sort through a selection of public comments to find out if they engage in harmful stereotypes or prejudices against specific identities.
+- The job requires a sensitive examination of online dialogue to identify if any statements challenge or disrespect a person's identity, allowing for proper classification.
+- Assess each comment critically to determine if it features harmful rhetoric about someone's gender, race, or other aspects of their identity.
+- Your responsibility is to evaluate the respectfulness of various online comments, specifically checking for any that might constitute an identity attack.
+- Assess the provided comments for any expression that might intend to demean individuals based on their personal identities and mark them accordingly.
+- You will evaluate social media remarks for their potential to insult or devalue individuals based on aspects of their identity, aiming for accurate classification.
+- Engage with online comments to distinguish between attacks aimed at someone's identity versus general discourse that doesn't insult personal characteristics.
+- You will review statements made in public spaces and categorize them as either containing an attack on someone’s personal characteristics or simply expressing an opinion without targeting identity.
+- The focus of this assignment is on recognizing disrespectful content aimed at identities within public discussions while also noting when commentary remains civil and unrelated.
+- In this task, you categorize public comments based on their treatment of people's identities, distinguishing respectful discussion from harmful attacks.
+- Examine commentary for indications of personal attacks linked to identity issues and segregate these from others that simply present opposing views or constructive feedback.
+- In this task, your role is to identify whether comments directed at individuals include derogatory remarks about their identity traits or if they are simply non-offensive opinions.
+- Identify and classify online comments based on their attitude towards various aspects of identity, paying attention to disrespectful undertones.
+- Identify and separate comments that target an individual's characteristics from those which discuss broader issues without personal attacks.
+- Focus on the content of comments found online and determine which contain negative judgments of someone's identity in comparison with general opinions.
+- In this assessment, you will review public comments for any language that qualifies as an attack on identity, like derogatory statements about ethnicity or gender, and classify them accordingly.
+- Interpret comments and decide whether they involve harmful insults about an individual’s personal traits or backgrounds.
+- Your task is to evaluate comments from online platforms and categorize them based on whether they constitute identity attacks or not, focusing on disrespect related to personal characteristics.
+- This task focuses on recognizing and labeling comments based on the presence of derogatory statements regarding identity attributes.
+- This task involves critical reading of comments to establish if they contain offensive statements about someone’s personal characteristics or if they remain neutral in critique.
+- This task requires a nuanced understanding of language as you identify comments that undermine personal identities and separate them from non-offensive critiques.
+- Here, you will interpret comments that may express prejudices related to identity and categorize them accordingly in order to understand the nature of online conversations.
+- You will review public statements and classify them based on whether they contain harmful identity-related insults or respectful commentary.
+- Determine if the content of each comment reflects a hateful attitude towards individuals’ identities, categorizing them accordingly.
+- Your job involves understanding the context of comments to ascertain if they express disdain or mockery towards a person's background or personal characteristics.
+- You will assess comments from the internet and categorize them into two groups based on whether they disrespect an individual's identity or not.
+- Your job is to discern whether a comment from an online platform is an identity attack, meaning it shows disrespect towards someone's inherent characteristics.
+- Review public feedback in digital forums and categorize each one into groups based on whether it attempts to undermine a person's identity or not.
+- In this task, you need to carefully examine comments directed at individuals for any offensive references about their identity, sorting them into different classifications.
+- Identify and label comments based on whether they feature disparaging language aimed at individual identities, contrasting these with neutral expressions of opinion.
+- You will need to discern between critiques that target individuals’ identities negatively and those that strictly address broader topics without personal attacks.
+- You'll be evaluating user-generated remarks for indicators of identity-related insults, making a judgment on whether such attacks are present in the language used.
+- Your task is to evaluate online comments and determine if they contain disrespectful remarks about someone's identity, focusing on aspects like race, gender, or appearance.
+- Analyze the tone and content of the comments provided to classify them based on whether they exhibit identity-based attacks.
+- Engage in categorizing public remarks into segments that either attack identities or stay within respectful boundaries of discourse on societal matters.
+- You are tasked with sorting comments by identifying those that criticize people disrespectfully due to their identity attributes against those without such tone.
+- Your responsibility is to review the content of comments for abusive language related to someone's identity, ensuring respectful communication is acknowledged.
+- Vigilantly read through the comments to classify them based on whether they disrespect identities, which encompasses aspects like appearance and cultural background.
+- You are tasked with analyzing online comments and determining whether they contain personal attacks related to identity, such as race or gender.
+- You will classify comments from social media platforms based on their tone regarding personal identities. This calls for careful reading to catch subtle forms of disrespect.
+- You will assess a variety of online comments, focusing on whether any of them unfairly malign an individual based on their inherent qualities.
+- Review online discussions and distinguish between those that express hostile views regarding an individual’s identity and those that remain respectful.
+- As you review the comments, your task is to label them according to their impact on individual dignity, distinguishing harmful commentary from constructive feedback.
+- Analyze various comments for language that may constitute an attack against personal characteristics tied to someone’s identity.
+- You are tasked with judging whether public comments on social platforms either respect or belittle aspects of a person's identity.
+- This task involves distinguishing between comments that disrespect an individual's identity and those that do not contain any such attacks.
+- The assignment involves scrutinizing online remarks for any signs of disrespect towards people based on aspects like race or appearance and categorizing them appropriately.
+- Your responsibility involves reviewing statements from the internet and labeling them as either containing an identity attack or being non-offensive.
+- Your job is to evaluate public comments and decide if they include attacks on someone's identity, focusing on offensive descriptions related to personal characteristics.
+- This task requires you to analyze comments for any language that could be considered an identity attack, identifying whether the words used are harmful or derogatory towards individuals or groups.
+- You are tasked with identifying discriminatory language in public comments, distinguishing between hateful remarks directed at identity and other forms of disagreement.
+- In this task, assess whether comments made online are identity attacks, meaning they insult or belittle individuals based on their inherent traits.
+- Your responsibility is to distinguish between comments that attack individuals' identities harshly and those that express opinions without targeting personal traits.
+- In this task, you will identify and label comments that are harmful regarding a person’s identity. This includes recognizing language that undermines someone's worth based on traits like ethnicity or gender.
+- This task is about understanding the language used in public opinions and determining if they cross the line into hateful speech targeting someone's identity.
+- The goal here is to look at public expressions and see if they contain harmful stereotypes or derogatory remarks linked to someone's identity characteristics.
+- Classify online comments as either being an identity attack or not, ensuring you pay attention to the key elements that might indicate disrespect towards someone's background.
+- Look through the provided online remarks and identify those which cross the line into personal attacks based on identity traits versus those that remain civil or constructive.
+- Your role is to examine unsolicited opinions shared online and determine if they include remarks that might harm individuals based on inherent traits like race or sexual orientation.
+- Your responsibility is to filter through social media commentary to highlight instances where individuals' identities are attacked in order to recognize patterns of disrespect.
+- The task involves reading online comments and determining whether they contain negative remarks about someone's identity, such as their race or gender.
+- Your job is to classify comments from online discussions into two categories based on whether they attack someone's identity or not.
+- Your role is to detect whether online comments direct negative sentiments towards people based on their personal identities, helping to identify harmful discourse.
+- Analyze online comment sections to categorize remarks, identifying those that insult someone's identity versus those that do not involve personal attacks.
+- In this task, you will analyze public comments and determine whether they contain an identity attack, which is when someone makes disrespectful remarks about a person's identity traits, such as their race or gender.
+- In this task, evaluate public statements for harmful language directed at an individual's identity versus those that critique ideas without resorting to personal offense.
+- The job involves analyzing comments for any language that could be considered an identity attack, assessing how the words may disrespect or harm individuals based on their identity.
+- Engaging with user-written comments, you'll sort them based on whether they represent an attack against a person's individual traits or whether they remain respectful.
+- Review a series of online comments and decide if any of them are making derogatory statements about personal attributes related to identity.
+- The goal here is to classify comments as either promoting an identity attack or remaining non-offensive, requiring sensitivity to the implications of the words used.
+- Assess the content of social media remarks to determine if they include harmful accusations against a person's identity, guiding your classification process.
+- You will examine public discourse for slurs or insults directed at someone’s identity, categorizing them accordingly.
+- This task requires you to examine social media comments for instances of personal attacks, focusing specifically on remarks that might relate to a person's innate traits.
+- This task calls for an awareness of social issues as you sift through comments, labeling them according to their stance on identities - either attacking or neutral/non-attacking.
+- Your assignment involves closely reading comments and identifying whether they contain language that could undermine individuals' identities or if they remain respectful.
+- Your responsibility is to dissect the sentiments expressed in public commentary and judge whether they constitute as attacks on people's identities or are simply expressive statements.
+- You will classify comments by identifying if they include negative references concerning a person's race, gender, or other identity aspects versus comments without such negativity.
+- Analyze public comments to classify them based on whether they disrespect or attack a person's identity, such as their race, gender, or appearance.
+- The task requires reading and interpreting online commentary to recognize attacks on individual identities while separating these from general discourse.
+- In this exercise, delve into online discussions to sort out remarks that are aggressive or insulting towards someone's identity from harmless observations.
+- The goal is to differentiate between benign comments and those that cross into offensive territory by targeting personal attributes.
+- Your focus should be on determining the presence of any statements that might infringe on respect for individual identities in various online discussions.
+- In this assignment, your goal is to read comments from social media and classify them based on whether they attack someone's identity or not.
+- You will review each comment and assign it a label based on its content, focusing on potential identity-based attacks versus neutral commentary.
+- In this activity, you will review comments from online discussions and classify them based on whether they attack someone's identity or not.
+- Your job is to classify comments based on their content, especially focusing on any negative statements made about a person's identity.
+- The task involves examining comments made in public forums and categorizing them as either identity attacks or non-identity attacks. This will require an understanding of social sensitivity and respect for individual identities.
+- 'This task involves reading comments from public online discussions and categorizing them into two groups: those that make identity-related attacks and those that do not.'
+- Examine the language used in public comments and discern whether they respect or disrespect the identities of individuals referenced within them.
+- The objective is to determine if comments comment on aspects of people’s identities in a negative way or if they address ideas without targeting personal characteristics.
+- Your task is to evaluate online comments and determine if they contain attacks on someone's identity, such as race or gender.
+- Assess whether online statements contain demeaning references to individuals' identities and classify them appropriately as offensive or benign.
+- In this assignment, you will review online comments and classify them based on whether they attack someone's identity, such as their race or gender, or if they are neutral opinions.
+- You will be identifying whether comments on public platforms cross the line into insulting someone's personal characteristics or if they remain neutral in tone.
+- This task requires you to discern between two types of comments related to identity, focusing on the presence of derogatory language.
+- Analyze the tone and content of comments to see if any convey hostility towards someone's identity, requiring sensitivity and critical thinking in your evaluation.
+- Your mission is to sift through these comments and identify any language that disparages a person's inherent qualities or beliefs.
+- Examine each comment carefully to evaluate whether it includes harmful language related to someone's identity, ensuring to make a distinction between attacks and neutral thoughts.
+- You need to assess comments on social media platforms, deciding if they qualify as identity attacks that discredit someone's inherent qualities.
+- Read through various public opinions found online, assessing them for any bias against a person's identity to determine how deeply protectiveness against such negativity is warranted.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task325_jigsaw_classification_identity_attack
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task325_jigsaw_classification_identity_attack
+user_prompt_template: '{task_def}
+
+
+  {problem}'

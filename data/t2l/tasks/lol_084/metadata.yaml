@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You will evaluate a range of factual assertions about individuals' travels and seek out the crucial detail that clarifies where one individual can be found according to an associated query.
+- This task requires you to locate the relevant fact in a list, using it to support the answer to a question about an individual's location.
+- You will be tasked with finding pertinent information from within several related statements that support an inquiry regarding someone’s position or whereabouts.
+- This activity invites you to dissect an assortment of explanations and discern which fact provides necessary evidence for answering where someone is.
+- This task requires you to correlate the facts in a passage with a question regarding someone's whereabouts, selecting the fact that validates the provided answer.
+- The objective is to navigate through facts provided in a passage and identify which one substantively answers queries about where different people are situated.
+- You will read through a list of facts and identify which one holds the key information needed to answer a location-based question regarding a person.
+- You will assess a selection of statements about actions taken by different individuals to pinpoint which statement offers necessary insight for answering a location-based question.
+- Engage with detailed pieces of information and determine which fact stands out as most relevant for resolving inquiries about someone’s whereabouts.
+- Your challenge is to determine which specific fact from a numbered list corresponds to answering where someone is according to the context given.
+- You will analyze a set of facts provided in a passage to extract the one that supports the answer to a question regarding where a person is.
+- Examine the relationships between enumerated facts in a passage and identify which fact can confirm or validate the provided answer regarding an individual's whereabouts.
+- Your task is to analyze a set of factual statements and determine which one directly supports the answer to the question regarding a person's location.
+- This task involves analyzing a collection of statements to find the one that confirms or supports the answer to a location-based question about a person.
+- Examine the enumerated facts and identify which one directly supports the answer to the location question about a specific individual mentioned.
+- Your task involves analyzing a set of facts and determining which specific fact directly relates to a provided question about someone's location.
+- For each passage provided, identify the key fact that directly supports the answer to the question about a person's whereabouts based on given information.
+- This task involves recognizing relevant supporting details within a set of facts to help clarify where a certain person is, based on their actions.
+- You will evaluate several pieces of information about different individuals to deduce which fact is essential for answering a question on someone's location.
+- The task involves examining multiple statements and deducing which specific detail reveals where an individual mentioned in the questions is located at that moment.
+- The goal is to sift through provided information and find the fact that provides necessary evidence for determining a person's location.
+- Your role is to investigate factual information and establish which particular detail is essential for elucidating where a specified person is located according to their described actions.
+- You are expected to investigate the relationship between provided facts and find the specific statement that clarifies an individual's whereabouts in response to a query.
+- Examine the given facts closely and identify which one directly correlates with answering the question regarding a person's whereabouts.
+- You need to go through a collection of provided facts and identify which one serves as a crucial support for determining the location of an individual mentioned in the inquiry.
+- This task requires you to sift through a collection of facts to find the one that supports the answer to a question about where a particular individual is located.
+- Your assignment is to identify which fact among several options provides the necessary support for answering a location question about an individual.
+- The task involves reading a passage with facts and determining which specific fact directly answers the question about a person's location.
+- Given a collection of facts from a passage, your job is to identify the specific fact that confirms where a person is located, based on the question asked.
+- This challenge involves reading through factual information and recognizing which particular fact is integral to affirming someone’s location as posed by the question.
+- The focus here is on analyzing a collection of facts regarding individuals to extract the critical one that allows you to respond accurately about their locations.
+- The objective is to discern which fact from a group provides necessary context and confirmation regarding the location of an individual mentioned in the question.
+- Analyze the passages provided, looking for the key piece of information that clearly indicates where one person is found, based on their described actions.
+- The objective is to sift through an enumerated list of facts to find the one fact that helps clarify where a given individual is situated at the moment.
+- You need to read a series of statements about various individuals and find the exact fact number that helps answer a question about one person's whereabouts.
+- Engage with a set of facts and identify which one clearly establishes where a particular person can be found in response to the posed question.
+- You need to discern which fact among several is crucial for accurately answering queries related to individuals’ locations in the text.
+- This task entails connecting different pieces of information and discerning which one serves as critical evidence in establishing someone's whereabouts as queried.
+- This task involves extracting relevant details from a set of facts to help determine the whereabouts of a specified individual in response to a question.
+- You'll examine a collection of facts and filter through them to locate the necessary detail that helps clarify where someone can be found.
+- You will analyze a passage of facts to identify the crucial information needed to answer a question about where someone is located.
+- Analyze provided passages containing facts related to people's locations and ascertain which fact is crucial for affirming or denying someone's whereabouts mentioned in the question.
+- This task requires you to connect relevant pieces of information within provided facts that can substantiate or clarify the specified location of an individual being questioned.
+- The challenge lies in correlating factual statements with questions about personal locations, requiring careful consideration of what each piece of information conveys.
+- The goal here is to correctly identify from a list which fact directly supports an individual's location as stated in response to a specific question asked.
+- You will encounter a collection of facts related to various people. The task requires you to select the fact that illustrates the current position of the person in question.
+- The task requires careful analysis of provided statements, searching specifically for one that substantively addresses questions of person location.
+- Analyze the provided statements to uncover which one directly answers the inquiry regarding the location of the specified individual mentioned in the question.
+- You will be tasked with processing a list of facts and selecting the one that is indispensable in determining where a specific person is located as per the question asked.
+- Your mission is to extract relevant details from an array of factual statements to determine which one directly correlates with the response regarding someone's whereabouts.
+- Involved in this task is the interpretation of descriptive facts leading to the identification of one that substantiates an answer about someone's current location.
+- Engage with the provided passage by reviewing its facts, focusing on which specific detail will help clarify the location of a certain person referenced in the question.
+- Review the information provided in the form of facts and identify which statement provides essential support for responding to questions about someone's location.
+- You are tasked with determining the fact that serves as evidence for answering a location question related to an individual mentioned in the provided passage.
+- The goal is to determine which enumerated fact supports answering a question about where a particular individual can be found at a given time.
+- By reviewing an enumerated list of facts, your job is to pinpoint the fact that provides crucial insight into the queried individual's presence.
+- Analyze the enumerated statements related to different individuals and focus on locating the pertinent fact that directly supports the answer regarding one person’s position.
+- This exercise pushes you to interpret factual data creatively, finding connections between actions described and questions about individuals’ current positions.
+- Assess the sequence of events presented and select the one fact that directly answers where an individual named in the question can be located.
+- Your task is to find a specific fact in a given passage that helps answer a question about where a person is located, based on the listed facts.
+- Assess a series of given facts to deduce which one adequately supports the response concerning where an individual is found according to the prior query.
+- This task demands attention to detail as you sift through several statements to find out which fact precisely indicates the place associated with someone in question.
+- You need to filter through factual details about various individuals, discerning which fact logically corresponds to the given answer about someone's whereabouts.
+- This task requires comprehension of multiple facts in order to isolate and identify the key statement that indicates where a certain person is at that moment.
+- You will evaluate a series of facts and then pinpoint the specific one that relates to the question of where a named person can be found.
+- This task involves reading a sequence of facts and using your comprehension skills to select the statement that best indicates where a named person is located.
+- This task requires logical deduction where you review factual information about people’s movements and determine which single fact can provide clarity on another person’s position.
+- The task asks you to evaluate factual statements in order to highlight the exact information that explains where one individual can be found according to the question.
+- Your job is to interpret the relationship between facts and identify which one is essential for answering the query about a person's whereabouts.
+- Engage with provided factual narratives about personal locations. You should distill them down so you can identify which single piece supports where one person is reported as being.
+- This activity involves reviewing factual statements in detail to uncover which one serves as validation for answering a question regarding the current position of a specified individual.
+- Your goal is to link a person's location to the facts presented in the passage, identifying which specific fact confirms their whereabouts.
+- You must navigate through various statements to find the single fact that serves as evidence for where a person is, based on the question provided.
+- Process the details in the passage and select the fact that provides essential support for determining where an individual is located, based on the question asked.
+- This exercise requires comprehension of multiple facts related to individuals' movements and evaluating which fact directly aligns with an inquiry about their location.
+- In this exercise, you will analyze a passage containing numbered facts. From these, you must select the specific fact that confirms or explains where a person is at a given time.
+- You are required to appraise different factual statements, isolating crucial evidence that specifically clarifies where an individual can be found based on their activities.
+- This task involves discerning relevant information from multiple choices to accurately point out which fact substantiates an individual's stated location.
+- In this task, you'll need to identify supporting evidence from a list of facts in response to questions about specific people's locations.
+- Read through a series of factual statements and deduce which one effectively indicates where a particular person has gone according to their described movements.
+- Your job is to dissect passages for key details while considering how those details can elucidate answers related to individuals’ current locations.
+- You will assess various statements regarding individual activities, searching for the one fact that substantiates an answer related to someone's current location.
+- This task centers around extracting pertinent details from a given passage to ascertain the exact location of an individual based on supporting factual evidence.
+- You will engage with a set of narrative facts and answer a question focused on location. Your role is to identify the specific statement that validates that answer.
+- This task tests your ability to connect pieces of information. You need to find out which fact primarily reveals where an individual is situated.
+- Given a series of factual statements, your job is to isolate the one that most closely aligns with answering where a certain person is at any given time.
+- This task requires you to sift through enumerated facts related to individuals and their movements, then recognize which fact is essential for identifying where a particular person is.
+- Review a list of actions that various individuals have taken and identify which action accurately reflects a given person's current location in response to a direct question.
+- You will be provided with a series of statements and a question that seeks the whereabouts of a person. Your objective is to pinpoint the correct statement that substantiates the given answer.
+- In this exercise, you're expected to sift through various factual assertions to identify which one explicitly helps in resolving questions concerning an individual's location.
+- You will need to utilize deduction skills as you identify which specific statement from a list effectively answers inquiries concerning someone's location.
+- Undertake the task of examining listed facts, using reasoning skills to spotlight which element directly corresponds with confirming an individual’s position related to the question posed.
+- The challenge lies in identifying a supporting statement that backs up your understanding of where a particular individual can be found, according to the passage.
+- You will evaluate facts within a narrative and pinpoint which particular fact confirms the answer to where a person has gone.
+- Your objective is to sift through a number of factual assertions and extract the one that is essential for understanding where a particular person can be found.
+- You are expected to correlate questions regarding individuals' locations with supporting factual statements, isolating the necessary fact for clarity.
+- Your focus will be on connecting the dots between listed facts and identifying which piece is critical for validating an answer pertaining to someone's location.
+- This task requires careful reading and logical reasoning to find out which supporting fact aligns with the given answer about someone's place.
+- Delve into descriptions of people's movements and arrive at pinpointing the singular fact that will complete the understanding of where someone is based on the stated answer.
+- Analyze the given information from multiple statements about individuals and determine which one must be true to affirm where a particular person is indicated in an accompanying question.
+- This task focuses on comprehending a set of facts and identifying which single fact confirms the whereabouts of a character mentioned in the prompt.
+- In this task, you must link together different pieces of information from a passage to find out where a person is at a moment described in your question.
+- Understand and connect various statements in order to ascertain which piece of information correlates directly with answering whereabouts queries about individuals.
+- You are required to analyze a set of facts related to individuals' movements and identify the essential fact that explains the location of a specified person.
+- You will evaluate a set of factual statements and identify which one provides the necessary information to correctly answer a question about someone's whereabouts.
+- The goal here is to examine a series of statements about individuals moving between locations and select the precise one that indicates where the queried person can be found.
+- You are tasked with evaluating statements about various individuals and making note of which specific fact informs you about where one particular person currently resides or travels.
+- In this task, you must determine which enumerated fact backs up an answer related to the specific whereabouts of an individual.
+- Your mission is to dissect the passages and find the critical piece of information that directly leads to understanding where an individual is situated right now.
+- Your task is to read a passage that includes several facts and determine which fact directly supports the answer to a location-based question about a person.
+- You must examine a collection of factual statements and determine which one is necessary to support an answer about someone's location at a specified time.
+- This task asks you to focus on a passage containing multiple circumstances and select the one fact that validates the answer to where someone is.
+- The task involves matching a question about an individual's location with a related fact from a list, highlighting your ability to connect details effectively.
+- Your objective here is to discriminate among listed facts and isolate one that outlines where an individual can be found in response to specific whereabouts questions.
+- The objective is to carefully evaluate the details presented and select the specific fact that substantiates the answer regarding an individual's whereabouts.
+- In this task, identify an essential fact from a list that verifies or corresponds with where one person is located according to their activities described in formerly stated facts.
+- Examine multiple facts related to people's movements and select which specific fact holds the answer to where one designated individual is at this moment.
+- The focus of this task is on identifying which fact from a list explicitly addresses the question of a person's current location based on their prior movements.
+- Your focus will be on determining which enumerated fact is necessary to reveal the location of an individual as mentioned in both the question and its answer.
+- In this exercise, identify which statement from an array of facts substantiates the answer given for someone’s location based on their activities mentioned.
+- This exercise involves identifying and selecting supporting information from a factual narrative that will conclusively answer a question about an individual's whereabouts.
+- Investigate the relationships between different actions described in the passage and determine which action specifically answers where an individual resides at present.
+- You need to interpret a sequence of individual fact statements and derive which particular piece reveals the location of someone in response to an inquiry.
+- From an array of factual statements, choose which one is pivotal in addressing the question regarding an individual’s position at a certain time.
+- In this task, your challenge will be to connect factual statements with inquiries about people’s locations, ensuring you choose the statement that effectively supports the designated answer.
+- Your job here is to dissect a series of factual statements related to people's locations and isolate the exact statement needed to affirm someone's position as per the inquiry given.
+- You are tasked with understanding multiple facts and figuring out which specific one reveals the current location of an individual mentioned in a question.
+- You will work with a certain passage and its related facts, selecting from them the key detail that most clearly answers questions regarding where individuals are located.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task084_babi_t1_single_supporting_fact_identify_relevant_fact
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task084_babi_t1_single_supporting_fact_identify_relevant_fact
+user_prompt_template: '{task_def}
+
+
+  {problem}'

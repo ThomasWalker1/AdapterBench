@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The objective here is to determine inconsistency by matching your understanding of the given scenario with one of the two possible answers.
+- From the details shared in a sentence, you are required to assess a subsequent query and recognize which of the two possible answers is inaccurate.
+- This task involves distilling key insights from a textual description and related questions, enabling you to detect inaccuracies in meaning among different answer options.
+- In this exercise, you will read contextual information, ask yourself a question about it, and then pick the answer option that contradicts what you have read.
+- Engage with concise information and evaluate it in relation to two options, focusing on discerning which does not match what has been conveyed.
+- You will analyze the relationship between a declarative sentence and an ensuing question to distinguish which of two potential answers is incorrect according to what you've read.
+- Your task is to read a sentence and determine which option provided in response to a question is wrong based on the context of that sentence.
+- You are tasked with parsing information from a sentence and answering a related query, specifically identifying which option misrepresents that information.
+- Read the sentence carefully, then identify which answer choice mistakenly characterizes the scenario or its elements.
+- By reviewing a sentence and answering a related question about it, your focus is on determining the flawed answer from two choices presented.
+- You are tasked with comparing two statements against background information, with an eye for spotting inaccuracies in relation to what has been shared.
+- Your assignment entails reading a sentence that sets a context, then deciding which of two responses misrepresents that context in relation to the posed question.
+- Assessing knowledge of logic and comprehension will enable you to select which of two provided answers fails to accurately represent the discussed concepts.
+- You will interpret descriptive sentences together with questions to assess properties or actions related to them, identifying which of two proposed answers lacks validity.
+- Engage in careful evaluation of facts in conjunction with posed questions, determining which of two possible responses presents misinformation regarding the stated situation.
+- This task involves reading comprehension wherein you'll identify an incorrect statement based on a scenario presented in a short sentence.
+- Review the scenario described in the sentence, then discern which answer choice is factually inaccurate based on your understanding of the context.
+- In this task, you will rely on your reading comprehension skills to evaluate a set of statements in relation to a specific question, isolating the inaccurate option.
+- This task requires you to assess a sentence and its associated question to find out which answer choice doesn’t align with what is stated in the text.
+- Read carefully through the provided text and question, then uncover which offered choice does not correctly represent the implied meaning or relationship within the text.
+- In this task, you will read a short text and interpret a query related to it, selecting the answer that fails to align with the information provided.
+- Your task is to analyze a given context and determine which of the two responses is incorrect based on logical reasoning.
+- This exercise requires you to synthesize details from a given text and detect which of two conclusions drawn from it is erroneous.
+- Assess an event described in a statement and select which option inaccurately describes what would happen based on that event.
+- In this activity, you will process information from a sentence about an event or object then address a comparative question by eliminating one of the inaccurate answers.
+- Analyze the provided text and utilize critical thinking skills to identify which answer option is not a valid conclusion from what you have read.
+- Engage with a descriptive sentence and subsequent question to discern which of two given answers is misleading or incorrect based on comprehension of what you've read.
+- In this exercise, scrutinize informative statements where one answer misconstrues or fails to align with clear implications laid out by prior details.
+- Your responsibility is to read through the given information and determine which choice among two presented options is incorrect based on what you’ve understood.
+- In this task, interpret a brief narrative and assess which of the two answer options contradicts the details provided in the narrative.
+- Your task is to thoughtfully analyze a provided sentence along with its question, identifying which of the two answers does not correctly reflect the information discussed.
+- Analyze the context given in a sentence, then evaluate a question to find out which answer option contradicts the information.
+- Utilize deductive reasoning to interpret a sentence and determine which of two options does not correctly relate to it.
+- You will read a concise narrative followed by an inquiry, utilizing reasoning skills to ascertain which of two possible answers is wrong according to the context provided.
+- Read through an informative excerpt and respond to an accompanying query by deducing which reaction does not logically follow from the details offered in the text.
+- Formulate a judgment about one accurate statement out of two potential answers regarding individual abilities or situations and identify any discrepancies in logic.
+- This task involves assessing a situation and choosing the answer that contradicts or does not fit with the description given.
+- You will be provided with an explanatory sentence and a subsequent question. Determine which answer does not fit logically with what has been presented.
+- Your responsibility is to investigate textual evidence from a scenario, processing it alongside a question, leading you to highlight an incorrect choice.
+- Engage with a brief narrative and assess a follow-up question to select the answer that inaccurately reflects what you’ve read.
+- Use critical reasoning skills on a specific narrative and question pair, identifying which choice appears inconsistent or incorrect according to the sentence.
+- Consider the context given in a small paragraph, then think critically about an associated question to discern which response does not uphold the truth of the passage.
+- Your goal is to analyze a given sentence and a related question to identify which of the two provided answers is incorrect based on the information presented.
+- Investigate a presented situation through a sentence and formulate your judgment against specific answer options to find the one that stands as incorrect.
+- Read a descriptive sentence carefully, and consider a question that follows. Your goal is to determine the misleading or incorrect answer from the options presented.
+- Analyze participant descriptions against their respective questions, classifying one response as incorrect based on contextual reasoning derived from previous statements.
+- Your task involves reading a sentence and answering a question based on it. You need to identify which of the provided choices is incorrect in relation to the information given.
+- Engage with a statement alongside an associated question, determining which response does not align or contradicts your reasoning from what you've read.
+- You will read a sentence followed by a question and two potential answers. Your goal is to pinpoint the answer that doesn’t logically fit with the content given.
+- Utilize analytical skills to compare given statements against factual information from a sentence and identify which is misleading or incorrect.
+- This task requires you to interpret descriptions within a sentence and choose the assertion that is contrary to what is implied or stated.
+- You need to evaluate a statement about an event or object and find the answer that incorrectly associates with it.
+- Your job is to derive insight from a statement and its question by identifying which of two potential answers does not align with what you've understood.
+- Assess properties described in sentences connected to specific queries, using logical reasoning skills to isolate and choose the incorrect answer out of two possibilities.
+- This task requires you to analyze a sentence and a related question, identifying which of the two provided answers is incorrect based on your understanding of the context.
+- Reflect on a brief scenario involving two individuals, assessing their capabilities in relation to their characteristics, and determine which option fails to make sense.
+- This task requires critical thinking skills, as you must discern which of the two given statements contradicts the facts presented in the scenario.
+- You are tasked with synthesizing information from a brief narrative and determining which response does not comply with the evidence presented in that narrative.
+- Analyze the provided information in the sentence and evaluate two options to identify which one does not accurately reflect the situation described.
+- This task involves using comprehension skills to analyze a provided text and determine which of two claims misrepresents the facts.
+- You are tasked with reviewing a situation outlined in a sentence and then deciding which answer does not correctly reflect that situation.
+- Seek to understand relationships or characteristics outlined in a sentence, then select the response that fails to accurately encapsulate those details.
+- You are tasked with scrutinizing a statement along with a related question and discerning which of two responses is incorrect as per the information provided.
+- In this evaluation exercise, you’ll comprehend content, pose pertinent questions about it, and mark choices that diverge from established facts as incorrect.
+- Your task is to evaluate a statement and a related question, and identify which of the provided choices is incorrect based on logical reasoning.
+- Dissect sentences containing contextual clues and respond accordingly by isolating answer choices that do not correctly reflect what you've understood from those clues.
+- This task challenges you to dissect a statement and corresponding question, isolating the response that misaligns with the factual implications established by the sentence.
+- Your objective is to connect the details provided in a sentence with a posed question, identifying which answer diverges from logical reasoning derived from that sentence.
+- In this activity, you’ll critically consider details presented in sentences alongside specific questions, discerning anomalies within provided answers related to those sentences.
+- Your objective is to interpret the meaning of a statement and assess which of the provided answers contradicts that meaning.
+- Utilize comprehension skills to analyze a brief context and identify which provided statement about it is incorrect.
+- Your goal is to read a sentence and a related question then identify and select the incorrect answer choice provided.
+- This task involves examining a descriptive sentence along with a question, requiring you to discern which of the two answers is factually incorrect.
+- Assess a given situation described in a sentence alongside a question, and discern which alternative does not logically follow from what has been implied or stated.
+- Engage with simple narratives and effectively identify discrepancies in related propositions regarding those narratives.
+- Your objective is to evaluate provided material against follow-up questions, making decisions about which responses are inconsistent with logical interpretation.
+- Analyze a given scenario and identify the incorrect statement among two proposed answers related to the situation described.
+- Examine a statement along with a question to discern which of the two provided responses is inaccurate or misleading.
+- You will be looking at a combination of a statement and a related question. The challenge is to pinpoint the option that does not fit or that misrepresents the facts.
+- Your exercise involves comprehending a scenario encapsulated in a sentence and accurately identifying an incorrect assertion among two proposed responses related to that scenario.
+- In this task, engage with a narrative and evaluate its implications, looking for discrepancies in one of two options presented afterward.
+- Your task involves analyzing a sentence and a related question to identify which of the two provided options is incorrect based on context clues.
+- Exercise your analytical capabilities by reading carefully through scenarios and linking them with questions, aiming to uncover which response misrepresents those scenarios.
+- This task revolves around critical reading and comprehension skills as you evaluate textual details and respond accurately by negating one incorrect response among options given.
+- Read through the provided sentence and question carefully, then identify and select the incorrect response among the options available.
+- Your goal is to analyze a situation from a sentence and determine which of two provided answers fails to align with the key facts presented.
+- Identify discrepancies in understanding by examining both a statement and follow-up question, revealing which among two possible responses does not hold true given the context.
+- This task involves consideration of the relationship between statement accuracy and answer validity. You’ll need to identify any discrepancies in answers based on prior content.
+- Analyze the information in the sentence carefully and choose the response that does not correctly represent the situation described.
+- This task requires you to analyze a sentence and determine which answer option is incorrect based on the context provided.
+- Utilize your deductive skills to assess each statement and its related question, discerning which option is misleading or incorrect according to the context revealed.
+- Reflect on information conveyed through simple statements and follow them with pertinent questions—your mission is to find and highlight inaccuracies within possible answers.
+- You will evaluate a sentence and a question, identifying the answer that does not align with the information provided.
+- Use your reasoning skills to dissect statements that are grounded in a specific context and find the one that contradicts it.
+- This task calls for an analytical approach where you interpret information from a sentence and respond by identifying the choice that doesn’t fit logically.
+- This exercise involves using logical reasoning and comprehension skills to find an erroneous answer among two possibilities, based on information contained in an introductory sentence.
+- Assess the given information in each situation and pinpoint the answer that fails to align with the facts presented.
+- This task involves interpreting statements and questions to identify inaccuracies within two answer options. Clear comprehension of the details is essential.
+- In this task, you need to assess the information given in a sentence and determine which of the two answer options presented is inaccurate based on that information.
+- Utilize your reasoning skills to interpret a sentence and question, then pinpoint which answer choice misrepresents the scenario discussed.
+- Focus on discerning factual outcomes or behaviors based on given statements about people or situations, isolating any incorrect interpretations provided in options.
+- The task at hand necessitates comprehension of text involving physical properties or actions while determining which of two alternatives does not represent factual information accurately.
+- Assess statements about given scenarios or facts. Your aim will be to select and identify any statements that do not accurately represent what was presented initially.
+- You need to leverage your reasoning skills by assessing a description paired with a question, ultimately finding an option that misrepresents what’s been stated.
+- Your job is to interpret a given scenario described in a sentence and address a question about it by selecting the flawed answer from two options.
+- The challenge is to apply deductive reasoning based on a statement and a question, selecting the answer that inaccurately depicts reality as described.
+- Utilize deductive reasoning as you examine descriptive content paired with a query, isolating misinformation within given choices based on your analysis.
+- Engage with the material by reading through an informative sentence to accurately detect the incorrectness in one of the subsequent answer options given.
+- Look at the details provided in a contextual frame, weighing both answer choices against each other to reveal which one is an incorrect assessment.
+- Your task is to decode meaning from short readings followed by related queries, ensuring you identify which option presents misleading information.
+- Your focus will be on interpreting context clues from a sentence in conjunction with a relevant question, identifying the discrepancy in one of two answers offered.
+- Understand a brief context or scenario, then establish which among given answers is inconsistent with that understanding.
+- You will examine a scenario described in a sentence, relate it to a posed question, and discern the incorrect assertion among two options.
+- Engage your critical thinking skills to dissect information from written clues into reasoning about individuals’ capabilities or scenarios, determining any false claims present among options.
+- Your goal is to evaluate the sentence and question together, using logical reasoning to pinpoint which of the two provided responses is wrong.
+- Engage with a short passage of text, followed by a question, and decide which of the responses does not logically follow or accurately reflect the content.
+- Examine the details of a sentence, then discern which of two statements is incorrect with respect to that information.
+- Read carefully through an informative statement, then logically deduce which accompanying answer choice does not hold true based on your understanding of what was stated.
+- Utilize your comprehension skills to evaluate statements about two subjects and determine which of them offers a flawed conclusion.
+- Interpret the information given in the sentence alongside a question, then determine which of the two answers fails to accurately reflect what was described.
+- Engage with a descriptive context and related inquiry, drawing on your understanding of given facts to isolate the erroneous response among options.
+- Tackle ambiguities in behavioral prompts by evaluating contrasting descriptions and effectively isolating any that misalign with logical conclusions regarding actions.
+- Your task involves reading carefully, synthesizing information from a sentence, and pointing out an incorrect inference made in one of two options.
+- Your job is to interpret details in a scenario presented in writing and recognize which answer does not fit logically with those details.
+- Interpret the provided context thoroughly and make a judgement based on logic to find out which option is the incorrect response to the posed question.
+- Your focus in this task is on interpretation; assess how well each answer reflects the situation described in the initial sentence, highlighting any inaccuracies.
+- You will need to evaluate a contextual sentence and its question, identifying the answer that does not accurately correspond to the information given.
+- You will evaluate a scenario presented in a sentence and answer a question about it by pinpointing the misleading option from two alternatives given.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1379_quarel_incorrect_answer_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1379_quarel_incorrect_answer_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The task requires you to take an integer array and output another array where every element is calculated as the product of all other elements from the original array.
+- This task focuses on processing lists of integers to create a new version. It involves strategically multiplying elements while ensuring not to include one's own indexed number in the calculations.
+- The task involves taking a list of integers and calculating a new list where each element is the product of all other numbers in the original list. It tests your ability to perform multiplication and understand array indexing.
+- Given an array of numbers, your role is to create an output array with results derived from multiplying all other numbers at different indices together.
+- You must manipulate an array of integers by finding products that skip each individual number one by one to form a new array showing relationships among the original values through multiplication.
+- The focus is set on numerically transforming lists by implementing an algorithmic approach to multiplications, enriching your understanding of how singular exclusions affect outcomes.
+- You are engaged in a computational task where you must create an output based on multiplying integer values while excluding the number currently being referenced. This enhances your ability to manipulate sets of data correctly.
+- The task consists of analyzing lists of integers and generating a modified output list based on multiplicative relations within the input data.
+- Your primary focus will be on reconstructing information from a collection of integers, where each result hinges on excluding one number while multiplying those remaining.
+- Engaging with this task involves processing numerical lists such that outcomes hinge upon understanding multiplicative principles as they relate to various indices within an input structure.
+- The task involves transforming a set of integers into a new format. The aim is to produce a list, with each position indicating the multiplied result of all other positions’ numbers.
+- This task invites you to explore mathematical manipulation through integer arrays, engaging in processes that require producing outcome lists rooted in unique product evaluations excluding self-values at every step.
+- Your objective is to break down a list of integers and rebuild it such that each element represents the combined product of all remaining elements from the original list.
+- The task is about deriving a new list from a provided set of integers, specifically where every item is calculated through the multiplication of other items in that same list. This challenges your computational dexterity.
+- Here, you're tasked with creating a series of products derived from an input list. Each position in your output will be filled by applying multiplication across all but one corresponding number in the original set.
+- In this task, you will manipulate an array of integers to generate a new array. Each entry in the resulting array should represent the product of all numbers except the one in the same index from the original array.
+- This involves processing a sequence of numbers and finding a way to present their interdependencies through multiplicative relationships that exclude self-influence.
+- The assignment entails evaluating integer lists and constructing resultant arrays that represent comprehensive product calculations while systematically excluding individual contributions.
+- This exercise revolves around manipulating groups of integers mathematically by discovering how they can be used together through multiplication while omitting singular aspects during these calculations.
+- The assignment requires transforming integers through multiplication principles. Each result must stem from products that disregard any contributions from individual positions within the original set.
+- The objective involves processing inputs formed by numerical sequences into modified outputs, leveraging exclusive multiplicative techniques that emphasize all elements save for self-referential entries.
+- The crucial skill required here is understanding how to manipulate integer arrays into functional outputs by focusing on collective products while intentionally disregarding specific indices.
+- The task requires deriving a result from a given numerical array based on multiplicative exclusion principles, synthesizing outputs that represent variations in combinations.
+- Your mission is to reconfigure a list where every item becomes synonymous with the product formed by all items excluding itself from an original collection of integers.
+- You are required to compute the product of numbers in a given list, ensuring that each position in the output corresponds to the multiplied value of all the other integers from the input. This requires careful arithmetic and attention to detail.
+- You need to transform a given list of numbers into a different list in which each position reflects the product of every other number in that initial list.
+- This process requires you to use mathematical reasoning with lists, taking into account how multiplicative effects can differ when single elements are ignored repeatedly.
+- You are to generate a transformed list from an existing number series where each number becomes the product derived from excluding itself from multiplication with all other numbers. Understanding array manipulation aids this task.
+- You are asked to process a list by generating another list that represents the product of all remaining numbers for each index. This involves understanding how elements interact within an array context.
+- This task consists of taking an array of numbers and producing another array where each number is derived from multiplying every other number in the input array together.
+- Engage with a set of integers and create a fresh set that reflects the product results where each entry takes into account all entries except the one aligned with it numerically.
+- For this task, you will utilize multiplication to reconfigure a list by removing one integer’s contribution to form new results for each position.
+- You will be given a set of integers and your job is to derive new integers from the products of every other integer in the list. Strong mathematical skills and an understanding of sequences are important here.
+- Your goal is to process a list by replacing each element with the product of all other elements in that list, showcasing your numerical computation skills.
+- You'll undertake an analytical journey through numeric operations designed around producing output lists based on interaction rules, notably focusing on exclusionary criteria tied to their positioning within original lists.
+- This task requires you to analyze a given list of integers and compute a corresponding output where each element is calculated as the product of every other integer in the input list.
+- The challenge is centered around reconstructing a list based on multiplicative terms from given integers while excluding self-contributions at each index.
+- Here, you're tasked with recalibrating numerical data through an analysis process that generates outputs built upon multiplicative functions between assigned integer positions.
+- The objective is to analyze a list of numbers and produce a transformed list based on multiplication rules that consider all but one number at a time.
+- This task challenges you to create a new integer list based on the product of elements excluding each position in the initial list. Calculating products and handling data structures is crucial for success.
+- The goal is to generate a list where each element is formed by multiplying all numbers from an input list, except for the number at its index.
+- The focus is on procuring products within arrays—specifically, you will ascertain new values through multiplications and sum them up appropriately across their original series while skipping self-referencing.
+- You'll engage with lists by calculating outputs where each number becomes significant only when interacting with others through multiplication, enhancing your quantitative assessment abilities along with strong critical thinking.
+- Delve into mathematical operations by reconfiguring an existing sequence of numbers to yield new findings based on multiplications that consider all components but one at each interval.
+- This activity aims at leveraging numerical lists where outputs directly depend on products formed by incorporating all items but the current one—highlighting your skills in arithmetic logic and object manipulation.
+- In this task, you'll utilize your mathematical skills to analyze an integer list, producing a final product list based on specific multiplication criteria for each index.
+- In this task, the focus lies on creating a new numerical array through specific multiplication rules that involve all integers minus the one located at each index.
+- This task requires identifying multiplicative outputs for each integer within an input roster, providing insight into the collective impact of other integers when excluded from computations.
+- You need to manipulate a list of integers by creating a new list. Each element in this new list will be determined by multiplying together all the integers from the original list, except for the integer at that same position.
+- You are asked to take a list and calculate how each integer can be represented as the product derived from other integers, fostering your computational abilities with multiplication.
+- The task at hand requires you to reformulate a set of numbers by assessing their multiplicative essence in relation to one another but distinctly apart from each member's contribution.
+- The aim here is to leverage your understanding of product functions among integers in an array, resulting in outputs that illustrate relationships free from self-influence.
+- You will engage with an integer collection and need to deliver another collection based on multiplicative results pertaining to numbers that do not occupy your current index location.
+- The objective is to transform a given list into another list through multiplication. Each position in the result should reflect the product of all other elements from the input list.
+- The job here revolves around taking an input list filled with integers and producing an output that reflects cumulative products for each position, testing your arithmetic capabilities alongside logical reasoning.
+- Here, you are challenged to create an entirely new set based on products taken from a specified group of integers, working with their interactions while honing both your math abilities and analytical skills.
+- You’ll create an output derived from an input list where each new value demonstrates how every integer interacts with others when it's taken out of consideration.
+- The assignment involves generating a result list from an input list by calculating the cumulative product of all elements excluding the one at each index.
+- Your goal is to transform a list of integers by producing a new list where each element reflects the product of all other elements in the original list, requiring careful multiplication of numbers.
+- This task requires mathematical manipulation of a list of integers. You'll create a new list where each item is determined by multiplying together every other number from the original list.
+- The objective is to thoroughly engage with integer lists and compute an alternative harmony in numbers being derived through thoughtful multiplication excluding their own presence.
+- This task emphasizes computational literacy by having you derive totals based on unstated relationships among members of a number set through exclusion-based products.
+- This task requires you to manipulate numerical data—specifically, you will take an array of integers and produce a new array based on multiplication of its elements.
+- In this task, you'll delve into numerical arrays and derive a fresh perspective through products. Your output will encapsulate how individual integers influence the overall construct when multiplied together.
+- Your mission is to reorganize a provided list of numbers by calculating their products excluding each specific number at given positions, creating an entirely new numerical series.
+- You need to derive a list of numbers by multiplying every number in an input list with every other number, but excluding the number at the current index for each position.
+- Your goal is to produce an array derived from products of groups of integers by intentionally excluding one integer in every calculation for each corresponding output position.
+- This task is centered around understanding product operations within arrays; specifically, you'll need to calculate products without certain elements factored in.
+- In this task, focus on computing output values by leveraging your understanding of multiplication across sets of integers, ensuring that self-elements are not included in calculations.
+- In this task, you'll start with a list of integers and produce a new list where each item reflects the product of all other items in the original list, focusing on multiplication skills.
+- Your responsibility is to navigate through a list of numbers, generating products based on omitted values found within, which sharpens your numeric skills and understanding of computational processes.
+- The task requires computing the product of list elements, excluding the one at the current index for each position in the list.
+- You will work with integer lists and be tasked with creating an output list based on specific multiplication rules. This requires both analytical thinking and proficiency in basic arithmetic.
+- Given a set of integers, your job is to create a new set where each integer corresponds to the total product of all other integers from the original set.
+- You will compute a new result from provided integers by applying multiplication across selected elements, creating products that yield a fresh perspective on values grouping together mathematically.
+- The goal is to derive products from an initial integer array without including any particular index's number in those calculations. This results in new entries based solely on surrounding values.
+- You’ll work with an array of integers and produce a transformed version where each result reflects a multiplication operation among other values within the original array, leaving out its own index's value.
+- This exercise involves transforming a collection of numbers through multiplication, assessing how they can collectively contribute to new values without internal redundancy.
+- You are engaging with lists where your skills in multiplication will come into play significantly. The essence is to generate a new series based on comprehensive calculations involving all but one value at a time.
+- Your task is to compute a new list from the given list of integers. Each element in the new list is determined by multiplying all other elements in the original list except for the one at the current position.
+- In this task, your focus will be on deriving output values from an input list based on multiplicative relationships among its items, specifically omitting each item's self-value in its own calculation.
+- You’ll process an integer list to result in another that quantifies products based on interactions among elements—excluding any self-referencing calculations.
+- The goal is to take a collection of integers and compute a corresponding collection based on the multiplicative combination of those integers. It tests your skills in arithmetic operations and array handling.
+- Your mission here is to analyze numerical lists and employ multiplication techniques strategically to reflect holistic combinations while bypassing individual contributions.
+- This exercise requires computation based on elements within integer lists. The expected result is obtained by multiplying all elements at once while excluding one at a time for each resultant value.
+- The exercise focuses on leveraging multiplication skills to create a new list derived from an existing one by reconsidering the contribution of each number in isolation.
+- You must examine a list of integers and generate a corresponding output list where each entry represents the product of all other entries in the original list.
+- The task is about creating an innovative output from existing integer arrays through product calculation connections, requiring insight into how exclusion from multiplicative groups affects results.
+- The challenge involves transforming an integer list such that each element in the result is derived from multiplying every other element in the input list. This emphasizes your multiplication skills and knowledge of lists.
+- The challenge lies in converting a singular list into another by employing multiplicative logic, concentrating solely on products across all entries save for one.
+- The focus of this task lies in transforming lists through multiplication. Each resultant number should inform how it relates mathematically to every remaining number of its source array.
+- Your role involves taking an integer input list and generating an output where each element reflects the cumulative product of every other element not at its index.
+- Your assignment is to take an array of integers and construct another array where every entry is based on multiplying together elements from the input array, yet excluding its own index element.
+- You will be working with lists of integers, performing calculations that require identifying products. Specifically, for each element in your result, you will need the product of all other elements from the input.
+- In this task, you will generate a new list from an existing one by multiplying all numbers except the one at the current position. This requires you to understand the concept of products and how to manipulate lists.
+- You'll be tasked with manipulating an integer input through multiplications that highlight interactions between numbers while systematically omitting each current number from its product calculation. Keen attention is required here.
+- Evaluate sets of integers by constructing a new output that captures the combined outcomes amongst all but one element for each position in a listed format.
+- You have to process a list of numbers where your output will be another list. This output list is made by calculating the product of every number in the input list, excluding the number present at each specific index.
+- You must solve for a list of products derived from a set of integers, where each product results from excluding one integer at a time from the multiplication process.
+- For this task, you need to derive values for a new list using mathematical operations on an existing list of integers. The focus is on understanding how to manipulate and combine numerical data effectively.
+- The task challenges you to create a new collection from an input array using multiplicative calculations, where every entry in your output should reflect cumulative values minus its own position's value.
+- This task involves manipulating a list of numbers by calculating what each element would be if it were not included in its own product calculation.
+- Your responsibility involves processing lists to yield derived lists through multiplicative analysis. Each element in your output remarks how other parts relate through their product equivalences.
+- In this assignment, you will transform an initial array of integers into a new array where each element represents a product calculated from all others, fostering both mental math skills and understanding of arrays.
+- Your role consists of interpreting numerical data sets and reforming them into products reflective exclusively of inter-relationships among non-equal parts within the array.
+- The task involves calculating a new list where each element corresponds to the product of all other elements from the original input list.
+- This task engages you in calculating products across lists, requiring attention to detail as each result must be formed by precisely omitting one integer at a time from the multiplication operation.
+- Given a list of integers, you will need to create a new list where each number equals the product of all the numbers in the original list except for the one in that position.
+- This task involves transforming a given list of integers into another list where each element represents the product of all other elements. A clear grasp of math operations on lists is essential.
+- The work involves constructing a new series of numbers where each element represents the total product derived from an existing group by skipping over its respective position.
+- You are asked to manipulate lists mathematically, ensuring that for each position in the output, prior knowledge of multiplication allows for accurate calculations without including the current index’s value.
+- Engage in calculations where the focus is on products that reveal interdependence among integers, ultimately generating a resultant list that highlights these relationships.
+- Your job entails handling integer lists using mathematical operations focused on products. This requires precision as you'll be finding relationships among numbers while excluding specific positions iteratively.
+- You will work with numerical lists to extract and compute products that reveal relationships between numbers, emphasizing the exclusion principle at each step.
+- Work with numeric data structured in lists and strategically derive new values based on reciprocal multiplicative logic, focusing on unique products tailored to specific exclusions per index location.
+- Your task is to compute a new list of integers where each element is the product of all other elements from the provided list.
+- You will handle integer lists in a way that requires calculating outputs based exclusively on multiplicative interactions among selected elements, reflecting your proficiency in numerical theories and computational tasks.
+- You are challenged to rethink number combinations within an existing array to form a new resultant list solely based on multiplicative interactions between integers from that array.
+- Handle sets of integers by applying a multiplication formula that insists on ignoring each integer at its own index point for sound computational strategizing toward new outcomes.
+- The task involves calculating a new list based on the products of elements in an existing list. For each position in the new list, you must multiply all values from the original list except the one at that position.
+- For every integer in the provided input list, compute a corresponding value that is the product of all other integers besides it, generating a new output list in this manner.
+- In this challenge, you will derive a new integer list based on a mathematical operation applied to an existing list. Each entry in the output corresponds to a multiplicative combination of all but one input value.
+- This task centers around the multiplication properties of integers. Specifically, create an output that represents how each element relates to others through their combined multiplication factors.
+- You will dissect an integer series into another form where products shine through connections—each item revealing its relation to others without counting itself.
+- In this activity, you will work with a sequence of integers and produce a new sequence where each number is the result of multiplying all other numbers in the given list, excluding its own value.
+- In this exercise, transforming numerical inputs into outputs through cumulative multiplicative logic lets you explore relationships in integer collections uniquely.
+- Engage with numerical arrays by deriving a distinct output list based on multiplicative relationships among items in an input array while bypassing individual contributions.
+- This job is about deriving a new numerical sequence from an existing one. For each number in the input, compute a product that encompasses only the remaining numbers in that input.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1088_array_of_products
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1088_array_of_products
+user_prompt_template: '{task_def}
+
+
+  {problem}'

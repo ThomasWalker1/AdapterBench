@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your job is to scrutinize conversations for assigning authorship of a statement, relying heavily on context from previous exchanges to discern between user tendencies and assistant responses.
+- Engage with dialogues and ascertain whether a particular message aligns more closely with the speech patterns of the user or the assistant.
+- Engage with dialogues to discern which participant—USER or ASSISTANT—made the statement highlighted in the query.
+- Your objective is to navigate through an exchange where film interests are discussed and make a determination about who said a particular line.
+- Your mission is to review interactions between two parties and decide which participant contributed a specific statement.
+- You need to identify the speaker in a conversation based on a provided segment. Analyze the preceding exchanges to determine whether the text is from the USER or the ASSISTANT.
+- Utilize analytical skills to classify a statement within its contextual conversation as either attributed to the user or the AI assistant.
+- Your task is to discern which participant produced a specific line by analyzing previous exchanges for traits that distinguish USER from ASSISTANT in their communication styles.
+- The goal here is discerning authorship within conversational snippets, pinpointing whether an utterance came from the user or the assistant based on prior exchanges.
+- Your objective is to analyze an excerpt from a dialogue and classify it as either USER or ASSISTANT by referencing their earlier interactions and established tones.
+- Examine the provided dialogues to classify a particular piece of text according to its author, either the user or the assistant.
+- Your job is to explore past dialogues and attribute a particular statement to either the user or the assistant while analyzing their previous interactions.
+- You will assess conversation snippets to ascertain whether a mentioned line of dialogue comes from the user or the assistant.
+- Your responsibility is to assess dialogue flow and classify statements according to their respective authors in a conversation setting.
+- You must discern whether a given statement belongs to the USER or ASSISTANT by looking at their previous messages for clues about their speaking styles and content.
+- The task requires you to identify the speaker of a specific line of text based on context provided by previous dialogues between two participants.
+- Your job is to assess conversations and pinpoint whether a selected line was contributed by the "USER" or the "ASSISTANT".
+- This task challenges you to read through an interaction and decide which speaker made a certain comment, guided by cues from previous exchanges.
+- The challenge is to identify the correct author of a particular statement within an ongoing conversation, evaluating prior context to make your choice.
+- Determine authorship for a statement within a given set of dialogues. Look back at how each person has engaged in conversation to reach your conclusion.
+- This task requires you to listen closely to conversational exchanges and classify remarks based on their source, user, or assistant.
+- You'll focus on dissecting dialogues about personal tastes in films in order to accurately attribute a given query or comment to its correct speaker.
+- This activity requires you to discern authorship in dialogue snippets by examining who has engaged in each part of the conversation.
+- In this task, your job is to recognize the source of a conversation snippet, distinguishing whether it originates from the user or the assistant in prior dialogues.
+- Engage with provided texts to ascertain which party contributed specific lines. This demands recognizing distinct language styles associated with each role in the interaction.
+- Analyze dialogue excerpts to find out whether they are expressed by the user asking questions or by the assistant providing answers.
+- In this task, you will sift through conversational elements related to movies to determine if a highlighted section originates from the user or from the assistant.
+- Your task is to analyze a series of conversations and identify the author of a specific statement as either "USER" or "ASSISTANT".
+- An overview of interactions will help you classify statements according to their author's identity—be it user or assistant—using observational skills related to dialogue structure.
+- In this exercise, you will classify who authored a line in an ongoing discourse by relying on past conversations, assessing patterns in speaking styles for accuracy.
+- Examine dialogue patterns shared between users and assistants in conversations, then make a determination about authorship for specific statements.
+- You must examine interactions between two speakers and identify who is responsible for a specific conversational line, requiring attention to conversational dynamics.
+- This task tests your ability to infer who is speaking in a conversation based on prior dialogue context, specifically in discussions regarding films and entertainment.
+- Your goal is to accurately identify whether a given utterance in a conversation was produced by the user or by the assistant, informed by earlier dialogue elements.
+- The task entails interpreting back-and-forth exchanges concerning movie genres and judiciously classifying comments according to their originator.
+- The objective here is to classify a line from a conversation as belonging to either the user or the assistant. This requires understanding their patterns of communication.
+- You will need to leverage context and content knowledge in conversations to judge which participant made a given remark in a dialogue sequence.
+- Your interest lies in identifying whether particular lines stem from the user or assistive speaker within conversations, drawing from previous messages for context clues.
+- Analyze dialogues to determine which party—user or assistant—posed a specific question based on earlier statements.
+- Determine if a specific line is spoken by the assistant or user; this requires careful attention to the style and tone of previous exchanges.
+- Analyze previous statements made in dialogue exchanges for clues that help you attribute authorship accurately—either to a user or an assistant.
+- Use context cues to navigate through conversations and ascertain who made an utterance in order to classify it correctly as originating from either participant.
+- Your objective is to classify a line from a conversation as belonging to either the user or the assistant, using context clues and prior exchanges.
+- Your role requires understanding conversational dynamics between two entities to accurately attribute authorship of a provided statement.
+- This task requires you to sift through conversational exchanges to determine authorship of a selected statement amidst USER-ASSISTANT interactions.
+- Your job is to review conversations focused on movie discussions and determine whether specific text stems from the USER or ASSISTANT.
+- The goal here is to interpret various statements within conversations and attribute them correctly to either the "USER" or the "ASSISTANT."
+- Assessing dialogue patterns is essential for determining whether a given text originates from the user or the assistant's dialogue exchanges.
+- Assess texts in pairs of interactions where you will identify which participant authored particular sentences based on prior exchanges in the chat.
+- Your task is to analyze conversations to determine who authored a specific line of dialogue, distinguishing between the user and the assistant based on their roles in the interactions.
+- You will read a series of dialogues between a "USER" and an "ASSISTANT," and your goal is to classify a given statement as coming from one or the other participant in the conversation.
+- In this task, you will assess conversations involving preferences and queries about movies, deciding whether a particular line of text was spoken by the user or the assistant.
+- Your role is to comprehend conversations where one party asks questions and another answers, then classify a given line as either USER or ASSISTANT's input.
+- Analyze previous snippets of conversation and determine if the specified line comes from the assistant or user, focusing on dialogue flow.
+- Your challenge here is observing dynamics of conversation to pinpoint which side articulated a particular message in response to questions posed.
+- You will look closely at conversation snippets and determine whether a selected statement was made by the user or by the assistant.
+- You will explore conversations to figure out whether a chosen statement was delivered by the user or assistant, requiring you to interpret nuances in dialogue exchange.
+- The focus is on understanding conversational dynamics and identifying the correct speaker for a selected line within that context.
+- Identify who spoke a certain phrase in a conversation, relying on your understanding of past exchanges between the USER and ASSISTANT for reference points.
+- Identify whether a particular line in a dialogue is from the USER or ASSISTANT by examining how they have communicated previously and how they typically structure their sentences.
+- The objective is to use context clues from earlier exchanges to classify a statement as being either from the user or the assistant.
+- Analyze dialogue pairs to figure out who is speaking based on their style and context—whether it’s the "USER" sharing their thoughts, or the "ASSISTANT" guiding them.
+- Analyze a series of exchanges between two parties and determine whether a given statement was made by the user or the assistant.
+- You'll assess conversations by determining the origin of a particular statement, deciding if it comes from the user or assistant based on contextual cues and conversational dynamics.
+- You will explore existing conversations to determine who uttered a particular comment, weighing previous interactions for context.
+- Interpret snippets from conversations between two roles, focusing on identifying which individual authored the specified phrasing.
+- You are tasked with discerning whether a specific follow-up question in a dialogue about film preferences is from the "USER" or "ASSISTANT."
+- This task requires contextual comprehension of dialogues around cinema to identify which participant created a given statement regarding movie genres.
+- This task requires you to read a dialogue and classify a quoted sentence by identifying whether it originated from the user or the assistant.
+- You will read a set of dialogues and decide whether a given statement was made by the user or the assistant based on the context of the conversation.
+- You are tasked with pinning down the author of a conversational remark by carefully examining a series of exchanges and understanding their roles.
+- Your job is to classify a line from a conversation by identifying its author. Review the conversation history to distinguish between USER and ASSISTANT based on their typical responses.
+- You will need to evaluate snippets from a conversation focusing on movie genres to ascertain if a given line was contributed by the user or assistant.
+- You are tasked with identifying the speaker of a conversation snippet by reflecting on prior exchanges. This requires understanding how USER and ASSISTANT typically express themselves.
+- Delve into user-assistant interactions and classify specific inputs according to their speaker, requiring understanding of conversational roles.
+- Use your comprehension skills to classify who authored a specific statement based on prior conversational context provided by both parties.
+- In this task, you must determine the author of a specific statement from a conversation between a USER and an ASSISTANT.
+- Examine conversational exchanges critically to assign authorship of a specific line to either the user or assistant.
+- The task involves examining interactions between a USER and an ASSISTANT, enabling you to classify a specified statement according to its speaker.
+- Analyze interactions from the provided exchanges, then classify an excerpt based on whether it originates from the USER or the ASSISTANT.
+- Reflect on collaborative dialogues, then categorize who contributed a specific viewpoint or response, ensuring clarity in authorship distinction.
+- Review a series of exchanges, then classify a specific line of text as belonging to either the USER or ASSISTANT.
+- Evaluate conversational snippets and classify who made each statement based on the established context and subject matter.
+- Familiarize yourself with ongoing dialogues to effectively trace back and identify if a line belongs to the user or the assistant in an engaging discourse.
+- Your task includes examining chat logs and accurately attributing statements to either participant, helping clarify the flow of conversation.
+- You will evaluate a dialogue between two parties, then ascertain who authored a given piece of text within that dialogue.
+- In this analytical task, distinguish between comments from two roles—guest or assistant—by investigating their respective dialogues.
+- You are tasked with categorizing parts of dialogue from a chat between two characters. Determine if the highlighted part is spoken by the "USER" or the "ASSISTANT".
+- Investigate a sequence of conversations and accurately identify the author of a highlighted sentence, distinguishing between user and assistant communication styles.
+- The task involves analyzing a conversation between a user and an assistant to determine the speaker of a specific sentence.
+- Assess conversation samples and discern if a specific comment was made by the user expressing an opinion, or by the assistant offering support.
+- This task involves reviewing conversations and determining if a specified line was expressed by the user or the assistant, requiring attention to conversational context and tone.
+- Engage with a collection of conversations, identifying whether a specific statement is by the user or assistant based on their established communication patterns.
+- You are tasked with analyzing conversations and identifying authorship of specific statements. This requires an understanding of common patterns in dialogue between users and assistants.
+- This task involves analyzing conversation snippets to determine who authored a specific follow-up text, identifying whether it was said by the "USER" or the "ASSISTANT."
+- The task requires you to identify the speaker of a specific conversation line within a series of exchanges between a user and an assistant.
+- You’ll be evaluating conversation fragments and deciding whether feedback or inquiries aimed toward the user role or assistant role predominate in specific statements.
+- In this activity, you'll analyze dialogues from interactions and classify a line based on who expressed it—was it the "USER" or the "ASSISTANT"?
+- Review the dialogue provided and decide if a particular text excerpt comes from the user or the assistant by considering their communication style and content.
+- Reflect upon dialogue examples to conclude whether statements were birthed from user inquiries or assistant clarifications, demanding keen engagement with textual nuances.
+- You will judge a conversational excerpt to ascertain whether it was said by the user or the assistant, relying on prior messages for context.
+- In this task, you will review past interactions to decide whether a specific quote aligns more with typical user commentary or assistant inquiry.
+- Your job is to analyze interactions between two parties discussing films and classify a certain phrase according to its author.
+- You will read through exchanges and decide which participant—the user or the assistant—made a specific comment in the dialogue.
+- The task requires you to assess dialogue snippets for thematic consistency and expression style while determining authorship of one assigned line.
+- Read through conversational content and validate who made each statement, distinguishing effectively between contributions from either role involved.
+- You are tasked with interpreting conversation snippets and determining which participant contributed the specified dialogue.
+- You are asked to assess a piece of dialogue within a series of exchanges to discern its source, either attributing it to the user or the assistant.
+- Your role is to interpret dialogue exchanges accurately, identifying authorship of lines by examining the nature and style of interactions typical for a user or an assistant.
+- The challenge is to sift through dialogues and pinpoint whether certain comments were made by the user or the assistant by analyzing their conversational characteristics.
+- Your role is to review a sequence of dialogues and classify a particular text as belonging to either the user or the assistant.
+- This task involves judging conversational exchanges to apply author classification effectively—a skill that requires close listening to language cues and context within dialogues.
+- Examine a list of exchanges between two roles. You need to classify one particular line of conversation by stating whether it belongs to the "USER" or the "ASSISTANT".
+- This task involves assessing dialogue history to accurately determine whether a statement was expressed by the user or assisted during their exchange.
+- Your role is to determine which participant of a conversation authored a specified text. Draw connections from earlier dialogue exchanges to support your classification.
+- The task involves analyzing a text segment to determine its author, selecting either "USER" or "ASSISTANT" based on the language and context.
+- Analyze dialogue snippets between two parties and classify one statement according to which participant authored it.
+- This task focuses on distinguishing between two speakers in a conversation based on their phrasing, style, or context of speech provided in the prompt.
+- Here, you will examine a set of interactions where one party asks about movie preferences, and your job is to identify which party made a particular statement.
+- Analyze provided conversation snippets where one party asks questions and the other provides responses, then identify authorship for an isolated line of dialogue.
+- You need to evaluate conversational exchanges and determine if a specified line was spoken by the user or the assistant.
+- Work through dialogue sequences and assess authorship of each statement to determine if it belongs to USER or ASSISTANT.
+- Engage with provided dialogues and identify whose voice is represented in a specified line of text, marking it as either from the user or assistant.
+- You will sift through conversational exchanges and deduce whether one party asked a particular question or if it was posed by another party.
+- Your task is to tell who said what in a conversation based on earlier discussions. Focus on how each party typically responds to questions and comments.
+- The focus here is on differentiating between contributions made by the user and the assistant in a series of conversations, pinpointing authorship with discernment.
+- You will evaluate interactions centered on individuals’ film preferences and deduce who made the statement provided for classification purposes.
+- The focus is on categorizing dialogue snippets as being from one of two distinct speakers based on their conversational behavior.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task925_coached_conv_pref_classifier
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task925_coached_conv_pref_classifier
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Transform each given fact into a precise question, making sure it retains relevance to the original statement while seeking an exact answer.
+- Take a factual statement and turn it into a unique question. Your success will depend on how well you can represent the information in an interrogative form.
+- Formulate an uncomplicated question using a factual statement. This question should lead to one specific answer that directly corresponds to the information given.
+- Generate a specific and clear question based on the supplied fact that can be answered using only that information provided.
+- Your assignment is to develop a question based on a fact that allows the respondent to easily extract the answer directly from the information mentioned.
+- This task involves taking explicit statements and turning them into interrogative phrases designed to validate understanding based solely on those facts.
+- Your task is to take factual statements and distill them into direct questions that can be answered based solely on those statements.
+- Based on the fact provided, create an inquiry that focuses on understanding or expanding upon the information, aiming for clarity in communication.
+- The challenge here is to distill a piece of knowledge into a straightforward inquiry, ensuring it leads only to one identifiable answer rooted in what you took from the fact.
+- From given facts, your job is to derive questions that are directly related yet singular in response. These questions must adhere strictly to the facts supplied without ambiguity.
+- Formulate a concise and clear question based on a factual statement. The results should reflect a direct connection to the fact, allowing someone to respond accurately.
+- Based on factual statements provided, construct distinct questions that lead naturally back to those facts, ensuring you maintain clarity without introducing ambiguity.
+- From each specified fact, your job is to invent thought-provoking questions that communicate clearly and can only have one logical response drawn directly from the given information.
+- Given the information provided in the form of a fact, your job involves creating an identifiable question with one clear answer supported by that fact.
+- Create thought-provoking questions based on specific statements of fact, aiming for precision and lack of ambiguity in what is being asked.
+- This task asks you to analyze a statement and generate an inquiry based on it, making sure the resulting question aligns closely with the original content for clarity.
+- Your responsibility is to formulate an engaging question derived from factual content, making sure that it remains specific and answerable.
+- Your role is to transform a factual statement into a concise question, ensuring that the question aligns well with the information given.
+- The focus here is on transforming knowledge into queries. You must ensure your questions about given facts are precise enough to elicit definitive responses.
+- Your objective is to generate a question that encapsulates the essence of a specified fact. The challenge lies in making it straightforward while ensuring it has one clear answer.
+- Transform the provided factual information into an unambiguous question that is designed to elicit a specific answer based on that fact.
+- Your task is to distill facts into questions, designing queries that directly relate to their source for an unmistakable answer.
+- From any presented fact, your task is to create a corresponding question that is easy to understand and has a definite answer found within the original context.
+- This task challenges you to convert facts into precise questions, ensuring the resulting queries clearly reflect the information contained in the initial statements.
+- Crafting questions from facts is your task here. Each question should be unique and directly tied to the answer contained in the original statement.
+- Formulate questions derived from factual statements, focusing on clarity so that each question leads to a unique and precise answer.
+- Your task involves interpreting facts and creating inquiries that directly relate to them, ensuring those questions can be simply and clearly answered.
+- With each fact given, your task is to ask a relevant and concise question that ties in directly with the content of the fact provided.
+- Develop questions rooted in factual content provided, where each question must unambiguously correlate to its respective fact when answered.
+- The objective is to craft questions derived from specific facts, making sure these questions are unambiguous and have simple, direct answers.
+- Your task is to rephrase facts into questions that can be answered with the same information, making sure each question has only one possible answer.
+- Using the information given in the form of a fact, formulate a question that neatly encapsulates what was stated and allows for only one possible response.
+- From a given fact, devise a question that leads directly to a unique answer derived from that information. This involves showcasing critical thinking and comprehension skills.
+- Examine each fact carefully and create corresponding questions that precisely reflect the details and allow for clear answers.
+- Create a question that extracts information from a fact while keeping the inquiry straightforward and answerable.
+- The objective is to take a factual statement and formulate a question that can definitively be answered using that statement while being precise and concise.
+- Your task is to generate a clear and focused question based on a given fact. The question should allow for a single correct answer that comes directly from the fact.
+- Translate factual information into concise questions that maintain clarity and focus on achieving unique answers related to the fact.
+- Analyze the fact provided and formulate a question that is straightforward and has a single correct answer based on the information given.
+- Your goal is to transform a statement of knowledge into a precise inquiry that can be directly answered using the initial fact, keeping clarity and specificity in mind.
+- From the facts given, formulate succinct questions that lead to clear answers, using logical connections between the statement and the resulting inquiry.
+- Your role requires you to analyze the facts at hand and produce questions that are explicit, allowing for straightforward answers based on those facts.
+- Concentrate on rewriting facts into questions; this should involve recognizing key themes within each fact to ensure accurate responses can be generated.
+- With the provided fact in mind, create a distinctly formulated question that leads to an unambiguous answer rooted in the fact.
+- Your mission is to generate unique questions from stated facts, making sure they are unambiguous and easily answerable.
+- Crafting a precise and direct question from provided information will help demonstrate your understanding of transforming facts into inquiry.
+- Using given facts, your role is to design questions that allow the respondent to directly use the information at hand for an answer.
+- The objective is to craft an unambiguous question from a factual statement, ensuring that it directly connects to and derives its answer from the fact.
+- Interpret the essential elements of a given fact to shape an uncomplicated question that leads to a specific and valid response.
+- Based on the facts given to you, construct questions that align closely with the details provided, allowing for one clear answer.
+- The assignment requires you to devise questions based on factual statements, ensuring that there is a straightforward connection between the two.
+- From a stated fact, generate a focused question that reflects the essence of that fact and can be answered directly from it.
+- In this exercise, you’ll emphasize clarity in communication by converting factual statements into well-formed questions suitable for easy answering.
+- Based on a provided fact, formulate an unambiguous question that can be directly answered using that fact.
+- Exercise your ability to ask questions by using a fact as your foundation. The focus should be on clarity and precision, ensuring the question aligns specifically with the fact.
+- Your challenge is to extract clear questions from provided facts, ensuring every inquiry made can be distinctly answered using just those details offered in each fact.
+- This task involves generating an unambiguous question using a specific fact, making sure the question and its answer are closely related.
+- Your task is to derive a clear question from a given fact, ensuring that the question has a specific answer related to the fact.
+- Using the fact as your guide, construct an unambiguous question that allows for an easy-to-identify answer derived from the fact.
+- The task requires you to take a specific fact and formulate a clear, direct question that could be answered using that fact.
+- Given a specific fact, formulate an unambiguous question. The question should only have one correct answer that relates directly to the fact.
+- Given a factual statement, your objective is to formulate a question that seeks to clarify or explore more about the information presented.
+- This task involves turning a factual statement into a specific inquiry that captures the essence of the fact without ambiguity.
+- Create specific questions from each fact presented; they should focus solely on what is stated in such a way as to ensure one clear response.
+- This task requires you to develop questions from provided facts. Each question should be distinct and draw directly from the source material.
+- Convert detailed information into simple questions that can yield direct answers. Each question should effectively reflect the essence of the original fact.
+- Use provided factual information as a foundation for creating direct questions that will enable satisfactory answers based on just that same information.
+- The task requires you to rephrase factual information into a structured question format that maintains clarity and facilitates precise answering.
+- Formulate an effective question based on the given factual information, aiming for clarity and ensuring there is only one appropriate answer.
+- Given a factual statement, your challenge is to develop a corresponding question that uniquely points to that fact. Your question should invite an answer that directly reflects the details of the fact.
+- The goal is to create a question from a given fact. It should be straightforward enough that only one precise answer can be derived from the original information.
+- This exercise involves taking factual statements and rephrasing them as questions so that they remain clear and elicit concrete answers without ambiguity.
+- Your objective is to take an existing fact and ask about it in a way that leaves no room for misunderstanding. The answer should be completely derived from the fact shared.
+- Your task is to take a factual statement and turn it into a clear and concise question that can be directly answered by the fact provided.
+- Your mission is to interpret a fact and create an associated question, ensuring it is easy to understand and directly related to the fact's content.
+- You need to transform factual information into a well-structured question. The aim is to ensure that the question can only have one correct answer based on the fact provided.
+- Create questions surrounding the facts given, ensuring they are crafted in such a way that there is no room for misinterpretation in finding their answers.
+- Develop concise questions based on specific facts. Ensure that these questions maintain clarity while allowing for only one clear answer based on the fact presented.
+- Using the supplied fact, craft a relevant question that logically connects to the information, ensuring clarity and a unique response.
+- This activity involves interpreting facts by forming relevant inquiries. Successful completion hinges on your ability to articulate clear questions based on specific details.
+- Given a fact, your task is to design a question that specifically addresses the information presented, ensuring it can only be accurately answered in one way.
+- Generate straightforward questions based on specific factual assertions. Each question should be crafted so it has a direct answer linked unmistakably to the fact.
+- You will convert facts into questions that are precise and unique, showcasing your understanding of how to utilize information meaningfully.
+- Translate informative statements into clear-cut questions, ensuring each one is unambiguous and easily traceable back to its source fact.
+- Your goal is to take a fact and turn it into a question that can only be answered with that fact, reflecting your ability to interpret information.
+- This task involves crafting questions from facts, focusing on clarity and unambiguity, so that anyone responding can easily arrive at the correct answer based on what you have provided.
+- Your job is to take specific information and craft questions that reflect this knowledge accurately while ensuring they are easy to understand.
+- For every piece of factual information you receive, create a relevant question aimed at eliciting a direct and unique response based on that knowledge.
+- Use each fact to inspire a question that captures its meaning clearly, requiring an answer that stems directly from that fact.
+- Construct a direct question from a fact that leads to a singular answer, highlighting the essence of the fact in your inquiry.
+- The goal is to develop a well-structured question that stems from a given fact, allowing for straightforward answers without confusion.
+- Create a single, clear question sparked by a given fact. Ensure it can only be answered in one way based on the details of the fact.
+- You are tasked with taking an established piece of knowledge and designing a question that clearly reflects the key idea, prompting concise answers.
+- Using the information from a fact, devise a question that is both clear and direct, allowing for straightforward comprehension and response.
+- The task involves using a given fact to formulate a clear and specific question that can be answered directly from that fact.
+- Your goal is to reflect on each factual statement and succinctly derive questions that have definitive answers drawn exclusively from those truths.
+- Using the provided fact, generate a unique, unambiguous question that someone can answer definitively based on that information.
+- Transform the information contained within a fact into a straightforward question. Ensure that the question is easy to understand and has a unique answer.
+- The exercise emphasizes understanding how to derive questions from facts while ensuring they are straightforward and lead only to one possible answer.
+- The focus here is on creating an intelligible question from factual content, designed for easy comprehension and yielding one distinct answer.
+- Generate inquiries from explicit details in facts while ensuring those inquiries remain straightforward and unconfusing for better understanding.
+- From factual content, generate straightforward questions designed to elicit responses directly linked to the provided information.
+- Construct queries by interpreting given facts in such a manner that they prompt answers aligned with the essence of those statements.
+- You will engage in generating questions that maintain focus on existing facts, requiring you to think creatively yet accurately about the information presented.
+- Compose a straightforward question that reflects the details of the provided fact, making sure it can only lead to one correct answer.
+- The goal is to create questions based on established facts, focusing on wording them in such a way that only one correct answer exists pertaining to the fact.
+- Craft an engaging question based on a given fact, ensuring clarity and relevance so that it can be effectively answered using that same fact.
+- You need to think critically about how to express a fact in question form, while maintaining clarity and precision that allows for an obvious answer.
+- Create clear and direct questions based on specific facts while ensuring they have unambiguous answers associated with them.
+- Using factual information as inspiration, your role is to create well-defined questions that elicit precise answers, showcasing your ability to interpret and reformulate.
+- The task consists of writing a succinct question that captures the essence of the provided fact, allowing for an easy and straightforward answer.
+- You will develop questions from facts where the questions must lead to a definitive answer derived from the provided information.
+- This task is about generating thoughtful questions that can be answered with the facts provided, testing your ability to identify relevant information.
+- The task is to derive unique and focused questions from a set of facts, emphasizing clarity and direct connectivity between fact and question.
+- Turn the given fact into a precise question that retains its clarity and enables a unique answer drawn from the fact itself.
+- For each fact provided, create a direct question that can be explicitly addressed by the details contained within that fact.
+- Your task requires generating meaningful questions from given facts, honing your skills in synthesis and relevance; each question must connect clearly with its respective fact.
+- Derive a focused yet simple question from each provided fact, aimed at eliciting specific knowledge or detail inherently present within the statement.
+- You are required to generate questions from provided factual statements, ensuring the questions are straightforward and have a single correct answer.
+- Develop questions that stem from specific facts while maintaining clarity and focus, allowing answers to flow naturally from the information presented.
+- The task focuses on your ability to pinpoint essential details from a fact and frame them into a simple yet effective question format.
+- Your task is to create a clear question based on a given fact, ensuring that the question can be directly answered by that fact.
+- Your role is to take facts and turn them into precise questions. The questions must not leave room for alternative answers.
+- From the information in the fact, design a question that is direct, unambiguous, and has a clear answer rooted in that fact.
+- Take each piece of factual knowledge and turn it into a distinct question, facilitating exploration of its meaning or context.
+- Your responsibility is to convert a fact into a well-formed question that is unambiguous and enables the user to arrive at a unique answer using that fact.
+- You need to transform an informative statement into an engaging question that has one clear answer tied to the information provided.
+- Turn factual information into an insightful question; ensure it remains concise and has one unique answer derived from the original statement.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1398_obqa_question_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1398_obqa_question_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your task is to evaluate tweets based on a provided label indicating whether they are offensive, hate speech, or neither. It requires careful reading and judgment.
+- Your objective is to critically evaluate tweets against their labels, identifying any discrepancies between what’s said in the tweet and how it’s categorized.
+- You will need to interpret the meaning behind tweeted texts, then analyze whether their labels appropriately categorize them as offensive or hateful.
+- Review the statements made in tweets and determine if they're appropriately classified under labels like 'Offensive' or 'Hate Speech'.
+- Your task revolves around scrutinizing tweets for appropriate labeling against three categories while considering societal standards for language use.
+- You need to carefully read each tweet and evaluate whether its label—like 'Hate Speech' or 'Neither'—correctly describes its nature and intent.
+- Engage with a series of tweet-label pairs; your analysis will involve confirming or rejecting the appropriateness of each label based on tweet content.
+- Distinguish between valid labels for various types of language in tweets, utilizing your judgment on what constitutes hate or offensive speech when reviewing labels.
+- The task involves evaluating the appropriateness of a label assigned to a tweet, determining if the categorization as 'Offensive', 'Hate Speech', or 'Neither' is accurate based on the tweet's content.
+- In this task, you analyze tweets and their corresponding labels. Your job is to judge if the label correctly reflects the nature of the tweet, either as offensive or hate speech.
+- Analyze how effectively a tweet corresponds with its label regarding negative speech content; the task challenges your perception of societal norms surrounding language.
+- This task centers on tweeting language assessment; understand whether specific terms reflect offensive or hateful messages where appropriate labeling must occur.
+- Your responsibility is to ensure that each provided label for tweets falls in line with community expectations concerning what might be deemed offensive or hate-driven language.
+- Evaluate how well each tweet correlates with its designated label through thoughtful consideration of language cues, intent, and broader implications regarding social sensitivity.
+- You are tasked with reviewing tweets and their labels to confirm if they are accurately categorized as 'Offensive', 'Hate Speech', or 'Neither.'
+- Delve into the relationship between social media content and its associated labels, determining if expressions fall under categories like 'Offensive', 'Hate Speech', or 'Neither'.
+- The challenge lies in interpreting tweets and their labels accurately, verifying if offensive or hateful intentions are present as described by the labeling.
+- You will critically consider both the phrasing of tweets and their applied categorization to validate or contest labels based on what they convey about social issues.
+- Your task involves assessing whether each tweet has been appropriately labeled according to its expression of offensive language or harmful speech.
+- This task is about discerning the suitability of given labels for various tweets, based on how offensive or neutral they appear to be in context.
+- Analyze text from social media posts, specifically looking at how well their assigned categories reflect harmful or neutral messages in society.
+- Analyze and interpret the language within the tweet, juxtaposing it against the assigned label to ascertain correctness regarding social norms around speech.
+- Examine tweets for potentially offensive content or hate speech based on their accompanying labels. Your task is to confirm or refute these classifications.
+- The task is centered on deciphering whether certain language used in tweets justifies their categorizations as offensive (or not), promoting critical consideration around social interactions online.
+- Investigate the fit between provided tweet texts and their corresponding labels by focusing on both language and social context for accuracy in classification.
+- Assess the correctness of classified types for various tweets. Understanding social context and language tone will help you determine correctness.
+- Challenge yourself to read through tweets critically, ensuring that their assigned categories reflect their content honestly regarding offensive or hate-based language.
+- Your role is to engage with text from social media, identifying where it may cross lines into offense or hate and if labeled accordingly, challenging potential biases in labeling.
+- Your role is to scrutinize tweets against their assigned categories, assessing whether those categories accurately reflect how society perceives that type of language.
+- Assess whether the assigned label of a tweet is fitting by looking at the language and implications contained in the tweet itself.
+- Evaluate tweets for compliance with their assigned labels relating to offensive or hateful content. This requires clear judgment about language and intent.
+- You will assess multiple tweets alongside specific phrases that categorize them, checking for consistency between what they say and how they are labeled.
+- You will evaluate whether a given label accurately describes a tweet's content. This requires understanding the tweet and comparing it with the label.
+- This task involves scrutinizing tweets in light of their classifications as 'Offensive', 'Hate Speech', or 'Neither'. Be mindful of nuanced language.
+- Your job is to critically assess whether tweets have been properly labeled based on their contents, using your understanding of social media ethics and communication norms.
+- This task involves determining whether a tweet’s content corresponds properly with its designated label concerning offensive language or attitudes.
+- Assess the alignment between tweet content and their associated labels in terms of offensiveness. This requires sensitivity to language that may be harmful or derogatory.
+- Scan the provided tweet for elements that could be deemed inappropriate or hateful, checking if such characteristics align with its submitted label.
+- Your role is to review tweets along with their designated labels and ascertain if the label accurately represents the tweet's tone and message regarding offensiveness or hate.
+- Your task is to evaluate a tweet and its associated label, determining whether the classification of the tweet is accurate based on its content.
+- For this task, investigate tweets and their classifications thoroughly, determining if the labels appropriately match the intent and content of each message.
+- Analyze tweets within the context of their labels and provide insight on whether they adhere to expectations of acceptability or offensiveness based on given criteria.
+- Critically assess whether the classification of a tweet as 'Offensive' or 'Hate Speech' is justified based on its content. Your evaluation skills will be essential here.
+- You need to critically consider whether a tweet fits its label of either being offensive, hate speech, or neither by interpreting the message conveyed.
+- This assessment involves looking closely at the relationship between tweet content and its categorical labeling, honing your ability to identify nuances in language that differ between offenses and acceptable dialogue.
+- Analyze tweets alongside their designated labels. Determine if the labels correctly categorize the sentiments expressed in the tweets as 'Offensive', 'Hate Speech', or 'Neither'.
+- Your role is to verify if the labels given to specific tweets are appropriate. You'll be looking for indicators within the tweets that align with or contradict the assigned labels.
+- Ascertain whether tweets have been labeled correctly based on their context, analyzing language use and tone for appropriateness regarding societal norms.
+- The focus is on examining social media tweets through their provided categories. Recognize whether those categories reflect true sentiments as portrayed in the text.
+- Your role is to scrutinize tweets and the labels given to them, deciding if the labels correctly characterize the nature of each tweet’s content.
+- Your task is to evaluate a given tweet and its associated label to determine if they align correctly according to guidelines on offensive content and hate speech.
+- Consider the language and context of each tweet while checking if the given label reflects its essence. Your goal is to judge the correctness of that label.
+- You are tasked with checking whether a label given to a tweet is appropriate based on its language and meaning, necessitating an understanding of offensive language standards.
+- Identify whether each tweet correctly aligns with its assigned label, focusing on understanding language choices and societal implications.
+- The task involves understanding both language and context in order to judge the appropriateness of given labels for specific tweets. It’s both a linguistic and ethical assessment.
+- Critically examine each tweet and its assigned label, using your judgment to determine if the labeling aligns with societal definitions of offensive language.
+- Your task is to assess the provided tweets and evaluate whether the attached labels accurately reflect the content of those tweets.
+- You are asked to inspect tweets and their assigned categories, checking for accuracy in labeling tweets as either offensive or not.
+- An evaluation of tweets against designated categories requires an understanding of context, tone, and societal norms regarding what constitutes offensive language.
+- You will be examining tweets along with their assigned labels to determine correctness based on their context, highlighting your ability to recognize social semantics.
+- This task requires you to analyze tweets and their corresponding labels, verifying if the labels make sense given the tweet's tone and message.
+- This task focuses on examining tweets assigned labels that categorize them as offensive or containing hate speech. You must determine if these categorizations are correct.
+- Evaluate whether the labeling of tweets reflects their meaning accurately, relying on your understanding of offensive language and discrimination.
+- Assess tweets by interpreting their messages and deciding whether the existing labels of 'Offensive', 'Hate Speech', or 'Neither' are fitting according to their wording.
+- Analyze the given tweet text in conjunction with its assigned label, and decide if the label accurately reflects the nature of the tweet.
+- Your role involves determining if a label categorizing a tweet as 'Offensive', 'Hate Speech', or 'Neither' is justified based on its content.
+- You're required to weigh in on whether labels assigned to tweets truly match the intention and tone expressed within those tweets.
+- Examine the text of the tweet alongside its label. Determine if categorizing it as 'Offensive', 'Hate Speech', or 'Neither' is justified by its message.
+- Engage in the analysis of tweeted messages and their attached sentiment labels; your task is to judge if these representations are fitting based on accepted criteria for speech.
+- You are given tweets along with labels, and your task is to judge if those labels are justified based on the content of each tweet.
+- Examine tweets alongside their associated labels for offensive or hate speech content. Your role is to verify if each label corresponds correctly to the tweet.
+- Consider both the language used in the tweets and their respective labels, assessing whether they match up through an understanding of contemporary cultural sensitivities.
+- You will be reviewing specific social media messages to see if their labeling as offensive or hateful is justified based on an understanding of respectful communication.
+- The task challenges you to discern whether tweets containing potentially harmful language align with given labels, necessitating both critical thinking and cultural sensitivity.
+- Determine if a label applied to a tweet accurately represents its text by considering definitions of offensive speech and potential implications for readers.
+- You need to interpret tweets along with their labels, deciding whether they correspond accurately or if there's a mismatch in classification.
+- Take into account specific tweets along with classifications to ensure they convey true meanings per societal standards regarding objectionable or acceptable language.
+- The goal is to verify if a label describing a tweet is suitable by analyzing the tweet's wording, which demands an understanding of what constitutes offensive or hateful behavior in speech.
+- You are set with the responsibility of determining if a designated label fits a tweet correctly, based on your perception of its meaning and implications.
+- You need to verify if the categorization of a given tweet aligns with common definitions of 'Offensive' and 'Hate Speech'. Dissect the language used in the tweet.
+- You will assess tweets against their assigned labels and decide if those labels correctly represent the nature of the tweet. This demands a keen eye for context and meaning.
+- Analyze tweets to decide if their associated labels as 'Offensive' or 'Hate Speech' are warranted, relying on contextual understanding and societal standards.
+- You will review given tweets, reflecting on their language and implications, to judge if they rightfully match their designated offensive or non-offensive labels.
+- Examine the association between tweets and their pertinent labels. Your assessment should focus on whether offensive language and hate speech are correctly identified in context.
+- You will categorize tweets based on their reflected tone while verifying if such categories are accurate. This involves analyzing each message for contextual nuances.
+- Assess the connection between statements made in tweets and their respective categorizations, focusing on language that may be deemed offensive or hate-driven.
+- Analyze each tweet in conjunction with its label to conclude whether they are rightly matched based on their messaging and implications.
+- This task requires you to analyze discrete posts from social media, assessing their classification based on an understanding of social discourse norms and proper labeling conventions.
+- Your task is to discern if a tweet has been classified accurately as 'Hate Speech', 'Offensive', or not classified at all. Familiarity with these concepts is essential.
+- Your mission involves verifying the correctness of labels assigned to tweets by contemplating their wording and possible interpretations in the realm of social media discourse.
+- Engage in a qualitative assessment of tweets against their assigned classifications, focusing on whether these reflect appropriate sentiments.
+- Your role is to decide if a tweet has been classified correctly according to its content. Pay attention to nuances in language that may reveal its intent.
+- Using your judgment and understanding of language, determine if the classifications provided for a selection of tweets are correct based on their content.
+- Take a closer look at tweets along with their associated labels and reason whether each label makes sense in describing the intention behind each tweet.
+- Your challenge is to scrutinize tweets alongside their labels and establish whether the classifications reflect the content accurately. It emphasizes comprehension and critical thinking skills.
+- Evaluate each tweet based on its wording and message, comparing it against the label to decide if it has been classified correctly according to specific criteria.
+- Inspect tweets alongside those labels, applying your analytical skills to assess how accurately they describe the sentiments expressed in the tweets.
+- Examine the provided tweets and their labels to confirm if the labels effectively reflect the nature of the tweets in terms of offensive or hateful language.
+- The objective is to assess tweets against provided labels, deciding if they reflect the sentiment and meaning of the tweets accurately.
+- As part of this task, you'll analyze various tweets for their content and decide if the labels ascribed match your understanding of their meaning.
+- Analyze tweets that have been assigned a label to identify whether they genuinely match the description. This involves careful consideration of language use.
+- Review the content of each tweet in conjunction with its given classification to ascertain if they correspond correctly according to established guidelines for hate speech and offense.
+- Identify if a tweet's label corresponds with its content. This requires an awareness of social sensitivities and language use in digital communication.
+- Use your insight into societal attitudes towards language to confirm or reject a given label for tweets by assessing their messages critically.
+- Determine if extensions like 'Offensive' or 'Hate Speech' dynamically fit each tweet based on careful reading and comprehension of societal language implications.
+- Evaluate tweets that have been labeled for negativity or offense to verify if those labels hold true. It’s an exercise in discernment and analytical reasoning.
+- Analyze a tweet and compare its content to a given label. Your job is to confirm if the label effectively categorizes the tweet based on its message.
+- For this task, you will evaluate Twitter posts against their labels, deciding if each post’s label is an accurate reflection of its message and tone.
+- You need to evaluate whether the provided label for each tweet—as 'Offensive', 'Hate Speech', or 'Neither'—is appropriate based on the tweet's language and context.
+- You are tasked with judging the appropriateness of a given label based on your comprehension of communication styles and social media interactions.
+- The task requires scrutinizing tweets for their content and verifying if a given label—'Offensive', 'Hate Speech', or 'Neither'—is appropriate based on what the tweet expresses.
+- Your job is to examine tweets against their classifications to see if they appropriately reflect what is expressed in those tweets.
+- You are tasked with classifying tweets into categories based on whether they fit into 'Offensive', 'Hate Speech', or 'Neither'. This requires an understanding of social norms and language.
+- Analyze tweets paired with labels to establish whether there is an appropriate classification based on your understanding of offensive or harmful content.
+- Analyze the language and sentiments present in tweets to confirm whether the assigned labels of 'Offensive' or 'Hate Speech' align with what is expressed in them.
+- You will be given a tweet and a label, and your job is to verify the correctness of the label based on the content of the tweet.
+- This task involves examining how tweets coordinate with their summaries of speech categorization—either lukewarm as neutral, or misaligned to hatefulness or offense—requires analytical maturity.
+- You are tasked with evaluating the appropriateness of labels given to tweets based on context. Aim to discern if the classification is fitting for each case.
+- For each provided tweet, task yourself with identifying whether the label it carries appropriately describes its content as offensive or neutral.
+- The assignment involves analyzing specific tweets against their provided categories to see if they accurately represent the sentiment conveyed in the text.
+- Analyze the tweet and its assigned label to determine if they match. This requires understanding social media language and harmful content.
+- You must scrutinize each tweet and its label to see if they correspond accurately, drawing on your understanding of public discourse and social cues.
+- You will analyze tweets to decide if their assigned labels are valid. This involves judging the tone and content of the tweet against the provided classification.
+- Your task is to evaluate the appropriateness of a tweet based on a given label. You need to determine if the label accurately reflects the content of the tweet.
+- The task involves reading tweets and determining whether their labels accurately depict their nature. This means understanding nuances in language that signal offense or hate.
+- You are required to investigate a series of tweets, matching them against their implied categorization. Your judgment will help verify or challenge these labels.
+- Your mission is to determine whether assigned labels accurately characterize tweets, requiring both analytical skills and familiarity with social discourse on offense.
+- Evaluate tweets alongside their reported sentiments. Consider how effectively each label represents the message conveyed in the tweet.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task905_hate_speech_offensive_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task905_hate_speech_offensive_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

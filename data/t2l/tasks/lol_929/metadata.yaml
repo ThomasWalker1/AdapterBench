@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Take a look at a product review in English and classify it as either good or bad based on whether it demonstrates an enthusiastic or discouraging viewpoint.
+- Assess the given English review to determine if it conveys a positive experience or a negative one, paying attention to the phrasing and sentiments expressed.
+- Your job is to decode consumer sentiments in product reviews, classifying them into two categories based on expressed feelings—one for positive experiences and another for negative ones.
+- Determine the nature of feedback provided by customers about products—whether it depicts a favorable view (good) or an unfavorable one (bad)—by closely reading their comments.
+- You are expected to evaluate English-language reviews and classify them based on their tone—identifying those that indicate good experiences versus those that reflect negative experiences.
+- You are tasked with understanding customer sentiments expressed in reviews and classifying them as either favorable (good) or unfavorable (bad).
+- Determine the nature of product feedback by assessing the written reviews. A positive sentiment denotes a Good Review, and a negative sentiment indicates a Bad Review.
+- Based on the detailed feedback in the reviews, identify if customers had a positive experience or faced issues that led to dissatisfaction.
+- Review various customer feedback entries and assess whether they lean towards being good reviews, which show approval, or bad reviews, which indicate displeasure with a product.
+- Analyze English language reviews to ascertain their quality based on positive or negative sentiments. Your decision should stem from how reviewers articulate their experiences.
+- Your role involves understanding the emotional content of a product review to discern if it reflects a happy experience or a negative one.
+- This task involves interpreting the feedback in product reviews. Categorize the reviews based on whether they convey enthusiasm and praise or disappointment and criticism.
+- Take time to understand different perspectives expressed in product reviews. Assess whether these perspectives highlight positives that customers enjoy or negatives that lead to dissatisfaction.
+- In this exercise, you are required to look at how reviewers feel about products and classify their feedback as either positive or negative depending on their sentiments.
+- Engage with written product feedback to classify it into good or bad categories by recognizing optimistic comments versus those that express criticism or disappointment.
+- Analyze written feedback about products and determine whether it reflects a beneficial impression or negative critique regarding user experience.
+- Assess the tone of each review and label it appropriately based on customer satisfaction, identifying good experiences and bad ones.
+- The task involves analyzing product reviews to determine their overall sentiment. You will identify if the reviews are favorable or critical in tone.
+- Analyze reviews for products and classify them based on whether they express approval or disapproval, focusing on key phrases that point to respectively good or bad experiences.
+- In this task, you will sift through written opinions on products to ascertain their quality based on the sentiment conveyed in each review.
+- Read through various product evaluations and classify them according to whether they illustrate a happy or disappointed customer perspective on their purchases.
+- Engage with written feedback on products and assess whether it leans towards praise indicating a good experience or criticism reflecting a bad experience.
+- Your challenge is to gauge the sentiment in various product reviews, classifying them as either positive (Good Review) or negative (Bad Review), based on how they describe the product's performance.
+- You will interpret and analyze reviews of products to establish each review’s tone, marking them as either good reviews that praise or bad reviews that criticize.
+- Assess product reviews for their emotional impact, classifying them into two categories based on whether they express joy and satisfaction or disappointment.
+- The task requires careful reading of product reviews to distinguish between positive feedback that rates products highly and negative commentary that suggests poor performance or quality issues.
+- After reading an English product review, identify if the feedback is generally positive or negative based on the writer's tone and word choice.
+- Evaluate customer feedback to identify whether it leans more towards praise or criticism of the products discussed.
+- Your task is to evaluate product reviews and classify them as Good or Bad based on their tone. A positive tone indicates a Good Review, while a negative tone suggests a Bad Review.
+- Your task is to analyze product reviews and decide if they are favorable or unfavorable. This involves identifying positive or negative language within the reviews.
+- Determine the overall stance in product reviews, separating those that highlight customer satisfaction from those indicating problems encountered.
+- In this evaluation task, focus on understanding the tone of customer feedback, labeling reviews based on whether they represent good experiences or bad ones.
+- Analyze various customer sentiments described in reviews to label them according to their positivity or negativity, understanding there are specific indicators for both perceptions.
+- For this task, analyze customer feedback on products thoroughly. Classifications should be made based on whether the review suggests a positive experience or highlights problems with the product.
+- Analyze the tone of a product review to classify it as either a good review, which expresses satisfaction, or a bad review, which indicates disappointment or criticism.
+- You will evaluate customer reviews to identify their overall sentiment, labeling them as positive if they express satisfaction and negative if they express dissatisfaction.
+- Review the feedback given on products and decide if the sentiment is supportive or critical. Your classification will help understand customer satisfaction levels.
+- Review customer comments on products to see if they convey positive emotions about their experiences or negative frustrations.
+- Read through product reviews carefully and differentiate between positive feedback and negative feedback. Your judgment should be based on the language used by the reviewer.
+- Analyze consumer assessments for products. Your role is to identify whether these assessments show positive sentiments related to satisfaction or negative feelings due to lack of satisfaction.
+- Your objective is to assess the given product reviews and label them as either good or bad, focusing on the emotional tone conveyed by the reviewer.
+- Analyze given product reviews and determine whether they reflect a satisfactory experience (Good Review) or an unsatisfactory one (Bad Review).
+- Analyze given product reviews, focusing on the sentiment expressed. Determine if the review reflects a good experience or a bad one.
+- Your task is to evaluate a product review and classify it as either positive or negative based on the tone of the language used.
+- Your goal is to categorize the review as positive or negative by considering how the writer feels about the product based on their comments.
+- In this task, you'll analyze a product review to identify if it reflects satisfaction or dissatisfaction. Look for keywords that signal the reviewer’s feelings.
+- Evaluate given product reviews by recognizing sentiments that denote appreciation or criticism, interpreting whether the overall impression of the product is good or bad.
+- Your responsibility is to read through several product reviews, assessing their nature. Decide if each review indicates consumer satisfaction (Good Review) or frustration (Bad Review).
+- Carefully assess each review for positivity or negativity by considering descriptive words and phrases that indicate how much the reviewer liked or disliked the item.
+- This task requires you to assess reviews for their emotional tone, analyzing whether they reflect praise for a product or dissatisfaction with it.
+- For each review, interpret whether it represents customer happiness or discontent with their purchase. Look for signs of approval versus criticism in their words.
+- Determine the general outlook provided in several product reviews. Identify which ones reflect satisfaction and which ones show dissatisfaction through their choice of words.
+- Analyze feedback on various products for sentiment and categorize it as positive for good experiences or negative for bad ones.
+- After examining an English product review, conclude whether it reflects a positive evaluation that celebrates the product’s attributes or a negative evaluation that reveals problems.
+- Evaluate the tone of product reviews and determine if they are categorized as good (positive) or bad (negative). Your conclusion should reflect the reviewer’s attitude toward the product.
+- Examine the provided product reviews closely, determining if each one conveys a generally happy or unhappy experience with the product.
+- Your task is to evaluate product reviews and label them as either positive or negative based on the tone used by the reviewer.
+- The task requires you to gauge the positivity or negativity reflected in an English-language product review and reach an assessment about its overall quality.
+- Scan through several English language critiques of products and judge them as either good or bad based on how well they reflect user satisfaction or dissatisfaction.
+- The assignment involves reviewing textual feedback about products and classifying each one as either good based on favorable remarks or bad based on complaints.
+- Assess reviews for products by identifying their emotional stance; indicate whether they are categorized as positive (good) or negative (bad).
+- Interpret product reviews to determine the customer's feelings—are they satisfied enough to recommend it, or are they upset and regretful?
+- In this task, you will read through consumer feedback and classify it as good or bad based on the reviewer’s expressed feelings about the product.
+- Your task is to evaluate product reviews and classify them as either positive or negative based on the tone of the language used.
+- Your role involves evaluating consumer opinions expressed in written reviews about products, identifying if they reflect a satisfied user’s perspective or an unsatisfied one.
+- Your task is to determine whether the feedback provided about the products is overall favorable or unfavorable, considering the feelings conveyed.
+- Evaluate interviews regarding products, looking for cues that indicate whether the reviewer had a positive experience or if they were unhappy with their purchase.
+- Determine the overall impression of a given product review by assessing whether it carries positive or negative sentiments about the product discussed.
+- The challenge involves interpreting reviews of products, discerning their sentiment to label them appropriately as either favorable reviews or unfavorable ones.
+- Read through reviews for various products and decide if they present an optimistic viewpoint regarding user experience or convey a pessimistic outlook filled with dissatisfaction.
+- Your responsibility is to judge product reviews by their tone, deciding if they present a positive impression of the item or highlight issues associated with it.
+- Assess written product feedback and judge if it reflects a satisfactory experience or an unsatisfactory one. This means paying attention to specific words that indicate approval or disappointment.
+- Categorize the sentiment found within customer evaluations of products, distinguishing between those that appreciate a product’s qualities and those that express frustration with its flaws.
+- Your task is to read a product review and decide whether it expresses a positive or negative opinion about the product.
+- Identify the reception a particular product has by reading through associated customer reviews, deciding if they reflect a favorable attitude or a negative outlook on quality and performance.
+- Analyze customer product evaluations to decide which ones are solid endorsements of products and which ones express dissatisfaction, focusing on emotional expressions present in the text.
+- Your job is to look at reviews of products and distinguish between favorable opinions and critical remarks, assessing language that signals each type of feedback.
+- Read the provided product review carefully and decide whether the overall sentiment is good or bad based on the tone and language used by the reviewer.
+- For this task, you will be examining English language reviews. Your goal is to discern the attitude of the reviewer towards the product—whether their remarks are favorable or unfavorable.
+- Utilize your comprehension of natural language to assess consumer reviews about products, categorizing them as positive or negative based on emotional tone and context.
+- This task promotes critical reading skills by requiring you to evaluate various product reviews for sentiments, ultimately deciding if they indicate customer satisfaction or frustration.
+- You are tasked with evaluating written feedback on products to categorize them as either Good Reviews or Bad Reviews. Pay attention to the overall tone and message from the reviewer.
+- Assess given product feedback to judge its sentiment—decide if the reviewer had a favorable experience worth recommending or an unfavorable one.
+- Your goal is to assess the emotional tone of customer product reviews. Identify whether the review reflects a good experience or a bad one.
+- Determine the sentiment of each provided product review by analyzing how positively or negatively the author feels about their experience with the product.
+- Given a product review, pinpoint whether it can be classified as positive (good) or negative (bad) by evaluating the reviewer’s comments and attitudes expressed.
+- Your job is to evaluate the emotional tone of product reviews and decide if they convey approval or disapproval.
+- You need to sift through English language product reviews and evaluate their quality based on the sentiment expressed—positive or negative.
+- You will be categorizing English product reviews by analyzing their emotional undertone and deciding if they signify approval or disapproval of the product being reviewed.
+- You need to review product feedback and determine whether each review reflects a positive or negative experience. Use your understanding of tone and sentiment.
+- Review customer responses regarding products, determining if they exhibit praise (good review) or complaints (bad review), guided by your understanding of sentiment analysis.
+- Evaluate each product review to classify it as either a Good Review or a Bad Review, focusing on the emotional tone and content of the review provided.
+- Your task is to sift through customer feedback and classify their impressions as either positive or negative. This requires understanding context and emotional indicators in their writing.
+- Seize the opportunity to analyze product feedback, where your challenge is to place each review into one of two categories—good review or bad review—based on emotional cues.
+- Read through different customer evaluations of items and determine whether they reflect a sense of enjoyment from using the product or disappointment.
+- Here, you will read through customer evaluations of products, determining which ones express admiration for quality and which highlight shortcomings.
+- Analyze the sentiment of given product reviews to determine if they reflect a favorable or unfavorable opinion about the product.
+- Your job involves examining how satisfied customers are with their purchases through their reviews, categorizing responses into good or bad based on expressed sentiments.
+- Your objective is to sift through product reviews and determine their classification based on tone. Identify whether the expression is one of satisfaction (Good Review) or disappointment (Bad Review).
+- Classify each English-language product review into two categories—Good Review if it's positive, Bad Review if it's negative—based on how the reviewer describes their experience.
+- Read through a product review and determine its tone. Classify it as either a Good Review for positive sentiments or a Bad Review for negative sentiments.
+- Interpret the content of various product reviews and categorize them into 'Good Review' or 'Bad Review' classifications depending on the tone and sentiment conveyed.
+- You are expected to evaluate critiques made by customers about various items and categorize them as good or bad, based on whether they convey positivity or negativity in their feedback.
+- Classify product reviews as ‘Good’ or ‘Bad’ by evaluating the tone of each review. This involves understanding nuances in language that convey satisfaction or dissatisfaction.
+- This task involves interpreting the language and feelings in a product review to decide if it is favorable or unfavorable towards the product.
+- Examine the tone of various product reviews and classify them as good or bad, depending on whether the reviewer expresses satisfaction or dissatisfaction with the product.
+- Study the content of various product reviews to classify them according to whether they carry an optimistic tone signaling approval or a pessimistic tone indicating discontent.
+- Your assignment is to sift through product reviews and classify them as good or bad, based on whether they signal approval or discontent with the product.
+- Dissect product reviews for sentiments, identifying if the feedback is mostly good, showing satisfaction, or bad, indicating disappointment or issues with the item.
+- Study the content of various product reviews closely and label them based on their emotional tone—recognizing the difference between commendatory and critical feedback.
+- 'Examine the language used in the product reviews to classify them into two groups: those that express contentment and those that reveal disappointment.'
+- Evaluate a product review's content and tone to classify it as good if it communicates satisfaction, or bad if it expresses discontentment.
+- This task entails examining customer feedback to classify it as good or bad by interpreting the sentiments expressed in relation to product performance or satisfaction.
+- Your responsibility is to analyze customer reviews for their sentiment. Distinguish between those that reflect approval versus those that indicate dissatisfaction.
+- In this exercise, you'll delve into consumer reviews to judge whether they convey a positive sentiment towards a product or express dissatisfaction and complaints.
+- Your objective is to interpret customer feedback on products, deciding if their comments represent a good review with positivity or a bad review marked by criticisms.
+- Your task is to read and analyze reviews for various products to identify their sentiment, which can either show approval or disapproval.
+- Your responsibility is to sift through user feedback about products and determine whether they carry a positive tone that suggests approval or a negative tone that suggests discontent.
+- You are tasked with assessing product reviews to classify them as either positive or negative based on their tone.
+- Assess the sentiment expressed in customer feedback regarding products and classify these sentiments as either favorable (good reviews) or unfavorable (bad reviews).
+- Your job is to read through product evaluations and determine if they are predominantly positive in nature or highlight issues and displeasure with the product.
+- Examine the tone of product reviews to judge if the reviewer had a positive experience or a negative one, marking them as good or bad reviews.
+- This task requires you to evaluate sentiment in product reviews, identifying whether they are expressing enjoyment of the item or facing issues with it.
+- The key assignment here involves assessing various product statements from customers. You'll categorize these statements based on whether they are supportive of the product or critical of it.
+- The assignment involves reviewing customer feedback on products. You will categorize each review according to its emotional tone, deciding if it is Good or Bad.
+- Your job is to interpret product reviews by evaluating their tone and determining if they indicate a good impression or an unhappy experience.
+- Assess English language product reviews to classify them according to sentiment—recognizing uplifting remarks as good and critical remarks as bad reviews based on overall impressions.
+- Your role is to gauge the overall sentiment in provided reviews to state whether they portray an appreciative view of a product or highlight shortcomings.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task929_products_reviews_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task929_products_reviews_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

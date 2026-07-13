@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Listen closely to the dialogue provided and identify moments when one party touts equality but may really be negotiating from a position of self-interest.
+- Your task is to interpret discussions about resource sharing and identify moments where an utterance indicates a self-interested approach to fairness.
+- The project requires listening closely to exchanges about sharing resources and discerning if any responses hint at invoking fairness merely for selfish reasons—a hallmark of vouch-fair negotiation strategies.
+- Evaluate statements made during discussions about camp resources and determine if they incorporate tactics suggesting that one party is seeking beneficial outcomes disguised as fairness.
+- Analyze past conversations that reflect a supply negotiation. Identify if comments made are related to a strategy that prioritizes one person's needs under the guise of fairness.
+- You will look through conversations between two campers discussing supplies to evaluate whether an utterance suggests that an individual is leveraging fairness to secure a better deal for themselves.
+- Evaluate the given dialogues to see if they exhibit characteristics of the vouch-fair strategy, where one party highlights fairness while primarily looking out for their own interests.
+- The focus of this task is to detect underlying motives in negotiation conversations, particularly looking for moments where fairness claims serve a selfish agenda to sway outcomes.
+- Your mission is to pick out comments within camping negotiations that exhibit a self-serving interpretation of fairness, indicating the use of a vouch-fair strategy.
+- In negotiating conversations, recognize and highlight instances where mention of fair practices might actually conceal self-serving strategies; this assessment revolves around detecting vouch-fair nuances in discussions.
+- Analyze the provided conversational context and determine whether specific statements are indicative of a strategy aimed at benefiting oneself while invoking notions of fairness.
+- You will engage in understanding the dynamics of bargaining over camping resources by identifying when someone uses fairness as a negotiable stance for their benefit.
+- Analyze conversations about camping supplies, identifying if specific remarks showcase a strategy that blends an appeal to fairness with underlying self-interest motives.
+- The assignment entails scrutinizing negotiator exchanges to unveil when one participant attempts to highlight fairness while simultaneously enhancing their own advantages in resource allocation.
+- Your role is to interpret dialogue contexts by identifying vouch-fair strategy usage, searching for statements that imply an unfair leveraging of perceived equity during negotiations.
+- Assess the provided dialogue exchanges for signs of a negotiation strategy where one participant claims fairness, potentially manipulating the situation to their advantage.
+- Your role requires you to discern whether an utterance incorporates vouch-fair tactics within discussions of resource sharing among camping participants.
+- The objective here is to classify utterances based on whether they reflect a strategy that intertwines self-benefit with calls for equitable treatment in resource bargaining discussions.
+- Evaluate spoken exchanges centered on resource sharing and identify instances where participants leverage claims of fairness to gain an advantage in negotiation outcomes.
+- The objective is to evaluate statements made in negotiation contexts and identify if they utilize a fairness approach that is ultimately self-serving.
+- You will analyze dialogue exchanges involving resource negotiations at a campsite, seeking indications that signals of fairness are used manipulatively in the context provided.
+- Engage with conversational exchanges to evaluate if utterances suggest a manipulation of fairness, where one party aims to assert their needs under the pretense of equitable practice.
+- The challenge focuses on interpreting discussions about camping provisions and recognizing when assertions regarding fairness are employed strategically for personal gain.
+- In this task, you will evaluate conversations about camping essentials for psychological patterns that suggest a selfish negotiation strategy aimed at personal gain.
+- In this exercise, focus on discerning whether a camper's statement about fairness truly demonstrates concern for equity or rather seeks an opportunistic edge in negotiations.
+- Your task is to evaluate statements from a negotiation between two parties. Focus on identifying whether the statements utilize a strategy that emphasizes fairness to benefit oneself, known as vouch-fair.
+- The goal is to scrutinize negotiation talks for indicators of the vouch-fair strategy, where one negotiator may mask their self-interest under the guise of fairness.
+- This task involves combing through dialogue exchanges about sharing food, water, and firewood, pinpointing expressions that may reveal selfish calls for fairness.
+- Your objective here is to decode the language used in negotiation dialogues and identify whether an utterance makes use of fair appeals as a means to serve individual interests.
+- The task involves evaluating sentences from negotiation interactions to see if they imply that one party is leveraging fairness for their own benefit in the context of resource sharing.
+- Review conversational exchanges around resource negotiation and determine if particular statements reflect an inclination towards exploiting perceptions of fairness for personal gain.
+- Analyze a series of conversations regarding resource sharing among camping neighbors. Identify statements that use fairness as a ploy for individual advantage.
+- You are presented with snippets from negotiations where individuals discuss sharing resources. Identify moments when they might use fair-sounding language as a cover for self-serving intentions.
+- The assignment revolves around understanding interpersonal dialogue and recognizing when strategies are employed for selfish ends masked as fairness.
+- Evaluate a series of negotiation statements from individuals discussing shared resources. Identify those that reflect the vouch-fair strategy, focusing on self-benefit masked as fair bargaining.
+- Your job is to assess dialogue snippets from negotiations and discern whether the utterance indicates a self-interested calling out of fairness in the discussion.
+- This task asks you to read through negotiation dialogues and recognize instances where one party may be leveraging talk of fairness to enhance their own position in the deal.
+- This task requires careful reading of conversational exchanges to spot explicit or implied calls for fair treatment that ultimately benefit the speaker.
+- Your job is to observe dialogues where two campers are negotiating resources and pinpoint whether any statement reveals a tactical use of fairness aimed at gaining an advantage in the negotiation.
+- You will sift through dialogue interactions to assess whether statements made by the participants hint at self-serving motivations disguised as appeals for fairness in their negotiations.
+- In this exercise, you will compare utterances in negotiations, focusing on whether the vouch-fair strategy is present, marked by claims of fairness linked to individual preferences.
+- You will analyze negotiation dialogue to check if any statements demonstrate a self-serving interpretation of fairness, which is characteristic of the vouch-fair strategy.
+- Analyze negotiations between two characters discussing food and resources, identifying if any utterances employ a strategy that leverages the concept of fairness for selfish purposes.
+- Examine negotiation interactions related to camping supplies and ascertain whether any comments reflect an underlying self-interest through a vouch-fair lens.
+- Examine the dialogue for clues about participants' negotiation techniques, focusing particularly on discerning when they express concerns about fairness as a means of fulfilling personal desires.
+- You need to distinguish between genuine negotiation terms and those that reflect a push for personal advantage under the guise of fairness.
+- You will analyze negotiation exchanges about limited resources. Your task is to determine whether any utterance showcases a tactical approach that emphasizes self-advantage under the guise of fairness.
+- Explore the back-and-forth exchanges arising from negotiations on camping supplies and identify patterns of using fairness as a cover for selfish objectives in discussions.
+- The job entails sifting through dialogue snippets and recognizing when individuals leverage fairness claims to negotiate their needs more favorably.
+- Analyze the content of conversations focused on dividing resources among campers. Determine whether alluded ideas of fairness are genuine or if they reflect a strategic maneuver designed for personal advantage.
+- Your mission is to detect the use of fair-sounding language in negotiations that serves primarily to benefit one party more than the other.
+- You are tasked with evaluating dialogues from a negotiation scenario to pinpoint when a participant employs the vouch-fair strategy, which highlights their personal benefit while framing it as a fair deal.
+- The focus of this task is on scrutinizing negotiations for signs of tactical communication where one party references fairness while pushing their self-interests in the deal.
+- This task requires you to assess negotiation exchanges and detect whether a participant is manipulating fairness for selfish gain through their utterances.
+- Your role is to evaluate interactions between negotiators focusing on food, water, and firewood, identifying when one participant resorts to tactics that call out fairness for personal gain.
+- Dissect the nuances in conversations about sharing camping necessities, focusing on whether any responses exhibit the vouch-fair strategy, cleverly invoking notions of fairness for personal gain.
+- You need to assess statements made in negotiations over campsite resources and determine if they include components of the vouch-fair approach driven by personal motivations.
+- Analyze exchanges regarding camping supplies and identify if a participant is using tactics that emphasize fairness for their own advantage.
+- The goal is to analyze a series of conversations between campers negotiating for resources. You will determine if any given utterance employs the vouch-fair strategy, which seeks to highlight fairness in a way that serves personal interests.
+- The goal is to critically engage with negotiation dialogues and figure out if participants invoke fairness with underlying motives designed for personal gain.
+- Your role is to assess negotiation exchanges between two camping participants. You need to identify statements that indicate the speaker is leveraging perceived fairness for their advantage.
+- You need to evaluate contributions within negotiated discussions among campers and detect when individuals might invoke fairness solely for personal gain rather than cooperation.
+- You will review conversations between two people negotiating for essential camp supplies and determine if someone's statement reflects a selfish approach to fairness.
+- Review the negotiation context between two individuals sharing food, water, and firewood, and highlight whether any utterance shows a vouch-fair tactic.
+- In this task, observe negotiation dialogues and look for instances where one participant’s call for fairness aligns more with self-interest than with an actual equitable exchange.
+- You will be looking at negotiation dialogues where two parties discuss campsite needs, specifically gauging when one side attempts to invoke fairness for personal gain.
+- The task involves analyzing dialogue from a negotiation scenario to identify the use of a specific selfish strategy known as the vouch-fair strategy. You need to determine if an utterance reflects this behavior by calling out fairness for personal gain.
+- Your task is to examine dialogues representing trades and negotiations, particularly focusing on spotting language referencing fairness that might align with self-interested strategies recognized as vouch-fair behavior.
+- Analyze dialogues in a camping negotiation context to pinpoint language indicating when one speaker appeals to fairness in a way that benefits themselves more than others.
+- Evaluate the context of negotiations about resources between two individuals. Determine if there are characteristics indicating the use of fair talk aimed at gaining an advantage.
+- Your task is to evaluate dialogue exchanges related to a negotiation scenario and identify the presence of a specific negotiation tactic known as the vouch-fair strategy.
+- Your role is to evaluate statements made during a negotiation and identify if they reflect a strategy where one person points out fairness to gain more benefits for themselves. This involves understanding the context and past dialogues.
+- Trace through negotiations captured in dialogue and find instances where appeals to fairness mask ulterior motives benefiting one participant over the other.
+- The task involves analyzing a negotiation dialogue to identify a specific negotiation tactic known as 'vouch-fair.' You will determine if the statements contain elements that reflect personal benefit under the guise of fairness.
+- Your role is to assess dialogues regarding camping resources to see if they employ a negotiation strategy rooted in calling out fairness to secure an advantage for oneself.
+- Delve into interactions between negotiators and uncover instances where fairness is championed not out of genuine concern but rather as a tactic for personal gain.
+- You are tasked with interpreting interactions in resource negotiations, determining when participants utilize fairness rhetoric as a tactic to enhance their position.
+- This task involves evaluating dialogue excerpts from campers discussing their needs. Assess if any statement indicates the speaker is using fairness as a cover for self-serving intentions.
+- The job requires you to thoughtfully scrutinize dialogues about resource sharing in nature's setting and assess whether mentions of fair agreements serve self-serving objectives.
+- Examine interactional dynamics in campsite negotiations and identify any verbal cues signaling an appeal to 'fairness' that is secretly self-serving in nature.
+- Analyze the negotiation dialogue provided and determine if any speaker utilizes language reflecting fair practices that ultimately serve their own benefit over genuine collaboration.
+- Your responsibility is to interpret exchanges about essential resources and determine if any participant strategically highlights fairness to enhance their own standing in the negotiation.
+- The goal is to scrutinize conversational snippets where neighbors negotiate their needs. Spot instances of the vouch-fair strategy, indicating a skewed sense of fairness aimed at personal benefit.
+- You will analyze conversations in a camping context focused on resource negotiation. Determine if an utterance uses a tactic that emphasizes fairness to benefit the speaker.
+- You will review a series of interactions during a negotiation process and decide if any statement contains elements of the vouch-fair strategy, which emphasizes fairness for personal benefit.
+- This task requires you to listen to dialogues where two individuals discuss resources like food and firewood. Look for instances where one participant appeals to fairness while secretly aiming for more for themselves.
+- Focus your analysis on dialogues between negotiating parties about food and other necessities to uncover moments of vouch-fair strategies in their exchanges.
+- Engage with the text from negotiations between campsite neighbors, focusing on identifying any language that suggests one party is calling for fairness in response to their own needs.
+- Assess dialogues from a negotiation context, focusing on whether the language used by participants suggests they are leveraging fairness as part of a self-serving negotiation tactic called vouch-fair.
+- Your task is to assess statements made in negotiating contexts about resource allocation and indicate if any reveal manipulative tendencies framed within claims of fairness.
+- Examine interactions between two individuals discussing camping supplies. The task requires you to discern whether specific statements reflect a self-serving negotiation strategy called vouch-fair.
+- Assess conversational context between two campers discussing supplies with the aim of detecting when references to fairness are strategically employed for selfish outcomes.
+- You'll analyze how campers discuss their needs and discern when their claims of fairness are strategically directed towards gaining an advantage in resources.
+- The task involves analyzing a negotiation dialogue to identify selfish behaviors relating to fairness, called the vouch-fair strategy.
+- Your objective is to investigate whether statements made during negotiation interactions reflect a tactic of insisting on fair treatment that benefits one party over the other.
+- This task requires an understanding of negotiation principles in social interactions, particularly how participants may attempt to frame conversations around equity for self-advantage.
+- Your attention will be on spotting manipulative strategies in negotiations about camping supplies, specifically when individuals invoke fairness while trying to secure better deals for themselves.
+- Your job is to sift for specific phrases or strategies within a negotiation context involving food and supplies at a campsite, particularly identifying self-serving fairness appeals.
+- The task requires scrutinizing a negotiation dialogue in which individuals discuss resource allocation. You must pinpoint when one or more participants invoke fairness as a means of advancing their own interests.
+- Your goal is to sift through dialogue snippets from campsites where neighbors negotiate supplies and decide if the remarks reveal a tendency to prioritize self-interest under the pretense of fairness.
+- Analyze conversation parts from two campers discussing essential supplies to conclude if one expresses fairness in their offers but ultimately seeks more benefit for themselves.
+- The goal is to parse through dialogues regarding resource negotiations and detect when participants refer to fairness in ways that could suggest self-serving intentions characteristic of the vouch-fair approach.
+- You will inspect sentences exchanged during resource negotiations to determine if they contain indications of a selfish strategy couched in concepts of fair trade.
+- Your task involves examining communication snippets from a negotiation context and recognizing if any portion encompasses the vouch-fair tactic aimed at self-serving purposes.
+- Your objective is to identify instances where one negotiator calls out fairness not for equitable reasons, but to manipulate the situation in their favor during discussions about resources.
+- This task requires you to listen to negotiation exchanges and recognize when a participant references fairness in a way that benefits themselves, revealing the selfish aspect of their strategy.
+- This task involves checking how communication unfolds in resource negotiations and assessing points where individuals may exploit notions of fairness for their own benefit.
+- Your task is to analyze negotiation dialogues to identify if a specific negotiation strategy, known as vouch-fair, is present. This strategy focuses on fairness, often for personal gain.
+- You will scrutinize the interactions between two participants in a negotiation about camping supplies. Look for signs of employing vouch-fair tactics to benefit oneself while appearing reasonable.
+- You are given snippets of negotiations about sharing resources like food and water. Your job is to detect if the utterance reflects a selfish strategy concerning fairness.
+- Your analysis will focus on spotting references in negotiations that might suggest a participant is advocating for equal treatment when it really serves their individual interests.
+- In this task, the goal is to identify whether participants in negotiations are invoking fairness under circumstances that primarily serve their own objectives rather than true equity.
+- Review dialogue from participants involved in sharing camping supplies and discern whether their statements point towards a strategy that calls for fairness while actually serving their interests.
+- During this task, you will analyze the context of negotiations about camping supplies and look for instances of the vouch-fair strategy reflected in the participants' statements.
+- Your objective is to review dialogue exchanges where campers negotiate their resource needs and determine if someone is employing the concept of fairness manipulatively.
+- You will assess dialogues between two campers, focusing on how they express concerns over fairness either implicitly or explicitly for their own benefit.
+- Evaluate negotiations occurring between individuals, focusing on dialogue that seeks to frame agreements in terms of fairness while possibly masking self-interest; this relates directly to the concept of vouch-fair.
+- This task involves listening closely to a dialogue about resource negotiation. You must discern whether one speaker hints at fairness in a way that serves their interests.
+- This task consists of assessing conversations to find instances where one camper uses a selfish approach to negotiating resources while emphasizing fairness in their communication.
+- Pay attention to the dynamics of negotiation in resource distribution for camping and spot instances where an individual might disguise self-interest behind a fair appeal.
+- This task involves observing negotiation dialogues to detect when participants utilize claims of fairness strategically, often as a means of advancing their own interests at another's expense.
+- In this task, identify how conversational strategies involving fairness are employed in negotiations over limited camping supplies, particularly focusing on expressions rooted in self-interest.
+- This task requires you to investigate interaction patterns during negotiations for resources. Look for cues that suggest one party is leveraging notions of fairness selfishly.
+- Evaluate the given statements within displacement contexts of food and general resources among campers and check for strategic calls for fairness that lean towards personal advantage.
+- You are asked to investigate negotiations regarding essential campsite resources. Focus on spotting language that suggests one party is pushing for fairness primarily for personal gain.
+- The task centers on understanding negotiation strategies within conversations and identifying statements that pertain to the tactic of vouch-fair, by examining their implications for selfishness.
+- As part of the task, you will examine negotiation dialogues for underlying strategies where a participant hints at fairness while actually trying to benefit themselves.
+- In this task, you'll review negotiation excerpts to see if they exhibit a particular behavior where one participant references fairness but is actually aiming to benefit themselves.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task359_casino_classification_negotiation_vouch_fair
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task359_casino_classification_negotiation_vouch_fair
+user_prompt_template: '{task_def}
+
+
+  {problem}'

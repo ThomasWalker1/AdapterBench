@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Solve straightforward queries by identifying notable names, dates, or facts that are relevant to the asked question.
+- The task consists of answering straightforward questions by sharing relevant facts shortly and concisely.
+- Your task involves answering factual questions concisely. You need to recall and provide specific information based on a wide range of topics.
+- You need to deliver quick, factual responses to various inquiries, ensuring clarity and precision in your answers.
+- You will respond to inquiries by supplying succinct answers derived from existing factual information, emphasizing clarity and precision.
+- Respond to open-domain questions by presenting short factual responses that signify a solid grasp of general knowledge.
+- For each query, your job is to summarize the answer succinctly, focusing on key facts or entities.
+- Your task is to provide concise answers to open-ended questions based on factual knowledge.
+- The objective is to answer different types of factual inquiries with clear and concise replies.
+- This task expects you to deliver brief answers that contain essential information regarding a variety of topics.
+- This task requires you to provide succinct information in response to questions, reflecting your ability to draw from factual knowledge across multiple domains.
+- Your job centers around processing open-domain questions accurately and responding with short yet informative answers based on facts.
+- Responding accurately to factual inquiries is crucial in this task, requiring a good grasp of various subjects and the ability to condense knowledge.
+- Answer a series of general knowledge questions with succinct replies that showcase your ability to recall important facts effectively.
+- Your mission is to answer open-ended questions factually and briefly, reflecting an efficient grasp of diverse content areas.
+- Your responsibility is to distill questions into simple answers that convey the necessary information clearly and efficiently.
+- The exercise revolves around supplying brief responses that fully satisfy the information requests posed by fact-based queries.
+- Your task is to distill complex information into brief answers that address specific queries with relevant facts.
+- This task centers around delivering succinct answers that address direct questions about notable events or people.
+- Deliver short answers to a variety of inquiries, relying on your recall of known facts and data for accurate responses.
+- Your task is to provide short, precise answers to a variety of straightforward questions that rely on factual information.
+- Your mission is to accurately convey essential information in response to provided inquiries while keeping your answers short and focused.
+- Respond accurately and briefly to questions rooted in factual inquiry while employing your understanding of various topics effectively.
+- Provide short answers to straightforward questions that demand factual knowledge across several fields.
+- Your task involves providing concise factual answers to general knowledge questions without elaboration.
+- This exercise requires you to articulate compact responses to open-ended inquiries using clear and factual information relevant to each question.
+- Deliver concise replies that reflect your familiarity with general knowledge, fulfilling the requirements of each question raised.
+- Answer a variety of questions with a focus on clarity and conciseness, utilizing your background knowledge across different fields.
+- Your challenge is to condense the essence of open-ended questions into crisp, factual statements.
+- The task consists of providing quick replies to questions that test your familiarity with general knowledge topics.
+- This task challenges you to provide concise responses to diverse factual inquiries while maintaining clarity and accuracy.
+- Use your general knowledge and understanding of key topics to deliver focused answers in a few words.
+- You will be asked questions that seek factual data, and your responsibility is to present short and accurate answers without elaboration.
+- Your challenge is to identify significant facts related to presented questions and articulate them clearly in a few words.
+- The challenge lies in providing accurate and brief answers to questions that cover many themes, ensuring clarity while showcasing your expertise.
+- You will respond to general knowledge questions with brief answers, demonstrating your ability to recall specific facts or entities.
+- You will process questions that require factual responses, delivering short answers that capture the essence of the information requested.
+- This task requires you to quickly recall and state key facts in response to queries from a range of subjects.
+- Provide short answers to factual inquiries, showcasing your understanding of different topics while keeping responses clear and simple.
+- You will encounter a variety of factual questions, and your job is to reply with minimal yet informative answers.
+- Engage in a task where you'll need to quickly provide exact answers based on verifiable data from multiple areas of study.
+- Your role is to respond to straightforward questions with concise answers that reflect factual information found in history, literature, or general knowledge.
+- The task is centered on retrieving essential factual information and presenting it in a simplified format as responses to diverse queries.
+- Your goal is to respond succinctly to open-domain queries with clear factual insights while avoiding long explanations or superfluous detail.
+- You will answer factual open-domain questions with concise responses based on your knowledge and understanding of various topics.
+- Engage with open-domain questions by offering brief responses that convey clear and accurate information on each subject.
+- Gather relevant facts to respond to questions accurately and succinctly, based on your understanding of various subjects.
+- Provide short responses that directly answer questions, utilizing your background knowledge and understanding of common facts.
+- The goal is to respond to open-domain inquiries with short, fact-based answers, relying on your understanding of different topics.
+- Engage with open-domain inquiries where your ability to recall and relate factual answers is essential.
+- Respond to queries by condensing information into short phrases or words related to factual concepts or entities in common knowledge.
+- Answer questions based purely on known information without additional context or explanation, keeping it brief.
+- You will encounter a variety of questions requiring clear and brief responses based on known facts.
+- In this challenge, your job is to give direct answers to questions using a few words, ensuring that your responses remain relevant and fact-based.
+- You are responsible for answering varied factual questions, focusing on providing information succinctly without elaboration.
+- Your objective is to quickly identify and articulate factual answers to given questions, leveraging your general knowledge base for accuracy.
+- The task requires you to resolve common queries with short answers, emphasizing immediate factual responses without extra details.
+- Tasked with responding to open-domain questions, you will draw upon your knowledge to provide effective answers in a minimal format.
+- Your job is to extract key information from open-ended questions and present it in a clear and direct manner.
+- Your task is to answer straightforward questions by providing factual information concisely.
+- The task entails giving quick, factual answers to various inquiries that span multiple domains of knowledge.
+- This task requires you to deliver accurate and succinct responses to questions that can be answered through established knowledge.
+- The goal of this task is to deliver straightforward responses to questions, drawing from your knowledge of general information and facts.
+- This task entails answering queries based on facts and established knowledge while maintaining brevity in your responses.
+- Quick recall of factual data is vital as you answer questions, ensuring that your responses are both brief and informative.
+- Engage with factual questions by utilizing your existing knowledge base to supply brief and pertinent answers.
+- The objective is to deliver accurate and brief answers to varied queries based on your wide-ranging knowledge of the world.
+- You will engage with questions across various topics and deliver concise answers that reflect your understanding and retention of facts.
+- In this activity, you will respond to open-ended inquiries by offering short, clear answers that are based on factual knowledge.
+- You are asked to recall specific facts or names in response to straightforward inquiries.
+- Respond to various queries by supplying accurate and succinct answers based on your factual knowledge.
+- For every inquiry, concentrate on delivering factual responses in a brief format that conveys essential details effectively.
+- The objective is to extract relevant information from your understanding of different subjects and articulate it succinctly.
+- You are expected to respond to open-domain questions by summarizing information into brief but informative statements.
+- Your objective is to directly answer open-domain questions with quick responses that highlight essential information related to the inquiry.
+- This task is about succinctly addressing inquiries with accurate information based on previous knowledge in a variety of areas.
+- This task tests your ability to summarise complex questions into simple, factual statements.
+- Your assignment involves engaging with general knowledge questions by providing quick and relevant information extracts.
+- Respond efficiently to inquiries requiring factual knowledge, ensuring your answers are as brief as possible.
+- This task involves providing brief and precise answers to open-domain questions that can be answered with established facts.
+- Provide concise answers to various questions based on factual information, showcasing your knowledge across different fields.
+- You will tackle questions related to historical events, literature, or terminology, requiring you to summarize important facts succinctly.
+- Provide succinct answers to a series of questions asking for specific information, drawing from your understanding of common knowledge.
+- Engage with diverse topics by converting open-domain questions into brief factual statements that capture the core information needed.
+- This role involves extracting essential information from a question and replying with the most relevant answer using minimal words.
+- Tackle general knowledge questions by pinpointing relevant facts or names that pertain to the inquiry presented.
+- In this task, provide little but powerful responses that directly address the given questions based on your knowledge base.
+- Your mission is to answer diverse factual questions with succinct replies that encapsulate the essential truth sought.
+- You are expected to provide short factual responses based on the open-ended questions given, highlighting your informational awareness and precision.
+- Respond accurately and briefly to a series of open-ended questions requiring factual details from diverse areas of knowledge.
+- The objective here is to efficiently answer factual questions with concise statements that summarize relevant details.
+- The goal is to understand and respond accurately to questions with short, fact-based answers that convey essential details.
+- Respond to open-ended queries by identifying key information and expressing it concisely.
+- You are tasked with responding to direct inquiries with concise answers that effectively convey the requested information.
+- In this task, you must demonstrate your understanding of various facts by providing brief responses to open-domain inquiries.
+- Answer an array of factual questions using short, straightforward responses that demonstrate your understanding of the topic at hand.
+- You will be asked factual questions, and your responsibility is to respond with concise and accurate information.
+- Answer factual questions in a brief manner, showcasing your ability to recall pertinent details without elaboration.
+- Respond to factual inquiries by supplying short, precise answers that reflect your understanding of various topics.
+- The job requires you to quickly deliver precise answers to open-ended questions, relying on your knowledge of various subjects.
+- Your responsibility is to take questions from different areas of knowledge and respond with brief yet precise answers.
+- The objective is to deliver short answers to questions that seek factual clarity on various topics.
+- The goal is to summarize essential information into concise answers for well-defined questions drawn from broad ranges of knowledge.
+- Your task is to answer straightforward questions by providing brief, factual responses drawn from your knowledge.
+- Focus on delivering precise and clear answers to questions that concern various domains of knowledge.
+- Provide brief answers to straightforward questions based on factual data, showcasing your ability to convey information efficiently.
+- The objective is to answer general knowledge questions efficiently, focusing exclusively on the key information needed.
+- In this assignment, you must succinctly respond to open-domain questions, prioritizing factual accuracy and brevity.
+- Your task is to provide concise, factual answers to various questions based on general knowledge.
+- Engage with questions that require factual knowledge and produce clear and short answers focused on the main points.
+- You will provide straight-to-the-point answers to a variety of questions, highlighting your knowledge across different subjects.
+- This prompt invites you to apply your knowledge base effectively by generating quick answers to fact-based inquiries.
+- You are tasked with summarizing responses in a short form based on the underlying concepts of the given questions.
+- Engage with open-domain questions by supplying brief factual replies that demonstrate your understanding and recall of various subjects.
+- This task requires concise communication skills as you will answer factual inquiries in a manner that is straightforward and informative.
+- You will need to recognize the specific information requested in factual questions and articulate the answer clearly and briefly.
+- The focus of this task is on accuracy and brevity in delivering answers to open-ended questions that seek factual data.
+- The task involves answering straightforward questions with brief responses, relying on your knowledge of important facts and figures.
+- Utilize your breadth of knowledge to distill responses for a range of inquiries into straightforward facts or boolean expressions.
+- You are required to provide brief answers to specific questions, utilizing your understanding of various topics to convey essential facts.
+- Engage with distinct questions and formulate precise responses that effectively communicate the requested information.
+- Your role involves quickly retrieving and expressing factual data in response to specific queries.
+- The activity focuses on answering straightforward questions with brief, fact-based replies without additional context or elaboration.
+- In this role, your capability to remember and convey concise information will be tested as you respond to straightforward questions.
+- The task centers around providing quick and accurate responses to factual questions across various areas of interest.
+- This task involves crafting short, informative answers in reaction to various straightforward questions about well-known topics.
+- Your role involves succinctly addressing factual inquiries while demonstrating an ability to recall and present correct information promptly.
+- Deliver concise responses that accurately reflect the information requested in a variety of general knowledge domains.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task582_naturalquestion_answer_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task582_naturalquestion_answer_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

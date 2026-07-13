@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your responsibility is to critically engage with an established scenario and its associated hypothesis. Assess whether additional context supports or challenges the initial inference presented.
+- The task involves analyzing a premise and a hypothesis, along with additional information, to determine if the update supports or contradicts the hypothesis.
+- Focus on assessing changes in belief systems when faced with new evidence related to an initial real-world scenario and its inferred conclusions.
+- You are tasked with interpreting how additional context from an update might clarify or confuse your belief in a given hypothesis based on an initial premise.
+- Your task centers around interpreting descriptions of events and considering the effects of supplementary information on the validity of inferred conclusions.
+- Your focus will be on understanding how updates modify initial assumptions about a situation, evaluating if they add credibility or cast doubt on those assumptions.
+- The objective here is to identify shifts in understanding as new contexts are introduced regarding previously made inferences about general situations presented in statements.
+- Your task is to evaluate a premise and a hypothesis based on an update. You need to determine whether the update makes the hypothesis more likely or less likely to be true.
+- This task centers around assessing implied truths within given statements about real-world events and considering how extra information harmonizes or clashes with those implications.
+- This task involves interpreting a scenario and an assumption about it. You will judge whether new information supports or contradicts the assumption.
+- In this analysis, you will consider the impact of new information on a pre-existing assumption about a situation, discarding any biases while focusing solely on logical implications.
+- Your task involves evaluating a real-world scenario and understanding the implications of an inference made about that situation. You'll assess additional information to determine whether it supports or undermines the inference.
+- To complete this task, you must consider a scenario and an inference derived from it. The additional statement will help you judge whether it supports the assumption or casts doubt on it.
+- You will be working with premises that portray situations, drawing potential conclusions from them, and then reassessing those conclusions in light of new information.
+- Engage critically with provided real-world contexts to grasp underlying assumptions. Then analyze any further details available for their effect on those assumptions' viability.
+- This activity involves examining how supplemental insights align or conflict with hypothesized conclusions drawn from scenarios described in premises.
+- The objective is to think critically about real-life situations. Analyze how new facts can shift your understanding of assumptions based on observations made in the premise.
+- Engage with premises that set up situations, along with hypotheses that suggest interpretations. Your job is to evaluate updates that may impact these interpretations positively or negatively.
+- Your responsibility is to consider a scenario described by the premise and determine whether an accompanying update strengthens or weakens an inferred statement about that scenario.
+- Analyze a situation described in a premise, assess an inferred statement in the hypothesis, and consider an update to see how it affects your belief in the hypothesis's truth.
+- You will evaluate a real-world scenario presented in a premise and determine how an update can alter your perception of the hypothesis related to that premise.
+- This task requires you to dissect relationships between insights derived from situations and any additional facts that may sway your judgment on those insights’ accuracy.
+- In this task, you're tasked with linking premises to hypotheses while weighing the influence of additional statements that can either solidify or challenge those hypotheses.
+- You need to analyze a premise and a hypothesis based on a given set of facts. By considering additional context, your goal is to decide if this context makes the hypothesis more or less likely to be true.
+- You will investigate how well an assumption aligns with a foundational premise when juxtaposed with additional context that could enhance or detract from its credibility.
+- You will engage in logical reasoning by evaluating claims made in hypotheses relative to real-world contextual data presented in premises and updates.
+- You will explore if providing extra context alters the belief in an assumption regarding a scenario, determining if it makes that assumption seem more or less plausible.
+- Engage with statements about reality by connecting them through logical reasoning, identifying new environmental factors that influence your judgment on assumptions.
+- Determine the impact of supplementary information on assumptions drawn from a real-world premise, relying on deductive reasoning to reach your conclusion.
+- Your task involves evaluating a premise, which describes a real-world scenario, and a hypothesis, which is an assumption about that scenario. You must decide if an additional update makes the hypothesis more or less likely to be true.
+- Your role involves interpreting real-world examples, assessing related assumptions, and determining how new insights impact your belief in those assumptions' accuracy.
+- Examine the relationship between a provided premise, an inference you might make, and new contextual clues to identify if they work together or against each other.
+- You will be evaluating how supplementary information can reshape your understanding of a scenario and its inferred meanings drawn from initial premises.
+- You will investigate how an update provides insight into a scenario detailed in the premise, particularly regarding its influence on an inferred belief.
+- This task requires you to interpret information critically by determining how an update affects the credibility of an assumption derived from the initial premise.
+- The key here is to utilize logical reasoning skills as you determine how updates play a role in confirming or disputing assumptions derived from premises.
+- Your task is to navigate through statements about real-life scenarios. You'll make inferences and then verify them against new information that could change their accuracy.
+- In this task, you will interpret a real-world scenario through its premise and hypothesis. You'll also consider new information (the update) that may impact your understanding of the situation.
+- You need to critically analyze how individual pieces of information intertwine within given facts and assumptions, judging their combined effect on perceived truths.
+- You are presented with a real-world situation, an inference based on it, and new information. The goal is to decide if the new information strengthens or weakens the inference.
+- Analyze arguments concerning genuine situations while identifying nuances in updated facts that could influence belief about inferred conclusions stated in hypotheses.
+- You need to determine if an added piece of information makes you more or less likely to agree with an assumption drawn from a premise about a real-life occurrence.
+- In this task, you will assess how an update influences an assumption based on a factual statement. You must discern if it confirms or challenges the assumption.
+- You will navigate through statements about actions and make judgments based on new insights provided. The goal is to recognize whether these insights strengthen or weaken initial assumptions.
+- Engage with a real-world situation presented in a premise, evaluate an assumption made about it in the hypothesis, and analyze how new information from the update alters your belief in that assumption.
+- Evaluate the dynamics between factual premises and hypothetical interpretations to see how supplemental details shift your perception about those interpretations’ validity.
+- You’ll be inspecting premises alongside their inferred hypotheses and see how updates either affirm or refute those assumptions about the actual events described.
+- Your role is to identify the effects of added context on hypothetical assumptions arising from specific premises, thereby gauging their interconnectedness.
+- Your role involves scrutinizing the connection between an established premise and its inferred assumptions while determining whether new information helps solidify or refute those assumptions.
+- This activity challenges you to inspect relationships between situations described in premises and hypotheses, using additional information as evidence for judgment.
+- The task involves determining whether additional context alters your understanding of assumptions based on prior statements. It tests your critical reasoning abilities.
+- Assess whether further context enhances or detracts from your understanding of inferred truths drawn from specific scenarios portrayed in the premises provided.
+- This task requires you to look at a real-life scenario and its associated assumption, then judge whether additional insights enhance or detract from that assumption's plausibility.
+- Your responsibility is to consider various scenarios from given premises, examining how each update influences your belief regarding the associated hypothesis' validity.
+- Assess a given statement about reality (the premise), connect it to an assumption made (the hypothesis), and then analyze new context provided by an update for its potential effect on that assumption.
+- You are required to connect dots between a specific scenario described in the premise and possible inferences drawn through logical reasoning, while also considering external updates for accuracy.
+- The objective here is to assess how supplementary information influences the truth of a particular hypothesis drawn from a premise. You’ll distinguish between factors that enhance or detract from the likelihood of the hypothesis.
+- The task involves critical thinking to relate an original premise with a derived conclusion while exploring how external updates impact that logical flow.
+- In this task, reflection on how information changes understanding of circumstances is essential, focusing particularly on differentiating between supportive or contradictory elements.
+- You are asked to identify whether new details added to a situation described by a premise support or challenge an initial conclusion suggested by that situation.
+- Your job involves determining whether additional specifics serve as support for or against assumptions derived from prior scenarios described in your premise.
+- Analyze the relationship between a premise, its inferred hypothesis, and an update. Decide whether the update makes the hypothesis more likely to be true or less likely.
+- This exercise requires you to consider a given premise, alongside an assumption and additional details, to conclude their interconnectivity in terms of truthfulness.
+- You are tasked with interpreting real-life statements and understanding their implications. Evaluate subsequent information to figure out if it makes you more inclined or less inclined to accept the derived assumption as truth.
+- You will need to examine situations described in a premise and hypothesis and use subsequent information to judge whether it strengthens or weakens the inferred assumption.
+- This exercise requires you to analyze information involving premises, hypotheses, and updates to see if the updates make the hypotheses seem more plausible or less plausible.
+- Your task involves evaluating a given premise and hypothesis, and then determining if an additional statement supports or contradicts the hypothesis.
+- In this task, you evaluate the relationship between an assumption and new information regarding a situation, determining if that information enhances or diminishes the likelihood of the assumption being true.
+- Determine how additional context affects the validity of a hypothesis derived from a given scenario. Identify whether the context reinforces or diminishes the likelihood of that hypothesis being true.
+- Your task is to synthesize information from various statements—a premise, a hypothesis, and an update—to determine whether the update bolsters or undermines the assumption made in the hypothesis.
+- Assess a premise and a hypothesis regarding a specific situation. Then analyze how an additional piece of information impacts the likelihood of the hypothesis being true. This requires critical thinking and inference skills.
+- In this activity, you must interpret how additional facts alter your understanding of a scenario based on a premise and an associated hypothesis.
+- In this task, you must interpret a situation, think about the implications of an initial hypothesis, and then analyze how new details impact its validity.
+- Your goal is to discern how an added piece of information affects a presupposed idea about a real-life event. This involves critical thinking regarding premises and hypotheses.
+- Consider the nuances of reasoning as you evaluate assertions made about reality, understanding how additional insights can sway perceptions in either direction.
+- Assess the implications of new information on an assumption derived from a real-world situation, deciding whether it corroborates or disputes that assumption.
+- You must interpret scenarios by examining premises and hypotheses, followed by considering updates that may either affirm or challenge your understanding of those hypotheses.
+- You will work with real-world scenarios where you need to judge how a new piece of information affects the plausibility of an inferred statement.
+- The goal is to interpret a situation described through a premise and assess whether new information strengthens or weakens an inference drawn from that situation.
+- Here, you will assess how new pieces of information relate to hypotheses based on premises, focusing on their strengthening or weakening impacts.
+- Your role is to critically assess how extra context affects a previously made assumption about a scenario described in the premise.
+- Your task is to evaluate a premise, hypothesis, and additional information. You need to determine whether the update supports or contradicts the hypothesis based on the situation described in the premise.
+- You will assess a real-world situation by comparing statements of assumption or inference to new information that either reinforces or challenges those assumptions.
+- This exercise focuses on assessing how well assumptions match up against newly presented details about a given situation in order to decide on their reliability.
+- This task requires you to think critically about a given premise and its related hypothesis. An update will provide extra context to help gauge whether your confidence in the hypothesis should increase or decrease.
+- You will weigh the implications of new information against existing hypotheses to determine if those hypotheses hold stronger validity or weaker integrity after incorporating the updates.
+- Analyze different elements of real-world situations to determine how additional statements affect previous assumptions. Your role is to elucidate whether updates are supportive or undermining.
+- Your role is to evaluate the relationship between a given premise and a hypothesis by using an update that either reinforces or undermines the hypothesis.
+- This task requires you to utilize logic and reasoning skills to navigate between what is given (premise) and what is hypothesized, while also evaluating how external updates might sway your perception of that hypothesis.
+- Your evaluation should aim at discerning underlying implications of how updates affect hypotheses based on factual premises; this will sharpen analytical reasoning skills.
+- The goal is to assess whether additional information strengthens or weakens an inference drawn from a given situation. This requires critical thinking skills and understanding of logical connections.
+- You'll scrutinize situations described in premises alongside hypotheses formed from them. Your task focuses on evaluating any new information and its implications concerning confidence in those hypotheses.
+- Use reasoning to determine whether updates about a given situation fortify or weaken your understanding of its implications based on provided premises and hypotheses.
+- Analyze statements regarding a situation, making inferences about what they imply. Your focus is on how additional details influence those implications.
+- Understand a context using provided statements, derive implications from them, and then see if new insights modify those implications positively or negatively.
+- Evaluate whether supplementary insights gained from an update reinforce or diminish the likelihood of the truth behind an inferred outcome based on a scenario provided.
+- In this activity, you analyze a given situation described by a premise and consider an inference made in the hypothesis. The challenge is to assess how an additional piece of information affects that inference.
+- The objective is to weigh new facts against an established inference to see if they reinforce or weaken your understanding of the situation outlined in the premise.
+- Assess whether the context provided alters your understanding of a situation described by the premise and how it relates to an assumption made in the hypothesis.
+- The objective is to decide whether an additional statement reinforces or undermines a presumption made after considering a specific scenario.
+- You will be taking contextual information and using it to inform your judgment about the relationship between reality presented in the premise and assumptions laid out in the hypothesis.
+- The challenge is to analyze how changes in information influence belief about a situation, explicitly deciding if they serve as support or opposition to your conclusions.
+- Analyze the relationship between a given premise and a related hypothesis, then assess an update to see if it strengthens or weakens your belief in that hypothesis.
+- You will evaluate whether added context fortifies or detracts from conclusions drawn from understanding specific real-life situations represented in premises and hypotheses.
+- Engage in analytical reasoning by considering how new details influence beliefs regarding a scenario; this involves establishing whether those details confirm or challenge a proposed inference.
+- Your responsibility is to analyze a premise and related hypothesis while considering how additional information might influence them regarding their credibility.
+- You will interpret information provided about a situation, determine implications from it, and evaluate how supplementary details affect your conclusions about that scenario.
+- This task challenges you to deduce implications from given contexts while also examining further details that could justify or challenge your initial interpretations.
+- The focus here is on understanding a scenario by critically evaluating a hypothesis against new information and making judgments about its validity based on that context.
+- This task challenges you to reflect on the implications of new information in relation to existing assumptions about a situation based on a given premise.
+- In this task, critical thinking is needed to dissect the interaction between an assumed scenario and any new developments that could enhance or diminish its plausibility.
+- The focus here is on reasoning through provided statements. You'll need to ascertain how the given updates interact with your assumptions based on previous context.
+- Evaluate how additional context influences your understanding of a statement drawn from a given reality, considering whether it strengthens or weakens that understanding.
+- Analyze the interplay between situations described in premises and their corresponding inferred statements. Assess how updates affect those inferences, enhancing or diminishing their credibility.
+- You will engage with a narrative that lays out a scenario and an inference about it. Your job is to interpret supplemental details and how they influence the credibility of the inference.
+- This task challenges you to utilize deductive logic as you assess how newly added context modifies perceptions about hypothetical outcomes derived from credible premises.
+- This task involves analyzing a premise and a hypothesis to determine if new information supports or contradicts the inference drawn from the premise.
+- Reflect on situations articulated through premises alongside hypotheses that draw conclusions from them. Determine the influence of updates on these conclusions—whether they add weight or lessen belief in them.
+- You will analyze whether current events support or contradict hypotheses formed based on initial conditions or observations expressed in the premise.
+- The focus of this task is on logical reasoning based on given premises and hypotheses. You will analyze how new updates influence the plausibility of the conclusions drawn from those premises.
+- Your role involves probing into assumptions made following factual contexts, considering whether additional relevant insights shift those assumptions towards being more plausible or less so.
+- Your job follows a logical progression as you correlate premise details with hypotheses and updates, leading you to categorize each update’s impact as either supportive or contrary.
+- The focus is on evaluating assertions about situations, requiring you to decide if a newly introduced statement shreds or solidifies your initial understanding based on the premise.
+- Evaluate how new details affect assumptions made about a situation described in a premise while considering its factual basis for drawing conclusions about reality.
+- You'll examine a stated situation and a related assumption, then evaluate how further information impacts your belief in that assumption's validity. The task is about understanding how details can shift perceptions.
+- You will be provided with a description of a situation (premise) and an assumption about that situation (hypothesis). An update offers new information that can change your view on the accuracy of the hypothesis.
+- This exercise involves a careful consideration of relationships between known facts and inferred ideas, incorporating extra details that could change the interpretation of those ideas.
+- In this analysis, delve into how contextual additions modify perceptions of relationships between events stated in premises and hypotheses drawn from them.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task936_defeasible_nli_snli_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task936_defeasible_nli_snli_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

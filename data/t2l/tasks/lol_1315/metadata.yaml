@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The task requires you to compute the range of a set of numbers by identifying the maximum and minimum values and then calculating their difference.
+- The objective here is to derive insights about a series of integers by calculating their range, highlighting how disparate they are numerically.
+- This exercise involves evaluating numeric data to ascertain its extent; you will find both maximum and minimum values before determining their range.
+- Your objective is to assess a list of integers for their range by finding both the maximum and minimum numbers and calculating their difference.
+- You are tasked with determining how varied a list of integers is by finding its range, which involves subtracting its minimum value from its maximum value.
+- This task involves crunching numbers by examining an integer list to assess how wide-ranging those numbers are by finding the difference between the highest and lowest values.
+- You will be tasked with deriving the range from an array of integers. This involves identifying maximum and minimum values and calculating their difference.
+- This task revolves around finding out the spread or range of a group of integers by identifying and subtracting the smallest value from the largest one.
+- Engaging with this task means taking a list of integers and deriving insights about their spread or range by focusing on the difference between their extreme values.
+- This task calls for searching through integers to figure out their range, which you’ll obtain by subtracting the smallest integer from the largest in your provided list.
+- Your focus will be on computing statistics about a group of integers by finding out their extremities—the largest and smallest—and determining how far apart they are.
+- The challenge requires you to evaluate a list of integers in order to ascertain their range via simple arithmetic involving their maximum and minimum figures.
+- The focus of this task is to use basic mathematical skills to assess a list of integers and find their range by identifying its extremes.
+- Your objective is to compute how dispersed or clustered together values are within a list of integers, which is expressed as their range.
+- This task involves investigating a list of numbers to find out the extent of variation among them by calculating their overall range.
+- For this task, analyze an array of integers—your goal is to pinpoint their diversity by calculating the difference between their largest and smallest elements.
+- You will work with a collection of integers where your task is to establish their range, a measure that indicates how far apart these numbers are from each other.
+- Your task is to look at a series of integers and determine their range, which requires identifying what the highest and lowest numbers are, followed by straightforward arithmetic.
+- Your objective is to process a list of numbers and reveal how much variation there is among them by calculating the range—essentially, the distance from the smallest to largest value.
+- Calculate how extensive or limited a series of numbers is by figuring out the quantitative difference between their highest and lowest points.
+- In this task, your focus will be on examining a group of integers to find their range, which is calculated by subtracting the smallest number from the largest one.
+- In this exercise, your responsibility lies in calculating how much variation exists in a list of integers by identifying their range—essentially, how distant the maximum is from the minimum.
+- You will examine a series of integers and figure out the difference between their greatest and least values to derive the overall range.
+- This exercise asks you to take a collection of integers and derive their range, shedding light on their spread across different values through basic subtraction.
+- This task involves processing integer lists to identify extremes; your focus will be on measuring the distance between these two points.
+- Given a collection of integers, figure out the range, defined as the distance between the largest and smallest integers.
+- In this exercise, your goal is to identify how wide-ranging a set of integers is by determining the difference between their highest and lowest points.
+- This task asks you to find out how wide a range a group of integers covers by looking for the highest and lowest numbers within that group.
+- You are tasked with calculating how extensive or concentrated a series of numbers appears by determining their range through identifying max and min values.
+- Determine how much variation exists within a group of integers by figuring out the difference between the highest and lowest values.
+- Your job is to evaluate a list of integers and return the range, which is defined as the difference between the highest and lowest values in that list.
+- In this task, you will examine a group of integers to find out how much they vary from each other by computing their range.
+- This task requires you to extract key information from a numerical dataset by calculating its range from its minimum and maximum values.
+- You will be working with a list of integers to determine the spread or range of those numbers through basic subtraction of extremal values.
+- You need to extract meaningful information from a list of integers by calculating their range, effectively forming an understanding of their numerical relationship through subtraction.
+- Your challenge is to evaluate numeric data presented as integers, pinpointing both extreme ends (the max and min) and calculating their difference for a clearer perspective on data spread.
+- You will analyze groups of integers to calculate their range, indicated by how much difference exists between the largest and smallest values.
+- Determine how varied a set of numbers is by computing its range, which reflects the gap between its highest and lowest elements.
+- The exercise entails using critical thinking skills to analyze an array of numbers and establish their spread via calculating the range.
+- Engage in numerical reasoning as you process a collection of integers to determine their overall range, focusing on max-min calculations.
+- For each array of integers, your responsibility is to ascertain how much ground exists between its maximum value and minimum value for range determination.
+- Your goal is to compute the numerical range of a set of integers, which involves identifying both the maximum and minimum values first.
+- Your task is to process an array of numbers and find out their spread by calculating the range through simple subtraction.
+- This task asks you to determine how distinct individual numbers in a list are by calculating their range—the difference between the maximum and minimum integer values.
+- Your task is to find the range of a given list of integers by calculating the difference between the largest and smallest numbers in that list.
+- Your job is to evaluate how far apart numbers are in given lists by calculating the difference between their largest and smallest members.
+- For this task, you will analyze a series of numbers to find two key elements—the largest and smallest—and then find how different they are from each other.
+- The aim is to derive insights from a series of integers by determining how many units separate the maximum integer from the minimum one in that list.
+- Your goal is to determine the range of a collection of integers by subtracting the smallest value from the largest value in the set.
+- In this activity, identify the maximum and minimum from a collection of integers to derive their range through subtraction.
+- The goal is to assess lists of integers for their overall spread; this involves detecting extremes within each list followed by calculating how much larger one number is than another.
+- The challenge consists of deriving a single value representing how diverse a set of integers is by calculating their numerical range using max and min figures.
+- You will be given a series of integers, and your task is to determine how spread out these numbers are by calculating their range.
+- For this task, you'll work with a group of numbers to find their range, which involves subtracting the smallest number from the largest number.
+- You will be given a list of integers, and your task will be to find out how much they vary by calculating the range through simple subtraction.
+- In this task, you'll examine a set of integer numbers to uncover their range by pinpointing both ends—maximum and minimum—and measuring their difference.
+- You will analyze a series of integers to find out how extensive their values are apart from each other by calculating the range through maximum and minimum value comparison.
+- Assess sets of integers for their spread, focusing specifically on measuring how far apart their highest point is from the lowest.
+- 'In this task, you will assess various integers and derive their range through simple subtraction: maximum minus minimum.'
+- This exercise requires you to compute the range of a given set of integers, which entails recognizing both extremes in value and determining their difference.
+- The task involves analyzing a list of integers to find the range, which is calculated by subtracting the smallest number from the largest number in the list.
+- You will calculate how wide-ranging a set of integers is by finding the maximum value, identifying the minimum value, and determining their difference.
+- You must identify key values in a set of numbers—the highest and lowest—and then calculate the difference to determine the range that indicates how spread out they are.
+- This task requires you to work with a list of whole numbers and determine their range by calculating the result of subtracting the smallest number from the largest.
+- For each list provided, figure out how diverse the numbers are by calculating the difference between their extremities.
+- In this task, you need to take a list of numbers and compute the range, which is the difference between the highest and lowest values in that list.
+- Your mission is to sift through lists filled with integer values and detect their spread through computation of range by addressing max and min disparities.
+- Your goal is to assess a set of integers and report the range, defined as the gap between the highest and lowest figures in that set.
+- This task challenges you to determine the range of given integers by first identifying the maximum and minimum values before calculating how much they differ.
+- Analyze a list of integers to find the range, which is calculated by taking the difference between the maximum value and the minimum value.
+- You are required to identify extremes in a given list of integers—specifically, what these values are—and calculate their difference to determine the overall range.
+- The activity focuses on a set of numbers where you will calculate the difference between the largest and smallest elements, defining the range of that set.
+- Your job involves measuring the extent of variation within a bunch of integers, specifically by calculating how far apart their highest and lowest numbers are on a number line.
+- Your task is to assess a list of integers for variation, calculated as the range—which simply involves subtracting the minimum value from its maximum counterpart.
+- The objective here is to find the range of a list of numbers, specifically by calculating how many units separate the largest integer from the smallest one.
+- The objective here is to process distinct lists of integers to unveil how wide or narrow their numerical spread is through range calculation.
+- You will be given a list of integers; your objective is to calculate how spread out these numbers are by determining the difference between the maximum and minimum elements.
+- Here, your aim is to assess numerical data in terms of its breadth; this means discovering its uppermost and lowermost points and calculating the gap between them.
+- Your responsibility is to determine the difference between the highest and lowest values in a provided list of integers, which represents the range of those numbers.
+- You are tasked with determining the span of a collection of integers, which involves finding the difference between its largest and smallest members.
+- Assess a list of integer values to determine their overall spread by calculating the difference between the maximum value and minimum value.
+- The goal is to calculate how diverse or concentrated a set of integers is by measuring the gap between its highest and lowest values through finding its range.
+- You will engage with a collection of integers to uncover how broadly they spread apart by performing subtraction on their maximum and minimum values.
+- The aim here is to find out how much variation exists in a set of integer values by calculating their range through subtraction of extremes.
+- Analyzing a list of integers will reveal their range, a measure that reflects how much variation there is within that specific set based on its extreme values.
+- Your objective is to figure out how varied a set of integers is by calculating their range, which measures the gap between the largest and smallest values.
+- Your job is to work with a group of integers to establish their range, focusing on identifying the maximum and minimum numbers in that set.
+- You will need to extract the maximum and minimum values from a list of integers and find out how far apart they are from one another in order to determine their range.
+- Your job is to measure how varied a list of integers is by computing the range, defined as the difference between its max and min values.
+- This task requires retrieving vital statistics about a numerical dataset—in this case, you will derive its range by isolating maximum and minimum numbers for comparison.
+- The challenge involves understanding integer sequences and computing their range, navigating through identifying max and min numbers, and performing a simple calculation.
+- The challenge is to calculate how spread out a list of numbers is by determining the difference between the max and min values, known as the range.
+- You need to analyze a series of integers and determine the range by finding the difference between the largest and smallest values in the list.
+- This activity entails assessing lists of integers to find their range—a statistical measure reflecting diversity by calculating max minus min.
+- Your task involves reviewing lists of integers to gauge their variability by determining the range through subtraction of min from max values.
+- You will be given collections of integers where your goal will be to determine how they diverge from one another by calculating their range.
+- You are required to compute how much variation exists among a selection of integers by determining the numeric difference between their highest and lowest points.
+- Your role is to extract the complete range from a collection of numbers by assessing which number represents the highest value and which one represents the lowest.
+- You will evaluate a sequence of integers to determine how spread out the values are by finding the difference between the maximum and minimum integers.
+- Focus on finding out how many units lie between the highest and lowest integers in each provided list to determine their range.
+- The objective is to evaluate a set of numbers and determine their range by finding out how much the highest number exceeds the lowest number.
+- You are tasked with finding how varied a set of numbers is by calculating their range—determined through simple arithmetic involving maximum and minimum elements.
+- In this task, you will analyze integers to find how dispersed they are by calculating the range—the difference between their maximum and minimum entries.
+- In this assignment, you are asked to find out how spread out a set of integers is by calculating their range, which involves basic arithmetic operations.
+- In this exercise, you will identify several integer values and quantify how spread out they are by calculating the numeric distance between their maximum and minimum elements.
+- Calculate the range of a given set of integers by determining how far apart the largest and smallest numbers are from each other.
+- The primary focus here is on assessing numerical data in order to calculate its spread, known as the range, achieved through subtraction.
+- You will be working with a set of integer values, tasked with computing their range to understand effectively how varied or consistent these numbers are overall.
+- You will be tasked with finding the spread of values in a list of integers by identifying how far apart the largest and smallest numbers are from each other.
+- Measure the spread of numbers in a list by identifying the maximum and minimum values and computing their difference.
+- Your mission is to sift through a list of integers, find the smallest and largest values, and then derive the range by calculating their difference.
+- This task consists of determining the range from a collection of numbers by identifying both extremes. You will then subtract these two values to complete your analysis.
+- You need to analyze a series of integers to find out how far apart the highest and lowest numbers are, measured by their difference.
+- Your job is to compute the range for a specified group of integers, which tells you about the gaps between its largest and smallest elements.
+- Your job is to compute the difference between the highest and lowest integers from an input list to ascertain the overall range those numbers cover.
+- You will extract valuable insights from a list of integers by figuring out their range—the distance between their maximum and minimum values.
+- In this task, you will assess a sequence of numbers to establish the range by subtracting the minimum value from the maximum value present in the list.
+- Your responsibility is to measure the diversity of a list of integers by identifying its range—the difference between the largest and smallest values.
+- In this task, you need to find the range of a set of integers, which involves identifying the highest and lowest numbers in the list and calculating their difference.
+- This task requires you to analyze a list of integers and compute the difference between the greatest and smallest numbers, which represents the range.
+- You will work with integers in this task to determine how far apart they are from each other, specifically by finding their range through subtraction.
+- This task requires you to calculate a numerical range from a list by identifying both the largest and smallest integers, then computing their difference.
+- This task requires you to identify the maximum and minimum values from a list of numbers to compute their range.
+- Your role is to evaluate a series of integer values to compute their range, emphasizing the importance of identifying maximum and minimum elements.
+- The objective here is to identify the maximum and minimum values in a list of integers and then calculate the range by finding their difference.
+- Utilize your mathematical skills to engage with lists of integers, calculating ranges that highlight differences in numerical data sets.
+- The task involves analyzing a list of integers to find the range by calculating the difference between the largest and smallest numbers.
+- You will need to process a list of integers to find their maximum and minimum values in order to calculate their range accurately.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1315_find_range_array
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1315_find_range_array
+user_prompt_template: '{task_def}
+
+
+  {problem}'

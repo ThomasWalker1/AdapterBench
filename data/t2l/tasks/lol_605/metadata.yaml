@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your task is rooted in analyzing two arrays to figure out which items can form a continuous subsequence present in both lists, showcasing your reasoning skills.
+- In this analytical task, determine which items persist across both lists while locating the maximum length of uninterrupted sequence present.
+- Your task involves analyzing two lists to determine the longest series of items that appear in both, maintaining their order.
+- You need to explore two lists and extract the most extended sequence of matching items, all while keeping track of their order in the original lists.
+- You need to analyze two lists and find the longest common subsequence, which means finding the series of items that exist in both lists in the same order.
+- Engage in a comparative analysis of two lists to piece together their longest matching subsequence.
+- You will look for the longest chain of commonalities between two provided sequences, ensuring that each element’s placement reflects its position in each list.
+- The objective is to extract the most extensive combination of elements present in both lists while observing their sequence.
+- Analyze both lists carefully to uncover the longest stretch of elements that appear sequentially in both collections.
+- The challenge lies in extracting the longest possible ordering of shared elements from two different lists without altering their initial sequence.
+- This task challenges you to dig deep into two arrays and discern the greatest continuity of shared values. Your focus will be on finding elements that align across both lists while preserving their order.
+- This task engages you in comparing two distinct lists to uncover their longest common sequence, relying on your logical placement and grouping skills.
+- Here, you will compare two sets of items to derive the longest ordered set of common elements. Understanding relationships within sequences is critical for tackling this comparative analysis.
+- Focus on comparing the contents of two lists to derive the longest consecutive series of shared elements while maintaining original positioning.
+- Identify the longest stretch of matching elements within two separate collections, requiring thoughtful evaluation of each element's position relative to others.
+- This task requires you to identify the sequence of elements that two lists have in common, considering their arrangement.
+- Your objective is to find out which items are present in both given lists following their original sequence and to determine the longest aligned series.
+- This task concentrates on finding common elements between two arrays. Your goal is to determine the longest series of items that are common to both lists.
+- Identify and list the longest sequence of shared elements from two provided lists, focusing on their order and presence in both.
+- Your objective is to trace through two separate lists to unveil the longest continuous streak of shared entries, keeping their original layout intact.
+- This task revolves around dissecting two distinct lists to uncover a matching pattern that runs through both, retaining its sequential integrity. It emphasizes logical reasoning and attention to detail.
+- The task entails scrutinizing two arrays to locate a matching subsequence that appears most extensively in both lists.
+- This task involves discovering the most extensive set of matching elements between two lists while carefully retaining their sequence order for accuracy.
+- The aim is to determine which parts of both lists overlap most prominently by isolating the longest subsequence common to each, while keeping their relative sequence intact.
+- Look at both provided arrays and search for a string of common elements that appear sequentially, aiming for the most extensive match possible from either list.
+- You are required to determine the items that both lists have in common, maintaining their order. This task emphasizes pattern recognition and sequence alignment.
+- The task is to find a series of matching elements from two lists. Ensure that the order remains intact as you search for the longest connected series.
+- This task focuses on discovering the longest chain of shared items across two lists while adhering to their original ordering.
+- Your mission is to map out a coordinated sequence from two varied lists, pinpointing where they intersect most substantially.
+- Your job is to delve into two lists and uncover their overlapping sequences, emphasizing their arrangement as they exist in each list.
+- In this challenge, you will function as a data analyst, seeking out the longest series of matching items from two provided lists by thoroughly comparing their components.
+- You need to analyze two lists and extract the elements that are common to both in the same order they appear. This requires a good understanding of sequences.
+- This requirement pushes you to identify overlapping elements between two sequences while maintaining their respective arrangements as they appear in each list. Effective analytical abilities and attention to detail will be crucial for success.
+- You need to meticulously compare two arrays and extract the maximum length of a sequence where items correspond directly between them.
+- The assignment involves finding the maximum sequence of overlapping items between two sets, where their arrangement must remain unchanged.
+- Your task is to find a sequence of elements that is common to both given lists and extends for the maximum length possible.
+- Your objective is to locate the common subsequence that is the longest in length between two given lists. This requires a solid grasp of element comparison and sequence analysis.
+- In this task, you must identify a sequence of items that occurs in both input lists, ensuring that the order of appearance is preserved for the shared items.
+- Task yourself with identifying what connects these two lists by finding the most extensive section of commonality while keeping each element’s specific position intact.
+- The task involves inspecting two separate lists to find and compile a sequence that is common to both, respecting the original sequence of appearance.
+- In this challenge, identifying the longest series of elements that exist in both lists consecutively is key. A methodical approach to comparison and sequence recognition is needed here.
+- You need to sift through two dissimilar sets of items and find out how they connect by extracting their longest mutual subsequence, arranged according to their appearance.
+- You are tasked with finding shared elements between two lists while maintaining their sequential order. This requires careful analysis and comparison of both sets.
+- Focus on detecting similarities between two input lists by unraveling a sequence where elements from both lists can be traced simultaneously without rearrangement.
+- Examine two sequences thoroughly and find the extended chain of items that occurs in both, with a focus on maintaining each item's order as found in the originals.
+- You will delve into two lists to recognize and report the longest uninterrupted sequence that each list shares.
+- You’ll be tasked with examining two lists closely to derive a comprehensive line-up of shared items, focusing on preserving their original sequencing for accuracy.
+- The challenge is to locate the longest set of shared elements from two collections while keeping their original sequence. You will rely on your ability to analyze and connect data points effectively.
+- In this task, your main objective is to sift through two lists to find the most extensive sequence common to both. This requires skillful analysis and comparison.
+- You'll need to dissect two sequences, drawing out the most extended stretch of overlapping elements while attending to their arrangement in both sets. This requires critical thinking and sequencing skills.
+- The assignment requires you to analyze two lists and find the longest stretch of elements that are present in both, following their original sequence. Strong problem-solving skills will aid in this process.
+- The objective is to find the longest stretch of matching elements between two lists, ensuring that the order of appearance is preserved.
+- Your mission is to find a harmonious sequence that exists within both lists by identifying corresponding items arranged similarly across each collection.
+- Find and articulate the most extended series of common values shared by two different datasets while keeping their sequential integrity intact.
+- This exercise calls for you to highlight parts of two unique lists where they intersect most extensively. The emphasis lies on maintaining consistency in the order during your evaluation.
+- You need to analyze two different lists and extract the sequence of items that both lists share, keeping their original order intact.
+- This task involves identifying the longest sequence of elements that appears in the same order in two provided lists. Understanding how to compare and analyze sequences is essential.
+- Here you will analyze two distinct item lists and identify the most prolonged set of elements that appears in both in the same order.
+- You will compare two sets of items and extract the longest sequence that appears in both, ensuring the order is preserved.
+- Your task is simplified into examining two sets of data, where you will need to extract and report on the highest number of corresponding entries present within them in proper order.
+- This task involves comparing two arrays to locate a shared subsequence of maximum possible length while preserving the order of elements.
+- You will need to compare two lists and determine the longest series of elements that they share in common, maintaining their order.
+- In this activity, your focus is on identifying a common thread between two lists by pinpointing the longest consecutive series of similar items.
+- You are required to extract the longest series of items that occur in both lists without reordering them.
+- Evaluate two different lists and ascertain which group shares the largest continuous sequence of items.
+- This task centers around comparing two lists to find a subsequence that they share, keeping their sequence intact. It will test your ability to recognize consistent patterns within data.
+- In this assignment, you will sift through pairs of input lists, getting to grips with their structures and identifying segments where they intersect while remaining sequentially ordered.
+- Investigate two collections for their overlapping content, specifically seeking out the most extensive matching chain available.
+- This activity involves investigating two sets of values to pinpoint their longest shared progression. It emphasizes attention to detail and sequencing skills.
+- Examine two unique lists and pick out corresponding elements that appear sequentially within each, giving preference to their initial ordering.
+- You are tasked with determining which items are common between two lists, specifically looking for the longest series where those items follow one another sequentially.
+- The goal is to recognize a matching string of data between two sequences, focusing on capturing the lengthiest identical arrangement possible.
+- Analyze two given lists and compute their longest common subsequence by identifying the elements that are present in both while adhering to their respective orders.
+- The challenge presents an opportunity to extract a series of matching elements between two lists while preserving their original arrangement. Analytical and sequential thinking will be beneficial here.
+- Analyze both given lists carefully to determine the lengthiest combination of items they share, following their respective orders.
+- Seek out and compile the longest series of elements that repeatedly appears in both lists, ensuring you keep track of their sequential integrity.
+- You will work with two lists to extract a sequence of items that appear in both lists in the same order. This task tests your ability to recognize and trace patterns within sequences.
+- You are called upon to collaborate with two series of elements, revealing their longest concurrent sequence based on relative positions.
+- Engage with two groups of data to produce the longest line of elements that appear in both instances, maintaining their arrangement.
+- Your mission involves analyzing two lists closely to isolate shared elements in their given order, building the longest possible subsequence from these observations. Reasoning and comparison skills are key components of this task.
+- This task requires you to find the longest common pattern that exists in two different sets of data.
+- The goal here is to find the longest shared sequence between two provided lists of elements, while keeping the original sequence intact.
+- You will need to delve into two arrays to recognize and establish their longest common element sequence.
+- You will be tasked with finding the extended overlap between two sequences by pinpointing their longest shared series of corresponding elements.
+- In this exercise, you must sift through two sets of items and pinpoint the most extended series of common elements displayed in their original order.
+- The job ahead consists of analyzing two lists and selecting a maximum-length common sequence of elements, paying careful attention to how they are ordered in each list.
+- You are presented with two different collections of items and must find the sequence that appears in both collections in a consistent order, showcasing your analytical capabilities.
+- The objective is to sift through two provided lists and determine the longest common sequence of elements. The output should reflect the consistent ordering of these elements within both lists.
+- In this activity, your role is to find the most extensive string of agreeable elements from two distinct lists. The task hinges on observation and deduction skills as you evaluate both sequences thoroughly.
+- This task involves comparing two sequences and pinpointing the longest set of overlapping elements, preserving the arrangement found in each list.
+- In this exercise, you will examine two lists of items to find the longest trail of common elements, ensuring that they follow the original sequences.
+- Here, your goal is to locate and list the longest common subsequence found within two different collections of data.
+- The objective is to recognize the longest pathway of shared values across both given lists, necessitating close examination and comparison between all included items to find meaningful connections.
+- Your job is to analyze two lists and determine the longest series of items that appear in both lists while maintaining their original order.
+- Your aim is to discover how many consecutive items can be found in both provided sequences, focusing on their longest association.
+- The goal is to evaluate two lists and pinpoint the greatest length of matching items in the same order.
+- This task challenges you to detect a line of items that matches between two lists, aiming for the longest unbroken series.
+- You are asked to assess two sets of data and pinpoint their longest overlapping fragment. This task involves careful evaluation of each list to uncover matching sequences.
+- The focus of this task is on comparing two series of items and pulling out the longest sequence that exists within both. It involves logical reasoning and comparison skills.
+- You will need to engage with two lists and isolate the longest group of identical elements, ensuring that their relative positions are matched as they appear in both.
+- Your objective is to find the longest series of elements that appear in both lists provided. This will require comparison and analysis of the sequences within the lists to spot shared patterns.
+- Your role is to identify and construct an overlapping series from two unrelated collections of data, ensuring that their sequence and arrangement remain faithful to each list.
+- Here, you must explore two item sets and extract their most considerable common subsequence while preserving the order of appearance.
+- In this exercise, you will scrutinize two arrays to uncover the widest continuous section of common entries.
+- The focus of this task is on identifying a lengthwise commonality between two itemized lists while respecting how they are arranged.
+- The task at hand is to analyze two lists and identify the longest set of values that occur sequentially in both. Critical thinking and pattern recognition will be beneficial for this exercise.
+- Your focus here is on extracting parts where both lists agree. This involves careful scrutiny to find all parts being repeated in a systematic manner across both sequences.
+- You will delve into two separate lists to uncover the longest series of matching elements. Effective comparative skills and an understanding of subsequences are vital for tackling this challenge.
+- The essence of this task is rooted in extracting meaningful overlaps from two sets by focusing on their lengthiest shared progression, enhancing your comparison techniques.
+- Analyze two given lists and determine which elements are shared between them, specifically finding the longest arrangement of these shared elements.
+- Here, you will evaluate two series of items to discover a common subsequence that maintains its order. Find the most extended list of overlap between the two inputs.
+- The task requires you to find and write down a continuous segment of elements present in both lists while adhering to their original arrangement in each list.
+- This task involves exploring two sets of inputs to pinpoint long sequences of relationships, achieving success by capturing shared items sequentially as they emerge in each set.
+- In this task, you'll explore two lists and extract the maximum sequence of items that are present in both lists. The challenge lies in maintaining the original order of elements.
+- For this task, you need to pinpoint a subsequence that appears in both lists, preserving the order of appearance. Recognizing patterns and sequences will be crucial for success.
+- This task requires you to find the longest sequence of elements that appears in the same order in both lists provided. Understanding subsequences and how they relate to each other is key.
+- The task involves identifying the longest sequence of elements that appear in the same order within two given lists.
+- The challenge is to look closely at two lists and identify which items are shared in a sequence while retaining their original order.
+- You will investigate two lists to uncover their longest shared sequence of items, where the sequence must stay consistent with how elements are arranged within each list.
+- Your objective is to sift through two lists and identify the most extensive series of elements that align within both sets.
+- Your task is to extract a sequence that appears in both provided lists, ensuring that it is as long as possible. This requires meticulous examination of each list for aligned entries.
+- Your job is to uncover and present a pathway of elements that exists within both sequences, prioritizing those that align in order according to their appearance.
+- Your mission is to pinpoint which items overlap between two lists while constructing the longest ordered chain based on their occurrence in each list.
+- This task consists of parsing two lists and pinpointing the longest stretch of overlapping members that maintain their arrangement throughout both sequences.
+- You will examine two separate collections of items and extract a sequential list reflecting the longest stretch of shared parts found in both.
+- The assignment calls for deep investigation into two lists, aiming at isolating the most extended common sequence that maintains its order throughout both sets of data. Critical thinking will enhance your approach.
+- The task requires you to dig into two sequences to determine the lengthiest segment where elements match exactly and sequentially.
+- In this task, you will compare two arrays and track down their longest mutual sequence when read from either list sequentially.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task605_find_the_longest_common_subsequence_in_two_lists
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task605_find_the_longest_common_subsequence_in_two_lists
+user_prompt_template: '{task_def}
+
+
+  {problem}'

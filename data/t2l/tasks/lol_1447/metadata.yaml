@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You will read sentences that reference various medicines and must determine the specific name of a drug included within the text.
+- You will evaluate several sentences for drug names, relying on an understanding of how medications impact physical or mental states.
+- Identify drug names hidden within descriptions that detail how they can influence physical or mental states.
+- Your task focuses on identifying drugs mentioned in various contexts, utilizing knowledge of health care products and their characteristics for successful extraction.
+- You will evaluate sentences for references to medications, drawing on your knowledge of both pharmacology and contextual clues for identification.
+- In this task, focus on extracting the name of the drug embedded within sentences that discuss its effects or associations with certain medical conditions.
+- Your responsibility is to extract medicinal names from sentences that highlight their use in clinical scenarios or cases.
+- You will review given sentences that involve health-related contexts and identify any referenced medications, demonstrating an ability to recognize important medical terminology.
+- Your job is to read through narrative sentences about medical conditions and find the names of any drugs that are discussed or implied.
+- You must locate and state the specific name of any drug mentioned within sentences describing its impact on health.
+- This task involves recognizing and naming drugs or medicines in a variety of contexts provided within the sentences. Familiarity with common medications is important.
+- Your challenge is to identify drug names from descriptive sentences that explain their usage or side effects. Proper knowledge of pharmacotherapeutics will help clarify your responses.
+- This task requires you to sift through contextual information about medications in order to extract their names while ignoring irrelevant details.
+- Your task is to identify the specific name of a drug or medicine mentioned in a given sentence.
+- In this exercise, you'll seek out mentions of drugs within explanatory medical texts, leveraging your understanding of their roles in treatment plans.
+- Identify and extract the name of a drug mentioned in each sentence. Knowledge of various medications and their applications is essential.
+- You are tasked with recognizing and writing down drug names mentioned in various medical scenarios. A basic understanding of how different medications are used in treatment will aid you.
+- This task requires vigilance in reading medical excerpts for recognizing and naming any drugs involved in discussions of health circumstances.
+- The objective here is identifying pharmaceutical substances referenced in detailed statements concerning health scenarios, requiring familiarity with various medications.
+- Your task is to identify the name of a drug or medicine mentioned within a given context. Understanding pharmacology and medication names will be essential.
+- The task involves identifying the name of a drug mentioned in a provided sentence, using knowledge of pharmaceuticals and their effects.
+- You're required to extract drug names from contextual statements about their use, emphasizing your familiarity with pharmacology in relation to clinical cases.
+- You will be extracting pharmaceutical terminology from given narratives that describe patient experiences related to drugs.
+- Review each input carefully and highlight any mentions of drugs, demonstrating an understanding of how they relate to mental or physical health changes presented in the texts.
+- This involves interpreting sentences related to therapies or ailments and pinpointing the corresponding drugs mentioned within those contexts.
+- The objective here is to recognize and name drugs based on brief statements regarding their usage or effects. Knowledge of drug names and their associations is necessary.
+- The goal is to accurately extract medication names embedded within sentences discussing their therapeutic applications or associated risks.
+- In this activity, you'll read statements about drugs and extract their names for reporting. Prior knowledge about different medications and their applications is beneficial.
+- Your role here is to scan through medical descriptions and accurately identify which drugs are being referenced by their names. An understanding of pharmacological principles would be advantageous here.
+- You are being asked to understand narrative details about medications and extract their names from comprehensive medical statements.
+- Your role is to analyze given text and extract the name of a drug mentioned in these statements, reflecting your grasp on drug functions and effects on health.
+- You will be tasked with identifying pharmaceuticals based on descriptions that focus on their usage in treating specific health conditions.
+- Your aim is to find drug or medicine names within given text passages. This requires attention to detail and an understanding of medical jargon.
+- Your focus here is to look for the names of drugs mentioned within specific scenarios or patient descriptions. Understanding pharmaceutical names is key.
+- Within sentences focusing on treatment or effects, your role is to recognize and state drug names accurately.
+- This task challenges you to find drug names embedded within descriptive text about medical scenarios, testing both your reading comprehension and pharmaceutical knowledge.
+- Analyze sentences to extract relevant drugs, as this task demands attention to detail regarding their medical significance and context.
+- This task entails recognizing and stating drug names found within various contexts that describe their influence on a person's physical or mental state.
+- Review the provided sentences and discern the names of drugs that are referenced. An understanding of medical language can enhance your ability to identify the correct terms.
+- Your task is to identify and extract the name of a drug or medicine from given sentences that describe medical cases or situations.
+- You are tasked with reading through medical statements and identifying medication names correctly, highlighting your familiarity with pharmacology.
+- Focus on recognizing the names of medications in descriptions that articulate their effects on individuals.
+- The focus here is on recognizing and isolating the name of a medication found within medical descriptions. You should be able to navigate through clinical terms effectively.
+- You are required to identify drug names from medical descriptions. Knowledge of common pharmaceuticals and their applications is essential for completing this task accurately.
+- The assignment involves reading through medical descriptions and determining which drug is being discussed, drawing upon your knowledge of medicines and their implications.
+- The focus of this task is to detect drug names within descriptive sentences that provide details about patient experiences or pharmaceutical effects.
+- Read through a series of sentences related to health treatments, aiming to pick out the appropriate drug names amidst the descriptions.
+- Focus on reading comprehension to identify drugs within medical contexts as you analyze sentences that discuss their implications and uses.
+- This exercise requires extracting drug names from context-rich sentences, demanding a good grasp of both language and medicinal terminology.
+- The objective is to recognize and list names of medications found within sentences, emphasizing your familiarity with various therapeutic agents and their usages.
+- In this task, you will pick out the names of medicines from sentences describing their effects, uses, or resulting complications in patients.
+- This involves analyzing sentences related to various medications and being able to name one that fits the description provided.
+- In this activity, you need to extract the name of a specific drug from sentences that describe medical scenarios. Familiarity with various medications will help you succeed.
+- You'll explore texts that outline medical case studies, seeking out mentions of pharmaceuticals critical in managing the health conditions described.
+- You are required to read medical sentences and recognize the associated drug names, using your awareness of pharmaceutical language to inform your selection.
+- In this role, you must find and record the name of one specific drug mentioned in different contexts about treatment or symptoms. Familiarity with various medications is crucial.
+- Analyze the provided text to find and name the drug that impacts mental or physical health.
+- You will engage with descriptive text focusing on therapeutic agents, where your responsibility is to single out the drug mentioned in each scenario.
+- You need to extract and recognize drug names from sentences that describe their effects or associated conditions.
+- Your goal here is to extract the names of drugs referenced in various medical situations, showcasing your ability to recognize relevant vocabulary in healthcare contexts.
+- In this task, you will read sentences and extract the names of drugs or medicines that are discussed. Familiarity with medical terminology will help in completing this task effectively.
+- Your role is to identify drug references hidden within healthcare narratives. Having knowledge about pharmacological principles can significantly aid in this process.
+- You are asked to pinpoint the name of a medication from sentences that refer to various health issues or treatments.
+- The task involves identifying the name of a drug or medicine from provided sentences. You need to recognize keywords that indicate the substance in question.
+- You will analyze sentences to find and name pharmaceutical substances. Your ability to connect terms with their respective meanings will help you succeed.
+- Here, your responsibility is to determine which drugs are mentioned within various healthcare contexts provided in the text. A solid understanding of medical terminology is necessary.
+- The objective is to pinpoint pharmaceutical names from descriptive sentences. This involves understanding medical concepts related to drug effects and usage.
+- The activity involves extracting pharmaceutical names from given text passages, relying on a solid grasp of drug-related vocabulary and implications.
+- The challenge is to sift through sentences and find references to drugs or medications. This requires knowledge of human health, medicine, and the ability to pinpoint relevant names.
+- The goal here is to recognize the names of treatments or medications based on contextual cues within sentences provided. It’s important to be familiar with various medications.
+- This task asks you to identify pharmaceutical names based on contextual clues found in medical descriptions. Knowledge of drug names is essential.
+- You will be analyzing sentences regarding health conditions or treatments—it's your responsibility to recognize and report the specific drugs mentioned.
+- In this exercise, you need to read sentences describing various conditions or treatments and pinpoint the mentioned medication.
+- As you read each sentence, focus on identifying drugs mentioned, which may relate to symptoms, treatments, or reactions.
+- You will engage with medical content to recognize and report on drugs mentioned, focusing on their implications for health.
+- You will look for and identify drug names in various scenarios that illustrate the medications' effects or side effects.
+- Identify medicinal substances referenced within the context of health discussions. It requires an awareness of pharmacological concepts.
+- Your task is to identify the specific name of a drug or medicine mentioned in a provided sentence. This involves recognizing terms related to pharmaceuticals and understanding their context.
+- This exercise involves reading case reports and other medical narratives to pinpoint the names of drugs that are relevant to the treatments discussed.
+- This task encourages you to focus on medicinal terminology as you parse through sentences relating to drug administration and patient responses.
+- This task requires familiarity with medicinal substances, as you will be identifying drug names from context regarding their medical relevance.
+- The objective is to find and name a drug mentioned within descriptive sentences. This requires a familiarity with pharmaceutical terminology.
+- Your job is to extract the name of a medication mentioned in given sentences. An understanding of various drugs and their uses will help you complete this task.
+- In this task, you will read sentences that describe medical situations and your goal is to pinpoint the specific drug or medicine referenced.
+- Your goal is to recognize the names of medicines that affect mental or physical states from provided sentences. Precision in understanding will aid in this task.
+- You are tasked with recognizing and stating the name of a drug as it appears in detailed sentences. This requires attention to terms often associated with medications.
+- Your task centers on recognizing the names of drugs mentioned in context-rich statements, which entails recalling specific pharmaceutical knowledge.
+- You are expected to locate references to specific medication names within the sentences provided. Understanding which words correspond to drug names is crucial here.
+- You'll be working with text related to patient outcomes and treatments, where your challenge is to find and name any medications specified within the information given.
+- Analyze provided medical descriptions and pinpoint the drugs mentioned, demonstrating an understanding of their significance in treating specific health issues.
+- Your job is to locate and extract the names of drugs mentioned in the provided sentences, focusing on details that highlight their effects and uses.
+- You must identify drugs referenced in sentences, demonstrating your expertise in what these substances are and their relationships to health conditions.
+- Your responsibility is to interpret medical language used within various descriptions while accurately identifying the associated drug names mentioned throughout the text.
+- Your task involves recognizing the substance referred to in each sentence as a drug, focusing on context clues related to its use or effects.
+- This challenge asks you to find names of drugs within broader medical narratives, thereby testing both comprehension and recall of drug-related information.
+- This task requires you to carefully read through clinical statements and identify any mentioned pharmaceuticals or medications critical to the cases presented.
+- The aim is to spot the names of medicines in sentences that discuss health issues, requiring familiarity with pharmaceuticals.
+- You are tasked with recognizing specific drugs or medications that appear in given statements, requiring you to be familiar with various medical substances.
+- Your task is to sift through the sentences to uncover specific names of drugs or medicines, requiring familiarity with pharmacology and therapeutic uses.
+- Your task is to identify and extract the name of a drug or medication from a given sentence. This requires understanding medical terminology.
+- This task entails identifying specific medications referenced in professional medical language presented in the input data. Being adept at recognizing such terms will support your tasks effectively.
+- Read the provided sentences and identify any named medications. This task tests your knowledge of pharmaceutical terminology.
+- The aim of this task is to find and report the name of a medicine embedded within stated medical or therapeutic scenarios. A background in healthcare vocabulary can be advantageous.
+- Here, you will focus on discerning drug names embedded in text. This task tests your comprehension of pharmacological terms and their relationships with health outcomes.
+- Your role here involves parsing through descriptions about drugs or their effects, aiming to identify specific substance names accurately.
+- You are to look at descriptions involving health issues or treatments and recognize the name of the associated drug mentioned in those sentences.
+- You are tasked with discovering drug names present in clinical language, which entails a good grasp of both therapeutic contexts and medication nomenclature.
+- The task at hand requires you to pick out the name of a medicine from descriptions that discuss its role in treating conditions.
+- You will engage with sentence structures that mention medications and need to accurately point out pertinent drug names described therein.
+- Your responsibility here is to wade through narrative contexts and capture the specific names of drugs mentioned within them for clarity and accuracy.
+- The goal is to review sentences that summarize medications and determine their names accurately. Familiarity with pharmacology will enhance your performance in this task.
+- Explore each sentence for indications of pharmaceutical names that are implied. This requires you to bring your prior knowledge about drugs into play.
+- The task involves reading through sentences to pinpoint any medications mentioned. Effective comprehension skills will help you sift through medical language for relevant information.
+- In this task, you will encounter sentences that discuss medical issues or treatments. Your job is to identify any drugs that are referenced.
+- The focus here is on recognizing drug names embedded in narrative accounts of patient treatments, requiring an understanding of both language and medicine.
+- Here, you need to pinpoint the drug or medicine indicated in each sentence, requiring you to connect the context with your existing knowledge of pharmacology.
+- The task requires you to recognize medication names within provided sentences, focusing on context surrounding their usage in health situations.
+- Examine the sentences for mentions of drug names, focusing on identifying what substance is being discussed based on context clues within the text.
+- The goal is to discern and articulate the name of a specified medication based on the contextual clues in the text provided.
+- Your task is to identify the name of a drug mentioned in the given sentences, which often describe medical scenarios or treatments.
+- In this task, you are asked to extract a single drug name from descriptive statements centered around health care scenarios. Insight into medication side effects will help guide your recognition.
+- This task centers on extracting data regarding medicaments found in clinical discussions, drawing upon your knowledge of drugs’ roles in healthcare.
+- You are tasked with identifying specific drug names referenced in sentences that describe their medical applications or side effects.
+- This task requires you to extract and name a drug referenced in contextual sentences, highlighting your understanding of medical terminology and drug applications.
+- By immersing yourself in written cases surrounding patient treatment, you'll be identifying significant pharmacological terms referenced within those sentences.
+- The challenge here is to accurately recognize and name drugs discussed in sentences that pertain to their therapeutic use or effects on patients.
+- This activity centers on pinpointing drug names found in medical scenarios presented through sentences, testing recognition skills in a clinical language.
+- This involves discerning drug names from provided clinical reports or observations that detail their impact or purpose in treatment scenarios.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1447_drug_extraction_ade
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1447_drug_extraction_ade
+user_prompt_template: '{task_def}
+
+
+  {problem}'

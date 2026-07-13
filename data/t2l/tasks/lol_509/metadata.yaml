@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- This operation requires sorting elements within an array where characters are mixed between letters and digits. Collect all alphabetical parts first without changing their listed order before including any numerical parts.
+- In this task, you must analyze a list containing both letters and numbers and collate them according to their type, ensuring the sequence remains intact for each group.
+- You will be given a list with mixed elements. The challenge lies in partitioning this list into two segments — one for letters and another for numbers — while keeping each segment's internal order.
+- 'Here, you need to analyze an input list and sort it into two distinct sections: all letters should come before any numbers, with both segments retaining their original positional arrangement.'
+- In this activity, focus on sorting elements of a bracketed list so that all letters appear at the forefront while numbers trail behind them, keeping their given order intact.
+- Here, you will analyze a given set of data containing both characters and digits. Your objective is to categorize these elements by type while keeping their original order intact.
+- This involves taking an inventory of mixed items in an input list. Organize them so that all alphabetic components come before numeric ones without rearranging their inherent order.
+- You are tasked with sorting a list that includes both letters and numbers. This requires you to identify and collate alphabetic items before numeric ones while preserving their arrangement.
+- You are presented with a mix of characters including letters and numbers within a single input list. Your task is to isolate the alphabetical components and arrange them first before appending the numeric components, preserving their order as much as possible.
+- The task involves collating items from a list, where you need to keep alphabetical characters grouped together ahead of numerical ones.
+- In this assignment, your focus is to rearrange a collection of items by distinguishing letters from digits while maintaining their placement.
+- This task involves sorting items from a list that includes letters and numbers. You should collate all letter entries at the start, followed by number entries, without altering their sequence.
+- The goal here is to process a given input list containing varied types of entries. You will extract letters and numbers, keeping them in their respective sequences while rearranging their overall order.
+- The objective is to sift through an input list, gathering all the alphabetic elements initially, then appending the numeric elements while keeping their original arrangement intact.
+- You need to take a given list comprised of different elements and divide it into alphabetical entries and numerical entries. Both groups should maintain the sequence in which they appeared.
+- In this activity, you will sort a list of entries made up of letters and numbers. Ensure that you keep alphabetical entries at the forefront followed by numerical ones while retaining their respective orders.
+- Your assignment consists of reviewing an array of items that includes both alphabetic and numeric entries. It's essential to separate these elements into distinct categories while maintaining their original order intact throughout.
+- This task invites you to convert a mixed inventory of elements into a structured format where letters lead, neatly succeeded by numbers while retaining their sequence from the original entry.
+- You need to identify and arrange letters from a list at the beginning, followed by the numbers, maintaining the sequence of both types.
+- You will take on the challenge of sifting through a composite list filled with both alphabetical strings and digit sequences. Combine these in pairs – letters first in their initial order followed by numbers.
+- The objective is to process an input list by dividing its items into alphabetical and numerical elements, ensuring that the sequence of each category remains consistent with the original.
+- This task requires careful attention as you extract and organize both alphabetic and numeric elements from an integrated collection while ensuring that each retains its display order from the input list.
+- Your task involves organizing a list of mixed elements by separating letters from numbers while maintaining their original order within each category.
+- In this task, you are presented with an input collection that combines both strings and numbers. Your job entails extracting the different types while preserving how they appeared in the original set.
+- In this task, you need to analyze a given list of diverse items. Your goal is to organize it by relocating all letters to the front section of your output and subsequently placing the numbers in their correct order behind them.
+- This task requires you to filter through a series of items comprising both letters and numbers, sorting them such that all characters come first unnaturally followed by all digits, each retaining its individual order.
+- You will take on the challenge of organizing a provided set of mixed data by prioritizing letter-based items over numeral-based ones while ensuring both categories' orders reflect how they were presented originally.
+- For this task, you'll examine a list of various characters, identifying and grouping all letters before any numbers while maintaining their initial order within each group.
+- Your responsibility here involves processing an input dataset comprising various characters that include both letters and numbers. Distinguish these groups by listing all alphabetical entries first, then proceed with the numerical entries while retaining original ordering.
+- This exercise asks for your organizational skills as you deal with an array that mixes characters and digits. Your role is to separate these into two clear categories, respecting the initial sequence.
+- Your role here is to extract items from an array that features both letters and numerals and organize them so that alphabetic components are positioned ahead of numeric components while maintaining their sequence.
+- Your focus in this task is on separation. You'll pull together all alphabetical elements from a mixed list first, then follow them with numerical elements, preserving their initial ordering.
+- Your task is to take a list containing different types of characters and rearrange them, ensuring that all letters appear before any digits, while keeping their sequence unchanged.
+- This task will have you working with an input list full of varied elements. Your goal is to distinguish letters from digits and present them accordingly without altering their initial sequence.
+- This activity focuses on reorganizing values from a specified input where you have both text characters and numbers. Collectively state all lettered values before all numeric values without altering their marginal positions within each group.
+- You will undertake the organization of an input list filled with varying characters by separating out letters from numbers while keeping their respective orders preserved throughout the output.
+- This activity entails taking a mixed list of letters and numbers and sorting them so that all letters come before any numbers.
+- Here, you'll work with a mixed array of items consisting of both alphabets and digits. You are required to regroup them into alphabetical and numerical parts without changing their sequential layout.
+- The assignment requires you to take a jumble of alphabetical and numerical items and restructure them. Group all letters at the beginning while ensuring that you follow with all numbers, keeping everything in its original appearance sequence.
+- You need to extract and categorize elements from a given list, placing all alphabetic characters first followed by numeric values.
+- You are tasked with recognizing two types of data—letters and numbers—in a list and reorganizing them with letters appearing before any numbers, while honoring their original sequence.
+- This task involves categorizing elements in a list by type. You’ll separate letters from numbers and display them in their respective groups while keeping their appearance order consistent.
+- This task challenges you to differentiate between alphabetical characters and numerical figures in a list, arranging them into a clear format that lists letters first.
+- In this task, your responsibility is to organize a provided list of characters consisting of letters and numbers by collating the letters into one section followed by the numbers in another.
+- Your responsibility is to categorize items from an input list. Gather all letters at the beginning followed by any numbers while ensuring that their individual orders are unchanged.
+- The challenge here is to split elements from a composite itemized list into alphabetical segments followed by numerical segments without altering their manifest sequence from the input.
+- In this endeavor, you’re expected to evaluate a combination of letters and numerals provided in a list format. Your job will be to segregate them properly while keeping each category's sequence unaltered.
+- Your responsibility here is to create clarity from chaos. Gather alphabetic characters at the start of your output while documenting numeric values afterwards without changing how they were arranged initially.
+- You will work with an input list that contains both letters and numbers. Your job is to extract and present the alphabetical elements before the numeric ones.
+- You will be tasked with taking an input list of mixed items and rearranging it so that all alphabets are presented before all digits, while preserving their original sequence from the list.
+- In this data classification task, you are presented with an ensemble of letters mixed with digits. Your function is to sort them into two groups respecting the order they were initially presented in.
+- Here, you will sort items from a given list that includes both letters and digits. Your objective is to place all alphabet characters first, followed by all numeric characters while keeping their original arrangement.
+- You'll be sorting through a collection of items, comprised of alphabets mixed with numeric values. Your task is to organize them so that all alphabetic characters are listed before the numeric ones, in the order they appear.
+- In this task, you will sort components of a given list by identifying which are alphabets and which are numbers. Both groups should be outputted while keeping their respective orders intact.
+- In this task, your job is to carefully sift through an input list that includes both alphanumeric characters. You will focus on gathering all alphabetic texts first before presenting any numeric counterparts while maintaining their initial layout.
+- You will be presented with a mixed list containing letters and numbers. Your job is to sort these items by bringing all letters together first, followed by all numerical values, while keeping each group's items in the order they appeared.
+- Your job is to parse a mixed list and collect all letters first, subsequently listing all the numbers without changing their order.
+- This assignment involves sorting through a cluttered list made up of various alphanumeric elements. You will be responsible for collecting letters upfront followed by numbers, ensuring you do not change their foundational arrangement.
+- The focus here is on processing an input list by extracting letters for the initial part of your output and numbers for the latter part, ensuring both segments keep their internal sequence.
+- This involves sorting a collection of items where you need to pull out alphabetic characters first, followed by numeric entries, and ensure that everything remains in its given sequence.
+- The objective is to handle a list of items, which can be either letters or numbers, and organize them by placing all letter items first, followed by all number items, while ensuring their order remains unchanged.
+- 'This task requires you to categorize elements from a list into two groups: letters and numbers. You must ensure that the letters precede the numbers, maintaining their original order as represented in the input list.'
+- In this sorting exercise, you're faced with a diverse assortment of strings that contains both alphabets and digits. Your goal is to distinguish between these two categories while preserving the order from which they were sourced.
+- Your task requires working with an itemized list where characters and digits are intermixed. Focus on collating the letters first, followed by the digits without disrupting their order from how they were originally presented.
+- In this task, you will need to separate letters from numbers in a given list, placing all letters at the front while retaining the respective orders of both groups.
+- Your task involves organizing a list by separating letters from numbers while keeping their original order. You need to identify all the alphabetical characters first before listing the numerical values.
+- You will be sorting through an organized mix of words and figures in an input list. The purpose is to create a structured output where alphabetical items lead, followed by numerical items in their original sequence.
+- In this task, you'll analyze a comma-separated list to distinguish between letters and numbers, arranging them so that all alphabetic entries lead followed by all numeric entries.
+- The job requires you to sort a bracketed list by moving all alphabetic elements to the front and placing numeric components after them in order.
+- The challenge is to correctly organize an unordered collection of strings and integers into two defined categories without altering their sequence.
+- You will analyze a collection of elements within a list format, separating them based on their types into letters and numbers. Your aim is to preserve their original sequential arrangement.
+- The essence of this task is to compartmentalize data derived from an input list that features both letter-based and number-based items. Your challenge lies in keeping the inputs in their original order while reordering them by type.
+- You will work with a set of data embedded in brackets, where your aim is to classify items into alphabetical and numerical segments based on their types while preserving order.
+- The task centers around rearranging a collection of strings by splitting them into alphabetic and numeric segments. The final result should maintain the sequence of appearance from the original list.
+- You will engage with a list composed of various elements, your focus will be on sorting these into alphabetic and numeric groups according to how they appear sequentially.
+- Engage in an organizational challenge where you must group characters from a provided list according to their nature—alphabetical or numerical—while sticking to the original order as you separate them.
+- Your task is to analyze a list containing both alphabetical characters and numerical values, and then organize them by grouping all letters together followed by all numbers, while retaining their original order.
+- Your task is to meticulously reorganize a group of mixed elements by positioning alphabets at the beginning and numerals afterwards systematically.
+- You are tasked with sorting elements found in a given collection or list. Separate these elements into alphabetical and numerical groups, ensuring that you list all letters first while retaining the order of both groups as they were originally presented.
+- This exercise challenges you to handle a list of mixed elements. Your responsibility is to gather all alphabetical characters together before all numerical ones, ensuring they follow the same sequence they had in the input.
+- 'This task asks you to segment a mixed character list into two parts: one for alphabetic elements and another for numerical elements. Retain the original order of appearance for both categories.'
+- Your job is to examine a list of mixed items and rearrange them to show all the letters together first, followed by all the numbers, without altering their initial sequence individually.
+- You need to process an input list that contains both letters and numbers by sorting these elements into two distinct groups while retaining their original arrangement within each group.
+- In this task, you're challenged to categorize items from an array into two groups—writing out all alphabetical entries before bringing in numerical values while preserving their sequences.
+- The activity consists of interpreting a diverse set of data types from a list, requiring discernment in arranging letters ahead of numbers without losing their original position.
+- This task requires you to sift through an input list, identifying and arranging alphabetical elements ahead of numerical entries while keeping the sequence intact.
+- In this challenge, your skills will be tested as you sort through various characters in a list. Alphabetical elements should be prioritized first in your response, trailed by numeric entries while keeping their order intact.
+- 'The task requires you to break down a list of items into two parts: one for letters and another for numbers, keeping the relative order intact as presented in the original list.'
+- Completing this task means you will derive a new sequence from a given input list where all alphabetical items come first, succeeded by numerical items in their original order.
+- In this exercise, you will sort characters from a list into two distinct categories—alphabets and digits. Please ensure that the alphabetical entries appear at the beginning of your response, followed logically by the numerical entries.
+- The task demands you to carefully look at a list containing diverse string entries and rearranging them such that all letters precede any numbers in their original order.
+- This exercise challenges you to sift through a given list, isolating alphabetical characters in one group and numeric values in another while preserving the sequence they are presented in.
+- Your task involves organizing the elements of a list by type—separating letters from numbers while keeping their original order.
+- Your assignment consists of reorganizing a mixed input list. Start by extracting all alphabetic characters and place them at the front, then follow with all numeric entries, respecting their respective orders from the input.
+- In this exercise, your primary goal is to sort elements into two classifications—letters and digits—from a provided input collection. Arrange all letters at the forefront of your output, followed by numbers in their respective order from the source list.
+- Here, your mission is to manage a list mixing alphanumeric entries. You must organize these entries into alphabetical first followed by numerical while keeping their initial arrangement intact.
+- The objective is to parse through a list and gather all alphabetical entries first, followed by numerical entries, ensuring order preservation.
+- The objective here is to split a given list into two categories—alphabetical items and numerical entries—and reformat the list so that letters precede numbers, maintaining their initial order.
+- Your mission involves processing an input list made up of alphabetic characters alongside numeric entries. Segregate them into two groups—letters on top and numbers below, without changing their internal order.
+- You are tasked with parsing a given set of items in brackets into two sections. The alphabetical items should be listed first, followed by any numerical items in their original form.
+- The goal is to take an input that has mixed elements, pull out all alphabetic entries first, and follow up with numeric entries without altering their existing order.
+- Your mission is to extract and rearrange a mixed list by grouping all letters together at the beginning followed by the numbers at the end, preserving their order.
+- You are asked to sift through an assortment of elements, categorizing them into letters and numbers, all while keeping their appearance order.
+- Your role involves navigating through a mixed-item list to isolate alphabetical characters from numerical ones, arranging them separately while adhering strictly to their original order of appearance.
+- The challenge is to handle a mixture of items within a list format by effectively separating alphabetical elements from numerical ones while maintaining their original order throughout the process.
+- You will be organizing elements of a provided list; your focus is on keeping letters separate from numbers and respecting the order they have in the original presentation.
+- In this task, you should separate a mixed list into alphabetical and numerical categories. Preserve the ordering found in the original list while rearranging these two sections accordingly.
+- 'This task focuses on categorizing an input list into two groups based on type: alphabets first and then numbers. It’s essential to keep the original order intact within each group during this process.'
+- 'In this task, you need to filter through a list and group characters into two categories: letters should be listed first, followed by any numbers, while preserving the order from the input.'
+- Here, your challenge is to classify characters from an input list. Ensure that alphabetical characters are organized at the beginning before listing any numerical values, both groups maintained in order.
+- In this activity, you will manage a collection of items in a list. The goal is to present all letters at the top of your output, followed by any numbers, while preserving the sequence they appear in.
+- In this activity, you will work with a list that combines letters and numbers. The task requires you to extract those letters and place them at the front of the output, with numbers following afterward without altering their previous order.
+- The focus of this task is to take an assortment of items from an input list that contains letters interspersed with numbers, sort them into two groups, and present them in their original order.
+- You are tasked with identifying and organizing input from a list. Specify letters first and then numbers, while careful not to change their ordering as presented initially.
+- This task entails working with an input that mixes numeric values with alphabetic ones. Efficiently separate these categories by placing all letters together at the start of your output followed closely by all numerical elements in their natural order.
+- In this task, collate entries from an input list such that all letter-type items are grouped together at the front followed by number-type items without changing their existing arrangement.
+- Engage in sorting activities where your goal is to reflect the mixed nature of an input list by categorizing its entries as either alphabetical or numerical with respect to their original sequence.
+- You will take on the role of an organizer by taking an input list filled with both letters and numbers. Extract all letter occurrences first while ensuring numeric occurrences follow thereafter in the same order they appeared.
+- In this assignment, your job is to sift through a list that’s a mix of strings and integers. You need to organize these elements so that all alphabetic strings come first, followed by all integers, while maintaining their initial order.
+- You will engage with an input list that combines both letters and digits. The goal is to organize these entries by first listing all alphabetical characters before any numeric representations.
+- You will receive a list that includes both alphabetical characters and numerical values. The goal is to rearrange them so that all the letters come first, followed by the numbers.
+- The goal here is to sort a provided list so that all letters come first, followed by all numbers, while maintaining the order they each appeared.
+- You are presented with a collection of items in a single list, and you need to divide them into two separate groups—one for letters and one for numbers—maintaining their initial arrangement within those groups.
+- Your goal is to restructure a list by listing all letters at the beginning and all numbers at the end, keeping their order intact.
+- This task involves refining an input list by gathering all alphabets first then trailing with numeric elements in their initial order as they appeared.
+- This task consists of sifting through a combined set of character types and appropriately dividing them, ensuring letters precede numbers while maintaining the sequential integrity of the list.
+- For this task, analyze an input set that integrates both non-numeric and numeric components; reformat it such that non-numeric components precede numeric ones while paying attention to their arrangement in your output.
+- You are tasked with sorting a list of items. Identify the alphabetical characters and numerical entries, placing all the letters together and all the numbers together, all while preserving their initial order.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task509_collate_of_all_alphabetical_and_numerical_elements_in_list_separately
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task509_collate_of_all_alphabetical_and_numerical_elements_in_list_separately
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- In this exercise, you are tasked with finding the kth largest integer from a given array of numbers through assessment and ranking methods.
+- You’ll be employing comparative reasoning to sift through numbers and determine one’s position relative to others, particularly focusing on its rank as kth largest.
+- In this task, you are required to dissect a set of integers and identify which one corresponds to the kth position when sorted by size. Knowledge of ascending order and magnitude awareness are pivotal.
+- Your mission here is to discover which number holds the kth place when considering size among others in a list. Practicing sorting and prioritization will be beneficial.
+- The job is to pick out the kth greatest number from a list of integers, which means reevaluating them according to their increasing or decreasing order.
+- Your task consists of determining which integer ranks as kth largest in an array. This demands both analytical thought and numerical familiarity.
+- In this task, you will sift through numerical data to uncover which integer holds the title for being kth largest when sorted properly.
+- You must navigate through an array of integers and determine which one is the kth largest, calling upon skills in sorting and evaluating numerical significance.
+- This task requires keen analytical skills as you sort through integers and discern which number holds the significant distinction of being the kth largest within the set.
+- You are tasked with identifying the kth largest element from an array of integers, highlighting your ability to differentiate sizes among numbers.
+- This task is about finding a distinct integer amongst others based on its relative size rank (kth largest), which involves examining and comparing values effectively.
+- The challenge at hand involves navigating through a numeric list to pinpoint the value that ranks as the kth largest, relying on logical reasoning about size relationships between numbers.
+- In this task, you are to determine which integer qualifies as the kth largest from a set of numbers, testing your comparative reasoning skills.
+- In this task, you need to analyze a list of numbers and identify the kth largest value among them. This requires understanding sorting and ranking.
+- You will work with a set of integers to find out which one is kth in size compared to its peers. It examines your skills in ranking and number comparison.
+- Analyze a collection of numbers and pinpoint which integer occupies the kth position in size among those considered larger values.
+- The task requires you to sort or assess a list of integers and pinpoint the kth largest value. It tests your analytical capabilities with numerical information.
+- You will navigate through an array of integers to discover which one is the kth largest. This will require both analysis and sorting skills.
+- You are tasked with extracting a specific ranked element from a list of numbers. This entails sorting or organizing the numbers according to their value.
+- Your objective is to determine which number is the kth largest in a given set of integers. This involves processing numerical data to find the right position.
+- You need to extract the integer that is the kth largest from a list. This will test your ability to analyze and rank numbers accurately.
+- Your mission is to navigate through a list of numbers and extract the integer that ranks k spots from the highest. Sorting or careful consideration of values will aid you in this task.
+- The focus here is on analyzing a group of numbers to extract their kth largest member, demanding logical reasoning about their ordering.
+- Work with a group of numbers and find out which one ranks at kth when arranged from highest to lowest. This calls for understanding relative sizes and positions effectively.
+- You are tasked with locating the kth largest number within a group of integers. This involves knowledge of how to assess numbers based on their magnitude.
+- You'll be examining an integer list with the goal of determining which number occupies the position of kth largest. Analyzing values based on magnitude is part of this process.
+- You need to sift through a list of integers to find the one that ranks as the kth largest, exercising your skills in comparison and ranking.
+- Your responsibility is to filter through a collection of integers to isolate the one that stands as the kth largest, utilizing your numerical skills for effective evaluation.
+- Identify an integer that stands out as being among the top k amongst a set of numbers, specifically focusing on its size relative to others.
+- This task requires you to determine an ordered position of values in a list, focusing on retrieving the kth largest value from a set of integers.
+- Find a number that holds the kth position in terms of size when you look at all numbers in a list and consider only the largest ones.
+- By evaluating a set of integers, your task is to find out which one ranks as the kth largest when arranged in descending order.
+- The focus of this task is to identify which integer falls into the category of being k ranks below the maximum in a given list of numbers.
+- You are required to assess numbers within a list and isolate the one that ranks as the kth largest, emphasizing size comparisons among numbers.
+- You must navigate through a sequence of integers and determine which one qualifies as having the kth highest value, enhancing your analytical skills in ranking.
+- You need to extract a certain value from a collection of integers, namely the one that qualifies as the kth largest among them.
+- Your task is to identify which number in a list stands out as the kth largest. This involves understanding how to order numbers correctly.
+- This task requires you to analyze a list of integers and identify the kth largest number from that list. Understanding how to sort and rank numbers is key.
+- Your goal is to find one specific number in a given set, defined by its rank among the largest values. This requires skills in comparison and arrangement of integers.
+- You are tasked with finding the kth largest number from a provided list of integers. This requires sorting or evaluating the numbers to identify the correct position based on k.
+- Your assignment is to evaluate a set of integers and select the one that is kth in size among the largest entries in that set.
+- The objective is to analyze a group of integers and identify which one comes in at the kth position in terms of size. Effective sorting techniques will aid this process.
+- You must determine a specific ranked integer within an array by evaluating its values, which calls for foundational knowledge in number ordering.
+- Your objective is to determine which integer occupies the position of the kth largest in a list. This involves understanding numerical hierarchies and effective data handling.
+- In this activity, you will be asked to find the kth largest number among various integers. Logical deduction and numerical organization will be vital for completion.
+- In this task, you must determine which number holds the kth largest position in a given set of integers. This involves understanding the relative sizes of the numbers.
+- You will analyze a list of numbers and determine which one stands as the kth largest, demonstrating your ability to process numerical data.
+- Here, the goal is to retrieve the kth largest integer from a list, requiring proficiency in logic and analytical reasoning to process the numerical data effectively.
+- In this exercise, you’re tasked with finding a specific element in a list based on its size. The challenge focuses on identifying order and hierarchy among integers.
+- Your goal is to analyze a collection of integers and determine which one ranks k positions from the top in terms of size. This involves understanding the relative values of the numbers.
+- The focus of this exercise is on identifying the integer that finds itself in the kth place regarding size when contemplating a list of numbers.
+- In this task, you need to sift through a collection of numbers and pinpoint the kth largest one. Understanding sequences and relative sizes will help you in reaching the correct answer.
+- The task at hand consists of identifying the kth largest element from an assortment of integers, requiring insight into number positioning and relative sizes.
+- You'll be given a series of integers and a specific position k. The goal is to locate the element that ranks kth when the list is ordered from largest to smallest.
+- Your task is to pinpoint a certain number in a list based on its size among others—specifically, you need to determine which integer ranks kth from the top.
+- You need to determine which number in a provided list stands at the kth largest position. This involves evaluating and comparing multiple integers.
+- In this exercise, you will determine the kth largest element from a given set of integers, showcasing your ability to navigate through numerical data.
+- You will be given a series of numbers and must locate the kth largest among them, relying on your ability to rank and analyze data.
+- You will work with an array of integers to discern which one holds the position of the kth largest. This task emphasizes your skills in quantifying and evaluating numbers.
+- The objective here is to extract the kth largest value from a given array of integers. Familiarity with sorting techniques will aid in reaching the correct result.
+- The assignment at hand is searching through numerical data to finally grasp which number falls as the kth largest—demanding keen observation and logical deduction skills.
+- You need to sift through given numbers and locate the one that is ranked as the kth largest value, showcasing your distillation and analytical prowess.
+- This task focuses on sequence evaluation and involves pinpointing an integer's relative standing within a specified range, offering insight into data manipulation techniques.
+- This task involves examining a set of integers and extracting the kth largest element. It tests your understanding of order and value comparisons.
+- The assignment asks you to find an integer that holds a particular rank (the kth position) within a list. This focuses on your sorting and ranking abilities.
+- You must work with a list of integers and determine which element ranks kth in size. This involves comprehension of numerical order and comparison.
+- Your goal is to discover an integer that occupies a specific rank among other larger integers from a provided list. You are after the kth largest value.
+- Your goal here is to identify from a selection of integers which one stands as the kth greatest, thereby demonstrating your ability to analyze numerical relationships.
+- In this exercise, you are tasked with finding out which integer is ranked kth when all values in the list are arranged in order from highest to lowest.
+- You are tasked with discerning the kth largest number from a range of integers. This will involve strategic thinking regarding numerical positioning.
+- Your task is to pinpoint an integer’s rank based on its size among others. Specifically, you need to determine which one falls into the kth position among larger entries.
+- You are given a set of numbers and asked to extract the kth highest value. Your analytical skills will be key in performing this task successfully.
+- Your challenge is to look through a collection of integers and identify which one splits the group into those that are higher and lower, based on its ranking as kth largest.
+- The aim is to extract a particular integer from a list based on its size relative to others, specifically the one that ranks kth largest. Skills in numeric analysis are required.
+- In this task, you'll evaluate several integers and extract one specific number based on its rank as the kth largest, testing your data processing skills.
+- Your mission is to find a specific value that is not just any number but holds significance as the kth largest in a sequence, involving evaluation and sorting skills.
+- You will look through an array of integers and determine which one qualifies as the kth largest. This requires an understanding of numerical comparisons and rankings.
+- The job requires you to sift through a list of numbers and pinpoint the element that stands out as the kth largest. It calls for attention to detail and numerical analysis.
+- In this task, you're looking to pinpoint the kth largest integer from a list of values. Understanding numerical positioning is essential for success.
+- The goal is to sort through provided integers and discover which number is the kth largest, demonstrating your ability to assess numerical rankings.
+- You are tasked with finding a specific element, the kth largest, within a sequence of integers. This necessitates sorting or comparative analysis techniques.
+- Using an array of integers and a position k, your mission is to extract which number ranks kth among the largest entries in the list.
+- The task requires you to sift through a list of integers to find out which one ranks as the kth largest based on its value.
+- Your challenge lies in determining which integer stands out as the kth largest among various options presented. Familiarity with numerical orders is essential for solving this task.
+- This task aims to assess your ability to locate an integer that ranks nth among the highest values presented in an array. Understanding how numbers relate to one another is key.
+- The assignment entails picking out an element that ranks kth in size compared to others within a list of integers, necessitating an understanding of ordering principles.
+- Your job is to sift through a list of integers to identify which one holds the kth largest position, necessitating an understanding of selection and ranking.
+- The task involves finding a specific largest number in a list of integers based on the given rank, known as the kth largest element.
+- You are asked to identify an integer's position in order relative to others within a list by locating the kth largest element, illustrating your analytical capabilities with numbers.
+- In this assignment, you must leverage both your mathematical thinking and organizational skills to find a targeted number within a series of integers.
+- Examine a list of integers and determine which one is the kth largest. This demands careful attention to detail and an understanding of number ordering.
+- The focus of this task is on finding an element positioned as the kth largest from a selection of integers. Mastery in data sorting can significantly streamline your approach.
+- Your job is to find out which number corresponds to the kth place in size within a list of integers, assessing their values directly.
+- Look through an array of numbers and determine which one qualifies as kth largest. This task involves understanding sorting and selecting within numerical data.
+- Examine a list of integers and select the number that ranks as the kth largest. Success in this task hinges on assessing the order of numerical values accurately.
+- This exercise tests your analytical ability as you seek out the kth largest number within a set of integers. Knowledge of ranking within arrays is crucial.
+- You will evaluate a list of integers to determine which one qualifies as kth largest, relying on comparative reasoning about their values relative to each other.
+- You are challenged to find an integer's rank within a list by determining its status as the kth largest, highlighting your numerical reasoning abilities.
+- Analyze a series of integers to find out which number stands out as the kth largest. This task relies on understanding and ranking numerical value effectively.
+- The goal is to sift through a set of integers and select the one that is ranked kth from the largest. This emphasizes your comprehension of relative sizes.
+- The goal here is to filter through an array of integers to discover which one qualifies as the kth largest value, necessitating effective comparison skills.
+- In this evaluation task, you will determine which integer belongs to the group marked by being the kth largest from an array of numbers.
+- This task asks you to determine which number in a list occupies the kth spot when sorted by size, helping you practice your analytical skills.
+- This task provides you with an opportunity to sharpen your logic by working with numbers and discerning which one fits into a specified ranking order.
+- You will be working with lists of integers where your aim is to find an element that corresponds to its size rank, specifically the kth largest one.
+- The challenge here involves identifying a number from a collection based on its rank. You must find the kth largest element among the integers presented.
+- Your mission in this task is to locate the kth largest integer in a list. This requires logical reasoning and orderly processing of numerical data.
+- You are asked to sift through numbers in an array and determine which one is positioned kth in terms of size relative to other larger values.
+- This task revolves around finding a specific integer that ranks kth when all elements are arranged in order. Effective sorting techniques will enable you to find your answer efficiently.
+- In this task, you'll assess a series of integers and determine which one stands out as the kth largest by understanding their order.
+- The challenge is to search through an integer array and locate the value that stands as the kth largest. Sorting or algorithmic skills will enhance your ability to solve this.
+- The task involves extracting one specific value from a list based on its rank, which requires a good grasp of comparative operations and overall list management.
+- This task involves analyzing a series of integer values to ascertain which one is positioned at kth when those integers are lined up by size.
+- Your task is to determine the kth largest number from a list of integers. This requires understanding how to sort and rank the values in the list.
+- Given a collection of integers, find the element that holds the kth position in terms of size. This requires both analytical thinking and numerical sorting skills.
+- Determine which number is the kth largest from an unordered list. You'll be working with numerical data and applying sorting techniques conceptually.
+- The challenge is to select the kth largest item from a set of numbers. Success in this task relies on your ability to comprehend size relationships among integers.
+- The goal of this task is to extract a specific element from a list based on its rank in descending order. You will determine which number holds the kth largest value in the given set.
+- Your objective is to extract the kth largest integer from a specified list. This task will engage your problem-solving skills in number comparison.
+- The objective is to sift through a set of integers to identify a particular element defined by its rank, specifically the kth largest. This requires sorting or selecting elements based on their values.
+- The task involves sifting through a collection of numbers to pinpoint the one that is k positions from the top in terms of value. A good grasp of how to evaluate numerical lists will help.
+- Your task is to identify the kth largest number from a provided list of integers. This requires sorting or evaluating the list based on size.
+- You will analyze a list of integers to identify which number ranks kth in descending order, showcasing your understanding of sorting and selection.
+- Your objective is to analyze a list of integers and determine which integer ranks k positions from the top. This involves comparisons and possibly sorting the numbers.
+- In this task, you will extract the kth largest integer from a given list. You'll need to be comfortable with handling numeric data and understanding order within that data.
+- In this challenge, your goal is to pinpoint which integer qualifies as the kth largest from a provided list, necessitating an understanding of comparative analysis.
+- You need to navigate through a list of integers to uncover the kth largest item, showcasing your ability to handle data sets effectively.
+- Your mission is to ascertain which integer among many qualifies as the kth largest. This exercise emphasizes comparative analysis and ranking in numerical sets.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1194_kth_largest_element
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1194_kth_largest_element
+user_prompt_template: '{task_def}
+
+
+  {problem}'

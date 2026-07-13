@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The goal of this task is to extract information by converting sentences into questions. This requires you to recognize references within the text that point to the same individuals or items.
+- Construct an inquiry based on a sentence where you must identify and clarify entities by resolving their references within the text, leading to an unambiguous result.
+- The focus here is on reading comprehension and the ability to distill essential information into questions that are straightforward and unambiguous.
+- Interpret the narrative or action within the sentence provided and form a question that effectively probes for deeper understanding of those entities involved.
+- Examine the narrative in the sentence and create an unambiguous question centered on coreference resolution, making sure its answer can be clearly determined.
+- Focus on reading comprehension by developing questions from textual statements. Your questions should reflect an understanding of which components of the text refer back to the same entities.
+- Create a well-defined question based on the information in the given sentence. Pay attention to how different parts of the sentence relate to each other, particularly when it comes to identifying who or what is being discussed.
+- Your task is to construct a coherent question based on a given sentence. You need to focus on coreference resolution where similar entities are referenced throughout the text.
+- In this assignment, closely read the specified sentence and craft an unambiguous query based on its content, making sure each reference is clear and leads to one logical answer.
+- Your job is to uncover the underlying meaning of a sentence and transform that into a clear and direct question that focuses on key details regarding the subjects involved.
+- Your job is to develop a precise question based on the information in the sentence. The question should aim to clarify who or what is involved, especially regarding any pronoun reference resolution.
+- Your focus will be on generating unique questions derived from sentences, utilizing your ability to connect mentions to their respective nouns or pronouns in the text.
+- The task entails extracting identifiable themes or subjects from sentences and converting them into well-structured questions leading to unique answers based on context.
+- Construct precise questions from the input sentences by focusing on elements that are crucial for uncovering information tied to those involved in the described situations.
+- Using context clues from a given sentence, create a specific inquiry that isolates one core reference or idea, demonstrating your ability to parse language effectively.
+- Your responsibility is to transform a statement into a question that can highlight essential details in the original sentence, using coreference resolution techniques to clarify references.
+- Identify significant names or terms in the given sentence, and devise a precise question that would require interpretation of these references for its solution.
+- Your role is to read sentences thoroughly and produce questions that call attention to specific entities mentioned, ensuring each inquiries about unique responses.
+- Extract intricate details from any sentence and rephrase them into engaging questions designed for unique answers based on coreferences within the text itself.
+- You need to analyze a given sentence, identify key information, and formulate an unambiguous question about it, ensuring that the question's answer is unique.
+- Read each provided statement closely, then derive questions poised to extract essential information while resolving any references included within those statements for clarity.
+- Your task is to analyze a given sentence and formulate a clear and unambiguous question that extracts specific information from the text, focusing on coreference resolution.
+- The task involves reading a given sentence and formulating a question that clearly captures the main information. This requires understanding relationships between entities in the text.
+- The task calls for you to interpret a sentence's meaning and then ask an insightful question that pinpoints specific details while ensuring that any references within the sentence are clear.
+- Analyze the provided text carefully. From what you gather, formulate an explicit question that aligns with the content and transcends potential ambiguities in the references used.
+- You need to derive questions from sentences, ensuring your focus is on coreference resolution. This will help in formulating questions that correlate well with the given context.
+- Analyze the sentence to discern underlying relationships and details. From there, construct a precise question that is directly answerable based on the sentence's content.
+- You will be challenged to form questions from sentences in a way that showcases your understanding of coreference resolution, ensuring the entities are properly linked.
+- The task consists of translating textual references into coherent questions that probe essential information distinctly presented in the sentences.
+- Create questions based on sentences that require you to identify and articulate distinct relationships among characters or items mentioned. This involves understanding how different terms relate to each other.
+- Your challenge is to draw from a given statement and produce an organized question that encapsulates its main point without ambiguity, emphasizing any relevant entities present in the text.
+- Engage with the content of the sentence to draw out an effective question. Make sure this question relates directly to mentioned subjects while facilitating clear coreference identification.
+- Examine the provided sentence carefully and create a question that captures the essential details, ensuring it is unambiguous and its answer can be easily identified.
+- You are tasked with transforming a declarative statement into an interrogative one. Make sure your resulting question reflects the content accurately while clarifying who or what is being referred to.
+- This task centers on interpreting sentences correctly and generating questions about them with unique answers, emphasizing your ability to recognize coreference links between subjects.
+- Analyze the assigned text, then create an insightful question by pinpointing relationships between mentioned entities, ensuring your question maintains clarity and specificity.
+- Examine the provided sentence closely and create an inquisitive prompt that seeks clarification on relationships or actions depicted in the text.
+- Analyze the sentence for key details and develop a question that extracts specific information while maintaining clarity and uniqueness in the answer.
+- Identify key subjects within the sentence provided and construct a rigorous question that directly relates to those subjects without leaving room for ambiguity.
+- Your goal is to delve into the meaning of sentences and formulate questions that reflect an understanding of coreferences and relationships among various mentioned entities.
+- You are expected to scrutinize each sentence closely, then generate precise questions that clarify particular details related to coreferences found in the text.
+- Your challenge is to read and dissect sentences carefully so you can formulate questions that accurately seek unique pieces of information while addressing any overlapping terms used within those sentences.
+- You will derive a question from the information included in a sentence by recognizing and clustering references to the same entities for clear understanding.
+- Constructing questions from sentences requires attention to detail. Focus on identifying core elements of what’s said while clarifying relationships between all mentioned participants.
+- 'The mission is straightforward: interpret a specific sentence''s meaning thoroughly and generate a concise question about it, ensuring all associated pronouns or references are properly accounted for.'
+- Examine sentences critically and produce well-defined questions that get to the heart of what is being discussed, while effectively managing references within the text.
+- Your task is to derive a clear and unique question based on the information given in a sentence, focusing on entities and their relations.
+- Read each sentence attentively, then frame a well-defined question aimed at uncovering specific details. Pay attention to terms that may have overlapping meanings concerning entities in the text.
+- The goal of this task is to derive a question from a statement while ensuring that the question reflects the context correctly, resolving any pronouns and clarifying who or what is prominent.
+- Your task revolves around deriving questions from given sentences where understanding coreference dynamics is critical to ensure accuracy in identifying entities discussed.
+- You need to read through sentences and come up with questions aimed at extracting unique pieces of information, particularly those involving coreference resolution.
+- Your assignment involves reading sentences critically to extract meaningful components and build straightforward questions reflecting their critical aspects.
+- The task involves reading a sentence and creating a clear and unique question that refers back to the information within it. You should ensure the question fits the context of the sentence and resolves any references.
+- Formulate clear and distinct questions based on sentence structure, ensuring each question queries particular details involving referenced subjects or objects.
+- Your objective is to generate questions that represent a unique aspect of the information in a sentence, emphasizing clarity and relevance to coreferential entities.
+- This task requires careful reading of a sentence to extract relevant entities or concepts, then crafting a question that neatly aligns with those elements while maintaining clarity.
+- Engage with a given sentence by framing a targeted question that addresses critical components. This exercise involves deciphering relationships between mentioned entities.
+- The objective here is to take sentences and derive questions that elicit pertinent information. This requires careful consideration of which words or phrases correspond to one another.
+- Create a relevant question from a provided sentence, with emphasis on resolving references within the text. The challenge is to maintain clarity about which entities are involved.
+- Read the sentence thoughtfully and develop a clear question about its content, utilizing your skills in recognizing pronouns and their antecedents for unambiguous answers.
+- The task entails extracting relevant information from each sentence to construct specific questions. Make sure these questions address the relevant entities identified in the text.
+- Your goal is to ask a concise question derived from the given sentence that demands an understanding of who or what is being referred to, while ensuring there is only one correct answer.
+- This activity involves reading sentences and crafting questions about them. Ensure that your question unambiguously refers to entities discussed in the text.
+- You are tasked with interpreting sentences and designing focused questions that explore relationships among characters or objects while ensuring clear answers can be obtained.
+- Read the provided sentence carefully and create a coherent question based on its content. The question should relate to coreferences in the sentence, focusing on who or what is involved.
+- The objective is to derive a specific question from a provided sentence, carefully considering context and references to create clarity while ensuring a unique answer.
+- Create an unambiguous question based on given text. This involves identifying main individuals or actions described while accurately handling any mentions or pronouns used in the sentence.
+- Identify key characters or events in each sentence, then put together thoughtful questions reflecting those findings while ensuring your questions are easy to answer uniquely.
+- In this task, you will derive questions from sentences by paying attention to language details, ensuring your questions maintain specificity and avoid ambiguity.
+- Your challenge is to summarize the critical aspects of a sentence into a well-formed question, focusing on clarity while navigating through possible ambiguities in references.
+- From the context of the provided sentence, formulate a clear question that elucidates the main idea by skillfully handling any references made to the same concepts or people.
+- Extract valuable details from an original sentence and turn them into an intelligible question that clarifies relationships between various subjects mentioned within it.
+- Identify significant information within a given sentence and then engineer a specific question that reveals direct relationships between people or events described.
+- Engage with each sentence's content closely, then synthesize this into a targeted question structured around single identifiable answers derived through careful consideration of coreferences.
+- You are tasked with synthesizing critical information from sentences into meaningful questions, employing logic and analysis to ensure each question relates directly to the text.
+- Your role is to extract critical information from a sentence and pose a thoughtful question about it that is straightforward yet distinctive. You must resolve any coreferences as you formulate your query.
+- From a given sentence, create an insightful question that highlights relationships between characters or events. The question should ensure clarity and precision in its answer.
+- Your task is to read a sentence carefully and generate a specific question that corresponds to the details in the sentence, ensuring clarity in what is being asked.
+- Read the provided sentence carefully and think about what critical detail you want to inquire about. Construct your question so that it highlights relationships between entities in the text.
+- Employ your comprehension skills to break down a sentence and produce an insightful question that encapsulates the main point while correctly linking references.
+- The objective is to derive a precise question from a sentence while maintaining clarity. This requires identifying key elements and their relationships within the sentence.
+- Read the provided sentence with care, then construct an appropriate question aimed at uncovering specific details within it while keeping your inquiry clear and precise.
+- In this task, you will construct questions from provided sentences. These questions should clarify who or what is being discussed, using explicit references found within the text.
+- From a provided sentence, construct an unambiguous question that directly refers to the elements within the text, focusing on resolving any pronouns or references.
+- Provide an insightful question based on the specifics of what's presented in a short sentence, making sure it involves understanding coreference connections accurately.
+- Your task is to read a sentence and create a clear, unique question that reflects the details within it, focusing on identifying references correctly.
+- Synthesize knowledge from a straightforward narrative into targeted questions, ensuring each one is constructed around essential ideas while resolving any references present.
+- As part of this exercise, you'll transform descriptive sentences into inquiries by identifying central themes and determining how individual mentions connect throughout the text.
+- Focus on extracting key information from sentences you read in order to construct questions that are distinct and respond directly and clearly with identified subjects or actions.
+- By evaluating the sentence carefully, your aim is to craft clear questions based on core references present in the text, ensuring only one correct interpretation comes through.
+- Analyze the given sentence to identify relationships and entities mentioned, then formulate a unique question that seeks clarification or further information on those aspects.
+- Your task is to create a meaningful question based on the content of a given sentence. The focus should be on understanding coreferences and identifying who or what is being referred to.
+- In this exercise, derive critical details from the given sentence to compose a succinct question that avoids confusion and clearly indicates which entities are involved based on their references.
+- The objective is to transform information from a sentence into a specific question. This requires identifying key entities and relationships while resolving any coreferences present.
+- Your challenge is to generate an exact question based on another person's statement in the form of a sentence, ensuring clarity in who or what is being discussed.
+- Read through the provided information methodically. You need to conceptualize a well-formed question that accurately reflects key ideas while integrating coreferential relationships smoothly.
+- You will be required to construct a direct question from a provided sentence. The question must reflect a unique aspect of the information, especially regarding relationships between subjects.
+- Your job is to read and interpret a sentence, then formulate questions that reveal key elements of information. Pay close attention to pronouns and other referring expressions.
+- This task invites you to distill essential details from a sentence into a focused question, making sure it aligns with the contextual clues regarding which entities are in action.
+- You are required to interpret provided sentences deeply and engineer succinct, relevant questions about them, necessitating strong skills in recognizing coreferential links.
+- Analyze the structure of the provided sentence and generate a unique and straightforward question regarding the key elements discussed within it.
+- Formulate a clear and unambiguous question that arises from the sentence given. Your focus should be on ensuring that references are accurately represented in your inquiry.
+- Your responsibility is to distill essential information from a sentence and create an unambiguous question that highlights significant aspects of it, ensuring clarity in how references are presented.
+- Your task is to distill key information from a sentence and convert it into a direct question. Focus on ensuring that your question is unambiguous and specific to certain details.
+- Engage with the text to create unique questions that capture the essence of the information presented, while ensuring that their answers are clearly defined within the sentence.
+- You need to distill information from sentences into questions that maintain clarity and focus on particular elements mentioned, integrating relevant coreference insights.
+- This activity requires you to derive meaningful questions based on contextual cues within sentences, reflecting an understanding of relationships among different referents.
+- Engage with the material by constructing focused questions based on core aspects of a sentence, highlighting relationships between different parts while ensuring completeness.
+- You need to produce a question that encapsulates the critical information from the sentence. It should focus on relationships among people or concepts mentioned in the text.
+- Your task is to read a given sentence and formulate a clear, unique question that accurately reflects the content within it, primarily focusing on coreferences.
+- For each sentence provided, your challenge is to construct a question that precisely targets key information. This involves identifying relationships between various mentions in the text.
+- Analyze textual clues in a sentence to derive a pertinent question that encapsulates key elements, requiring an understanding of how different parts of speech relate.
+- The aim is to analyze given sentences and formulate clear questions that address their content, with particular attention paid to how different elements relate to one another.
+- Craft a precise question based on a sentence which requires you to resolve references to individuals or items mentioned, ensuring the question has only one logical answer.
+- In this activity, you will interpret statements to produce precise questions about their contents, ensuring that all necessary references are understood and accounted for.
+- As part of this task, you must generate clear inquiries from narrative statements, focusing on identifying unique aspects while accurately handling references within the text.
+- The aim here is to produce precise questions from given sentences, necessitating an understanding of who or what is being referred in order to craft responses that add value to the exchange.
+- This exercise challenges you to comprehend sentences thoroughly and articulate questions that precisely capture the essence of what's being communicated in a structured way.
+- Your task is to analyze a given sentence and formulate a question that highlights a specific detail within the text, ensuring the question is clear and has a single, identifiable answer.
+- Construct a question from the given sentence that is straightforward and can be answered uniquely, making sure to accurately track references among the characters or objects mentioned.
+- Your responsibility is to derive specific questions from given sentences based on their content, relying heavily on your ability to recognize shared references among terms used.
+- This task requires you to read through a sentence, understand its meaning, and then synthesize a question that accurately addresses key elements without causing confusion.
+- You will need to interpret the sentence's context and formulate a question, ensuring that it directly relates to specific individuals or objects mentioned in the text.
+- From the sentence you read, construct an examination-type question which could be answered based on coreference awareness. Aim for precision and clarity in your phrasing.
+- Analyzing given sentences closely allows you to formulate effective questions; focus particularly on relationships between entities mentioned and how they connect through coreferences.
+- Delve into the provided sentences, extracting significant information, and transform those insights into well-structured questions without ambiguity or confusion.
+- Analyze the sentence to identify key subjects and actions, and then construct a question that requires knowledge of these elements for its unique answer.
+- From examining a single sentence, you must generate a clear question involving entities and relationships within it, focusing on producing unique responses.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task489_mwsc_question_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task489_mwsc_question_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

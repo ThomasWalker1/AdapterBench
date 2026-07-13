@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your objective is to locate any lowercase alphabets in a potentially cluttered list while ensuring they are sorted without duplication.
+- 'The assignment is straightforward: pull out any lowercase letters from an assorted input list, eliminate duplicates, and present the results sorted from A to Z.'
+- This task focuses on filtering out alphabetic characters from a given list while sorting them uniquely in ascending order.
+- You will be processing a list that combines numbers and lowercase letters. Extract the unique alphabetic elements from it, sort them into order, and return that organized collection.
+- You will be working with a list that mixes characters and digits. Your job is to identify only the lower-case letters present, ensure they are unique, and then sort them alphabetically for clarity.
+- Extracting unique letters from a mixed list is the main focus of this challenge; you'll ignore any numerical entries in your search.
+- You are tasked with identifying and organizing the unique lowercase letters from a given list that contains both numbers and letters.
+- This task involves working meticulously with a list containing varied character types. Your job is to isolate the unique lowercase alphabets amid the numbers and arrange them in alphabetical order for easy reference.
+- The objective is to analyze a given list filled with numbers and letters. Your focus should be on extracting, sorting, and displaying unique lowercase alphabets.
+- In this exercise, you need to sift through a list of items, filter out the non-letter entries, and arrange any found letters in a sorted sequence.
+- Extract all lowercase letters from a provided array that contains both digits and letters, ensuring no repetitions in your sorted output.
+- This task asks you to filter out lowercase letters from a given list that may also contain numbers. Once you’ve found the unique letters, they should be sorted and compiled into a final result.
+- Your task is to process the input list to gather lowercase letters only. After filtering out any duplicates, arrange these letters in alphabetical order for your output.
+- Your task centers on identifying lowercase letters from an assortment that includes digits and organizing them uniquely and sequentially.
+- Your job is to discover all the distinct lowercase letters from an input list that contains both letters and numbers, presenting them in sorted format.
+- Your assignment is to analyze a provided list, pulling out the lowercase alphabets, and returning them in a sorted sequence.
+- You need to examine a collection of characters that includes letters and digits. The goal is to find the distinct lowercase letters, sort them, and return the result.
+- Given a list containing various characters, your objective is to filter out the unique lowercase letters and arrange them alphabetically.
+- You are required to sift through a provided list containing numerals and lowercase alphabetic characters. Extract the unique letters and return them sorted from A to Z.
+- The objective is to take an array filled with alphanumeric characters, identify the lowercase letters, and arrange them without duplicates.
+- The challenge lies in distinguishing lowercased characters embedded among numbers within an input list—focus on extracting these uniquely and sorting them.
+- Your job is to classify the contents of an input array containing numbers and alphabets by identifying and sorting distinct lowercase alphabets effectively.
+- Your task involves analyzing a list that contains both numbers and lowercase letters. You need to identify the unique letters and organize them in sorted order.
+- In this task, you will work with a list consisting of alphanumeric elements. Identify the lowercase alphabetic characters, eliminate duplicates, and sort them.
+- The challenge here is to process a list filled with alphanumeric values. Your role is to pinpoint the lowercase letters, ensuring no repeats occur, and then sort those letters in order from the first to the last in the alphabet.
+- In this exercise, you'll filter through a combination of digits and letters, isolating the lowercase letters and sorting them for clarity.
+- Your responsibility lies in examining a blended collection of numbers and lowercase letters. Extract any unique alphabetic entries you find, followed by sorting those into an ordered list.
+- The aim here is to dig into an array combining alphanumeric elements and extract all distinct lowercase letters while ignoring numbers completely for the subsequent output.
+- Your job is to sift through a list containing both letters and numbers. Extract the letters and arrange them in alphabetical order.
+- Your task is to sift through a list of mixed numbers and letters, isolating the unique letters that appear in lowercase and then organizing them in alphabetical order.
+- The task involves identifying and organizing the unique lowercase alphabets from a mixed list of numbers and letters.
+- Analyze a list combining digits with alphabets, extracting only the unique lowercase letters for sorting before sharing the results.
+- The main objective here is to filter out non-alphabetic characters from a mixed list. Concentrate on finding, sorting, and displaying the unique lowercase letters you uncover.
+- For this task, you will perform extraction of lower-case letter elements present in a mixture of numbers and letters, organizing them into a sorted list afterward.
+- The task requires you to navigate through a collection of alphanumeric data, pinpoint the lowercase letters, and present them sorted without any duplicates.
+- This task requires you to extract only the alphabetical characters from a given list of mixed content and return them sorted uniquely.
+- Extract unique alphabetical characters from a mixed list containing numbers. Sort these characters in increasing order as your final result.
+- This task requires you to distinguish between letters and numbers in an input array, isolating the unique lowercase letters before arranging them alphabetically.
+- Your job involves distinguishing and collecting the unique lowercase letters from an input list filled with numbers, presenting them sorted out cleanly.
+- Your mission is to extract all distinctive small letters from a given array of numbers and words, then sort these letters alphabetically for output.
+- The assignment consists of analyzing a varied input for its letter content while discarding numeric elements, followed by organizing the distinct lowercase letters found.
+- This operation calls for extracting all distinct lowercase letters from a list filled with both numbers and characters. Sort these selected alphabets in ascending order before providing your answer.
+- The goal is to sift through an array of alphanumeric strings to find and sort the unique letters contained within.
+- This task challenges you to navigate a list that holds both numerical digits and alphabetic characters. You will need to single out the lowercase letters, make them unique, and sort them logically.
+- Your job is to analyze an input list to find all the unique lowercase letters present among numerical entries. After extraction, the next step is to arrange these letters in sorted order.
+- This task challenges you to distinguish between digits and varying types of characters in a given array; specifically, you'll isolate unique lowercase letters for sorting.
+- Navigate a list filled with alphanumeric data to locate unique lowercase letters. Once extracted, these letters need to be organized in alphabetical sequence.
+- In this task, focus on selecting the lowercase alphabets from an input list that also contains numbers. You will then need to arrange these letters in ascending order.
+- You need to handle an assortment of characters where both numbers and letters are present. The focus should be on isolating the lowercase letters, eliminating any repetitions, and sorting them in ascending order.
+- This exercise involves identifying lowercase alphabets within a list of alphanumeric items, clarifying which letters appear distinctly, then listing them in order.
+- You'll be tasked with exploring an input that combines numerals with lower-case alphabets. The primary focus will be to filter out unique letter occurrences followed by their alphabetical organization.
+- Here's a challenge where you need to sift through a collection of characters, pulling out only the unique alphabets and arranging them in alphabetical order.
+- Your task involves examining an input consisting of mixed content to segregate and arrange unique lowercase alphabets in order.
+- The main goal here is to inspect a collection of numerical values intermixed with lowercase letter elements. From this mix, identify those letters uniquely and arrange them in sorted order.
+- In this assignment, you will parse through an assortment of characters from a list comprising numbers and lowercase letters. Isolate the unique alphabetical entries and arrange them in sorted format.
+- In this exercise, you will examine a list that combines numbers and lowercase letters. Your mission is to filter out the unique letter characters, ensuring no repetitions exist before sorting them alphabetically.
+- Your objective is to sift through a mixed list of digits and lowercase letters, gathering all the unique letters while ignoring numbers. Once identified, these letters must be organized in alphabetical order.
+- The assignment requires you to sift through a combination of numeric values and lowercase letters to extract only the letter elements. After identification, these must be organized without duplicates in alphabetical sequence.
+- Analyze a given list with mixed content, with the intent to uncover unique lowercase alphabets while disregarding any numbers or duplicated letters before sorting them alphabetically.
+- In this task, you'll work with a collection of items that contains both numbers and letters. Focus on finding the unique letters, sorting them, and presenting them clearly.
+- You will be examining a list that presents numbers alongside letters. The goal is to isolate the unique lowercase letters and return them in sorted order.
+- In this project, you work with inputs featuring numeral mixtures. Identify all unique lowercase letters, sort them, and prepare to return the compilation.
+- You will be given an assortment of characters including digits; your responsibility is to detect and sort all unique lowercase letters from this collection.
+- You are tasked with reviewing a list made up of various characters including digits. Your responsibility is to find the distinct lowercase letters within this mixture and then sort them alphabetically.
+- You will engage with a collection of characters that includes digits alongside lowercase letters. Extracting the unique letters and sorting them alphabetically forms the crux of your assignment.
+- This task requires you to filter a collection of numbers and letters down to just the unique lowercase alphabets, followed by sorting them in ascending order for presentation.
+- Your job is to scan through an input list for any lowercase alphabets, collect them into a unique set, and then organize this set in alphabetical order.
+- Discover the unique lowercase letters hidden among an array of numbers and characters in a list. Your objective is to sort these letters once identified.
+- This assignment challenges you to find all unique lowercase alphabets hidden among numerical values in a list, then sort these letters for clarity.
+- You will analyze an input list containing both numbers and letters. The goal is to filter out the alphabets, eliminating duplicates, and sort them for the final result.
+- This task challenges you to search through an input filled with numbers and letras. Isolate the lowercase alphabets into a distinct, ordered set.
+- You will be extracting letters from a collection that includes both digits and characters, and sorting them in alphabetical order.
+- The objective here is to deal with a diverse character list containing both digits and lowercase letters. Discover the unique letter elements within it, eliminating any duplicates and sorting the result in alphabetical order.
+- In this activity, you will work with a mix of characters where your primary focus is on identifying lowercase letters, consolidating them into a set of unique entries, and sorting them.
+- Identify distinct characters among a mixed input of digits and letters, focusing on the lowercase alphabetic characters exclusively as you sort them.
+- For this task, you are tasked with filtering out numeric entries to focus solely on the lowercase letters in the provided list, then sorting those letters for clarity.
+- Examine a provided assortment of alphanumeric entries. From this collection, your goal is to pick out the lowercase alphabetic characters and sort them.
+- Engage with an input list composed of both digits and letters. Your task is to extract the lowercase letters, ensuring they are unique, and then present them in order.
+- The goal here is to analyze a given input list and present the distinct lowercase letters in an ordered format while disregarding any numerical values.
+- In this exercise, you will be given a list filled with various digits and a few lowercase alphabets. Your aim is to filter out the unique letters and sort them for clarity.
+- You need to skim through an input collection that blends both numbers and lowercase letters. Extract, make distinct, and sort these alphabets appropriately.
+- Examine an array filled with alphanumeric information. Your task is to pull out the unique lowercase alphabets, disregarding any numeric values, and sort them appropriately.
+- This exercise entails isolating unique lowercase alphabetic characters from a provided input list filled with varied elements before sorting them appropriately.
+- You’ll engage with a list consisting of numbers alongside lowercase alphabets. The purpose is to pinpoint all distinct letters within the input and return them organized in alphabetical order.
+- From a given array of mixed characters, your task is to isolate the lowercase letters, ensuring they are unique and arranging them in order from A to Z.
+- Your role is to identify all the unique lowercase letters present in an input collection that comprises both numerals and text. Sort these identified letters afterward.
+- This task involves working with an input that blends numbers with lowercase alphabets. You need to track down the unique letter characters, sort them alphabetically, and return your findings.
+- In this project, concentrate on separating lowercase letters from numbers within a data set—sourcing each unique letter before listing them in order.
+- This task involves examining a provided list to extract letters, ensuring you collect only unique entries and return them in alphabetical sequence.
+- Examine an input array featuring numerals intermixed with lowercase alphabets. Your responsibility is to isolate these letters distinctly, ensuring they’re presented in their sorted arrangement.
+- You will track down the lowercase alphabets buried among numbers in a list, returning them sorted without duplicates.
+- In this task, you will collect the unique lower-case letters found within a mix of numbers and other characters, ordered neatly thereafter.
+- In this task, you will dig into an array of numbers and alphabets to gather the unique lowercase characters before arranging them in alphabetical order.
+- Your task involves processing an input list filled with numbers and lowercase letters. You need to identify and organize the unique letters.
+- The challenge here is to sift through an amalgamation of numbers and letters, isolating the unique alphabetical elements for clarity.
+- You're asked to look for unique alphabetic characters within a diverse list while discarding any number-related entries and organizing your results alphabetically.
+- The aim here is to dissect an input collection comprising alphanumeric values to pinpoint lowercase alphabets. These identified letters should be distinct and arranged in ascending order within your final output.
+- The assignment involves sorting through mixed types of entries—both numeric and alphabetic—to highlight and organize unique lowercase characters.
+- This task requires you to sift through a mixed list and extract all distinct alphabets, ensuring they are presented in sorted order.
+- The objective is to extract only the alphabetical characters from a mixed list, ensuring you capture each unique letter and order them accordingly.
+- In this problem, you’ll extract all lowercase characters from a jumbled list containing numbers as well. Ensure these are sorted without repetitions.
+- You will examine a numbered list for hidden lowercase alphabets, taking care to extract and order them uniquely by their natural sequence.
+- Your focus for this task will be to distill a collection of characters that includes both numbers and lowercase alphabetic characters. The unique letters should be selected and organized in ascending alphabetical order.
+- Your task is centered around examining an array that features a mix of digits and lower-case letters. Focus exclusively on classifying the unique alphabetic characters found within this array before sorting them.
+- You are required to work with an input array filled with both numbers and lowercase alphabetic characters. Your focus will be on pulling out distinct letter values free from repetition while also sorting them for neatness.
+- Here, you're tasked with finding unique alphabets within a list of various inputs, ensuring they are presented in alphabetical sequence.
+- You are tasked with identifying and organizing letters from a mixed list of numbers and words. Focus on the unique lowercase letters.
+- In this activity, identify all the lowercase letters from a combination of numbers and letters provided in a list. Make sure to sort them uniquely before reporting.
+- Identify distinct lowercase alphabets from an input list that presents a combination of both numbers and alphabetical characters, organizing them in sorted format for output.
+- Your task includes grappling with a variety of characters—some numerical, some alphabetic—to pinpoint and orderly present all lowercase letters separately.
+- Here, you will explore an input set featuring a combination of numbers and lower-case characters. Your job entails extracting distinct letter representations—removing duplicates—and organizing them alphabetically.
+- The goal here is to curate a list of distinct lowercase letters by analyzing input that includes both alphabets and digits, then sorting your findings.
+- The aim is to comb through an assortment of alphanumeric entries to highlight the distinct lowercase letters and present them alphabetically.
+- Delve into a list of data to pinpoint unique lowercase letters, then sort these extracted characters in ascending order.
+- The task involves analyzing a list of mixed inputs to identify and organize the unique lowercase letters while ignoring the numbers.
+- Extract all the distinct alphabetic characters from a provided list of mixed data types and arrange them in alphabetical order.
+- In this task, you will extract unique lowercase alphabets from a given mixed list that contains both numbers and letters. Once extracted, these letters should be sorted into alphabetical order for clarity.
+- The goal here is to examine a list that blends numbers with lowercase alphabetic characters. Identify all unique lower-case letters and present these findings in sorted format.
+- Parse through a mixed list of elements, isolating all unique lowercase alphabets found within. Once identified, they should be arranged in alphabetical order.
+- Review a mixed list of strings containing both letters and numbers. Extract all the unique lowercase letters and arrange them in sorted order.
+- Investigate a mixed list containing both numeric values and lowercase alpha characters. You must extract any repeated characters in alphabetical order while observing uniqueness among them.
+- Engage with a variety of characters in an input list by focusing on extracting only unique lowercase alphabetical entries and arranging them for clarity and ease of understanding.
+- The task requires you to identify and organize unique lowercase letters from a mixed list of numbers and letters, providing a clear output.
+- You will be working with a list containing various alphanumeric entries, focusing specifically on collecting and sorting the unique lowercase letters found within.
+- In this challenge, analyze an alphanumeric list to find all distinct lowercase alphabetic characters. After segmentation, organize those letters in alphabetical sequence for your response.
+- This task challenges you to identify distinct alphabets amid other elements in a list and arrange these characters in an orderly manner based on their alphabetical sequence.
+- Your job is to sift through a list of characters, filtering out the lowercase letters and returning them in sorted order, ensuring no duplicates.
+- In this activity, you need to take a list of mixed contents and focus on the lowercase letters, presenting only the unique ones in sorted form.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task636_extract_and_sort_unique_alphabets_in_a_list
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task636_extract_and_sort_unique_alphabets_in_a_list
+user_prompt_template: '{task_def}
+
+
+  {problem}'

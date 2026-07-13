@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your responsibility is to distill essential facts from the context that are pertinent to answering a specific inquiry based on that material.
+- Analyze the context given and identify facts that directly assist in answering a given question, focusing solely on the information presented.
+- The activity revolves around filtering through information in order to highlight details that directly aid in validating an answer given for a relevant question.
+- This task is focused on extracting and listing essential facts from written context to provide clear answers to accompanying questions.
+- The goal is to identify and articulate relevant information from a context paragraph that supports the validity of an answered question.
+- You'll need to locate and highlight essential details in the text that align with or explain the answer to a specific query.
+- Analyze the details in the provided text and identify specific knowledge that answers a posed question.
+- Your task includes analyzing a context passage for insights that are crucial in addressing specific questions about its content.
+- This exercise requires you to synthesize information from a paragraph and highlight facts instrumental in answering a specific query tied to that information.
+- Read through a provided context and identify crucial facts that support answering an associated question effectively.
+- The task challenges your ability to connect information from a text with a question, ensuring that you pinpoint and convey supporting details that effectively answer it.
+- The goal here is to gather explicit details from the provided context which aid in providing clarity or support for answering an associated question.
+- The aim is to extract critical elements from the contextual information that substantiate an answer for the related question at hand.
+- This task involves understanding a piece of writing and extracting essential details that contribute to answering a related query.
+- This task assesses your ability to locate significant details in provided paragraphs that confirm or lead to accurate answers about a specific issue.
+- This exercise involves interpreting content from a paragraph and articulating significant facts that respond appropriately to an inquiring question.
+- The exercise calls for careful reading and evaluation of text portions involving factual knowledge that substantiate particular inquiries.
+- You are tasked with determining which parts of the provided text offer direct support for the answer regarding the related question.
+- The task involves extracting relevant information from a provided text to support answers to specific questions.
+- In this task, you will identify specific pieces of information from a context that can validate the answer to a related inquiry.
+- This task requires you to scan the provided text for pertinent information that aligns with a specific question, helping to clarify the answer.
+- The aim is to find and present supporting information from the context that relates to a question, making sure it's substantiated by the text.
+- In this task, you'll delve into context material and identify key insights or assertions that buttress an answer determined from the query.
+- In this task, you will analyze a small text and extract supporting facts that relate closely to a specific question.
+- This task requires you to analyze a paragraph and distill important details that can help clarify answers to given questions.
+- You need to read a context paragraph and identify key details that substantiate the answer to the accompanying question.
+- Your role is to sift through textual content identifying significant points of knowledge or fact that contribute positively towards justifying an accepted response.
+- The task is about pulling together relevant details from a written passage that correspond with questions asking about that content.
+- Your responsibility is to navigate through the context given, isolating areas of knowledge that substantiate particular question responses.
+- This task focuses on information extraction. You’ll need to gather pertinent facts from the context to substantiate the response to the related inquiry.
+- Your task is to extract key information from a given context paragraph to support a specific question about that content.
+- The challenge is to uncover and articulate pieces of data from a paragraph which serve as corroborative details for the supplied response.
+- This exercise involves reviewing supplied passages to retrieve meaningful statements that provide clarity or support for a asked question.
+- This involves carefully reading a contextual background and then summarizing facts that substantiate the answer to a posed question.
+- In this activity, you read a context paragraph and identify factual statements that can help answer a related question accurately without any additional commentary.
+- You are tasked with leveraging knowledge from a text paragraph, pulling together significant details that are needed for addressing an associated question.
+- Engage with the context content to find supportive facts or statements relevant to the question prompt you have encountered.
+- You are tasked with discerning important contextual clues that align with an answer, demonstrating comprehension of the supplied content regarding the inquiry.
+- Your job is to connect varied pieces of information from detailed texts with their respective questions, ensuring you select apt supportive facts for each answer provided.
+- The exercise comprises showcasing essential information derived from the text in relation with resolving specific queries informed by it.
+- You will be gathering key details from a descriptive passage to ensure comprehensive support for answering the related question accurately.
+- Your role is to read a provided context and an associated question, then pull out specific details from the text that provide evidence supporting the answer to the question.
+- The task is about distilling necessary information from a statement or narrative to succinctly support an answer to an accompanying query based on details present in the text.
+- Identify and collate pertinent background knowledge from surrounding text designed to help clarify or respond to an associated inquiry.
+- This assignment requires careful reading of a context paragraph followed by pulling pertinent information from it that supports a specified response to a given question.
+- Look through the provided paragraph and pull out exact phrases or sentences that can credibly support the response to the specified question.
+- This task centers on analyzing a paragraph and selecting key details that help clarify or justify an answer related to that paragraph.
+- The focus here is on identifying and compiling relevant evidence from the text that correlates with the question presented.
+- Identify and extract key points in the text that provide clear backing for answering questions concerning the details mentioned.
+- This involves reading through provided material and determining the relevant information that aids in answering an associated question effectively.
+- The focus here is on pinpointing relevant information from context, which elaborates and strengthens the relationship between the question and its answer.
+- Your task is to extract relevant information from a provided context paragraph to support the answer to a specific question.
+- In this task, your skill in comprehension will help you find necessary details within the source material that align with the asked questions.
+- The focus here is on extracting relevant details from a context paragraph that provide clarity regarding a designated question.
+- Review the context paragraph, then retrieve and present information that bolsters the claim made in response to a related question.
+- Your role is to interpret and glean essential facts from the context given that directly correlate with the question asked.
+- The assignment involves identifying pertinent details within a context section to support an answer to an associated question.
+- This task involves examining information in context, then isolating portions that logically connect with the stated answer in response to a question.
+- Your task involves drawing evidence from a descriptive paragraph that helps formulate an answer for a particular question being asked.
+- Examine the provided paragraph for essential insights or facts that establish clarity about the response required by the corresponding question.
+- This task requires understanding a provided text and pinpointing facts that help clarify or support an answer to a related inquiry.
+- The objective is to pinpoint essential facts in the context that are necessary for accurately responding to a posed question.
+- This task focuses on synthesizing information from a brief context in relation to a specific question, showcasing understanding of the material.
+- Your work involves combing through context paragraphs for knowledge nuggets that justify or connect logically with the responses stipulated in relation to questions posed.
+- You are expected to analyze contextually rich paragraphs for factual evidence that aids in answering targeted questions accurately.
+- Your task is rooted in comprehension—finding information within a context that clearly supports an answer to its accompanying question.
+- You will engage with text by identifying elements within it that align with a specific question, showcasing your ability to connect details found in the reading material.
+- You will need to summarize information from a provided paragraph that supports the answer to a related question.
+- You are expected to pinpoint factual statements in a context paragraph that can substantiate an answer to the question posed.
+- Your role is to extract supporting information from a narrative that will help in providing a clear answer to a question related to that narrative.
+- This task involves identifying relevant facts within a given text that help clarify or provide context for a specific inquiry.
+- Your challenge is to read and discern key facts within paragraphs so they can be utilized as support for specific questions asked.
+- This task challenges you to decode meaning within text and harvest facts that can act as stepping stones toward answering specific questions effectively.
+- Based on a given context, your job is to find and present facts that can help answer a related question.
+- This task focuses on synthesizing knowledge from a paragraph into concise details that illuminate answers to specific questions.
+- Dive into the context given and retrieve relevant facts that serve as evidence for answering a certain question effectively.
+- Engage with written passages and uncover coherent segments of information that will serve as strong support for answering corresponding questions correctly.
+- You’ll be tasked with engaging with textual material, using it to find relevant details that support the answers expected from questions about the text's content.
+- You will extract key pieces of information from background material tasked with addressing an equally relevant question.
+- The objective is to sift through written content and pinpoint facts or knowledge that validates or supports an answer to a posed question.
+- This task involves extracting relevant information from a given context paragraph that can support a specific question. You'll need to identify key details that help clarify the answer.
+- The job requires you to locate and present information from a written paragraph which serves as support for an answer to posed questions.
+- Delve into the provided paragraph and highlight facts or statements that strengthen the response to an asked question regarding that information.
+- In this task, you focus on reading comprehension by examining context for statements or ideas that can be used as evidence when answering a question directly related to that text.
+- The goal is to sift through a contextual narrative and pinpoint facts that substantiate the answer to a linked question.
+- The work involves interpreting a passage and disseminating useful facts supporting an answer in relation to specifics addressed in the question.
+- You'll need to focus on gleaning crucial knowledge from a passage that helps in substantiating an answer related to that text.
+- As part of this task, you'll deduce supportive information from a narrative to assist in clarifying an inquiry based on that narrative.
+- The task is about discerning crucial pieces of information from a paragraph in order to provide clarity on a related question.
+- In this assignment, you will leverage contextual knowledge by pinpointing facts that correspond with and support a given query.
+- You will analyze written content for essential facts that are crucial in illustrating why a certain answer is justified based on the provided material.
+- Your job is to derive factual statements from a given passage that can reinforce the response to a question posed about that passage.
+- In this activity, you are tasked with identifying critical elements within a paragraph that can provide solid support for the answers related to questions based on that content.
+- This task requires you to read closely and identify crucial points in the text that help address specific queries about it.
+- The aim is to correctly identify noteworthy aspects of the context that will assist in addressing the raised question effectively.
+- You will read a context and then determine which pieces of information within it can be used as evidence to back up an answer to an associated question.
+- The objective is extracting pertinent information from context paragraphs that clarifies or strengthens the response given to the associated questions.
+- You need to employ analytical thinking as you probe context for evidence or information that explains or supports specific answers derived from associated questions.
+- Your task is to extract supporting information from a provided paragraph that aids in answering a related question.
+- This task centers on synthesizing content from a paragraph to substantiate an answer to a related inquiry.
+- You will need to summarize important facts from a paragraph in order to provide evidence for answering a specific question.
+- Your task is focused on extracting meaningful content from given textual material which can be directly related to answering questions based on it.
+- Analyze textual paragraphs thoroughly and collect any supportive details necessary for addressing questions presented alongside them.
+- This task entails summarizing essential elements of the context provided to support the response to a specific inquiry.
+- The task involves reading a context and producing supporting information that substantiates the provided answer to a question based on that context.
+- Here, you will refine your reading skills by locating facts within a paragraph that substantiate an answer linked with a relevant query about the same text.
+- You are required to sift through a context paragraph to locate facts that back up an answer to a posed question. This requires comprehension of both the details in the paragraph and the nature of the question.
+- Exercise your ability to comprehend text by locating crucial supporting statements within paragraphs, which are then used as evidence for responding accurately to questions posed.
+- You must work with the provided paragraph to highlight details that clearly address the posed question based on the context.
+- This involves synthesizing knowledge by exploring content and distilling information that directly supports answers related to the context presented.
+- Given a context and a question, your job involves pinpointing key facts from the text that aid in forming an accurate answer.
+- Your duty here is to sift through contextual details to find precise facts that can contribute meaningfully to answering a posed question.
+- You are tasked with recognizing and listing facts from the provided text that support an answer to a question based on that text.
+- The task involves extracting relevant information from a given paragraph to support the answer to a specific question.
+- From the given paragraph, extract useful insights or specifics that support a related inquiry, displaying your comprehension of textual material.
+- Your job is to pull specific information from a context paragraph that enhances understanding of how to respond to posed questions.
+- You are tasked with recognizing and isolating specific information within a paragraph that aids in answering contextual questions effectively.
+- The focus here is reading comprehension, as you will gather supporting elements from the background text necessary for answering particular questions.
+- The goal of this task is to connect direct statements from the text with relevant inquiries, ensuring clarity and precision in answering questions.
+- Engage with the input paragraph clearly, and systematically extract substantial evidence meant for supporting specific queries laid out.
+- Focus on identifying factual evidence in the paragraph provided, which serves as support for addressing a specific question posed.
+- You are required to identify and articulate supporting facts from a text that would logically help answer an associated question.
+- This task necessitates critical thinking as you discern relevant information in context paragraphs needed to substantiate responses related directly to particular questions asked.
+- You will engage with a text by identifying supporting details that enable comprehensive responses to questions based on its content.
+- You will delve into the supplied informational text, aiming to uncover significant statements that support an answer pertaining to it.
+- You will extract and present pertinent information from a text that clearly aligns with and supports the answer to a question.
+- You must highlight segments of information from the provided context that establish clarity or provide foundation for the answer related to the query.
+- In this task, your aim is to critically evaluate provided text to highlight information that can facilitate answering a specific inquiry.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task192_hotpotqa_sentence_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task192_hotpotqa_sentence_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

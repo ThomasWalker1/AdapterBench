@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your task is to determine if the title mentioned relates correctly to the subject of the document. Look for specific identifiers and similarities in wording.
+- You will determine if a title effectively identifies the subject mentioned in a document's body. Understanding context and entities mentioned in both parts is crucial for this evaluation.
+- The goal is to verify the correctness of a title in relation to an article’s content by interpreting both pieces of information for coherence.
+- This task requires you to compare a title with the body of text to assess if they refer to the same entity or topic.
+- This task focuses on reading comprehension, where you must effectively judge whether a title encapsulates what is written in an accompanying piece of text.
+- This task requires you to analyze a document and a title to see if they reference the same individual or concept, regardless of minor differences.
+- You will be required to cross-reference the details of a title against those in a text, aiming to ascertain their correct correlation or lack thereof.
+- You need to analyze content and titles and decide if they represent one and the same entity based on effective comprehension.
+- Interpret and compare a document’s content with its proposed title to ascertain if they refer to the same item or concept without any additional explanation needed.
+- Examine both a document and its proposed title, evaluating if they are describing the same subject despite possible differences.
+- In this task, you are required to determine whether a provided title accurately represents the entity mentioned in a corresponding body of text. Assess the relationship between the title and the text to reach your conclusion.
+- You are tasked with verifying whether the title provided matches the entity discussed in the document. Recognizing synonyms or slight variations will aid in your assessment.
+- You will analyze descriptively written segments to conclude if their titles correctly denote or signal their primary subjects.
+- You will review the relationship between a document's title and its body, focusing on coherence and relevance of discussed entities.
+- This task involves reading a text and evaluating whether a given title accurately represents the content.
+- The objective is to judge the correctness of a provided title in relation to a text excerpt. It involves recognizing name variations and confirmations of subject relevance.
+- In this task, you must examine a text and confirm if the title correctly identifies the main theme or topic mentioned.
+- You'll need to engage in an evaluative process where you ascertain if a title serves as an appropriate descriptor of what's elaborated upon in surrounding text.
+- You will assess whether the information contained in a body of text supports or confirms the designation given by its title.
+- You will assess whether a given title accurately reflects the content of a provided document. This requires careful reading and comparison between the text and title.
+- Assess the relationship between a title and its corresponding document body to verify if they refer to the same entity or concept.
+- You are asked to confirm whether a specific title appears correctly aligned with what is stated within the body of the document. The focus is on understanding entities that may have multiple descriptors.
+- Assess whether the title provided is an accurate representation of what is found within the associated text. This requires an analysis of both written segments for coherence.
+- In this activity, assess whether a document’s title appropriately describes its content. This involves understanding both elements and how they relate to one another.
+- This task involves discerning whether titles accurately encapsulate their associated texts. You will focus on understanding and evaluating semantic connections between them.
+- In this activity, compare a specific title with related text. The goal is to ascertain similarities in what they discuss, focusing on consistent referential language.
+- You will analyze a title and its associated text to see if they refer to the same subject or entity. Identifying synonyms or slight variations in wording is key.
+- This involves assessing textual evidence from a document against its designated title for appropriateness and relevancy.
+- In this assessment, you will be tasked with deciding if a title appropriately describes its related text by judging if both communicate about the same essential idea or phenomenon.
+- Your challenge will involve connecting concepts between titles and their texts, ensuring clarity and accurate identification of entities involved.
+- You will engage with a piece of writing and a designated title to ascertain if they refer back to the same topic or entity clearly.
+- Assessing for accuracy between a document's body and its proposed title is crucial; hence, your analytical skills will play an important role here.
+- You are asked to verify if a given title can be correctly identified within the context of a document's content.
+- Examine a document's body and its title, then ascertain if they correspond appropriately. This involves recognizing key elements that affirm or negate their connection.
+- The goal is to identify if the title mentioned aligns correctly with the primary focus of the document.
+- In this analysis, you should judge whether a given title appropriately describes an entity referenced in a document, taking into account how titles might vary slightly in wording.
+- Evaluate the relationship between a text and its title, determining if the title is an accurate descriptor of the main entity discussed in the document.
+- This task is about cross-referencing a title with its document to confirm if they are correctly linked in terms of content.
+- Verify whether a given document’s title accurately reflects its main idea or subject matter by critically analyzing both parts for any discrepancies or agreements.
+- You will analyze a text and its corresponding title to establish if they represent the same subject matter.
+- The task involves looking into whether titles effectively denote what is presented in textual descriptions.
+- You will be reviewing descriptive content and determining whether it accurately represents an associated title through evaluative judgement.
+- You are tasked with measuring the accuracy of a title against a textual description by understanding both the language used and contextual implications.
+- Your assignment involves cross-referencing a document's body with its title to determine their agreement or relevance.
+- Evaluate titles against their texts to ensure congruency and relevance, requiring attention to detail and comprehension of themes discussed.
+- The task involves determining whether a given title correctly represents the entity mentioned in the corresponding text. You need to compare the title and the text for consistency.
+- You need to determine how well a title summarizes or represents the content of its associated document based on context clues.
+- In this task, you'll explore whether the language used in both the text and title aligns in order to identify any discrepancies.
+- The challenge involves identifying if there’s harmony between a document's body and its title. Understanding context and details is vital for making accurate comparisons.
+- Identify if the title represents the main idea or subject matter discussed within a specific document's text by making relevant connections.
+- Your job is to evaluate if a given title fits well with its related textual content by identifying similarities or inconsistencies between them.
+- The aim is to identify if the title provided aligns with the information in the text, ensuring they both discuss the same entity.
+- This task involves verifying whether a title is correct as it relates to the content of a document. You need to ensure that both the title and text discuss the same topic.
+- In this activity, you will confirm if a provided title directly connects to the entity outlined in a body of text. Logic and comprehension skills are key.
+- The task allows you to apply your understanding of terminology as it relates to specific subjects within provided texts and titles.
+- Assessing if a title is correct involves understanding both the provided text and its general topic. This assessment requires careful reading and contextual analysis.
+- The challenge is to judge if the title appropriately fits with what is described in the document's content.
+- In this task, you assess if the title matches the subject discussed in the document. You'll rely on your comprehension of the text to make an accurate judgment.
+- Your job is to confirm if a title corresponds correctly with the information presented in a document. This requires understanding both the title's essence and the document's subject matter.
+- Your task is to check whether the title and the content of a document refer to the same subject. Familiarity with language and context will help guide you.
+- For this task, you need to analyze whether a document’s title relates correctly to its content, taking note of any specific mentions that might indicate agreement or discrepancy.
+- Your task involves reviewing a body of text along with its respective title to see if they align correctly concerning subject matter. Evaluation skills are essential here.
+- A crucial part of this task involves examining how well the title represents what’s in the document body. Look for key details that validate or invalidate the connection.
+- In this task, you'll read both a textual explanation and a title, deciding if they refer to the same subject matter or not.
+- Your job is to validate whether a given title reflects what is expressed in the text, focusing on maintaining relevancy.
+- You need to determine if the name in a title appropriately refers back to what's discussed in an accompanying document, which may require knowledge of synonyms or related terms.
+- The endeavor here is to critically evaluate a connection between a given title and its related text, ensuring clarity and relevance are maintained throughout.
+- The goal is to match titles with their texts by assessing similarity in meaning. You will need to identify whether both parts seem relevant and connected based on the subject matter covered.
+- Your role is to analyze whether a title effectively encapsulates the primary focus of information presented within a document body.
+- In this assessment, you consider if a chosen title correctly corresponds with its related text. The goal is to discern proper references within written content.
+- The goal is to compare a document’s title with its text to see if they correctly denote the same topic or entity.
+- The objective here is to check whether the information in the document supports or contradicts what is implied by its title. Engage critically with both sources of information.
+- The objective is to ascertain if the title refers accurately to what is discussed in the accompanying text, highlighting any mismatches.
+- Your role is to critically evaluate if an entity highlighted in the text matches up with that referred to in the title.
+- The goal is to assess the relevance of a title in relation to the information contained within the body of the document.
+- Your job is to assess titles based on the information provided in the text. You must recognize if the title corresponds correctly to what is discussed in the document.
+- You will analyze a text about an entity and determine if its title correctly identifies that entity, checking for accuracy and relevance.
+- This task centers around confirming if both the title and document pertain to the same entity, based on your understanding of their content.
+- Your role is to verify if a title correctly represents the information contained in a text. You must discern whether they refer to the same subject, regardless of slight variations in wording.
+- Your task is to verify if a title and its associated text correspond to the same topic or individual, even if phrasing varies.
+- You are tasked with verifying if there’s a match between the title and entity described within a text. Analytical skills will aid you in identifying any possible connections or variances.
+- You'll analyze pairs of titles and texts, verifying that each title correctly reflects the main content discussed within its corresponding section while being sensitive to variations in language.
+- Evaluate whether a title provided corresponds accurately with the subject outlined within the document through careful reading and cross-referencing.
+- This challenge calls for you to ascertain if a title serves as an accurate identifier for its corresponding document content, requiring comprehension of entities and possible alternative phrases.
+- You'll critically analyze if a document's title makes sense based upon the text provided. This requires an understanding of terminology and context.
+- You need to determine if the title and text refer to the same entity. Understanding how titles relate to their topics is crucial for this evaluation.
+- Your job is to compare a document’s body with its title to determine if they refer to the same subject or entity.
+- Assess whether a specific title can be tied directly to information within accompanying text. This requires comprehension of both language and the subject matter involved.
+- Your role involves matching specified titles with documents by confirming that both depict an understanding of similar themes or subjects addressed.
+- The assignment tasks you with validating if a document’s title correctly identifies its main entity by examining how closely they align in context and reference.
+- The goal is to discern whether there is a coherent connection between the title and the subject presented in the text.
+- Make a judgment on whether the proposed title captures the essence of what’s written in the accompanying document.
+- Your task is to assess a document's title in relation to its content and determine if they refer to the same entity.
+- You will evaluate whether a title captures the main idea of the accompanying text. This requires careful reading and comprehension of both components involved.
+- Evaluate titles for their correctness in relation to accompanying texts, focusing on confirming that both share meaning even amid possible textual variations or added qualifiers.
+- You will read a passage and a title, then decide if the title is a proper match for the document's subject. This requires careful comprehension of both elements.
+- This task entails analyzing a title alongside its accompanying document, ensuring that they collectively point towards the same entity or idea, despite possible variations in presentation.
+- Your task involves evaluating the accuracy of a provided title against the content of a document.
+- Assessing titles based on their relevance to document contents is essential in this task. Evaluate the main themes and terminologies used in both for alignment.
+- You must determine if the mentioned title correctly describes or connects back to what is detailed in an accompanying piece of writing, emphasizing comprehension and detail orientation.
+- Your job is to discern if a title can be justifiably tied back to the details within a document, reflecting on their similarities or differences.
+- This task asks you to ensure that a title is an appropriate descriptor for the content of a document. Focus on matching phrases and ideas between both elements.
+- Assess whether the title serves as a proper description of what the document is about. This involves closely reading both the title and body of text for meaning.
+- This task centers around confirming that a title indeed represents what is detailed within its corresponding document, requiring keen observation and comprehension skills.
+- Review the provided body of text and judge if it supports or contradicts the title suggested for it.
+- Compare a text snippet with its assigned title to see if they accurately represent the same entity or concept.
+- Analyze each title against its associated text for validity based on whether both segments effectively denote the same concept or individual mentioned throughout.
+- You are required to interpret both the document's body and its title, assessing them for correctness and accurate representation of content.
+- Your job involves examining a passage and judging whether a specified title is appropriate or not for that content.
+- This task requires you to read both a text and its title, analyzing them for congruity. Your focus should be on whether the title correctly denotes what is detailed in the text.
+- Assess whether the title presented relates correctly to the primary theme or entity mentioned in the accompanying text.
+- In this task, you will evaluate whether the title mentioned aligns with and accurately describes the subject matter in the accompanying document text.
+- Analyze a provided passage alongside its title to judge if they refer to the same topic. Your understanding of textual relationships will be essential for this evaluation.
+- Your role involves cross-referencing titles with their respective texts to ensure they evoke the same idea, demanding attention to detail and comprehension skills.
+- The assignment requires determining if a title is suitably reflective of the body of text it accompanies. Look for consistency in meaning, even when wording differs slightly.
+- Your role here is to scrutinize whether two pieces of information—a document’s body and its associated title—cohere with each other regarding their reference to an entity.
+- This task requires critical thinking in linking a textual reference to its proposed title, verifying their shared identity or focus.
+- Your job is to evaluate if the title given aligns with the information in the text. Look for any discrepancies or confirmations between them.
+- The focus here is on analyzing both a text and its title for consistency, ensuring they communicate information about the same subject.
+- Your challenge is to establish a connection between a title and its document by verifying their common reference. They should align conceptually, irrespective of how they're worded.
+- Analyze a brief document and decide if the given title aligns with the content, considering any differences in phrasing.
+- Your responsibility is to identify any inconsistencies between a title and its related content, focusing on correctness of identification.
+- The task requires you to evaluate if a given title accurately represents the main subject of the accompanying text. You need to determine if the title and text refer to the same entity.
+- You will examine whether a title is appropriate by considering how well it corresponds with the information contained in a document.
+- Your challenge is to ensure that the title aptly describes what is contained within the document. Be attentive to nuances that may affect their relationship.
+- Your skillset will be engaged as you contrast information from a text with its designated title, deciding on their relevancy and correctness.
+- This task involves critical thinking as you match titles to their corresponding descriptions within a document using context clues.
+- This task requires critical thinking as you judge whether the title given effectively matches the details provided in the text.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task630_dbpedia_14_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task630_dbpedia_14_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

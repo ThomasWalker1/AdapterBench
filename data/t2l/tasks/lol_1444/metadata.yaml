@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- In this activity, you are expected to modify some integers by rounding them toward the closest power of 2. Identify how each integer relates in size to surrounding powers for optimal results.
+- Given a group of integers, you are required to round each number to the closest equivalent power of 2. This involves understanding which numbers fit into this exponential category.
+- This task involves processing a list of numbers to find the nearest power of 2 for each integer. You'll need to evaluate the distance of each number from known powers of 2.
+- In this task, you will assess various integers and round them to the nearest number that is a power of 2, showcasing your knowledge of both rounding techniques and exponential numbers.
+- The task tasks you with measuring the proximity of whole numbers to specific powers of 2 and adjusting them accordingly within a structured output.
+- You are tasked with rounding integers in a list so that each is represented as the closest corresponding power of two, calling for both analytical skills and numerical knowledge.
+- Assess integers given in a list and convert them into their closest powers of two, highlighting your mathematical intuition regarding exponential growth.
+- The objective is to evaluate numbers and adjust them towards the closest power of two. This highlights your understanding of number theory and rounding principles.
+- In this activity, you will be working with powers of two, rounding a variety of integers accordingly. This task requires familiarity with both basic mathematics and exponential numbers.
+- You will work with lists of integers and modify each integer to match the closest power of 2, ensuring accuracy in your calculations.
+- The exercise demands that you take integers from a provided list and convert them into the nearest powers of two, fostering your skill in numerical approximation.
+- Analyze the provided integers and determine the appropriate powers of two they align with most closely. It's important to apply correct judgment in rounded cases.
+- Your task is to take a list of integers and round each number to the nearest power of 2. You will identify which power of 2 is closest to each integer, taking into account specific rounding rules.
+- You will assess a collection of integers and round each one to the nearest power of two, requiring awareness of both mathematical properties and rounding rules.
+- Your goal is to transform a list of integers into their nearest powers of 2. Knowing the characteristics of powers of 2 will allow you to identify which number each integer should round to.
+- You will be given numbers that need transformation into the closest higher or lower powers of two, establishing your competency in number manipulation within defined structures.
+- Your objective is to process a list of integers by identifying and replacing each with the nearest power of 2. Familiarity with exponential values is essential for this task.
+- Your job is to find and return the closest power of 2 for each number in a given list. Understanding what constitutes a power of 2 is essential for completing this accurately.
+- The aim here is to adjust a list of whole numbers so that each one represents its nearest corresponding power of 2. Understanding what constitutes a power of 2 is crucial.
+- You will process integers by determining the most suitable power of two for each number provided in a list, requiring logical reasoning and mathematical insight.
+- In this challenge, you will take a set of integers and round each integer up or down to the nearest power of 2. A solid grasp of what constitutes a power of 2 is crucial.
+- Your mission entails taking a set of integers and assigning each one the nearest power of two through an understanding of their numerical attributes and placement in relation to nearby powers.
+- The goal is to take various integers and assign them rounded equivalents based on powers of two, necessitating careful calculation and number comparison skills.
+- The aim here is to change a selection of integers into rounded figures that are powers of two. This requires knowledge about numeric proximity and characteristics specific to these values.
+- You are required to assess a series of whole numbers and return them as rounded values corresponding to the nearest powers of 2, reflecting number theory awareness.
+- Engage with a list is composed solely of integers requiring conversion into the closest power of two using your understanding of mathematical relationships between whole numbers and exponentials.
+- In this exercise, you’ll transform lists of integers into their closest powers of 2, showcasing your ability to perform quick numerical evaluations.
+- You are asked to transform a set of integers into their nearest powers of two based on proximity, emphasizing skills in rounding and number analysis.
+- You are required to analyze integer values by rounding them to their closest power of two for a listed input. It necessitates an understanding of number relations in powers.
+- You will work with a list of integers, changing each into the closest power of 2 based on specific rounding criteria. This will involve evaluating how close each integer is to the powers listed.
+- Your task is to analyze a list of integers and round them down or up to the nearest power of two. It’s important to consider the definition and range of powers when making these conversions.
+- This activity involves analyzing a series of numbers and determining which powers of 2 they are nearest to. The goal is to accurately convert each number according to its proximity to these powers.
+- This task tests your ability to match integers with their nearest powers of 2, emphasizing skills in basic mathematics and analytical thinking.
+- This assignment focuses on manipulating a series of integer inputs and aligning them with the nearest valid power-of-2 outcomes through calculation.
+- In this activity, you analyze a group of numbers and determine how to round them up or down to match the closest power of two values, showcasing your numerical analysis skills.
+- Your challenge consists of converting a series of integers into their nearest powers of two, demonstrating both understanding and application of basic math principles.
+- Using a list of integers, you will identify the nearest power of two for each number, which requires logical reasoning and number sense.
+- You need to evaluate several given integers and round each one accordingly until they match either the smaller or larger valid power of two based on defined criteria.
+- In this exercise, you are required to round each integer listed in the input closer to the appropriate power of two. Logical comparisons play an important role in this task.
+- You’ll be rounding a series of integers to their nearest corresponding power-of-2 values. It will involve evaluating which value each integer aligns with best.
+- Analyzing a range of integer values is what this task is about. You must find their nearest powers of two as part of understanding their numeric placement.
+- This activity requires you to explore a series of integers and round them to their nearest powers of two, leveraging your numerical skills and knowledge of exponents.
+- As part of this task, you will take given integers and associate them with the nearest powers of two by determining which one they most closely match.
+- This challenge entails analyzing a sequence of integers and identifying their closest powers of two, showcasing your ability to handle numerical transformations effectively.
+- This task is about taking integers in varying forms and adjusting them to fit within the range defined by powers of two through careful rounding processes.
+- You will take integers and round them to the appropriate nearest power of 2. Familiarity with binary exponents can aid in completing this task efficiently.
+- This task requires you to take various integers and determine which powers of 2 are closest, rounding accordingly while respecting specific rules about equal distances.
+- The task involves rounding a list of integers to the nearest power of 2, requiring an understanding of both powers of 2 and approximation.
+- This task requires you to assess integers in a list and round them to the nearest value from the set series of powers represented as multiples of two.
+- You will be rounding integers provided in lists according to their proximity to powers of two, relying on your grasp of how numbers scale and relate in terms of exponents.
+- This task challenges you to transform integers into their closest powers of two. Understanding exponential growth will be key as you complete this assignment.
+- You will handle a variety of integer inputs and determine their corresponding power-of-2 representations by applying logical rounding techniques.
+- The objective is to change each integer in a provided list to the nearest number that is a power of 2, showcasing your mathematical skills.
+- Your assignment is to review a group of integers and assign each one to its closest power of two—an exercise in numerical analysis.
+- Your job is to take multiple integers and round each one down or up to power-of-2 values, relying on your understanding of how these numbers relate.
+- You will analyze a collection of integers for their nearest power-of-two values, which calls for skilled application of rounding techniques and mathematical reasoning.
+- This task involves taking a selection of integers from which you must derive the nearest power of two for each value, using analytical skills to facilitate the process.
+- This task requires you to identify and round whole numbers in a list to the closest power of two values, promoting your understanding of numeric systems.
+- The objective is to transform provided integers into the nearest powers of 2, which means identifying numbers that are the result of multiplying 2 by itself multiple times.
+- Your task is to take a list of numbers and adjust each one to round them to the nearest power of 2, which are numbers like 2, 4, 8, etc.
+- This assignment requires you to analyze a series of integers and round them to the nearest number that can be expressed as a power of 2.
+- The task consists of converting integers into their nearest powers of two. It emphasizes mathematical reasoning and the properties of exponents.
+- The challenge is to round given integers to the nearest power of 2. It involves calculating distances from known powers and determining which one is closest for each integer.
+- You will receive several integers and your job is to round each integer to the closest power of 2. This requires recognizing which powers of 2 exist and comparing distances from those numbers.
+- You'll be engaged in modifying lists of integers by rounding each one to its corresponding nearest power of two, demanding familiarity with powers and rounding methods.
+- You will take a series of integers and transform each one to the closest power of 2, which calls for your ability to identify and apply mathematical concepts related to powers.
+- The focus here is on adjusting integers so that they correspond with powers of two. You'll need proficiency in rounding concepts as you work through this challenge.
+- Your task is to work with lists of numbers and convert each integer into its nearest power of two, relying on your understanding of mathematical relationships.
+- The task at hand includes identifying appropriate powers of two that correspond with given integers and converting them through strategic rounding practices based on calculated distances.
+- You need to analyze a list of integers and adjust each to the closest power of two, which demands both critical thinking and mathematical precision.
+- You'll be tasked with converting lists of integers into their nearest powers. Correctly identifying which values qualify as powers, along with understanding distance measures, will be crucial.
+- You need to analyze a set of integers and determine which closest power of 2 each integer aligns with, demonstrating numerical reasoning skills.
+- The focus here is on closely analyzing a series of integers to assign them to their nearest power of 2, leveraging numerical reasoning skills.
+- The objective is to process a set of integers by rounding them to the nearest powers of 2. This involves familiarity with mathematical rounding techniques and specific number properties.
+- Your responsibility is to take several whole numbers and adjust them so that each one reflects the closest matching value from the series of powers of 2.
+- Your challenge here is to transform a collection of integers by rounding them to the nearest value that is a power of 2. This task will test your ability to identify and compare numerical values effectively.
+- Your responsibility is to work through a list where each integer must be rounded appropriately to match its closest power of two using precise calculations related to exponential growth.
+- For each integer provided, your goal is to identify which power of 2 it most closely aligns with. This process involves calculating distance and applying specific rounding conventions.
+- This task involves transforming a series of integers by matching them to the closest powers of 2. You will need to know what powers of 2 are and how to identify which is nearest.
+- By examining a set list of integers, you need to derive which are closest to standard results expressed as powers of two. This includes reasoning about numerical closeness.
+- You are given various numbers and must adjust them according to the nearest value that can be expressed as a power of two. This necessitates recognition of those specific values in mathematics.
+- The objective is to round numbers from a provided set to their nearest power of two. This requires knowledge of both rounding methods and powers.
+- The assignment involves transforming a group of integers into their nearest powers of two. You should have an understanding of how powers display exponential growth for effective rounding.
+- In this exercise, your goal is to convert given integers into their closest powers of two by evaluating their distances, which involves critical thinking and calculation skills.
+- This task requires rounding a list of integers by finding the nearest corresponding power of two. It tests your ability to work with numerical values and make appropriate adjustments based on their proximity to powers.
+- In this exercise, every integer in a given list must be rounded to the closest power of 2, which requires you to recognize key mathematical patterns.
+- The focus here is on rounding integers accurately in accordance with their proximity to powers of 2, necessitating both logical reasoning and numerical analysis skills.
+- The challenge here is to convert integers into their corresponding powers of 2 by rounding each one based on their proximity to key values such as 16, 64, or higher.
+- The objective here is to process a collection of integers by rounding them to the nearby power of two, demanding sharp numerical reasoning and comparison skills.
+- You will engage with lists containing various integers, focusing on transforming them into powers of two by determining their closest match.
+- The goal here is to modify each integer in a provided list to match the nearest power of 2, which involves both comparison and mathematical operations.
+- Here, you are given lists of integers that need converting into their nearest power of 2. Your analytical skills in comparing numerical values will be beneficial in this task.
+- You are tasked with taking lists that contain integers and systematically adjusting each value until it becomes the closest power of 2.
+- You are tasked with rounding integers to the closest power of 2. Familiarity with both integer values and mathematical powers will be key in achieving accurate results.
+- Your duty involves figuring out how close each integer is to the valid powers of two in order to classify them correctly, testing your reasoning faculties.
+- In this task, you'll work with lists where your focus will be on converting integers into their respective closest powers of two through specified calculations.
+- The goal is to identify the nearest power of 2 for a list of integers, highlighting your ability to make quick calculations and understand powers in mathematics.
+- The challenge lies in rounding off given whole numbers to powers of two, making it necessary to have a grasp on exponential patterns.
+- Your job is to ensure that a list of provided integers gets recalibrated to align with the nearest powers of 2 based on mathematical properties.
+- Your objective is to round each integer from a given list to match it with the closest power of 2, necessitating knowledge about these specific numbers.
+- In this exercise, you will take a set of integers and, through analysis, determine the closest power of 2 for each one. This will involve comparing each integer against typical powers of 2.
+- Your responsibility here is to adjust integers from a list by rounding them off to the closest powers of two, showcasing your mathematical reasoning abilities.
+- Here, your goal is to classify a list of numbers by determining their nearest power of two, reflecting an understanding of numerical relationships.
+- You must assess a list of numbers and identify which power of 2 they are nearest to. This task blends number theory with practical application.
+- This assignment involves rounding off integers from a list to their nearest power of two. You'll need a good grasp of how powers relate to whole numbers for accurate conversions.
+- You will evaluate integers from a list and convert them into their closest forms as powers of two. This requires analytical thinking about number placement.
+- Here you are assigned with matching a series of integers to their nearest respective powers of two. A solid grasp on basics regarding exponential growth may assist your decision-making process.
+- The aim is to determine the closest power of two corresponding to each integer in a list, showcasing your analytical skills in mathematics.
+- Engage in a mathematical challenge where you receive lists containing integers and must find and return their nearest powers of 2, adhering to defined rounding strategies.
+- This task challenges you to round given integers based on their proximity to powers of 2, requiring both mathematical insight and careful comparison.
+- In this task, you will be identifying powers of 2, such as 64 or 128, and rounding a set of integers you are given to these specific values.
+- In this exercise, you are tasked with rounding given integers to the nearest power of 2. Careful assessment of distance from available powers is essential for accuracy.
+- This task will test your ability to provide the nearest power of two for various integers, tapping into your knowledge about exponential growth and numerical operations.
+- Engage in rounding off numbers from a list so they correspond accurately with the closest power represented in exponential terms. A good understanding of these proportions is key for success.
+- Your responsibility is to connect a list of integers with their nearest powers of two based on comparative distances. Understanding powers and applying rounding rules will be vital.
+- In this exercise, you will engage with integer lists and convert each value into its closest equivalent power of 2 using predefined rules for rounding.
+- Your goal is to adjust a list of integers such that each integer rounds to the closest power of 2. This requires an understanding of the relationship between numbers and their exponential forms.
+- You are tasked with transforming lists of integers into corresponding powers of two, selecting the closest match based on careful evaluation and comparison.
+- In this exercise, you will take a sequence of numbers and map each one to the closest power of two. Understanding the sequence of powers will aid in making accurate comparisons.
+- You are tasked with converting integers into their nearest powers of 2, which involves understanding both the concept of powers and how to assess distances between numbers.
+- Work through a list where you identify how each integer relates to the closest power of two, demanding both precision and an understanding of numerical scaling.
+- This task involves rounding integers in a list to the nearest power of 2, requiring an understanding of numerical relationships and the properties of powers of 2.
+- Your task is to take a list of integers and round each number to the nearest power of 2, recognizing the special properties of these numbers.
+- Your job is to convert each integer from a list into the closest corresponding power of two. Precision in comparison is key for this exercise.
+- In this activity, you will analyze a set of integers and convert each one to its closest corresponding power of 2. You'll determine the appropriate value using knowledge of exponential growth.
+- In this task, convert a list filled with integers into rounded values that represent their nearest powers of two. This requires thoughtful assessment, especially for those at equal distances from two powers.
+- You must evaluate several integers and determine their closest power of two by applying mathematical approximation techniques.
+- Your task is to take a list of integers and round each one to the closest power of 2, finding the best match from a set of known powers.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1444_round_power_of_two
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1444_round_power_of_two
+user_prompt_template: '{task_def}
+
+
+  {problem}'

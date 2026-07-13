@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Analyze short event descriptions to evaluate their interdependencies. Your task is to identify if the first statement causes or contributes to the situation mentioned in the second statement.
+- You will be examining pairs of events for possible causation, applying deductive reasoning to establish whether there is a clear link between them.
+- This activity requires careful analysis of stated events. You must judge whether an action or state presented in the Head phrase results in an observable effect described in the Tail phrase.
+- This exercise involves critical thinking where you'll decide if one event might potentially lead to another, as indicated by two provided phrases.
+- This task involves investigating connections between two given phrases. You must decide if the occurrence of one event results in or improves the other.
+- You are tasked with identifying potential cause-and-effect links within given phrases, using comprehension skills to distinguish between direct influences and unrelated actions.
+- Examine two related statements and conclude whether the action or situation in the first phrase results in the effect noted in the second phrase.
+- This task involves assessing whether a scenario described as one action logically leads to another; it challenges your reasoning skills regarding event consequence.
+- You need to evaluate two connected phrases to determine if one event causes the other. This requires logical reasoning and an understanding of cause-and-effect relationships.
+- You are tasked with understanding how one phrase may lead to a consequence expressed in another, evaluating each pair critically.
+- Engage with the provided phrases by evaluating their meanings and relationships. You need to judge whether one phrase describes a cause that affects the other.
+- Evaluate whether there is a direct connection between two stated events. Your analysis will help you conclude if one meaningful statement leads to another.
+- Use your reasoning skills to evaluate phrases, deciding if what happens first logically leads to what is described second.
+- By looking into two segments involving a subject's action and its possible effect, discern if there’s a significant connection that indicates causality.
+- This task requires exploring causal links between two fluently described events. Utilize your understanding of events and their potential implications as you evaluate them.
+- Evaluate pairs of phrases for causation by considering if carrying out the action in the first phrase naturally leads to what occurs in the second phrase.
+- Evaluate pairs of related phrases to ascertain whether a causal link exists between them. Use reasoning to establish if one leads to or affects another.
+- Your task requires you to parse two phrases and deduce whether there’s a logical progression from one to the other based on cause and effect.
+- Judge the linkage between two phrases by determining if the action in the Head phrase produces or creates the result found in the Tail phrase.
+- This exercise requires you to interpret short sentences and discern whether a cause-and-effect relation exists between them. Use your reasoning skills to analyze their connection.
+- The goal here is to dissect relationships conveyed through two phrases and conclude if there’s evidence that supports a cause leading to an effect.
+- In this challenge, you navigate through pairs of phrases to discern if there's a causal link. The focus is on your ability to determine relationships within simple statements.
+- Your role is to interpret short phrases and decide if the situation depicted in the first phrase potentially leads to the outcome described in the second phrase.
+- This task focuses on causal inference; you will evaluate whether the action or situation presented in the Head phrase causes the situation in the Tail phrase.
+- Delve into relationships between pairs of phrases by assessing whether the initial concept can be seen as catalyzing or giving rise to what follows.
+- Examine two brief statements and decide whether an action in the first statement leads to an outcome described in the second statement.
+- You will be identifying direct cause-effect relationships expressed through textual phrases, where you need to extract meaning from brief scenarios.
+- In this activity, you need to determine if one phrase contributes to or causes another. Understanding the implications of each phrase is essential for making the correct classification.
+- The task involves assessing whether one event (the Head) leads to another event (the Tail). You will analyze the relationship between the two phrases to determine causality.
+- Your challenge lies in exploring how one action may influence another as represented in paired phrases. Use analytical reasoning skills for accurate judgments on causation.
+- Determine whether an action presented in one short phrase has direct repercussions on what happens next according to another simple statement about consequences.
+- For each pair of phrases provided, your role is to examine them closely and classify them based on whether one leads to the other or not.
+- You need to consider the relationship between two phrases and decide whether one phrase is a cause of the other, identifying any direct connections.
+- Here, you will look at two related phrases and consider if the first phrase logically results in the second. This requires good reasoning skills to make an accurate determination.
+- Your goal is to inspect pairs of phrases and determine if there is a cause-and-effect relationship between them. Consider both phrases carefully in your evaluation.
+- The task centers around understanding causal connections between two events. You must analyze whether the first event logically leads to the second, requiring insight into various circumstances and their outcomes.
+- You are required to think about how one event might influence or trigger another. This requires discerning relationships between actions and consequences based on context clues within the phrases.
+- The focus of this task is on logical connections. Assess two short phrases and evaluate if they establish a cause-and-effect relationship clearly or not.
+- Consider two related phrases and analyze if one implies an effect that results from another. This requires identifying cause-and-effect dynamics between them.
+- Analyze two statements and decide if the first one brings about, or influences, the condition stated in the second one. Use your understanding of events and their consequences.
+- Your task involves two brief statements regarding actions or events, where you will deduce whether one influences or causes another. Critical thinking is essential here.
+- Your mission is to dissect short phrases involving participants and see if an action in one phrase (the Head) leads logically to an outcome in another (the Tail).
+- This task challenges you to think about how one event might result from another. You'll need careful consideration of language and context.
+- You will explore relationships between succinct phrases concerning events and actions. The key is evaluating if one situation results from or influences another.
+- You will review short phrases that describe events and need to decide if the first event causes the second. This requires you to think critically about their implications.
+- Your role is to examine two related phrases and determine if the first (Head) leads to or influences the second (Tail). Think about sequence and causality as you analyze them.
+- In this exercise, you assess relationships between short phrases. You'll decide if the event in the Head directly leads to the event in the Tail.
+- This task involves analyzing two phrases to determine if one phrase causes the other. You'll need to think critically about the relationship between the events described.
+- In this task, you will compare simple actions and outcomes, deciding whether they are causally linked through reasoning and contextual understanding.
+- This task requires critical thinking about sequences of actions. You will decide if what happens in the Head can be seen as contributing to or leading up to what is mentioned in the Tail.
+- You must identify if the first statement logically leads to, or influences, the second statement. This requires critical thinking about relationships among events.
+- Dive into evaluating pairs of phrases that describe actions or events, determining if one logically results in or causes another to happen based on your understanding of context.
+- Here, your mission is to interpret pairs of actions or scenarios and decide if one directly influences or creates the conditions for the other.
+- Analyze the connection between two short phrases. You need to decide whether the first phrase leads to the condition stated in the second.
+- Make a judgment about whether one event (Head) has a direct impact on another event (Tail) based on common knowledge and reasoning.
+- This task is about recognizing connections between actions described in short phrases. You need to analyze whether one phrase's action might bring about another's outcome.
+- Your mission is to scrutinize two connected phrases and ascertain whether an effect can be derived from a preceding cause, using your understanding of how events influence each other.
+- Assess event pairs from a cause-and-effect perspective, focusing on real-world dynamics so that you can evaluate if one precedes or contributes effectively to another.
+- Assess the connections between short phrases where one phrase (Head) indicates a potential action that may affect another (Tail). Your task is to identify any causal relationships.
+- The goal is to recognize and articulate whether one event given affects another event described, necessitating comprehension of causal logic.
+- You are asked to consider two related phrases and conclude if the first phrase creates or influences the context described in the second phrase.
+- The objective of this task is to analyze concise event descriptions and determine causality between them—deciding simply if one scenario can lead directly into another.
+- Your task involves analyzing two related phrases to determine if the first phrase (Head) has a causal relationship with the second phrase (Tail).
+- The task involves analyzing two events described in phrases and determining if the first event (Head) leads to or causes the second event (Tail).
+- The task centers around clarifying whether one described event logically follows from another based on context provided through concise phrasing.
+- Engage in logical reasoning by analyzing two given events. Decide if the first event has a direct consequence that aligns with the outcome in the second event.
+- Focus on pairs of short descriptions and consider whether what is implied in one statement has enough reason to be seen as causing what’s stated in another.
+- Examine paired phrases for logical links, focusing on whether the action in the Head phrase necessitates or produces the result described in the Tail phrase.
+- Explore and decide on causal relationships between given phrases, focusing on how one event may instigate or evoke another outcome.
+- Here, you will look at pairs of statements to evaluate whether one event can be seen as arising from another. This requires logical reasoning and comprehension of basic cause and effect.
+- In this activity, you must determine if the first scenario mentioned serves as a cause for the subsequent scenario depicted in the second phrase.
+- This task involves two events presented as phrases. You must decide whether the first event influences or leads to the outcome described in the second event.
+- In this task, you will assess two statements related to different events to identify whether the action or situation stated in the first part causes the result in the second part.
+- Engage with pairs of phrases that describe scenarios involving participants and evaluate if an action represented by the Head has a causal effect on the Tail's events.
+- You will evaluate the relationship between two given phrases, deciding if one can be regarded as a cause for the other.
+- The task requires you to evaluate pairs of phrases and conclude whether the first phrase can logically be seen as leading to the situation described in the second phrase.
+- You will evaluate two phrases where one may potentially cause the other. Understanding implications and connections between actions is key to completing this task effectively.
+- Your task is to analyze pairs of phrases to determine if the first phrase (Head) causes or leads to the second phrase (Tail).
+- In this activity, you'll interpret pairs of statements with a specific focus on causality—deciding whether an event in the first statement naturally leads to the second event.
+- Examine event descriptions for possible outcomes linked through causative actions, requiring analytical skills to determine logical sequences between them.
+- Analyze two short phrases for a cause-and-effect relationship. Think about how one might influence or lead to the other based on context and meaning.
+- In this task, you evaluate phrases that describe events or conditions. Your goal is to ascertain if there is a cause-and-effect relationship where the first phrase influences the second.
+- Your assignment is to assess whether a specified situation leads to a consequence. Analyze both statements carefully to determine if a direct causation exists between them.
+- The assignment entails discerning implications between events expressed through phrases. Analyze if acceptance of one scenario logically results in or influences another.
+- You will receive two related phrases and must ascertain whether the action or situation in the first phrase directly results in what is described in the second phrase.
+- You will analyze pairs of phrases to assess causality. Focus on whether the action or event in the first phrase leads to the situation described in the second phrase.
+- Analyze two connected events to see if the first event leads directly into or contributes significantly to the outcome depicted in the latter event description.
+- Explore implications of actions represented in short phrases. Your aim is to ascertain if accepting, performing, or initiating one action relates directly to another situation arising afterwards.
+- In this task, you will compare succinct phrases that reflect actions and consequences, aiming to articulate if one action serves as a catalyst for another event described.
+- Look closely at specified actions within pairs of simple statements and decide if embracing one leads implicitly to feelings or situations expressed by another.
+- You will need to determine causative links between two interpretive phrases by assessing their meaning and context. Insight into consequences of actions will guide your evaluation.
+- The job involves looking at pairs of phrases to deduce if the idea in the first phrase results in the consequence outlined in the second.
+- Consider each pair of phrases and determine if one naturally progresses into or causes the other, relying on context and knowledge of causation.
+- You will face pairs of short statements that describe actions or outcomes. Determine if there is a clear link where one statement causes or contributes to the other.
+- Carefully scrutinize pairs of phrases for their relationship—establish whether there is a direct cause-and-effect dynamic present based on their content.
+- In this task, you will discern if an event mentioned in one phrase provokes an outcome described in another phrase.
+- You need to assess whether one event described as the Head leads to, or results in, the event described as the Tail, using logical reasoning about cause and effect.
+- In this activity, you examine pairs of phrases to see if the first action initiates the second phenomenon, assessing correlations between them.
+- Analyze brief descriptions of actions in two parts, determining whether engaging in the first action results in or contributes to the second action.
+- Your job is to connect two phrases together by assessing whether the action or state outlined in the first phrase can be seen as responsible for producing the outcome in the second phrase.
+- This task requires you to assess whether a specific event (the Head) leads to or results in another event (the Tail). You will analyze the relationship between the two phrases.
+- Your job is to evaluate pairs of phrases and decide if the first phrase logically causes the second one. You’ll need to think critically about cause-and-effect relationships.
+- You are tasked with interpreting two related phrases and deciding if there is a cause-and-effect relationship present, requiring critical thinking about the events described.
+- You will analyze logical connections between given phrases, identifying whether one triggers or influences what follows in another statement.
+- Your objective is to dissect paired phrases and clarify whether one acts as a precursor or driving force behind what occurs afterward.
+- Your goal is to assess phrases indicating events and judge if the action in the first phrase causes the outcome in the second.
+- This task challenges you to discern whether an initial event leads predictably to a subsequent effect. Reflect on your understanding of typical cause-and-effect patterns.
+- This task requires you to evaluate causal relationships between two statements and classify them as either resulting in a "Yes" or "No" based on whether the first statement influences the second.
+- Investigate sets of phrases for interconnected meanings. Decide if one statement indicates that it brings about or causes what is mentioned in another.
+- Your job is to determine if the action or state described in the first phrase causes the outcome described in the second phrase. This involves critical thinking about how events relate to each other.
+- The objective is to discern if a scenario depicted as the Head phrase can directly lead to or result in the situation detailed in the Tail phrase.
+- The focus of this task is on deducing causality from statement pairs. You need to think critically about how one event might lead or contribute to another event's occurrence.
+- You will evaluate simple interactions between two phrases, identifying whether there’s an apparent cause defined by the first impacting what follows in the second statement.
+- Delve into succinct expressions describing events and actions, then assess whether one naturally leads into or results in another based on their descriptions.
+- The task requires you to connect two statements and judge whether there is a cause-and-effect relationship. You must have a good understanding of how actions can influence outcomes.
+- You will look at two short statements and judge whether they depict a cause-effect scenario. Determine if one condition results from or is influenced by another.
+- You will investigate short phrases related by possible causation and decide if there's a direct correlation between them. Logical assessment of each phrase is required.
+- This task revolves around identifying causal relationships in paired phrases. You must use your reasoning skills to assess how events may influence one another.
+- You will be presented with two brief statements and must decide if the first statement causes or contributes to the second. This demands an understanding of logical connections and real-world implications.
+- Explore short event descriptions and classify them based on whether one can lead to or result in another. Careful reading and interpretation are necessary for success.
+- Your role in this task is about understanding events and their outcomes through language analysis, particularly focusing on cause and effect.
+- This challenge focuses on your ability to make connections between events. You need to determine if what occurs in the Head has repercussions depicted in the Tail.
+- Engage with two statements where you must figure out if one directly causes or influences the other. A solid understanding of causality is key.
+- Focus on determining direct links between presented scenarios. Your ability to draw conclusions based on descriptions will be essential for identifying causative relationships.
+- Your objective is to explore connections between phrases by determining if one event logically leads to another. This requires careful consideration of contextual implications.
+- In this assignment, you will assess scenarios represented by two phrases to identify causal relationships. The Head describes an event, and the Tail describes its potential effect.
+- As part of this analysis, consider how contexts presented in the phrases may lead one situation to impact another. Identify explicit or implicit causal relationships.
+- Your role is to scrutinize pairs of events outlined in simple terms, determining if one event brings about another as a consequence.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1216_atomic_classification_causes
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1216_atomic_classification_causes
+user_prompt_template: '{task_def}
+
+
+  {problem}'

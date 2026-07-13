@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The challenge involves taking a string with unique characters and selecting the character that represents the greatest ASCII number.
+- Identify and select the character with the highest ASCII code from a given input composed entirely of unique characters.
+- The task requires you to evaluate a provided string made entirely of unique characters and identify the one with the highest ASCII value through comparison techniques.
+- Delve into a string made up exclusively of unique characters and ascertain which has the highest representation in terms of ASCII coding.
+- Your task involves reviewing a string filled with unique letters to find which character has an elevated position within the ASCII hierarchy. Knowledge about letter encoding and its associated values will be advantageous.
+- For this task, analyze a given set of characters in a string and determine which one is ranked highest in terms of its ASCII value.
+- Go through a series of unique characters in a string format, focusing on finding out which possesses superior ASCII coding.
+- Your job consists of examining an input string for its unique characters and selecting the one that possesses the highest value on the ASCII scale.
+- Evaluate characters within a distinct string and ascertain which has the highest numerical position in terms of ASCII encoding, showcasing analytical skills in character comparison.
+- Analyze unique characters in a given string and return the one with the highest ASCII value, utilizing your knowledge of how characters are ranked in terms of their numeric codes.
+- Your challenge is to comb through a provided string made up of unique characters and find out which one is represented by the largest number in terms of its ASCII encoding.
+- You will be given strings made up of unique letters, and your task is to find the letter that corresponds to the maximum ASCII number. This requires familiarity with ASCII coding.
+- Your mission is to identify, among various unique characters in a string, the one with the largest corresponding ASCII value.
+- In this task, you’ll be examining strings of distinct characters and identifying which one has the highest numerical representation in the ASCII table. Clear reasoning around character representation is required.
+- The objective is to assess a string filled with distinctive characters and return the character that has the greatest ASCII value.
+- Your role is to analyze a string filled with unique letters and numbers, ultimately selecting the character that boasts the highest ASCII numerical value.
+- Your responsibility is to return the character from a given set that bears the largest ASCII value. This involves analyzing how each character corresponds numerically in ASCII coding.
+- The goal is to extract the character from a string that has the maximum ASCII value. You'll need to compare ASCII values of each character in the string.
+- 'Your objective is clear: analyze the string and identify which character possesses the largest ASCII value among those provided.'
+- Review a provided set of unique characters within a string and find out which character has the most elevated ASCII value through analysis.
+- This exercise calls for you to explore a collection of distinct characters in order to dimiss those with lower ASCII values while selecting the one that reigns supreme.
+- Your task involves sifting through distinct characters in a string and detecting which one represents the peak in the ASCII value hierarchy.
+- Explore a unique set of characters in a string and determine which has an ASCII value that surpasses all others.
+- Look through unique characters contained within a string and find out which one possesses the maximal numeric value assigned by ASCII standards.
+- You need to analyze a string containing unique characters and ascertain which one features the highest associated ASCII number among them.
+- In this activity, you will be tasked with selecting from among unique characters within a string based solely on their ASCII values, identifying which one ranks highest. A firm grasp of how these values correlate will assist you greatly.
+- This task involves comparing characters based on their ASCII values within a provided string. Your focus should be on identifying which character ranks the highest.
+- Identify which character from a unique string stands out by holding the maximum ASCII value assigned to it.
+- Review a string composed of distinct characters and select the one that holds the maximum ASCII code.
+- In this exercise, identify and return the character with the highest numeric ASCII value from a list of unique characters enclosed in a string format.
+- You need to explore a collection of distinct characters within a string and return just one—the character whose ASCII value stands atop all others.
+- This challenge asks you to differentiate between characters based on their assigned ASCII values within a unique character string, ultimately isolating the maximum value.
+- You are to find the character with the highest ASCII value in a provided string of unique characters. Consider how each letter is represented numerically.
+- The task involves identifying the character with the highest ASCII value from a given string of unique characters.
+- The focus here is on evaluating strings for their constituent characters based on their ASCII values, specifically identifying the character that stands out as having the maximum value. Understanding basic encoding principles is critical.
+- The aim here is to sort through a set of characters from a string and find out which one has the maximum value as defined by the ASCII standard.
+- You will be tasked with extracting the character from a string that has the greatest ASCII value. This involves recognizing and comparing the values assigned to each character.
+- Engage in determining which character within an array of unique ones has leverage over others by possessing the highest value in ASCII terms.
+- Look over a unique-character string and find out which character stands out due to its maximum ASCII value representation.
+- This task involves sifting through unique characters in an input string to single out the one that boasts the largest numeric representation based on its ASCII coding.
+- You need to look at a string of unique characters and find the one with the maximum ASCII value, which involves comparing their encoded numerical values.
+- Your task is to identify the character in a given string that has the highest ASCII value. This requires understanding ASCII character encoding.
+- The goal is to examine unique characters in a provided string and extract the one linked to the highest number in the ASCII table.
+- Your task is to identify the character with the highest ASCII value from a given string of unique characters. Understanding ASCII values will help you determine the correct character.
+- You need to examine a given string and determine which character has the largest ASCII representation, reflecting your understanding of ASCII and character encoding.
+- The task is about finding the character with the largest ASCII value from a given collection of unique characters in a string. Knowledge of how characters are represented in ASCII form is important for this analysis.
+- This task requires you to identify the character with the highest ASCII value in a given string of unique characters. Knowledge of ASCII values and how they correlate with both uppercase and lowercase letters is essential.
+- Your job is to analyze a string containing distinct characters and determine which one has the greatest ASCII representation. Understanding the ASCII value system will help you successfully complete this task.
+- Here, your task involves parsing a string to find which unique character corresponds to the highest ASCII number. Familiarity with how ASCII values are distributed amongst characters will help you succeed.
+- For this task, you are required to examine a string and pinpoint which character corresponds to the maximum value in terms of ASCII.
+- Examine a string for uniqueness and determine the character with the maximum value when assessed through ASCII encoding.
+- This task requires you to examine a set of unique characters within a string and return the character with the largest ASCII value.
+- In this task, you need to examine the unique characters of a string and determine which one has the greatest ASCII value by comparing their numerical representations.
+- Engage with a set of unique characters and deduce which among them holds place as having the highest importance based on its corresponding ASCII code.
+- In this activity, you will need to discern which character in a given string has an ASCII value greater than all others, demonstrating your understanding of encoding systems.
+- You are tasked with finding which character in a given set has the highest ASCII value according to their assigned numeric codes.
+- This task involves examining a string containing distinct characters and identifying the one that has the highest ASCII representation, necessitating familiarity with ASCII encoding.
+- Your assignment is to look at a string containing unique characters and determine which character is represented by the highest number in ASCII terms.
+- By examining a unique character string, your task is to extract and present the character that has been allocated the highest value in terms of its ASCII representation.
+- You will need to evaluate the characters in a provided string and extract the one that has the greatest ASCII value, applying your knowledge of encoding systems.
+- You’ll engage with various strings composed of unique characters, aiming to extract the one with the highest ASCII designation. Familiarity with ASCII ranges across different character types will be beneficial.
+- In this task, you must determine which character among those listed in a string has an ASCII value greater than all others.
+- You are required to sift through a string of unique characters and pinpoint the one that possesses the highest ASCII value, reflecting your grasp of character encoding principles.
+- The goal is to examine a string and find the character that holds the maximum value based on its ASCII representation.
+- Your job is to sift through a string of unique characters and pinpoint the character that has the top ASCII score.
+- You will evaluate unique characters within a string and determine which has the highest ASCII value, using your understanding of how different characters are numbered.
+- This task assesses your ability to evaluate strings and identify characters based on their ASCII values. Recognizing how different characters are represented numerically is key.
+- The objective here is to systematically gather insights from a string and select the character that reflects maximum value within the ASCII range.
+- The challenge involves looking at a string and finding out which character stands out as having the highest position based on its ASCII code interpretation.
+- The task involves selecting the character from a string that represents the highest position in terms of ASCII codes.
+- This task involves recognizing which character in a supplied string has an ASCII value greater than all others. Knowing how ASCII values are structured will be essential.
+- Your objective is to scan through the given string and isolate the character that has the greatest corresponding ASCII code.
+- Evaluate a string of unique letters and find the character that corresponds to the largest numeric ASCII representation.
+- In this task, you will analyze a given string and determine which character has the greatest ASCII value, requiring an understanding of ASCII character representation.
+- The aim here is to investigate a collection of unique characters from a string and report back with the one that holds the greatest positional value according to ASCII standards.
+- The challenge lies in navigating through a string's characters to discover which one tops the list based on its ASCII encoding.
+- You will be tasked with finding which character from a given set in a string has the maximum ASCII code, emphasizing your ability to interpret and compare character representations.
+- Your assignment involves working with a string uniquely crafted from characters, where you must identify the character representing the maximum in terms of ASCII coding.
+- Examine a string of distinct characters and return the one that is represented by the largest number in its ASCII coding scheme.
+- Your mission is to sift through a given string of unique characters and return the one with the maximum ASCII value, necessitating some familiarity with how characters are encoded.
+- You will evaluate a string filled with unique characters and pick out the character that has the highest numerical value in ASCII.
+- Analyze a string containing unique characters and determine which character has an ASCII value greater than all other characters in that string.
+- This challenge asks you to process a string consisting of unique characters and extract the one associated with the highest ASCII number.
+- For this task, delve into a string made up entirely of distinct characters to discover which among them holds the peak ASCII value.
+- Analyze distinct characters in a provided string to unearth which one claims the title of having the maximum ASCII representation.
+- The objective here is to return the character from a given string that has the maximal ASCII representation by assessing each character's coded value.
+- You'll need to sift through a unique character string to pinpoint the character that holds the maximum ASCII value, demonstrating your understanding of character encoding.
+- You are expected to analyze a collection of distinct characters in order to find which one has the top rank according to their ASCII values.
+- You are tasked with evaluating a unique-character string and identifying its highest-value character based on ASCII standards.
+- The objective is to sift through a string of unique characters to pinpoint the one that exhibits the largest ASCII code, requiring an understanding of ASCII assignment.
+- The goal is to explore a provided set of unique characters in a string format and identify which has the highest ASCII designation.
+- This exercise asks you to evaluate which letter among a set has earned itself the maximum score in terms of its ASCII value representation. Familiarity with how these numerical codes are structured among different types of characters is valuable for completion.
+- The goal is to examine a string composed of unique characters and find the one that corresponds to the highest ASCII number, which indicates its order in the character set.
+- Your responsibility is to recognize the unique character among others that shows the highest value when compared in terms of ASCII.
+- You will evaluate a string where characters are unique and determine which one has the greatest ASCII code, relying on your comprehension of the ASCII table.
+- The aim is to pick out the character from a set of unique characters that possesses the largest ASCII value, which means understanding the numerical order of characters.
+- Analyzing a given string leads you to identify and return the unique character that corresponds to the maximum value in the ASCII table.
+- The task involves analyzing a string of unique characters to identify the one with the highest ASCII value.
+- You're tasked with scanning through a string of unique letters and identifying the one that corresponds to the highest value in the ASCII table.
+- You will need to inspect a collection of characters in a string and pinpoint the one that possesses the highest ASCII code.
+- You need to analyze a string and determine which character has the greatest ASCII representation.
+- This task asks for an evaluation of unique characters in a string, directing you to select the one with the highest ASCII ranking among them.
+- The task requires careful inspection of characters within a given string to determine which has the highest positional number in ASCII encoding.
+- In this activity, you are expected to process a unique set of characters from a string and return the one with the maximum ASCII code, thereby demonstrating your comprehension of character data representation.
+- Look through a string consisting of non-repeating characters and find out which one has the greatest ASCII value.
+- The objective is to find and return the character from a unique character string that has the maximum ASCII value, utilizing your knowledge of ASCII ranges for both uppercase and lowercase letters.
+- Your goal is to sift through a string of individual characters and identify which one has the most significant ASCII value, using your knowledge of character encoding.
+- Determine which unique character within a given string has the maximum associated ASCII value, showcasing your proficiency in recognizing and ranking characters by their encoded values.
+- You will analyze each character in a given unique-character string to establish which has the highest ASCII numerical representation reflecting their encoding hierarchy.
+- You will work with a string composed of unique characters and will need to identify which character holds the highest ASCII numeric representation.
+- Explore a string containing unique characters and identify the one that exhibits the largest ASCII value, requiring basic knowledge of character encoding.
+- The mission is to assess characters within a given string and identify the one that ranks highest according to ASCII standards.
+- You are assigned to find and return the character with the highest numerical representation according to its ASCII code from a sequence of unique characters.
+- In this task, you must sift through a selection of unique characters in a given string to identify and return the one linked to the maximum ASCII number through direct comparison.
+- The objective is to find the character in a string that corresponds to the highest number in the ASCII table.
+- Your job involves reviewing a group of unique characters to uncover which one corresponds to the maximum ASCII code.
+- In this activity, you'll review a set of characters arranged in a string and determine their ASCII values to find out which one is maximal.
+- This task focuses on assessing a collection of characters from a string and picking out the one with the maximum ASCII code.
+- In this exercise, you are asked to sift through unique characters in a string to find the one with the greatest representation according to ASCII codes.
+- Investigate a sequence of distinct characters and ascertain which one aligns with the highest numerical value in the ASCII system.
+- Your task centers around identifying which unique character in a string has an ASCII value that stands out as the highest.
+- The task consists of analyzing a set of distinct characters and determining which one has the maximum representation according to ASCII values.
+- Analyze an input string with unique characters and determine which specific character reaches the greatest height when viewed from an ASCII standpoint.
+- This involves analyzing a string filled with different characters to discover which one ranks highest in terms of its ASCII value.
+- Assess a string of unique characters to find out which one has the maximum ASCII value, highlighting your understanding of character comparisons based on their encoded values.
+- The challenge here is to discern and select the single character from a collection that has the greatest ASCII code, emphasizing your ability to compare numerical values associated with characters.
+- The goal is to investigate a unique character string and find which character stands out for having the maximum ASCII representation.
+- Your responsibility is to discern which character in a set string possesses the highest ASCII value by comparing each character according to its numeric representation.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1148_maximum_ascii_value
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1148_maximum_ascii_value
+user_prompt_template: '{task_def}
+
+
+  {problem}'

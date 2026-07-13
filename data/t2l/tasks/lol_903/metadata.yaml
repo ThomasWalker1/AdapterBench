@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Examine the details in hotel reviews and determine if the polarity label given (Negative or Positive) is correct based on how they describe their experience at the hotel.
+- Examine different hotel reviews alongside their suggested sentiment ratings, and check if these ratings accurately represent the reviewers' opinions.
+- The task involves evaluating hotel reviews and determining whether the assigned sentiment (positive or negative) aligns with the content of the review.
+- Your job is to analyze hotel reviews to see if the stated polarity matches the overall impression conveyed by the reviewer. Careful reading is key to understanding their feelings.
+- Your role is to analyze hotel reviews and determine if their designated polarity, either Positive or Negative, is appropriate based on the language used and the sentiments conveyed in the text.
+- The task involves evaluating a hotel review and determining whether the description aligns with its assigned polarity, either negative or positive.
+- The task involves evaluating hotel reviews to determine if their assigned polarity—positive or negative—is accurate based on the content of the review.
+- The task requires an understanding of customer satisfaction as expressed in written reviews and discerning whether their assigned polarities are fitting or not.
+- Evaluate hotel guest experiences by examining both the reviews and their assigned polarity. Decide whether each polarity correctly correlates with how guests feel about their stays.
+- You are required to read through hotel reviews that come with a sentiment polarity tag. Assess whether the tag accurately represents the impressions conveyed in the review.
+- Examine several hotel guest reviews for sentiment analysis, determining if how guests feel is aligned accurately with the emotional cues present in their feedback.
+- This task involves reading descriptions of guest experiences at hotels to ensure that provided polarities accurately convey the sentiments intended by reviewers.
+- Your job involves reading through hotel reviews while keeping an eye on their emotional labeling to see if it accurately captures the writer's feelings.
+- Explore various reviews of hotels and align each one with its respective sentiment rating, confirming if they match or contradict what has been described.
+- This task involves critical reading of customer reviews for hotels, where you'll analyze if the specified sentiment fits with the guests' actual experiences described within the text.
+- For each hotel review given, you need to judge whether the associated polarity correctly captures the overall feeling expressed in the review.
+- The objective is to identify discrepancies between expressed sentiments in hotel reviews and the polarity labels assigned, ensuring accurate sentiment classification.
+- The challenge lies in identifying discrepancies between a hotel review's content and its corresponding polarity, leveraging your understanding of nuanced language in evaluating customer sentiments.
+- Assess whether the sentiment label given to a hotel review is correct based on the review's content. This involves reading and interpreting customer feedback regarding their hotel experiences.
+- The task is to assess various stories shared by hotel guests and determine if the evaluation of those stories as favorable or unfavorable is on point.
+- Your task will be to scrutinize customer reviews about hotels to verify that stated sentiments correctly align with the satisfaction level described within those evaluations.
+- You will be analyzing hotel feedback provided by guests, checking for consistency between their expressed feelings and the assigned polarity of those feelings.
+- Assessing hotel reviews entails judging whether the polarity attached matches what clientele express in terms of happiness or dissatisfaction about their experiences.
+- This task demands that you read and interpret customer ratings related to hotels and evaluate whether their characterizations are accurately reflected in their assigned polarities.
+- Review statements made by customers about hotels, verifying if their designated thumbs up or down sentiments truly reflect the narratives provided.
+- Read through guest evaluations of hotels, noting how they feel about their stay, and then judge whether the assessed sentiment corresponds with their feedback.
+- Evaluate hotel experiences shared in written reviews to confirm if the identified sentiments are justified given the context and content of each review.
+- Assess written accounts from travelers regarding hotels to see if their expressed sentiment (whether happy or disappointed) corresponds correctly with what they’ve shared.
+- This task involves analyzing hotel reviews and their assigned sentiment labels. You'll need to decide if the label accurately represents the reviewer’s feelings about their stay.
+- You need to read a hotel review and assess whether the given emotional tone matches the overall sentiments expressed in the text.
+- In this exercise, verify whether hotel reviews correspond correctly with their stated emotional polarities. Reviewers may express opinions that differ from their labels.
+- The objective is to scrutinize a selection of hotel feedback and assess if the mood conveyed in each review aligns with its stated classification, using comprehension and judgement regarding words and phrases.
+- Analyze reviews for hospitality services, verifying if how guests rated their experience—their emotional stance—matches their written feedback accurately.
+- Assess hotel reviews critically, ensuring that each review’s tone matches its labeled polarity, requiring a blend of reading comprehension and interpretative skills.
+- Your task involves going through various evaluations of hotels and confirming if their sentiments—positive or negative—are true to what was expressed in each review.
+- The task requires you to read through hotel reviews and verify if the assigned polarity corresponds properly with the feelings expressed by the reviewer about their stay.
+- Engage with a series of hotel reviews and judge if their assigned emotional tones align appropriately with guests’ experiences, demanding attention to detail in language interpretation.
+- You are required to assess hotel reviews and judge if the assigned polarities correctly fit the emotional tone of the text.
+- Your role is to read through hotel reviews and verify if the assigned sentiment (positive or negative) corresponds correctly with the review's overall message.
+- This task requires critical reading of hotel reviews, followed by an evaluation of whether their associated polarity labels—positive or negative—are confirmed by the review content.
+- This exercise focuses on validating whether customers' sentiments captured in reviews accurately represent what is expressed, requiring a nuanced understanding of language and tone.
+- Analyze a variety of hotel reviews and their corresponding sentiment labels, ensuring that positive reviews are accurately identified as such while negative impressions are not misclassified.
+- You are tasked with verifying if pairing a hotel review with a sentiment polarity is accurate based on how positive or negative the overall review appears to be.
+- Assess various hotel reviews, determining if the indicated polarity (Positive/Negative) corresponds with each review's actual sentiment.
+- Identify whether the provided emotional tone for a series of hotel reviews holds true according to your understanding of their expressions and experiences discussed.
+- This exercise involves scrutinizing written hotel evaluations to determine if they have been labeled correctly as positive or negative according to their expressed sentiment.
+- Your job is to scrutinize comments about hotels and ascertain whether the sentiments attributed to them are true to what is conveyed in the language used.
+- Review a set of hotel critiques while determining if their described sentiments accurately reflect the feelings expressed in those critiques.
+- Your task is to assess the accuracy of a given polarity label for hotel reviews. You will determine whether the assigned polarity fits the overall tone and content of each review.
+- You need to explore various guest reviews for hotels and determine whether the described experiences validate their asserted sentiments—either as negative or positive.
+- Scrutinize reviews for hotels in order to judge whether each has been correctly labeled with an emotional stance, looking for harmony between words and assigned tone.
+- Evaluate hotel reviews for their emotional content. You will need to confirm if the provided sentiment label accurately captures the reviewer's opinion.
+- Your responsibility is to determine whether a review's assigned sentiment accurately matches the reviewer’s experience shared in their commentary on a hotel stay.
+- You'll be sorting through a set of hotel reviews along with their designated sentiments, determining whether those sentiments are a true reflection of what is conveyed in each evaluation.
+- In this exercise, you will match hotel reviews with their respective sentiment labels. Your focus should be on identifying whether those labels fit the reviewers’ attitudes as depicted in their narratives.
+- This task involves interpreting sentiments expressed in hotel reviews and comparing them with labeled opinions to ascertain their correctness.
+- This task requires you to evaluate hotel reviews for their emotional tone and confirm if the provided positivity or negativity is correctly labeled.
+- This task invites you to consider personal experiences shared in hotel reviews and ascertain if attached sentiments aptly describe those experiences as either Positive or Negative.
+- You are tasked with assessing hotel reviews and determining if the polarity labels accurately describe the overall sentiment perceived from each review.
+- Your job is to interpret hotel guest reviews and their associated polarity indicators, then judge if those indicators are correct based on the feelings expressed in the text.
+- You will be tasked with evaluating reviews of hotels and determining whether the perceived sentiment related to each review is appropriate or not.
+- Assess various perspectives from hotel guests and decipher if their clarity on satisfaction levels aligns accurately with what they described in their reviews.
+- This task requires careful interpretation of guest reviews of hotels, ensuring that each sentiment label corresponds accurately to the feelings articulated in those reviews.
+- The goal is to verify if the sentiment classification provided for each hotel review corresponds with the general tone and messages indicated within that review.
+- For this task, you will read a series of guest reviews about hotels and decide if the indicated polarity matches the overall tone and judgments within each review.
+- The objective is to evaluate whether hotel reviews genuinely represent their classified sentiments, encouraging a thorough knowledge of language nuances tied to guest experiences.
+- This task entails determining if sentiments reflected in written reviews of hotels correspond correctly with their labeled categorizations as either Positive or Negative.
+- This task focuses on reviewing comments about hotels and identifying whether the indicated sentiment matches what is conveyed in the review. Critical reading skills are necessary to interpret the review accurately.
+- Read hotel reviews and evaluate the corresponding sentiment labels to check for correctness. You must discern the customer's emotions and opinions presented in their words.
+- Read through several customer experiences shared in hotel reviews, evaluating if they reflect the assigned emotional labels honestly, which calls for astute comprehension and judgment.
+- You will be required to analyze hotel reviews and ascertain whether their assigned polarity accurately reflects what the reviewers convey about their experiences.
+- Analyze hotel reviews and assess whether the stated polarity of each review reflects the writer's true feelings about their experience.
+- Analyze lodging feedback to ensure that each review’s sentiment classification strictly represents what is written in the text regarding customer experiences.
+- For this task, you will evaluate the accuracy of polarities assigned to hotels based on guest feedback while noting any discrepancies.
+- In this task, you're interpreting guest reviews about hotels, confirming if their evaluated emotional tone matches their overall appraisal of services received.
+- The task involves reviewing hotel feedback and assessing whether the labeled sentiment aligns with how the reviewer perceives their stay.
+- You will read hotel reviews and their respective positive or negative classifications, then assess if the classification matches the review's sentiment.
+- As you go through various hotel reviews, your role is to check if the sentiments noted are correct by aligning them with the tone and context of what is being said by guests.
+- This involves a careful reading of hotel reviews, requiring you to validate whether the stated tonal assessment corresponds appropriately with the reviewer’s remarks.
+- Assessing whether hotel reviews are correctly categorized as Positive or Negative based on your understanding of their content is central to this task.
+- Your responsibility is to explore various hotel critiques and discern if their emotional classifications as positive or negative are appropriate according to what the reviewers share.
+- Review customer experiences at hotels and ascertain whether their stated opinions—positive or negative—accurately correspond with what they expressed in their feedback.
+- Evaluate whether the polarity attached to each hotel review accurately represents the sentiments expressed by the reviewer regarding their stay.
+- Analyze the given hotel review and its corresponding sentiment label. Decide if the label matches the overall feeling of the review.
+- Your task involves interpreting written reviews from customers about their stays in hotels, verifying if they match the designated feelings of either positivity or negativity.
+- Engage with reviews left by hotel guests, assessing if their emotional response as marked in polarity corresponds accurately with what they described.
+- Engage in assessing hotel reviews and their polarity labels. Your aim is to determine if each label is a true reflection of the sentiments expressed by reviewers.
+- You will be analyzing reviews of hotels to establish whether they accurately reflect positive or negative experiences as indicated in their labels.
+- Your task is to analyze a series of hotel reviews for sentiment accuracy, determining if expressed feelings are captured correctly by the assigned polarity.
+- Analyze sentiments found in hotel reviews while considering provided polarity classifications. Your objective is to verify accuracy by evaluating how well these labels represent guest sentiment levels.
+- Evaluate hotel reviews critically, ensuring that the given polarity appropriately captures the essence of guest experiences described within each text.
+- Use your comprehension skills to evaluate sentiments in hotel reviews, determining if the characterization provided about each reviewer's experience aligns with their descriptions.
+- Review several hotel evaluations and decide whether each evaluation's sentiment (positive or negative) accurately reflects the overall tone of the feedback provided by guests.
+- Examine a series of hotel evaluations and discern if the classification of reviews as positive or negative is appropriate based on their content.
+- Examine each hotel review to establish whether the declared positive or negative sentiment accurately matches how guests express their satisfaction or dissatisfaction.
+- The exercise consists of reviewing customer critiques of hotels to identify whether their sentiment assessment matches their experience shared within those statements.
+- Engage with a variety of hotel reviews and scrutinize their wording to determine if the described sentiment aligns with the actual experiences shared by guests.
+- The goal is to read and interpret customer reviews for hotels critically, ensuring that any stated positive or negative sentiments correspond accurately with guest experiences.
+- Your role is to examine provided hotel reviews and judge whether the assigned positive or negative polarity aligns with the customer's overall sentiments.
+- Your task includes deciphering guest feedback about hotels to conclude if the assigned polarity fits well within the context of the review provided—measuring sentiment through careful analysis.
+- Analyze hotel reviews for sentiment, confirming if the labeled polarity correctly reflects the reviewer's experience, considering aspects like service, cleanliness, and value.
+- This task involves interpreting sentiments in hotel reviews. You need to evaluate whether a polarity label correctly describes the overall sentiment of each review.
+- Engage with customer testimonials about hotels and analyze whether their expressed satisfaction or dissatisfaction resonates correctly with their reported experiences.
+- This task requires you to interpret hotel reviews and verify if the polarity of sentiment assigned to each review is correct or incorrect.
+- You will evaluate feedback from guests about hotel stays to determine if their emotional responses are classified correctly as positive or negative.
+- It is essential to dissect customer reflections on their hotel stays and ascertain whether their expressed feelings correspond accurately with given polarity labels indicating negativity or positivity.
+- Your goal is to determine the accuracy of sentiment assessments related to different hotel reviews, focusing on whether they convey a favorable or unfavorable experience.
+- Read a hotel review and the associated sentiment label. Your goal is to judge whether the label correctly characterizes the review's tone.
+- You are presented with reviews of hotels along with a stated sentiment. Your job is to assess the accuracy of this sentiment based on the content of the review.
+- Analyze guests’ written experiences at hotels and verify whether their stated feelings match with how those experiences are classified as positive or negative.
+- Your objective is to evaluate hotel reviews while focusing on how well their positive or negative assessments align with specific comments made by each reviewer.
+- Your responsibility is to read through various hotel reviews and ascertain if their assigned Positive or Negative labels truly reflect the reviewer's experience.
+- The task involves assessing the accuracy of the assigned sentiment label for a hotel review. You need to evaluate whether the label matches the overall tone and sentiment expressed in the review.
+- Read through hotel feedback to determine if the assigned polarity accurately characterizes each review's emotion, considering both content and context.
+- Analyze reviews from hotel guests to determine if they reflect a positive or negative impression, considering the context of each written account.
+- Your task is to evaluate hotel reviews based on their expressed sentiment and decide if the provided polarity reflects the review accurately.
+- You'll need to evaluate each review's tone to decide if it accurately fits with its designated polarity—understanding nuances in language will be key.
+- Read through each hotel review and decide if the provided polarity correctly characterizes the sentiments expressed. Focus on statements reflecting satisfaction or dissatisfaction.
+- Analyze the text of hotel reviews to verify if a stated opinion about the experience corresponds with the overall feeling expressed in the review.
+- Your focus will be on validating sentiment labels assigned to hotel reviews by analyzing how well they represent reviewers' expressed satisfaction or dissatisfaction levels.
+- In this process, your role is to scrutinize hospitality feedback and assess whether reviewers' sentiments align with how they describe their stays at various accommodations.
+- This assessment requires you to read and interpret hotel reviews, checking if their emotional tone aligns with assigned labels of Negative or Positive effectively.
+- Investigate different hotel reviews to establish if their associated sentiment labels are fitting or misaligned based on what reviewers actually articulate.
+- You will assess how well-written hotel reviews align with their corresponding sentiment labels. Focus on confirming whether those sentiment ratings reflect actual guest experiences and emotions.
+- In this task, you are required to evaluate hotel reviews and determine if the assigned sentiment (positive or negative) accurately reflects the content of the review.
+- In this task, you’ll interpret guest experiences regarding hotels and judge if their opinions are expressed accurately in terms of positivity or negativity.
+- Read through different hotel reviews to confirm whether a given characterization of the review aligns with what is narrated in the text regarding guest sentiments.
+- You will assess guests' evaluations of hotel stays to see if their indicated reactions align with what they’ve described in their reviews regarding satisfaction levels.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task903_deceptive_opinion_spam_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task903_deceptive_opinion_spam_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

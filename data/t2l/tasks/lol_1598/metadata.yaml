@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The objective is to summarize a restaurant's features in a few well-structured sentences, utilizing the provided descriptors such as cuisine type and location.
+- Gather the elements given about a restaurant and formulate a brief review that presents an overview of what it offers based on those details.
+- You’ll be synthesizing specific details about food, pricing, and service from the provided information into an engaging and informative overview of a restaurant.
+- Focus on encapsulating key details about the restaurant into brief narratives that effectively communicate what diners might expect when visiting.
+- Create a brief description of a restaurant using all specified attributes, focusing on how these features might influence a patron’s decision to dine there.
+- Create an articulate summary containing essential elements of a restaurant experience using the information given, giving potential diners clarity on what to expect.
+- You are required to turn detailed restaurant information into informative sentences that provide insight into its key features. This involves combining facts with fluid language.
+- The goal is to produce concise descriptive text that incorporates important attributes of a restaurant like its name, cuisine type, and other defining factors mentioned.
+- The objective is to create brief reviews of restaurants while ensuring that all relevant information is included. This includes their names, cuisines offered, price ranges, location descriptors, and ratings.
+- The objective is to produce short but meaningful insights about each restaurant based on concrete details like cost factors and overall dining experience.
+- Using all supplied details regarding aspects such as pricing and recommendations, write up an overview that encapsulates the essence of the dining establishment.
+- This task focuses on creating summarized evaluations of dining establishments by interweaving shared characteristics like quality and affordability into your sentences.
+- The objective is to creatively summarize essential aspects of a restaurant based on detailed input, crafting sentences that are both informative and engaging.
+- This task requires you to write a short evaluation of a restaurant, blending in all relevant data points such as the quality of food, service, and setting.
+- The task is to summarize varied aspects of a restaurant in a few sentences while ensuring all given information is reflected accurately in your review.
+- Your goal is to write a succinct review by integrating multiple aspects of a restaurant's profile, highlighting both its strengths and defining attributes.
+- In this assignment, you'll express an opinion about a dining venue by pulling together given elements into clear and persuasive sentences.
+- Your role is to craft articulated sentences that serve as a review for the specified restaurant details. Inclusion of all relevant characteristics is crucial for completeness.
+- Create an informative written account of different dining establishments based on the details provided. Ensure you represent aspects like menu style, pricing tiers, atmosphere, and specific recommendations when required.
+- Your goal is to take multiple pieces of information regarding a restaurant and combine them into a cohesive sentence or two that describes it accurately.
+- The task involves creating a concise review of a restaurant using specific details provided. You will express opinions based on attributes like cuisine, location, and quality.
+- You are to create written content that reviews a restaurant's key components like cuisine style and cost while capturing the overall impression formed by these factors.
+- Using specific information about a restaurant, your job is to formulate a succinct review that conveys key features such as price, atmosphere, and food type.
+- Formulate two sentences reviewing the characteristics of a restaurant based on inputs regarding cuisine type, pricing, ambiance, and service quality.
+- The assignment is to compose a restaurant review that reflects the provided data accurately. It involves analyzing details like location, price, and cuisine while articulating them in complete sentences.
+- Your mission is to articulate an informative review based on multiple descriptors related to a restaurant's dining experience in written form.
+- Utilize the various attributes provided for a restaurant to generate a cohesive review that presents the establishment positively or highlights any drawbacks.
+- Your role is to turn factual information about restaurants into engaging reviews that highlight noteworthy features like cuisine and ambiance.
+- The task is to distill the specifics about a restaurant into clear sentences that inform potential customers about what they can expect when visiting.
+- The goal is to express all relevant information about a restaurant in one or two coherent sentences. Focus on integrating various elements such as service and decor into your review.
+- Your objective is to write an informative sentence or two about a restaurant that incorporates all given facts distinctly and clearly.
+- This task is about assembling details regarding a dining venue into concise sentences that highlight its features and provide recommendations when applicable.
+- You need to write a short review of a restaurant based on various factors such as price, cuisine, and service. This requires synthesizing the details into coherent sentences.
+- The objective is to summarize essential information about a restaurant in the form of a short review, focusing on qualities like cuisine type and location.
+- You will extract important details from the information supplied about a restaurant to produce a succinct evaluation that gives insight into the dining experience.
+- Write a concise review of a restaurant by integrating all provided information, including decor, service quality, and culinary offerings into a well-structured narrative.
+- You are tasked with synthesizing information into a compact review of a restaurant that captures essential aspects like its reputation, location, and pricing structure.
+- Your challenge is to express restaurant information in the form of coherent reviews. Use all given details to describe the setting accurately while focusing on aspects like cuisine specifications and customer ratings.
+- Translate the structured data concerning a restaurant into fluid language that communicates essential insights about its offerings and environment.
+- This assignment requires you to deliver concise evaluations that encapsulate multiple facets of restaurants, from their culinary offerings to their suitability for families.
+- The task is to formulate coherent restaurant summaries that incorporate every provided piece of information. Review clarity will depend on effective integration of names, food types offered, pricing contexts, and customer feedback.
+- Develop short descriptive sentences that reflect various aspects of a restaurant's profile using the elements you’ve been given. This involves analytical and creative skills.
+- Compose an articulate review of a restaurant utilizing all details provided about its cuisine, service, decor, and location to give an overall impression.
+- You need to compose one or two sentences summarizing a restaurant review by incorporating all the information given about the dining establishment.
+- Your task is to describe a dining establishment succinctly by weaving together important factors like name, type, and quality as given in the input.
+- You are tasked with weaving together bits of information about restaurants into well-structured reviews. Make sure to include essential attributes such as name, type of cuisine served, price range, location details, and friendly environment notes.
+- The task is to craft a meaningful review based on outlined properties of a restaurant. It encourages creativity and clarity in written expression.
+- The task involves summarizing information about a restaurant into a concise review, incorporating specific details such as cuisine, location, and personal recommendations.
+- Constructing brief reviews that capture both the essence and specific characteristics of various restaurants based on provided data is the main focus of this task.
+- Your responsibility is to turn structured data about a restaurant into a well-formed sentence or two that effectively conveys what the restaurant is like.
+- You must blend provided information about name, location, cuisine type, and dining experience into an engaging narrative that describes the restaurant effectively.
+- Focus on summarizing the critical aspects of restaurants into brief reviews by organizing and presenting the details logically.
+- Synthesize the details presented about a restaurant into one or two informative sentences that convey the essence of the dining experience offered.
+- The task is to distill various elements surrounding a restaurant into a short narrative that reflects its appeal, including aspects like cuisine type and location.
+- The objective is to summarize key details about a restaurant in sentence form, highlighting essential elements like customer ratings and meal prices in an engaging manner.
+- Create an informative summary based on several criteria concerning a restaurant’s identity, including its cuisine type and customer feedback ratings.
+- The task encourages you to creatively summarize information about restaurants while ensuring all relevant details are included in your text.
+- The task centers around translating various attributes regarding restaurants into comprehensive but succinct written form. Consider how essential facets from names to pricing categories will shape readers’ perspectives.
+- You are required to summarize a restaurant's characteristics into one or two sentences. The summary should include information about the restaurant's name, type of cuisine, location, price range, and family-friendly status.
+- Your assignment is to articulate details about a restaurant clearly and effectively in sentence form, highlighting what makes it unique based on given descriptors.
+- The task involves creating a short review of a restaurant based on several specific details provided. You should integrate all the information seamlessly into coherent sentences.
+- You are tasked with crafting clear sentences that reflect each restaurant's special features based on comprehensive information provided.
+- Your focus is on compiling diverse aspects of various restaurants into succinct reviews that inform readers about their experiences based on given data.
+- Your job is to synthesize information into a coherent restaurant review. This entails combining aspects like cuisine type, location, pricing, and rating into a complete sentence or two.
+- Use the details about a restaurant to formulate a short review that highlights important points such as the cuisine offered, pricing, and customer experiences.
+- Your job is to summarize information about a restaurant, transforming specific attributes like name, cuisine, and price into clear sentences reflecting a review.
+- Write a short review of a restaurant utilizing all provided information to highlight aspects like type of cuisine, location, and reviews, while ensuring clarity and accuracy.
+- Your job is to construct a brief review of a restaurant, incorporating specific information such as its name, cuisine, and location.
+- The task requires you to synthesize various details about a dining establishment into a concise review, ensuring that every piece of information is included in your response.
+- The aim is to generate a succinct restaurant review based on key attributes provided in the input, ensuring all facts are included in an engaging way.
+- Summarizing restaurant features into brief reviews that encapsulate various aspects such as price, quality, and atmosphere is your primary focus for this task.
+- Take various pieces of information about a restaurant and transform them into well-composed sentences for an informative review targeted at future customers.
+- Create a full sentence or two that gives an overview of a restaurant as described by various attributes. This requires careful attention to detail and articulation of thoughts.
+- The task is centered on summarizing the attributes of a restaurant into fluid sentences. Include all details shared in the input for a comprehensive description.
+- Your job is to assemble various details about dining options into logical sentences that describe the restaurant's atmosphere, pricing, and type of cuisine.
+- In this task, you need to express your thoughts about a dining place using supplied details about its name, cuisine style, pricing, and other notable traits.
+- Using the detailed information about a restaurant, craft one or two sentences that effectively describe it for potential diners.
+- The task involves reviewing a restaurant based on various characteristics. You will create a concise summary using all the given details.
+- Write a clear and informative sentence or two that reviews a restaurant based on provided criteria. Your review should reflect the overall dining experience.
+- Your goal is to synthesize all available data into an informative short review that highlights important features of the restaurant experience.
+- You are tasked with transforming raw data regarding various aspects of a restaurant into understandable sentences that describe its overall theme and appeal.
+- You will take unique attributes from different restaurants and weave them into succinct reviews that provide potential diners with valuable insights.
+- You will write a few sentences to evaluate a restaurant, ensuring you include aspects such as eattype, cuisine, and customer ratings for completeness.
+- The task is to translate multiple attributes of a restaurant into a cohesive review that informs readers about its qualities and offerings.
+- You are tasked with generating a summary which includes all pertinent information given about a restaurant so that it presents an overall picture to the reader.
+- The task calls for you to summarize characteristics of a restaurant in narrative form, focusing on noteworthy aspects such as its rating or price level.
+- Your role is to create brief informational reviews for restaurants by leveraging complete provided data sets. Key components often include aesthetic descriptions such as location proximity and menu styles alongside customer ratings.
+- The goal is to analyze a set of specifications regarding a restaurant and translate them into coherent sentences forming an understandable overview.
+- You are expected to create engaging sentences that incorporate comprehensive details about a selection of restaurants while still being concise in your writing.
+- This exercise involves distilling several data points about a restaurant into informative sentences. Capturing elements such as the establishment's name, culinary focus, family-friendliness level, location landmarks and price tier is crucial.
+- The purpose of this task is to summarize essential elements of a restaurant into clear and compact sentences, ensuring you include every piece of significant information available.
+- Summarize essential details about a restaurant into concise reviews. This task requires attention to multiple facets including the name of the restaurant, its food offerings, location specifics, and user ratings.
+- The objective is to craft a review of a restaurant by merging different characteristics like its name, type of food offered, price level, and atmosphere into coherent sentences.
+- The assignment involves using several pieces of information to form a clear and informative sentence about a restaurant. You are expected to synthesize this data effectively.
+- Synthesize information about a restaurant into clear sentences that portray its features and appeal to potential visitors.
+- You are tasked with synthesizing provided information into succinct reviews of restaurants while maintaining clarity and accuracy about their key features.
+- Write concise reviews about restaurants based on various attributes presented to you. Focus on clarity and expressiveness while covering all necessary points.
+- Transform the list of attributes about a dining venue into an engaging summary that provides insight into what diners can expect from their experience there.
+- Synthesize the given information into two clear sentences about a restaurant, showcasing its unique offerings through effective writing strategies.
+- In this task, you will form a well-structured sentence or two that encapsulates the essence of a restaurant using the details provided. Make sure to cover each aspect given in the input.
+- This task requires you to create a brief review based on various attributes provided for a restaurant, focusing on its type of cuisine, location, and overall impression.
+- Your task is to provide an engaging summary of a restaurant experience using all the details given, ensuring that you highlight both positives and negatives where applicable.
+- You need to write a brief evaluation of a restaurant by weaving together all supplied information. This will include considerations about ambiance, pricing, and the type of food offered.
+- You are tasked with writing a short description of a restaurant by synthesizing the provided details into coherent sentences.
+- The goal is to compile detailed aspects of culinary experiences into coherent sentences that serve as brief yet informative reviews for readers seeking dining options.
+- Your task is to create a concise review of a restaurant using specific details given in the input. This requires summarizing and rephrasing information effectively.
+- This task demands the integration of specific data points about a restaurant into grammatically correct sentences for a comprehensive overview.
+- You will summarize and review the dining experience of a restaurant based on various characteristics given in the input, crafting your sentences for clarity and impact.
+- The task involves crafting a concise restaurant review that incorporates all specified details about the establishment, including its name, type, food style, pricing, and any additional attributes.
+- The objective is to construct sentences using all details contributed about a restaurant, resulting in an articulate description that reflects its standing.
+- The goal is to capture the essence of what makes a particular restaurant unique by combining various descriptors into a succinct narrative.
+- The job requires you to compose a clear and precise review of a dining place using all relevant details like cuisine type and pricing structure mentioned in the prompt.
+- Engage your descriptive writing skills to succinctly express what makes each restaurant unique using the provided characteristics.
+- Your objective is to draft a short yet descriptive evaluation of a restaurant that includes all relevant details about its offerings and dining conditions.
+- The focus here is to produce a clear sentence or two that reviews a restaurant by utilizing the provided information fully. Essential elements to include are the name, eating category, cuisine type, cost level, and family orientation.
+- You will draft an informative summary regarding a dining place by utilizing all specified characteristics supplied in the question. A holistic approach is essential for this task.
+- The challenge lies in crafting one or two meaningful sentences that reflect all aspects of the given restaurant and present them in an appealing manner.
+- Your job is to create a brief review of a restaurant that includes various attributes like its name, type of cuisine, price range, and ambiance based on the provided information.
+- Write concise reviews for different restaurants using provided contextual details. Ensure to mention aspects like food types offered and pricing brackets while completing your sentences in a fluid manner.
+- In this exercise, you will need to weave together multiple descriptors of restaurants into clear sentences, providing an overall perspective based on detailed attributes shared in the input list.
+- The goal of this task is to articulate a review that reflects the unique qualities of a restaurant based on the provided descriptors.
+- You are tasked with summarizing key information about a restaurant into one or two coherent sentences that reflect both its strengths and weaknesses.
+- Write an effective and concise restaurant review that covers aspects such as food quality, dining environment, and value for money, integrating all provided data points.
+- Summarize the characteristics of a restaurant in a few sentences. This task focuses on your ability to express details in an engaging manner.
+- Generate a brief write-up about a restaurant using specified criteria such as type, cuisine, price, and location. This requires drafting skills and attention to context.
+- Summarizing restaurant characteristics into reviews requires blending details related to atmosphere, quality of food, and service efficiency in articulate prose.
+- The task involves creating a brief review of a restaurant based on various attributes provided. You must synthesize the given details into coherent sentences.
+- Construct a concise description of a restaurant using specific attributes such as its name, price range, family-friendliness, and cuisine type provided in the input.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1598_nyc_long_text_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1598_nyc_long_text_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

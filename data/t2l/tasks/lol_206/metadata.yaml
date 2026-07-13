@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The goal is to take each integer from a supplied list, decide its mathematical treatment based on its parity, and generate a new list reflecting those changes.
+- For each integer in the provided list, you need to determine if it is even or odd and then either divide it by two or multiply by three and add one, respectively.
+- Analyze a list of numbers, applying even/odd rules to transform each integer appropriately into its resultant value, showcasing your numerical manipulation skills.
+- Process an input series of integers by categorizing and transforming each based on whether they are divisible by two or not.
+- Engage with a series of integers by applying unique mathematical principles that dictate how even and odd numbers should be treated differently.
+- You will embark on manipulating lists of integers through outlined mathematical procedures catering to differing inputs based on their parity. Your filtered and processed results are to comprise another coherent list.
+- You will work with a list of numbers where you must differentiate between even and odd integers. Each type requires a unique operation to produce a new list as the output.
+- The assignment requires reworking a sequence of integers. For evens, perform division, and for odds, execute a specific formula to get the new value.
+- You will evaluate a sequence of integers, distinguishing between those that are even and odd, then perform either division or a combination operation to yield the results.
+- The objective is to evaluate each integer in a provided list, categorizing them as even or odd, and applying the appropriate formula to produce a new list.
+- This task asks you to apply conditional formulas to each integer based on their characteristics (even or odd) to derive new integers.
+- Your role is to transform each integer from an input list into a new value through specific mathematical guidelines related to their classification as even or odd.
+- Get ready to engage with integers by performing specific calculations based on their type; this involves halving certain numbers while transforming others through multiplication and addition.
+- The task involves processing a list of integers by applying specific mathematical operations based on whether each number is even or odd.
+- This task requires creativity in number transformation as you apply different mathematical rules to integers in order to create new outcomes based on their properties.
+- Analyze a group of integers and execute specific rules for even and odd numbers, ultimately producing a modified list reflecting those changes.
+- The challenge requires you to manipulate integers in prescribed ways based on their properties (even or odd), producing new numerical results via specified calculations.
+- You are to modify an array of integers with distinct operations for each type of number, ensuring correct transformations based on whether they are even or odd.
+- Assessing a given list of integers is key here, with specific instructions for manipulating numbers based on their classification as even or odd.
+- You will operate on an array of integers to achieve specific transformations determined by whether the numbers are even or odd, leading to an outcome that reflects these operations.
+- The challenge lies in iterating through an integer list and performing distinct mathematical modifications on each element according to its parity.
+- Your focus should be on processing a variety of integers with careful attention to their categorization so that you can transform them into a corrected representation accordingly.
+- In this exercise, you’ll interpret and apply mathematical rules to an input list of integers. The even integers get divided by two, and for each odd integer, you compute (3 times the integer plus one), compiling your findings into a new list.
+- 'In this task, you will adjust values in an integer list using specific rules: even numbers get reduced, while odd numbers are increased through a set formula.'
+- The exercise calls for you to apply conditional arithmetic operations on a list of integers, splitting your approach based on their evenness or oddness.
+- This task involves processing a list of integers by following simple rules—divide even numbers and use a multiplication and addition formula for odd numbers.
+- This task requires you to analyze each integer in the provided list and transform it according to specific criteria related to its even or odd status.
+- 'The objective here is straightforward: take the provided list of integers and manipulate them by dividing even values by two while adjusting odd values with specific computations involving multiplication and addition.'
+- The task focuses on the modification of integer values according to rules that consider each number's parity as you work through the given list.
+- You will be looking closely at individual integers from a list and making calculations that depend solely on their status as even or odd to derive new integers.
+- You will engage in numerical processing where each integer in the input list will be transformed according to whether it is divisible by two or not.
+- In this task, your goal is to transform a set of integers using defined rules. Each even number is divided by two, and for each odd number, a different calculation applies.
+- Your mission is to systematically convert each number in an array by implementing targeted arithmetic methods dictated by their classification as even or odd.
+- Your task is to process a list of integers by applying specific operations based on whether each number is even or odd.
+- Engage with a provided set of integers, applying distinct mathematical operations conditioned by the property of being even or odd, resulting in altered integer outputs.
+- This task focuses on arithmetic operations performed on a list of integers where the treatment depends on whether a number is even or odd.
+- You'll be working with a list of integers where you apply a mathematical function to each element depending on if the number is even or odd.
+- Examine provided integer lists and transform each element with rules that split the approach based on their parity to achieve the output list of modified integers.
+- You are required to implement a set of mathematical operations on a given list of numbers, altering even numbers by division and odd numbers by a multiplication-and-addition rule.
+- This task involves critical thinking as you must determine how to change numbers from an input set through defined arithmetic operations tailored to their even or odd status.
+- The objective is to systematically alter each integer in the provided list using designated mathematical principles related to parity.
+- You will employ critical thinking about number properties as you undertake arithmetical adjustments to produce results from given lists of integers.
+- This task requires you to process a series of integers by following specific rules based on their parity. By conducting either division or a combination of multiplication and addition, you’ll create an output that represents these transformations.
+- You’ll be required to process a collection of integers with two distinct operations—one for each type—leading to an output list that reflects your computations.
+- This activity focuses on executing arithmetical operations on an array of integers according to their characteristics—halving those that are even and applying different calculations for odds.
+- The objective is to manipulate a list of integers using simple arithmetic based on their parity (whether they are even or odd).
+- Prepare to refine an assortment of numbers by discerning their properties (even or odd) and correctly executing calculations that lead to generating an output array.
+- Your role is to perform calculations on a list of numbers that ensures even ones are halved while applying an alternative transformation for the odd ones.
+- Your task is to process a list of integers by applying specific arithmetic operations based on whether the numbers are even or odd.
+- In this challenge, you'll take a collection of integers and individually process them by either dividing or transforming each number based on its characteristics as even or odd.
+- You will work with numerical data where your main objective is to alter each integer according to whether it is even or odd, ultimately producing a restructured dataset.
+- Your task is essentially about interpreting numbers through mathematical filters tailored for evens and odds, ensuring that the correct transformations yield accurate outputs.
+- The focus here is modifying a set of integers by determining their evenness or oddness, then performing corresponding calculations accordingly.
+- 'You are given a collection of integers and need to adjust each one according to its parity: halve it if it''s even, or for odd numbers, apply the formula of multiplying by three and adding one.'
+- You will analyze a set of integers and systematically apply rules that alter each number based on its properties (even or odd) to generate a new output list.
+- You will be provided with integers and must execute operations that either reduce even numbers or enhance odd numbers according to a defined formula.
+- Your mission is to take an integer list, assess each number's parity, and apply corresponding calculations that result in another array tailored by these rules.
+- The aim is to conduct mathematical operations on a series of integers based solely on their characteristics, resulting in an altered version of the initial list.
+- This task will have you navigating through an integer array, selectively altering values based on their evenness or oddness following specified instructions.
+- Given a collection of integers, you need to adjust each number depending on its parity. Even numbers are halved, while odd numbers undergo a different calculation.
+- You will modify elements within a given list of integers through designated algorithms that handle odd and even cases differently.
+- Your job is to manipulate numbers in a list by categorizing them as even or odd. Even numbers get divided by two, while odd numbers receive a specific formula treatment.
+- You’re asked to take a series of integers and apply defined transformations based on their parity. Evens require simple division while odds need more complex adjustments, ultimately yielding a new set of numbers.
+- 'Your job is to take an input list of integers and transform each number accordingly: halve the even numbers and apply a different formula to the odd numbers.'
+- In this numerical task, process each integer from the given input based on defined criteria—divide if it's even or apply an alternate calculation if it's odd—to form a new array.
+- 'You will analyze a series of integers and transform them according to a defined operation: divide even numbers by two and modify odd numbers in a particular way.'
+- Your objective is to analyze a provided list of integers and alter each one following predetermined rules that vary for even and odd numbers.
+- The essence of the task is understanding how to change numbers through halving or modifying them based on whether they belong to the even or odd category.
+- Your task involves transforming a list of integers by applying specific rules based on whether each number is even or odd.
+- You are tasked with transforming a given list of integers. Even integers will be halved while odd integers undergo a threefold increase followed by an addition of one, resulting in a modified integer list as the answer.
+- This task involves evaluating each integer in a sequence and applying conditional operations that alter their values based on their classification as either odd or even.
+- The task at hand is to manipulate each number from an input list through defined rules based on their parity, providing a new output list reflecting these transformations.
+- The task requires you to process a list of integers by applying specific mathematical operations based on whether each number is even or odd.
+- In this activity, you will be responsible for processing integers differently based on their characteristics, generating results that reflect those differences in computation.
+- The objective is to analyze a set of integers and apply specific rules based on their properties (even or odd) to create an adjusted list of numbers.
+- You are tasked with re-evaluating integers through division or multiplication, guided by their classification as either even or odd.
+- In this task, your focus is on integer manipulation based on their characteristics. Evens will be halved; odds will be adjusted with a specific operation involving multiplication and addition, leading to a resulting list of modified numbers.
+- Engage with a list of integers by categorizing them into even and odd, then modify them accordingly to generate a resulting list according to predefined mathematical principles.
+- Engage with a set of integers, applying logical math rules that differentiate between even and odd values. Your goal is to apply the appropriate operations systematically to formulate an output array that illustrates these results.
+- Take the list of integers given to you and perform basic arithmetic operations according to whether the entries are classified as even or odd.
+- 'The goal is to manipulate the provided integers in a predetermined way: apply division for even numbers and a formula for odd numbers to create a new list.'
+- In this task, you will be assessing integers in terms of their characteristics—whether they are even or odd—and subsequently applying distinct mathematical operations. The results should form an altogether new integer sequence.
+- This exercise involves applying designated mathematical transformations to integers based on their parity status, resulting in an output list with modified values.
+- You will navigate through a series of numbers, converting them into new forms by applying specific rules concerning their classification as either even or odd.
+- This task involves manipulating integers based on established rules; halve the evens and modify the odds mathematically to produce conclusive results reflecting these actions.
+- This task involves taking a series of integers and modifying them through designated calculations, depending on their classification as even or odd.
+- You will encounter a series of whole numbers and need to perform calculations based on their characteristics (evenness or oddness) for producing new values.
+- Embrace the challenge of restructuring a list of integers through dedicated mathematical operations that depend strictly on whether the individual elements are even or odd.
+- Your assignment involves systematic number processing where you determine whether each integer in the input list requires division or multiplication based on its characteristics.
+- You will engage in a task that involves numeric manipulation, determining the correct operation for both even and odd integers in the provided list to create an output list.
+- You need to evaluate a list of integers and apply specific calculations that separate the treatment of even and odd numbers within that list.
+- You will handle lists of integers, applying logical reasoning to determine the transformations required for even versus odd elements to finalize your results.
+- For this activity, you will be executing two different operations across the numbers in a list—one operation for even integers and another for odds—to generate results.
+- You need to handle each integer in the provided set according to defined arithmetic rules that distinguish between even and odd values.
+- The objective is to work with a series of integers, manipulating them so that evens become smaller while odds become larger based on prescribed calculations.
+- Undertake the task of applying conditional calculations across an array of integers; manipulating them based on their attributes—whether they are even or odd—to derive new outcomes.
+- You are tasked with manipulating integers in a way that varies depending on their parity—perform halving on even numbers and applying a multiplication-and-addition step for odds.
+- You need to read through a list of integers and perform different operations on them based on their evenness or oddness to create a new list.
+- You'll be working with an array of numbers, applying distinct rules based on their evenness or oddness, thus creating a modified output list through basic arithmetic.
+- You are tasked with revising values from a given list of numbers based on clear rules for evens and odds—creating an output that reflects these transformations.
+- Your role is to process a collection of whole numbers, categorizing them as even or odd, and applying distinct transformations for each category.
+- In this job, you explore mathematical transformations applicable to numbers in a group, divided by their type into distinct operational pathways.
+- Your responsibility is to analyze each integer from a given list and apply simple mathematical operations depending on whether they are even or odd, resulting in a final set of integers.
+- This task challenges you to evaluate each integer in a list and apply different mathematical formulas according to its parity, resulting in a transformed collection of numbers.
+- You will manipulate a set of numbers by applying a systematic approach where even values are reduced, and odd ones are increased through multiplication and addition.
+- In this task, you'll handle a list of numbers, executing operations that depend on the parity of each number—halving even integers and applying a defined calculation to odd ones.
+- You will manipulate a series of integers by dividing even numbers by two and transforming odd numbers through multiplication and addition.
+- You need to manipulate each integer in a provided list according to simple mathematical rules. Even numbers are halved, while odd numbers are transformed by multiplying by three and adding one.
+- This task requires you to evaluate integers from a given list, executing divided changes for evens while applying an alternate operation for odds.
+- You are required to evaluate each integer in a list, categorizing them as even or odd, and then perform the corresponding calculation to generate results.
+- 'Your goal is to transform a list of integers according to predetermined rules: divide even numbers and modify odd numbers using a specific calculation.'
+- Your job is to convert numbers from one form into another through mathematical processes determined by each number’s classification as either being odd or even.
+- In this task, you explore numerical transformation by focusing on how even and odd numbers differ in their required operations. The challenge lies in seamlessly processing these numbers into an updated format reflecting your calculations.
+- You are tasked with modifying a series of integers by recognizing their types (even or odd) and then executing unique mathematical adjustments accordingly.
+- Your task is to analyze a series of integers and execute designated mathematical transformations based on their evenness or oddness to produce a new list.
+- The objective is to take a list of integers and categorize each number into two groups. Use mathematical operations based on whether the numbers are even or odd.
+- Given a list of integers, your job is to follow special guidelines to alter each number based on whether it is odd or even.
+- This task challenges you to perform mathematical operations on provided integers according to their evenness or oddness—culminating in a clear transformed output.
+- Your mission is to take an input of integers and alter them according to rules that apply separately for their classification as even or odd.
+- This task focuses on transforming numerical data in the form of integers through specific math processes. Separate calculations are performed for evens and odds before compiling the outcomes into one coherent output list.
+- Approach this task by dissecting the given integer list into its components based on evenness or oddness. Your calculations will lead to two distinct kinds of results that can then be arranged back into an output list.
+- Engage with a numerical list where you will apply certain mathematical processes that differentiate between odd and even numbers in order to arrive at transformed values.
+- In this exercise, analyze how each integer behaves under specific mathematical rules, leading you towards deriving an updated collection of values from the original set.
+- Your task is to process a list of integers by applying specific mathematical rules based on whether each integer is even or odd.
+- In this task, practice your numerical manipulation skills by adjusting a series of integers based on whether they are even or odd.
+- You'll be working with a series of integers, executing a specific action based on whether each number is even or odd, which will lead you to produce an altered list.
+- Your objective involves executing particular mathematical operations on an array of numbers based on whether those numbers are classified as odd or even.
+- The task involves receiving an array of integers and executing different arithmetic operations on them dependent on their classification as either even or odd.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task206_collatz_conjecture
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task206_collatz_conjecture
+user_prompt_template: '{task_def}
+
+
+  {problem}'

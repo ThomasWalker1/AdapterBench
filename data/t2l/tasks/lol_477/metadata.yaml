@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Review content will be assessed for emotional tone, helping you decide if a customer's viewpoint is optimistic (positive) about a DVD or critical (negative).
+- The challenge here is to assess sentiments in DVD reviews, labeling them as positive if the reviewer enjoyed the film and negative if they were displeased.
+- The goal of this activity is to assess DVD reviews and classify them based on whether the feedback reflects a positive or negative experience.
+- 'You''re tasked with assessing how viewers feel about specific DVDs by interpreting their written reviews, categorizing those feelings into two distinct groups: one reflecting pleasure (POS) and another reflecting displeasure (NEG).'
+- The task involves analyzing DVD reviews to determine whether the overall sentiment expressed is positive or negative. It requires an understanding of the cues in language that indicate satisfaction or dissatisfaction.
+- Your role here is to read reviews for different DVDs and judge their emotional content. Are they expressing a love for the film, or are they disappointed with it?
+- You will classify various DVD reviews based on overall emotional tone—indicating whether the reviewers felt pleased or displeased with their viewing choices and experience.
+- By analyzing reviews related to DVDs, your focus should be on identifying how reviewers feel about them. Classify their feelings as either satisfied or dissatisfied.
+- You are tasked with evaluating DVD reviews, focusing on their sentiment. Identify words and phrases that reflect positive emotions versus those indicative of negative experiences.
+- Analyze various DVD reviews with an emphasis on sentiment, identifying whether they reflect appreciation (positive) or frustration (negative).
+- This task centers on reading and understanding product reviews, judging whether each review reflects a positive reception or negative critique of the DVDs in question.
+- Your responsibility is to sift through DVD reviews, spotting key phrases that indicate customer satisfaction or dissatisfaction, leading to classification.
+- This task involves analyzing written feedback on DVDs. You will categorize each review depending on whether it conveys a good feeling or a bad impression about the DVD.
+- This activity requires you to interpret the overall sentiments in reviews related to DVDs, categorizing them as either positive feedback or negative criticism.
+- You are required to interpret DVD reviews to identify and classify whether the sentiment is overall good or bad.
+- This task centers around reading through product evaluations for DVDs and determining if they lean towards positivity or negativity, focusing on overall reviewer satisfaction.
+- In this assignment, you will examine several written assessments of DVDs to identify their sentiment. Emphasize identifying positive versus negative sentiments communicated by consumers.
+- In this task, your responsibility is to understand consumer sentiments towards various DVD products and indicate whether those feelings are positive or negative.
+- Your role is to look through reviews for DVDs and identify the underlying sentiment in each review, categorizing them as either positive or negative.
+- You are tasked with classifying product reviews of DVDs by determining if they convey a favorable or unfavorable opinion about the film.
+- Analyze the language used in DVD reviews to determine whether the sentiment expressed leans towards enjoyment and satisfaction or frustration and discontent.
+- This task requires understanding subjective opinions expressed in DVD reviews. Determine if each review portrays a positive reflection of viewer delight or a negative reflection of dissatisfaction with the content.
+- Your task is to evaluate DVD reviews and determine whether the sentiment expressed is positive or negative. This involves analyzing the language and tone used in the reviews.
+- Your role involves reviewing user comments about DVDs and deciding if their viewpoint reflects positivity or negativity.
+- Look at the opinions provided in DVD reviews and decide if they reflect a positive experience or a negative one.
+- Review statements about DVDs are provided, and you need to determine if the overall sentiment is favorable or unfavorable based on the content of each review.
+- Your task is to read and analyze product reviews focused on DVDs. You need to determine if the sentiment expressed in each review is positive or negative.
+- You need to classify DVD reviews by sentiment. Determine if reviewers found their viewing experience enjoyable (POS) or disappointing (NEG).
+- You are tasked with reading product reviews specifically for DVDs and determining the overall sentiment expressed in each review, classifying it as either positive or negative based on the reviewer's satisfaction or dissatisfaction.
+- Your task involves interpreting DVD reviews and classifying them according to the sentiments expressed—either as positive or negative experiences.
+- The task is centered around understanding customer sentiments in DVD reviews in order to conclude whether the reviewer is generally satisfied (POS) or dissatisfied (NEG).
+- In this exercise, analyze customer reviews about DVDs for emotional tone. You will label them as positive if satisfaction is communicated, or negative if discontent is expressed.
+- The aim of this task is to sort through various opinions expressed in DVD reviews. Determine if respondents felt positively influenced or negatively impacted by what they viewed.
+- The job at hand involves interpreting a series of DVD reviews, determining which ones convey approval and which convey disapproval. Focus closely on how reviewers frame their experiences.
+- Read DVD reviews with an eye toward evaluating overall sentiment. Classify them according to whether they relay positive feelings of enjoyment or negative feelings of regret over watching.
+- Identify and categorize excerpts from DVD reviews based on their overall emotional tone—are they positive reflections of satisfaction or negative critiques of dissatisfaction?
+- The objective is to interpret reviews for movies on DVD and classify them appropriately based on how satisfied the reviewer appears to be with their viewing experience.
+- Examine each review critically to gauge whether the reviewer was pleased or displeased with their DVD purchase.
+- This task involves carefully reviewing consumer opinions on DVDs to see if they reflect a level of enjoyment or dissatisfaction with the product.
+- Determine whether the feedback on DVDs reveals enjoyment or frustration by evaluating each review's sentiment.
+- Engage in a sentiment analysis of DVD reviews, marking them as positive if they resonate with approval and negative if they echo disappointment.
+- You are tasked with reading and categorizing reviews of DVD films based on their tone. Look for signs that indicate whether a reviewer enjoyed or disliked the movie.
+- In this task, you will interpret reviews related to DVDs, focusing on the feelings shared by reviewers to classify their responses as positive or negative.
+- Carefully read through DVD review comments, gauging the feelings expressed to classify them as satisfied (positive) or dissatisfied (negative).
+- Your task involves analyzing product reviews for DVDs and determining the overall sentiment conveyed in each review.
+- The assignment requires you to analyze customer reviews for DVDs and categorize each review based on an overall impression of quality—whether the reviewer enjoyed it (positive) or found it lacking (negative).
+- Read through various DVD reviews and analyze comments to determine if they reflect a positive sentiment (joy) or a negative sentiment (frustration).
+- Your objective is to evaluate the tone of provided reviews and decide if they express approval or disappointment regarding the DVDs discussed.
+- You need to assess various DVD reviews to determine each review's sentiment. Your goal is to understand if the reviewer positively appreciated the movie or if they had negative experiences worth mentioning.
+- Your mission involves analyzing DVD reviews to identify the feelings conveyed by the reviewers. You'll decide if the tone is favorable, indicating satisfaction, or unfavorable, suggesting discontent.
+- Engage with DVD reviews to extract underlying sentiments, aiming to categorize them as reflecting positive viewer experiences or negative critiques concerning the films' quality and entertainment value.
+- This task focuses on gauging consumer sentiments from DVD reviews and determining which expressions convey satisfaction and which express displeasure.
+- The task involves analyzing product reviews to determine whether the critic's sentiment is positive or negative.
+- You will assess reviews and label them as either positive, indicating satisfaction, or negative, indicating dissatisfaction with the DVD.
+- Appraise product reviews concerning DVDs and determine if they convey positive praise or negative critique from users.
+- Each review you encounter must be analyzed for its sentiment; determine if it communicates satisfaction (positive) or dissatisfaction (negative).
+- Analyze sentiments within provided DVD reviews, determining if they portray a favorable view of the film or express critiques and dissatisfaction.
+- The goal of this task is to interpret consumer opinions found in DVD reviews. You'll assess whether these opinions reflect a favorable view of the product or a critical stance.
+- Evaluate a series of DVD reviews for their emotional tone. Classify them as upbeat or critical depending on how the reviewer feels about the film.
+- Your main focus for this task will be interpreting the language of DVD reviews to classify them correctly. Analyze how effectively each reviewer communicates their emotional response to the film.
+- The aim is to interpret customer feedback on DVDs and make a judgment about whether they have a positive or negative view based on their remarks.
+- In this task, you evaluate DVD reviews to uncover the sentiment behind them, deciding if they reflect a positive or negative experience.
+- The goal here is to classify DVD reviews according to the sentiment of the reviewer. Analyze key phrases that demonstrate whether the feedback is supportive or critical.
+- You will read through different opinions on DVDs and categorize them based on their emotional tone as either positive feedback expressing enjoyment or negative feedback expressing dissatisfaction.
+- You’re tasked with evaluating DVD reviews for their emotional content. Determine if each review reflects a happy customer or someone who was let down.
+- As you read through product reviews, focus on identifying whether the sentiment conveyed is one of satisfaction (positive) or dissatisfaction (negative).
+- The task requires scrutinizing DVD reviews to capture the reviewer’s emotions and deciding if they portray a positive attitude or a negative one.
+- Analyze various product reviews for DVDs to classify the overall feelings of the reviewers based on their comments.
+- In this activity, you will evaluate DVD reviews to classify the overall feelings of the reviewers. Decide whether a review reflects satisfaction or dissatisfaction with the product.
+- In this assignment, you will review customer feedback regarding DVDs and gauge whether the sentiments are predominantly good or bad. Your evaluation will focus on how satisfied the reviewers are with their experiences.
+- Analyze provided reviews for DVDs to capture their general sentiment—determine if they are celebrating a great experience or lamenting a poor one.
+- You will examine a collection of reviews about DVDs, focusing on the sentiments expressed by the reviewers. The goal is to classify each review based on its positivity or negativity.
+- Assess how reviewers feel about their DVD experiences to accurately tag each comment as either a satisfied "POS" or unsatisfied "NEG."
+- This task involves reading DVD reviews and assessing the overall sentiment; your aim is to discern if the sentiments lean towards satisfaction or disappointment.
+- Analyze customer feedback on DVDs, focusing on their sentiments to categorize each review into either a positive affirmation or a negative complaint.
+- You are required to analyze user-generated reviews of DVDs to conclude if they contain a positive or negative sentiment. Look for key phrases and expressions that indicate satisfaction or disappointment.
+- You will classify DVD reviews according to their emotional tone, identifying whether they communicate satisfaction (positive) or dissatisfaction (negative) through insights into the viewer's experience.
+- This task requires you to assess DVD reviews, identifying the general mood of the reviewer to classify their sentiment as positive or negative.
+- By analyzing DVD reviews, your role is to extract sentiments that show how reviewers felt about the films, categorizing their thoughts as either positive or negative.
+- This task involves going through various DVD reviews and identifying their emotional tone. Your analysis will classify each review as either satisfied (positive) or not satisfied (negative).
+- You are tasked with identifying sentiments in DVD customer feedback, differentiating between those who appreciate the films and those who do not.
+- This assignment seeks your expertise in understanding customer feedback regarding DVDs. You'll classify each review as expressing either satisfaction or dissatisfaction with the product.
+- Your role here is to interpret and categorize DVD reviews based on their overall sentiment. This involves identifying key phrases that either praise or criticize the film.
+- Evaluate consumer insights shared through DVD reviews, making decisions about whether their experiences warrant a positive or negative classification.
+- Your job is to assess DVD reviews by identifying whether they reflect a positive opinion or a negative one. Pay attention to the vocabulary that hints at satisfaction or dissatisfaction.
+- In this task, you will categorize various DVD critiques into positive and negative sentiments. This involves recognizing phrases that signal approval or disappointment.
+- Read the provided reviews about DVDs and decide if the sentiment expressed is one of satisfaction (positive) or dissatisfaction (negative).
+- Your goal is to interpret the sentiment behind each DVD review, classifying them as either positive or negative according to the reviewer's tone and content.
+- You will read various DVD reviews and classify them based on the reviewer's feelings about the movie, indicating if they are satisfied or dissatisfied.
+- This task requires you to interpret customer feedback on DVDs and categorize the expressed emotions into positive or negative sentiments.
+- The goal of this task is to carefully read through summarized consumer opinions about DVDs, recognizing and categorizing the expressed feelings as either satisfying (positive) or unsatisfactory (negative).
+- Examine the reviews for DVDs and decide if they express a favorable or unfavorable opinion regarding the product's quality or content.
+- The goal is to assess product feedback related to DVDs by interpreting the reviewer’s emotion. Classify each review as either positive or negative based on its overall tone.
+- You will explore different reviews of DVDs and need to infer whether they express positive emotions or negative feedback regarding the films discussed.
+- Your task involves reading through DVD evaluations and identifying the emotional responses they contain, categorizing them as either favorable or unfavorable.
+- Your task is to read product reviews and determine whether the general sentiment expressed is positive or negative.
+- The task involves reading detailed product reviews about DVDs and determining whether the overall sentiment is positive or negative based on the reviewer's feelings.
+- This task asks you to look at how customers react to DVDs through their reviews and classify each reaction as either positive or negative sentiment.
+- You are tasked with deciphering the emotional undercurrents in various DVD reviews. Decide if each review reflects approval (POS) or disapproval (NEG).
+- Your objective is to classify each review of DVDs according to its sentiment, focusing on whether it is perceived positively or negatively by the reviewer.
+- This task calls for you to read through several DVD reviews and determine if they convey a sense of satisfaction—indicating a positive experience—or dissatisfaction, indicating a negative view of the content.
+- The objective is to sift through opinions about DVDs, identifying which reviews praise the content and which ones express disappointment.
+- You will engage with feedback about DVDs, focusing on the emotional tone conveyed by the reviewer. Identify whether they had a positive experience or not.
+- Your job is to analyze DVD customer reviews for their emotional tone, deciding if each review reflects happiness with the product or disappointment.
+- Your role involves understanding and analyzing customer sentiments in DVD reviews, which could either be enthusiastic (positive) or critical (negative).
+- You will be classifying a variety of DVD reviews based on sentiment analysis. Consider both explicit expressions of praise or criticism and implied feelings when making your classifications.
+- Your goal is to assess consumer feedback on DVDs, identifying whether the sentiment conveyed is one of appreciation or disappointment.
+- This task requires you to interpret consumer opinions on DVDs. By understanding the language used in the reviews, you will classify them as expressing a positive experience or a negative one.
+- Determine if the sentiments conveyed in various DVD reviews point to satisfaction or dissatisfaction from the reviewer.
+- This task consists of reviewing product evaluations related to DVDs and determining the underlying sentiment. Your assessment will be based on language that expresses satisfaction or dissatisfaction.
+- Your job involves assessing sentiments in DVD reviews—indicating a good experience with "POS" or a bad one with "NEG."
+- In this task, you'll read through individual opinions on DVDs and determine their overall sentiment, deciding if they are characterized by positivity or negativity.
+- You will engage in sentiment analysis of DVD reviews, identifying whether the majority of comments reflect a happy customer experience or an unhappy one.
+- By examining various DVD product reviews, you need to determine if each review portrays a satisfied customer (positive) or an unsatisfied customer (negative).
+- The assignment involves assessing how customers feel about different DVDs, labeling each review based on whether it showcases satisfaction or disappointment.
+- Interpretation of product feedback related to DVDs is necessary here; you'll distinguish if sentiments lean towards satisfaction (positive) or frustration (negative).
+- You will examine customer reviews of DVDs, identifying whether the general mood in each review leans towards positivity or negativity regarding the viewing experience.
+- In this task, you'll evaluate narrative content within DVD reviews to assess satisfaction levels and categorize sentiments as either positive or negative.
+- Your task is to analyze individual DVD reviews for their attitude towards the product and categorize them accordingly as good or bad.
+- In this exercise, you will sift through various product reviews written by consumers about DVDs. Your goal is to discern whether each review is supportive or critical in tone.
+- You will analyze DVD reviews to classify the emotional tone as either positive, indicating satisfaction, or negative, signaling dissatisfaction.
+- You are required to interpret various DVD reviews and label them in terms of customer satisfaction, distinguishing between positive and negative remarks.
+- You are assigned to analyze typical customer feedback about DVDs, differentiating between feedback that reflects enjoyment (a positive sentiment) versus feedback that expresses frustration or disappointment (a negative sentiment).
+- Engage with customer feedback on DVDs to categorize their overall impressions as either positive or negative based on their experiences.
+- The goal is to assess the mood of product reviews and decide if they reflect a positive experience or a negative one for each DVD discussed.
+- Engage in classifying opinions regarding DVDs by reading through each review carefully and deciding if it reflects a positive experience or shows negative sentiments based on specific phrases and wording choices.
+- Your mission involves interpreting consumer sentiments toward DVDs based on review content. Ascertain whether reviewers express enjoyment or displeasure with their viewing experience.
+- Your responsibility is to review opinions on DVDs and determine if they reflect a satisfied view or an unsatisfied perspective. Pay attention to descriptive language that conveys emotion.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task477_cls_english_dvd_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task477_cls_english_dvd_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

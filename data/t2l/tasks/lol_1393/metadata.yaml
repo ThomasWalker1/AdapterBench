@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your role involves scrutinizing a given premise and deciding which of the provided choices likely influences it as a cause, or results from it as an effect.
+- You need to analyze a premise and determine whether one of the given options serves as a potential cause or effect related to that premise.
+- Analyze sentences in terms of their implications. Decide if one listed option reasonably explains why something happened (a cause) or describes what may happen next (an effect).
+- Your focus is on understanding the dynamics between different statements, figuring out what leads to what in a straightforward narrative.
+- Your objective is to analyze a situation and determine whether a provided option serves as a potential cause or effect of the premise.
+- In this task, you'll explore logical relationships by recognizing how different statements can connect as causes or effects based on context clues.
+- Draw upon your analytical skills to investigate premises and their options, determining which is more likely related through causality or outcome effects.
+- Engage in critical thinking by looking at a premise, then considering two possible related items, determining their causal or resultant nature.
+- This task requires you to evaluate statements and decide if they can be linked as cause and effect in relation to an initial premise sentence.
+- In this task, you will interpret scenarios and choose alternatives that either lead to an event or arise as consequences of that event.
+- Engage in critical thinking about textual relationships, determining whether one statement serves as a plausible explanation for another based on the provided inquiry.
+- Explore logical sequences implied in brief narratives where you appraise if one event might result from another based on specified inquiry cues like 'cause' or 'effect'.
+- Assess a scenario and select an option that either explains why something happened or what might result from it. Your focus is on causal relationships.
+- This involves determining which of two options can be logically seen as a cause of, or an effect of, the information contained in a starting statement.
+- Examine a premise and differentiate between two options based on their relationship—whether one leads into the other as cause or effect.
+- Analyze a situation's narrative and determine how related scenarios interact, identifying causes behind actions or effects stemming from them.
+- The objective is to interpret a scenario and choose between two alternatives, focusing on their potential cause-and-effect relationship with the main premise.
+- In this task, you assess relationships between events or statements by identifying causes and effects based on a given premise.
+- This task involves making connections between various statements. Examine the provided discourse to determine which option serves as a plausible explanation for an event or its outcome.
+- In this critical thinking exercise, parse through given information about events and select between two options that represent either an initiating factor or a resultant consequence within that context.
+- This task involves analyzing a sentence and judging the relationship between two alternatives provided based on whether they are causes or effects of that sentence.
+- Engage critically with supplied scenarios and their possible impacts by identifying whether each alternative serves as a plausible explanation for or consequence of what is described.
+- The goal is to interpret a given statement and deduce which of the two presented options logically connects as either the reason for or the result of that statement.
+- This requires analytical reasoning where you must connect dots between scenarios by identifying one potential trigger action or subsequent result related to the premise.
+- Determine which of the two responses can be seen as influencing or resulting from the given premise by examining their implications closely.
+- Discern logical connections between statements by identifying if one scenario could effectively lead to another in terms of cause and effect.
+- The task involves understanding relationships between actions or states. You need to identify either the cause or the effect based on a given premise.
+- Your task is to analyze a premise and make connections between it and two possible scenarios, based on whether you’re looking for a cause or an effect.
+- This activity requires you to think critically about statements, discerning how one might lead to another, whether it's causing change or resulting from it.
+- The focus of this task is to interpret the relationship between a premise and two possible outcomes, specifically identifying what leads to what.
+- You will evaluate statements and their implications. The challenge lies in discerning whether the provided options represent causes that lead to the situation described or results that stem from it.
+- Think critically about given situations and sift through alternatives to determine which illustrates causation or shows how one outcome leads from another.
+- You're tasked with identifying how actions or events relate. Choose an option that corresponds to either instigating the situation or being a result of it.
+- You will evaluate a given statement to recognize whether one of the provided options could reasonably explain why it happened or what resulted from it.
+- Here, you will explore connections between actions and outcomes. After reading the premise, determine which option reflects the underlying reason or the resulting situation.
+- This exercise invites you to analyze a statement and use your reasoning skills to associate it with potential causes or effects illustrated by two different choices.
+- This task involves evaluating a premise and recognizing the appropriate cause or effect from the given choices, showcasing your comprehension of logical connections.
+- Engage with textual scenarios where your ability to connect ideas and understand implications surrounding causality is put to the test through clear reasoning.
+- Your role is to look closely at implications in provided sentences and deduce appropriate relationships among statements, highlighting causes versus effects.
+- Engage with premises and related scenarios to draw logical connections about causality and results based on supplied choices.
+- This exercise tests your ability to comprehend scenarios and infer which option directly relates as either a reason for the given statement or a consequence of it.
+- Your task is to select the option that relates causally or consequentially to the premise, depending on whether the query focuses on cause or effect.
+- The task requires you to delve into the intricacies of scenarios, uncovering how one event might lead to another by evaluating two specific claims.
+- Participate in reasoning tasks where you analyze causal relationships between statements. Identify which of two choices appropriately fits your understanding of cause-and-effect logic.
+- Engage with a premise and weigh two suggestions to establish which represents an originating cause or describes an end result.
+- You are asked to analyze a statement and determine what led to it or what followed from it, based on two potential outcomes.
+- Assess hypothetical situations where you have to identify believable explanations for occurrences based on initial statements presented to you.
+- This task involves logical reasoning where you must interpret statements and ascertain how provided options could relate in terms of causation or outcome.
+- The task invites you to reflect on given premises and discern whether one statement could lead into another, framing your response within its context.
+- The task centers around logical analysis of statements where you identify how one choice can correlate under certain circumstances with an initial premise.
+- Your job is to dissect statements into their underlying reasons or results by relating them with potential scenarios that either anchor them as causes or designate them as effects.
+- This exercise challenges you to decode sentences and explore the underlying connection of an action or event with possible reasons behind it or results stemming from it.
+- Analyze statements to determine connections where one event may instigate another or reflect an outcome, focusing on logical reasoning skills.
+- This task requires you to think critically about how events are connected. You will be given a premise and must hypothesize which of the two options is related as a cause or effect.
+- Your challenge involves parsing sentences and options to uncover logical connections, pinpointing whether an option serves as an origin point or an offshoot of the information provided.
+- This involves making assessments about sentence relationships. Determine which choice aligns with either prompting the situation or being influenced by it.
+- You are invited to think about implications and origins within text. With a clear premise in mind, assess which of the options presents a plausible link as an effect or cause.
+- Here, you will be linking ideas together based on their narrative flow, determining how one piece of information relates to another in a cause-effect framework.
+- Engage with a premise to uncover either a cause that led to it or an effect that emerged from it, relying on your understanding of logical relationships.
+- You will evaluate a premise and choose between two options based on whether they suggest a cause or an effect related to the premise.
+- In this task, you will engage in reasoning about events and their consequences by deciding if one option is likely responsible for leading to the scenario presented in the premise.
+- Engage with premises narratively, examining options for their potential as causes enabling an event, or effects resulting from the unfolding scenario.
+- In this assignment, you'll assess a situation described in a sentence and evaluate which option accurately depicts a prior event leading to it or a subsequent impact stemming from it.
+- Consider the implications of a statement and determine which of two possibilities fits as a likely reason or consequence of that statement.
+- Identify relationships within textual evidence, distinguishing whether one scenario actively contributes to another’s occurrence or describes its resultant state.
+- This task tests your ability to apply deductive reasoning skills while judging which statement represents a plausible causative relation with the premise.
+- You will analyze a premise sentence and determine which of the two suggested options is related to it as a cause or an effect, depending on the prompt.
+- Assess a statement's contextually implied relationships, identifying options that may indicate causation or outcomes based on logical deduction.
+- Explore causal or consequential relationships embedded within a text. You will assess which given option aligns with either causing or resulting from the premise statement.
+- Your job is to assess a premise and select which of the two options can logically be linked as the cause or effect of that premise.
+- You need to utilize inferential reasoning to evaluate how one event affects another based on contextual judgment and relationship analysis.
+- Utilize reasoning skills to determine how different statements interact. Focus on identifying whether options presented are likely causes leading to results or effects stemming from initial conditions.
+- Assess how concepts are interrelated. Given a core statement, determine which option aligns with either being its likely cause or its potential effect.
+- This task involves interpreting a situation and relating it to possible causes or effects, honing your intuitive grasp of logical relationships in language.
+- Analyze a given situation described in the premise, then evaluate which of the two options accounts for what could have caused it or what might be its effect.
+- You are asked to examine a scenario presented in a sentence and determine whether one of the two options is likely to cause the situation or arise from it as an effect.
+- You will be operating at an interpretive level, understanding how actions can manifest into results or arise from previous conditions based on given premises.
+- This task involves understanding relationships between events. You need to discern if one option could lead to or stem from the premise given.
+- The activity requires you to understand action-response dynamics; you'll identify if one situation prompts another or if it's a result of the first.
+- You are challenged to match ideas by figuring out which statement likely explains the premise or what might follow as a consequence.
+- Engage in reasoning about statements, picking out links that establish causality or effect, based on the premise you are given.
+- You will need to interpret a statement and its possible consequences or origins, selecting the option that aligns with either causing or resulting from the situation.
+- The focus here is on assessing relationships in context. From two choices, find which represents the cause if prompted, or the effect otherwise.
+- This task entails analyzing how two proposed actions relate to each other in terms of cause and effect, helping you find textual continuity.
+- The task involves reading carefully to determine how one statement may logically influence or relate to another within the framework given by the premise.
+- Reflecting on premises will enable you to evaluate potential causal factors or consequential results based on given alternatives.
+- The challenge is about drawing conclusions from statements. You will identify a plausible cause for the given scenario or an effect that follows from it.
+- This process demands critical thinking to connect ideas within a premise and recognize which of two presented options logically fits as cause or effect.
+- Analyze discourse elements critically to determine how they might be linked in terms of causality, enriching your understanding of logical argumentation.
+- Your job involves understanding causal relationships. You’ll read a statement and choose one of two possibilities that either explains why something happened or what came as a result.
+- Evaluate how two possible situations might correlate with a given statement to uncover what may have prompted it or what could be its result.
+- You'll need to think critically about scenarios, determining which of the presented choices logically correlate as causes or effects based on context clues.
+- Analyze the connection between a statement and two alternatives to ascertain if one serves as a cause behind it or as a consequence of it.
+- You will investigate a premise narrative to verify which of two scenarios serves as an explanation for its occurrence or indicates what might follow from it.
+- You will need to interpret a scenario and identify whether one of two statements serves as a plausible cause or effect related to the situation presented.
+- Analyze implications in textual elements where you assess relationships, determining how one scenario may influence another based on defined key words.
+- Delve into the implications of a specific statement by identifying actions or scenarios that could logically lead to it or follow from it, using cues from the question provided.
+- Your task involves understanding the relationship between two statements, identifying which option can logically lead to or result from the given premise.
+- Examine the relationship between events; decide if one influences another's occurrence or results from it based on specified prompts.
+- Engaging with this task means recognizing and articulating possible causal relationships in given scenarios while ignoring unrelated details.
+- This task requires you to identify the relationship between a given premise and two options based on whether the question is asking for a cause or an effect.
+- Your task is to identify the relationship between a premise sentence and two options, determining whether one is a possible cause or effect of the premise.
+- In this exercise, you will evaluate a given statement and determine which of the two options is more likely to be a cause or an effect related to that statement.
+- Investigate the interactions between different situations by selecting a plausible cause or effect related to the main sentence using logic and deduction skills.
+- Your analysis should focus on examining how well each option connects with the scenario presented in order to decide its role as a cause or an effect.
+- You are tasked with understanding how events relate to each other, pinpointing whether one option adequately explains the cause of another event.
+- Your role here is to draw logical inferences about relationships between described scenarios, focusing on identifying cause-and-effect dynamics presented in each case.
+- The task centers on examining statements and evaluating two options to reveal their relational dynamics in terms of cause and effect.
+- Your job entails examining comparisons between two statements in light of a primary assertion, identifying how they relate as either causes or effects.
+- Engage in logical deduction as you read a given premise. Your challenge will be to choose the option that correctly identifies either a cause or an effect concerning that premise.
+- The focus here is on exploring causal relationships. You need to discern if something is a possible trigger for or result of the premise statement.
+- In this activity, you must synthesize information logically, contemplating how various elements influence each other through potential causes or effects.
+- In this analytical task, you're able to explore linguistic nuances that define cause-and-effect relationships within stated scenarios.
+- Consider the connections between events as you interpret a premise sentence alongside two alternatives, discerning which is the likely cause or effect based on the question provided.
+- This task involves critical thinking as you parse through statements to determine their relevance as causes or effects of an initial condition.
+- Consider the dynamics presented in each situation. You'll seek to understand whether an option expresses a causal link or suggests consequences stemming from it.
+- Your task is to analyze a statement and determine what could be a potential cause or effect from the given options.
+- This involves parsing through statements to extract meaningful relationships by recognizing what brings about change or results from an action.
+- In this examination, evaluate a situation expressed in a sentence and critically assess how each alternative relates, determining their causal connections.
+- The challenge lies in determining causation versus correlation by thoughtfully considering how two pieces of information relate to each other.
+- Based on the premise provided, figure out which of the two options could realistically be viewed as either a cause for or an effect of that premise.
+- Your objective here is to synthesize information from the provided premise with possible actions or results, establishing which option logically connects as either a cause or an effect.
+- Determine how two related options fit into a context established by a premise sentence, focusing on whether they represent causes or outcomes.
+- You must engage with a premise sentence and determine which provided option aligns with the idea of causing that situation or being influenced by it.
+- Examine the presented premise and two different responses, selecting the one that appropriately fits as a potential cause or effect of the situation described.
+- This task requires you to read a sentence and consider two outcomes, determining if one is a plausible cause or effect based on the initial sentence.
+- Your role is to identify links between statements, clarifying which option serves as a possible trigger for the outcome or illustrates an aftermath.
+- The task requires you to analyze a given situation and determine the relation of two possible scenarios to it, either as a cause or an effect.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1393_superglue_copa_text_completion
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1393_superglue_copa_text_completion
+user_prompt_template: '{task_def}
+
+
+  {problem}'

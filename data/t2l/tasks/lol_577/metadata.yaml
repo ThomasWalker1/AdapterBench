@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You'll need to interpret statements in conversations about geographical matters, labeling them according to whether they belong to the questioning user or the informative assistant.
+- Your objective is to label conversation segments accordingly, recognizing which statements illustrate user curiosity versus those that contain informative replies from assistants.
+- You are tasked with identifying the source of statements within geographical dialogues, classifying them as user-generated inquiries or assistant-provided responses.
+- You must analyze conversational exchanges discussing geographic topics and classify each component as originating from either a user inquiry or an assistant’s reply.
+- In this task, you'll differentiate between two conversational roles within dialogues focused on geography, determining if the lines are spoken by the user or the assistant.
+- Your role is to classify segments of dialogues about geography, noting whether they are expressed by the user or replied to by the assistant.
+- Engage with snippets of conversations related to geographic matters and determine if they reflect user queries or assistant explanations, showcasing your understanding of speaker dynamics.
+- Analyze conversations centered on geography topics, labeling each input as either that of an individual seeking knowledge or an aide delivering it.
+- Your assignment involves discerning conversational roles in dialogues centered on geographic themes, identifying inquiries posed by users against informative statements made by assistants.
+- Examine conversations pertaining to geography. Classify each line of dialogue accurately based on whether it's spoken by the user or offered by the assistant.
+- In this task, your goal is to distinguish between user input and assistant responses within dialogues that discuss geographic entities and locations.
+- Your goal is to assess dialogues relating to geographical inquiries and recognize which parts are voiced by users versus those articulated by assistants.
+- In this classification task, your focus is on recognizing speech patterns in dialogues about geography to distinguish between questions from users and answers from assistants.
+- You will analyze dialogues revolving around geographic discussions and classify them into two categories based on their speaker—a user asking questions or an assistant providing answers.
+- This task challenges your ability to identify the speaker in dialogues about geographical facts, recognizing whether they are inquiries or informative statements.
+- Interpret the context of a dialogue to classify who is speaking, considering whether it presents information or seeks answers regarding geographic subjects.
+- You will review each dialogue segment and categorize it by identifying whether it represents a user's inquiry or an assistant's response.
+- You need to evaluate parts of dialogues and assign them to either the user or the assistant based on their contributions to geographical discussions.
+- For each dialogue segment provided, identify who is speaking—either the inquisitive user or the knowledgeable assistant—in discussions concerning geographical matters.
+- In this exercise, evaluate dialogic exchanges centered around geographic information, identifying whether they come from users seeking knowledge or assistants responding to requests.
+- This task involves explorative analysis of dialogues with a geographic focus, requiring you to discern who is making statements at any given point.
+- Analyze portions of dialogues centered around geographic topics, discerning whether they express thoughts from users engaging in inquiry or responses from knowledgeable assistants.
+- Your task is to determine whether a given dialogue line originates from the user or the assistant based on the content of the conversation.
+- Your challenge is to sift through geographic discussions in dialogues and accurately label whether each line is from the user or from the assistant providing geographic insights.
+- Analyze a segment of dialogue to discern whether it is initiated by the user seeking knowledge or by the assistant offering insights.
+- Focus on distinguishing between two roles in a conversation about geographic themes. Identify which parts are from users and which are from assistants.
+- In this task, read through a conversation and categorize each part as either originating from the user interested in learning or from the assistant responding with information.
+- Assess short dialogues about geographic subjects, making distinctions between comments made by users wanting information and responses from assistants knowledgeable about those topics.
+- You should read through dialogues and identify if the given statement originates from the user or the assistant, especially when it pertains to geographical discussions.
+- Your goal is to evaluate a conversational exchange and label each part as either coming from the user or the assistant, particularly in the context of geography.
+- The objective is to evaluate interactions discussing geographic themes and categorize each line as belonging to either a curious user or a knowledgeable assistant.
+- Focus on understanding and analyzing statements made within dialogues around geographical topics, determining their source as either a user's question or an assistant's reply.
+- You will engage with a series of dialogues aimed at geographic discussions. The essence of this task is to classify each segment as belonging to either the user or the assisting entity.
+- Your job is to parse dialogues about geography, isolating whether they are questions posed by users or explanations provided by assistants in response.
+- You'll be identifying and categorizing lines in dialogues to see who is participating—users who ask questions or assistants who provide knowledge about geographical matters.
+- In this task, work through discussions that center on geographic topics and assess whether statements are contributed by a curious user or an informative assistant response.
+- In this task, you are required to classify statements in dialogues about geographic subjects by identifying if they are made by someone seeking information (the user) or someone providing it (the assistant).
+- Analyze conversational exchanges to classify each statement according to its speaker, noting whether it's a user's comment or an assistant's response on geographic topics.
+- The task involves analyzing dialogues on locations and geopolitical subjects. Recognize which participant contributes each part of the dialogue, distinguishing between user and assistant exchanges.
+- Engage with dialogues that involve discussions of geographic entities, identifying if they stem from user curiosity or assistant expertise.
+- Assess the provided dialogue in terms of content and style to decide if it originates from the user’s inquiries or the assistant’s informative responses.
+- The focus of this task is to discern between the contributions of a user and an assistant in a conversation centered on geographical entities and locations.
+- Parse through dialogues discussing geographic matters to ascertain whether statements originate from users exploring topics or from assistants giving relevant insights.
+- Your job is to discern the dialogue roles in conversations concerning geography. This involves recognizing typical patterns of user inquiries and assistant responses.
+- Review conversations concerning geographical questions and determine who is asking for information and who is responding. The focus here is on conversational roles within a geographic context.
+- This task requires you to sift through spoken dialogue to infer the speaker's identity, focusing on their role as either a curious user or an informative assistant.
+- The objective of this task is to evaluate lines spoken in geographic discussions and clarify which are attributed to the inquisitive user and which are supplied by knowledgeable assistants.
+- You will evaluate conversational exchanges to identify the speaker's role in discussing geographical topics, distinguishing between user inquiries and assistant replies.
+- You are asked to sift through conversations that touch on geographical facts and decide whether a statement has been made by an inquisitive user or a knowledgeable assistant.
+- The task requires you to parse through conversational elements related to geography and clarify if they are inquiries from users or informative responses from assistants.
+- Review provided dialogues critically and assign them as either user input or assistant output based on context clues regarding geographical entities.
+- You need to evaluate dialogues centered on geographic themes and decide which participant—user or assistant—is responsible for each statement.
+- This task involves reviewing conversations focused on geographic discussions and labeling which statements belong to the user and which belong to the assistant.
+- Classify the lines of conversation based on who is speaking—whether it's the user seeking information or the assistant offering responses about geography.
+- Examine the dialogue exchanges and denote whether they are initiated by the user seeking knowledge or by the assistant sharing facts.
+- Your task is to identify whether a given piece of dialogue comes from the user or the assistant during a conversation about geography.
+- Engage with dialogues featuring discussions on places and geopolitics. Classify statements based on whether they originate from the user or the assistant.
+- You will analyze geographical discussions between a user asking questions and an assistant providing answers. Your role is to differentiate between these two speakers throughout various dialogues.
+- In this task, analyze pairs of conversational exchanges within a geographical context and classify the statements according to the speaker's identity—user or assistant.
+- Classify parts of dialogue centered around geography by identifying whether they originate from a user’s perspective or an assistant's responses.
+- Interpret the dialogue content and context to ascertain whether the remarks are made by the user seeking information or an assistant supplying facts.
+- Focus on dialogues about geographic entities and classify each sentence based on whether it's expressing curiosity from a user or informative support from an assistant.
+- This task focuses on discerning between two speakers within conversations about geography. Classifying statements as from a user or an assistant requires attention to context and purpose.
+- 'You will analyze a conversation about geographic topics and correctly identify who is speaking: the user seeking information or the assistant providing it.'
+- The task focuses on classifying conversational exchanges, allowing you to differentiate between questions posed by users and knowledge shared by assistants.
+- Evaluate dialogues featuring geographic content, classifying utterances as originating from either curious users or helpful assistants.
+- Your responsibility is to read provided dialogues and determine whether each line comes from a user interested in a topic or an assistant giving information.
+- In this exercise, you are asked to classify statements from a dialogue as either user inputs or assistant responses, focusing on geographical topics.
+- Interpret dialogues concerning geographic subjects, such as climate or services, and classify who is contributing—the user or the assistant—based on their roles in the interaction.
+- Your job is to discern who is expressing thoughts in the dialogue based on contextual clues about geographic discussions.
+- Classify statements in dialogues about geographic subjects, deciding whether they come from users, who generally pose questions, or assistants, who provide answers.
+- The goal is to separate user-generated questions about geographic topics from responses given by an assistant within various conversational contexts.
+- This task involves reviewing dialogues that discuss geographic topics. Your aim is to classify the contributions based on whether they come from a user or an assistant in the conversation.
+- In this task, you will analyze a conversation that revolves around geographic topics. Your goal is to classify each statement as belonging to either the user or the assistant based on their roles in the discussion.
+- Analyze conversational exchanges focused on geography and identify who contributed each statement—the person seeking information or the one providing it.
+- By analyzing dialogue about places and geographical facts, ascertain who provides input—the user expressing interests or the assistant delivering details.
+- This task entails examining dialogues for comments on geography and determining their source—was it initiated by the user or the responding assistant?
+- The task involves reviewing dialogue snippets related to geography, determining which lines are generated by users seeking knowledge and which are articulated by an assisting party.
+- Your task involves listening attentively to a dialogue about geography, determining who poses questions and who offers explanations based on context.
+- Your focus will be identifying who contributes each part of a conversation about geography, deciding if it stems from user queries or facts shared by an assistant.
+- Analyze the dialogue provided and classify each part based on who is likely speaking—the user asking questions or the assistant giving information.
+- This task requires you to label lines from a conversation as either belonging to the user or the assistant. Pay attention to who is initiating questions versus who is providing information.
+- In this exercise, determine the roles of individuals in a discussion about geography by classifying their statements as originating from either the user or the assistant.
+- In this task, you assess a conversation to decide if comments are made by the user seeking information or by the assistant revealing geographical insights.
+- You will work with conversational snippets centered around geography, deciding whether each line stems from a user seeking insights or an assistant elaborating on details.
+- The task consists of parsing dialogues about geographic entities, establishing whether each utterance is initiated by a user interested in learning or an assistant supplying information.
+- Your job is to classify dialogue snippets as either coming from a user or an assistant. Pay attention to the context of the conversation about geographic topics.
+- The task involves classifying spoken dialogues based on geography, pinpointing whether remarks are made by the user or the assistant.
+- Engage with dialogues centered on geographic queries. This task's goal is to accurately classify who contributes each part, ensuring clarity between user inquiries and assistant responses.
+- In this activity, you'll be interpreting interactions about geographical facts and determining if each comment stems from a user seeking knowledge or an assistant providing context.
+- Break down geographic dialogues into their components and assess who is speaking based on whether they express curiosity or provide clarifying details.
+- Engage with dialogues regarding geographic subjects, making careful evaluations of speech content to classify participants accurately as users or assistants based on their contributions.
+- Focus on understanding the flow of a conversation concerning geographical inquiries and identify which side—user or assistant—contributes each statement.
+- This task involves a conversation about geographic matters. Determine who is expressing thoughts or queries, distinguishing between user and assistant roles.
+- Determine who is speaking—either the user or the assistant—in a given dialogue about geographic topics by carefully considering the phrasing and subject matter.
+- Your challenge is to sort dialogue contributions based on who is speaking—those seeking information regarding geographic matters (the user) or those supplying that information (the assistant).
+- Distinguish between queries posed by users and responses given by assistants in discussions revolving around geographic themes and information.
+- Identify the speaker in lines of dialogue related to geography, determining if they are posing questions or providing answers based on their roles in a conversational setting.
+- Listen closely to dialogues about geographic knowledge, where your objective is to classify each statement as originating from either a user or an assistant.
+- Your role involves sorting through dialogues about geographic issues, identifying whether statements are testimonials from users or informative replies from assistants, based on their contextual clues.
+- You need to classify lines of conversation as belonging to either the user or the assistant in discussions focused on places and geographical entities.
+- You are tasked with identifying whether a given statement in a dialogue was made by a user or an assistant, focusing on conversations related to geography.
+- Find out who provides input in the context of geographical conversations, distinguishing user inquiries from factual remarks made by assistants.
+- This task requires you to sift through dialogue snippets and categorize them by recognizing the conversational roles—user or assistant—in geographic discussions.
+- This task involves listening to dialogues about geographic matters and specifying who contributes each piece of information, taking note of common conversational cues.
+- In this task, you will be classifying statements from a dialogue as either by a user or an assistant, focusing on interaction related to geography and related concepts.
+- Analyze excerpts from dialogues about locations and geopolitical topics, determining whether they reflect user intent or assistant assistance.
+- Interpret snippets of geographic conversations to effectively spot whether the communication is initiated by a user or contributed by an assistant.
+- In this classification task, identify which parts of a dialogue are uttered by users curious about geography, versus those shared by assistants providing explanations.
+- Review short dialogues focused on geographic discussions and determine if each message originates from someone seeking knowledge (user) or someone offering it (assistant).
+- Engage with snippets of conversation centered on geography, identifying whose voice is speaking—whether it's the curious user or the knowledgeable assistant.
+- Identify roles in a conversation about places and geography, determining if specific statements are made by users exploring topics or assistants delivering answers.
+- You need to determine the speaker in a dialogue exchange focused on geography. Consider the nature of the statement to classify it correctly.
+- Engage with dialogues about geographic facts and relationships, distinguishing the user's inquiries from the assistant's informative responses.
+- Distinguish between user-generated questions and factual contributions from the assistant in conversations about geography and places.
+- Your role is to investigate conversations about geography and triage their statements according to whether they reflect user curiosity or assistant knowledge-sharing.
+- 'The challenge is to sort dialogue components from conversations addressing geographic knowledge into two categories: contributions from the user versus those from the assistant.'
+- Your work involves deciphering dialogues related to geographical entities, distinguishing between statements articulated by users versus those provided by assistants.
+- As you review a dialogue about geography, your objective is to discern whether each statement reflects curiosity from the user or informative responses from the assistant.
+- The task involves analyzing conversational exchanges to know if they are user-generated questions or responses from an assistant related to geography.
+- You are required to determine the speaker of each line in a dialogue about geographic topics, categorizing it accurately as either user or assistant speech.
+- In this dialogue classification task, focus on distinguishing user comments seeking information from assistant responses alleviating those queries in geographic contexts.
+- Understand exchanges involving geographic discussions, situating each line correctly as either arising from a user’s inquiry or an assistant’s explanatory response.
+- Analyze lines of dialogue discussing geographic entities and classify each line according to its speaker—the user raising questions or an assistant sharing insights.
+- Examine interactions centered around geographic knowledge and accurately classify each statement according to whether it comes from a user or an assistant.
+- Assess the provided dialogue snippet and identify if it reflects the user asking a question or the assistant providing information.
+- In this exercise, discern whether statements about geographic entities come from the user seeking knowledge or from the assistant replying with information.
+- The aim here is to discern which parts of a conversation are asking for information (user) versus those providing details (assistant) about geography.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task577_curiosity_dialogs_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task577_curiosity_dialogs_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

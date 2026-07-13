@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Review online posts with a critical eye for language that might be interpreted as offensive or derogatory, shaping your classification based on societal norms.
+- In this task, you will reflect on social media dialogues and decide if certain statements could reasonably upset viewers through biased expressions.
+- Your task is to assess social media posts for potentially offensive content, which may include racial, sexual, or religious biases.
+- Review the text from a social media post and decide if it includes potentially harmful or derogatory expressions that could cause offense.
+- Investigate whether certain expressions within a social media post might alienate or offend certain groups. This demands critical thinking about language usage and cultural sensitivity.
+- You will read each post with a critical eye for bias, categorizing them based on whether they embody potentially inflammatory content.
+- Examine the provided text from a social media platform and classify it as potentially offensive or not, based on the language used.
+- Assess social media entries for potential offensiveness, looking for terms or phrases that could be deemed disrespectful to particular people or communities.
+- Evaluate social media entries with an eye for language that might be viewed as disrespectful or inflammatory. Your classification will help understand public discourse trends.
+- Your role is to assess whether the language in the given posts might upset or offend specific individuals or communities based on existing biases.
+- Review the content of a social media post and decide if it includes phrases or expressions that could be hurtful to certain individuals or communities.
+- Evaluate the content of social media updates to identify if they include potentially harmful expressions that could alienate any group of people.
+- Your job is to interpret social media messages with regard to their respectful nature, categorizing them based on how they may be received by various groups.
+- Interpret the content within social media messages for traces of potentially negative implications towards individuals or communities.
+- You will categorize social media posts based on whether they might be viewed as offensive. This requires an awareness of various types of bias and harmful language.
+- Identify if a given social media message might be seen as offensive in its context. This requires an awareness of how terms can impact various groups differently.
+- Your job is to scrutinize social media statements for any phrases or words that might be perceived as harmful or insulting to individuals or social groups.
+- Your goal is to categorize a given social media entry based on its potential offensiveness. This means being alert to harmful stereotypes or derogatory phrases.
+- Assess the provided text for any language that may carry offensive implications. Classify each post to reflect its potential impact on readers.
+- Evaluate if the posted comments on social media are respectful or if they include derogatory remarks towards specific groups or individuals.
+- Assess posts in terms of their impact and the safety they offer in conversations, identifying if any part could upset someone directly or indirectly.
+- Your task is to evaluate social media posts and determine whether they express language that could be offensive to individuals or groups.
+- The task is to check social media postings for potentially offensive material. Look out for language that could be interpreted as derogatory towards specific people or communities.
+- Reflect on the language in a social media post; your task is to decide if it includes sexual, racial, or religious bias that might offend someone.
+- Evaluate whether the given social media text includes language that could be perceived as offensive. This involves understanding context and nuances in communication.
+- You are tasked with weighing the implications of the language used in social media posts. Think critically about how certain comments might affect individuals differently.
+- Evaluate each social media post for potentially harmful content. Your focus should be on identifying whether any part of the post may alienate or insult specific groups.
+- You will categorize the texts by checking if they use slurs, derogatory references, or inflammatory remarks that may upset various groups of people.
+- Make a judgment on each provided post based on its potential to cause offense, focusing on expressions that may discriminate against others.
+- The task involves assessing the nature of words used in social media comments for their potential harmful impact on targeted groups.
+- In this task, you analyze social media posts to determine if they contain potentially offensive language that might upset specific groups or individuals.
+- Your task is to scrutinize the language used in social media posts to determine if it contains potentially offensive remarks targeting specific individuals or demographics.
+- Carefully read the text from a social media post and judge if it contains any phrases that are likely to cause offense to someone.
+- Your role is to classify given social media texts according to their potential offensiveness. Pay attention to words or phrases that could be considered disrespectful.
+- The focus here is on identifying potentially offensive messages in social media posts. Understand the context and nuances in language that can lead to negative interpretations.
+- Review the text of a social media post to see if it contains any harmful or derogatory expressions. You need to recognize what might be considered offensive in contemporary conversation.
+- You are required to critically assess a piece of text for overtly insensitive comments that may target specific demographic groups. Contextual interpretation is key here.
+- Review each post critically to see if it could be interpreted as derogatory or disrespectful toward people based on their identities or beliefs.
+- Assess each provided tweet to determine if it contains language that can be interpreted as offensive towards individuals based on race, gender, or other factors.
+- Analyze the provided posts for offensive language or sentiments that could impact certain people negatively, marking them accordingly.
+- Your mission is to analyze social media texts for words or phrases that may be deemed offensive, recognizing both overt and subtle forms of disrespectful language.
+- The task requires you to evaluate each post's wording and implications, identifying whether they could offend certain individuals or communities.
+- Determine the potential offensiveness of a social media post by identifying language that could insult or demean specific groups.
+- This task involves reading social media texts and deciding if they contain language that could be considered disrespectful or derogatory towards any individuals or communities.
+- This task requires you to interpret the messages in social media posts and ascertain whether they include offensive language impacting certain communities.
+- Reflect carefully on the provided posts; contemplate if any segment may carry offensive weight that could provoke members of different communities.
+- Engage with social media posts critically, looking for signs of offensive language that could irritate or alienate parts of the audience.
+- Examine social media posts for any expressions that might be considered derogatory or inappropriate towards any individual or demographic group.
+- Your responsibility is to assess whether particular texts could be deemed hurtful or disrespectful. Focus on identifying offensive sentiment within the wording used.
+- You are tasked with discerning the potential offensive nature of each social media post by paying attention to charged language and possible biases.
+- Examine the provided texts carefully and decide if they fit into a category of potentially offensive content, considering cultural references and derogatory terms.
+- Engage in the task of reading social media statements carefully to spot any phrases that could evoke offense in diverse audiences.
+- Analyze the given text for any signs of insensitivity or provocativeness towards any individual or group and decide its classification based on this evaluation.
+- You are tasked with determining whether a social media post has elements that could be considered disrespectful or inflammatory toward specific audiences based on its content.
+- Look at the provided text and determine if it has any elements that might be interpreted as offensive, taking into account different communities and sensitivities.
+- Engage with the language used in social media, distinguishing between expressions that foster inclusivity and those that carry a risk of offending various audiences.
+- Your job is to classify posts based on their potential to offend others, paying attention to the types of language used and its implications.
+- The goal is to determine if a given post from social media has the potential to offend recipients. Investigate the implications of the words used in each context.
+- Evaluate the text of a social media post for negative language that might offend specific subsets of people.
+- Assess the content of a social media post for any potentially offensive language. You must decide whether the post could upset specific people or communities based on its wording.
+- You will evaluate social media posts, focusing on whether they are likely to be seen as offensive. This entails being alert to language that can undermine or belittle specific groups.
+- Review each provided social media post for potentially hurtful remarks. Use your judgment to determine if the language could be deemed offensive or inappropriate.
+- Your task is to evaluate social media posts and decide if they contain language that could be offensive to certain individuals or groups.
+- Analyze the context and wording of each social media post to determine whether it poses a risk of being offensive towards individuals or groups.
+- In this task, you will determine if specific posts contain language that might offend individuals. This requires a careful reading of the text and an understanding of context.
+- Carefully consider the implications of the language in the post, rating whether it might be harmful to others based on societal norms regarding sensitive topics.
+- Review given social media snippets and categorize them based on their likelihood of offending anyone, considering elements like racial, sexual, or religious insensitivity.
+- In this classification task, examine the wording of social media posts for any potentially disrespectful content directed at anyone.
+- Your assignment involves assessing whether specific pieces of text from social media are potentially offensive. Analyze the wording critically for underlying bias.
+- You will evaluate the tone and language of given posts to determine if they could be harmful or offensive to specific groups of people.
+- Analyze the provided social media content and classify it based on its potential harmfulness to defined groups or individuals.
+- The mission is to scrutinize a post on social media for language that could be hurtful or derogatory. Pay careful attention to the subtleties in phrasing that could lead to offense.
+- In this task, you will analyze the content of social media posts and classify whether they could be considered offensive to any group of people.
+- You will be examining social media content to classify whether it might offend people, focusing on aspects like sexual, racial, or religious language.
+- Your task involves looking at posts online to see if they express sentiments that could be hurtful to individuals due to their identity or background.
+- Your task is to evaluate social media posts for potential offensiveness. Determine whether the language used may harm or upset any individuals or groups.
+- You are tasked with detecting potentially harmful expressions in social media posts that can evoke feelings of offense among various groups.
+- Explore the nature of various social media posts and decide whether they might carry offensive undertones. This requires sensitivity to different forms of bias and discrimination.
+- Review provided texts for socially responsible language practices. Classify whether the content might be construed as disrespectful or harmful.
+- You'll need to interpret the intent and language of each post to classify whether it risks being seen as disrespectful or intolerant towards others.
+- The objective is to evaluate social media posts and decide if they could be deemed offensive. Consider any language that could upset a person or group.
+- The goal is to examine social media text for potentially harmful or disrespectful language. Your judgment should reflect an understanding of how words can affect various communities.
+- Classify the emotional impact of social media posts, paying special attention to language that may carry sexual, racial, or religious insensitivity.
+- Your task is to assess social media posts and determine whether they contain potentially offensive content directed at individuals or groups.
+- Engage with the text of a social media post and determine if it comes off as potentially offensive. Understanding societal dynamics about race and gender will aid your decision-making process.
+- Your role is to identify social media posts that could reflect unpleasant attitudes or remarks toward specific races, religions, or lifestyles.
+- Analyze a snippet from a social media platform, and decide if it includes potentially derogatory comments that target any specific group of people.
+- Classify each given post as potentially offensive or not by examining their contents closely. Your judgment should reflect an awareness of what might upset people.
+- Evaluate social media messages for content that could instigate backlash due to offensive stereotypes, and categorize each accordingly.
+- Your job is to read through provided social media texts and classify them based on whether they might offend anyone, considering factors like sexual, racial, or religious content.
+- Your task is to inspect social media messages for potentially contentious language and determine if they are likely to offend.
+- Your task is to assess snippets from social media to identify any potentially offensive remarks that may have negative implications for certain groups.
+- In this task, you will analyze social media texts for their ability to offend a subset of people. Be mindful of the impact of certain expressions on different audiences.
+- You will assess posts from social media to determine if they contain language that could be considered offensive. This includes identifying any bias or derogatory remarks.
+- Your role is to classify each post based on its potential offensiveness, taking into account various forms of biased language present in the text.
+- Examine the supplied texts for words or phrases that hold a high risk of offending particular populations, classifying them appropriately.
+- Evaluate posts from social platforms to determine whether they use language that could be hurtful or demeaning to specific people or communities.
+- The objective is to identify whether a social media message might offend certain individuals or groups. This requires an awareness of the nuances in language that can lead to bias or offense.
+- Investigate the specific word choices in social media discussions and label them according to whether they may carry potential offensiveness for anyone involved.
+- Analyze and classify each social media text based on its potential offensiveness, considering societal standards about respectful communication and potential biases.
+- Analyze the provided text from a social media post, and classify it into either potentially offensive or not offensive categories.
+- Read a social media entry and decide if the language used could hurt someone. This involves recognizing racist, sexist, or otherwise biased expressions.
+- You are required to classify social media posts based on their potential to offend, focusing on language that may be hurtful or biased against particular groups.
+- Assess the tone and content of social media posts to classify them as potentially offensive or not, paying close attention to sensitive language that might impact individuals.
+- Examine the text from social media and decide if any part of it could be seen as offensive to someone, focusing on sexual, racial, or religious sensitivities.
+- Your job is to sift through social media text and identify any possible offensive content that could upset particular persons or communities.
+- Your task is to evaluate a social media post and determine if it could be deemed offensive to individuals or groups. This requires careful reading of the language used and context.
+- You will analyze various posts from social media to identify potentially offensive content, focusing on language that may upset specific audiences.
+- You will need to critically assess whether posts possess language that exemplifies bias or discrimination against anyone or any group.
+- Your task is to evaluate social media posts for potential offensiveness. Identify language that may offend individuals or groups based on various bias issues.
+- For each provided social media post, determine if it contains any potentially harmful expressions that target others.
+- Analyze the wording within a social media post and judge its potential impact on individuals who might find it objectionable due to cultural, racial, or gender norms.
+- Identify remarks within social media content that could incite negative feelings among groups by exploring themes of offense related to race, sexuality, or belief systems.
+- Determine whether the text from social media posts contains content that could be deemed offensive, keeping an eye out for specific prejudiced language.
+- The goal is to judge whether the provided posts include any content that could offend others. Assess each text for sensitive topics that may cause outrage or hurt feelings.
+- Analyze the given text from social media and judge whether it could be seen as disrespectful or harmful toward any group of people.
+- This task involves scrutinizing social media posts for offensive content. Use your understanding of societal norms to evaluate whether something might be deemed inappropriate.
+- The focus is on evaluating social media content for offensive language. Identify posts that could upset individuals or particular societal groups.
+- Evaluate the language of a given post for derogatory terms or phrases that might insult people based on their identity.
+- Your role is to discern if the posts reflect attitudes or phrases that might not sit well with certain sectors of society, needing cultural awareness in your review.
+- Evaluate snippets from social networks for possible offensive content. A nuanced approach is essential as certain phrases can carry significant connotations.
+- Focus on identifying expressions of bias in social media text that may disturb or provoke negative reactions from certain audience segments.
+- Review the provided social media texts and indicate if they contain potentially offensive content. Consider how certain words or phrases might affect different audiences.
+- The task involves classifying a piece of text from social media as offensive or not. You need to be sensitive to issues regarding race, gender, and stereotypes that can arise in casual speech.
+- Use your judgment to review text from a social media post for biases or language that could be interpreted as prejudiced against certain groups of people.
+- Determine whether given posts might contain language that could alienate or insult individuals based on race, gender, or other identities, and classify accordingly.
+- The challenge rests in judging whether individual phrases within these posts could hold suggestive meanings that might offend specific audiences.
+- Classify the entries based on how they may affect different individuals. This involves a careful reading for any derogatory or biased remarks.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task609_sbic_potentially_offense_binary_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task609_sbic_potentially_offense_binary_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

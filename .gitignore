@@ -8,18 +8,17 @@ train_outputs/
 wandb/
 .venv/
 
-# Regeneratable binary adapter weights written by `adapterbench run`/`peft-smoke`
-# (results.jsonl/.csv/loss_curves.json metrics stay tracked)
+# Experiment outputs under results/ are exploration scratch and are NOT committed by default:
+# they are numerous and regenerable, and most runs are ad-hoc rather than curated leaderboard
+# records. Result directories committed before this policy stay tracked (gitignore does not
+# untrack). To commit a canonical leaderboard record, force-add just its metrics, e.g.
+#   git add -f results/<dir>/results.jsonl results/<dir>/history.json
+# The rules below still apply to any force-added directory, so checkpoints (large, ~0.5-1.2GB),
+# their write-temps, logs (disposable HF/progress output), and adapter weights are never
+# committed even then.
+results/
 results/**/adapters/
-
-
-# Restart-safe training checkpoints (model+optimizer): NIAH `ckpt_*.pt`, image-domain
-# `checkpoint.pt`, and every other .pt under results/ (~0.5-1.2GB each) - never commit.
-# Metrics (results.jsonl/.csv, history.json, loss_curves.json) stay tracked.
 results/**/*.pt
 results/**/*.pt.tmp
-
-# Run stdout logs are disposable (HF warnings + progress); the tracked record is the
-# derived results.jsonl/.csv/history.json, never the log. Never commit logs under results/.
 results/**/*.log
 results/*.log

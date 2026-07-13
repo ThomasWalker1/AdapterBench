@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The objective is to alter news headlines using provided edits and then judge them to see if they evoke humor or remain serious.
+- You will evaluate whether modified news headlines are funny after making a substitution in a designated word.
+- You will evaluate edited headlines based on humor. This requires thinking about how the altered word affects the overall comedic value of the phrase.
+- Take given news headlines and an edit word to replace certain terms within those headlines. After making this change, decide if the new version has a funny tone.
+- The objective is to replace a word in a news headline, then decide if the updated headline brings a humorous twist.
+- You will be given news articles where you need to replace a particular word with a suggested alternative and classify each modified headline as either funny or unfunny based on its content.
+- You will manipulate existing news headlines by substituting words according to specified edits and evaluate if the new expressions are comedic.
+- This task challenges you to switch out key terms in headlines for comedic effect and classify whether these changes rendered them funny or not.
+- The challenge is to reconstruct news headlines by replacing a highlighted word, and subsequently evaluating if the reworked sentences are humorous.
+- This task requires you to interpret altered headlines and determine their entertainment value based on humor after a key word change.
+- In this activity, you replace words in headlines to craft funny alternatives, then decide how amused you feel by these changes.
+- Transform given news sentences by altering one word with an edit and assess their level of humor afterward.
+- The goal here is to use some creativity to twist existing news statements into potentially funny new versions by changing key words as directed.
+- Edit predetermined words in news headlines to craft new variations, afterward judging their funniness based on content and phrasing.
+- Analyze how changing a key word in a news headline influences its humor and classify the result accordingly as funny or not funny.
+- Your responsibilities include transforming provided news titles by replacing certain terms and categorizing them as either humorous content or serious journalism.
+- Your task is to creatively rewrite news headlines by replacing a specific word with an edited term, and then categorize the revamped headlines as either "Funny" or "Not Funny."
+- You will modify selected parts of news headlines based on suggested edits and evaluate the resulting statements for humor.
+- In this task, you will transform given news headlines by inserting an edited word and assess whether the new version is funny or not.
+- This task focuses on modifying current events headlines with alternative words, challenging you to evaluate the comedic impact of each newly created line.
+- Your responsibility is to replace a given word in some news articles with another term and classify the revised articles based on their funniness.
+- The objective is to reconstruct news articles by changing specific words within given contexts and determine if the new constructions are funny.
+- Engage in transforming selected words within news headlines while considering the comedic impact of your changes and categorizing them properly.
+- Transform headlines by altering particular words as instructed, then categorize each modified headline as being funny or not based on your interpretation.
+- You have the role of reinventing news headlines through word substitution, followed by evaluating whether the changes make them amusing or uninspiring.
+- Your task involves taking identified phrases within headlines, adjusting them using given edits, and deciding on their comedic impact.
+- This task requires creativity as you edit news headlines and assess whether the edited versions are amusing or serious.
+- In this exercise, you’ll classify whether rewritten news snippets create laughs or maintain seriousness due to word changes.
+- This task requires you to read adjusted news headlines, replace a specified word, and determine if the humor level has increased or stayed the same.
+- Interpret revised versions of news headlines where a certain word is replaced to judge their humorous quality in relation to the original content.
+- Assess how humorous an edited headline can be based on a specific replacement within it, making judgments about its comedic potential.
+- Your challenge is to alter headlines by substituting a keyword while considering the comedic effect of that change and categorizing the outcome accordingly.
+- Your mission is to take existing news headlines, make a specified word change using an edit, and then categorize each modified headline by its humor quality.
+- The task is to evaluate whether changes made to certain words in news headlines result in comedy or not, requiring creative judgment.
+- You are expected to creatively substitute words in various news articles and then classify whether your changes result in funny statements or remain serious.
+- In this task, you are tasked with transforming news headlines into something funny through word substitution and then categorizing them based on their comedic value.
+- This task challenges you to reimagine headlines through word replacement and classify whether they evoke laughter or remain serious in tone.
+- You need to assess the light-heartedness of altered headlines by interpreting the influence of newly introduced words.
+- In this exercise, you’ll take headlines with a marked term and substitute it with another word, then classify whether the outcome is funny or not funny.
+- You will need to alter existing headlines by substituting a specified word with an edited option, then classify whether these alterations lead to humor or not.
+- You will be tasked with enhancing news headlines through word substitutions and determining if these modifications introduce a humorous twist or not.
+- In this assignment, you will edit news headlines by changing a designated word. You will then assess whether the new version of the headline is humorous.
+- This task challenges you to think playfully about news articles by replacing certain words with edited ones while gauging the resulting funniness.
+- Your role is to extract potential humor from news items by replacing specific terms and determining whether each new format is funny or not.
+- You have to take a set of news announcements, make an adjustment by swapping out a given word, and see if this makes the headline amusing or serious.
+- You must examine how replacing a word in a headline influences its funniness and categorize it accordingly into humorous or serious.
+- In this task, you will transform headlines by substituting a specific word with an edited term and then evaluate whether the altered headline is funny or not.
+- Modify given news headlines by substituting a specified keyword with another term, and subsequently classify these results based on their humorous impact.
+- You are tasked with investigating how substituting specific terms in news headlines can influence their humorous tone.
+- For this task, you will rework certain phrases in news reports using alternate words provided, assessing each modified title for its comedic implications.
+- Your task involves taking news headlines with a specific word replaced and determining if the modified headline is funny or not.
+- You will replace specific terms in provided headlines with alternate words and decide if the new versions are funny or simply not humorous at all.
+- Classify edited news headlines based on humor after substituting one term for another, determining which versions are amusing or not amusing.
+- Your task is to creatively modify news headlines by replacing a designated word with a chosen edit and then determine if the new headline is funny or not.
+- You need to take headlines formatted with a specific word and substitute that word with an edit, ultimately classifying the humorous nature of the new headlines.
+- The goal of this exercise is to transform original news headlines through word edits and evaluate their potential for humor.
+- Analyze given news headlines and apply a specific edit by substituting a word in the original text. After the modification, judge the humor of the rewritten headline.
+- In this activity, you will change particular words in public statements into alternatives and then assess if such changes yield amusing results.
+- This task involves generating new versions of news headlines by switching out certain words and evaluating their humor status.
+- Your assignment focuses on rephrasing news titles by switching out certain words, followed by identifying the amusing qualities of the new headlines.
+- You will receive news headlines with placeholder words to edit. After making the substitution with provided words, you'll assess if the new versions are humorous.
+- Your mission is to replace a specific word in provided news headlines with an alternate term and determine if the outcome is considered funny or not.
+- The task is to creatively adjust a word within news headlines and assess how this change influences the humor in the story.
+- Assessing edited news headlines falls under your responsibility; determine whether the changes make them funny or not funny.
+- This activity involves editing headlines through word replacement and assessing if these revisions evoke laughter or maintain a serious tone.
+- Your task involves editing certain terms in news titles and judging if the resulting sentence elicits laughs or maintains seriousness.
+- You will modify headlines by swapping out certain terms and will need to evaluate if these changes create a funny effect or leave it flat.
+- Carefully evaluate modified news articles containing word substitutions and decide whether these transformations result in humorous implications.
+- In this activity, you will change certain words in headlines using specified edits. Afterward, evaluate whether these new headlines create humor.
+- Create humorous versions of news headlines by changing specific words with given edits and identifying if these headlines are funny or serious.
+- This task requires you to replace a word in a headline with an edited term and classify the newly created headline based on its comedic value.
+- The job involves taking a news headline that includes a placeholder word and replacing it with an edited term to create a new headline, which you then assess for humor.
+- For this task, you’ll rewrite provided news titles using an edited word and categorize the outcome as either funny or lacking humor.
+- In this task, you’ll take on news headlines and alter them through designated substitutions. The end goal is to determine their funniness level.
+- The focus of this task is on creating new versions of news headlines through word substitution and evaluating their comedic effect based on cultural context.
+- This task requires creativity in headline alteration by substituting certain terms while ultimately deciding whether those changes lead to amusing or dull results.
+- You will be provided with a news headline and an edited word to substitute. The goal is to classify the resulting headline as either "Funny" or "Not Funny."
+- You are tasked with modifying news headlines by replacing a specific word with a given edit. Then, you evaluate whether the new headline is funny or not.
+- In this challenge, you’ll take existing headlines with marked words, edit them with given alternatives, and conclude whether they are funny or not.
+- This task involves taking a news headline and substituting a highlighted word with another word. Your job is to determine if the altered headline has comedic value.
+- Your objective is to produce humorous takes on serious news articles by replacing words in their titles with different terms and judging their funniness.
+- Your mission is to take original news sentences, substitute given words, and classify how humorous these altered sentences feel to an audience.
+- You'll work to update several news headlines by making specified word substitutions. Following that, your job is to judge if each version can be considered funny.
+- The objective is to evaluate humor in revised news articles after substituting a designated word with an alternative.
+- This exercise requires you to take ordinary news phrases, alter them with specific words, and determine their humorous prowess post-edit.
+- Approach this challenge by creatively altering words in familiar news statements while considering if such changes add humor to the narrative.
+- Take the challenge to analyze various news headlines with modified wording; your assessment will revolve around their humor factor.
+- Examine edited news headlines where one word has been replaced. You must judge the comedic effect of these alterations.
+- You are required to creatively change parts of news headlines and categorize them into funny or not funny based on the new versions created.
+- The objective is to creatively alter news headlines using specific edits, aiming to produce variations that will either amuse or remain serious.
+- Modify provided news statements by replacing specific words, then reflect on whether the resulting headlines are entertaining or not.
+- You'll work with news headlines that have a designated word to change and evaluate if the transformation makes the sentence amusing or if it falls flat.
+- This task involves examining how swapping a particular word in a headline affects its funny aspect; you will classify it based on the outcome.
+- Your objective is to alter sentences by replacing a highlighted term and to analyze whether this creates a laugh-worthy headline or an ordinary one.
+- The task involves rephrasing news headlines by replacing bolded words with alternative suggestions and judging whether these changes enhance their funniness.
+- Your job is to creatively modify news headlines using specific edits and categorize them into humorous or non-humorous.
+- Using the provided edit, change a word in the given news headline and evaluate whether the new version is humorous.
+- You will take existing news headlines, replace designated words with different ones, and analyze whether these edits create humorous statements.
+- You're asked to transform headlines by swapping out a specified term with a chosen edit. Afterward, you must judge the humor of the resulting statements.
+- By modifying words in news sentences to an edited version, your role is to find out whether these transformations bring comedy or not.
+- Engage with given phrases from headlines, perform word substitutions, and determine whether these modifications lead to amusing outcomes.
+- This task invites you to put a humorous twist on conventional news by selecting words for replacement while assessing comic effectiveness.
+- Your role is centered on interpreting headlines and altering specific phrases to establish a comedic tone, after which you evaluate their overall humor.
+- This task involves transforming news headlines by replacing a designated word with an edited one to create humorous versions.
+- You will engage with the humor present in media by transforming certain aspects of news headlines and then evaluating their comic worth.
+- Revise newslines by changing one embedded term and classify each as funny or unfunny based on your perception of humor.
+- Evaluate headlines modified through word substitutions, considering whether the resulting sentences convey humor effectively or remain straightforward.
+- Analyze news headlines that are designed for edits. You will change designated words and assess whether those modifications bring humor to the statements.
+- The task involves transforming news headlines by replacing a specific word with a provided alternative and then deciding if the new headline is funny or not.
+- This exercise requires you to rephrase headlines by substituting a key word and then analyze the final results for their humor level.
+- This task requires you to modify headlines by changing a specific word with an edit, and then categorize the outcome as either funny or not.
+- Assess the funniness of edited news headlines. Substitute a specific word in the headline with a given term and categorize the result as "Funny" or "Not Funny."
+- You need to take given headlines and make clever word substitutions that add a comic twist, before categorizing the results based on their funniness.
+- In this task, you will creatively edit news statements to improve their humor, based on changing a specific word, and label them as funny or not.
+- Determine the impact of altered words in news headlines on their humor perception by classifying them into funny or not funny categories.
+- Engage in a creative exercise where you adapt headlines by replacing certain words. Then assess whether your modifications add humor to the original context.
+- This task involves altering news headlines by replacing a designated word with a new term, then determining if the modified headline is amusing.
+- In this activity, you will transform given news headlines by substituting a word with a new one and then decide if the new headlines are humorous or not.
+- You are tasked with modifying existing headlines in a way that focuses on humor through word substitution while evaluating the resulting statements for their funniness.
+- In this task, you will analyze altered news headlines, determining their humor based on the replacement of a specific word with an intended edit.
+- This challenge involves editing specified words within news headlines, resulting in fresh phrases that you will then classify as humorous or not funny based on your judgement.
+- You must transform sentences from current events using creative word choices that inject humor, followed by an assessment of their funniness.
+- Here, you will be given original news statements and an alternate word to use in place of a highlighted term. Then, you’ll mark the modified statement as funny or not.
+- You will manipulate news headlines by changing a key term and subsequently classify each alteration as either funny or not funny.
+- Analyze changes made to news headlines through word replacements and evaluate if they invoke humor, labeling them as funny or not funny accordingly.
+- Your role is to analyze modified news headlines created by replacing a specific term with a suggested alternative, classifying whether they are humorous.
+- Analyze news headlines where a certain word is replaced by an edited term. Classify each revised headline as either "Funny" or "Not Funny" based on its humor.
+- This task requires evaluating modified news headlines. You must determine the comedic value of the headlines after replacing a word with a suggested edit.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task495_semeval_headline_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task495_semeval_headline_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

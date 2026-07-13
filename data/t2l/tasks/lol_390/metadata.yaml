@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Reflect on the events within a narrative and their relation to a specific query; choose only those that are relevant based on your understanding of both elements.
+- This task demands careful reading and analysis skills, allowing you to surface specific actions from a narrative that respond appropriately to a question.
+- In this task, your goal is to extract significant events from a text passage that directly relate to a question posed regarding that narrative.
+- You will be given a text with associated events and a question. Your task is to sift through the events and determine which ones directly respond to the question posed.
+- Your role is to extract single-word events from a text and assess which of them helps answer a related question.
+- You are tasked with locating actions within passages and correlating them with questions, emphasizing understanding of the material's core themes.
+- The focus here is on discerning which events from a broader narrative can directly respond to questions posed about it.
+- In this task, you will be evaluating passages and deducing which of the events listed can address specific questions posed about the content. It's an exercise in interpretation and analytical reasoning.
+- Your objective is to parse through provided information by matching key events from the text against a specific question for coherent understanding.
+- Your focus will be on determining which events from a provided list are pertinent to answering a question related to a passage of text.
+- This task emphasizes critical reading skills, where you assess listed events against a question and decide which ones hold relevance based on the passage content.
+- You need to consider a variety of events extracted from a passage and assess their relevance in answering a specific question, highlighting your ability to relate textual information with inquiry.
+- You will analyze a given text along with a question and a list of events, determining which events are pertinent to answering the question posed.
+- This exercise consists of evaluating textual information alongside specific queries, identifying which corresponding single-word events hold potential answers.
+- You will analyze a passage and identify specific events from a provided list that can respond to a given question, showcasing your ability to extract relevant information.
+- This exercise challenges you to sift through provided information and pinpoint significant events related to a specific inquiry rooted in the text.
+- This task requires you to interpret a brief text and identify key actions or occurrences mentioned in it that relate directly to an posed inquiry.
+- This task involves reading comprehension where you match the elements of a textual passage against related queries by identifying key events supplied separately. You'll need to think critically about context.
+- This exercise asks you to discern connections between cited events from a passage and the intent behind a question, enhancing your critical thinking.
+- You will gather insights from a passage, carefully selecting relevant events that correspond with an inquiry directed towards anticipated outcomes or past actions.
+- The task involves analyzing a passage to extract specific words that relate to a given question. You need to identify which events from the list can address the question based on the passage's content.
+- The goal is to review textual elements for significant events that adequately respond to specific inquiries based on the material given.
+- This task involves deep understanding of content where you must correlate textual events with questions, selecting only those that provide answers.
+- The essence of this task lies in your ability to extract significant insights concerning past occurrences from listed events based solely on textual context provided.
+- You will evaluate the connection between a question and various actions described in a passage, selecting those that directly relate to what has been asked.
+- The focus of this task is to determine which events from a given list are applicable to answering a question about the information contained within a passage.
+- You will critically analyze text content along with discrete events while determining their relevance in addressing specific questions crafted around that text.
+- Here, focus your reading on different event descriptors within a passage, assessing how they may respond to an inquiry about that text’s content.
+- You will summarize critical points from a narrative by identifying single-word actions that can provide answers when aligned with specific inquiries.
+- In this task, you will sift through identified events from a narrative and link those that effectively respond to a posed question. Critical reading and comprehension skills are essential to identify suitable connections.
+- Engage with a text's content to extract relevant actions that align with questions asked, showcasing your comprehension skills.
+- You will assess passages for associated events while needing to recognize their relevance in answering particular questions about those narratives.
+- You will read a passage and a question, then sift through a series of identified events to determine which ones correlate with the question being asked.
+- Here, you will be synthesizing details from provided passages by matching significant events with questions that seek clarification from those details.
+- Your responsibility is to connect the information in the passage with the question and highlight all relevant occurrences that contribute to its answer.
+- The challenge involves interpreting context from a narrative and identifying how certain events relate back to the inquiry at hand.
+- For each passage, your responsibility is to pinpoint events that successfully answer the surrounding questions posed, drawing from the text provided.
+- The challenge here lies in your ability to extract significant actions from context-based narratives that respond directly to inquiries posed about them.
+- Look for key occurrences within various narratives, selecting those that correlate with immediate queries brought forth by the text.
+- This task centers on reading comprehension, requiring you to connect text events with specific questions effectively.
+- In this task, you will evaluate a text, interpret a related question, and pinpoint any single-word events that pertain to the inquiry. It assesses your ability to connect ideas from the passage with specific terms.
+- The challenge lies in extracting meaningful actions from narrative text while ensuring these selections effectively address the inquiry made.
+- You must assess a text and utilize event words to answer questions based on the information contained within that text.
+- This task entails investigating a passage to find connections between its content and a question. You must identify pertinent events from a supplied list that can provide insight into answering that question.
+- The objective is to sift through textual information and pinpoint which actions or events culminate in responding to a question accurately.
+- This assignment requires you to connect dots between narrative elements and specific queries, pulling relevant information from event listings efficiently.
+- The exercise consists of linking important identified events to questions based on text passages. It emphasizes synthesis of information and evaluation against specific queries presented.
+- This task is about reading comprehension, where you must select meaningful words from an event list that correspond with themes or developments in the text.
+- Here, you are expected to read carefully through narratives or passages and align event words with particular questions. Critical thinking is vital as you evaluate what truly answers something posed.
+- This task centers around reading comprehension and critical thinking, as you relate specific events in the text to a query.
+- Engage in an analytical reading process where you extract pertinent events from a passage to effectively answer questions that arise.
+- You will need to employ critical thinking skills to connect events in the context of the overall message within a passage and respond appropriately to questions.
+- Apply your contextual understanding of the material as you select from highlighted events those which support answering an accompanying question succinctly.
+- This activity centers on extracting meaningful information from a passage, using listed events to find responses to questions effectively.
+- Engage in this task by sifting through text passages for keywords or actions that are essential in answering specific questions posed about them.
+- You will interpret a narrative to extract relevant events that relate to a specific inquiry about the text.
+- This activity revolves around effectively linking pieces of information from narratives with designated queries by isolating relevant actions or occurrences stated within.
+- You'll examine a narrative for important occurrences and see how they can provide insights into a specific question asked.
+- The goal is to extract relevant single-word events from a passage that may help answer a posed question, recognizing key actions or occurrences.
+- The assignment asks you to interpret information in a passage by identifying key occurrences that address an explicit question related to that content.
+- The objective is to evaluate a written passage and determine which listed events are applicable in answering a particular question based on the content of the passage.
+- You will examine a text and extract specific events from an accompanying list that help answer a related question based on the content of the passage.
+- This activity will challenge your ability to comprehend information and recognize pertinent details by finding connections between the passage and its corresponding question.
+- You will engage in close reading of the provided material to recognize important events that fulfill the requirements of the given question.
+- The focus here is on comprehension skills as you determine which selected single-word events from a passage are relevant by correlating them with a specific question.
+- This exercise requires you to connect a series of single-word events back to their context in the passage and identify those which align with answering a posed question.
+- This task requires you to comprehend a passage and select events relevant to answering a specific question that arises from it.
+- This task challenges you to interpret information from a passage and align it with a related question using predetermined event descriptors. You need sharp analytical skills to pinpoint helpful responses.
+- Engage with the material by analyzing what key occurrences within the text answer questions concerning future predictions or actions discussed.
+- The task requires you to combine understanding of language and narrative structure while pinpointing singular actions or occurrences relevant to specific inquiries.
+- This task focuses on identifying connections between different elements in a passage and articulating which recognized events respond substantively to the inquiry.
+- This task requires you to navigate through events mentioned in a passage and discern which of these can suffice as answers to the posed question, emphasizing both recall and understanding of the source material.
+- Examine the given text closely and identify all actions listed that relate directly to answering the posed question, filtering out unrelated events.
+- In this activity, you're analyzing information and utilizing event words provided to locate those that best address related questions emerging from the text.
+- Here, you'll engage with a passage while identifying significant actions or occurrences that contribute to answering an inquiry.
+- In this task, interpret the information provided in the passage and match the listed events to answer a specific inquiry about that content.
+- You will assess how well certain actions mentioned in a list align with the question based on the context provided in the passage.
+- The main objective is to look at a given text and its related question, then select applicable events from a provided list. This tests both reading comprehension and the ability to identify significant details.
+- This exercise requires discernment as you identify relevant actions or statements embedded in the text's narrative framework that could yield answers to proposed questions.
+- The task involves analyzing a passage along with a question and a list of key events. Your goal is to identify which events from the list are relevant to answering the question.
+- In this task, you must evaluate a passage and select from a list of events those that contribute to answering the posed question effectively.
+- You are tasked with evaluating information presented in a passage and identifying relevant keywords or events that correspond to a specific query. It showcases your ability to link narrative details with pertinent questions.
+- You will analyze content from given passages, focusing on relationships between questions asked and corresponding events listed.
+- You are required to evaluate a short passage, extract pertinent one-word events, and associate them with a question that pertains to those events.
+- The goal of this task is to interpret set narratives while identifying events that serve as crucial answers to questions inspired by that narrative.
+- This task invites you to reflect on text passages intelligently, employing listed events as tools for generating accurate responses to conceptual queries raised.
+- In this task, you are required to examine a provided passage, consider a related question, and then extract specific events that can address that question.
+- The objective involves synthesizing knowledge of language comprehension with event recognition skills, aligning them together for effective questioning outcomes.
+- You should focus on discerning which described actions in a passage serve as answers to the questions presented alongside.
+- In this activity, you familiarize yourself with a passage and identify all related actions or events that can answer an associated question.
+- Your aim is to dissect both narrative and queries while identifying significant actions that bear relevance to answering questions regarding the text's content.
+- This task requires discerning relevant events from both the text and the question, focusing on extracting meaningful insights that address the inquiry.
+- Your mission is to read through narrative passages carefully and identify pivotal events that can respond effectively to questions asked about them, requiring sharp focus on details provided in the text.
+- This exercise requires comprehensive reading as you sift through a passage to pinpoint events that correspond to a given question.
+- The task involves analyzing a passage to determine specific events and their relevance to a posed question.
+- The task involves reading a passage and understanding its main events to determine which of those events directly answer a related question.
+- The goal is to analyze text passages effectively while determining which listed single-word events answer the associated questions.
+- Analyze the events listed in relation to the passage and determine which ones can provide answers to the question asked.
+- This task requires you to analyze a passage and identify key events that respond to a specific question about that text.
+- This task requires you to engage with a passage, understand its context, and correlate identified events to determine which ones can answer a posed question.
+- Analyze context clues in written passages to draw connections between specific actions and related questions, affirming comprehension of content details.
+- You are required to think critically about how specific elements presented in passages relate back to inquiries made about them.
+- Your job is to read through a passage, then sift through listed events in order to find those that provide answers to a specific question posed about the text.
+- The emphasis here is on reading comprehension coupled with critical analysis. You need to identify useful events that help illuminate answers related to given questions.
+- Evaluate the details in narrative texts and strategically identify which actions can be deemed as responses to specific questions posed.
+- Analyze both the passage and the question to identify which of the mentioned events can be used to derive answers regarding actions or situations described.
+- This task challenges you to decode the relationship between events within a text and a related question, focusing on how well those events can provide a valid answer based on textual evidence.
+- This task requires you to read a provided passage, consider a follow-up question, and identify relevant events from a list that can help answer the question. It tests comprehension and event recognition skills.
+- The objective is to interpret a passage in order to pinpoint actions or conditions that provide insight into a forthcoming question, which tests your capacity for contextual analysis and inference.
+- Readers must engage with the material critically by pulling out specified event keywords that respond aptly to different questions posed about the content, showcasing analytical reasoning skills.
+- The objective is to link specific events outlined in the text with a question about those events, demonstrating comprehension and analytical skills.
+- This task invites you to engage in critical reading that requires not only understanding the main ideas but also being able to deduce which events relate to the inquiry presented.
+- As part of this exercise, you will familiarize yourself with content and subsequently highlight pivotal actions that correspond with presented questions.
+- You're called upon to explore narrative content for identifiable moments or actions that respond appropriately to given questions, evaluating your comprehension of both explicit details and implicit meanings within the text.
+- Your role is to dissect a passage for relevant actions while correlating these with queries about what has transpired within the text's context.
+- You need to consider a passage's context alongside a question, selecting event keywords that address the inquiry.
+- You are tasked with examining the context of a text and identifying specific events from a list that can address a specific inquiry related to that text.
+- Engage with a narrative to extract key moments or actions that relate directly to queries regarding its content, using an event list for precise matching.
+- Your score relies on your ability to filter through events and determine which of them can answer the accompanying question.
+- Identify actions or crucial points from a written work that help clarify and respond to an inquiry derived from the text.
+- The task centers on extracting meaningful actions from a text, allowing you to strategically respond to questions based on those extracted details.
+- Your task is to integrate comprehension of the passage with critical thinking about the listed events to respond accurately to questions posed.
+- You will navigate through textual information and succinctly identify actions or outcomes that could respond to requests for details in relation to specific inquiries.
+- The focus here is on reading comprehension and analytical skills. You will assess a text, understand its meaning in context, and extract useful events that relate directly to an accompanying question.
+- Your mission is to assess single-word events derived from a passage and see if they align with or provide insight on the question posed.
+- The aim is to combine your reading skills with abstraction by analyzing potential answers derived from passages regarding specific events associated with questions supplied in tandem.
+- This task requires you to match events mentioned in a passage to an inquiry about that passage, determining which events can provide an answer.
+- Your role is to sift through selected events derived from a passage, aiming to pinpoint those that relate directly to a question asked about the content.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task390_torque_text_span_selection
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task390_torque_text_span_selection
+user_prompt_template: '{task_def}
+
+
+  {problem}'

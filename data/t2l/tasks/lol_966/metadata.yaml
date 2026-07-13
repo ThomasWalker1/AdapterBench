@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You must analyze a paragraph containing various statements and decide if a certain fact can be conclusively drawn from it.
+- Evaluate the content of the paragraph to see if it provides adequate reasoning to confirm or deny the proposed fact.
+- This task encourages logical thinking as you evaluate narrative content to determine if subsequent claims can be accurately drawn from it.
+- This work requires attention to detail as you evaluate whether certain claims can be substantiated by the information contained in a given passage.
+- Your role involves reading through given statements and identifying if a claim can be logically concluded or inferred from them. Concentrate on the details strictly available in the text.
+- In this exercise, you will examine a set of statements and identify if certain facts can be concluded based on the information provided. Logical reasoning is essential to complete it accurately.
+- Your goal is to scrutinize a statement's validity against information found in a corresponding passage, utilizing logical connections inherent in the text.
+- In this task, you must interpret logical assertions contained in a text. Decide if the claim presented matches what can be deduced purely from that text.
+- This task requires you to analyze a block of text and decide if an included fact is justified by what is stated in that text. Focus on inference and reasoning skills.
+- Read and understand a complex passage that outlines various relationships between subjects. Your goal is to assess the truthfulness of a specific statement based on that narrative.
+- You will read through a series of statements in a paragraph and decide if a particular fact can be concluded from them. Careful analysis of central ideas and relationships is required.
+- Your mission is to dig into textual content, distinguishing between truths and untruths regarding specific claims by navigating through logical implications presented within the passage.
+- Your task is to engage with a written passage, deciphering its content to conclude if an associated fact logically follows from it.
+- Your mission is to interpret facts and assess their validity as drawn from an accompanying passage, depending solely on what that passage conveys without outside knowledge.
+- The challenge is within logical analysis; assess if explicit facts are reasonably supported by underlying claims made in textual passages.
+- The task involves determining whether a given fact logically follows from a provided paragraph. You need to analyze the text to see if it supports or contradicts the fact.
+- This task entails scrutinizing a paragraph to verify if a stated fact aligns with its content. You must rely solely on the information provided without outside knowledge.
+- This activity focuses on logical reasoning, where you must identify if there's sufficient information in a paragraph that aligns with a presented claim.
+- You will need to assess logical claims derived from passages, using analytical skills to identify if any given statements can be supported by what the text says.
+- This task tests comprehension skills, requiring you to articulate whether an examined fact has reliable support within the surrounding narrative.
+- Read through sentences that contain logical premises and test them against specified facts to see if the latter can be established as true based on those premises.
+- The objective is to analyze a passage of logical statements and check if a specified fact follows logically from it, focusing on reasoning within the context provided.
+- This task focuses on extracting meanings and implications from provided texts while determining the truthfulness of particular claims about them.
+- The task is to evaluate a given fact and determine if it logically follows from a provided passage.
+- You will read a paragraph that describes various entities and their properties. Then, you need to decide if a given claim is supported by the information within that paragraph.
+- Your role is to examine texts filled with logical assertions and verify whether they support or contradict specific claims, relying strictly on the information at hand.
+- Utilize your analytical skills to interpret descriptive passages filled with logic. Your task is to determine whether particular facts can be justified based solely on that narrative.
+- Assess various logical propositions presented in textual form to conclude if they back up or oppose particular claims regarding subjects discussed in the paragraphs.
+- This exercise involves analyzing text closely to determine if a certain assertion can be confirmed or contradicted based on the described logic in that text.
+- You will engage with passages filled with logical connections, aiming to judge whether certain statements can naturally arise from the provided information.
+- You are required to critically assess a passage and judge if a specific claim can be justified based on the narrative provided.
+- You are tasked with scrutinizing statements within a paragraph to ascertain if they substantiate or contradict another assertion. Logical deduction is key in this step.
+- Your task is to identify if the facts presented in the question are backed by evidence provided in an accompanying paragraph.
+- Review the statements provided in the paragraph and establish whether they support or negate a specific claim.
+- This task centers on reading logical content carefully and identifying whether factual claims made can be inferred from that content. Critical thinking plays a crucial role.
+- You must break down complex relationships in text format and establish whether they confirm or refute an underlying fact given for evaluation.
+- You will engage in logical reasoning to determine if a fact can be deduced from information provided in a passage. It’s important to extract meaning while remaining within the confines of that specific context.
+- In this task, you will read a passage and judge the truth of a claim about it. This involves examining how well the fact relates to the details provided in the paragraph.
+- The assignment entails determining the truth value of a statement based on its alignment with facts established in a related paragraph. You will need to synthesize information from the passage.
+- The goal is to examine statements in a paragraph for their truth and determine the validity of a proposed fact based on that examination.
+- In this role, you will rely on comprehension and reasoning to validate claims against stipulated criteria outlined in descriptive passages.
+- You will be analyzing textual information to confirm or refute a particular fact. This involves identifying relevant details and reasoning through the logical connections made in the text.
+- The task requires discernment to see if you can conclude that a fact is true or false based on implied meanings and relationships in provided textual data.
+- This task involves reading a complex narrative and verifying if particular facts about it are correct according to what you've read.
+- This task involves determining the truthfulness of a given statement based on the information provided in a paragraph. You must analyze the logical relationships within the text to make your assessment.
+- Your responsibility is to judge whether a certain proposition holds true when compared with arguments laid out in a written passage, focusing on direct textual evidence.
+- In this activity, you will determine the truthfulness of an assertion by interpreting the relationships articulated in an accompanying paragraph of logical statements.
+- Your challenge is to sift through explicit statements within a paragraph to validate or refute an associated claim. Strong comprehension and inference abilities are required.
+- You’ll need to synthesize information from various statements in a paragraph while determining if a particular assertion stands valid or not.
+- The task involves interpreting information in a paragraph to validate or refute a fact. Logical reasoning is essential to determine if the claim holds true based on the text.
+- This task involves synthesizing information from paragraphs filled with logical expressions to decide if particular claims about the content are true or false.
+- Your task is to read a provided paragraph and determine whether a specific fact can be logically derived from it. This requires careful analysis of the information given.
+- You will analyze logical propositions presented in text format and decide if they endorse or contradict the stated fact.
+- The focus is on interpreting complex statements within paragraphs to affirm or negate certain facts, relying on deduction and reasoning drawn from text relationships.
+- Your aim is to evaluate logical connections in paragraphs and see if they support or negate certain assertions, relying heavily on inference skills.
+- Analyze the provided textual context to see if it supports or negates a stated fact. This exploration relies heavily on understanding explicit and implicit meanings offered in the text.
+- The work involves interpreting statements in context and evaluating the truthfulness of an observation against those statements.
+- The challenge involves dissecting statements filled with logical connections inside a paragraph to conclude if another related statement holds water based only on what's stated.
+- This task requires scrutinizing a paragraph to determine if it contains enough evidence to confirm or deny a certain statement. Logical inference plays a key role in your analysis.
+- You are challenged to read passages critically and determine if specific details validate or contradict given assertions, necessitating attention to detail and logical understanding.
+- Your job is to parse through logical assertions in a paragraph and ascertain if they support or disagree with a given claim. Attention to detail and logic will guide your conclusion.
+- As you read through logical interrelations discussed in a paragraph, identify if there are indications that confirm or deny the validity of an accompanying claim.
+- You'll need to critically assess if a particular statement can be substantiated by statements found within an accompanying paragraph, emphasizing logical connections made therein.
+- You need to critically examine evidence found in paragraphs and apply reasoning skills to ascertain if stated facts are indeed reflected within them.
+- Assess whether the details in a paragraph validate or contradict a given assertion based only on the text itself.
+- You will venture into an examination of logical statements in a paragraph to determine the validity of specific claims not directly stated but possibly inferred from existing content.
+- Here, you will study a paragraph's contents and assess if an associated fact can be inferred from it. Attention to detail and interpretative skills will help in making accurate decisions.
+- Tasked with discerning truthfulness, you'll explore relationships between statements within a text and evaluate if they support or negate another claim provided for consideration.
+- Your job is to take stock of information presented in a paragraph and reason out whether it allows for an affirmative or negative answer regarding a claim.
+- The challenge involves reading paragraphs constructed with logic and sorting out whether a predetermined fact aligns with or contradicts what is stated.
+- The objective is to interpret logical connections in the text and see if the stated fact stands in agreement with those connections.
+- Your goal is to infer whether a specified statement aligns with what is conveyed in a paragraph. This demands clear comprehension of logical implications within the text.
+- This exercise involves careful reading and logical deduction to determine if specified statements hold true according to contextual information.
+- Analyze a passage containing logical statements and assess whether a specific fact can be inferred from it. This requires careful reading and understanding of the relationships within the text.
+- Your task is to analyze a paragraph and determine if a given fact can be logically inferred from it. This requires close reading and critical thinking to track relationships and assertions within the text.
+- Analyze the relationships between various assertions in a paragraph to establish if they validate or invalidate a specific statement, without using prior knowledge beyond what is presented.
+- The challenge is to interpret text examples and ascertain whether stated facts align with the details contained in those texts.
+- The challenge is to rigorously interrogate the information in a paragraph to see if it can convincingly justify or disprove an associated claim.
+- The challenge lies in investigating whether particular claims can stem logically from provided text while ensuring your analysis remains rooted in the given information alone.
+- Your goal is to assess the validity of a fact in relation to a given paragraph. Understanding how ideas interconnect within the text will guide you in judging the fact's truth.
+- In this exercise, you evaluate whether a specific fact can logically be derived from a paragraph of statements. It requires careful reading and comprehension of the logical flow of information.
+- Your job is to assess whether a claim is true or false by examining a piece of text. This requires careful consideration of the details presented in the paragraph.
+- The challenge lies in deciphering whether facts presented align with conclusions drawn from textual evidence. This requires strong critical thinking abilities.
+- This task requires you to evaluate if specific facts can be concluded from logical statements presented in a text. You'll need to think critically about the relationships described.
+- Your responsibility is to critically assess narratives and verify whether described situations support or contradict specific factual statements.
+- Your role here is to perform inference from logical statements within a given text, determining if a fact can be logically accepted as true or rejected as false.
+- Your role involves dissecting informational passages and their implicit claims, deciding if specific statements can logically stem from them through careful examination.
+- Analyze the provided paragraphs for logical consistency and determine whether specific facts presented align with what's articulated within those paragraphs.
+- This exercise involves critically reading logical assertions and assessing if they justify a related statement about them.
+- In this activity, you read through an array of statements and verify the accuracy of a specific assertion. Understanding context and logical connections is crucial for success.
+- You will assess whether the details shared in a paragraph substantiate or undermine a related statement, anchoring your judgment firmly in textual analysis.
+- You will explore logical assertions in a paragraph, deciding if a particular fact can be confirmed or denied within that context.
+- Your task is to evaluate a statement based on the information in a provided text. You need to determine whether the statement is true or false based on logical conclusions drawn from the text.
+- This task emphasizes interpretation skills as you evaluate whether proposed facts are consistent with the underlying logic of given texts.
+- The essence of this task is understanding how various statements interrelate, allowing you to judge the accuracy of an additional provided observation.
+- Analyze descriptions of entities and their traits in a paragraph. From these observations, conclude whether an associated statement accurately reflects what can be deduced.
+- The aim is to dissect language within paragraphs to see if particular assertions link back logically. Understanding cause and effect as well as relationships will guide your analysis.
+- Engage with paragraphs that consist of logical reasoning and assess if certain facts can be automatically deduced from them, which demands critical thinking.
+- Assess whether a factual statement is valid based on the logical statements present in a passage. Your focus should be on the provided information and making logical connections.
+- Your task is to discern if a fact aligns with the information presented in a passage by identifying key logical relationships.
+- Your task is to determine if a given statement is supported by the content of a paragraph. You will analyze the text to ascertain the truth of the statement based solely on its details.
+- In this exercise, you will determine if a certain statement is true or false based on the information given in a paragraph. You need to rely solely on the details provided.
+- The goal here is to check whether a specific statement holds true, given the context of the paragraph you read. It's about understanding implications and conclusions drawn from the text.
+- Use your skill in understanding logical relationships between thoughts expressed in written form to conclude whether specific statements are indeed true or false.
+- In this activity, you will look at a collection of logical sentences and determine if they provide evidence for or against a particular fact you are examining.
+- You must read a provided passage filled with logical statements and assess if a specific fact can be derived from that text.
+- Focus on understanding what the paragraph conveys and check if a specific assertion follows from it. It’s key to concentrate on internal logic and coherence.
+- Here, your job is to engage with complex logical information to discern whether a stated fact finds support in what you've read, applying deductive reasoning skills effectively.
+- Engage with a thought-provoking passage and determine whether an explicit claim aligns with the facts presented within it, relying solely on the information contained therein.
+- Use logical reasoning to investigate if the relevant details in the paragraph substantiate or refute a particular assertion.
+- You'll need to delve into paragraphs filled with logical assertions, drawing conclusions about whether certain facts can be inferred based on those written statements presented.
+- In this exercise, you will explore a written description and decide if a particular claim is valid based on that description. Use your analytical skills to sift through the details.
+- You will evaluate whether specific statements about a text are true or false based on the information provided. This involves understanding logical connections in the passage.
+- This exercise tests your ability to derive conclusions from available information, determining whether an asserted fact is validated by the text's details.
+- The goal here is to evaluate whether a particular assertion is consistent with or supported by the content of a paragraph. This requires both reading comprehension and analytical skills.
+- Determine if an assertion about the text can be substantiated or dismissed by analyzing the given passage. This relies on your ability to derive meanings from written statements.
+- The objective is to check if a statement is supported by the context given in a passage. You must identify relevant information and draw logical conclusions from it.
+- You are tasked with determining if a particular fact can be logically derived from a described scenario in a text. It requires you to pay attention to the contextual clues provided.
+- Your job is to decipher the meaning within structured paragraphs and ascertain if certain facts can be justified through deduction from those statements.
+- Your job is to analyze the logical relationships presented in a paragraph and judge if a certain statement is supported by the information given.
+- You are required to analyze a paragraph filled with logical statements and decide if a stated fact follows from those statements or not.
+- In this task, you will interpret various assertions by leveraging clues found within a prose passage. Your ability to connect textual content with inquiry is tested here.
+- Engage critically with a paragraph, using reasoning skills to ascertain if a particular claim is supported by evidence drawn from the text itself.
+- In this task, you're asked to look for evidence in a paragraph that either supports or negates a specific claim. Logical reasoning and thorough reading are essential components.
+- In this exercise, your ability to follow logical arguments will determine if you can validate or challenge specific claims using only the information found within a provided text.
+- Your responsibility is to judge the accuracy of specific facts against information provided in a paragraph through logical reasoning based on textual cues.
+- In this exercise, your task is to analyze logical statements in order to determine whether they back up or contradict a specific claim made in relation to these statements.
+- The focus here is on evaluating if a certain assertion follows logically from the elements described within a paragraph. This requires understanding how various pieces of information relate.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task966_ruletaker_fact_checking_based_on_given_context
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task966_ruletaker_fact_checking_based_on_given_context
+user_prompt_template: '{task_def}
+
+
+  {problem}'

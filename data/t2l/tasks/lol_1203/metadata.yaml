@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Engage with pairs of phrases that illustrate events and feelings, deciding if the first phrase feasibly leads to the sentiment expressed in the second. Emotional intelligence plays a key role in your assessment.
+- Your role is to evaluate two phrases that describe an event and an emotional reaction. Analyze the event to determine if it could lead to the specified emotion for the individual involved.
+- You will be given events involving individuals and are required to assess their possible emotional reactions. Determine if there is a logical connection between what happens and how PersonX might feel afterward.
+- Evaluate two statements to infer whether a specific event can cause a particular feeling in a person. The challenge is to understand emotional reactions based on the context provided.
+- The task entails assessing interactions expressed as short phrases and contemplating if one leads to particular emotional states in individuals involved.
+- In this task, you're analyzing statements about feelings linked to actions performed by PersonX. Use your understanding of emotion and context for thorough analysis and decision-making.
+- Consider two phrases where one represents an event and the other represents an emotion. Your job is to identify if there is a plausible emotional response by PersonX to that event.
+- This task involves identifying possible emotional consequences based on everyday situations described in phrases, highlighting your understanding of human behavior.
+- Your responsibility is to interpret the implications of actions performed by PersonX in various scenarios and judge whether these actions could lead to anticipated emotional reactions from that individual.
+- Your task involves assessing concise narratives where one part represents PersonX's behavior while another reflects potential emotions resulting from those behaviors. Analyze how these elements connect meaningfully.
+- You will conduct an analysis of phrases that relate events to emotions, determining whether an action can provoke feelings expressed by another part of the input.
+- This task requires you to interpret two given phrases and determine if the first phrase influences the emotional state described in the second phrase for a person involved.
+- In this analytical task, you will evaluate the potential emotional consequences stemming from a given input statement. Focus on logical reasoning about actions and sentiments.
+- Determine if an event involving PersonX can naturally lead to specific feelings, taking into account contextual clues provided in each phrase pair.
+- You are tasked with determining whether specific actions lead to prescribed emotional states, based on your interpretation of brief narrative phrases.
+- You will assess how actions or events as presented in one phrase might impact the emotional state of PersonX, indicated by another phrase related to feelings.
+- Assess whether an event implied by one phrase has emotional repercussions indicated by another, identifying connections between them.
+- You will be given pairs of phrases that represent events and emotional states. Your task is to assess if the event leads to the proposed emotional state for PersonX.
+- Use logical reasoning to identify connections between experiences and emotions. Establish whether a specific event could lead PersonX to feel something indicated by a subsequent descriptor.
+- In this exercise, you'll establish whether an action can realistically provoke a specific feeling as described in a different part of the input.
+- In this task, you will explore the possible emotional consequences of a defined scenario for PersonX. You'll focus on whether the action described can reasonably cause the sentiment expressed afterward.
+- You will examine a scenario where PersonX is involved and evaluate if they might feel a specified emotion as a consequence of that scenario.
+- Your job is to think through situations presented in phrases, determining if certain actions provide grounds for expected feelings or reactions later described.
+- Analyze relationships between actions and feelings described in different phrases. Determine whether an event could realistically induce a certain emotion for PersonX stated afterward.
+- Determine if an action or occurrence described in the first phrase could lead to an emotional reaction as indicated by the second phrase, focusing on how it affects a specific individual.
+- In this task, you assess two given statements to determine if a specified emotional reaction is a likely response to the first statement.
+- The task involves analyzing two short phrases to determine if the first phrase (the Head) could lead to an emotional response represented by the second phrase (the Tail) from a specified person.
+- The task at hand involves reflecting on short scenarios and their potential emotional outcomes for PersonX. Determine if a specific feeling follows from a given action.
+- Use your comprehension of human emotions to determine how one phrase about actions relates to another about feelings. It's about understanding causal relationships between experiences and emotions.
+- You will examine how different situations or actions (the Head) can evoke certain feelings (the Tail) for a person, particularly focusing on PersonX.
+- The objective is to read two short phrases and determine if the first phrase implies that a certain feeling is triggered in the second phrase.
+- This task involves understanding character emotions based on their actions. You'll assess if the action mentioned leads to the feeling described in another phrase.
+- This task involves analyzing two given phrases to understand if the outcome of the first event could evoke the emotion stated in the second phrase for a person referred to as PersonX.
+- You'll be analyzing events described in two phrases and deciding if the first event causes the emotional reaction stated in the second phrase.
+- Delve into short statements describing events, determining whether they might elicit specific emotional reactions. This exploration demands familiarity with emotional psychology.
+- This task requires you to think about emotional reactions. Based on an initial situation, decide if it would make PersonX feel a certain way, as suggested by the second phrase.
+- Analyze shorter text segments for correlations between actions undertaken by individuals and potential resulting feelings, showcasing your understanding of human emotion causation.
+- You'll be connecting descriptions of behaviors or scenarios with the likely feelings they induce, focusing on the psychological implications of each action taken.
+- This task revolves around understanding mood influences from given scenarios. Identify if what happens first could lead someone, PersonX, to feel as suggested later on.
+- Analyze combinations of actions and feelings to deduce whether they correlate positively or negatively. The process requires thoughtful consideration of emotional dynamics between participants.
+- Engage with brief descriptions of interactions to elucidate whether one action may drive an emotional response, harnessing comprehension of human psychology and behavior patterns.
+- Review situational phrases about human interactions and feelings. Your goal is to ascertain if actions described are likely triggers for specific emotional responses in those involved.
+- Assessing emotional responses is key here. You need to determine if an action or event results in a positive or negative feeling for PersonX, based on two phrases separated by a marker.
+- The objective of this task is to identify possible emotional responses linked to specific behaviors or scenarios. It’s about connecting feelings with situations logically.
+- Your job is to read through pairs of event descriptions and decide if one suggests an emotional state as a result of another happening.
+- Analyze pairs of phrases to judge if one can reasonably lead to the feelings described in the other, considering emotional reactions that could be expected.
+- The objective is to connect an event expressed in the first phrase with its potential emotional effect highlighted in the second phrase, indicating if they are related.
+- You need to deduce whether a given action by PersonX results in mentioned feelings. Apply your understanding of common emotional associations with various events.
+- Evaluate two phrases where the first describes a scenario and the second describes a feeling. Determine if the scenario could evoke that feeling in PersonX.
+- This task requires you to consider contextual clues in paired statements to ascertain if an emotional reaction can result from one event impacting another.
+- You are tasked with interpreting events and their potential emotional impacts on PersonX by carefully considering whether those emotions are warranted based on given scenarios.
+- The goal here is to assess whether a specified action influences how someone feels, using two phrases as your guide. Understanding emotional dynamics is key to completing this task correctly.
+- This task involves interpreting two short phrases. The first phrase represents an action, while the second phrase indicates a possible feeling. Determine if there is a correlation between them.
+- This task requires you to analyze two phrases to determine if one event leads to an emotional response in a person. You'll need to think about how the first phrase may affect the feelings associated with the second phrase.
+- In this task, you're asked to consider a scenario where a person experiences an event. Decide if the event would likely provoke the given emotional response from that person or not.
+- In this situation, you'll be analyzing statements about actions and their corresponding feelings. Evaluate each scenario for plausibility regarding how likely it is that PersonX would experience such emotions.
+- Your job is to evaluate whether an event or situation described in the first phrase causes the individual named PersonX to experience the feeling mentioned in the second phrase.
+- This task involves reasoning about emotional reactions as you consider statements about individuals and their experiences, determining if one leads to the feelings mentioned in the other.
+- You are tasked with linking actions to potential emotional responses. For each phrase pair, consider if the situation could generate the emotion indicated.
+- This task emphasizes the relationship between occurrences and emotions, requiring critical thinking to see how one might lead to specific feelings.
+- The assignment asks you to interpret scenarios through short phrases, assessing whether there is an emotional link between them.
+- In this exercise, you'll assess whether an emotional response follows logically from a described action or event involving PersonX. Reflect on typical human emotions that might result from similar situations.
+- Analyze interventions from PersonX's perspective, weighing whether an action could lead them to feel a described emotion or not.
+- Delve into the dynamics between actions and feelings by assessing pairs of phrases to see if there's an apparent connection that results in an emotional response from a character.
+- In this task, you'll analyze short phrases that describe events and feelings, determining the likelihood that an action from one leads to an emotional experience relevant to another phrase.
+- In this exercise, you're looking at events involving participants and determining if they likely experience the declared emotion afterward. Insight into human behavior will aid your analysis.
+- In this exercise, you will be looking at participant reactions to scenarios, specifically how a person's actions might lead to certain emotions being felt.
+- In this task, you explore how certain actions may affect personal feelings. Each pair of phrases offers an opportunity to make an emotional connection between events and reactions.
+- You are given two short phrases and must assess whether the action or situation in the first phrase could lead PersonX to experience an emotion indicated in the second phrase.
+- The purpose of this assignment is to determine if specific actions lead to expected feelings. Reflect on the context of each phrase pair as you make your assessment.
+- In this exercise, you will assess emotional reactions based on specified actions. Think critically about how one event could influence feelings in a person, specifically PersonX.
+- Here, you are analyzing the potential feelings that arise from specific situations involving PersonX. Think about how likely these emotions are based on their actions.
+- You’ll examine two related statements to determine if they imply that one significantly influences emotions expressed in the other. Logic and empathy play important roles in your evaluation.
+- Analyze the relationship between two phrases where one conveys an action or event, and the other conveys an emotion. Assess if the action can cause that emotion for PersonX.
+- Analyze pairs of phrases for emotional impact by determining if one phrase's action leads to feelings represented in another. A deep understanding of emotional responses is essential for success.
+- You'll be judging whether actions lead to emotional reactions. Rely on your intuition and knowledge of human emotions while evaluating each case presented.
+- The objective is to interpret how one event might influence another's emotions. Evaluate not just the actions but their perceived emotional impact on PersonX.
+- You need to consider how specific situations influence feelings, using critical thinking to draw connections between actions and emotional responses.
+- Your role is to examine pairs of phrases, assessing if the first event might result in the emotional state described in the second phrase. This requires understanding emotions and their triggers.
+- Delve into scenarios described in pairs of phrases and determine how they relate emotionally for PersonX, focusing specifically on feelings that could arise from those situations.
+- Your task is to decide whether the event described in the first part of each pair could realistically make PersonX experience the emotion noted in the second part.
+- In this assignment, you will explore the emotional consequences of actions represented by phrases. The goal is to judge if there is a plausible connection between what happens and how it makes someone feel.
+- You will look at pairs of phrases where one describes an action and the other describes a potential feeling. Assess whether the action could logically cause the described feeling in the individual mentioned.
+- As you engage with this task, consider how events link together emotionally. You need to decipher whether an action can logically lead to feelings described further on.
+- In this task, you'll analyze two short statements and decide if the situation described in the first statement could cause the person involved in that statement to feel something mentioned in the second statement.
+- You must reflect on phrases that describe actions or events and connect them with potential emotional states, identifying if there is a link between cause and effect.
+- You'll evaluate whether particular scenarios can generate specified feelings for a character, namely PersonX. This requires cognitive linking between actions taken and feelings felt.
+- Focus on identifying emotional consequences linked to actions of a character referred to as PersonX. Decide if there’s evidence in each scenario that supports or contradicts the suggested emotional outcome.
+- Examine the first phrase carefully to understand what it conveys and then determine if it likely results in the emotion mentioned in the second phrase.
+- Engage with brief phrases that depict activities involving participants while considering potential feelings that may arise from those activities.
+- You are tasked with evaluating the relationship between two phrases to see if an emotion described in one could be a result of the action in the other. Your focus should be on understanding human emotions and reactions.
+- In this activity, you’ll sift through two brief phrases and explore their relational dynamics, focusing on possible feelings that arise from actions described in those phrases.
+- Your objective in this task is to evaluate whether specific actions described can lead someone to feel a certain way, relying on your insights into emotions and relational dynamics.
+- For each pair of phrases you receive, evaluate whether the first phrase can influence PersonX's emotional reaction mentioned in the second phrase.
+- Your role includes examining phrases that reflect events and their potential emotional aftermath. Determine if the initial scenario might evoke an emotion denoted in the following phrase.
+- Assess short phrases and their implications for emotional reactions, where one phrase describes an event and the other describes a potential feeling.
+- Analyze short phrases that describe events, then identify if one event can lead to a specific feeling for a designated person. This requires insight into human emotions and interactions.
+- In this task, you evaluate the relationship between two phrases, focusing on how the first phrase might evoke a feeling described in the second.
+- Investigate pairs of phrases to see if an action leads to emotional responses, demonstrating your understanding of human feelings in context.
+- The task centers on identifying emotional outcomes tied to actions or situations described in pairs of phrases, emphasizing reactions from individuals mentioned within them.
+- Your role is to consider if there’s an emotional consequence stemming from an action as described in one phrase, specifically affecting a character's feelings mentioned in another phrase.
+- The aim here is to connect events with emotional responses by reviewing paired phrases, checking if each situation aligns with potential feelings indicated elsewhere.
+- Focus on understanding human emotions as you decide whether specific actions lead to certain feelings based on the event descriptions provided in two parts.
+- The focus here is on identifying emotional responses tied to specific actions taken by PersonX. You will consider events and the feelings they may bring about.
+- This task involves analyzing two phrases to determine if one leads to an emotional response in a participant. You will assess the connection between events and the feelings they may evoke.
+- Your focus will be on establishing whether specific behavioral contexts lead to expected emotional responses, using reasoning skills to evaluate connections between them.
+- Your goal is to evaluate pairs of phrases where one phrase might influence the feelings associated with another. You'll need to identify if there's a connection in terms of emotional impact.
+- You need to evaluate the relationship between two phrases, focusing on whether one phrase leads to an emotional response in the subject mentioned in the other phrase.
+- You will be examining phrases that communicate scenarios and feelings, focusing on whether one scenario could reasonably lead to the emotion highlighted by the other.
+- Analyze a situation where an individual (PersonX) performs an action and then evaluate whether this action may evoke a certain emotional response in that person.
+- In this exercise, you're looking at phrasing that denotes events and their potential impacts on feelings. Analyze whether what happens leads to emotions expressed subsequently for PersonX or others involved.
+- This task challenges you to connect emotional outcomes with described actions. It requires discernment in evaluating how actions may impact a person's feelings.
+- You will look at two phrases where one describes an action and see if it directly corresponds with an emotional reaction mentioned alongside it.
+- You are tasked with making judgments about feelings that arise from distinct situations. The challenge lies in translating actions into possible emotional reactions for PersonX.
+- Evaluate scenarios involving PersonX and identify whether their actions could generate specific feelings. Take into account the context and possible implications of each situation presented.
+- This task requires you to make judgments on statements about PersonX's experiences and feelings. Analyze whether one phrase logically leads to or correlates with feelings expressed in another phrase.
+- This task requires discernment of emotional relationships between event statements. You'll see if one action leads to feelings expressed by another phrase regarding a participant.
+- You will investigate pairs of phrases where one describes what PersonX does and the other describes what they might feel. Critically evaluate how plausible it is for these emotions to arise based on prior actions.
+- Your challenge is to evaluate relationships between situations and emotions through careful interpretation of person-centered phrases.
+- Your challenge here is to consider how PersonX’s actions might influence their feelings or emotions. Investigate the connection established through each provided phrase pair.
+- The task involves evaluating the emotional implications of a given situation. You must assess whether one statement (the Head) leads to a specific feeling noted in another statement (the Tail).
+- Your goal is to link potential feelings that arise from actions or scenarios presented by two coordinated phrases featuring a participant named PersonX.
+- This task challenges you to explore emotional connections between events and reactions, specifically assessing if certain situations will elicit specific feelings from PersonX.
+- This task requires you to use inference skills to connect actions with their potential emotional consequences, analyzing how one event may affect someone's feelings.
+- Review two related phrases where one represents an action, and the other conveys an emotional outcome. Determine if there’s a link between them that suggests the possibility of such a feeling occurring.
+- Examine how events reflected in both phrases correlate, and assess if the initial event could instigate a specified emotion mentioned later.
+- Engage in this task by interpreting two short phrases and deciding if the action described could make someone feel a specific way. Understanding human emotions is crucial for your analysis.
+- Your task is to consider two phrases together and deduce if the emotional state suggested by the second phrase can reasonably stem from the situation described in the first.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1203_atomic_classification_xreact
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1203_atomic_classification_xreact
+user_prompt_template: '{task_def}
+
+
+  {problem}'

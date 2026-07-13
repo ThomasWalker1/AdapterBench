@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You need to carry out simple addition operations across all elements of an integer array. With the provided integer, every number in your input should be increased accordingly.
+- Your task is to manipulate a list of integers by adding a specified integer to each element in that list. This requires basic arithmetic skills.
+- You are tasked with enhancing a collection of numbers through addition—adding a given integer to every single element in the list and outputting the new collection.
+- You will work with a list of numeric values, where you must add a given integer to every element in that list. The final result should be a new list with these adjusted values.
+- The assignment requires you to process numerical data by applying an addition operation to all elements in an array, yielding an updated set of numbers as output.
+- The goal is to create a new list where every number has been increased by an additional specified integer, demonstrating your ability to manipulate numerical data.
+- The focus here is on modifying numerical data through addition, where you’ll increase every member of a provided list by a specified integer.
+- In this activity, you will update an array of integers by summing it with another specified number, leading to an enhanced version of the initial data.
+- 'The objective here is simple arithmetic: increase all numbers in a provided list by the same amount, producing an output that reflects these changes.'
+- Your assignment involves taking an array of integers and enhancing each element by a constant integer, yielding a modified array as your output.
+- You are set to take an input of integers and adjust each one by adding a certain number, thereby generating a new list that represents this alteration.
+- The assignment is to take a collection of numbers and systematically add the same number k to each one, resulting in a new list with updated values.
+- Your job is to modify a given list of numbers by adding another number to each one. The end goal is to create and return the new list.
+- Engage in numeric transformation where you systematically add an integer across all values in an input series, leading to a fresh set of numerical results.
+- The objective is to perform an addition operation on all elements of an input list using a specified integer, thereby transforming the original list into an updated version.
+- You'll be given a series of integers along with a single integer that you need to add to every element in the list, returning the modified list.
+- The task challenges you to add a chosen integer across an entire set of previous quantities. This requires both diligence and fluency in basic number operations.
+- This task is focused on modifying numerical sequences. You are required to increment every integer in the provided list by another single integer for final verification.
+- In this exercise, you will apply addition across all items in an array, where each number will be increased by a specific integer provided as part of the input.
+- You will work with an array of integers and an additional number that you need to add to each member of the list. Accuracy in performing arithmetic tasks will be essential.
+- The aim here is clear—transform an existing set of integers by incorporating an additional number into each one. Return the newly calculated sequence as your answer.
+- This task involves taking a list of numbers and adding a specified integer to each of those numbers. You must perform the arithmetic operation efficiently.
+- The focus of this task lies within numeric manipulation. You will sum up each element within an array with another specified integer to return an altered version of the original array.
+- The goal here is to modify an existing array of integers by incrementing each value with another specified integer so that the result is a new modified array.
+- This task requires you to execute addition across all items in a numeric collection. Each number will have the same specified integer added, leading to a transformed set of values.
+- The objective is to enhance every number in a list by adding the same specific integer to each of them, thus producing a new number set.
+- In this exercise, you are tasked with enhancing each element in a specified list by incorporating another integer into them through straightforward addition operations.
+- This activity revolves around arithmetic modification. You will receive a series of numbers and another number that you must add to each entry within the series before generating your output list.
+- This task allows you to practice basic arithmetic operations. Your aim is to add a specified integer to each number within an array and provide the resulting set.
+- This activity centers around enhancing numerical data by performing addition with a constant value on every component of the list provided.
+- This task requires you to take numerical data and enhance it through addition. You will adjust all included numbers by adding a specified value, reshaping the entire set as you go.
+- For this task, you must apply addition to each element in a provided list by incorporating a second integer, yielding an updated list where all values are raised accordingly.
+- Given a set of numbers and another single number, your goal is to update the list by increasing each number by the provided value.
+- This task involves manipulating numerical data. You need to take each integer from a provided list and add a certain integer to it, creating a new set of numbers.
+- Your objective is to manipulate numerical data represented as a list by introducing an additional number into the calculations for every existing entry in that list.
+- In this task, your purpose is to apply addition on all items within a list of integers by including another specific integer, creating an updated version of those original numbers.
+- Engage with this exercise by transforming distributions of integers. Adding another integer provides an opportunity for revisiting numerical values through systematic arithmetic operations.
+- In this challenge, you are expected to manipulate numerical data by taking each value from a list and adding another defined integer, resulting in an updated set of values.
+- The goal here is to transform numeric data by applying an arithmetic operation—specifically adding a set number to each item within an integer list.
+- Your task involves performing simple addition across all elements in a provided list of integers while incorporating another given integer for adjustment purposes.
+- Your responsibility is to adjust values within a number list by systematically adding another integer to each one, thus altering their existing values.
+- In this role, you’ll take lists of numbers and enhance them through simple addition with another integer value, producing newer lists as output.
+- You are asked to perform a simple mathematical operation on a list of integers by adding the same integer value to all of them, then outputting the new set.
+- The assignment involves numerical operations where you will take each entry in a list and add a specific value to it.
+- Here, your responsibility is straightforward—by taking each integer from the given list and increasing it using another integer, you'll form and return a new assembled list.
+- You are presented with a collection of integers and an additional integer, which you must use to augment each number in the list. Mastery of basic math will aid you.
+- This task requires you to perform arithmetic operations on a list of integers where you add a specific value uniformly across all elements in that list.
+- This task requires you to transform a series of integers into new values by adding another integer k, essentially recalibrating each original number.
+- The challenge invites you to alter numerical data represented in list form by systematically adding an extra integer value to every item within that list.
+- 'Your responsibility here is straightforward: increase each number in a set by adding a given value, tailoring the output accordingly.'
+- You will engage with lists of integers, where your objective is to elevate each number uniformly by incorporating an additional integer into the mix.
+- You'll handle a list of numbers and apply an addition operation with another integer, resulting in an updated sequence that reflects this change.
+- You are working with numerical transformations where your task is to take an integer array and enhance each number by adding another specified number to it.
+- You will manipulate lists of integers by uniformly adding an assigned value to every member of the list, then returning this new sequence as your result.
+- Here, you will manipulate numerical data by augmenting each entry in the list with an additional integer. It tests your ability to perform fundamental arithmetic consistently.
+- Given a series of integers and an additional integer value, your role is to apply addition to each number in the series, resulting in an updated collection that reflects these calculations.
+- You will be updating values within a list by applying an addition of a fixed integer to each item, showcasing your ability to perform basic math operations.
+- This activity requires you to translate a list of numbers by increasing each number with an additional fixed integer. The result will be a new sequence of numbers that reflects this change.
+- This task asks you to add a fixed integer to every item in a provided list of integers, showcasing your skills in handling basic addition across multiple values.
+- This task involves basic arithmetic where you take multiples numbers and increase them using a given integer value. It challenges your numerical manipulation skills.
+- In this process, you will transform a list of numbers by incrementing them all by one specified value. It emphasizes computational accuracy and efficiency.
+- You are tasked with updating all integers in a supplied list by uniformly adding a specified integer value to them, generating a modified list as output.
+- You'll need to adjust numerical values in an array by uniformly increasing them with an additional number provided as input. Familiarity with addition processes will guide your response.
+- The goal of this activity is to compute an updated list where each original number has been increased by a specific integer value.
+- Your goal is to take a sequence of integers and an additional integer, then perform an arithmetic operation where you add the second integer to each number in the initial sequence.
+- The objective is to enhance every number within an array by adding a predetermined integer, creating a fresh set of values through simple arithmetic.
+- The goal here is to enhance numerical data through simple addition. For every integer in the list, you must apply the same addition value, generating a new series of sums.
+- This task focuses on number manipulation. You need to increase every integer in the provided list by a designated number, creating and returning the final results.
+- Given an array of integers and an integer k, the assignment is to increase every number in the array by k and create a new list that reflects these changes.
+- You need to process a series of integers and add another integer to each one. This requires straightforward calculation skills.
+- You will work with a series of integers and apply an addition operation that involves adding a given integer to each element within this series.
+- The task requires you to adjust all items within an integer list by adding a specific integer. The result should showcase the new values derived from this operation.
+- Your goal is to perform an arithmetic operation where you add a specified integer to every element in a given list of integers, resulting in a new list of modified integers.
+- The challenge here is to take each number from a list and add a designated integer to it, yielding an entirely new collection of numbers after the adjustments.
+- You will be working with lists and integers. The main objective is to add a given value uniformly across all elements in the list and return this adjusted list.
+- This task requires you to take an initial set of integers and elevate those values consistently by adding a pre-defined integer throughout the entire list.
+- Your objective is to calculate an altered version of the given numbers by adding the same integer to each, showcasing basic math skills in handling lists.
+- In this activity, you will take various integers and apply an incremental change using another integer k. Your output should accurately reflect this transformation for each element.
+- Perform arithmetic computations by enhancing each entry of an integer collection with the addition of another specified integer value for output.
+- Engage in this mathematical operation where you’ll systematically add an integer to each value within an input list and present the results as a new sequence.
+- This task involves working with a list of numbers and involves applying addition to each element by using a given integer, thereby generating a modified list.
+- You are tasked with applying addition to each element in an integer array using a given number, showcasing your ability to manipulate data through arithmetic operations.
+- In this exercise, you are asked to modify a list of integers by incrementing each element by a designated amount. Basic addition skills will be necessary for this task.
+- You need to conduct straightforward arithmetic operations on numbers within a list by uniformly adding an integer value across all entries.
+- You will take a collection of integers and an integer value and increment each item in the collection by the given value, resulting in an adjusted collection of integers.
+- The task involves taking a list of integers and a specified integer value, then performing a straightforward operation of addition on each element in the list.
+- This task involves manipulating a list of integers by incrementing each number by a provided value, resulting in an updated collection of integers.
+- The task requires you to process a list by adding a specified integer to each element. You will generate and return the updated list.
+- Your role involves arithmetic operations on lists. Using incoming integers along with their accompanying additive values, you'll need to produce transformed lists displaying these adjustments clearly.
+- This exercise calls for mathematical manipulation, specifically where you enhance each entry in a series of integers with the sum of another number.
+- Your focus here is on modifying numerical data. You will add an external integer value to each element in a provided list of integers, producing an updated array of numbers.
+- Here, you're engaging in numerical enhancement. By taking a predefined list and adding a constant value to each item within that list, you create an entirely new set of integers.
+- In this exercise, both numerical manipulation and basic arithmetic skills are necessary as you enhance each number in an array by the same predetermined amount.
+- This task requires you to apply a uniform increase to all elements in an array, demonstrating your ability to execute simple arithmetic on multiple values.
+- Your assignment requires you to process a list of numbers by enhancing each with an external integer value through addition—a task that highlights simple numeric manipulation skills.
+- You need to apply basic math skills to add a single integer across all values in an integer list, and return the newly calculated numbers.
+- This exercise focuses on enhancing a sequence of integers through addition, requiring you to align each element with an additional specified value.
+- For this assignment, you will take a list of integers and enhance it by adding the same integer to every item in the list. It involves simple addition for each element.
+- 'The task is straightforward: adjust each integer in the provided list by a fixed value k. Your final output should be an updated sequence reflecting these changes.'
+- This task revolves around enhancing numerical lists; you’ll be responsible for incrementing each element based on a predetermined value.
+- The task demands you to take each value in an integer list and increment it by a given number, showcasing your basic arithmetic abilities.
+- Your assignment entails taking an array of integers and uniformly increasing each value by a stated amount, resulting in an altered series of numbers.
+- In this task, you'll engage with numbers by applying addition. After receiving an integer alongside a list, you will transform each element by adding the given integer, resulting in a fresh list of numbers.
+- In this task, you are required to manipulate a list of numbers by adding a specified integer to each item in the list.
+- Here, you'll carry out additions on an entire list according to a distinct increment k, testing your arithmetic proficiency through straightforward calculations.
+- You are tasked with modifying a list of integers by adding a specific integer to each element in that list. Precision in your calculations will be key for accurate results.
+- The task involves taking a list of integers and a single integer value, then performing a simple arithmetic operation to add the integer value to each element in the list.
+- You are tasked with adjusting values in an integer list. For each value, add a given integer to produce and return the updated results.
+- Here, you are given sets of integers and need to adjust them mathematically by incorporating an additional integer into every respective element.
+- The challenge is about altering an initial collection of numbers through addition by uniformly incorporating another whole number into each item of that collection.
+- Engage with numerical lists where the objective is to give every number within that list an additional boost defined by another integer, ensuring uniformity in results.
+- The task consists of transforming elements within an integer array by adding a designated integer value to each, thus yielding adjusted results.
+- You need to perform an operation that adjusts all the numbers in a provided list by increasing each one by a certain fixed amount indicated by another integer.
+- You must adjust each number from the provided list according to a fixed increment indicated by k, creating a new batch of values based on these simple calculations.
+- In this task, you are required to take a list of numbers and an additional number, then increase each number in the list by that additional number and produce the modified list.
+- In this exercise, you will enhance each number in a list by adding a given integer to it. The outcome should be a fresh list reflecting these additions.
+- This task involves updating a list of integers by performing addition. For each number in the list, you will add another specified number and then return the revised list.
+- The task asks you to take a collection of integers and apply consistent addition based on another integer, reshaping the original list into one with new values.
+- This task challenges you to enhance existing numbers in a collection by adding another integer, thus developing skills in arithmetic operations and data manipulation.
+- Your assignment is to take a given set of numbers and add another integer k to all of them. This requires systematic application of addition across the entire dataset.
+- With a specified set of numbers and an integer, your aim is to transform the list by increasing each number by that integer, illustrating your ability to perform grouping math functions.
+- Your job is to enhance a series of numerical values by adding a consistent integer to each one, effectively creating a new list with modified values.
+- In this exercise, you'll adjust each number in a list by adding a certain amount, thus transforming the original values into new ones.
+- Your challenge is to manipulate a set of integers by applying an addition operation using another integer. This demands competency in arithmetic operations.
+- Embrace this task as one focusing on numerical enhancement—add given integers to existing values within Lists and recompile them into updated arrays for presentation.
+- You are tasked with adjusting the numerical values in an input list by incorporating a specified number into each item via addition.
+- This task is about enhancing a collection of integers by adding a certain value to every single number in that collection.
+- In this task, your primary function is to enhance each integer in a provided list by adding a defined value, effectively transforming the original numbers.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1190_add_integer_to_list
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1190_add_integer_to_list
+user_prompt_template: '{task_def}
+
+
+  {problem}'

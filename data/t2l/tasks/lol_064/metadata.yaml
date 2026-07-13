@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The goal here is to identify and list all elements in an array that come after the first few specified items.
+- In this task, pull out items from a list that are positioned after a pre-defined index integer, emphasizing positional understanding.
+- You will work with an integer and a corresponding list. The goal is to determine which elements follow after skipping over a specific count at the beginning of the list.
+- You are required to analyze an integer in conjunction with a collection of values. The aim is to collate everything that exists beyond the threshold marked by this integer.
+- This task involves taking an integer value representing an index and outputting all subsequent values from the associated list.
+- The task involves slicing through lists based on an integer's instruction, leading you to output the appropriate segment of remaining values.
+- Extract the remaining components of an array that exist beyond a certain starting index provided as an integer.
+- Here, you must identify what remains in an ordered series once certain starting points are disregarded. This nurtures precision in data organization.
+- Here, you'll work with lists and integers, determining which elements come thereafter based on the provided index to create a continuation of data.
+- For this task, you need to find and display every element from a list that follows a specified number of initial elements.
+- You are asked to work with a list of items and identify what follows after a given count of the first few elements.
+- Essentially, you're being asked to access and report back on parts of a list that appear after an initial segment defined by an index number.
+- In this task, you extract elements from a list based on an integer that specifies how many initial elements to skip.
+- You have to engage with data presented in lists and utilize integers as directives to output only the latter portion of those lists.
+- The task requires you to handle a list of elements and an integer index, allowing you to extract and list all items that appear after the specified index in the list.
+- Your objective is to extract and present the items from a list after a specific starting point defined by an integer.
+- Engage with the numerical index provided to successfully chart out the subsequent entries in an associated set of values.
+- 'The objective is clear: slice through the list using an index threshold to reveal what''s left afterwards.'
+- You will take the elements of a list and return those that come after a designated number of prior elements. This requires understanding list indexing.
+- In this activity, you'll utilize basic array positions and integers to navigate through data sets, presenting portions of the arrays based solely on specified parameters.
+- This exercise focuses on modifying input structures by disregarding an initial sequence and revealing the remaining components for review.
+- This task involves filtering through an array of values to present only those elements that come after a specific cutoff defined by an integer input.
+- The objective here is to take a starting index and retrieve all elements from a list that follow this index, effectively creating a new shorter list.
+- You need to work with a given integer and a corresponding list, extracting the portion of the list that follows the designated index.
+- The task involves determining elements in a list after omitting the first few based on a provided integer, enhancing your skills in indexing and data retrieval.
+- 'Your assignment is straightforward: take an index and process a sequence by disregarding its start, finally collecting the rest accordingly.'
+- Your focus is on manipulating lists effectively by cutting off only the first segment determined by an integer, then reporting what remains.
+- This exercise focuses on your ability to navigate through lists by locating and listing the elements that succeed a defined starting point.
+- Your task is to make sense of a collection of items and highlight those that follow a defined entry number.
+- You are tasked with navigating item collections and drawing out those entries that remain post the specified number of leading elements.
+- This task involves discerning which elements in a provided list come subsequently after an integer count amount has been ignored from consideration.
+- You are required to dissect a list using an integer that specifies how much to disregard from the start, returning what is left behind after this threshold.
+- Your job is to examine a sequence of values and isolate those that come after an index mark—this hones your comprehension of structured datasets.
+- This task calls for systematic extraction procedures focusing on what comes after entering into a list via an assigned numerical pin.
+- This task involves processing a list by disregarding the initial portion, allowing you to focus on what's left beyond a certain position.
+- You will be provided with a position and a list; your role is to enumerate all subsequent elements from that position onward.
+- This task tests your aptitude in handling lists by asking you to locate and articulate all data points that follow an initial index threshold.
+- Given a number and a collection of items, your objective is to identify and present all items that follow the specified index in the list.
+- You are challenged to isolate and highlight portions of a provided array by identifying and listing items positioned after a defined integer mark.
+- You are tasked with processing structured datasets by identifying what remains in a sequence post-specification of an early point indicated by an index or count.
+- You will be tasked with identifying all components of a given array that exist beyond the first few elements defined by an integer input.
+- The job entails removing certain leading entries from a list based on an integer designation and focusing on what remains afterward for display.
+- You are tasked with taking note of the placement of items in an array and listing those that remain once some initial items have been excluded.
+- The challenge is to manage a list by understanding and applying an index value to retrieve all subsequent elements after that index.
+- In this task, you are given an integer and a list. Your objective is to extract and return all the elements from the list that come after a specified number of initial entries.
+- For the given task, you must recognize which elements remain in the list after skipping over a set number of initial entries.
+- Given an index and a list, determine which items are located beyond that index. You should present these items in the desired order.
+- You will need to process a set of data where you select all entries following a particular point in the list, sharpening your skills in data extraction.
+- This task focuses on recognizing portions of a list of items by starting from a specific position. You need to be comfortable with iterating through lists.
+- The challenge presents an opportunity to deepen your understanding of how lists operate in programming or mathematics, focusing on indexed selections.
+- Your assignment involves navigating through a list to report back only those parts that remain after bypassing a predetermined quantity of leading entries specified by an integer.
+- In this exercise, you are required to list elements that appear in a sequence after a defined starting point within an array.
+- You are required to take a number as input that indicates how many elements to skip, allowing you to compile the subsequent elements from a sequence.
+- The goal here is to identify all components of an array that occur after an index, effectively generating a sublist from that point forward.
+- This task involves manipulating lists. You will receive an index and need to output all elements that follow this index within the provided list.
+- The objective is to sift through a list and determine which elements appear after a specific index, requiring logical thinking about positions in the array.
+- Here, your responsibility is to delineate portions of a list according to criteria established by an integer, identifying what lies beyond it.
+- You are tasked with retrieving items in a list after skipping a defined number of initial items indicated by an integer input.
+- You are tasked with extracting elements from a list based on a given integer index, which tells you how many initial elements to skip.
+- The exercise centers around reporting subsequent elements in a series by omitting the front section specified by an input number, enhancing data handling skills.
+- The task centers on filtering elements from a list based on an index input, allowing you to practice selecting portions of data effectively.
+- You must recognize how many items to skip in a list before listing the rest of its contents as specified by an integer input.
+- Use your understanding of lists and integers to determine which elements follow in sequence after omitting the initial designated count.
+- This exercise requires understanding how lists are structured and applying an index value to derive subsequent elements.
+- The goal is to take a portion of a list by omitting a specified number of starting elements defined by an integer value.
+- This task revolves around information retrieval from lists while following guidelines set by an initial count of items to overlook.
+- You will summarize part of a list, taking only those values that appear after a given index, helping reinforce your familiarity with data manipulation techniques.
+- In this task, you'll analyze a list based on an integer input which indicates how many items to skip. Your goal is to compile the subsequent items.
+- You will dissect lists with reference to numerical input that determines your starting point for outputting further elements.
+- You are presented with a list and an integer. Your job is to find and return the elements that come after the specified integer position in the list.
+- This involves working through list data by omitting certain entries at the beginning, focusing strictly on what’s left thereafter for your response.
+- This task revolves around selecting a sublist from a larger list, guided by an integer index that indicates how many initial elements to skip.
+- This task requires you to disregard a certain number of elements at the start of a list and to compile those that follow. It tests your ability to manipulate lists logically.
+- Your task consists of filtering through given data represented as lists to obtain only those segments that extend past a particular point noted by an integer reference.
+- You are required to exercise your skills in array manipulation by determining which elements remain visible after avoiding specified leading entries based on the given integer.
+- You need to focus on a particular section of a list, specifically all entries that occur after an indicated number of elements.
+- This task asks you to access and report the segments of a list following an indicated number of initial entries.
+- Your task is to extract and list items from a list, starting at a specific index, to reveal the remaining elements.
+- This task entails extracting relevant information from a collection of items based on prescribed starting criteria dictated by an integer.
+- In this exercise, you will work with a list and an index to generate a new sequence of remaining elements after the specified starting point.
+- You need to process a list by omitting the first few entries according to a provided index and listing what remains.
+- This task involves analyzing a list of items and returning all elements that come after a specified count of initial elements.
+- The objective of this task is about finding and listing elements beyond an indicated index while disregarding earlier portion entries in the list.
+- In this task, you focus on refining a collection by identifying relevant portions of a list according to the provided integer directive.
+- The focus of this task is on data extraction from lists or arrays, ensuring that only the components relevant after a defined starting point are brought forward in your answer.
+- You'll be working with inputs composed of data arrays and indices, asking you to return everything coming after a specified number of elements from the start.
+- The aim here is to accurately extract remaining entries from a given list post-omission of initial components set by an integer input.
+- This task expects you to apply your knowledge of lists and indexing to provide elements located beyond a set starting point defined by an integer value.
+- Engaging with inputs consisting of an integer and a list, your responsibility is to showcase all values that appear after the specified index in the list.
+- Here, the focus is on understanding sequence within lists as you isolate the items that appear after a specified count, necessitating careful attention to detail.
+- Your task is to explore lists and determine what comes next after skipping a certain number of items, polishing your analytical skills in data handling.
+- The goal here is to dynamically access portions of data in a list according to predefined parameters set by an integer reference point.
+- This task involves taking a given integer and using it as a cutoff point to present the remaining elements in a provided list.
+- Your assignment includes cutting off leading entries in a list based on an integer input, illustrating fundamental concepts in data slicing and access methods.
+- Here, you are expected to isolate part of a sequence based on numeric direction, showcasing only the relevant trailing data.
+- Your challenge involves selecting parts of a sequence while adhering to constraints defined by an index that indicates how many items to overlook initially.
+- You'll be working with indices and lists to showcase your ability to filter information effectively based on predetermined criteria.
+- Your objective is to filter through an array and return only the elements that are situated after a specific index provided in the input.
+- You will be engaging with arrays in this task, emphasizing retrieval processes after discarding certain preceding items as stated by an integer input.
+- In this task, examine how many entries need to be set aside and then proceed to gather all remaining items from within the provided data structure.
+- You are asked to extract data from an array where you need to skip over a specified portion at the beginning before providing your result.
+- The assignment is to identify and report the portion of a list that comes after a specified number of preceding items, based on an input index.
+- In this task, you must identify and output items from a list starting from a certain position, as defined by an integer value.
+- Your task is to extract and list elements from a given list, starting from a specified position based on an integer input.
+- This task challenges your skills in data management as you extract specific, subsequent elements from data collections guided by numbered directions.
+- Your job is to analyze inputs that consist of a list and an integer and to select all items that follow the given index in that list.
+- Your task involves processing a list and an integer, where you'll identify and provide the elements starting from the position defined by the integer onward.
+- Your role is to process an integer and its associated list by filtering out elements, showing only those that appear after the indicated number of items.
+- You have to manipulate lists by recognizing how many initial elements should be overlooked before displaying the remaining ones, enhancing your logical reasoning.
+- You will engage with an indexed approach to lists, delivering all remaining elements beyond a specified starting point dictated by an integer.
+- The task is about identifying and listing all elements that follow a certain position in a sequence of items, defined by an input integer.
+- You will encounter an indexed position and an array. Your mission is to report on every item that continues from that position onward.
+- Your challenge entails taking two types of inputs—an index and a collection—to systematically compile a list of what comes next in the order.
+- This task requires discerning which values from larger data sets come next after excluding some initial figures, thereby deepening logical analysis skills.
+- This task involves processing a list based on a given integer index. You need to identify which elements remain once the first few listed items are omitted.
+- In this challenge, your responsibility is to pinpoint where to start in an array and produce every remaining item from that point forward without interruption.
+- This task examines logical sequences within lists, where you'll output what follows after a certain marker indicated by an index value.
+- You will be given an integer and a list. Your role is to output all list elements that come after the specified integer index.
+- Given the context of indexing within lists, identify which elements remain after observing a specific starting number.
+- In this task, you will analyze a list of elements and provide a subset of those elements based on a given index.
+- This task is about handling and processing lists, where you will return all entries past a certain point specified by an integer value.
+- Essentially, you are required to segment a list by a specified starting point, collecting all subsequent items into a new arrangement.
+- Determine the elements that follow a certain index in an array and present them in order.
+- The task necessitates examining collection elements with respect to an integer index, leading you to produce any items occurring later in the sequence.
+- For this exercise, you need to compile a sublist from a larger list by skipping a certain number of initial elements as dictated by an integer.
+- You’ll be addressing list structures by focusing on what lies beyond specified entry points, enhancing your proficiency in manipulating data arrays.
+- The exercise calls for you to engage with lists critically by highlighting all components that come after an established count; this fosters clarity in list comprehension.
+- The mission is to navigate through a list based on numerical direction, showcasing only those values that succeed a given index position.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task064_all_elements_except_first_i
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task064_all_elements_except_first_i
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Assess written reviews of food products, determining how much the reviewer liked or disliked the item, and represent this through a numerical rating.
+- In this activity, you will assess customer reviews of food items sold on Amazon and assign a corresponding rating that encapsulates their satisfaction or dissatisfaction.
+- Your task is to evaluate a customer's review of a food product and assign a rating that reflects your perception of the quality described.
+- Read each review closely and evaluate the level of satisfaction or dissatisfaction expressed by the customer, providing a rating accordingly.
+- For each review of food products, you need to appraise the sentiments expressed and assign a relevant rating based on the review’s overall tone.
+- Your job is to assess consumer sentiments found in Amazon reviews for food items and provide a rating that summarizes their opinion on the product's quality.
+- Read through diverse reviews on Amazon for food items, then evaluate and create a numerical rating that summarizes each consumer’s overall impression.
+- Your role involves interpreting consumer feedback collected from Amazon reviews and providing ratings that reflect their overall satisfaction levels with food products.
+- Assess the quality of food products as described in customer reviews and denote the degree of satisfaction through numerical ratings reflecting how well each product met expectations.
+- By reviewing customer input about food products, generate ratings that succinctly express how much customers enjoyed or disliked these items.
+- Evaluate the provided review of a food item and decide on a rating between 1 and 5 based on the sentiments expressed. Aim to capture the reviewer's overall impression.
+- Review multiple assessments of food products purchased from Amazon and assign numerical ratings summarizing the reviewer's perspectives on quality and satisfaction.
+- Examine feedback provided by consumers on food products and evaluate their satisfaction with a corresponding score.
+- Analyze the level of satisfaction shown in food product reviews and use that to create an appropriate rating score.
+- Read through the comments provided by customers regarding particular food products and evaluate them with a score that summarizes their opinions about those products.
+- Review customer feedback regarding food products and determine a rating that best reflects the overall sentiment of those reviews.
+- Your job is to summarize the sentiment of product reviews and translate that into a numeric rating indicating the quality perceived by the reviewer.
+- Your job is to characterize the feedback given in a review of food products and express that judgment through a numerical rating that sums up the experience.
+- In this activity, you are tasked with reviewing comments on food products by customers, determining an appropriate score based on their expressed feelings toward those products.
+- Consider each customer's review of food items carefully; your task is to render a rating that accurately reflects their overall impression, ensuring clarity about their level of satisfaction.
+- Your task is to evaluate a review of a food product and assign it a rating between 1 and 5 based on the overall sentiment expressed in the review.
+- Your responsibility is to read the feedback on food items sold on Amazon and give a score that summarizes the reviewer's opinion regarding its quality.
+- Your job is to read consumer opinions about food products and develop a rating system that visually captures their feelings towards these items.
+- Review the feedback provided by customers regarding food items and rate their overall satisfaction from very poor to extremely good.
+- Assess reviews for indications of quality, taste, and service related to food products. Sum up your analysis in a simple rating reflecting overall satisfaction.
+- In this task, you need to read customer reviews of food products and evaluate the overall sentiment to provide a rating from 1 to 5.
+- Examine reviews describing food items, focusing on key points about quality and satisfaction. Your task is to determine a fitting numeric rating based on those notes.
+- Determine how well-received specific food items are by evaluating consumer reviews and providing a corresponding rating based on their experiences.
+- Judging by consumer feedback on food products, you need to determine an appropriate rating that represents their degree of contentment or frustration.
+- You will evaluate customer reviews for food products and provide a rating on a scale from 1 to 5, indicating how positive or negative the experience was.
+- For each food product review, assess the overall sentiment conveyed in the text and give it a rating that corresponds to happy or unpleasant customer experiences.
+- For every review provided, identify how satisfied or dissatisfied the reviewer is with their purchase, then assign a rating reflecting that sentiment.
+- Determine how satisfied customers were with certain food products based on their reviews, then give an appropriate rating that reflects this opinion quantitatively.
+- Your role is to interpret customer feedback about food items and decide on a rating that best reflects the comments they've shared.
+- Assess comprehensive user reviews for Amazon's food items, translating those sentiments into respective ratings based on how well or poorly the reviewers felt about them.
+- Based on given reviews, your role is to gauge whether customers were pleased or dissatisfied with their food products and assign an appropriate rating based on that analysis.
+- Consider the feelings and opinions presented in the given food product review. Your goal is to rate the product on a scale from very poor to extremely good.
+- Read through consumer reviews for food products closely, focusing on aspects such as enjoyment and dissatisfaction, and translate this understanding into a numerical rating.
+- Understand consumers' assessments of food products by interpreting their written feedback and assigning scores indicative of overall quality and satisfaction.
+- Analyze customer feedback on food products and produce a numerical rating that reflects the reviewer's overall experience.
+- Distill feedback on food products into ratings, capturing how reviewers have experienced each item they discuss.
+- Analyze consumer reviews focused on food items to generate a star rating that indicates how well-received or appreciated the product was by its users.
+- Interpret food product reviews by considering both positive and negative aspects presented by consumers, then assign an appropriate score reflecting their overall satisfaction.
+- Interpret feedback from customers regarding food items and distill those opinions into clear ratings, helping others understand how well these products are received in the marketplace.
+- Use critical thinking to navigate through customer feedback on food products and represent their satisfaction level with a numeric rating from 1 to 5.
+- Take the customer’s voice into account as you read their feedback on food items. Translate their opinion into a clear numerical representation of satisfaction.
+- Evaluate written feedback from Amazon customers about different food products, interpreting their sentiments into a straightforward star rating system.
+- In this task, focus on customers' opinions concerning food products, facilitating an understanding of their experiences through ratings that indicate satisfaction levels.
+- Review the given Amazon product comment carefully and decide on a score from 1 to 5, indicating how satisfied the reviewer seems based on their feedback.
+- Engage with customer reviews focused on food products, dissecting their words to determine an accurate star-rating representation of their experiences.
+- Read through user reviews of various food products and generate an accurate rating based on the reviewers’ expressed opinions and sentiments towards those products.
+- Analyze how customers feel about various food products based on their written reviews, then express those feelings in rating form from very poor (1) to extremely good (5).
+- Your task requires interpreting customer experiences with food items and expressing their satisfaction with a score between one and five.
+- This task requires you to interpret customer opinions on food items available on Amazon and translate these evaluations into a clear rating scale.
+- Your goal is to read and comprehend user reviews, extracting key sentiments that will inform your numerical representation of their satisfaction level with food products.
+- Your role is to look at how customers reacted to certain food products in reviews and express this sentiment as a score on a scale from extreme dissatisfaction to extreme satisfaction.
+- The objective is to analyze customer feedback on specific food items from Amazon and translate that feedback into a numerical rating representing their experience.
+- Each review offers insights into consumers' experiences with food items; your goal is to distill these insights into concise ratings that embody the reviewers’ satisfaction levels.
+- Assess the opinions presented in reviews of various food items and translate those opinions into a numerical rating.
+- Analyze the sentiments expressed in a food product review and determine a rating on a scale from 1 to 5, taking into account both positive and negative comments.
+- Review textual feedback regarding food items and determine how highly or lowly it should be rated according to the sentiments expressed.
+- You will sum up customer experiences with different food products into straightforward numerical ratings based on their written reviews.
+- Your task involves reading reviews and judging the quality of food products based on the consumer's perspective, rating them accordingly.
+- Evaluate user reviews comprehensively, capturing both enthusiasm and critique in order to arrive at a represented score for the food item discussed.
+- Look at customer opinions about food items and identify key themes in their feedback to rate these products effectively on a scale of satisfaction.
+- Evaluate the written opinion of customers about various food items, then rate them on a scale according to their opinions about quality and enjoyment.
+- Review descriptions of Amazon food products and determine their quality by assigning a score from 1 to 5.
+- Assess user-generated content regarding food products sold on Amazon by rating their overall experience using a scale that measures satisfaction level.
+- Analyze customer feedback on food products and provide an appropriate rating based on the sentiments expressed in the review.
+- Consider qualitative descriptions from customer reviews about food products. Use this perspective to establish how well the product performed based on user satisfaction.
+- You will be tasked with generating ratings based on users' insights regarding food products. Your ratings should capture their feelings about quality and enjoyment.
+- This task requires you to interpret consumer feedback concerning various Amazon food items and rate them based on the expressed opinions in reviews.
+- Look at the given reviews of food products and assign a rating that best reflects the customer's satisfaction based on their comments.
+- Your assignment involves assessing reviews for food items and converting their impressions into a rating scale from very poor to excellent.
+- Interpret various testimonials regarding food items and assign a score reflecting the overall impression shared by customers in their reviews.
+- Based on customer input about specific food items, generate ratings that correspond with their level of approval or disapproval.
+- Assess the reviews for food products by identifying key sentiments and then assign an appropriate rating reflecting the reviewer's experience.
+- Your task involves reading product reviews and assigning a rating based on the customer's sentiments expressed in those reviews.
+- Examine the reviewer’s comments about their experience with a food product, then derive a score that encapsulates their overall feelings about it.
+- Your job is to summarize customer experiences with various food products by giving them a numerical score reflecting their satisfaction or dissatisfaction.
+- Understand the sentiments expressed in each customer review regarding food products and translate those feelings into a numerical rating reflecting their satisfaction level.
+- Your goal is to read reviews of food products on Amazon and assign a meaningful score based on the feedback the reviewer provided.
+- Reviewers express their thoughts on various food items, and it is your responsibility to convert these opinions into ratings that succinctly capture their level of satisfaction.
+- Your job is to interpret reviews from Amazon about food items and score them based on how positive or negative the sentiment is.
+- Read consumer reviews critically and assign a score that aligns with the overall sentiment conveyed by the reviewer about their food product experience.
+- This task involves interpreting customer feedback about food offerings and summarizing their thoughts with a numerical score indicating their approval or discontent.
+- For each food product review you receive, your objective is to gauge the emotions conveyed by the reviewer and translate those feelings into a numerical rating reflecting their satisfaction.
+- Based on the insights offered in the customer reviews, your job is to assign each review a rating that captures how good or bad the reviewers found their experience with the food products.
+- You will be examining detailed customer reviews about food products. Your responsibility is to determine an appropriate rating that reflects their level of satisfaction.
+- Analyze consumer remarks on various food products, focusing on the quality expressed in those remarks, to produce a rating.
+- Your task is to evaluate a product review and assign a rating that reflects the reviewer's experience.
+- You're required to interpret a review for an Amazon food item and provide an appropriate score that represents the reviewer’s opinion and experience.
+- For each provided review, interpret consumers' insights on different food products and allocate ratings indicative of their satisfaction level with those items.
+- You will read a customer's opinion about a food product and give it a score that represents how well the product was received, with lower scores indicating dissatisfaction and higher scores showing approval.
+- Evaluate the provided product reviews and determine an appropriate rating that reflects the reviewer's satisfaction or dissatisfaction with the items.
+- Analyze the provided consumer reviews for food items and determine a suitable numerical rating that reflects the quality described by the reviewer.
+- For each food product review, interpret the writer's comments and experiences to create a rating scale evaluation from terrible to exceptional.
+- Consider the details in reviews for food products to judge their quality. Assign a rating that best represents the reviewer’s experience.
+- The task is focused on evaluating consumer feedback for various food products available on Amazon and assigning scores based on their levels of enjoyment or complaint.
+- For each review, determine how positively or negatively the product is perceived and reflect that in a rating from 1 to 5.
+- Examine customer experiences with specific food products as described in their reviews and generate an appropriate score that indicates their level of satisfaction.
+- Your responsibility is to derive scores from written reviews about food products, encapsulating customer satisfaction into a clear numerical format.
+- In this task, you analyze customer feedback regarding various food items and determine how well they liked the product on a scale of 1 to 5.
+- Reviewers provide insights into food products they purchased; you should assign ratings that correlate with their opinions.
+- This task requires you to evaluate descriptions of food products and rate them according to the level of satisfaction expressed by the reviewers.
+- This task involves reading consumer feedback for various food items and providing ratings that correspond to the overall sentiments conveyed in those reviews.
+- Evaluate written reviews of food products and generate a numerical rating that corresponds to the quality described by the reviewer.
+- Read through reviews concerning food products and give a rating that matches the sentiment expressed by customers, showcasing their approval or disapproval.
+- For each review, determine whether the feedback indicates positive or negative experiences, translating this information into a predefined rating scale.
+- Engage with customer feedback regarding food products, interpreting their sentiments to provide an appropriate rating ranging from extremely poor to extremely good.
+- Interpret the review provided for an Amazon food product, recognizing key points that contribute to either positive or negative experiences, then provide an appropriate score.
+- Your role involves reading customer reviews about Amazon's food items and generating an appropriate score that reflects how much they liked or disliked the item.
+- Given various customer reviews about food items, your responsibility is to interpret their thoughts about the product's quality and assign a corresponding rating.
+- Based on detailed product reviews from customers, evaluate and rate their satisfaction with the items on a scale from 1 to 5.
+- From customer reviews, extract key sentiments regarding food products and assign a score between 1 and 5 to gauge satisfaction levels accurately.
+- Your job involves evaluating how customers feel about various food products and representing those feelings through a systematic rating scale.
+- Examine the evaluations provided by customers on food products and derive a rating that accurately captures their level of satisfaction or dissatisfaction.
+- Analyze the feedback given in product reviews and determine an appropriate rating that reflects the overall satisfaction of the reviewer.
+- By assessing how customers feel about certain food products through their reviews, derive a suitable rating that indicates authentic user experiences.
+- Your task is to interpret feedback from consumers regarding food products sold on Amazon and assign ratings that represent how strongly they felt about their purchases.
+- For each review provided about food products, you will need to determine how favorable or unfavorable the reviewer feels and assign them a rating out of five.
+- Read each food product review attentively and ascertain a numeric score reflecting how much the reviewer liked or disliked the product.
+- Reflect on customer experiences detailed in reviews of food items; analyze their statements before summarizing your interpretation in numerical form.
+- Your task is to read and assess a product review from Amazon, then give a rating that reflects the customer's experience with the food product described in the review.
+- You'll be taking customer opinions from product reviews into account, summarizing their feelings by providing a corresponding rating of quality or satisfaction.
+- Read through reviews of food products and assign each a rating from 1 to 5, capturing how reviewers felt about their experiences with the item.
+- Your job is to interpret assessments made by customers about food products and generate a rating that corresponds to their satisfaction levels.
+- Your task is to quantify customer satisfaction for different food products by translating qualitative reviews into numerical ratings based on sentiment analysis.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task588_amazonfood_rating_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task588_amazonfood_rating_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

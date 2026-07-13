@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Assess the sentiment and language used in the tweets to classify them into Hate Speech, Offensive, or Neither.
+- Evaluate statements made in tweets to discern whether they fit into categories defined by their potential aggression, disrespect, or harmlessness.
+- This task involves analyzing a tweet to determine whether it contains hate speech, offensive language, or is neither. You need to understand the nuances of language and context.
+- Determine which tweets reflect extreme negativity towards certain groups versus those that might offend general sensibilities but do not threaten.
+- Your task is to evaluate and categorize tweets based on their content, identifying whether they represent Hate Speech, Offensive language, or fall into a neutral category.
+- The goal is to critically analyze tweets for tone and content, categorizing each tweet appropriately based on whether it's harmful, offensive, or neither.
+- Determine how each tweet aligns with categories related to harmful speech, focusing on specific phrasing indicative of hate or offense while excluding neutral statements.
+- This task requires you to assess social media posts and label them as hate speech, offensive remarks, or neutral messages based on their wording and intent.
+- In this task, you must discern the nature of tweets by assessing if they contain hate-filled rhetoric, offensive remarks, or are neutral in tone.
+- In this classification task, you will need to consider the implications of words used in tweets and decide if they cross the line into hatefulness or remain neutral.
+- In this task, you're required to read and interpret tweets, then label them according to predefined categories concerning their appropriateness and intent.
+- Analyze social media statements for their underlying messages, identifying whether they convey hostility, offense, or neutrality.
+- The objective is to interpret tweets for their emotional weight and potential impact on individuals or groups, categorizing them based on established criteria.
+- Look closely at the wording in each tweet provided to place it within one of three defined categories—hate speech, offensiveness, or neutrality. The ability to discern nuances in communication will enhance your accuracy.
+- Your role is to evaluate tweets for harmful rhetoric versus casual offense versus neutral dialogue. Insight into societal attitudes towards language will guide your decision-making.
+- Your task involves decoding the intent behind various tweets and categorizing them—recognizing expressions of hate versus those that are merely upsetting or innocuous.
+- The objective is to identify negative social interactions in tweets by separating harmful speech from simple offense or neutral comments.
+- The assignment involves sorting through tweets using your judgment to discern between hate-driven rhetoric, insulting comments, or neutral observations.
+- You need to evaluate tweets for their potential harm or offensiveness. Classify each tweet accurately based on its tone and message.
+- The task involves categorizing a tweet based on its tone and content, determining whether it is 'Hate Speech', 'Offensive', or 'Neither'.
+- The objective here is to assess tweets critically and classify them based on their appropriateness concerning social standards for hate and offense, which requires contextual understanding.
+- Your role is to read through a series of tweets and deploy your understanding of language and social norms to sort them correctly into defined categories based on content type.
+- You will review a series of tweets and determine their classification by assessing whether they promote hatred, are rude, or are free from such connotations.
+- You will be analyzing Twitter posts to judge their content and assign them a category related to hostility or offense based on established definitions of hate speech and offensive language.
+- Use your understanding of social dynamics and language to categorize tweets as harmful speech, casual offense, or neutral commentary.
+- You must review each social media post for underlying tones of hostility or disrespect and categorize them accordingly necessitating sound judgment and comprehension skills.
+- The focus here is on decoding social media expressions—your goal is to classify these statements based on their potential for harm or insensitivity in a digital context.
+- You will classify tweets according to whether they contain hate speech, are offensive, or are neutral, which requires critical thinking about the content's impact on social dynamics.
+- 'Examine the wording of each tweet closely and assign it to one of three categories that reflect its attitude: Hate Speech, Offensive, or Neither.'
+- You are tasked with reading and understanding social media tweets to classify their tone and implications as harmful, offensive, or innocuous.
+- Process the given tweets to determine their suitability for categorization by evaluating the language used and its possible impact on different communities.
+- Take on the task of categorizing tweets regarding hate and offense levels, requiring you to sift through everyday communication styles critically.
+- In this task, your role is to analyze tweets and classify them according to specific categories, recognizing language that could be harmful, offensive, or neutral.
+- Your role is to sift through tweets to ascertain their content's alignment with defined categories concerning social decorum and respectfulness.
+- The task involves evaluating tweets and categorizing them based on their content related to hate speech, offensiveness, or neutrality. It requires an understanding of the nuances of language and social norms.
+- Assess tweeted messages for their potential derogatory implications and classify each according to established guidelines regarding hate and offensiveness.
+- You will look at a selection of tweets and determine how they should be classified regarding abuse or offensiveness, showcasing your understanding of language's power in community contexts.
+- This task entails assessing tweets for harmful or derogatory content. You'll decide whether each tweet constitutes hate speech, is simply offensive, or fits none of these labels.
+- Evaluate each tweet for its content and social implications, placing it into one of the three designated categories through analysis of language use.
+- The focus here is on understanding the intent and emotional impact of tweets, enabling you to categorize them as hate speech, offensive, or neutral without detailed explanations.
+- For this task, you will separate statements on social media into classifications based on their atmosphere—whether they are threatening, merely rude, or entirely benign.
+- Examine each tweet closely for contextual cues that would help identify if it's hateful, merely insulting, or benign overall.
+- The objective of this task involves reviewing tweets for potentially harmful or disrespectful language and deciding which category they best fit into.
+- Analyze language used in various tweets to determine if it constitutes Hate Speech or just offensive remarks, requiring careful consideration of each case.
+- This assignment requires you to determine the nature of social media communications by labeling them as hate speech, offensive statements, or neutral remarks.
+- Your job is to identify the nature of a tweet’s language. Decide if it promotes hate, is simply offensive, or is neutral.
+- Analyze the provided tweets and classify them into three groups based on their tone and intent, requiring sensitivity to language and context.
+- You'll be categorizing tweets based on their content. The challenge lies in identifying whether the language used is harmful, offensive, or benign.
+- Identify and classify responses on social media according to their potential impact—do they promote violence (Hate Speech), offend groups (Offensive), or are they benign (Neither)?
+- The challenge is to interpret the meaning behind tweets and judge them based on defined criteria for hate speech and offensive remarks, necessitating familiarity with social issues.
+- Classifying the given tweets involves understanding context and sentiment to effectively sort expressions into categories reflecting potential harmfulness or offensiveness.
+- Your role is to classify online statements by assessing their potential impact on audiences and determining if they're hostile, disrespectful, or neutral.
+- This exercise focuses on determining the appropriateness of language used in tweets by labeling them effectively based on your sensitivity to social issues around hate and offense.
+- By scrutinizing the language used in tweets, classify them into categories such as hate speech or offensive remarks versus neutral statements. Familiarity with societal attitudes towards various expressions will aid this task.
+- Analyze the sentiment behind various tweets and categorize them by understanding their potential impact—this includes distinguishing hate speech from merely offensive language.
+- You will classify several tweets based on their content, identifying whether they represent hate speech or current societal thresholds for offensiveness versus neutrality.
+- You will classify each tweet based on its potential impact on individuals or communities—identifying rhetoric that is either hateful, offensive, or benign.
+- You'll be involved in a classification process that highlights issues around language use on social media. Recognizing different layers of insults versus valid opinions is vital.
+- Engage with the sentiment conveyed in tweets to determine whether they promote violence, offend individual dignity, or remain neutral.
+- You will evaluate tweets to identify harmful or disrespectful language, classifying them appropriately into defined categories.
+- This task requires analyzing the sentiment and context of tweets to distinguish between hate speech, offensive remarks, and neutral statements.
+- Your role is to sort tweets based on their language's intent—decide if they represent hate speech, are objectionably offensive, or fit into a neutral category.
+- Your goal is to classify tweets by carefully evaluating the emotions they evoke and the potentially harmful messages they carry.
+- Carefully examine these tweets to identify whether they contain harmful speech directed at others, are merely offensive comments, or do not provoke any negative sentiments at all.
+- In this activity, you will evaluate various tweets to identify whether they contain hate speech, are simply offensive, or fall into the category of neither.
+- You will assess the emotional weight carried by certain phrases in tweets to categorize them accurately as either harmful rhetoric or simply offensive commentary, which highlights your analytical skills.
+- Analyze tweets for any signs of hate or offense, using your understanding of language nuances to properly categorize them into three specified groups.
+- Assess each tweet to judge whether it expresses hate towards a group of people, is simply rude or offensive, or if it's without any negative implication.
+- You are tasked with interpreting social media posts to identify and label content that either threatens individuals or is merely offensive in tone.
+- Evaluate tweets carefully for language usage that might indicate hostility or offense and assign them a classification accordingly while ignoring neutral content.
+- Your goal is to evaluate tweets based on their potential harm or offense. Distinguish between hateful language versus mundane expressions using your critical thinking and comprehension skills regarding social commentary.
+- This task requires you to interpret tweet content and assign it one of three labels based on its nature—either hateful, offensive, or neutral.
+- This task requires you to assess the sentiment of tweets. You need to determine if the expressions are harmful, disrespectful, or simply innocuous.
+- Carefully read the provided tweets and apply your understanding of language use to classify them into distinct categories regarding offensiveness and hatefulness.
+- Your job is to evaluate messages posted on social media and classify their tone or intent. This requires sensitivity to potentially harmful or disrespectful expressions.
+- Analyze tweets for their aggressive tone—are they promoting divisiveness through hate speech or simply being rude?
+- In this task, you will interpret the emotional weight behind social media messages and categorize them based on criteria for hate speech, offensiveness, or neutrality.
+- This task challenges you to critique social interactions on platforms like Twitter by categorizing expressions as either harmful, inappropriate, or benignly stated.
+- Your responsibility is to label tweets by interpreting their language and understanding the difference between hate speech, offensive content, and neutral statements.
+- Your job involves reading and understanding social media language to differentiate between harmful rhetoric and offensive comments versus neutral ones.
+- Your task is to interpret the intent behind tweet messages and place them into distinct categories that denote varying levels of societal acceptability regarding language use.
+- Determine the nature of the tweets by identifying whether they express hate towards a group, simply offend someone, or do not fall into either category.
+- Analyze the provided tweets for their underlying messages and categorize them into hate speech, offensive content, or neutral statements based on your understanding.
+- You must review tweets critically and categorize them while paying attention to both explicit language and implied messages that can be harmful.
+- The task involves evaluating tweets based on their content and categorizing them into specific classifications related to speech types, including hate speech and offensive language.
+- Your responsibility is to categorize the sentiments expressed in tweets accurately—whether they convey hate, offend individuals, or remain neutral in tone.
+- This task focuses on identifying potentially harmful speech in tweets and categorizing them into distinct types based on severity and impact.
+- Your role is to analyze tweets categorically as hate speech, offensive dialogues, or non-offensive expressions. Understanding the emotional weight certain words carry is pivotal for appropriate classification.
+- Evaluate the expressions found in tweets with an aim to categorize them based on their level of aggression or insensitivity towards individuals or groups.
+- In this task, examine the text of given tweets for hateful tones or offensive language and classify each tweet in one of three predetermined categories.
+- 'Your task is to classify tweets based on their underlying message: whether they contain hate speech, are merely offensive, or neither. This requires acute awareness of context and linguistic nuances.'
+- Classify the given tweets into appropriate categories by evaluating their language, tone, and intent, focusing on whether they promote hate, are offensive, or are neutral.
+- Your task is to evaluate a series of tweets and categorize each one based on whether it contains hate speech, is offensive, or is neither. You'll need to apply your understanding of language and social norms to make these distinctions accurately.
+- You are required to examine tweets and label them appropriately based on their content. This involves discerning between harmful rhetoric, disrespectful comments, or benign statements, which necessitates a thoughtful interpretation of the language used.
+- Analyze the provided tweets to determine their nature. This requires you to distinguish between potentially harmful expressions and general commentary without delving into specifics.
+- Determine the nature of each tweet by deciding if it crosses the line into hate speech, is merely offensive, or is completely neutral. Contextual judgment is key here.
+- This task involves a critical analysis of tweets to identify whether they include hate speech, are offensive, or fall outside these bounds; it requires sensitivity to language's implications.
+- Identify the sentiment of the tweets provided, categorizing them according to whether they are harmful expressions of hate, mere insults, or neutral observations.
+- Categorize tweets by evaluating their tone; consider whether they pose threats or simply offend without being hateful.
+- The objective here is to sift through various tweets and categorize them as either hate speech, offensive content, or neutral remarks. This requires sensitivity to language and social contexts.
+- The aim is to classify tweets as hate speech, offensive, or neither. This involves critical thinking and an awareness of current social discourse.
+- Your analysis will involve assessing statements within tweets for potential hate speech or offensiveness while also identifying neutral comments that do not meet these criteria.
+- This involves critical reading of online statements to assess whether they promote hate, merely offend, or lack any problematic content at all.
+- Your job is to determine if the language used in the tweet is threatening, merely offensive, or non-offensive by applying your understanding of context and social norms.
+- Review and categorize the tweets based on set criteria that distinguish threatening statements from those that are just offensive or neutral.
+- Evaluate the emotional tone of tweets and decide their classification—whether they incite hatred, express offense, or remain non-controversial.
+- Engage with the given social media content to discern its tone and impact—classifying it as hateful, offensive, or neutral based on specific criteria established for these categories.
+- Review given tweets and classify them according to their social implications. This involves recognizing instances of hate or offense and differentiating them from neutral expressions.
+- The task focuses on interpreting user-generated content to classify sentiments as either hateful, offensive, or harmless, which entails understanding context and implications.
+- You are tasked with evaluating the intent behind tweets, distinguishing between those that promote violence or discrimination and those that simply offend without malice.
+- Classify messages based on their emotional weight—whether they convey hatred, merely offend a person's sensibilities, or remain unrelated to both categories.
+- This task involves categorizing tweets based on their content. You need to identify whether a tweet falls into the category of hate speech, offensive speech, or neither.
+- You will classify the sentiment of various tweets by recognizing harmful rhetoric versus just rude comments along with neutral expressions.
+- The task entails assessing language within different tweets to recognize if they foster negative sentiments or maintain a neutral stance without inciting harm.
+- Analyze the given statements on social media for classification based on their language—deciding if they are hateful, offensive, or neutral in tone.
+- 'Analyze tweets to determine their tone and content. Classify each tweet into one of three categories: hate speech, offensive language, or neutral expressions. Understanding context and the impact of words is crucial for this task.'
+- Analyze the tone of each tweet to classify its content correctly. Understanding cultural and social implications is key for accurate categorization.
+- You will assess the social media text for its potential impact on individuals or groups and classify it accordingly based on harmfulness or offensiveness.
+- 'Your task is to read a tweet and categorize it into one of three specific groups based on its content: Hate Speech, Offensive, or Neither.'
+- In this task, you will analyze tweets for their tone and intent. The goal is to identify whether they contain hate speech, are merely offensive, or do not fall into either category.
+- Your task revolves around understanding digital communication dynamics by evaluating tweets for their potential offense or threat level towards individuals/groups.
+- Analyze the text provided in each tweet and determine the appropriate category based on the definitions given for Hate Speech, Offensive content, and Neutral statements.
+- Categorizing tweets based on their expressions involves understanding the fine line between expressions of offense and outright hate speech.
+- Use your critical thinking skills to classify tweets based on their messages, assessing whether they encourage violence, harass individuals, or are inoffensive responses.
+- This task entails classifying tweets based on the presence of hateful or derogatory expressions while recognizing tweets that do not fit these descriptions.
+- Your job is to evaluate the sentiment of tweets and classify them. You need to discern between potentially harmful speech and simply offensive language.
+- Engage critically with tweets by interpreting their messages and categorizing them into hate speech, offensive material, or neutral content based on societal norms.
+- This task requires you to detect underlying hostility or disrespect in tweets and classify them accordingly based on defined criteria for harmful language.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task904_hate_speech_offensive_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task904_hate_speech_offensive_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Here, you'll need to take commands expressed in simple terms about selecting specific records and express these as logical conditions that determine which rows should be retrieved from the dataset.
+- You will take descriptions aimed at extracting specific information from a dataset and reshape them into the precise logic-based queries that can be executed effectively on structured data systems.
+- Your goal is to recreate commands that capture the essence of given natural language queries, applying logical operators to specify conditions for filtering or aggregating data.
+- Your task is to conceptualize how to filter and access particular entries in a dataset by translating spoken or written language interpretations into precise logical commands.
+- You will interpret given verbal instructions and translate them into a structured format using logical operations that extract or compare data from a table.
+- In this exercise, you’ll take user-friendly language describing desired outcomes from a table and translate it into strict logical syntax suitable for querying databases. Knowledge of both language comprehension and logic is essential.
+- In this role, analyze statements describing conditions for rows in datasets, converting these descriptions into clear sequences of logical operations for execution.
+- Engage in translating spoken or written requests into a precise command structure that employs logical operators for accessing specific information within data rows.
+- You will translate descriptions of data requirements into specific commands using logical operators, demonstrating your understanding of data relationships and manipulation techniques.
+- You are expected to interpret textual analytics requests as formal logic queries, with a primary goal of enabling precise interaction with dataset rows.
+- You are tasked with understanding natural language instructions on data selection and crafting logical queries that succinctly capture the essence of the requirements laid out in those instructions.
+- Engage with natural language interpretations of data relations and formulate responses using defined logical constructs to assess or extract relevant information from tables.
+- Interpret requests for specific data manipulations articulated in common language, converting them into formalized logical expressions applicable to databases.
+- The goal is to interpret the intent behind language interpretations regarding record selections and express them as logical operations for systematic analysis of table data.
+- You will be converting everyday queries regarding data selection into formal commands that can effectively interact with tables. An understanding of logical operations and their applications is vital.
+- The task requires interpreting natural descriptions of logical conditions and converting them into structured command formats for effective data selection based on those parameters.
+- This task requires understanding how to extract and compare data from tables using logical representations of commands, ensuring the output matches the intended criteria.
+- This task challenges you to understand the relationship between textual queries and data manipulation, requiring clear reasoning about how to represent this with logical operators.
+- Your objective is to take natural language interpretations and produce a series of logical operations that accurately reflect the intended data queries and conditions.
+- This task requires you to process and translate queries into formal commands that utilize logical operators to extract specific data from a table.
+- As part of this task, you will reformulate user-specified conditions for data extraction into structured logical operations, ensuring clarity in how data requirements are represented technically.
+- This exercise encompasses generating logical statements that align with natural language descriptions, emphasizing accurate data selection and computational results.
+- This task focuses on reading descriptions of data filtering and summarizing requirements, and crafting corresponding logical commands that operate on tables filled with relevant records.
+- This job requires careful analysis of narrative descriptions to construct logical queries that distinctly manipulate tabular data based on specific criteria defined in the text.
+- Your objective is to articulate logical representations of queries derived from natural language explanations focusing on specific records from a dataset.
+- You will be tasked with formulating logic-based commands derived from narrative descriptions, focusing on the retrieval and comparison of table data.
+- The mission involves interpreting requests about selecting or analyzing table rows and formulating these requests as formal logical operations, which necessitates familiarity with operational concepts in logic.
+- You will analyze commands expressed in simple terms and translate those into formal logical operations needed to filter records in a structured dataset based on defined criteria.
+- In this task, you'll interpret verbal directives focused on data characteristics and formulate the necessary logical operations to identify and select relevant rows effectively.
+- Focus on how natural language can express needs around retrieving or evaluating information, and represent this as commands for manipulating data tables logically.
+- This task requires you to break down natural language interpretations into structured logical commands. Focus on matching the intent of the query with appropriate data selections from the table.
+- Your task consists of reading natural language statements indicating how to manipulate table data and translating these instructions into formalized commands utilizing predefined logic rules, demanding a blend of linguistic skill and analytical thought.
+- You will interpret detailed narratives about database querying and give them a logical framework using defined operations suitable for record retrieval tasks.
+- Your task is to understand the specified criteria in plain language and convert that understanding into formal logical commands for data selection.
+- The task requires analytical skills to interpret various conditions specified in plain language and convert them into structured commands for extracting data from tables.
+- You’ll need to analyze descriptions of desired data characteristics and formulate commands that accurately represent these requirements using logical expressions.
+- Your mission is to take commonly used language expressions pertaining to data requests and translate them into formalized logical expressions that successfully filter desired outputs from a dataset.
+- Your responsibility is to interpret nuanced instructions in everyday language pertaining to datasets and encapsulate them within a formal logic framework suitable for querying.
+- This task challenges you to interpret natural language requests into formal commands using logical operations to select rows from a table based on defined criteria.
+- You will generate commands that perform logical operations on data, interpreting written instructions that describe the desired selection or computation involving rows in a table.
+- Your assignment consists of interpreting statements about data requirements and generating the corresponding logic-based commands that reference specific rows and their attributes.
+- The core of this task involves crafting specific logical commands that comply with criteria stated in natural language using systematic interpretation of operations.
+- In this task, you will transform user requests into logical commands that select and manipulate data within a table based on specified criteria.
+- In this task, you will create logical operations based on given interpretations to extract relevant rows or data from a dataset.
+- The focus of this task is on transforming narrative explanations regarding table queries into exact command formats using logical reasoning, emphasizing critical thinking abilities applied to data filtering techniques.
+- The task entails creating structured commands reflecting given natural descriptions about selecting or counting rows from a data table based on specific attributes.
+- This task involves interpreting natural language commands that request logical operations on a table of data. You will need to translate these requests into appropriate logical commands.
+- Your role is to decode verbal instructions regarding data and map them onto logical operations that can manipulate specified rows according to given criteria.
+- The task involves translating natural language requests into structured commands for querying a table. Understanding logical operations is key to formulating the correct command based on the provided interpretations.
+- The objective is to derive commands from informal language interpretations, employing logical operations for managing and querying rows in a database-style table.
+- This task centers around reading a specification about data selection criteria and formulating it into logical operations that represent the requested data manipulations.
+- This task involves interpreting given instructions in everyday language and translating them into commands that apply logical functions to table data.
+- You will convert general descriptions related to databases into specific logical commands, highlighting your understanding of both the operations and the underlying data context.
+- This task involves decoding instructions in natural language to construct logical queries that retrieve specific rows of a table according to specified conditions.
+- In this exercise, you will take everyday language requests and convert them into logical commands that filter rows based on specified conditions. Familiarity with logical operations is essential.
+- The task involves translating directives expressed in plain language into formal logic commands that select or compute specified data points from an organized table.
+- This exercise is about understanding what information is being requested in natural language and then structuring it into a logical operation for effective querying of tabulated data.
+- This task challenges you to construct precise logical expressions based on provided interpretations, working with diverse operations on data tables to achieve the desired result.
+- The task involves interpreting natural language commands related to data selection from a table. You need to formulate logical operations that represent the given instructions accurately.
+- The challenge lies in deriving logical structuring from natural language descriptions to effectively manipulate and query datasets stored in tabular form.
+- This process involves breaking down user commands related to data selection into structured logical expressions. You must grasp both the language of the request and the properties of the dataset.
+- The objective is to recognize the essence of given natural language requests and reformulate them into logical commands suitable for data manipulation.
+- In this activity, you must decode descriptions of data queries and represent them using appropriate logical operations to access relevant rows within a structured dataset.
+- The aim is to bridge the gap between descriptive requests for data entry selection and their implementation via logical command frameworks suited for database operations.
+- The work involves taking verbal instructions regarding data analysis and translating them into systematic commands that can effectively query tables, requiring attention to detail.
+- In this task, you'll convert verbal descriptions of data retrieval into structured commands. The goal is to identify relevant rows based on criteria defined in plain language.
+- The goal is to convert statements that describe criteria for selecting table rows into a structured command format using logical operations.
+- This task entails synthesizing natural language interpretations into compact logical operations, encapsulating complex querying capabilities for efficient data extraction from tables.
+- In this task, you'll interpret natural language commands and translate them into logical operations that select specific rows from a table based on given criteria.
+- You must read a given scenario and develop a set of logical functions that will return desired outcomes based on data found in a structured format.
+- In this exercise, the focus is on generating commands that mirror the intent of natural language queries aimed at selecting table records based on certain conditions.
+- You will analyze commands that describe desired data outcomes and convert them into formal logic representations to aid in generating relevant database queries.
+- You’ll be engaging with natural language interpretations of data queries, requiring the conversion of these descriptions into logic-based commands for straightforward data selection.
+- Your challenge is to analyze natural language interpretations of commands and convert them into logical operations to filter data rows from a table.
+- You will analyze statements about data attributes and conditions, providing an equivalent command structure that performs those required actions in a dataset context.
+- Analyze the given interpretation of a request to generate commands that manipulate and extract information from a dataset. The focus is on filtering and selecting specific rows based on defined conditions.
+- The task involves generating logical commands based on natural language interpretations to filter and analyze data from a table.
+- In this task, you'll convert descriptions of data requirements into formal commands that define filters or criteria for selecting rows from datasets.
+- This task involves understanding requests regarding table data and translating them into logical functions to extract meaningful insights or counts based on given parameters.
+- The task requires you to develop commands based on specified conditions for filtering or aggregating data within a table, utilizing predefined logical operators.
+- Your objective is to parse requests about working with data records and express these requests using clearly defined logical statements for effective row selection based on set parameters.
+- The goal is to decode natural interpretations of data queries into precise logical language forms, demonstrating competence in both linguistics and computational thinking.
+- Your objective is to reformulate natural language queries about table content into concrete logical operations capable of executing specified filters and generating row counts.
+- Your responsibility is to translate natural language instructions into formal commands that effectively filter and process rows in a dataset based on specified criteria.
+- The work involves articulating natural language queries into formalized logic expressions that facilitate the manipulation of tabular datasets effectively.
+- Your task is to convert natural language commands into structured logical operations that interact with data tables.
+- This involves transforming descriptions of logic-based actions into defined operations aimed at filtering or calculating values from tabular datasets.
+- In this task, you will convert descriptive statements into structured commands that manipulate rows in a table according to specific conditions and criteria.
+- This task focuses on converting everyday language requests into commands that utilize logical operators to filter and analyze rows from provided data sets.
+- The task involves translating natural language descriptions into logical commands that retrieve specific data from a table.
+- You will analyze requests that describe the manipulation of data rows and formulate appropriate logical expressions to filter and summarize the information.
+- You are responsible for transforming spoken or written instructions about database queries into precise logical formulas. Familiarity with various logical operations will help create effective queries.
+- In this exercise, you will translate English phrases describing data conditions into command structures defined by logical operators. It entails recognizing relevant conditions and correctly applying rules of logic.
+- This task requires you to interpret descriptive statements about data selection and transform those statements into logical queries for extracting information from a table.
+- Here you will hone your ability to turn everyday questions about data extraction into logical command structures, emphasizing accurate interpretation of stated conditions.
+- This task emphasizes transforming everyday language describing data needs into technical commands that accurately reflect filtering and selection processes in databases.
+- Your goal is to take natural language queries and express them using defined logical operations. This requires understanding both the query and the structure of the data table.
+- This task focuses on deciphering language-based queries about data records and translating them into formal logic expressions designed to filter rows as requested.
+- The challenge involves analyzing statements about data records and forming corresponding commands that execute operations like filtering, comparing, or aggregating.
+- The goal is to take natural language statements regarding data selection and turn them into formal commands. A solid understanding of data filtering and manipulation techniques is necessary for success.
+- You will work with descriptions that relate to data selections, applying logical formulations to specify how to compare or filter entries in a data table.
+- In this task, you will convert descriptions of data queries into logical commands. This requires a good grasp of how to manipulate and filter data from a table using specific logical operators.
+- The task involves interpreting natural language commands to formulate logical operations that manipulate data from a table, highlighting proficiency in data querying.
+- This task entails deriving precise commands from qualitative language input, focusing on functions like counting or filtering based on specified conditions present in the data.
+- Your objective is to generate logical operations from textual queries. This involves understanding what information is requested and how it corresponds to the data present in the table.
+- In this task, you need to analyze language queries about datasets and construct commands using logical operators to fulfill specified filtering or calculating tasks.
+- Your challenge is to process sentence-like inquiries into structured logical operations so that they can interact with and draw from a given table effectively.
+- The mission is to interpret narratives about table selections into executable logical statements using defined operators for filtering, counting, or comparing row values.
+- You will interpret a natural language command, identify the relevant data fields, and create logical expressions to extract specific records from a given table based on those descriptors.
+- The focus here is on interpreting user queries regarding data constraints and expressing them in terms of logical operations that can be executed on a table.
+- You need to transform spoken or written instructions into specific operations that manipulate and retrieve information from a dataset, focusing on logical relations among the data.
+- You must generate logic expressions based on interpretations of natural language descriptions, showcasing skills in both language processing and logical reasoning applied to data.
+- In this activity, you will analyze descriptions of what you want from a table and create commands that fulfill those requirements through logical operations.
+- You must engage in logical reasoning to translate human language instructions into formalized commands for effective data manipulation from tables.
+- The core of this task lies in analyzing requests for accessing specific datasets and translating them into logic-based retrieval commands applicable to structured tables.
+- You will need to understand a set of instructions in plain language and compile them into logical commands that specify which rows to filter from a dataset.
+- Your job is to discern the meanings of natural language descriptions and create a command using logical functions to retrieve or verify information in a table.
+- You should convert informal language regarding data filters and queries into formalized command structures that utilize logical operations, highlighting your understanding of abstract reasoning in data management tasks.
+- The assignment involves taking phrases that reference tabular data and restructuring them using logical operations to define complex row selections based on criteria mentioned.
+- This task requires you to take a narrative description of a data query and transform it into a structured logical command to extract relevant information from a table.
+- Your assignment is to take various conditions outlined in everyday language and express them as logical operations that can be executed on a table of data.
+- This task involves interpreting natural language queries into logical operations that extract specific rows from a data table. You must understand the relationships and conditions described in the queries.
+- Your responsibility is to derive logical formulas that align with specified data requirements, requiring a good grasp of both the content domain and logical structuring.
+- In this task, your role is to formulate logical queries dictated by everyday language interpretations so that they can be applied to filter relevant information from tables.
+- The objective is to interpret natural language commands regarding data retrieval and create logical operations that enable the selection of appropriate records from a database.
+- This task requires you to extract meaningful instructions from a textual description and convert them into structured operations on a dataset, focusing on comparisons and filters.
+- You will be analyzing verbal requests that outline specifications for data retrieval and translating them into logical commands that reflect the same criteria when applied to a table.
+- Your role is to interpret commands expressed in natural language, then construct logical operators that define how to interact with the given table data.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task210_logic2text_structured_text_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task210_logic2text_structured_text_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

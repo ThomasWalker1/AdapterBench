@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your goal is to synthesize information presented in text form into logical SQL queries, accounting for all specified criteria and data requirements without missing key details.
+- Utilize your expertise in Structured Query Language to develop a query from provided natural language prompts regarding data selection criteria.
+- This task requires a deep understanding of relational databases, allowing you to take complex English descriptions and distill them into concise SQL statements.
+- Your task is to derive coherent SQL instructions based on complex descriptions of how different elements in a database should interact during data retrieval operations.
+- Engage with a set of detailed instructions regarding database transactions and synthesize these into an accurate and functional SQL query.
+- The task at hand is designed for someone skilled in SQL querying. You must comprehend multi-step instructions regarding data retrieval and formulate them into a correct and efficient SQL statement.
+- You need to synthesize multiple steps outlined in a textual description into a single, coherent SQL statement that accurately retrieves the desired information from a database.
+- You are tasked with converting natural language requests into SQL code. This requires knowledge of database concepts and querying techniques.
+- The task requires you to take a multi-step procedure described in plain language and condense it into a coherent SQL statement that adheres to the specified conditions.
+- This exercise is centered around turning verbal requests for specific information from databases into structured SQL queries while ensuring all parameters indicated in the description are accurately reflected in your output.
+- You are expected to distill an English explanation into an SQL query that reflects the operations needed on specified tables with corresponding criteria and conditions.
+- You are asked to create an SQL query based on a description of data selection and manipulation. This task tests your comprehension of relational databases and SQL commands.
+- Your task is to understand a series of requirements for gathering information from a database and represent this understanding through an SQL statement reflecting those requirements.
+- This task is about interpreting a summary of database actions and converting it into a precise SQL command that achieves those actions efficiently.
+- Your task is to analyze narrative requests about data collection and articulate a cohesive SQL statement that encapsulates all instructions provided. Mastery of SQL operations is key in this process.
+- You will be crafting SQL statements based on detailed descriptions of how you should gather and analyze data from different tables within a database.
+- This activity involves breaking down requirements presented in plain English and converting them into a formal SQL statement capable of retrieving specific data from one or more database tables.
+- Your responsibility is to parse English language descriptions of table relationships and extraction conditions into well-structured SQL queries for accurate data retrieval.
+- This task requires you to understand detailed descriptions of data operations and create a single SQL statement that meets all specified requirements. Familiarity with SQL components like SELECT, FROM, and WHERE is essential.
+- You are expected to create a singular SQL query based on a detailed set of requirements provided in plain language. Mastery of SQL concepts like SELECT, WHERE, and JOIN is essential for this task.
+- Formulate appropriate SQL code based on descriptions that involve selecting and filtering information from tables according to specified conditions. Understanding relational databases will aid your execution.
+- Analyze multiple steps of data handling described in plain language, then articulate these steps as a cohesive SQL command that executes the intended query effectively.
+- In this assignment, you will formulate SQL queries from given descriptions. It requires an understanding of SQL syntax and the ability to analyze specific data retrieval needs.
+- The task involves translating an English description into a corresponding SQL statement that embodies the specified data retrieval operations.
+- Convert natural language instructions regarding database interactions into a precise SQL statement. A strong grasp of SQL language structure will help you accomplish this.
+- Your task involves synthesizing statements about what data needs to be retrieved and formulating those requests into concise and correct SQL queries.
+- You are asked to distill a narrative description of data needs into an executable SQL query. Focus on how to effectively select, filter, and group data as indicated by the instructions.
+- You’ll be transforming descriptive phrases about query requirements into effective SQL syntax. Attention to detail will be vital in accurately capturing the intent of each step.
+- The task involves interpreting English descriptions to create SQL queries. You must understand the structure of SQL statements and how to extract data effectively.
+- The main challenge lies in taking narrative descriptions of data selection and transformation processes and translating them into accurate SQL commands for database interaction.
+- You are expected to identify key components of English descriptions regarding database operations and reflect them accurately in corresponding SQL statements.
+- You are required to analyze given English sentences explaining how to retrieve specific data from one or more tables and translate them into proper SQL syntax.
+- This task entails analyzing descriptive instructions related to relational databases, both gathering and sorting information, then formulating them into one SQL query.
+- You are required to read a detailed series of instructions regarding data retrieval from a database and convert those instructions into a single SQL query that encompasses all steps.
+- The objective here is to take an English narrative that outlines steps to fetch or manipulate data from tables and construct a valid SQL statement based on that outline.
+- Your task involves deciphering English text detailing certain data inquiries and crafting corresponding SQL commands that fulfill all stipulated requirements effectively, utilizing proper SQL conventions.
+- You are expected to read through provided English statements about data processing requirements and convert them into structured queries using SQL syntax.
+- The task requires you to understand how different database operations interact with each other, allowing you to translate a complex English description into a streamlined SQL statement that performs those operations.
+- Using an English description as your guide, your goal is to create a precise SQL command that retrieves specified columns from a database while adhering to any conditions mentioned.
+- In this exercise, you will take plain language requests related to data and formulate corresponding SQL queries. This requires knowledge of SQL syntax and functions used for querying databases.
+- You'll read an English narrative detailing how to extract and manipulate data from database tables, then construct a singular SQL query based on that information.
+- In this task, you are required to interpret a complete set of instructions that describe what data to extract and how. Use your understanding of SQL syntax to construct a query that fulfills these instructions.
+- You are tasked with reading a sequence of instructions related to database queries and crafting a corresponding SQL command that accurately captures the essence of those instructions.
+- Convert plain language requests regarding dataset queries into formal SQL code, reflecting all user desires for specific fields, conditions, or ordering of results.
+- This task focuses on understanding an English narrative about data retrieval and constructing an SQL query that matches the demands of that narrative in an efficient manner.
+- Here, you’ll encounter descriptions detailing how to navigate through tables and relationships in a database environment. Your job is to create an SQL query that adheres to these guidelines.
+- Given an English narrative detailing steps to extract information, your role is to construct an appropriate SQL query that fulfills the described criteria.
+- The task requires you to capture complex instructions conveyed through descriptive text and transmute them into an executable SQL statement capable of serving database queries accurately.
+- The challenge is to convert a comprehensive explanation of database actions into a single, effective SQL command that accurately matches the described requirements.
+- Use your analytical skills to take multi-step data extraction instructions and channel them into one succinct SQL statement that meets all outlined specifications.
+- The goal is to distill specific rules for data extraction from narrative context into well-formed SQL syntax that carries out the desired operations on database tables.
+- In this task, your goal is to translate an English description of a data operation into an SQL statement that performs that operation on a database.
+- Engaging with descriptive language about data structures, your role is to build comprehensive SQL queries that execute the outlined retrievals from tables effectively.
+- Your work involves distilling complex English descriptions about multiple data actions into single SQL statements while taking care of the necessary syntax.
+- Here, you are challenged to interpret detailed operations described in common language and codify them as a functional SQL statement tailored to retrieve specific data.
+- Interpret the requirements given in English and express them as an SQL statement. This involves understanding which tables and fields are relevant for retrieving the data that meets the stated conditions.
+- Analyze and comprehend data-related inquiries stated in natural language, then construct corresponding SQL statements that capture the essence of those inquiries in code.
+- This task focuses on converting detailed instructions regarding database queries into succinct SQL commands. Knowledge of how different clauses of an SQL statement work together is critical for success.
+- This task entails reading an English description and devising a corresponding SQL query that fulfills the stated requirements, showcasing your database querying skills.
+- Your job is to create an SQL statement reflecting complex instructions on how to gather information from one or more tables based on specific conditions laid out in narrative form.
+- You'll be working on creating an accurate SQL query based on logical steps outlined in English. Your understanding of databases and proficiency in SQL will guide you through the interpretation process.
+- You will analyze and convert an English description into an SQL statement that effectively selects or summarizes data as described, ensuring all necessary conditions and operations are included.
+- You'll engage with textual instructions regarding data selection and organization within a relational database, crafting suitable SQL statements that align with those instructions for effective data management.
+- Craft a single SQL command that satisfies complex requirements outlined in plain English. This combines logic skills with technical knowledge of querying databases.
+- You will interpret a series of requirements related to data relationships in databases and assemble them into one tidy SQL statement.
+- You are required to take verbal specifications for data retrieval and express them as SQL code. Proficiency in SQL query formulation is essential for this task.
+- You must interpret English directives regarding data retrieval methods, then wage them down succinctly into appropriate SQL queries that meet those specifications.
+- The goal here is to build a proficient understanding of how different elements of an SQL query work together based on comprehensive descriptions, then replicate that understanding through query creation.
+- Your job involves interpreting a detailed description of data requirements and translating it into an SQL command to extract or manage the specified data from tables.
+- The task here is centered on crafting precise SQL queries based on high-level descriptions of data conditions and relationships within a potential database environment.
+- This task involves carefully analyzing a statement about required data and accurately expressing it in SQL syntax to retrieve the desired output from database tables effectively.
+- In this activity, you will take a verbal request about data retrieval and translate it into SQL code, focusing on the correct syntax for selecting and filtering data from a database.
+- You will navigate between plain language instructions regarding database interactions and their translation into SQL, emphasizing clarity and correctness in querying.
+- Your focus should be on extracting relevant information from written descriptions about database operations and expressing that as functional SQL statements that meet specified criteria.
+- You will receive descriptions of tasks that involve data selection from tables, and your job is to express these tasks as SQL statements that accurately reflect the desired conditions.
+- This task asks you to take information about data sourcing and organize it into an effective SQL command that aligns directly with the articulated requirements of the description.
+- In this challenge, you need to read instructions written in plain language concerning database access and then render those instructions as an efficient SQL statement that retrieves the correct information.
+- You are tasked with constructing a precise SQL query based on a provided narrative that outlines what data needs to be retrieved or manipulated within a database.
+- Engaging with this task means understanding both natural language descriptions and database concepts to create SQL queries that meet specified criteria effectively.
+- The objective of this task is to transform a narrative about what information is needed from a database into a functioning SQL statement that accurately represents those needs.
+- The main objective here is to translate descriptive queries about data extraction into accurate SQL syntax. It's vital that you pay attention to the specific conditions mentioned in each description.
+- Your role requires analyzing detailed descriptions of relational database tasks and expressing them as SQL queries to capture the intended dataset.
+- You need to analyze a provided scenario about database operations and write a singular SQL command that retrieves the necessary data as outlined in the description.
+- In this assignment, you will synthesize information provided in narrated steps about data retrieval and aggregation, creating an accurate SQL statement in response.
+- You will take descriptive information regarding data selection from tables and transform it into an SQL query that executes the given instructions as intended.
+- This exercise requires an understanding of both the English language and SQL structure; you'll need to ensure that your output reflects the original request accurately in code form.
+- Utilize your knowledge of databases to interpret descriptions provided, ensuring each SQL statement you craft accurately represents the user’s intended database interaction.
+- In this exercise, you must transform descriptions of data-related tasks into functioning SQL queries. Understanding how tables relate to each other and how to query multiple conditions will be crucial.
+- You will engage in the conversion of detailed English descriptions into singular effective SQL queries, demonstrating your understanding of relational databases.
+- The purpose of this task is to integrate narrative fragments outlining business rules for data access into explicit SQL queries, ensuring correctness while navigating through relational concepts.
+- You will be tasked with deriving an SQL statement from provided descriptions about how to manipulate and access data stored in structured databases.
+- The objective here is to take a multi-step instruction in plain English regarding database interactions and formulate it as an SQL query capturing all specified elements.
+- The goal is to accurately reconstruct an SQL query from sequences of logical steps described in plain language while considering the relationships between different tables in a database.
+- Your job is to examine detailed descriptions about selecting or manipulating data in databases, providing clarity through well-constructed SQL commands for realization of these tasks.
+- Your challenge is to take detailed descriptions of database operations and translate them into structured SQL commands capable of performing those operations correctly.
+- Your mission involves taking multi-step instructions related to database queries and integrating them into cohesive SQL code that performs as necessary.
+- The focus here is on interpreting various steps outlined in English descriptions of database operations and accurately reflecting those steps through SQL syntax.
+- This task requires you to take a verbal explanation of data processing steps and convert it into a functional SQL query that fulfills those requirements.
+- You are tasked with crafting a precise SQL query derived from a descriptive account of how data should be accessed and processed according to specified rules.
+- This activity requires you to delve into narrative information regarding databases and condense that into well-formed SQL statements that accomplish the specified tasks.
+- This challenge involves taking explicit procedural tasks concerning data extraction from tables and distilling them into coherent SQL queries that fulfill all requirements at once.
+- This task invites you to bridge English language descriptions of relative database operations into precise SQL syntax, aligning with the procedures indicated in the instructions.
+- Your task is to encapsulate a set of requirements for data retrieval into a single, correct SQL statement. Understanding how various SQL functions can be applied is critical here.
+- Your responsibility is to convert a comprehensive set of criteria for data selection, expressed in English, into an accurately structured SQL statement.
+- You are called to interpret multi-layered English instructions related to databases, translating them with precision into usable SQL queries that fulfill the outlined requirements.
+- This task requires you to read an English explanation of a data requirement and write a corresponding SQL statement that meets those requirements efficiently.
+- You are required to analyze a description that outlines steps for querying a database and synthesize it into one coherent SQL statement.
+- The assignment requires converting explicit procedural descriptions about database tables into concise SQL syntax that correctly retrieves or manipulates the specified data.
+- Your mission involves interpreting instructions related to data queries in English and converting them into structured SQL statements, facilitating effective data management.
+- This exercise is all about clarity in translation—taking verbose explanations about data retrieval requirements from English into concise, readable SQL statements, showcasing your understanding of both languages.
+- The objective is to create an SQL statement that reflects the operations described in text form, which may include joining tables, filtering data, or aggregating results.
+- The goal is to merge your understanding of database structure and SQL language to generate a single statement that fulfills the requirements presented in an English scenario.
+- The objective is to analyze a multi-step description and streamline it into one coherent SQL query. Comprehension of SQL functions and their applications is crucial.
+- You must logically piece together multiple steps of a data retrieval process from English descriptions to create one efficient SQL statement that captures all intended results.
+- Your task is to convert an English description of a database query into an SQL statement that accomplishes the specified goals. This requires an understanding of SQL syntax and the operations involved.
+- In this task, you'll translate user-specified needs for information into executable SQL commands that determine how rows and columns are selected from databases.
+- Engage in constructing an appropriate SQL command from a detailed description of database filtering and selection processes. Accuracy in translating these requirements is essential.
+- In this task, you interpret detailed instructions about how to retrieve specific information from databases and compose the corresponding SQL statements accordingly.
+- The task focuses on understanding descriptive requirements regarding data and accurately converting them into executable SQL queries through logical reasoning.
+- The objective is to synthesize various database operations into one coherent SQL statement based on the outlined steps provided in plain English.
+- You will analyze verbal explanations of database interactions and transform them into compatible SQL queries. This requires both language interpretation skills and knowledge of SQL.
+- In this task, use your knowledge of database queries to formulate an SQL statement that follows the criteria laid out in the text brief. You need to understand how different clauses work together in SQL.
+- You'll harness your understanding of both the purpose of SQL commands and the complexities of natural language to formulate coherent queries from descriptive texts.
+- The task involves translating a set of step-by-step English descriptions into an accurate SQL statement that reflects the specified operations on database tables.
+- The task involves translating an English description of a database operation into a specific SQL query. It requires understanding how SQL statements are structured and how different clauses function.
+- Your role is to read through a descriptive scenario involving database operations and produce the corresponding SQL query that reflects those operations effectively.
+- This task consists of taking an English expression of a task involving database queries and transforming it into standard SQL syntax that accomplishes those goals.
+- The goal is to effectively translate requirements about data retrieval from prose into practical SQL queries, using your understanding of both the language and database principles.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task077_splash_explanation_to_sql
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task077_splash_explanation_to_sql
+user_prompt_template: '{task_def}
+
+
+  {problem}'

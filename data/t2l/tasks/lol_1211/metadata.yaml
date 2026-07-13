@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The task involves dissecting pairs of succinct phrases about events or activities and judging their interrelation based on implied actions.
+- Delve into pairs of short event descriptions, evaluating whether an action specified within one directly falls under or complements what’s described in the other.
+- Analyze each pair of phrases for their conceptual connection, evaluating if one phrase can be seen as an elaborative step of the other.
+- The objective is to scrutinize given phrases and decide whether one indicates an action that directly forms part of another larger event.
+- This exercise challenges you to discern relationships between actions described in two phrases, identifying whether one phrase’s action contributes to or completes the other’s main action.
+- As you evaluate phrase pairs, you'll pinpoint whether there's a functional relationship indicating that one refers directly back to an element captured in another.
+- This task emphasizes recognizing relationships within language; you will determine if there’s an action in one phrase that exists as a subset or directly linked to what's expressed in another.
+- You will assess two separate phrases and decide if the second one encapsulates an action that is integral to or derived from the first phrase.
+- You are tasked with identifying how different events expressed in brief phrases relate, particularly looking for any inclusion of actions.
+- The task requires you to analyze two related phrases to see if there is an action or event in the Tail that fits into or supports the action stated in the Head phrase.
+- Evaluate pairs of events to determine if there is a sequential link where the Tail serves as a specific step arising from or leading to what is expressed in the Head.
+- Your mission is to explore how two phrases interact; assess if the second phrase outlines an action that fits into what has been stated in the first phrase.
+- Engage with two provided phrases, assessing whether one indicates an essential action related to fulfilling or progressing towards what is articulated by another phrase.
+- In this analytical task, consider whether a presented action expresses within its context as part of an ongoing scenario depicted by another phrase.
+- Conduct an analysis on pairs of actions expressed briefly, focusing on whether one indicates a necessary component or step within the situation outlined by another.
+- The task involves examining relationships between pairs of phrases. Check whether one phrase details an activity incorporated into what is expressed by another phrase.
+- You must dissect relationships between two phrases by determining if one describes a component of the activity highlighted in the other. Strong analytical skills are beneficial for success here.
+- This task tests your ability to discern connections between two actions, where you decide if one phrase suggests a step involved in another.
+- You will be dissecting pairs of phrases, examining them for connections, especially focusing on whether there's an inherent progression or step found within these actions.
+- In this exercise, you'll be comparing phrases to establish if one event corresponds with, or leads to, another action referenced in a related statement.
+- You are examining the relationship between short phrases describing events and actions, and you must judge if one pertains directly to the other.
+- Your role is to determine connections between two short events, identifying whether one includes or relates directly to what’s articulated in another statement.
+- Examine two provided statements to determine if there’s a sequential or functional relationship where one statement represents part of what is holistically described in the other.
+- In this task, you are given two related phrases and must analyze whether one phrase describes a specific action that is part of the larger action described in the other phrase.
+- You will review pairs of phrases and decide if the second one signifies an action that contributes to or is part of the first phrase's broader context.
+- Your task focuses on interpreting short phrases and clarifying if they share a sequence where one logically follows or pertains significantly to the other.
+- The goal here is to analyze two related phrases and ascertain whether one signifies an action that occurs as a part of the other, necessitating an understanding of temporal and contextual relationships.
+- Evaluate two events expressed in simple phrases and judge if one event necessarily includes or leads to the other outlined in the pair.
+- Delve into pairs of statements, focusing on their actions, and classify whether one describes part of an event portrayed in the other.
+- You will make judgments about linguistic relationships, identifying whether one expression contains or embodies a part of another in terms of action or intent.
+- This assignment is about understanding linguistic relationships between actions in short phrases, indicating whether one serves as part of another's sequence.
+- In this task, you will be given two short phrases and need to assess their relationship. Determine if one phrase describes an action or step that is part of the other.
+- This task calls for discerning whether there exists a hierarchical relationship between two statements, where one incorporates a specific action or result tied to another.
+- The task centers around discerning relevance between succinct phrases, specifically whether one describes an element occurring within the framework of another.
+- In this task, examine two short statements and make a judgment about whether one involves an action that can be framed as part of what happens in the other statement.
+- In this exercise, explore how pairs of statements relate logically; decide if there is an activity present in one that constitutes part of what has occurred in another.
+- The task involves exploring how wording interacts in descriptions of actions; you should determine whether one phrase implies a step within the activity detailed by another phrase.
+- The task calls for a determination of whether an action mentioned in Tail fits within the scenario described by Head.
+- This task requires you to identify if the action in the Tail phrase is a subset of the event stated in the Head phrase, focusing on how they relate to one another.
+- The challenge involves dissecting brief descriptions of events and recognizing if smaller actions contribute meaningfully to larger descriptions.
+- Your job involves scrutinizing two phrases to identify if one action elaborates on or can be seen as a step within the broader action described by another phrase.
+- Your challenge is to discern whether a specific action mentioned in one phrase aligns with an overarching activity described by another phrase.
+- Your job is to evaluate connections between two phrases, deciding if the second phrase represents an action that occurs within the context of the first.
+- In this task, investigate two provided statements and determine if actionable steps described are directly tied to ongoing events initiated in another statement.
+- Your task is to evaluate two given phrases in order to determine if one phrase describes an action or step within the context of the other.
+- Your task is to interpret pairs of phrases critically, identifying actions and events to see if they are directly related or sequentially connected.
+- This task involves two statements. You must decide if the second statement outlines a necessary step or action related to the first statement's event.
+- You will look at short phrases depicting actions and determine how they fit together, specifically if an action mentioned can be classified as part of, or integral to, a larger event.
+- Your responsibility is to navigate through two related actions and judge whether one is fundamentally inclusive of or tied closely to the other described.
+- You will investigate two distinct phrases, determining whether one encapsulates an integral action or event that feeds logically into the other.
+- Engage with pairs of events by examining their possible connections; ascertain if one can be viewed as an extension or next step following from another event.
+- You will evaluate the relationships between pairs of short phrases, deciding if they depict a progression from one event to another.
+- Consider this task as a way to explore cause-and-effect relationships between short events, identifying if actions depicted across these two phrases correspond meaningfully.
+- The task involves analyzing two related phrases to determine if one phrase describes an activity within the context of the other. It requires careful reading to establish connections between actions.
+- The task asks for an assessment of whether one phrase represents an integral part of another event. It emphasizes understanding linguistic connections and implications.
+- This task requires precision as you analyze each pair of phrases, determining if one represents part of an action detailed in the other.
+- Analyze paired statements regarding their potential relationship, focusing on identifying any actions denoted in one that would logically be part of executing what’s described in another.
+- Investigate two short event descriptions and ascertain if there's a direct connection wherein one represents a specific facet of what is happening in another.
+- This task involves comparing two short phrases to see if the second phrase indicates a step or an action that falls under the broader event described in the first.
+- This task requires you to interpret two events to see if there’s a significant action in the second that contributes toward accomplishing what’s stated in the first.
+- Assess pairs of phrases based on their meanings. Determine if one of them signifies an action that typically occurs within the framework of the other’s main event.
+- You need to review pairs of phrases and conclude whether there exists a connection whereby an action in one phrase supports or elaborates on the overall event mentioned in another.
+- The objective here is to evaluate two different events described in short phrases and determine whether one constitutes an action within another larger event.
+- 'Assess the relationship between two provided events: the first (Head) and the second (Tail), and classify whether the Tail represents a step within the Head event.'
+- The objective is to assess whether the action mentioned in one phrase is encompassed by or directly relates to the event presented in another phrase.
+- You are tasked with interpreting how two phrases interact, identifying if one describes an action pivotal to understanding or completing what’s mentioned in another phrase.
+- You need to examine two phrases and judge whether the second phrase can be seen as part of the action described in the first phrase. This requires understanding the relationship between events.
+- You will be given two short phrases, and you must decide if one phrase includes an action that is part of the other phrase.
+- You will work with two short descriptions per task and decide whether they logically connect through specific actions related to a subject.
+- Your job is to evaluate two phrases to determine if the action in the second phrase is a step within the event expressed in the first phrase.
+- This assignment involves understanding potential interactions between two phrases and assessing if one conveys an action that is part of or related to another.
+- This activity requires you to scrutinize two phrases and decide if the second one conveys an action related or subordinate to that of the first phrase.
+- In this exercise, two phrases are presented. You are tasked with identifying if the second phrase represents a specific step that falls under the broader action mentioned in the first.
+- You will need to discern if there’s an inclusionary relationship between two described events, determining if one can be seen as a part of the other.
+- You will engage with pairs of brief phrases, examining them for indications that one’s content serves as a part of or relevant step concerning what’s presented in another.
+- You will receive two statements; your objective is to analyze them regarding possible connections. See if one statement represents a step within what’s detailed in the other.
+- In this exercise, you examine two phrases and clarify whether one denotes an essential step related directly to the main event described by the other.
+- Assess two phrases side by side to identify whether there's an integral relationship between them, particularly if the Tail represents a concrete step within the Head's overall event.
+- The task involves evaluating two phrases to check if one indicates a step or action related to the other. It focuses on identifying the relationships between events in those phrases.
+- Your assignment entails measuring relationships between pairs of statements, focusing on whether one encapsulates an action that’s nested within another broader event.
+- The task involves analyzing two phrases, identifying their roles, and determining if one event is part of a larger action described in the other phrase.
+- The objective is to evaluate pairs of phrases, where you need to consider if there exists an actionable connection from the Tail that relates directly back to an overarching event in the Head.
+- In this task, you need to analyze two phrases to determine if one describes a part of the action or event represented by the other.
+- You are tasked with looking closely at multiple pairs of phrases, focusing on identifying key actions that link them together meaningfully.
+- Explore given pairs of phrases and decide whether there’s an active component in one that supports or leads into what is detailed by another component.
+- This task entails evaluating pairs of statements to see if one can be classified as a step or detail associated with another. Critical comprehension of language nuances is essential here.
+- Your job is to interpret two provided phrases and consider if the second phrase (Tail) describes an event that is encapsulated within the first phrase (Head).
+- You will consider two events presented in phrases and your goal is to see if one effectively describes a procedural step within the broader context of the other.
+- Analyze the connections between two given phrases; your goal is to determine if the second phrase represents an action that occurs as part of the event in the first phrase.
+- In this task, you must investigate whether an action specified in one phrase fits as a subsidiary part of the event detailed in another phrase.
+- Delve into two related phrases and assess if they depict actions where one modifies or contributes to understanding in relation to another.
+- Analyze the relationship between two given phrases; determine if the second phrase is an aspect of something represented in the first.
+- This challenge asks you to assess connections between brief phrases and decide if one action encompasses another in its description.
+- This task focuses on understanding the relationship between actions in two phrases. You must decide if one phrase depicts a part of the action expressed in the other.
+- You are asked to analyze phrases that describe an event and another that may contain a related action. Your goal is to determine if the second phrase is part of the first.
+- In this exercise, you will compare two phrases and identify if there’s a hierarchical relationship where one action falls under the broader context of another.
+- Your responsibility is to interpret two statements regarding events and discern if one statement reflects a step taken during the process described by the other.
+- In this task, you interpret two given phrases and assess if the latter is a component of the former, requiring an understanding of language and event structures.
+- Assess how two short phrases communicate actions, and conclude whether one clearly describes an aspect of what is conveyed by the other.
+- You must evaluate a paired set of statements, concentrating on whether they represent actions that can be understood as parts of each other’s context.
+- Your mission is to analyze short event phrases, connecting their meanings and identifying whether one can be subsumed as part of the narrative presented by the other.
+- The objective is to recognize if the event mentioned in one phrase includes or leads to an action referenced in another. This entails a careful examination of language and context.
+- You need to classify pairs of phrases based on their contextual relationship, particularly focusing on incremental actions that form part of a larger event.
+- The challenge lies in determining if one phrase encapsulates a part of the action denoted in another. It’s about recognizing different layers of meaning.
+- The focus here is on understanding how events are described in phrases. Assess whether one event can be seen as a step within the larger action indicated by another.
+- You need to identify whether one statement describes a necessary step or action related to another. This involves assessing how events are interconnected through their meanings.
+- The task is to discern whether the Tail phrase's action exists as part of the scenario laid out in the Head phrase, indicating a relationship between them.
+- For each set of phrases, you need to evaluate and conclude whether they signify interconnected actions or events within a broader context.
+- This task centers on connecting ideas within two different phrases and figuring out if actions described in one can logically follow from or exist within another statement.
+- You will review pairs of phrases to determine if they are linked, specifically checking if one describes a part of what’s happening in the other.
+- Explore the nuances between two phrases, determining their hierarchical relationship based on content and relevance regarding sequential actions.
+- Your task consists of determining whether there exists a connection between two mentioned actions, specifically assessing if one can logically be seen as part of the other.
+- The purpose here is to establish links between sequential actions based on concise descriptive phrases, determining their relational dynamics.
+- This task involves analyzing two phrases to determine if one phrase describes a step or action included in the other.
+- This task challenges you to understand how two short events might relate, particularly regarding whether one can be seen as part of or connected to another.
+- This task requires understanding how events relate to each other through sentence structure, specifically whether one event naturally follows from another.
+- You will evaluate two segments of text and determine if one segment describes a distinct step or action relevant to the broader concept expressed in the other segment.
+- You will be looking at how different phrases relate, particularly assessing if one signifies an engagement or step related to the action in another.
+- Examine each Head and Tail phrase to analyze whether the Tail phrase depicts an action directly linked to executing or completing the task described in the Head.
+- Your objective is to compare two short phrases and decide if the second phrase indicates an action involved in the first phrase.
+- You will assess whether an event in the “Head” phrase includes a step or action mentioned in the “Tail” phrase.
+- You are expected to parse two short events, deciding carefully whether there's a link where one describes a necessary component of the other's larger intention.
+- You will analyze each pair of phrases to check for a relationship where one phrase might represent a vital component of what’s described in the other.
+- Analyze the relationship between a pair of phrases and decide if the second phrase represents a component or action that is included in the first phrase's event.
+- Analyze the connection between two given phrases and indicate whether one phrase shows an aspect of what is encompassed in another.
+- You will explore whether the information in the Tail line logically follows or builds upon the event described in the Head line.
+- Analyze pairs of brief actions, focusing on their contextual relationships to conclude if one is fundamentally part of another referenced in the accompanying phrase.
+- The task entails determining whether an event mentioned in one phrase encompasses or explicitly includes an action described in another phrase.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1211_atomic_classification_hassubevent
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1211_atomic_classification_hassubevent
+user_prompt_template: '{task_def}
+
+
+  {problem}'

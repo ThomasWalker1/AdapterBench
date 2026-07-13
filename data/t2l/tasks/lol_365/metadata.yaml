@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Perform an operation on the provided text where every vowel must be eliminated to yield an output that consists exclusively of consonants.
+- Your job is to take a string and produce a new version that contains no vowels, focusing on the skill of analyzing and transforming written content.
+- Engage in a string manipulation activity where you remove all instances of the vowels from a given input, thus obtaining a condensed version made up of consonants.
+- Your role in this task is to transform a string by stripping away the vowel letters while retaining the rest of the characters exactly as they appear.
+- You are to extract just the consonants from given strings, eliminating any vowels present. This tests your ability to focus on specific letter categories.
+- This task revolves around processing strings to filter out vowels, resulting in a consonant-only output. You need to recognize that 'y' is not included in vowels.
+- Approach the task by processing strings to clear out any vowel sounds, revealing only the consonants left behind.
+- Here, you will engage in textual processing where the primary task is removing vowels from a sequence of characters. Clarity in vowel identification is key to this endeavor.
+- The task at hand requires you to take strings of text and systematically eliminate all instances of vowels. This means having clear recognition of the vowels when they appear.
+- Remove all vowel letters from an input string provided to you, ensuring that the final output highlights only consonant characters.
+- Your mission is to simplify the character input by erasing every instance of vowels while preserving other letters intact.
+- This task involves textual analysis as you sift through a string to remove any letters deemed as vowels, altering the overall composition of the input.
+- The goal here is to manipulate strings such that they exclude vowel characters entirely, capturing your ability to edit language effectively.
+- You will refine character sequences by purging them of any non-consonant letters, an exercise that tests your linguistic analysis skills.
+- You’ll need to eliminate specific vowel symbols from a collection of characters, resulting in a streamlined output that consists exclusively of consonants.
+- Your job is to take a sequence of characters and transform it by removing vowels while preserving the integrity of the non-vowel content.
+- The challenge is to take given sequences of letters and refine them by removing all instances of vowels while keeping other characters.
+- Your mission involves working with text strings and applying rules that dictate which letters should be removed based on vowel classification.
+- Focus on the text provided as you work to eliminate all vowel letters from the strings you receive.
+- This task involves filtering a string to exclude vowels. Pay attention to the characters being removed to ensure an accurate outcome.
+- You are tasked with cleaning up a string by discarding vowels. You'll need to be precise in identifying and excluding these specific letters.
+- The objective of this task is to take a string and filter it by removing every vowel present. It demands a careful reading of the text.
+- Focus on a given line of text where your objective is to delete any vowel elements, transforming it into a consonant-only format.
+- Engage with character strings while applying the rule of removing vowels, such as 'a', 'e', 'i', 'o', and 'u'.
+- You are asked to transform written text by removing letters defined as vowels from a given string.
+- You will be tasked with refining a character sequence by identifying and omitting the vowels, ensuring only consonants appear in your final output.
+- The task involves processing a string of characters by eliminating all vowels. This requires an understanding of which letters are considered vowels.
+- The goal of this task is to alter strings by cutting out the vowels, providing an output that only highlights the consonant sounds remaining.
+- Your objective is to parse through a series of letters and remove those identified as vowels, narrowing down the content to non-vowel letters.
+- The focus here is on simplifying strings by cutting out vowels from them. Mastery of this will improve your efficiency in handling text.
+- In this task, focus on how to edit character sequences by eliminating vowels, thus honing your skills in identifying and sorting different types of letters.
+- In this activity, you will take a character string and strip it of vowels, which include standard vowels like A, E, I, O, and U.
+- Engage with textual data by removing vowels from provided character strings. This exercise improves your analytical reading abilities.
+- You are tasked with finding every vowel in the given strings and removing them entirely while retaining all other letters intact.
+- This task challenges you to strip down a character sequence by excluding all vowels, demonstrating your skills in text analysis and processing.
+- Your duty is to filter through an assortment of letters, discarding those marked as vowels so that only the consonants are left intact.
+- Your responsibility is to revise provided strings by removing every vowel present. Fine-tuning your awareness of vowels will facilitate this process.
+- You'll engage with various strings and remove all vowel characters from them. This highlights not just text processing but also comprehension of letter dynamics.
+- Engage in this exercise where you'll take a string and methodically eliminate the vowels to produce a refined version.
+- You are tasked with editing a string so that it contains only consonants by eliminating every vowel character within the input.
+- You will engage in the process of vowel removal from textual strings, showcasing your analytical skills in character recognition and manipulation.
+- In this challenge, you’ll refine a list of characters by discarding vowels, allowing you to focus on the structure formed by non-vowels.
+- In this task, you will deal with strings and focus on stripping away specific characters categorized as vowels.
+- The task requires you to process a given string by extracting all non-vowel characters, which tests your understanding of vowel identification in English.
+- This task entails taking a given string and modifying it by removing all vowels. Careful attention to the characters is essential to properly execute this task.
+- Your responsibility is to analyze the given string and carry out the removal of vowel characters systematically.
+- You’ll be undertaking the modification of strings by systematically taking out any vowel characters, culminating in pure consonant outputs for each input string.
+- Your task is to identify and remove all vowel characters from a provided string of letters.
+- The objective is to take a sequence of letters and remove every instance of a vowel. This requires both comprehension of the task and careful execution.
+- The goal is to edit a provided string by extracting every vowel, focusing on the remaining letters and their arrangement.
+- In this exercise, your responsibility is to simplify strings by stripping them of any vowel characters. A thorough understanding of vowel definitions is needed.
+- This activity challenges you to extract essential parts of a string by excluding its vowels. Familiarity with the definition of vowels is necessary for success.
+- You need to manipulate a sequence of characters by stripping away all instances of vowel letters.
+- Your job is to manipulate a string by detecting and removing any vowel characters, resulting in a version that only shows non-vowel letters.
+- In this activity, you will process text by removing all vowel characters, thereby creating a new version of the original string without those letters.
+- Your task is to transform a string by carefully removing all vowel letters, which will enhance the focus on the remaining consonants.
+- The task is to edit a given string by eliminating all vowels, thus producing a version of the string that contains only consonants and specific characters.
+- This exercise involves taking a set of characters and refining it by discarding the vowels, preserving only the consonants.
+- The goal is to transform a given string by filtering out all vowels, leaving only the non-vowel letters intact.
+- You will address the challenge of creating a new string from the original by ensuring that no vowel remains in the final output.
+- The task requires you to interact with character strings in such a way that all vowels are stripped away, allowing for an unembellished character set.
+- You need to analyze a string and systematically remove every vowel from it, ensuring that only the non-vowel characters remain intact.
+- This task requires you to analyze strings and eliminate all vowels from them, resulting in a new version comprised entirely of consonants and non-vowel letters.
+- Focus on character strings and refine them by excluding vowels, allowing you to construct a variant of each string that maintains non-vowel elements only.
+- Your responsibility in this task is to transform words into their consonant-only forms by eliminating vowels, requiring careful observation and processing abilities.
+- You will work with text strings, focusing on identifying and removing vowels. This task tests your ability to manipulate characters within a string.
+- Your job is to analyze different strings and cleanse them by extracting only the vowel letters, which plays a pivotal role in shaping your output efficiently.
+- The exercise involves transforming character inputs by filtering out vowel sounds, displaying your understanding of alphabetical structures.
+- This task calls for careful string manipulation where you’ll be tasked with deleting vowels from input strings to emphasize what remains.
+- You will receive a string and your objective is to identify and remove any vowels from it, focusing specifically on the letters i, e, a, u, and o.
+- The core of this task lies in reworking strings by taking out all vowel characters, leading you towards outputs comprised solely of remaining non-vowel letters.
+- Prepare to focus on a string's composition as you work to remove its vowels completely, cultivating skills related to text editing and structure analysis.
+- This task expects you to scrutinize a set of characters and eliminate designated vowel letters, producing a string composed entirely of consonants.
+- The task invites you to distill strings to their essential consonant components by deleting all vowel characters. Pay attention to the vowels being removed for accuracy.
+- Take an input string and your goal is to cleanse it of all vowels while keeping the rest of the letters unchanged.
+- Engage in this task by taking a string and removing the vowels found within it. Your attention to detail will ensure that the remaining consonants maintain their order.
+- The task requires you to refine a given character string by taking out all instances of the vowels i, e, a, u, and o for clarity.
+- You are required to cleanse a series of characters by eliminating all instances of vowels, which hinges on recognizing the distinction between vowels and consonants.
+- Analyze the input string and filter out the vowels so that the remaining characters consist solely of consonants.
+- Engage in letter processing where your aim is to take out any character that fits the description of a vowel.
+- This activity involves examining and modifying strings by deleting vowels. It's a useful skill in various text-editing scenarios.
+- You are required to distill a given character string down to its consonant components, effectively filtering out all vowels.
+- In this challenge, you will receive a sequence of characters and must extract the consonants by omitting all vowels to produce a new string.
+- Engage in filtering out vowels from an input character sequence while maintaining consonant structures intact for better representation.
+- You will engage with character sequences where the goal is to remove vowels entirely, exercising both your critical thinking and editing skills.
+- You will be tasked with refining a string by scrubbing away any characters classified as vowels. This involves knowing which letters fall into that category.
+- This task involves analyzing a string and systematically removing characters defined as vowels, allowing only non-vowel characters to remain.
+- You are required to transform character strings by systematically removing any vowel letters identified within them, necessitating an understanding of vowel usage.
+- This task demands that you convert strings into a form devoid of vowels, underscoring the importance of accuracy in character filtering.
+- This exercise calls for clarity in text editing as you proceed to remove vowel sounds from strings, producing outputs that consist entirely of consonants.
+- Determine which components of your given text constitute vowels and eliminate them to fulfill this straightforward yet focused linguistic task.
+- You will analyze a string of letters and remove any vowels present. The task requires precision in identifying which letters are considered vowels.
+- The task focuses on character manipulation, asking you to remove certain letters (vowels) from a given string while leaving all other characters intact.
+- Your task is centered around altering strings so that only consonant characters remain. This indicates an understanding of English phonetics and spelling.
+- This task entails modifying a group of characters by excluding all those recognized as vowels, providing an output focused solely on consonantal sounds.
+- You are tasked with eliminating vowel letters from various input strings, concentrating on enhancing your text editing skills.
+- Here, your focus will be on differentiating between vowel and consonant letters within strings, excising the vowels for clarity in the final output.
+- You will concentrate on character manipulation, particularly in regards to the exclusion of vowels in presented strings.
+- This activity centers around identifying vowel characters in a string and discarding them, leaving behind just consonants.
+- You will be extracting knowledge from the character string supplied to you by removing every vowel among them effectively.
+- The job involves taking a mixture of characters and eliminating the designated vowel sounds, ensuring only remaining consonants are visible in your result.
+- This exercise requires you to take a string as input and output it without any instances of the vowels. Understanding which letters fall into this category is crucial.
+- In this exercise, your goal is to refine a given set of characters by taking away all vowel sounds, which requires knowledge of English language structure.
+- You are required to distill various inputs into their consonantal essence by meticulously excluding all characters defined as vowels from the original text.
+- Your assignment involves working with strings whereby your responsibility is to identify and excise all vowel characters to achieve a refined version of the input.
+- This task is about enhancing your ability to process strings through vowel exclusion techniques while retaining other essential characters.
+- Your objective is to modify a given input string by excluding vowels, thus creating an output that emphasizes its non-vowel components.
+- The aim here is to process strings by taking out vowels, which requires both linguistic knowledge and attention to character detail.
+- The challenge lies in taking a series of letters and removing every vowel within them, which sharpens your editing prowess and attention to detail.
+- You need to take a given series of characters and eliminate any vowel present in it, making sure that 'y' is not treated as a vowel.
+- Your responsibility is to refine textual input by eliminating vowel characters, showcasing your textual editing skills.
+- The objective here is to parse through a character string and remove all the vowels, demonstrating your skill at navigating text modification challenges.
+- You need to process a string of characters by removing specific letters classified as vowels. Focus on identifying and excluding these from the final result.
+- You will participate in a string modification task that centers on excluding any vowel letters. Precision in recognizing these vowels is key.
+- You will be working with character strings in this task, where your main goal is to produce a version that excludes vowels, sharpening your text-processing skills.
+- This exercise emphasizes refining textual input through the removal of all vowel sounds, demanding knowledge about which letters are categorized as vowels.
+- Focus on refining character strings by identifying and removing vowels; your final output should consist solely of consonants without any vowel presence.
+- You will take a set of characters and transform them by removing the vowels, which emphasizes your proficiency in recognizing and working with different letters.
+- Here, you are tasked with distilling a series of characters down to their consonants only, which demands careful inspection of the string provided.
+- This task involves processing a given string by identifying and removing the vowels while preserving all other characters. You need to know which letters are classified as vowels.
+- For this task, examine a character string and strip away vowels to create a new version that maintains only consonants and other symbols.
+- In this task, you'll modify strings by omitting specific vowel characters without adding explanations or justifications. It's about clarity in character selection.
+- You must examine provided strings critically and remove any letters classified as vowels, crafting an alternative string centered around its consonants.
+- This task involves taking a string of characters and removing all vowels from it, demonstrating your ability to identify and filter out specific letters.
+- Task yourself with editing a string to exclude any vowel sounds, focusing on the remaining consonants.
+- 'The goal here is straightforward yet precise: navigate through a series of characters and remove all vowels from them, underscoring your familiarity with what constitutes a vowel.'
+- In this assignment, you will manipulate a string by taking out all vowels while keeping the other characters intact. This practice enhances your capability with letter recognition.
+- Your task is to take a string of characters and eliminate all vowel letters from it. Familiarity with the concept of vowels is essential for this exercise.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task365_synthetic_remove_vowels
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task365_synthetic_remove_vowels
+user_prompt_template: '{task_def}
+
+
+  {problem}'

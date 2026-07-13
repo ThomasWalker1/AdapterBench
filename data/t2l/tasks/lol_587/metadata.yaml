@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You will examine a sentence expressing an opinion about a food product and verify if its conveyed emotion matches a specified polarity label.
+- Your job is to analyze Amazon food product reviews and identify whether they reflect the given sentiment. This will involve understanding the nuances of language to classify the review appropriately.
+- Scrutinize reviews of various food products to discern if the positivity or negativity expressed within corresponds accurately to a provided sentiment label.
+- Evaluate food product reviews by cross-checking their emotional tone against the specified polarity to ensure consistency.
+- You will read a food product review and assess whether its tone—positive or negative—corresponds with the given polarity.
+- You will be working with customer reviews of food items, analyzing their sentiment and checking if it aligns with annotations indicating positive or negative feelings.
+- Analyze and compare the emotional tone of a food product's review with an assigned polarity label, requiring keen insights into what feelings are conveyed by the author.
+- The focus here is on correlating customer satisfaction reflected in reviews with predetermined positivity or negativity markers.
+- Analyze a provided review to see if the feelings expressed in the text match the indicated positive or negative sentiment.
+- The task requires you to identify whether a customer’s opinion about a food product is consistent with the sentiment described in the label.
+- The objective is to identify whether each given food product review's sentiment agrees with its labeled polarity. An understanding of descriptive language is crucial for this task.
+- The goal is to assess whether a given review matches its described sentiment. This requires a careful reading to determine intent and emotional expression.
+- In this task, you'll read customer feedback about products and judge whether the indicated polarity reflects the sentiment shown in the review text.
+- Assess Amazon food product reviews for their emotional tone. You're tasked with identifying if that tone aligns with the stated polarity, whether it indicates satisfaction or dissatisfaction.
+- Your role is to determine if there’s harmony between how a food product is described in reviews and the specified emotional tone conveyed via polarity labels.
+- You must evaluate product reviews for potential discrepancies between their expressed feelings and designated sentiment labels, examining how they reflect customer satisfaction or dissatisfaction.
+- You will consider whether a review describes an experience positively or negatively and check if this matches an assigned polarity.
+- You will read consumer opinions on food items and figure out if their expressed feelings resonate with corresponding labels indicating positivity or negativity.
+- This assignment focuses on scrutinizing food reviews to determine the correctness of their alignment with an associated sentiment category.
+- The goal is to compare the sentiment expressed in a review to a designated polarity label and decide if they are in agreement.
+- Your task is to evaluate a review of a food product and determine if its sentiment matches the designated polarity. This involves understanding the feelings expressed in the review.
+- Scrutinize each provided food product review along with its specified sentiment. Determine if there is agreement between them through analytical thinking about wording and implications.
+- In this task, your responsibility is to critically assess a food product review for its sentiment alignment with assigned polarity, ensuring you recognize subtle gradations in expression.
+- The objective is to ascertain whether the sentiment expressed within product reviews coincides with their indicated polarity tags—either confirming satisfaction or discontent towards food items.
+- The task involves examining food product reviews for alignment between expressed feelings and assigned sentiment labels, necessitating comprehension from reading comprehension.
+- Examine provided product reviews from Amazon and evaluate if their emotional character aligns with a specific positive or negative polarity. Focus on understanding consumer experiences conveyed in text form.
+- Scrutinize customer reviews for food-related products to judge whether their feelings about those products align with a given positive or negative classification.
+- Your objective is to check the compatibility between a product review's sentiment and a provided polarity classification, judging whether they agree.
+- The focus of this task is on analyzing how accurately customer reviews convey their feelings regarding food products in relation to the labeled polarity indicators.
+- You will read Amazon product reviews and determine if they align with a specified sentiment polarity. This requires careful reading and interpretation of emotional cues within the text.
+- Your mission here is to connect emotional narratives within product reviews with predicated polarity labels, ensuring that they're in harmony or discord.
+- For each food product review, check if it communicates a sentiment that aligns with its labeled polarity. Understanding nuances in language will be essential here.
+- Assess Amazon food product reviews to determine if their sentiment aligns with the stated polarity. This involves understanding nuances in language and emotional expression.
+- Assess reviews for food products by determining if their overall sentiment accurately reflects the labeled polarity as positive or negative.
+- Analyze the provided review of a food item to see if the stated sentiment, either positive or negative, corresponds with the overall tone and meaning of the text.
+- Your responsibility is to interpret a product review and judge whether its tone corresponds to the designated positive or negative emotional classification.
+- Analyze consumer feedback on food products from Amazon, focusing on matching the general sentiment in each review with its assigned positivity or negativity as indicated by polarity.
+- Your task is to evaluate a review of a product based on the sentiment expressed and determine whether it aligns with the provided polarity, which is either positive or negative.
+- Figure out if the feelings expressed in customer feedback about food products coincide with their reported polarity. This analysis necessitates understanding emotional cues within narratives.
+- The task involves reading negative or positive opinions about food products and confirming whether the sentiment stated matches your interpretation of the review.
+- Interpret food product reviews by identifying whether the expressed opinions align with assigned sentiments. You must analyze both language and context deeply.
+- You will need to scrutinize reviews on food items for their emotional content, identifying discrepancies between their mood and assigned positive or negative labels.
+- Analyze product reviews to see if they match the given positivity or negativity. Determine whether the emotions in the reviews correspond with the assigned polarity.
+- You are tasked with checking if a food review's overall impression corresponds with the given sentiment classification. This means interpreting the tone of the review carefully.
+- The task focuses on product feedback where you must distinguish if the review's mood corresponds with its assigned polarity, either affirming its positive nature or highlighting negative sentiments effectively.
+- Determine if each review reflects a true sentiment as labeled, requiring attention to detail in comprehending nuances of customer expressions.
+- Evaluate the sentiment of a given food review, comparing it against a stated polarity. Focus on identifying congruence between expressed feelings and assigned labels.
+- You will assess whether the sentiment of a food product review aligns with its labeled polarity, ensuring that your judgment is based on the content of the review.
+- You'll read a food product review and must assess whether its general tone matches the given sentiment, either positive or negative.
+- This task directs you to weigh consumer sentiments shared in reviews about food against assigned indicators of positivity or negativity for coherence.
+- You’ll be tasked with interpreting the sentiment within product reviews and comparing them against their designated polarity labels for consistency.
+- For each provided product review, identify if the overall message matches the stated emotion, either favorably or unfavorably.
+- Analyze each provided food review to detect whether it aligns with its specified sentiment status, requiring insightful reading and evaluation of emotional content.
+- Examine the opinion expressed in each selected review and verify if it corresponds correctly with the defined polarity. This involves understanding both language and feelings.
+- In this assignment, you will read product reviews and assess their emotional tone. Compare this tone with the provided polarity to confirm whether they coincide or contradict each other.
+- Assess if the feelings portrayed in a given review about a food item align with the labeled sentiment, marking it as true or false based on your evaluation.
+- You will engage with customer reviews, interpreting their sentiments, and compare your interpretations with the provided polarities to determine if they align.
+- Read each product review and determine whether the sentiment expressed in the review matches the specified positive or negative classification.
+- You'll read reviews about food products and determine if their sentiment is in agreement with the given classification of either positive or negative.
+- You’ll investigate user-generated feedback related to food and determine whether the sentiment expressed corresponds accurately with its pre-designated polarity.
+- Assess each review for its emotional content to confirm if it fits with the stated sentiment, whether positive or negative.
+- Examine the attitudes reflected in food product reviews against specified sentiment labels, ensuring that any expressions of satisfaction or dissatisfaction are accurately represented.
+- The goal is to analyze how consumers feel about specific food products in reviews and see if those feelings match expected sentiment classifications.
+- For this task, examine a provided food product review, figure out its emotional message, and see if it coincides with the declared polarity—positive or negative.
+- Examine sentences from product reviews, paying attention to their emotional content, and confirm if they accurately reflect the stated polarity.
+- You will be analyzing descriptions of food experiences and need to determine if their overall emotion coincides with the indicated positive or negative label.
+- You will analyze product reviews to assess whether the emotional tone of the review matches the specified polarity indicator.
+- The task challenges you to dissect customer sentiments in Amazon product reviews and compare those sentiments to predefined polarities of positive or negative, verifying their consistency.
+- Assess customer feedback regarding food items and verify whether their expressed opinions match the polarity assigned to them.
+- Your goal is to compare the sentiment indicated in a review of a food product with what is conveyed in the words. This will require critical thinking and interpretation skills.
+- You need to judge whether a food product review's emotion syncs with its specified sentiment. Skill in identifying positive or negative language will be beneficial.
+- Your task is to evaluate a food product review and determine if the given sentiment matches the reviewer’s feelings about the product.
+- You will be judging product reviews based on their emotional content, determining whether they reflect positivity or negativity according to explicit labels given.
+- The task requires you to read customer feedback on various food products and confirm if their stated feelings align accurately with the designated sentiment polarity.
+- Examine customer reviews for food items, assessing if their tone corresponds correctly to an indicated positive or negative frame of reference.
+- Compare each review’s content with its stated sentiment classification, deciding if they coincide by evaluating language tones and emotional cues.
+- Here, you'll assess the emotional content of reviews related to food products, verifying if they correspond with a specified positive or negative feeling.
+- Analyze the content of food reviews to verify if the associated sentiments correspond properly to given polarities, helping to distinguish between favorable and unfavorable opinions.
+- As part of this assignment, you'll look through several reviews of food products. Determine whether these reviews accurately reflect the positive or negative sentiments as specified by assigned polarities.
+- Your assignment involves corroborating the emotion reflected in an Amazon review against its specified polarity, ensuring that they are consistent with one another.
+- Your task is to evaluate a food product review and determine if the review's sentiment matches the given polarity—positive or negative.
+- Analyze text reviews on food items while confirming whether the expressed opinions match their categorized sentiments, either positive or negative.
+- Analyze reviews for food products to ascertain whether their contents resonate positively or negatively as indicated by their polarity labels.
+- Determine if the sentiment indicated for a food product review reflects what is actually expressed in the text. This task entails a close reading and analysis of language used.
+- Determine if the expressed opinion in a review is positive or negative as indicated, by weighing the language used against the assigned polarity.
+- Review consumer experiences expressed in product feedback, and establish whether their sentiments line up with the provided polarity tagging.
+- In this exercise, assess Amazon food product reviews and their labeled sentiments for consistency, requiring skills in reading between the lines of emotional language.
+- You are tasked with reviewing customer comments on food items and verifying if they truly reflect the assigned positive or negative sentiments by assessing language and context.
+- The goal here is to scrutinize individual food product reviews and decide if they align with the given distinction between positive and negative sentiments.
+- Read through customer reviews on food products and analyze whether their sentiments (positive or negative) truly reflect what is communicated in the text.
+- Your job is to carefully consider individual sentences within product reviews to see if they align appropriately with their associated positive or negative labeling.
+- Your responsibility is to scrutinize customer feedback about food products from Amazon, interpreting and deciding if their sentiments resonate with a marked positive or negative emotion.
+- Your job is to analyze each product review for its overall attitude—positive or negative—and determine if this matches the provided indication of sentiment polarity.
+- Your mission is to judge whether a food product review's sentiment fits well with a specified polarity, requiring attention to linguistic cues and emotional tone in the text.
+- Your challenge is to interpret reviews of food products and ascertain whether their emotional tone corresponds to the given positivity or negativity.
+- You need to review customer assessments of food products and ascertain if they correctly convey either a positive or negative sentiment based on the accompanying polarity label.
+- This job involves stating whether the tone of a food product review corresponds accurately to the given sentiment classification of positive or negative.
+- The task involves evaluating the sentiment of a food product review in relation to its stated polarity, determining if they align as positive or negative.
+- Analyze a provided review of a food item along with its stated sentiment. Decide if they align or contradict each other based on the review's content.
+- Your job is to compare the sentiment of an amazon food product review against its assigned polarity. This involves recognizing positive or negative expressions in the text.
+- Here, you will verify if a food review’s sentiment aligns with its assigned classification. Recognizing emotional cues in language will guide your conclusion.
+- You are required to read a food product review and identify if the review's tone and sentiment agree with the given indication of positive or negative polarity.
+- By analyzing customer reviews, you’ll ascertain whether their expressed opinions fit correctly within the framework of defined sentiments—positive or negative.
+- This task requires careful reading of feedback on products to confirm if the emotional quality expressed is consistent with an identified polarity.
+- You need to determine if the feelings conveyed in a food product review correlate with its assigned positive or negative sentiment classification.
+- Engage with food product reviews by discerning whether the sentiments expressed align correctly with an assigned polarity of either positive or negative.
+- Delve into food product reviews and determine if their emotional tone matches the specified sentiment polarity. This entails interpreting the reviewer’s experience effectively.
+- You need to evaluate whether a given Amazon food review’s emotional stance matches a specified polarity. Look for key phrases and overall sentiment to reach your decision.
+- Your assignment is to scrutinize reviews to determine if they reflect their stated polarity accurately, which will involve discerning subtleties in written expressions of sentiment.
+- You are tasked with evaluating if the emotional direction of a food product review matches what is indicated by its assigned positive or negative tag.
+- Your job is to check whether a food product review's overall sentiment is consistent with its designated positive or negative label.
+- For this task, you will interpret reviews for food items ordered on Amazon. Your goal is to ascertain if the expressed opinion corresponds with a positive or negative classification that accompanies each review.
+- Your objective is to match statements about product experiences with their described emotional tone, identifying any discrepancies between them.
+- In this activity, you assess whether a product review accurately reflects its stated polarity. This requires understanding both the review and the emotional tone conveyed.
+- Determine if a food product's review's emotional expression fits correctly within its assigned polar sentiment, which necessitates careful reading and interpretation of language used.
+- The task involves scrutinizing product reviews for their emotional content and matching this content with a provided polarity to see if they correspond correctly.
+- In this evaluation task, you'll examine the sincerity of consumer reflections on food products while assessing if they align with indicated sentiments of positivity or negativity.
+- The task consists of reviewing customer sentiments expressed in feedback against predetermined polarities, either affirming or challenging their correspondence.
+- You are tasked with verifying that the tone of customer reviews matches an expected sentiment, recognizing when there’s alignment or misalignment.
+- Assess if the written opinions about products genuinely reflect positive or negative emotions as guided by the specified polarity categorization.
+- The objective is to analyze customer satisfaction within product reviews, ensuring that sentiments conveyed are consistent with their accompanying polarity indicators.
+- Your task involves evaluating an Amazon product review and determining if its sentiment aligns with the stated polarity. Analyze the overall tone of the review to decide if it matches positive or negative feedback.
+- Review the content of various Amazon reviews on food products and evaluate their sentiments against predetermined labels, ensuring careful consideration of language nuances.
+- Analyze customer reviews to check if their opinions reflect the designated sentiment, either positive or negative.
+- Interpret a food product's review to assess whether it conveys a sentiment that matches a predefined polarity. Focus on discerning positive or negative sentiments in context.
+- In this task, you evaluate statements regarding food items, deciding if the mood expressed lines up with the designated sentiment of positive or negative.
+- Your assignment is to confirm the accuracy of a given sentiment label against a product review. Being attentive to emotional nuances will aid in your analysis.
+- Examine a given food review alongside its assigned polarity. Decide if they align by interpreting the emotional undertone of the review.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task587_amazonfood_polarity_correction_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task587_amazonfood_polarity_correction_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

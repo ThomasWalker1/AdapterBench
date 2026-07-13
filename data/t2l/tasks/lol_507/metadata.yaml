@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- This task requires you to scan a list of entries to find all the numerical components and indicate their positional placement.
+- Your mission here is to take an input consisting of various characters and precisely identify where all numbers are located based on their indices.
+- Uncover the positioning of all numbers in a given list that contains both letters and figures, emphasizing logical indexing.
+- In this task, your role is to look for any numerical components in given lists and sequence their positions based on their appearance from start to finish.
+- In this task, you will analyze a list of items and identify the positions of any numerical elements present.
+- This task focuses on identifying where numbers appear among other characters in a list, requiring careful attention to position.
+- Your responsibility is to evaluate each entry in a list for numeric content and maintain an organized approach to capturing their respective locations.
+- This task requires you to analyze a list and pinpoint where numeric values appear within it, returning those positions in sequential order.
+- This task involves scanning through a given list and determining the index positions of any numerical entries.
+- Identify and catalogue the indices of numbers appearing in a pre-defined list, ensuring that each position corresponds to its rightful place.
+- The task involves analyzing a list of items to identify the positions of any numerical elements present.
+- This task involves examining a list of mixed elements and pinpointing the locations of all numbers based on their position in the sequence.
+- The focus here is on navigating through a provided list to uncover and map out where all the numbers can be found.
+- Review a list thoroughly to find number positions, acknowledging that some entries may include non-numeric characters as well.
+- Your goal is to navigate through a mixed-list format to highlight every number’s position. This task demands attention to detail and logical reasoning.
+- Your task involves scanning through a list of mixed items and pinpointing where each number is located. Be sure to keep track of their positions accurately.
+- As part of this task, sort through a mixed array to extract positions for any numbers present and report them systematically.
+- The focus is on recognizing numerical values within a mixed collection of elements and returning their indices in an orderly fashion.
+- This task requires you to sift through a list and extract the indices of all numeric components accurately.
+- Extract relevant numerical positions from the provided input while ignoring any non-numerical items scattered throughout the list.
+- This challenge entails collaborating with a list and discerning which elements are numbers while also observing their positions relative to others in the set.
+- Identify all numerical entries within a supplied list and capture their respective indices for further examination or use.
+- Focus on identifying all numerical entries within a provided list and return their respective locations as a sequence.
+- By examining the input list, determine the positions of any numbers included, providing an ordered response of their locations.
+- This task requires you to go through an input array, identify numerical components, and provide their respective indices.
+- In this task, you need to take an input list and return where all numeric elements are located within it.
+- In this activity, you need to find all the numbers in a provided list and specify their positions in order, treating the first item as position one.
+- The objective is to find all numerical entries within a given list and note down their index locations as they appear.
+- The task requires you to look at a list filled with different elements and extract the indices of those that are numbers. It tests your ability to sort through data effectively.
+- This task involves analyzing a list of items to identify positions of numerical elements. You need to keep track of the order and ensure accuracy in counting from the start of the list.
+- The job requires scanning through a list filled with various elements to locate numbers and record their positions in a sequential manner.
+- You need to analyze a bracketed list for numeric values and articulate their locations as sequential indices.
+- Your objective is to sift through a list, noting down where numbers are located, and return that information systematically.
+- In this task, you will review a list made up of various items, pinpoint where numerical elements arise, and express those positions.
+- You will sort through a series of items presented in a structured format, extracting just the indices of numeric entries as they appear throughout the list.
+- You need to input an array of mixed data types and retrieve only the indexes for any numerical entries within that array.
+- This exercise is about recognizing numerical values amidst various characters in a list and delivering their precise locations as output.
+- Examine each item in the given list and identify the positions occupied by all numerical elements for clear organization.
+- Review the contents of a given list, extract the indexes of any numeric values, and convey that information clearly.
+- You'll examine a collection of entries to find digits, returning their arrangement in terms of positional references.
+- You need to assess a given list and pinpoint where numbers are located among various other items.
+- You will delve into an array of mixed elements, scrutinizing which among them are numerical and how they are indexed within that array—all while maintaining sequence integrity.
+- The goal here is to extract the positions of any numbers found in a supplied list, noting their order. Pay careful attention to what counts as a number.
+- Your task is to analyze a list and identify the positions of all numerical elements. You will return these positions in a sequential manner.
+- This assignment invites you to explore a sequence of elements in hope of identifying specific positions for any numbers that might be included.
+- Your job is to delve into a collection of items, seeking out numbers, with the requirement to disclose their respective positions after thorough analysis.
+- You will assess a given list of mixed items and pinpoint where the numbers are located, providing their respective positions.
+- Here, you must sift through a given list and extract the positions of all numbers while ignoring non-numerical characters. Rely on your attention to detail.
+- Focus on a collection of items, sorting through them to find all numerical entries. Record the index of these numbers accurately as your output.
+- Analyze a provided collection of items and extract information about the positions of any numbers found, maintaining their order in your response.
+- Search through an input list for any numbers, noting each one’s position sequentially through the array’s entries.
+- Your mission is to look at an assortment of items and isolate those that are numbers. You then need to report their respective positions in the original order they appear.
+- In this task, you're tasked with recognizing all numerical elements from a mixed list and cataloging their positions accordingly.
+- Engage with a list where numerical and non-numerical items are mixed. Identify just the numbers, noting down their position in the overall sequence of the list.
+- Your task involves examining a list of items to identify and pinpoint the positions of all the numerical values present.
+- Examine a list where items are mixed between numbers and letters, and make note of all indices where the numeric values can be found.
+- Your main task is to hunt through various inputs for numerical values while noting exactly where they exist along the itemized list.
+- You are to check an assortment of items for any that are numerical, providing an orderly account of where they are situated in the list.
+- In this task, you need to enumerate the places within a list where numbers can be found, enhancing your ability to analyze structured data.
+- You will process a given input that combines various elements, extracting only those that are numerical. Your expertise will help ensure you note their correct locations.
+- In this task, you're tasked with scrutinizing every item in an input list to find any numbers and then noting their locations accurately.
+- In this task, focus on locating numerical entries in a list, noting down their respective positions as needed.
+- Your challenge is to evaluate a comprehensive list of diverse entries and extract information about the locations of any numeric values found therein.
+- Your attention is required as you take a set list and report back on every location occupied by digits, ensuring that each position aligns correctly with its index in the sequence.
+- You will examine an input list filled with various elements, returning only where the numerical items are located, all while maintaining their original order.
+- The exercise asks for your ability to navigate through an array of mixed elements, focusing solely on numerical entries and noting where they reside within that array.
+- This task requires you to trace through a mixed element list and document every instance where a number appears based on its position.
+- You will work with strings representing data types to detect any numbers present in the lists, focusing on reporting where they appear based on their order.
+- In this exercise, you're required to assess a series of elements in brackets, marking down all locations that contain numerical data while ignoring all others.
+- The objective is to filter through a comma-separated list, identifying which items are numbers, and then provide their respective positions in order.
+- Engage with a given set of items to uncover numeric elements hidden among them and report their sequential index locations clearly.
+- Your goal is to sift through a series of items and extract only the indices of numerical values, ensuring accuracy in how positions are counted.
+- The task is focused on filtering out non-numerical elements from a list and returning only the indices of the numerical items present.
+- The aim of this task is to analyze a structured list and determine the locations of any digits within it. It's about recognizing patterns amid a mix of characters.
+- Your task is to examine a list of items and identify the positions of all numerical values contained within it.
+- Task yourself with identifying all the places in a given string of items where numbers reside, noting their positions carefully.
+- You need to sift through an array of elements and pinpoint where any numerical entries occur, returning their respective positions.
+- The challenge lies in surveying a collection filled with different items and generating a precise account of where all numbers reside within that collection.
+- This task is about working through an unordered collection and extracting relevant numerical positions. You must pay careful attention to maintain correct order.
+- You will be required to identify and list out the positions of all numeric components in a specific series of items.
+- Your job is to sift through a mixed list and catalog where each numerical item shows up within it.
+- Identify all instances of numbers present within a list and provide a structured response detailing their respective locations.
+- In this exercise, your challenge is to sift through a jumble of letters and numbers, focusing solely on pinpointing the indices where numeric characters are situated.
+- The task involves processing a bracketed list to find out where numbers are situated among other characters. Pay close attention to the positions as they are indexed from one.
+- In this task, you'll process an array to uncover and list the exact spots of any numeric elements present. Understanding indexing from one is essential for accuracy.
+- In this task, you will analyze a list and extract the index locations of numbers included in it, returning them in their original order.
+- In this exercise, you will examine a list of assorted items. The goal is to locate all numerical values and return their respective positions in an orderly manner.
+- Analyze an input list for numerical data and report back on the placements of any found numbers.
+- The objective here is to conduct an analysis on provided lists to retrieve only the locations of numeric entries, ensuring attention to detail in the count.
+- The goal here is to sift through a list of items and mark the places where numerical elements are situated, using a simple numerical index.
+- Identify numerical components in an array filled with diverse entries and catalog them based on their position index.
+- You will interact with lists containing both letters and numbers, identifying which entries are numerical and how they are arranged within the list.
+- In this task, you will determine where numerical values exist within an array-like structure and write out their respective positions based on their order in the list.
+- Your task focuses on evaluating a provided set of items within brackets to determine where numeric entries occur based on their index order from the start.
+- Your task is to extract the positions of numerical items from a list and return them in sequence.
+- You will navigate through a collection of mixed inputs to uncover numerical entries and document their positional information clearly.
+- This task asks you to investigate an encapsulated collection of items to extract the index positions of numeric entries only.
+- The aim is to determine and report on where in the provided input list any numerical values can be found.
+- You will assess an arrangement of mixed elements within brackets, capturing the position numbers only while disregarding other characters during your analysis.
+- Engage with a list containing various elements, focusing on isolating numbers and documenting their locations accurately.
+- Analyze a series of entries for numeric content, returning their positions based on their order within the provided collection.
+- Your requirement is to explore an assortment of items in a particular format to find all occurrences of numerical values, documenting their positions appropriately.
+- This exercise tests your ability to work with lists. Focus on finding the indices of numbers among other elements and returning them in the right sequence.
+- This job involves reviewing mixed lists for any numeric data points while accurately tracking and returning their positional arrangement as found.
+- You must identify the locations of numeric entries within a series of elements in brackets and relay this information accordingly.
+- Tasked with reviewing a collection of entries, your responsibility is to mark and report the locations of any numeric parts found.
+- As part of this task, you are asked to determine the places where numerical items exist within an array. It tests your ability to navigate mixed data types efficiently.
+- Your challenge is to navigate a given list to discern the locations of numeric characters within it. Ensure you accurately count positions from one onward.
+- Your mission is to dissect a provided array of items to detect and enumerate where any numbers exist within it.
+- You will be categorizing elements by identifying numbers and clearly indicating where they are positioned among other items.
+- Your goal is to discern which elements in a list are numbers and return their respective positions in order.
+- This task focuses on processing a collection of items by differentiating between numerical and non-numerical elements, recording where the numbers appear in the sequence.
+- Engage with an input list to identify numeric content, recording where each number occurs accurately within the overall layout.
+- In this task, you need to identify and list the positions of all numerical elements from a given list of items. Your focus is on indexing these numbers correctly.
+- Review the provided list of bracketed items and return an organized account of all the spots where numbers appear. Understanding indexing correctly is key.
+- You will analyze a bracketed list for numbers and return the specific indices where each number can be found within that structure.
+- In this activity, you’ll parse through mixed content within a list, searching primarily for numbers and determining their placement based on initial indexing.
+- You are asked to look through a defined set of items, classify which ones are numeric, and provide their corresponding positions accordingly.
+- Given a list of items, your goal is to track down which items are numbers and report their locations based on their order in the list.
+- Examine the input list for any elements that are numeric, then return their respective positions in an orderly fashion.
+- In this exercise, you will review a list that contains letters and numbers to extract the positions of any available numerical values.
+- You are set the task of determining which elements within an input array are numeric and capturing their positions accordingly.
+- You are required to find and list the indexes of numbers located within a given list, making sure to count from the first item onward.
+- Your job is to sift through a collection of entries in a list and return where the numerical entries are located.
+- The task is to locate all numeric items within a list and report their positions sequentially based on their order in the input.
+- Your responsibility is to detect numbers among various characters in a list and report their locations in sequence.
+- You will receive a list of elements, and your job is to pinpoint where the numbers appear in that list.
+- Here, you will encounter a mixed list containing numbers and letters. Your job is to find the exact placement of numeric entries, emphasizing attention to detail.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task507_position_of_all_numerical_elements_in_list
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task507_position_of_all_numerical_elements_in_list
+user_prompt_template: '{task_def}
+
+
+  {problem}'

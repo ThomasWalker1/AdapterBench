@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Analyze the context of each sentence involving a drug name and effectively identify its corresponding intake dosage using your knowledge of pharmacology.
+- This task involves extracting and identifying the specific dosages mentioned within sentences related to various medications.
+- The goal is to pinpoint dosage specifications for a particular drug, as outlined in the accompanying sentences, and record your findings.
+- You need to read the supplied text about various drugs and determine what the indicated intake dosage is, using your understanding of medical terminology.
+- This task requires attention to detail as you extract our relevant dosing information linked to specific drugs mentioned in example cases.
+- Your objective is to pick out mentions of drug dosages from given texts. This requires careful reading and an understanding of how medications are discussed in medical contexts.
+- The challenge lies in analyzing provided sentences to find specific references to drug dosages. A fundamental understanding of medication administration practices will enhance your effectiveness.
+- You'll examine provided medical narratives with a focus on identifying any dosage figures tied to named drugs within the text.
+- Focus on interpreting the sentences given, identifying any doses indicated for specific medications while maintaining a clear understanding of the pharmaceutical context.
+- The job requires you to analyze provided sentences and pinpoint the specific dosages of medications discussed, which may involve interpreting clinical language.
+- Distill dosing information related to drugs from clinically oriented texts while demonstrating an understanding of how dosages are articulated in medical writing.
+- You are to extract dosage information from various medical descriptions regarding specified medications, which might include numerical values or descriptions of dosage levels.
+- This task involves reviewing sentences about pharmaceuticals and pinpointing the exact intake amount for a drug, showcasing your grasp of dosage descriptions in medical contexts.
+- Your role involves reading through medical-related sentences and marking out information on dosages for specified drugs, which necessitates a basic understanding of pharmaceutical terms.
+- Your job is to sift through sentences to find and indicate how much of a particular drug has been referenced. Clarity in reading comprehension will assist in identifying relevant details amid additional information.
+- You are responsible for extracting dosage information from contextual medical sentences related to specific drugs, ensuring you can recognize and record such details clearly.
+- Your objective is to read medical descriptions that involve specific drugs and highlight the exact dosage prescribed or used based on the information given.
+- The task involves extracting information that specifies the dosing for a drug from narratives describing its use, highlighting both frequency and quantity where applicable.
+- You'll be tasked with recognizing and isolating distinct medication doses nestled within various clinical statements concerning drug therapies.
+- Your responsibility is to find and report the dosage of a specified drug within given information, relying on your knowledge of medication administration standards.
+- In this task, you are asked to sift through sentences to extract dosage information for specified drugs, demonstrating familiarity with pharmacological contexts.
+- Analyze sentences that include a drug name and extract the appropriate dosage information related to its intake. Knowledge of pharmacology will assist you.
+- Examine sentences about particular drugs, focusing on their usage to indicate the corresponding dosages described within those contexts.
+- You must extract references to drug dosages from sentences that discuss medication scenarios, showcasing your ability to interpret pharmaceutical descriptions.
+- The goal is to sift through medical statements to find and report the dosage amounts connected with specified drugs, which calls for attentiveness to detail and knowledge of medication use.
+- The challenge lies in reviewing provided clinical narratives that contain mentions of pharmaceuticals and extracting the relevant dosing details directly related to those drugs.
+- In this task, you analyze textual information about various drugs to pinpoint the exact dosages being suggested or utilized, which may involve interpreting complex medical language.
+- Evaluate given statements about drugs and extract precise dosing instructions or amounts. Attention to context and wording choice will enhance your accuracy.
+- You will be tasked with reviewing sentences associated with medications and determining their respective dosages, utilizing your knowledge of medical terminology.
+- Your challenge consists of locating and documenting dosage instructions as mentioned in medical statements regarding specific drugs, which requires critical reading skills and familiarity with pharmaceutical concepts.
+- The task here consists of deciphering medical narratives to highlight relevant dosage instructions or mentions regarding specific drugs of interest.
+- Examine each sentence regarding a particular medication and provide the specified dose mentioned. Sensitivity to language clarity in discussing medications is beneficial.
+- This task involves finding dosing information from sentences related to drug use, requiring attention to both context and dosage terms.
+- Your task involves identifying the specific dosage of a drug mentioned within a given context. Understanding medication terminology is crucial.
+- For each sentence provided, your goal is to discern the dosage of medication specified, using contextual clues from the surrounding text.
+- Your task is to dissect sentences regarding medical treatments and identify dosing descriptors associated with medications named therein.
+- This task expects you to summarize data about drug intake by identifying exact dosages from sentences. Understanding the context in which drugs are used is crucial.
+- You will examine sentences about various medications and determine the dosage mentioned for a specific drug within the text.
+- The objective here is to discern and articulate the indicated intake amounts of various medications based on contextual clues within the text.
+- You need to sift through medical statements and identify explicit or implied dosages for particular drugs, assessing your proficiency in understanding clinical contexts.
+- You will be tasked with recognizing and reporting the dosages of specific drugs noted in provided medical statements.
+- Your job is to decode statements about medications and reveal dosage quantities that indicate how much of each drug should be used.
+- You’re tasked with finding dosage information linked to certain medications highlighted in provided text examples.
+- Here, you will extract dosage-related data from descriptions involving medications. Understanding how dosages are formulated and applied in clinical settings will enhance your performance.
+- Your task involves comprehending sentences about medications and accurately identifying any dose that pertains to a specified drug mentioned alongside.
+- You will engage with sentence structures discussing drug administration, identifying which dosages apply to specific medications as indicated.
+- Your role includes carefully reviewing texts related to medicinal use and isolating specific doses for indicated medications from what has been presented.
+- You will analyze texts that mention drug names and their associated doses, requiring a good grasp of pharmaceutical language and dosage terminologies for effective identification.
+- This task requires you to interpret contexts involving drug administration and isolate relevant dose information associated with a chosen medication.
+- In this task, you need to extract relevant dosage information related to a given drug from a set of sentences. Understanding medical language will help you complete this task.
+- Your job is to look through provided text for references to medication doses that are specified for a certain drug.
+- You should extract dosing data for specified drugs from given textual descriptions of medication use or cases.
+- You will be reviewing text examples that involve medications, focusing on capturing dosage details that reflect their intake levels or reasons for prescription.
+- This task targets your ability to extract quantitative medication data from textual descriptions related to different pharmaceutical products.
+- Your goal is to identify and report the amounts of a particular drug mentioned in the text. This requires understanding pharmaceutical language and clarity in recognizing dosage forms.
+- In this job, you are focused on identifying how much of certain drugs are indicated in sentences. Good comprehension skills are necessary for filtering relevant details.
+- Analyze medical descriptions and indicate the relevant doses associated with particular drugs mentioned in those accounts.
+- You will read through sentences containing medical information and determine what dosage of the specified drug is being referenced. This requires understanding of prescription terminology.
+- Your objective is to read context about medications carefully and outline what dosages are mentioned, focusing on accuracy and clarity.
+- You are tasked with identifying dosage references in context, which demands both reading comprehension and familiarity with drug terminology.
+- In this task, your focus will be on locating and reporting the amount of medication indicated for a specific drug in various clinical scenarios.
+- The goal here is to discern and provide the specific dosage amounts for medications mentioned in the sentences. Familiarity with medical terms related to drug dosing is vital.
+- Your task is centered on analyzing textual content to find mentions of medication dosages, requiring an understanding of health-related language that describes dosage amounts.
+- The objective here is to read given sentences that discuss medication and highlight the dosing guidelines or amounts specified for particular drugs mentioned in the text.
+- Read each provided sentence carefully and determine the doses administered for each specified drug. Accurate understanding of dosage concepts will help you succeed.
+- In this assignment, you focus on discerning and reporting relevant drug dosage information embedded in descriptive statements about treatment cases.
+- Engage with data about pharmaceutical usage by capturing dosage information pertinent to drugs highlighted within provided narratives.
+- Your task is to read provided sentences and identify the dosage or amount of a specific medication mentioned. This requires understanding medication terminology and context.
+- The objective is to find and convey dosing recommendations or specifications as presented alongside drug names in clinical contexts provided in the input.
+- In this exercise, you will interpret sentences containing medicinal details and summarize the dosing amounts prescribed or discussed.
+- Your task involves identifying the specific doses of medication mentioned in given sentences. You need to extract the relevant information about drug intake from the text.
+- This task involves identifying dosage indications for various medications based on their use in provided sentences. A grasp of medical dosages and terminology is essential.
+- This activity involves locating specific dose quantities of medications from written descriptions. Distilling key pharmaceutical insights from detailed accounts is essential.
+- This task requires you to sift through sentences to find and state the amount of medication prescribed or mentioned for different drug names.
+- You will interact with passages featuring medical contexts to uncover dosage-related details about certain drugs, reflecting careful interpretation skills.
+- Your mission is to sift through given text snippets and highlight the prescribed or overdosed amounts of specific medications referenced.
+- Analyze the text regarding pharmaceutical treatments and discern what the referenced dosages for each drug are within the written material.
+- Attention to detail is key in this task, where you’ll extract dosage numbers associated with medications from descriptive text. Understanding the context of pharmaceutical discussions can help clarify your findings.
+- Read through the provided examples concerning drug administration and extract clear dosage references embedded in those summaries.
+- The goal here is to analyze sentences that involve specific drugs and highlight dosage information. A good sense of language and familiarity with pharmacology will help.
+- This task requires you to interpret drug-related sentences and identify dose amounts connected to those medications based on the information provided.
+- Your task is to extract information about medication dosages from provided sentences, focusing on specific drugs mentioned.
+- This task focuses on extracting dose information concerning various drugs as detailed in specific clinical contexts. Attention to detail is important when evaluating each sentence.
+- The assignment requires you to interpret drug-related reports and find out what doses have been referenced, which may vary based on therapeutic context.
+- Your responsibilities involve dissecting sentence structures for dosage data surrounding specific medications. Background knowledge on drug usage can facilitate clarity in this endeavor.
+- This task entails parsing through information about drugs and identifying their respective dosages by analyzing context clues in accompanying sentences.
+- Your role is to analyze text for relevant dosage details associated with various drugs, ensuring clarity on how much of each drug is referenced.
+- This task is about finding specific dosage amounts for medications mentioned in provided contexts. A background in pharmacology would support your ability to complete this effectively.
+- Your task involves identifying and stating the intake dosages for specific medications mentioned in varied sentences, requiring both analytical insight and familiarity with medical terminologies related to dosing.
+- This task challenges you to locate dosing details pertaining to certain medications in given texts, highlighting your ability to interpret written medical information accurately.
+- The assignment involves examining given statements about medicines and pinpointing information that reveals their respective dosages.
+- Your focus should be on scrutinizing text that relates to pharmaceutical dosing, isolating specific intake amounts mentioned for each drug listed.
+- Your work consists of identifying numerical values related to drug doses among contextual statements that depict different medical scenarios involving medication administration.
+- This task involves working with textual information about drugs to determine their pertinent intake levels or dosages as described within those texts.
+- The task at hand is to interpret medicinal scenarios and isolate the corresponding dosages of drugs noted in those contexts.
+- You will examine sentences related to different drugs and extract dosage details mentioned within them. This task relies on understanding medical phrasing effectively.
+- You will be looking at statements regarding medications and identifying their doses. It is crucial to interpret the sentences correctly to extract dose-related details.
+- In this task, you must extract relevant dosing information about a given drug from sentences that detail its effects or usage in patients.
+- Your role is to comprehend written descriptions of drug use and isolate the dose-related information relevant to each medication mentioned.
+- In this task, your aim is to pinpoint precise dosing information for a specific drug as it appears in the text. Essential skills include careful reading and familiarity with dosing conventions.
+- You'll be working with sentences related to medication cases and will focus on identifying dosage levels relevant to the drugs discussed.
+- This task requires you to pinpoint the intake amounts of medications as described in various contexts. You will carefully read the sentences to find the relevant dosing information.
+- In this task, you will analyze sentences related to medication and extract the amount that refers to a dose for a specific drug.
+- Your role here is to unpack clinical situations and articulate the dosing frequencies or amounts stated for particular drugs involved.
+- Analyze each sentence carefully to extract dose information related to a specific medication, demonstrating your understanding of pharmacological terms.
+- The aim is to discern and report specific doses for medications presented in context, requiring an analysis of textual information pertaining to drug intake levels.
+- Your focus should be on discerning quantitative dosage details mentioned alongside various medications within the text. A solid grasp of standard dosing practices will facilitate your analysis.
+- Your challenge is to locate dosage information related to pharmaceuticals within varying sentence structures. Conclusively interpreting these details is key.
+- The task consists of interpreting clinical statements that discuss medications and precisely indicating their corresponding doses.
+- Your task is to extract and identify the dosage details associated with specific medications mentioned in provided sentences, focusing on the information related to medical dosing.
+- Your role will be to extract dosage information from narrative descriptions of drug use. Clear perception of language in medical contexts will facilitate this extraction.
+- Your role is to evaluate sentences about drug treatment and extract detailed dosage information concerning the specified pharmaceutical substance.
+- Analyze provided sentences containing drug information and determine the specified doses of those drugs. Understanding medication terminology is essential for this task.
+- You will interpret statements regarding drug usage and ascertain precise dosing information for each medication mentioned. Being familiar with varied expressions of dosage will aid you.
+- You are tasked with discovering medication dosages described within sentences. Familiarity with pharmacological terms will support your ability in this interpretative work.
+- Given a drug name and sentences, your role is to extract relevant information regarding the intake dosage, showcasing your comprehension of medical terminology.
+- Consider the provided medical contexts and identify the dose specified for each medication discussed. A clear understanding of dosage forms is necessary.
+- Your role involves sifting through descriptions of drug treatments to capture the dose information clearly stated in connection with each medication mentioned.
+- You'll be identifying doses tied to medications in presented statements, requiring an understanding of how dosages are conveyed in medical literature and documentation.
+- You'll be tasked with highlighting and reporting specified dosages within a given context about various drugs, assessing both numeric values and descriptive terms relevant to medication administration.
+- You are tasked with finding and reporting the dosage of a specific drug as described in sentences. This involves analyzing text for key phrases that indicate dosage levels.
+- Read through the clinical narratives and report the dosage details for a specific drug, utilizing your understanding of how doses are represented in medical discussions.
+- In this task, you will encounter sentences that discuss different drugs, and your job is to isolate information concerning how much of each drug was administered.
+- In this task, you'll analyze descriptions concerning medication use and accurately indicate the dose taken for a specific drug name included.
+- You need to analyze sentences that include information about drug usage and report the dosages indicated for the specified medications.
+- You will be identifying and noting the amount of a medication that is indicated in various contexts within given sentences. This requires knowledge of doses and their implications.
+- Your assignment centers around analyzing sentences to extract the drug intake information. It’s important to have knowledge of prescription practices and medication dosages.
+- The goal is to distill medication dose details from provided sentences about drug use, requiring knowledge of dosing conventions and medical writing.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1451_drug_dose_extraction
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1451_drug_dose_extraction
+user_prompt_template: '{task_def}
+
+
+  {problem}'

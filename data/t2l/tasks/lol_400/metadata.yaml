@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The objective is to assess pairs of sentences and determine their semantic relationship, categorizing them as either paraphrases or not based on their meanings.
+- Identify and define the nature of relationships between high-overlap sentences — do they convey the same message under different guises or represent unique assertions?
+- This involves assessing sentence pairs for meaning similarity. You must differentiate between sentences that are paraphrased versions of each other and those that are not.
+- This task challenges you to interpret sentence pairs critically, assigning them labels based on whether they share the same message or represent distinct ideas.
+- Analyze whether two similar-sounding sentences have an equivalent meaning and can be considered paraphrases, or if they differ enough to be categorized otherwise.
+- Assess sentence pairs for semantic equivalence. You must categorize them based on whether they are considered paraphrases.
+- Your assignment is to assess sentence pairs for their meanings, discerning if they are simply rephrased versions of one another or convey divergent concepts entirely.
+- Your task requires discerning subtle differences between two sentences with similar language. Identifying these differences will help establish their relationship in terms of meaning.
+- You will assess two sentences to see if they express identical ideas in different words. This requires careful comparison of the meanings behind the phrases.
+- For each pair of sentences provided, determine if they restate the same message using different language or if they express distinct ideas.
+- Your evaluation will focus on determining semantic parity between closely worded sentence pairs, labeling those that share meaning as "Paraphrase" and calling out any differences appropriately.
+- Compare and critique sentence pairs, determining their relationship in terms of paraphrasing and meaning cohesion versus diversity.
+- Evaluate paired sentences to identify whether they represent the same idea expressed in different ways or if they carry different implications.
+- Identify whether two sentences convey identical meanings despite variations in wording; this calls for a good grasp of language nuances.
+- You’ll be identifying whether two sentences with significant lexical overlap convey the same concept or if the information differs fundamentally.
+- Your role is to investigate two almost identical sentences and make a decision about their meanings — are they saying the same thing?
+- Evaluate the meaning conveyed by two sentences that share lexical similarities. Your goal is to identify whether they essentially deliver the same message or differ in meaning.
+- This task requires you to scrutinize sentence pairs for semantic equivalence and categorize them as either paraphrase or not based on your analysis.
+- In this exercise, you'll be analyzing sentence pairs to uncover similarities and differences in meaning, requiring sharp attention to detail in phrasing and context.
+- This task requires you to read and critically evaluate two sentences to see if they can be considered paraphrases or if they express differing content.
+- Analyze sentence pairs focused on semantic content. Your challenge is to determine and label them based on whether they align in meaning or showcase discrepancies.
+- Examine two sentences with overlapping vocabulary and determine if they refer to the same concept. Classify them accurately as either "Paraphrase" or "Not paraphrase."
+- You must scrutinize two provided sentences, equipped with similar language, to ascertain whether they present synonymous meanings or diverging ideas.
+- Your role in this task is to discern subtle differences or agreements in meaning between two sentence constructs that share significant lexical elements.
+- This task asks you to evaluate how closely related two sentences are in meaning, labeling them based on whether they are paraphrases or separate thoughts.
+- This task asks you to look closely at two related sentences and decide whether they are variations of the same idea or not by evaluating their meanings.
+- This task involves analyzing pairs of sentences to determine if they express the same idea using different words. Identifying paraphrases requires careful reading and understanding of meaning.
+- Compare the meaning of two sentences that appear similar. Classify them as paraphrases or not based on their semantic relationship.
+- By comparing sentence pairs, you will evaluate their meanings and categorize them as paraphrases if they are effectively saying the same thing despite wording changes.
+- Look at two sentences side by side and figure out if they express identical ideas or diverging concepts, marking them appropriately based on your findings.
+- The task asks you to compare semantic meanings in sentence pairs. Identifying true paraphrases involves a keen understanding of the context and intention behind the wording.
+- Your duty is to inspect the relationship between two high-lexical overlap sentences, discerning their meanings to evaluate if they are interchangeable or fundamentally different.
+- Identify whether two given sentences express the same idea using different words. Labels to apply are either "Paraphrase" or "Not paraphrase."
+- You will compare two sentences that share similar wording and decide if they are paraphrases that mean the same thing or if they differ in meaning.
+- Evaluate each sentence pair closely to see if they essentially communicate the same concept or present contrasting ideas despite their lexical similarities.
+- For each pair of sentences given, investigate whether they are rephrasings of one another or distinctly different statements in terms of meaning.
+- Look at each sentence pair and decide if they represent the same idea using different words or if there is a notable distinction between their meanings.
+- In this task, you'll scrutinize high-overlap sentence pairs to classify them as either expressing the same content or differing in interpretation.
+- In this evaluation task, you will connect sentence pairs with high lexical overlap. Assess their meanings closely and label them accurately.
+- Study pairs of sentences derived from a single source and ascertain whether their meanings align sufficiently to warrant a "Paraphrase" label.
+- You will look at pairs of statements and ascertain whether they paraphrase one another or represent distinct statements with different meanings.
+- Your job is to read and compare two sentences for meaning. Decide whether they rephrase the same thought or differ significantly.
+- You will be presented with sentence pairs, and your responsibility is to judge whether their meanings align closely enough to be seen as paraphrased versions.
+- This task requires you to analyze sentence pairs for semantic equivalence, labeling them as either "Paraphrase" or "Not paraphrase" based on their meaning.
+- Your task involves analyzing sentence pairs to determine if they are paraphrases of each other or not. This requires careful reading and comprehension.
+- Your job is to classify pairs of sentences based on their meanings. Identify whether they are rephrased versions of the same statement or if they are fundamentally different.
+- As you read through sentence pairs, your task is to identify whether their meanings align perfectly or diverge significantly enough to warrant a separate classification.
+- Evaluate the provided sentences to check if they assert similar information with different phrasing, then classify them accordingly.
+- Determine whether two sentences can be considered paraphrases based on their inherent meanings, necessitating comprehension of language nuances.
+- Investigate the structure and meaning behind each provided sentence pair, identifying those that reflect identical messages and those with distinct purposes.
+- Analyze linguistic structures in pairs of sentences to judge their semantic relationship and decide on their classification accordingly.
+- Analyze the given sentences for similarities in meaning. If they convey the same concept, label them as paraphrases; if they don't, designate them as not paraphrased.
+- Carefully read two supporting sentences that overlap in language. Assess whether they convey equivalent ideas or if there are differences in their meanings.
+- The task is centered around linguistic comparison, where you classify sentence pairs as either being paraphrases of each other or not based on their meanings.
+- Engage your comprehension skills to relate two given sentences, then decide if they convey equivalent thoughts or possess unique differentiators in meaning.
+- Take two related sentences, analyze their core message, and judge whether they can be classified as paraphrases or indicate separate meanings.
+- Your goal is to judge the equivalency of meaning between two statements and decide whether they are paraphrases of each other.
+- Your objective is to label sentence pairs based on their meaning overlap. Identify whether they communicate the same thought or not.
+- The goal of this task is to differentiate between sentences that are paraphrases of each other and those that are not. Pay attention to nuances in language.
+- Review and assess high-overlap sentence pairs. Classify them according to their semantic relationship—do they express the same ideas, or do significant differences exist?
+- In this task, you evaluate sentence pairs for similarity in meaning. Identify whether they are paraphrases or not based on their content.
+- The objective of this task is to discern whether two given sentences are paraphrases of one another or if they communicate distinct ideas.
+- Analyze sentence pairs for meaning similarity. Decide if each pair represents the same thought or if there are differences in their conveyed messages.
+- Compare the given pairs of sentences to identify if they are paraphrases—expressing the same idea with different wording—or if they differ in meaning.
+- Engage with pairs of sentences and assess their meanings. Your focus should be on determining if they reflect the same concepts or if they diverge in meaning.
+- You will examine pairs of closely related sentences to find out if they essentially communicate the same concept, marking them appropriately based on your judgement.
+- Evaluate sentence pairs for their semantic similarity. Determine if both sentences reflect the same underlying message despite differences in phrasing.
+- Analyze each sentence pair to ascertain whether they effectively communicate identical information or represent varying perspectives on a topic.
+- You will need to interpret sentence pairs and assess their semantic content, labeling them based on whether their meanings align or contrast sharply.
+- This task is about evaluating linguistic overlap between two sentences. You must determine whether their meanings are equivalent or if they diverge significantly.
+- Assess sentence pairs for identical meanings; your task is to determine if both constructions express the same idea or diverge from each other.
+- The goal is to read and analyze sentence pairs that share many words, and then categorize them based on their meaningfulness as paraphrases.
+- This task involves evaluating two sentences to determine if they convey the same meaning, despite potential differences in wording or structure.
+- You will work with two sentences that have closely related phrases and determine if they simply paraphrase one another or differ in meaning.
+- Here, you will scrutinize sentence pairs for their meaning. Mark them as "Paraphrase" when they convey identical ideas or "Not paraphrase" if their meanings diverge.
+- Your task is to analyze sentence pairs from a source and label them based on whether they are equivalent in meaning or not.
+- Compare two similar sentences to decide if their meanings align perfectly or diverge significantly, which requires careful reading and understanding.
+- You need to assess whether two provided sentences are simply restatements of each other or distinctly different statements despite some overlap in language.
+- You will receive sentences that are similar in structure. Your goal is to check if they are just different expressions of the same statement or if they have distinct meanings.
+- Your objective is to discern whether the given sentences communicate similar concepts through rephrased language or if they are fundamentally different in meaning.
+- Here, you need to interpret two similar sentences and discern if they provide the same information, which requires close attention to detail and comprehension.
+- Examine each set of paired statements for overlapping content. Confirm whether these sentences reformulate the same idea or not.
+- Analyze sentence pairs for equivalency in meaning, focusing on phrasing differences while assessing if they convey the same message overall.
+- Your goal is to process sentence pairs for similarity in content, labeling them according to whether they reflect paraphrasing or a divergence in meaning.
+- Analyze provided sentence pairs for semantic consistency, deciding whether they express the same underlying thought or represent distinct interpretations.
+- Scrutinize two sentences that appear alike and make a judgment on their equivalency in meaning, providing the right label for each case.
+- Look for meaning between sentence pairs with shared language; identify if they highlight synonymous thoughts or unique messages instead.
+- The objective is to evaluate sentences with similar wording. If the meanings are equivalent, label them as paraphrases; if not, state they are not paraphrases.
+- In this task, you’ll interpret how words are used across two different sentences and judge whether they align in meaning or represent separate ideas.
+- Analyze the provided sentence pairs focusing on their underlying meanings; determine if they can be interpreted as paraphrased versions of each other.
+- Look at two closely packed sentences and figure out if they relate to one another in meaning, tagging them correctly afterward based on your conclusion.
+- The challenge here involves critically analyzing sentence pairs for their semantic equivalence—determine if they communicate identical sentiments or not.
+- Your task is to compare two sentences and determine if they convey the same meaning, regardless of wording differences.
+- Engage in a thoughtful analysis of sentence pairs to establish whether their meanings align or if there are substantial differences between them.
+- For each pair of sentences you analyze, decide if they can be considered paraphrases of each other or not. Pay attention to the nuances in wording and meaning.
+- In this exercise, you're tasked with determining whether given sentences have the same intent and meaning, even if they use different wording.
+- Your responsibility is to characterize sentence relationships by interpreting content similarity within pairs, marking them appropriately based on their equivalence in meaning.
+- Judge whether the two provided sentences essentially express identical meanings, then classify them accordingly as being paraphrased or distinct from one another.
+- For each pair of sentences, your task is to analyze their meanings closely and decide if they are essentially the same or if they present different ideas.
+- Compare high-overlap sentences for their meaning and decide whether they signify the same ideas reworded or distinct thoughts presented.
+- In this activity, you assess whether two high-overlap sentences discuss the same concept using slightly different expressions or if there are meaningful distinctions.
+- You need to determine whether two almost similar sentences deliver the same message with variations in expression, requiring careful reading for meaning alignment.
+- The task involves comparing sentences for equivalency in meaning. Identify and categorize those that share concepts versus those that do not.
+- Your responsibility is to differentiate between equivalent and non-equivalent sentence pairs through a careful analysis of their overall meanings.
+- Assess sentence pairs to identify if one is merely a rewording of the other. Correctly classify them based on their equivalence in meaning.
+- This task involves looking at two sentences that share similar wording and determining if they express the same concept or differ in interpretation.
+- The focus here is on sentence comparison. You will judge whether varying word choice alters their inherent meanings, leading to a classification as paraphrase or not.
+- Evaluate statements for their underlying meanings; determine whether slight variations point towards congruence or divergence conceptually.
+- Your task is to evaluate two closely related sentences and determine if they convey the same idea or meaning, labeling them appropriately as either "Paraphrase" or "Not paraphrase."
+- Assessing lexical overlap, your job is to figure out if two sentences articulate the same information or possess differing meanings entirely.
+- This task calls for you to assess pairs of similar sentences for semantic equivalence, allowing you to define them as either "Paraphrase" or "Not paraphrase."
+- Evaluate pairs of sentences for shared meanings. Identify when one sentence is just a reformulation of another versus instances where meanings don't align.
+- Your objective is to determine if the two provided sentences are essentially saying the same thing, using different phrasing or if they have different meanings altogether.
+- Analyze two sentences for their meaning and similarity. Distinguish between those that are merely different ways of saying the same thing versus those that differ in meaning.
+- Read through sentence pairs provided to you. Your aim is to ascertain whether both statements suggest the same meaning, assigning them a label based on your findings.
+- Analyze each sentence pair for linguistic overlap and content similarity. Decide if the sentences are interchangeable in meaning or if they differ.
+- Look for nuances in meaning between sentence pairs while noting linguistic similarities, deciding if they can be regarded as paraphrasing one another.
+- Compare and analyze pairs of sentences carefully. Your job is to conclude whether they are synonymous statements or present varying points.
+- Consider each given pair of sentences with high lexical overlap closely. Determine if you can interpret them as paraphrased representations of an identical idea.
+- Analyze pairs of sentences for their clarity and intent. Identify if one sentence can be seen as a rephrasing of the other or if they present distinct meanings.
+- Analyze closely how two sentences relate to each other. If they're just different ways to express the same thought, classify them as paraphrases; otherwise, mark them as distinct.
+- Delve into the essence of both sentences provided, recognizing subtle distinctions or similarities, and classify based on their shared or differing meanings.
+- For each pair of sentences, the goal is to assess their meanings and decide if one is a restatement of the other or if they express different ideas.
+- Your task is to evaluate two similar sentences and decide whether they convey the same meaning or not.
+- Your task is to analyze paired sentences and determine if they convey the same meaning. If they do, label them as "Paraphrase"; if they don't, label them as "Not paraphrase."
+- Your role is to interpret two overlapping sentences and label them correctly based on their semantic equivalence or differences.
+- Examine the relationship between two sentence pairs to conclude if they communicate equivalent ideas or if their meanings ultimately contrast with each other.
+- Examine both sentences for conceptual alignment. They should be labeled as "Paraphrase" if they share the same meaning, and "Not paraphrase" if their messages differ.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task400_paws_paraphrase_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task400_paws_paraphrase_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

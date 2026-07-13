@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Analyze the given sentences for references to movement and list the key participants involved, whether they are people or objects.
+- Carefully assess each input sentence for any motion and compile a list of all relevant subjects and objects that partake in that motion, distinguishing between living beings and materials.
+- Read through sentences highlighting movement and identify the specific entities taking part, whether they are living beings or objects.
+- In this activity, you need to extract entities that are part of a motion described in a sentence. Look for both humans or animals and objects mentioned.
+- Examine the given sentences to uncover which entities are engaged physically during actions, including both sentient beings and lifeless objects.
+- Identify which characters or items from the sentences exhibit movement by listing them according to their nature—alive or not—in relation to the described actions.
+- Your task is to discern which elements are engaged in movement based on descriptive sentences while considering both living and non-living factors.
+- Analyze the provided sentences to determine which entities are engaged in motion. You must differentiate between beings that are alive and those that are not.
+- Examine sentences of action to uncover the various physical entities involved. Pay attention to how many of these are animate versus inanimate.
+- From the provided sentences, find and list the entities that participate in the motion being described. Include all relevant animate beings and inanimate objects.
+- Your job is to identify the various entities engaging in motion as depicted in the input sentences while considering both living beings and non-living items.
+- Interpret the given sentences for motions described and determine all relevant entities engaged, including those that exhibit life as well as static items.
+- Review sentences for descriptions of movement and extract all relevant physical entities—including those that animate action and those that do not.
+- This exercise entails interpreting sentences with motion to pinpoint key entities, acknowledging both the living participants and any corresponding objects.
+- Focus on extracting physical participants from sentences depicting any form of motion. Both living beings and objects can be included, depending on their involvement.
+- Your role is to identify which physical entities are engaged in actions presented within sentences, attending carefully to the distinctions between animated creatures and non-animated items.
+- This task requires a keen eye for detail as you read sentences about motions; pinpoint which entities, living or otherwise, are implicated in those movements.
+- The job requires you to identify all physical entities that are involved in a motion as described in various sentences, considering both life forms and objects.
+- Identify all the physical entities that are part of a motion described in a given sentence. This involves recognizing which entities are animate and which are not.
+- This task asks you to identify all physical items related to motion within a sentence, whether they are living creatures or non-living things.
+- Your job is to sift through sentences containing motions to find entities that move, categorizing them as either animate or inanimate.
+- Your goal is to parse through sentences expressing motion and pinpoint each entity that partakes in the action, whether it be alive or not.
+- Look for verbs that indicate movement in each sentence and report the entities associated with those actions.
+- Your task is to identify and list the physical entities involved in motions described in given sentences.
+- Review narratives of movement carefully and pick out all entities mentioned within those narratives that are engaging physically.
+- You're asked to derive an understanding from sentences describing actions, extracting any animate or inanimate beings that contribute directly to the motion depicted.
+- Delve into sentences detailing motions and articulate all involved entities, recognizing how both living beings and lifeless objects contribute to the described action.
+- Differentiate between animate and inanimate entities present in sentences about movement; note who or what is taking part in the action described.
+- This task involves deciphering sentences containing actions to find out what physical entities are engaged in those actions, encompassing living beings and inanimate items.
+- As you read through each sentence, pinpoint the entities that play a role in the action or motion being described, regardless of their nature.
+- You will examine sentences related to movement and report on all physical entities that are engaged in or affected by that movement.
+- Your task is to sift through provided sentences focusing on activity description and pinpoint all entities engaging in movements, counting both humans and tangible items.
+- Examine each sentence for signs of motion and extract all relevant entities taking part in these movements, regardless of their nature.
+- Focus on identifying all physical actors mentioned within each sentence about motion, whether they are animate beings or inanimate items.
+- Analyze a given sentence to find out which entities are participating in motion, whether they are alive or not.
+- You must evaluate each provided sentence for its depiction of motion and extract the relevant entities involved, distinguishing whether they are alive or non-alive.
+- You will examine sentences about actions and motions, then identify and separate the entities that play a role in these movements.
+- Interact with a sentence to extract specific nouns that represent entities involved in motion, assessing their nature as living or non-living.
+- Read through sentences that illustrate motion and determine the involved physical entities, taking care to distinguish between animated beings and inanimate objects.
+- Examine motion-related sentences closely and determine which animate or inanimate entities are participating in the actions described therein.
+- Your task is to detect and record all entities connected to actions depicted in sentences, focusing on whether they are alive or lifeless.
+- Your responsibility is to perceive actions within the context of given sentences and accurately identify the relevant animate and inanimate entities participating in these movements.
+- Read each sentence carefully and determine which entities are taking part in any movement. This includes recognizing both human characters and physical objects.
+- Here, you will look for and name entities mentioned in sentences that depict physical movement, clarifying their roles as animate or inanimate.
+- The task requires you to identify all physical characters involved in the motions stated within given sentences, considering both living beings and objects.
+- Review sentences depicting physical actions and ascertain which emotional beings or objects are present and active within those motions.
+- In this task, focus on identifying all the entities that are physically engaged in the actions described in the sentences. Understanding context is essential for accurate identification.
+- Analyze sentences describing movement to uncover the various physical entities participating in those motions, ensuring to note their classifications.
+- This task requires you to interpret written descriptions of movement and identify all physical entities implicated in the actions, making a distinction between animate and inanimate items.
+- Engage with sentences that depict motion and isolate the tangible entities associated with those actions, considering both sentient beings and inanimate objects.
+- Look at sentences that illustrate movement and extract the names of active entities involved in that scenario, categorizing them as either animate or inanimate.
+- You will be tasked with discerning which characters or things are represented as moving within various sentences, focusing on extracting them distinctly based on their type.
+- Distinguish between various living beings and non-living entities mentioned in sentences about motion, focusing on who or what takes part.
+- You are tasked with identifying all physical participants in motions described within sentences, paying attention to both living beings and non-living things.
+- You will identify which entities, either alive or non-alive, are involved in the actions described in given sentences.
+- Your task is to read a sentence about movement and identify the physical entities involved in that motion, recognizing both living beings and non-living objects.
+- Examine input sentences for references to physical activity while determining all participants involved in that action, both human and non-human in nature.
+- Identify all entities that are part of the motion described in a sentence, considering living beings and objects alike.
+- In this assignment, you will pick out the characters and objects that participate in the actions mentioned in sentences, focusing on their physical roles.
+- The purpose of this analysis is to pick out which physical entities occur within a sentence's context of motion, classifying them appropriately based on their attributes.
+- Read through motion-based sentences attentively, extracting every relevant participant entity while distinguishing between those that are alive and those that aren't.
+- Given a motion-centric sentence, identify and categorize the involved entities as either animate or inanimate based on the context.
+- Read the sentences carefully and identify the physical entities associated with the described motions, considering both animate beings and inanimate items.
+- Read the provided sentences carefully, highlighting the characters or items that are actively participating in movement, distinguishing between animated and non-animated entities.
+- Engage with sentences to find and name characters or objects that exhibit motion. The task hinges on your ability to recognize who or what is acting.
+- Read the sentences carefully and identify all physical participants in the action. This includes both living creatures and non-living items involved in the motion.
+- In this task, find all relevant physical entities mentioned in a motion-based sentence, classifying them as either animate or non-animate.
+- In this exercise, your goal is to pinpoint physical entities engaged in action within sentences, categorizing them effectively into animate beings and their non-animated companions.
+- Identify active participants in the actions described within various sentences, gathering both animate beings and inanimate items listed.
+- In this task, discern which entities are engaged in physical activities described in a sentence, focusing on both forms of being—animate and inanimate.
+- Examine the sentence and determine the key physical entities involved in the motion, focusing on both animate beings and inanimate objects.
+- The objective is to pinpoint which entities are involved in the actions referenced within the sentences, highlighting those that are involved directly or appear motion-related.
+- This task requires identifying participants in physical movements present in given sentences, classifying them as living creatures or non-living objects.
+- Identify animate and inanimate entities within sentences portraying movement, emphasizing your comprehension of what roles these entities play within that context.
+- The goal of this task is to extract and list the physical entities from a motion-sentence provided to you, focusing on both animate and inanimate types.
+- Delve into sentences about motion and extract connected physical entities while distinguishing between those that are alive and those that aren't.
+- Your goal is to extract names of individuals or items that are actively participating in an action from a motion-oriented sentence.
+- Your role is to extract physical entities from narratives involving motion, taking into account their status as living beings or non-living objects.
+- By reading a motion-related sentence, your challenge is to discover and categorize the tangible participants, whether they are animate beings or objects.
+- Focus on identifying individuals or objects mentioned in motion within the sentences you read, analyzing their involvement in the actions described.
+- Analyze provided sentences to find and identify all relevant entities engaged in motions presented, ensuring your selections are clear and direct.
+- Your goal is to extract the names of entities from sentences that depict some form of motion, focusing on those that are directly involved.
+- Identify the physical entities involved in a given motion described within a sentence. Focus on distinguishing between living beings and inanimate objects.
+- The goal is to pinpoint specific entities from sentences that express movement, distinguishing between those that are alive and those that aren't.
+- This task requires you to extract all relevant physical participants from sentences that convey a sense of motion, noting both living and non-living entities.
+- Analyze sentences for descriptions of motion and extract the involved entities, ensuring you acknowledge different types of participants, such as humans and non-living things.
+- This task requires you to identify beings involved in actions from sentences, discerning between those that are alive and those that are not.
+- You need to extract information from sentences that describe motion, focusing on identifying all relevant animate and inanimate entities engaged in that motion.
+- Extract and categorize all physical entities that play a role in motions described within the given sentences, keeping an eye on their living status.
+- Examine the provided sentences for motion and identify the key participants, classified as either animate or inanimate entities.
+- The goal is to sift through sentences describing various motions and accurately list the physical entities that participate in those actions, taking note of their types.
+- Interpret sentences with action elements to highlight all involved subjects or objects. This requires a keen understanding of what constitutes physical participation in motion.
+- Your mission is to trace back through sentence descriptions of motion to find out which living beings or objects participate actively in those actions.
+- Tasked with analyzing sentences about movement, you need to identify all relevant entities that are engaging in that motion.
+- Distinguish the characters and objects depicted in action-filled sentences, noting which of them demonstrate physical motion.
+- Examine each sentence, identify the involved physical entities, and differentiate between those that are living (animate) and those that are non-living (inanimate).
+- The objective is to extract and list any animate or inanimate physical entities present in a given sentence focused on movement.
+- In this exercise, you will analyze sentences containing actions and pinpoint the entities that are directly involved in those movements.
+- In this task, you will detect and name the physical entities present in sentences where movement occurs, ensuring you account for both living and non-living things.
+- Analyze the given sentences for any physical actions and pinpoint the animate and inanimate entities that play a role in those actions.
+- This task focuses on recognizing active participants in a motion described in a sentence, requiring you to discern between living beings and non-living objects.
+- When presented with a sentence representing an action, find and list every entity participating in that action—both animate beings and lifeless objects.
+- You will identify all characters involved in physical movement as described within given sentences, ensuring to differentiate between animate entities like humans or animals and non-animated ones like objects.
+- Examine sentences that depict movements and determine which beings or objects are participating in those actions.
+- You will sift through each sentence about physical actions to extract and list those entities—whether alive or not—that influence or engage in the described motions.
+- Focus on sentences featuring movement; identify which physical entities take action, noting their classifications as either alive or not.
+- Focus on sentences with actions happening and identify all participants in those actions. This includes various characters and objects that may be moving.
+- This task challenges you to discern all entities mentioned in action-driven sentences, including persons, animals, and things that are engaged in physical activity.
+- Your task is to analyze sentences with physical actions and determine the entities involved in those motions, distinguishing between living and non-living things.
+- The objective of this task is to find and name all entities mentioned in sentences where motion occurs, with an emphasis on their characteristics as alive or not.
+- In this activity, you will draw attention to all the participants in action within sentences about motion, rightly categorizing them into living and non-living classes.
+- Scrutinize sentences containing motion to select all relevant entities involved. This requires a good grasp of language and understanding of physical actions.
+- You will examine sentences for references to motion and highlight the physical entities. This entails recognizing who or what is performing the action.
+- Analyze sentences depicting movement to determine the characters or objects involved, providing a comprehensive list where applicable.
+- Analyze a sentence to pick out all entities that are either alive or not, especially those participating in the described movement.
+- Go through provided sentences that illustrate physical actions and determine which actors or objects are playing an active role in these motions.
+- In this task, analyze sentences containing a motion to locate and note down all physical entities discussed, ensuring you identify both types of entities accurately.
+- Your task is to extract any animate or inanimate entities from sentences that contain descriptions of motion. Look carefully for those that are actively moving.
+- You will interpret sentences with action elements and clearly identify all relevant physical participants, classifying them as living beings or objects based on their role.
+- The challenge is to discern which entities are involved in actions from descriptive sentences, recognizing their nature as either living beings or non-living items.
+- Identify all physical entities shown to take part in motions in the given sentences, distinguishing between animate and inanimate.
+- You will read a sentence that describes a motion and identify the key physical entities involved. This includes any living creatures or inanimate objects that are part of the action.
+- Your focus is on recognizing all the entities involved in a described motion within a sentence. These can include people, animals, or any objects mentioned.
+- Analyze each motion-related sentence for its participants, focusing on mentioning all types of relevant beings that engage physically during the described events.
+- Analyze each sentence for participants in physical motions. You need to understand who or what is moving, highlighting both humans/animals and objects involved.
+- In each task, you will review a sentence describing a motion and find out which characters or objects are mentioned as moving.
+- Your responsibility is to recognize and articulate which entities within a motion sentence are participating in the described actions.
+- Scan through sentences detailing movements and recognize all participating entities—both living ones such as people or animals and non-living ones like things or objects.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1518_limit_answer_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1518_limit_answer_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

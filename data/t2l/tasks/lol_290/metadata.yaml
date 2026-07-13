@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Ascertain whether you can derive an answer from a narrative concerning characters or events related to a particular question.
+- Judge whether specific questions about plot details can be satisfied with evidence found in the corresponding stories.
+- In this task, you assess a situation based on a narrative and determine if a question posed about the narrative can be answered with the provided information.
+- This task involves analyzing a short story alongside a question, determining if the question can be answered with the details present in the story.
+- You are presented with a brief story and asked to evaluate its relationship with a question. Determine if the information enables you to form an answer.
+- This task involves reading a story and evaluating whether a given question can be answered using the information provided in that story. Critical thinking and comprehension skills are necessary to assess the answerability.
+- You will analyze a brief tale alongside its associated question, discerning if there is enough relevant information to provide an answer.
+- The challenge is to evaluate how well a story reinforces or clarifies an associated question, focusing on logical reasoning from the text.
+- You will read a passage and consider a question about it. Your goal is to judge if the question has enough information in the passage to be answered. This task tests your reading comprehension.
+- You need to determine if there is enough context within a given story to respond appropriately to a posed question regarding that narrative.
+- Your task is to evaluate whether a question about a given story can be answered based on the details provided in that story.
+- This activity requires you to engage with stories critically, judging whether questions posed thereafter are answerable by extracting facts or meanings from the narratives provided.
+- You need to read short texts and assess follow-up questions. In doing so, you'll judge whether you can derive answers using only the text given.
+- The aim is to read through a scenario presented in a story and consider its relevance to an asked question, assessing whether an answer can be logically derived from it.
+- Your job is to evaluate narrative paired with inquiries, reflecting on whether or not answers can be gleaned from the details shared in those narratives.
+- In this task, you'll connect elements of a short story to a specific query, determining if the query can be effectively resolved based on the narrative’s context.
+- The exercise requires you to analyze both a scenario described in a story and an associated question, determining if the necessary information for an answer is present.
+- This task requires you to read a story and evaluate whether the related question can be answered based on the details within that story.
+- For each provided story and question pair, you'll need to decide if the question has sufficient information to be answered logically.
+- Assess whether a specific inquiry can be resolved based on a brief narrative. Your decision will reflect your understanding of the story's content.
+- This task requires you to analyze snippets of text and formulate a judgment about the answerability of questions linked to those texts.
+- Read each short passage thoroughly and make an informed decision on whether its linked question can be answered using only what's mentioned in the story.
+- You will consider if a question arising from a brief story can be confidently responded to using only what has been shared in that story.
+- This task asks you to identify if a question's answer is contained within a narrative, using your comprehension of the text.
+- Consider a narrative and a related inquiry. Reflect on whether the clues provided in the story allow you to confidently answer the question posed.
+- Use your understanding of storytelling and comprehension skills to assess if a question can connect logically with details found in each provided tale.
+- Assess whether the details provided in a story are sufficient for answering a specific question about that narrative. Your evaluation will be based on comprehension of the text.
+- You need to determine if you can find definitive answers to questions deriving from narratives based solely on their written content.
+- Your goal is to read through narratives, then determine if related questions are answerable using details gleaned from those narratives.
+- The goal of this exercise is to ensure comprehension of the narrative by discerning whether a related question is addressable with the provided information.
+- You are tasked with analyzing a narrative and determining if the question posed can be addressed using the details contained in the story.
+- The goal here is to read a story and respond to whether a related question can be answered using details from that story.
+- Read through a brief story, then assess a subsequent question regarding that story. Determine if the details are sufficient to formulate an answer.
+- Determine whether the details in a given story can adequately address an ensuing question based on your understanding of the text.
+- In this assessment, you will reflect on stories and their questions, deciding if there’s enough clarity in the narrative to find an answer.
+- Your responsibility is to examine a narrative passage and its corresponding question, then evaluate whether the question has an answer based on the context of the tale.
+- Your job is to decide if a question can be respectfully answered based on the context and details provided in a brief narrative.
+- Evaluate storytelling followed by inquiries about that tale. Decide whether each inquiry can be answered based solely on what is presented in the story.
+- This task requires you to interpret a narrative followed by a question, deciding if enough information exists within that narrative to answer it effectively.
+- In this exercise, examine stories and their respective questions, then ascertain if they contain enough information that supports answering those questions.
+- You are tasked with reading various stories and deciding if questions regarding those stories can be answered based on their content, necessitating careful evaluation of context and detail.
+- Analyze a provided story and consider a following question. You need to decide if sufficient context is available in the narrative to arrive at an answer.
+- Your job is to evaluate whether a question can be answered based on the accompanying story's details.
+- Engage with stories and their related questions, gauging whether each question has enough context within the narrative to warrant an answer.
+- Analyze a story and determine whether the corresponding question has clear information that allows for an answer, stating your conclusion clearly.
+- In this task, you need to determine if a question concerning a story is answerable using only the information provided in that narrative. Your assessment depends on your understanding of context and details.
+- Evaluate each question against its related story to ascertain whether there is sufficient information available to provide a response.
+- This task involves reading a story and determining if a question about it can be answered based on the information provided.
+- Your objective is to determine whether the logical connection between the story and question supports the possibility of answering it.
+- Read the narrative carefully, then evaluate if you can answer the question. You must rely solely on what you've read in the story.
+- This task challenges you to comprehend a story and gauge if you can adequately answer a related question based on details within it. It tests your ability to discern relevant information.
+- You will review a narrative and a corresponding question, determining if there is sufficient information in the story to provide a clear answer.
+- Determine if you can answer a given question by assessing the relevant details found within an accompanying story.
+- The task involves reflecting on a short story and deciding if a specific question can be answered with the information given. It requires understanding the story’s events and characters.
+- Your role is to interpret a narrative and determine if the underlying question can be answered by analyzing the details presented.
+- In this exercise, your goal is to assess the connection between a story and a related question, deciding if there’s enough information for a clear answer.
+- You will engage analytically with narratives, determining if the information they contain is robust enough to support answering their corresponding questions.
+- Your task is to determine if the relationship between a story and its question allows for an answer based on the context provided.
+- Engage with narratives while deciding if they yield enough clarity or context for answering posed questions accurately.
+- You will participate in evaluating short stories to see if related questions can find answers grounded in the details of these stories.
+- You will look at a narrative followed by an inquiry about it, tasked with identifying if there’s enough storyline evidence available to address that inquiry.
+- By analyzing stories and their respective questions, your role is to conclude whether those inquiries can be resolved using details available in each respective narrative.
+- You will evaluate whether a specific query can be adequately addressed using the details found in a given narrative.
+- Evaluate if the details provided in a short narrative allow for answering the subsequent question correctly.
+- Read through the story carefully and decide if the inquiry made is satisfactorily addressed by the content presented in that narrative.
+- Assess whether you can extract an answer to a posed inquiry by analyzing a descriptive story and identifying relevant details.
+- This task challenges you to use your critical thinking skills as you match a narrative with a question, deciding on its answerability.
+- The aim of this task is to compare narratives with associated inquiries, determining if there exists sufficient information in the text for an answer.
+- In this exercise, your aim is to evaluate if a particular question can be resolved using information presented in a corresponding narrative. This requires strong reading comprehension.
+- You are required to interpret short stories and determine whether they provide enough information for answering specific queries related to their content, which engages your comprehension skills.
+- Your role involves looking at a story and its related question, deciding if it's possible to derive an answer from the text provided.
+- This task requires comprehension of a story to decide if an associated question is answerable using the information given.
+- You will be examining how well a question aligns with details from a story in order to judge if an answer is possible or not.
+- Read the story carefully and decide if the question can be answered using just the information within it.
+- You will be presented with a brief story followed by a question. Assess whether there's enough context in the story to satisfactorily answer the question.
+- Use your analytical skills to review passages and discern whether each inquiry can be answered with clarity derived from its corresponding story.
+- Assess whether the facts presented in a short story adequately cover what is asked in an adjacent question for clarity in answering.
+- This activity requires you to review a narrative alongside a question, discerning if the context makes it possible to provide an answer.
+- Analyze each scenario presented in a short story alongside its query, determining if enough relevant details exist to formulate an answer.
+- This challenge involves reading short stories and assessing them against proposed questions; your focus should be on their interrelation and information sufficiency.
+- In this task, you will analyze a narrative and determine if you can respond to a related question based solely on the details from the story. It requires attention to context and inference skills.
+- Your job involves interpreting a short narrative and then evaluating a question about it. Decide if the question can be answered based on the story details.
+- The objective is to judge if the content of the story gives enough context to answer the related question.
+- This task requires you to evaluate a story and a related question, deciding if the question can be answered based on the information provided in the story.
+- You will assess story elements alongside questions, making judgments about their connection and whether content allows for answering those questions.
+- Assess whether the story includes details that directly relate to and answer the posed question.
+- Analyze the storyline provided and evaluate if there are enough clues within it to answer the particular question related to it.
+- You will engage with a short piece of text and an accompanying question. Your challenge is to determine if the context of the text provides enough evidence to respond.
+- In this task, you will review a situation depicted in text and then ascertain whether the following question can be conclusively answered using details from that text.
+- Read through the provided information attentively and assess if it contains substantial data that can resolve questions linked to it.
+- Assess the information in a story and decide if a specific question can be answered based on what you read.
+- This exercise calls for you to utilize your judgment skills about narrative coherence, assessing if any presented questions have a concrete basis in the text.
+- Engage with a piece of text and a related question, determining if enough information is present in the narrative for an appropriate response.
+- You will read a textual narrative, then judge whether a related question has sufficient context within that narrative for an answer. This assesses both comprehension and analytical skills.
+- You will be provided with a brief story followed by a question. Your job is to assess whether the answer to that question is found within the story's text, which calls for careful reading.
+- Your challenge lies in reading a series of short narratives and deciding if the linked questions draw from adequate information provided by those narratives.
+- Determine how well the context of a story answers questions that arise from its content, assessing clarity and completeness of information.
+- The challenge here is interpreting short narratives paired with questions, deciding if those questions can be answered with what’s stated in them—a test of insight and logical deduction.
+- Analyze the given tale and its associated question. Your duty is to decide if enough information exists in the story to formulate an answer.
+- The purpose of this work is to inspect a described scenario and its linked query, assessing whether there’s adequate context for arriving at an answer.
+- The task requires you to judge the relationship between a story and a corresponding question, deciding if the story contains enough context to answer the query.
+- You need to analyze a narrative and a question, judging if the question can be correctly answered with the details from the story.
+- As you read through stories paired with questions, your responsibility will be to evaluate their relationship and identify if the questions are answerable.
+- Engage with a story and evaluate whether you can answer a related question based on the facts presented. Your judgment should focus on clarity and context.
+- In this task, you'll assess whether questions about a short narrative can be answered using only details from the story itself. Think critically about how well the story informs each question.
+- This task involves critically thinking about a relationship between a story and a related question to see if there are enough clues for an answer.
+- In this task, you will examine a brief story and its corresponding question, deciding if the information given allows for a definitive answer.
+- Engaging with stories and their related inquiries, this task asks you to critically assess if there’s enough context for clear answers based on those stories.
+- You will consider each story fragment and its corresponding question, then label them based on whether an answer is achievable from the text.
+- This exercise requires you to derive conclusions about whether questions concerning a narrative can be answered using the information contained within that narrative.
+- Your task is to read a short story and evaluate a related question. Determine if the information in the story allows you to answer the question.
+- Your task involves scrutinizing narratives along with their questions, focusing on whether enough detail exists in the text for you to formulate an answer. It calls for analytical reading abilities.
+- Your task is to evaluate whether a given question can be answered based on the information provided in a related story.
+- You are asked to judge whether a question concerning a narrative can be answered with the content provided, labeling it accordingly.
+- You will analyze a short narrative and consider if the question asked about it is answerable, drawing solely from the text given.
+- You will read a narrative and assess if the question posed has sufficient details for an answer, categorizing it as either answerable or not.
+- Using your comprehension skills, decide if a question about a presented story can be resolved with the narrative content provided.
+- In this task, your analysis will focus on examining if the context of a story sufficiently answers its respective question; it tests comprehension and inferential abilities.
+- In this task, you'll read short narratives followed by questions and decide whether those questions can be answered with certainty based on those narratives.
+- You will analyze a story and determine if relevant details exist that could help answer a specific question. The task tests your ability to extract important facts from narratives.
+- You’ll need to apply deductive reasoning in this task to evaluate if questions about stories can be satisfactorily answered based on provided content.
+- This task focuses on your ability to connect story elements with specific questions, judging if those questions can find proper answers rooted in the text.
+- Your task consists of reading through a narrative alongside a related question and judging whether sufficient detail exists in the narrative to answer that question effectively.
+- This task necessitates careful reading of a narrative followed by a judgment on whether the associated question finds its answer within that same narrative.
+- The task involves reading stories and analyzing whether related questions have sufficiently clear answers given the context in which they are posed.
+- The task at hand is to analyze short narratives and corresponding questions, judging if the stories provide enough data to support an answer.
+- You’ll review a narrative and then judge whether the question posed is answerable by referencing elements present in the story.
+- You will be tasked with reading brief narratives and answering questions based on them. Assess whether any given question has enough backing from the narrative.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task290_tellmewhy_question_answerability
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task290_tellmewhy_question_answerability
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The aim is to retrieve and present the correct capital city whenever a country is listed in the question.
+- Your role is to quickly produce the capital for any given country listed, relying on your memory of global geography.
+- Identify the capital city associated with each provided country name; this reflects knowledge of sovereign states' locations.
+- In this exercise, you'll be given the names of various countries, and your goal is to state their respective capital cities based on your understanding of geography.
+- The task involves recognizing and stating the capital city related to a specified country, demonstrating familiarity with countries and their capitals.
+- This task involves matching country names to their respective capitals, requiring an understanding of geographical associations.
+- In this challenge, provide the name of each country’s capital when prompted. It involves knowledge of world geography and capitals.
+- For each country provided, you must supply the name of its capital city, relying on your understanding of international geography.
+- The assignment centers on determining each country's capital city, which highlights your familiarity with global geographic locations.
+- This activity involves connecting countries to their capitals, requiring you to have basic geographical understanding of nations.
+- You will be provided with a country name, and your goal is to state its capital. A solid understanding of global locations is essential.
+- You need to demonstrate knowledge of capitals by responding with the correct city that serves as the political center for each specified country.
+- The aim is to retrieve and present the capital cities corresponding to the given countries, engaging your awareness of international geography.
+- Your goal is to list the capitals of various countries provided, highlighting your knowledge in international geography.
+- You are asked to associate names of countries with their capital cities based on your understanding of geography.
+- The focus here is on identifying capital cities; you'll need to use your knowledge about different nations' administrative centers.
+- This activity revolves around recognizing and stating the capital cities linked to specific countries mentioned in the input. Your understanding of geography will guide you.
+- Your objective is to accurately name the capital city of each provided country, utilizing your knowledge of world capitals.
+- You need to demonstrate your understanding of world geography by identifying the capitals of various countries.
+- This task centers on naming the capital city of a specified country based on your geographic expertise.
+- Your role is to provide the capital city for each country mentioned, displaying your understanding of geographical information.
+- Using your familiarity with geography, determine the capital city for each corresponding country presented in this task.
+- You must provide the capital city for each named country, demonstrating a grasp of geographical information and global relations.
+- You will be tasked with stating the capital city when a country name is given, illustrating your awareness of political geography.
+- You are tasked with recognizing the capital cities of various countries listed. This demands a broad awareness of geography.
+- You are asked to give the capital city corresponding to each country mentioned. It tests both your memory and recognition skills related to geography.
+- Use your memory of global locations as you identify and provide capital cities for specified countries.
+- The task asks you to connect each named country with its respective capital city, requiring accurate geographical knowledge.
+- You are expected to state the capital city of a given country, testing both your memory and understanding of that country's geographical position in relation to its capital.
+- Here, your job is to couple each country with its correct capital, illustrating your proficiency in global geographic knowledge.
+- In this activity, you are to determine the official capital city corresponding to the name of the specified country.
+- You will engage with various country names and utilize your knowledge to pinpoint their respective capitals.
+- Your job is to state the capital city for each country you encounter, showcasing your grasp of geographic information.
+- The objective is to demonstrate your familiarity with countries around the world by identifying their capitals.
+- You are tasked with recalling or identifying the capital city for each provided country's name. This requires a good grasp of geography.
+- For every country name presented, your goal is to return its corresponding capital city. This requires clear familiarity with global political landscapes.
+- You will be presented with country names, and your job is to determine their capitals based on what you know about world regions.
+- This task involves geographic knowledge where you must match countries with their respective capitals.
+- Each input will include a country name, and you must identify its capital city correctly based on your geographic knowledge.
+- Your task is to identify the capital city associated with a given country name.
+- For each country mentioned, you must simply state its capital city, drawing from your knowledge of international geography.
+- This exercise requires you to find and provide the capital city for various countries given in the input. Geographic knowledge is important.
+- Your job is to utilize geographical information to point out the capital city for each provided country name.
+- You will be tasked with listing the capital city for each country provided. Knowledge of countries and their capitals is crucial for this task's success.
+- Your task is to identify the capital city of a specified country. This requires knowledge of world geography and capital cities.
+- Your job is to connect different countries with their capitals by naming them correctly, which relies on knowledge of international geography.
+- You will need to retrieve the capital city for various countries presented to you, tapping into your awareness of world capitals.
+- Your objective is to connect a list of countries with their capitals, demonstrating familiarity with global political divisions.
+- Your task involves identifying the capital city of a given country. This requires knowledge of world geography and the ability to recall significant locations.
+- For every country mentioned, you are expected to state its capital city, relying on your awareness of national capitals and their locations.
+- This task invites you to specify capitals for designated countries, engaging your memory and comprehension of geographical locations.
+- You will need to draw upon your geographical knowledge to match countries with their correct capitals as they are presented.
+- Your job is to identify and provide the capital for each country given, showcasing your geographical literacy and recall abilities.
+- Your task is to identify and provide the capital city that corresponds to a given country name.
+- Participate in this geography assessment by linking each given country name with its appropriate capital city.
+- For every country listed in the input, articulate its capital city to demonstrate your grasp on geographic locations.
+- The assignment involves matching country names with their respective capitals; this tests your awareness of global geography.
+- For each mentioned country, provide its capital, showcasing your geographical awareness and recall abilities.
+- Your task is to identify the capital city associated with a given country. This requires knowledge of world geography and political boundaries.
+- The focus of this task is to know and provide the appropriate capital cities for listed countries. It's about geographic awareness.
+- You will receive various country names and should recall and mention their respective capitals, demonstrating your geographical expertise.
+- Each query will ask for the capital city associated with a specific country; you must respond correctly based on your knowledge.
+- For this task, your focus should be on connecting each country name with its capital city accurately, reflecting your knowledge about geopolitical entities.
+- In this task, you will look at a country’s name and recall or research its capital city. Having knowledge of different nations will assist in answering.
+- You need to recognize the relationship between a country and its capital, supplying the correct response for each query.
+- Your assignment involves providing the capital city corresponding to a country given in the input. This necessitates both knowledge and recall of important global information.
+- This exercise tests your ability to associate countries with their capitals through simple recall.
+- Your challenge involves recalling which city serves as the capital for each specified country, highlighting your proficiency in geopolitical knowledge.
+- You will be provided with the name of a country, and your role is to return the city that serves as its capital.
+- Given a country name, your mission is to determine its capital. This calls for an awareness of global geography and political structures.
+- This task involves recalling geographical knowledge, specifically the capital cities for selected countries.
+- You must identify and provide the capitals of listed countries in this task, relying on your awareness of international geography.
+- You need to match each country provided to its corresponding capital city, requiring familiarity with global capitals.
+- This job entails finding the capital city based on the name of the country provided. A solid understanding of international capitals is key for success.
+- In this exercise, you should assess the relationship between a country and its capital by extracting information based on established geographic facts.
+- You will be given a series of country names; your responsibility is to identify and name the corresponding capitals.
+- The focus of this task is on identifying capitals from provided country names. You will need to draw from your understanding of international geography.
+- You need to identify the capital city associated with each country listed, emphasizing an understanding of global geography fundamentals.
+- You will look up or reflect on your existing knowledge to determine and present the capital city that corresponds to the country mentioned.
+- Prepare to apply your knowledge of geography as you identify capital cities linked to given countries.
+- The aim here is to determine which city serves as the capital for each provided country name. Understanding geography is crucial for producing correct answers.
+- This task requires you to match countries with their respective capitals. A strong grasp of geopolitical knowledge will aid in fulfilling this requirement.
+- Identify the capital city associated with the mentioned country. Your knowledge of geography will help you in completing this task successfully.
+- For each input question featuring a country name, deliver the corresponding capital city based on your existing knowledge.
+- In this activity, you will need to recognize and state the correct capital cities for given countries, showcasing your knowledge of national capitals.
+- For each country listed, your challenge is to recognize and declare its capital city from memory.
+- Your task is to identify and provide the capital city corresponding to a given country name.
+- Your work involves linking countries with their capital cities by responding correctly based on geography knowledge. Recall ability will be crucial in providing accurate answers.
+- Your assignment includes providing the capital for specified countries. You should draw upon your understanding of geography and international locations.
+- You are tasked with showcasing your geographical insights by providing capital cities related to the input country names.
+- You will be tested on your ability to recall and report on the capitals of selected countries accurately.
+- Your objective here is to determine what the capital city is for a listed country, which necessitates awareness of international geography.
+- You are tasked with recalling the capital cities of given countries, reflecting your understanding of political geography.
+- This task places emphasis on geographic literacy, where you need to match countries with their capitals accurately, requiring mental retrieval of geographical information.
+- In this activity, you will match countries with their capitals, reflecting your understanding of world political divisions.
+- You need to apply your knowledge of geography to connect each country with its capital city correctly.
+- You need to recall the capital city for each country listed, showcasing your knowledge of global geography and political divisions.
+- Provide the capital for each country name presented; this exercise relies on knowledge of world capitals.
+- The essential skill for this task is recognizing the relationship between each country name and its designated capital.
+- The task requires you to connect each country to its capital city, highlighting your understanding of geopolitical boundaries.
+- Your task involves identifying the capital city of a given country based solely on its name.
+- You will be asked to recognize the capital city for various countries listed in the input.
+- You will receive the name of a country, and your responsibility is to recall and name its capital city. This tests your geographical knowledge.
+- The objective is to find and state the capitals of given countries. Your geographical literacy will play a crucial role here.
+- Your task is to identify the capital city corresponding to a given country name, demonstrating knowledge of world geography.
+- This task focuses on assessing your awareness of international capitals in relation to their countries.
+- For every input country, your job is to identify and provide the city that functions as its capital.
+- For each input country name, your responsibility is to recall and provide the appropriate capital.
+- You will be tasked with recalling the capital of a country, focusing on your geographical knowledge for correctness.
+- This involves assessing your familiarity with world geography as you correctly name capitals based on country input.
+- The task requires you to pin down the capital city corresponding to a particular country, illustrating your knowledge about geography.
+- For each country listed, determine the city that serves as its capital, utilizing your geographic insights.
+- Identify each country's capital based solely on the country's name presented in the question.
+- Your task revolves around recognizing country names and stating the respective cities that serve as their capitals, showcasing your geographical awareness.
+- You are required to leverage your understanding of world geography to specify the capital city for various countries provided.
+- You’re asked to return the capital of a given country, which will demonstrate your familiarity with geographic names and locations.
+- Aim to accurately pinpoint and state the capital for a series of countries based on the names provided.
+- For each country presented, your task is to accurately articulate its capital city based on your knowledge of world geography.
+- This exercise tests your ability to retrieve information about capitals from a list of different countries.
+- In this assignment, you will link countries with their capitals, showcasing your awareness of global locations.
+- This exercise lets you showcase your knowledge about world geography, particularly regarding countries and their capitals.
+- When presented with the name of a country, you need to provide its capital city. Familiarity with global capitals will help you succeed in this task.
+- The aim is to respond to country names by stating their corresponding capitals from memory.
+- The task is about linking each country name to its capital, drawing on your understanding of world capitals and their locations.
+- You will be provided with a list of country names, and your job is to know and state their respective capital cities.
+- You need to complete a simple geographic task by stating the capital city associated with different countries. Having a good mental map of world capitals is important here.
+- The task involves identifying the capital city of a specific country based on its name. Knowledge of world geography is essential.
+- In this task, you will engage with questions about countries and must respond by naming their capitals accurately.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1146_country_capital
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1146_country_capital
+user_prompt_template: '{task_def}
+
+
+  {problem}'

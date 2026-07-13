@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The focus of this activity is on organizing data residing in dictionaries according to clearly defined keys. It’s important to maintain clarity in sorting rules while processing negative and positive values.
+- As part of this task, you are asked to systemically organize data from dictionaries by applying sorting techniques focused on specified numerical keys.
+- Your goal is to organize a list of dictionaries by examining the values associated with their keys. You'll sort primarily by one key and resolve ties with another key when necessary.
+- In this task, you'll arrange dictionaries so that they are displayed in ascending order based on particular numeric keys while respecting defined sorting conventions.
+- You will be tasked with sorting a list of dictionaries. The main criteria are the values associated with the 'first' key, with ties resolved by the 'second' key. Make sure to give priority to negative numbers.
+- This task tests your ability to handle data structures like lists and dictionaries by requiring you to sort them based on two levels of key-value comparisons.
+- The aim here is to take a series of key-value pairs found in dictionaries and arrange them based on your analysis of selected numerical keys, focusing on both primary and secondary elements for sorting.
+- You will work with dictionaries that contain pairs of keys and values. The goal is to sort these pairs according to defined numerical criteria.
+- The objective is to take a list of dictionaries and arrange them in order based on two specific keys. Negative values take precedence over positive ones in the final arrangement.
+- You will analyze a list comprised of dictionary entries, assessing their numeric properties so you can sequence them accurately from smallest to largest under specified rules.
+- In this task, you need to put dictionaries into a specific order, focusing on their 'first' and 'second' values. The organization should start with lower numbers and handle negatives appropriately.
+- This task requires an understanding of how to evaluate dictionary entries based on their numerical keys for effective sorting.
+- Engage in ordering a collection of dictionary entries using defined criteria related to their numerical aspects – with specific focus given to prioritizing negative over positive numbers while utilizing multiple keys for sorting.
+- This task focuses on organizing data. You need to identify how to sort dictionaries by their numerical attributes while accounting for both primary and secondary sorting criteria.
+- The objective is to sort multiple dictionaries according to their 'first' key, handling negative values first. If two dictionaries share the same 'first' key, the 'second' key will guide the sorting process.
+- This task requires you to focus on the values within dictionaries and arrange them from the smallest to largest, ensuring negative numbers are placed before positive ones.
+- Take lists that represent structured data and refine their order based on specific given parameters. Grasping how these parameters interact is crucial for success in this task.
+- This task challenges you to arrange items in a given list of dictionaries using logic related to two numerical keys, emphasizing an ordered approach from lower to higher values.
+- In this task, you’re set with the responsibility of arranging dictionary records. Mastery over basic sorting principles will be essential as you work through various numerical entries.
+- You need to assess and reorganize a group of dictionaries by specific criteria set forth in their key-values, leaning on your knowledge of numeric ordering principles.
+- Engage with a set of dictionaries and utilize your skills in sorting them according to specific numeric criteria. This involves critical thinking about how numbers relate and compare.
+- The task requires you to process a list of dictionaries, applying sorting principles based on numerical values within them while observing certain order conditions for consistent results.
+- This exercise challenges your ability to process lists containing dictionary records by structuring their arrangement through clearly outlined numeric order preferences.
+- As part of this task, you will engage with distinct pairs of values within dictionaries. Your challenge lies in comprehensively sorting these entries while adhering strictly to defined ordering protocols.
+- In this activity, you'll navigate through lists of dictionaries and sort them by important keys, ensuring that your approach accounts for ties in value appropriately.
+- Your challenge here is to put together an ordered list from given sets of dictionaries. Focus on comparing numerical values primarily located under specified keys while ensuring correct order placement.
+- You need to take a set of dictionaries and arrange them from smallest to largest using the first key, making sure to follow special rules for negative and positive numbers.
+- This task is focused on sorting; you'll be given dictionaries with numerical keys and values, and your goal is to list them from least to greatest according to specified criteria.
+- This task challenges you to work with key-value sets (dictionaries) and order them logically based on defined numeric attributes. Understanding how sorting works is crucial here.
+- The emphasis here is on sorting techniques as applied to a list of dictionaries, where comprehension of numeric relationships will aid in establishing an appropriate order according to specified rules.
+- The assignment involves taking a series of dictionaries and sorting them in a way that respects both negative and positive values, ensuring proper placement.
+- You're tasked with restructuring an unordered list of dictionaries by aligning them based on the numerical representations found within specific keys.
+- Your task is to handle a collection of key-value pairs within dictionaries and reorder them based on specific numerical criteria. It's about applying logic to achieve proper organization.
+- You are presented with several sets of paired values within dictionaries, and your job is to arrange these collections systematically. Sorting accurately will showcase your organizational skills.
+- This activity involves sorting through a collection of dictionaries. Analyze the numeric keys carefully, starting with the smallest in relation to the 'first' key and using additional criteria for tie-breaking.
+- The task requires you to sort dictionaries by their numerical properties. Start by assessing the 'first' key for each dictionary and sort accordingly, using the 'second' key for any ties that arise.
+- You will be working with lists of dictionaries and must sort them strategically. Begin by evaluating numbers from the 'first' key and make sure that values are presented from smallest to largest.
+- You are required to organize a group of dictionaries into ascending order using their designated 'first' values. If there are ties in these values, the 'second' values will then guide the sorting.
+- Your task is to take a list of dictionaries and arrange them in order based on their values, prioritizing lower numbers first.
+- A data structuring challenge awaits you as you arrange various dictionary entries based on specific numeric keys. It's vital that you carefully consider how to handle values that are similar or equal.
+- This task revolves around the sorting of dictionary lists, focusing on the comparative values of keys, which tests your ability to organize information systematically.
+- You will work with a series of dictionaries and arrange them in order according to values associated with certain keys. The challenge lies in managing the hierarchy of sorting when multiple values are the same.
+- This activity requires careful evaluation of dictionary entries as you determine their order based on prescribed numerical keys while following sorting guidelines.
+- This task involves analyzing a list of dictionaries and determining the correct sequence based on designated keys, prioritizing certain numbers over others as per the rules provided.
+- This task requires you to organize a collection of dictionaries based on specific key values. You'll need to understand sorting principles, particularly how to handle negative and positive numbers within those keys.
+- Your objective is to arrange a list of dictionaries by their numerical values, respecting the rules about negative and positive numbers.
+- In this exercise, your analytical skills will be tested as you sort a series of dictionaries by interpreting and comparing their contents numerically.
+- You'll be sorting through sequences of entries denoted by dictionaries; your task is structured around organizing these according to numeric values found within specified keys efficiently.
+- Your mission is to take a list of dictionaries and reorder them based on their numeric properties. Attention should be given not just to value magnitude but also specific conditions regarding negativity and ties.
+- You will work with a dataset represented as dictionaries and must sort the entries based on given keys while handling ties appropriately.
+- This task requires you to sort a collection of dictionary objects based on the values associated with specific keys. You'll need to ensure that the sorting respects both negative and positive numbers' placements correctly.
+- Your job is to sort a list of dictionary entries according to rules governing their key values, focusing on a logical arrangement that reflects numerical hierarchy.
+- Organizing lists comprised of dictionaries requires an understanding of how to compare and rank different key-values effectively under specified conditions.
+- Your role involves organizing items contained within dictionaries according to their numerical keys, specifically focusing on arranging from smallest to largest. Special consideration will be given to negative versus positive values.
+- You are tasked with sorting a list of dictionaries based on specific keys. This task requires attention to detail in how numerical values should be ordered.
+- Your role here is to sort complex structures called dictionaries by evaluating their components using numerical comparisons, ensuring that both negative and positive values are placed correctly.
+- Your task is to sort a list of dictionaries based on specified key values. Focus on ordering them from smallest to largest, considering both primary and secondary keys.
+- You'll be tasked with manipulating list-based structures where dictionaries are arranged according to specific keys, focusing on effective ordering principles.
+- You’ll be sorting dictionaries that contain unique key-value pairs based primarily on numeric keys. This requires skills in comparison and recognition of the relationship between different number types.
+- The focus of this task is to find an orderly arrangement for a list of dictionaries through sorting, taking into account both the 'first' and 'second' key values while treating negative numbers first.
+- You are set to interpret a data list composed of dictionaries and will sort it by applying specific rules regarding key values which include handling negatives first.
+- The goal here is to take an array of dictionary entries and arrange them in ascending order according to specified numerical criteria.
+- You will exercise numeric comparison skills by taking unsorted dictionary entries and arranging them into an organized format according to specified criteria.
+- The task invites you to engage with data structures by sorting them methodically using numeric keys, ensuring a logical progression from lower to higher values.
+- The task requires you to sort out dictionaries by specific keys, managing numerical comparisons thoughtfully and resolving instances where values match.
+- The task involves sorting a collection of structured entries (dictionaries). Use their 'first' and 'second' keys for sorting, while being mindful of how negative numbers are handled.
+- Review a list of dictionaries and determine how they will be sorted based on specified numerical criteria. Ensure that your sorting places negative numbers first before moving on to positive entries.
+- You must arrange multiple dictionaries according to the value associated with the 'first' key. If any dictionaries share this value, then look at the 'second' key for a further ordering method.
+- You will work with a collection of dictionaries and arrange them according to the values of their keys. Make sure to prioritize negative values before positive ones.
+- This challenge entails reviewing a set of dictionaries and executing a sort operation focused on key values—ensuring clarity in how both negative and positive numbers influence the output.
+- Engaging with this task means delving into a set of dictionary records where your challenge is sorting them logically based on two levels of criteria—primary and secondary keys.
+- You'll be assessing a list of dictionaries to determine their order by sorting them first on their 'first' key, and when necessary, further sorting by the 'second' key.
+- The objective today is to sort a collection of keyed data (dictionaries) into an ordered format based on numerical values, aiming for a clear understanding of priority in organization.
+- In this sorting task, you will prioritize a particular key's value in a series of dictionaries, ensuring that if two dictionaries have the same first key value, you then consider a second key for further sorting.
+- You’ll be working with dictionaries where each contains unique pairs. Your task is to carefully sort these dictionaries based on their values, starting negatively and working up towards positive values.
+- In this assignment, you're tasked with ordering dictionaries by their keys, ensuring that you understand how to prioritize values correctly, particularly when dealing with both negative and positive numbers.
+- The task involves organizing a collection of dictionary entries based on numeric values in a specific order, requiring an understanding of sorting algorithms and key comparisons.
+- Your task involves creating an ordered list from dictionaries, relying on logical comparison of numerical values within those dictionaries.
+- You are tasked with creating an ordered list from dictionaries that includes multiple key-value pairs, paying attention to how negative and positive numbers are treated.
+- Your task is to sort a collection of dictionaries based on their numerical values. You will prioritize numbers in one key before another and handle negative values in a specific order.
+- In this task, you're asked to organize a list of dictionaries by comparing their numerical keys. It's essential to know how to prioritize negative numbers and manage ties when values are identical.
+- This exercise requires you to take different dictionary entries and systematically arrange them according to certain numerically defined keys while giving priority towards smaller or negative numbers first.
+- Assembling a structured arrangement out of listed dictionaries is your goal here, as you apply systematic methods attentive towards both first and second numeric attributes in the entries involved.
+- In this assignment, focus your efforts on assembling lists of dictionaries into an organized format based primarily on defined numeral attributes found under certain keys while ensuring overall clarity in your arrangement process.
+- You are required to sort dictionaries using their key values, focusing on how negative numbers should precede positive ones, creating an organized output.
+- The assignment revolves around deciphering data contained within dictionary formats and deploying logical criteria for classification based precisely on value comparisons.
+- The task involves sorting a collection of dictionaries based on numerical values associated with specific keys, requiring an understanding of order and comparison.
+- You will work with a list of dictionaries and sort them according to specified keys. Pay special attention to how numbers are handled within the sorting framework.
+- This exercise challenges you to sort sets of key-value pairs (dictionaries) according to specific numeric criteria, requiring careful attention to both primary and secondary sorting keys.
+- Your job is to inspect each dictionary in a list closely and order them intelligently, taking care to respect both negative and positive numbers as you go.
+- In this task, you are required to manage data structures known as dictionaries and sort them based on given key attributes, ensuring that your results reflect the correct order.
+- Your assignment is to implement a sorting algorithm for dictionaries where priority is given to values in one key before considering another key for sorting.
+- This task involves taking a list of dictionaries and arranging them in order according to the first key's value. In cases of ties, the second key's value will help determine their order.
+- Engaging with a data sorting exercise, your job is to rearrange dictionaries according to certain numerical rules, ensuring you prioritize and distinguish between different types of numbers effectively.
+- Your job is essentially one of organization, requiring you to align each dictionary in an efficient sequence using numeric evaluation based on set criteria.
+- 'In this task, you must display your sorting skills by organizing dictionaries using two criteria: one for primary sort and one for resolving ties.'
+- The work requires careful evaluation of key-value pairs within dictionaries and mandates sorting these structures primarily by one key while considering another for detailed organization.
+- You will analyze several dictionaries and implement an orderly arrangement using defined keys for sorting, emphasizing numerical comparisons as you go along.
+- The task involves sorting a collection of dictionaries based on specific key-value pairs. You will need to order them from the smallest to the largest value of a designated key.
+- Sorting these dictionary entries will test your ability to recognize patterns in numerical data as you enforce an arrangement that follows defined hierarchy rules.
+- This involves taking unsorted data in dictionary form and arranging it based on numerical comparisons. Your skills in understanding how values relate to one another are key here.
+- You will tackle the challenge of arranging dictionaries in a specified order by examining their numerical keys. Understanding how to sort by multiple criteria is crucial for completing this task effectively.
+- You will be sifting through multiple dictionaries, extracting numeric keys, and constructing an ordered layout that reflects their values appropriately.
+- The objective is to take an unordered list of dictionaries and systematically arrange them. Pay attention to the key values provided to decide how they relate and what the correct sequence should be.
+- This task involves organizing a collection of dictionaries based on specific numerical keys, focusing first on the 'first' key and then on the 'second' key when necessary.
+- You are tasked with reordering a list containing dictionaries based on identified numeric properties within those entries. Understanding how to prioritize numerical comparisons will be key for success.
+- Your task involves organizing a collection of data into a specific order based on numerical values assigned to certain keys.
+- The goal here is to sort a list where each element is a dictionary. You will prioritize numerical order while considering secondary keys if necessary.
+- In this task, you'll sort dictionaries based on their distinct numeric properties. Begin sorting primarily by one set of values, then systematically address any overlaps using another set.
+- This sorting exercise invites you into the realm of dictionary structures where your analytical skills will refocus around numerically defined keys, producing orderly results from specified data sets.
+- You are required to sort a series of dictionaries. Pay attention to numerical values in the 'first' key for the primary sort and the 'second' key for tie-breaking.
+- You need to manipulate a series of dictionaries by organizing them based on specific numerical values, ensuring proper comparisons are made.
+- This exercise involves ordering dictionaries based on their key values while considering both the magnitude and sign of those values carefully during the sorting process.
+- Your responsibility is to classify a series of dictionary entries based on their defined numeric keys, adhering closely to an expected sequence and arrangement protocols.
+- The goal is to take a list of dictionaries that contain paired values and return them sorted. You must prioritize the sorting by the 'first' key, and if necessary, by the 'second' key while respecting number signs.
+- This task centers on managing collections of paired data points encapsulated in dictionaries, emphasizing the sorting process. Skills in logical data management will guide you through this activity.
+- The assignment focuses on sorting data represented in dictionary form, making comparisons based on defined criteria related to their key-values.
+- The goal is to organize dictionaries by comparing their values under certain keys, emphasizing both negative and positive numbers for proper sequencing.
+- This task requires you to sort a list comprised of dictionaries according to certain numerical values. Pay attention to the specified keys and arrange them in ascending order.
+- Take a list made up of dictionaries with unique key-value pairs and order them in a systematic way, placing emphasis on a particular key's value for primary sorting.
+- Your job is to sort lists of dictionaries using specified attributes as the basis for order. You must process both positive and negative numbers effectively.
+- In this task, your role is to take several dictionaries and systematically arrange them by priority based on their numerical properties.
+- The objective is to organize a set of dictionaries, using a key-value structure where you will sort based on one key primarily, and another one if needed.
+- The objective is to enhance a list of dictionaries by sorting them according to specific numerical keys. Key performance comes from understanding not only how to perform the sort but also which key takes precedence under certain conditions.
+- You will engage in sorting tasks that demand attention to detail as you organize dictionary lists according to numeric criteria, fostering strong analytical skills throughout the process.
+- The goal of this task revolves around effectively categorizing a set of dictionaries by their numerical keys. Recognizing and managing varying levels of importance among these values is critical.
+- This sorting task focuses on organizing entries within dictionaries according to defined numeric criteria, emphasizing an understanding of how to simultaneously apply two levels of sorting.
+- In this exercise, you'll encounter lists filled with dictionaries, and your focus will be on reordering these based on given keys. It requires logical reasoning to determine the correct order.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task123_conala_sort_dictionary
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task123_conala_sort_dictionary
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Review each comment for negativity, threats, or insults, then decide if they can be deemed toxic or not.
+- You need to differentiate between toxic and non-toxic remarks, focusing on any harmful language used.
+- Assess comments for their potential impact on others, deciding if they convey threats or disrespectful sentiments. This necessitates attention to detail in communication styles.
+- In this task, your analytical skills will help you pinpoint potentially harmful or derogatory content in various comments, categorizing them accordingly.
+- Evaluate comments to see if they contain any form of insult, threat, or identity attack, categorizing them accordingly.
+- You will need to sift through comments and label them based on whether they exhibit malice or negative sentiment towards individuals or groups.
+- This task involves analyzing comments to determine if they contain toxic language. You will need to identify harmful or derogatory expressions that may be offensive.
+- Examine each provided comment closely, focusing on any potential harm or derogatory implications that may characterize it as toxic.
+- You will examine various comments and classify them based on their level of toxicity. This involves identifying any malicious, derogatory, or harmful rhetoric that might affect others.
+- Engage with the text at hand to classify it appropriately based on its tone and language, assessing whether it carries a toxic message that could affect others negatively.
+- Your task is to assess comments and determine whether they contain toxic language or sentiments. This requires an understanding of harmful expressions and the ability to evaluate the overall tone of the comment.
+- The goal is to assess written comments for their language and sentiment, identifying any signs of toxicity.
+- Assess commentary for harmful content, focusing on indicators of toxicity such as insults or threats. An unbiased approach is necessary for accurate classifications in this evaluation task.
+- Assess different statements for derogatory content and determine if they contain elements that are offensive or inappropriate in social discourse.
+- Your goal is to evaluate text for potential toxicity, requiring a nuanced approach to language and an awareness of what constitutes derogatory remarks.
+- Assess the emotional tone behind various comments to identify those laden with insults. You will need to differentiate between innocuous remarks and those that could cause harm.
+- Your role is to analyze a series of statements to ascertain which ones convey toxicity in their language and intent while filtering out neutral ones.
+- Your task is to examine comments and determine if they contain harmful or offensive language. You’ll need to have an understanding of what constitutes toxicity in communication.
+- Analyze text comments to decide if they are toxic or non-toxic, using criteria like malice or derogatory statements.
+- Review given comments and identify those that could be seen as toxic. This requires you to understand the implications behind different words and phrases.
+- Categorize the nature of the comments by identifying toxic elements within them. Engage with sensitively worded examples as you navigate through potentially offensive assertions.
+- Review provided text for offensive content by analyzing tone and word choice, applying criteria that relate to harmful or aggressive behavior in conversation.
+- The task involves categorizing language based on its potential to offend or harm individuals or groups.
+- Evaluate the comments presented and categorize them by observing the sentiment—deciding if they contribute to a toxic environment or not.
+- You must classify comments as either toxic or non-toxic by examining their content for signs of malice, insults, or threats, illustrating your ability to judge language critically.
+- This task requires you to filter through various comments to judge their toxic nature, distinguishing between harmful expressions and innocent remarks.
+- Your focus should be on discerning between constructive dialogue and toxic comments that might insult or threaten.
+- The objective is to scrutinize comments for any elements of aggression or insult. This requires a thoughtful approach to interpreting words and phrases that may carry negative connotations.
+- Your job is to identify and label comments that showcase harmful intentions or malicious disrespect towards others.
+- This task is about determining the nature of verbal expressions in comments, identifying when they cross the line into toxicity and offense.
+- The task involves assessing comments for harmful or derogatory language. You need to identify whether the comments express toxicity.
+- This task entails identifying and classifying comments that include toxic elements such as hate speech or personal attacks.
+- In this exercise, you will sift through comments for offensive content. Your understanding of societal norms regarding respectful discourse will be essential.
+- The focus is on distinguishing between neutral and harmful comments by examining their language for signs of toxicity.
+- In this role, you'll critically analyze comments and discern their toxicity level. A solid grasp of social dynamics and offensive communication is essential for accurate evaluation.
+- This task involves identifying whether specific remarks may perpetuate hate or discrimination through their language.
+- This task involves determining the harmfulness of comments by spotting any offensive, derogatory, or insulting phrases they might contain.
+- Review different comments for their tone and implications, identifying which ones may be considered toxic. You will need strong analytical skills to recognize language that could be perceived as aggressive.
+- In this task, you'll review various comments and gauge their toxicity level by looking for disrespectful or harmful language.
+- The task at hand is to judge comments for their toxicity, checking if they comprise insults, threats, or hurtful opinions.
+- Examine the commentary provided for derogatory remarks or harmful insinuations. Classify the findings between toxic and non-toxic with careful consideration.
+- Your job is to label comments based on their toxicity level, scrutinizing each for negative implications and intent.
+- The task involves assessing comments for their potential harm or negativity, determining if they contain toxic language.
+- Your job is to categorize remarks into toxic or non-toxic based on their content. This requires understanding subtle nuances in language that can convey aggression or hostility.
+- Evaluate the expressed sentiments in comments and categorize them based on whether they promote harm or negativity.
+- The mission is to categorize remarks based on their toxicity levels—recognizing hostile or harmful expressions calls for sensitivity and discernment.
+- Your role is to decide if a given comment expresses toxicity through insults or malicious intent.
+- Your task is to categorize comments based on whether they contribute positively to conversation or are filled with toxic rhetoric that could hurt others' feelings.
+- You are required to assess whether the language in various comments is appropriate or if it carries a toxic connotation that could offend others.
+- Analyze the provided comments to determine if they convey hostility or harm, categorizing them accordingly.
+- You are tasked with judging the nature of various remarks, identifying those that are harmful or malicious in tone.
+- The task is to discern comments that could be classified as offensive or derogatory versus those that are benign and non-threatening.
+- Your assessment will involve recognizing toxic remarks that may cause emotional harm, as opposed to benign statements.
+- Examine the comments critically, determining whether they are toxic by looking for negativity like insults or malicious intentions. Your analysis should focus on the impact of these comments on others.
+- Focus on detecting negative implications in comments that may indicate harmful intent toward individuals or groups.
+- Delve into each statement and determine if it reflects toxic behavior. Use your judgment to discern harmful messages from neutral ones.
+- Analyze the tone of the comments provided to you, identifying whether they harbor toxic sentiments such as insults, threats, or derogatory remarks. Your insight into acceptable communication will guide your evaluations.
+- The task requires assessing the nature of comments to determine if they contain harmful or offensive content.
+- Your focus will be on determining whether comments are accusatory or unnecessarily critical, making use of your insight into interpersonal communication dynamics.
+- This activity requires you to determine if comments are derogatory or harmful by looking for negative sentiment and aggression within the text.
+- Your role is to categorize comments by their degree of toxicity, focusing on identifying any abusive or harmful language present.
+- You are tasked with identifying derogatory content in comments, which entails a careful analysis of both explicit statements and implied meanings.
+- The task is about recognizing language that diminishes another's character or identity, categorizing those remarks as toxic if applicable.
+- Engage with the statements presented to identify any toxic elements. This includes recognizing insults, threats, and divisive language.
+- Analyze comments and classify them as either toxic or non-toxic. This task necessitates an understanding of what constitutes harmful commentary in social interactions.
+- Your task is to evaluate comments for harmful or derogatory content. Determine if the attitudes expressed are toxic or non-toxic.
+- You are to assess whether given comments express harmful opinions or derogatory remarks. Focus on identifying toxic elements within the text.
+- The goal is to categorize comments by their level of toxicity, distinguishing between harmful expressions and neutral content.
+- This task asks you to interpret the language used in comments and gauge their hurtfulness or malice toward any individual or group.
+- The objective is to gauge the impact of language used in comments by classifying them depending on whether they carry a toxic weight or not.
+- Your task is to identify and classify commentary based on its toxicity. Recognizing insults or malicious intents is essential in this evaluation process.
+- The task involves filtering through various comments to identify which ones could be seen as aggressive or derogatory, using your understanding of socially harmful rhetoric.
+- Assess and catalog comments based on their potential harm to others, highlighting those that include derogatory, insulting, or threatening language. Critical thinking will guide your identification process.
+- Your task involves monitoring language for negative elements that signify possible toxicity, categorizing each comment appropriately.
+- Examine a list of comments, focusing on their language and intent, to determine if they contain any toxic elements. Your assessment should reflect an awareness of different forms of disrespectful communication.
+- Analyze the provided comments to decide if they are malicious or offensive. This requires an awareness of social interactions and language implications.
+- This task aims to identify toxicity in language, looking out for harmful expressions that could upset individuals.
+- Your responsibility is to carefully consider each comment and decide if it includes harmful intentions or messages.
+- Your responsibility is to evaluate comments for potential harm, determining if the language is derogatory or threatening. Understanding the broader context of communication is vital.
+- In this task, your role is to classify commentary based on the presence of toxic elements. Being able to recognize harmful intent behind words is key to succeeding in this categorization.
+- Analyze comments based on their language and intent. Identify whether the comments are derogatory or threatening in nature, requiring a keen sense of social sensitivity.
+- Your role involves scrutinizing comments to find those that express hostility or malice, categorizing remarks based on their level of toxicity and potential harm.
+- This task requires you to scrutinize comments for derogatory phrases or negative sentiments that may be considered toxic.
+- The objective is to recognize whether the language used in a comment falls into the category of being harmful or non-harmful.
+- This involves analyzing the emotional tone of each comment. Identify any expressions of anger, malice, or derogation that could be deemed toxic.
+- Identify and differentiate between harmful comments and neutral ones based on their content. Recognizing toxicity is essential for this task.
+- You will decide if comments include negativity that could harm reputations or foster hostility among different groups of people.
+- Assess the comments for derogatory tones and determine if they demonstrate harmful sentiments toward particular groups or individuals.
+- Your job involves scrutinizing comments for abrasive language or sentiments. Decide if a comment qualifies as toxic based on its content and tone.
+- Your aim is to identify the presence of toxicity in given comments, focusing on whether they exhibit harmful speech patterns.
+- You'll need to comb through various opinions expressed in comments to determine their potential impact on individuals' dignity and respect.
+- The task is to review statements and categorize them as toxic or non-toxic by examining their language for harmful implications.
+- The challenge is to interpret comments and discern whether their content can be classified as toxic based on established criteria.
+- You are tasked with evaluating comments for toxicity. This includes recognizing insults and negative connotations within the language used.
+- This activity demands an understanding of language nuances, requiring you to identify when a comment turns from being simple criticism into toxic insults.
+- The goal here is discerning whether commentary is supportive or toxic by analyzing phrasing that might indicate aggression or belittlement toward others.
+- You need to analyze remarks for negative and hurtful language that could be considered toxic, including threats or derogatory comments.
+- Evaluate the comments given to you for any signs of toxicity. This involves recognizing remarks that are hostile or derogatory and creating a clear distinction between respectful discourse and harmful commentary.
+- Review each comment’s wording and context. You should decide if a comment promotes negativity or simply expresses opinion without malice.
+- The goal is to determine the toxicity of various comments by looking for negative implications or language that might harm others.
+- Engage in the evaluation of textual comments to determine their toxicity level, recognizing language that fosters negativity or harm.
+- You will review textual comments and decide if they demonstrate characteristics typical of toxic communication.
+- Review the statements for signs of derogatory language and negativity. Determine if a comment fulfills criteria for being deemed toxic within social communication standards.
+- Analyze comments for potential harm and classify them based on their level of hostility or derogatory nature toward others.
+- Analyze different statements provided to you for signs of toxicity by determining if they include offensive or harmful content directed at individuals or groups. Recognizing nuances in language is essential for accurate classification.
+- Analyze provided comments to categorize them as toxic or non-toxic. Look for language that could be insulting or threatening, and use your judgment to classify each comment appropriately.
+- You will evaluate the provided comments for potential toxicity. Determine if the comments are malicious or insulting and classify them accordingly.
+- The job requires you to sift through comments and decide whether they exhibit toxic traits, which includes recognizing hostility and negative bias in the phrasing.
+- The objective is to thoughtfully examine each comment for expressions that could be considered insulting or malicious, categorizing them as appropriate.
+- You are tasked with examining various statements to decide if they are demeaning or aggressive in nature, reflecting a need for sensitivity in language understanding.
+- You will analyze language used in comments to see if it promotes hostility or derogatory views, marking them as toxic if so.
+- The activity centers around identifying harmful comments by examining their words and meanings for signs of negativity or threat.
+- You'll be tasked with evaluating the tone and content of comments to classify their toxicity level.
+- The objective is to classify remarks by their toxicity level, focusing on any derogatory wording or threatening undertones present in the text.
+- Evaluate the appropriateness of comments by determining any toxic traits present. This task depends on your knowledge of acceptable communication practices.
+- The focus of this task is on identifying whether comments contain insults or threats, indicating toxicity in language usage.
+- Your responsibility is to examine various comments and identify those infused with negativity or hostility, drawing upon your understanding of constructive versus destructive dialogue.
+- Your job is to categorize comments based on their potential harm. This involves discerning subtle cues that indicate whether comments are abusive or simply neutral.
+- In this analysis, you will classify remarks based on their sentiment, focusing on distinguishing toxic rhetoric from benign commentary.
+- Appraise each comment with an eye for hostility or negativity. Distinguish between constructive criticism and outright toxicity where applicable.
+- In this assessment, look at each comment closely to figure out if it carries hostile undertones. A focus on language subtleties is crucial in this evaluation process.
+- In this task, you will judge whether a comment is harmful or rude. It requires careful consideration of the language used to spot any negative implications.
+- Your job involves critically assessing a range of comments for traces of insult or negativity, categorizing them as either toxic or not based on your findings.
+- This task involves discerning the nature of various remarks to judge whether they express harmful ideas or sentiments.
+- Determine the potential toxicity of statements by checking for indications of harm or derogation present in the language used.
+- Your objective is to assess the tone of various comments and identify those that exhibit negative or harmful sentiments, categorizing them accordingly.
+- Analyze the provided comments to identify any that may be harmful or insulting in nature. This requires a keen understanding of language and context.
+- The job is to classify comments based on their tone and intent, focusing on whether they convey negative or abusive language.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1720_civil_comments_toxicity_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1720_civil_comments_toxicity_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

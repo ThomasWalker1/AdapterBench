@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your assignment is to create queries using SQL language that retrieve required information from a database structure. Mastery of join conditions and grouping essentials is beneficial.
+- Use this opportunity to exercise your skills in relational databases by constructing well-formed SQL queries that retrieve requested information based on context-driven questions.
+- The task consists of constructing SQL queries based on various prompts, requiring an understanding of how tables are interlinked and how to impose conditions effectively.
+- Write SQL queries that cater to explicit inquiries about data, ensuring you grasp both the structure of the database and the logic needed for filtering results correctly.
+- Generate accurate SQL queries based on given questions about data. Recognizing which tables contain the needed information and how they relate is crucial for crafting effective queries.
+- The aim here is to build SQL statements that facilitate the retrieval of information across linked tables, ensuring correct implementation of grouping and filtering techniques.
+- This task necessitates the generation of valid SQL queries that meet specific data retrieval requests, highlighting your ability to handle relational database structures effectively.
+- In this exercise, you'll be tasked with writing SQL queries to extract data as requested. An understanding of databases and query structure is crucial for successful completion.
+- This task requires the building of detailed SQL queries tailored to answer various analytical questions about the dataset at hand. A solid grasp of conditional statements and aggregate functions will prove essential.
+- You'll be crafting SQL statements to respond to inquiries regarding the data housed within structured tables. Understanding aggregate functions may also be necessary for some queries.
+- You are going to create SQL database queries based on provided questions looking for specific information. Being adept at using inner joins, where clauses, and grouping techniques will enhance your coding skills.
+- In this task, you will be constructing SQL queries to retrieve specific information from a database. You'll need an understanding of database structure and SQL syntax to effectively gather the requested data.
+- Your focus in this task is on writing clear and efficient SQL queries that answer set questions regarding a dataset's structure and contents. Knowledge of primary keys and foreign keys will be useful in drafting your queries.
+- You are tasked with writing specific SQL queries that pull relevant information from multiple related tables within a database. Understanding relationships between the tables is key for building effective queries.
+- Apply your command of SQL syntax as you write queries designed to extract insights from structured datasets based on provided questions about those datasets.
+- Your responsibility is to generate SQL code that retrieves relevant information from multiple tables as specified in the queries. Knowledge of joining tables and filtering results is important here.
+- Create meaningful SQL statements designed to extract particular elements from a database according to explicit questions. This will involve careful consideration of data types and relationships.
+- Your job is to create SQL queries that fulfill specific data queries expressed in clear terms. Understanding how different entities relate within the database is crucial for completion.
+- Channel your analytical skills into creating precise SQL statements aimed at fetching targeted information from databases in response to specific operational requests.
+- You are required to produce structured SQL queries based on given prompts regarding relational databases. Familiarity with how data interlinks between tables will help you succeed in this task.
+- Your goal is to construct SQL queries that identify and summarize data from different tables based on the criteria outlined in the questions. This entails using grouping and ordering techniques.
+- Use your understanding of SQL syntax to construct a query that will return the required information as specified in the input question.
+- This task centers around generating SQL queries designed to return desired results concerning database records. An understanding of aggregate functions and join operations is key to successful completion.
+- This exercise will test your ability to formulate specific data extraction strategies via SQL, ensuring you can navigate table relationships effectively through joins and grouping guidelines.
+- You need to create SQL queries that answer a series of questions regarding database records. This requires knowledge of data selection, aggregates, and table relationships.
+- Compose SQL queries that satisfy the requirements of each question. This necessitates a solid grasp of SQL operations like aggregation, filtering, and sorting.
+- You need to formulate SQL statements that will gather data according to certain criteria, focusing on the relationships between different tables in a database.
+- Create accurate SQL queries aimed at fetching pertinent data from database tables based on certain logical parameters, including conditions for sorting or limiting results.
+- In this task, you will construct SQL queries that extract meaningful insights from multiple datasets based on defined parameters. Proficiency in forming complex statements will aid your success.
+- Engage your analytical skills by writing specific SQL commands designed to return requested data from one or more tables in a structured manner as per given questions.
+- This is a practical exercise where you're tasked with generating SQL queries that fulfill specific data retrieval conditions laid out in the questions presented.
+- In this exercise, focus on writing detailed SQL queries which correctly interlink multiple tables and reflect comprehensive understanding of relational databases.
+- Here, you are tasked with generating SQL queries aimed at satisfying specific inquiries related to data management within a relational database framework.
+- Here, you are expected to illustrate your proficiency in SQL by constructing queries tailored to reveal data as per the questions while adhering to proper syntax and logic rules.
+- You will need to think critically about how database tables interact while formulating inquiries through SQL queries to ensure accurate result retrieval according to set criteria.
+- Your job is to compose SQL statements that accurately reflect the questions posed regarding the data. This requires both critical thinking and technical skills in SQL query construction.
+- The task involves constructing specific SQL queries designed to pull targeted information from related tables in a database environment. Familiarity with the nuances of query design will facilitate successful execution.
+- This involves writing comprehensive SQL commands tailored to pull particular information from complex datasets where inter-table relationships are navigated through various SQL functionality.
+- You’re expected to demonstrate your knowledge of database management by creating SQL queries that effectively access and manipulate data according to the questions posed.
+- The focus of this task is on formulating SQL commands that connect various pieces of information within a database, based on specific prompts provided.
+- This task requires designing appropriate SQL statements that accurately reflect the inquiries posed regarding the datasets present within the schema of a database.
+- The mission is to translate a data-related question into an SQL query, utilizing various SQL commands and functions to get the desired results.
+- The objective is to design an SQL query that will pull together information across various tables, taking care to apply the correct selection and sorting methods.
+- In this task, you will showcase your ability to navigate databases by answering queries through appropriately structured SQL statements based on relational principles.
+- You will produce SQL queries that ask for particular datasets from given tables. Recognizing how tables interconnect will enhance the efficiency of your queries.
+- Engage with SQL by creating queries that will select and summarize data according to specific questions posed about the contents of different tables in a database.
+- The objective is to respond to questions by constructing SQL queries that accurately reflect the data requirements specified.
+- Your goal is to construct an SQL statement that compiles data by selecting certain columns and applying constraints, such as sorting and filtering, in a logical manner.
+- This task involves formulating SQL statements to answer specific data-related questions. You must comprehend how different tables relate to each other and how to utilize aggregate functions for summarized information.
+- You need to construct an SQL query that retrieves specific information from a database based on given requirements. Understanding database structure and SQL syntax is essential.
+- Formulate precise SQL statements to gather information from a relational database, focusing on known relationships among datasets while adhering to given parameters.
+- You are required to write SQL queries that will extract detailed information from database tables according to given prompts. The queries should adhere to SQL standards.
+- Embrace the challenge of writing SQL commands that can generate detailed insights from a dataset. Your knowledge of filtering, sorting, and grouping will come into play here.
+- You will be utilizing your knowledge of SQL to create queries that sift through database content and return relevant results as described in the task prompts.
+- Your task is to form an SQL query based on the information given in a question, which involves database operations like selecting and filtering data from tables.
+- The main objective here is to write precise SQL commands that answer database-related questions. This involves leveraging knowledge of how data is organized and retrieved within relational systems.
+- Create SQL commands that extract the desired records by interpreting the provided questions. Each query must be crafted considering the database schema and relationships.
+- Write SQL commands that select, filter, and group data from various tables based on the details provided in each question.
+- Your job involves creating precise SQL scripts that accurately address the requests made in each question, employing various SQL techniques.
+- Your responsibility is to articulate clear and effective SQL statements suited for retrieving targeted data, demonstrating essential skills in formulating complex queries in a relational context.
+- The objective is to construct SQL queries that match the needs outlined in specific questions. You must be familiar with JOIN, SELECT, and WHERE clauses to effectively gather information.
+- You are expected to design SQL queries that satisfy particular requests regarding the data, entailing the ability to manipulate tables and extract specific information through well-structured commands.
+- Your mission is to design precise SQL queries that correspond to specific data questions. Understanding query optimization and the logical flow of database relations will greatly assist in achieving accurate output.
+- You must construct SQL queries that efficiently pull the required data based on outlined conditions in questions. Proficiency in writing efficient SQL queries is key for this task.
+- In this task, you must interpret questions requiring data extraction and utilize SQL language effectively to ensure you retrieve correct information from specified tables.
+- You need to develop SQL queries that respond to specific data queries by selecting, counting, or aggregating information from appropriate tables within a database.
+- Formulate SQL queries that will provide the desired outputs based on certain conditions or criteria. Knowing how to navigate between tables and apply filters is part of this process.
+- You'll be engaging in writing robust SQL queries aimed at data extraction from databases. This task calls for familiarity with relational databases and how various datasets correlate with one another.
+- The task entails mastering the art of writing targeted SQL queries which can gather precise information required in response to user-defined questions about data attributes.
+- You will be developing specific SQL scripts which involve selection, aggregation, and joining techniques tailored to answer diverse informational queries.
+- This task requires you to write SQL queries that will extract relevant data from databases, ensuring you correctly join tables and apply filters as needed.
+- You are tasked with crafting SQL queries that meet specific informational needs outlined in questions. Skills in database management and SQL syntax are required for effective query writing.
+- You are tasked with writing precise SQL queries that fetch data from one or more tables, focusing on accurately applying JOINs and WHERE clauses for filtered results.
+- The objective is to formulate valid SQL commands that access particular data points as indicated in different prompts. A clear grasp of logic used in databases is essential.
+- Your challenge involves using SQL to query a database comprehensively—applying various commands and techniques to obtain exact results stipulated by the provided questions.
+- In this assignment, you must develop SQL queries that yield answers to particular inquiries regarding database records. Knowledge of SQL operations such as counting entries and filtering results will be beneficial.
+- Your responsibility is to produce SQL queries that yield particular insights or statistics in response to specific inquiries about the information stored in a database.
+- In this assignment, you will develop SQL queries that serve to answer analytical questions by articulating how data is organized and accessed through commands.
+- Create effective SQL statements designed to fetch distinct sets of results according to the requirements defined in the questions posed. Logical reasoning about data relationships will enhance your query formulation.
+- Your assignment is to interpret questions related to data retrieval and respond by constructing suitable SQL queries that reflect your understanding of both syntax and the underlying database structure.
+- This task tests your ability to write SQL commands efficiently. Identify what each question is asking and construct statements that gather the required information from a database.
+- Your objective is to create SQL queries that can extract and manipulate data from various tables within a database. This requires knowledge of SQL commands such as SELECT, JOIN, and GROUP BY.
+- The goal is to construct SQL queries that retrieve relevant information from specified tables based on the scenarios presented. Understanding relational databases will help in crafting accurate queries.
+- You will demonstrate your proficiency in SQL by developing command sequences that retrieve relevant data while applying necessary constraints derived from question prompts.
+- In this task, you are asked to craft SQL queries that retrieve relevant data based on specific criteria mentioned in provided questions.
+- Compose SQL queries that fulfill research questions phrased around existing tables. This requires critical thinking about how data pieces fit together logically.
+- Your task is to create an SQL query that retrieves specific information from one or more database tables based on the provided conditions.
+- Formulate SQL queries that navigate through table columns and rows effectively, answering questions about data relationships and counts.
+- You are tasked with writing SQL commands that pull out requested data points by making use of aggregate functions and filtering techniques, which play a significant role in data management.
+- The task focuses on synthesizing SQL commands into coherent queries that solve specific problems related to database information retrieval.
+- In this task, you are expected to utilize SQL commands effectively to return desired datasets from multiple related tables based on specified conditions.
+- You need to formulate structured queries that respond accurately to predetermined inquiries about data within a relational database. This will require clear logical reasoning and command of SQL language.
+- The task is focused on crafting appropriate SQL queries for specified requests involving database records. Understanding how different SQL functions work together is key.
+- Write SQL queries that respond to detailed questions about data sets stored in a database. An understanding of relational databases and query structure is vital.
+- Create SQL queries to answer questions about data in a database. This requires knowledge of how to select, join, and filter data effectively.
+- Develop structured SQL statements that provide answers to posed questions concerning database contents. Familiarity with key SQL phrases is necessary for this exercise.
+- Utilize your skills in structured query language (SQL) to derive data from a database by writing queries that comply with the request detailed in each input.
+- You will be tasked with writing SQL commands designed to pull specific data sets from one or multiple tables. Familiarity with concepts like selection, grouping, and filtering is essential.
+- Use your understanding of SQL to return correct data sets from a database, ensuring each query aligns with the inquiry presented.
+- You will formulate SQL queries to retrieve specific data, utilizing your understanding of SQL commands and relational databases.
+- Approach this task by crafting relevant SQL queries aimed at extracting detailed data about multiple topics or subjects from a structured database format.
+- This assignment requires you to craft an SQL query that extracts the necessary data, ensuring it meets the conditions set forth in the question.
+- You are required to apply your knowledge of SQL querying techniques to respond accurately to requests for information based on a series of prompts.
+- The goal is to develop proficient skills in SQL by constructing queries tailored for retrieving contextual information as requested within given scenarios.
+- The goal is to construct effective SQL queries in response to outlined data inquiries. An understanding of table structures and the logic behind joins is crucial for success here.
+- This assignment tasks you with developing various SQL statements aimed at answering questions related to characteristics of stored records. Analytical acumen paired with technical knowledge is vital.
+- This task is about writing efficient SQL queries which retrieve desired information based on defined conditions provided through various questions about the data.
+- You are required to formulate complex SQL queries that accurately represent relational data requirements, utilizing various SQL features like aggregations and ordering.
+- Your task is to create SQL queries that fetch specific data from a database as requested in a question. This requires understanding SQL syntax and database structure.
+- Your task involves writing SQL queries to extract data as requested in various scenarios. Familiarity with data tables, relationships, and SQL commands will help you succeed.
+- You must apply your skills in SQL to query a database. This involves identifying relevant fields, relationships, and conditions necessary for retrieving the correct results.
+- Your objective is to formulate correct SQL queries that will yield specified datasets, aligning the query structure with the requirements laid out in each question.
+- You are tasked with designing SQL queries that will yield necessary information from relational databases, using different clauses and functions.
+- This task involves interpreting a problem related to data retrieval and forming an appropriate SQL query that addresses the need expressed in the question.
+- For this task, you will need to formulate SQL statements that answer particular questions about data stored in a database. This involves knowledge of how to retrieve and aggregate data effectively.
+- In this task, your objective is to write informative SQL queries to derive insights from databases, leveraging your understanding of data organization and relationships between tables.
+- You'll need to translate questions into structured SQL commands that detail how to select and manipulate database information accurately. A working knowledge of SQL functions will aid your execution.
+- You need to harness your database management skills to write SQL code that will return appropriate responses to analytical tasks outlined in the questions.
+- Your responsibility will be to develop SQL queries aimed at retrieving certain datasets from tables, employing aggregation functions and logical operations where necessary.
+- The goal is to craft SQL queries that will fetch detailed data as requested in the questions. You'll need to employ various SQL functions and understand how to link tables effectively.
+- This task involves using SQL to obtain specific data insights from a database. You'll write queries that involve joins, aggregations, and condition filtering based on the inquiries provided.
+- Engage with structured data by creating appropriate query combinations in SQL that address various criteria outlined by the inquiries at hand.
+- Your duty will be crafting relevant SQL queries that extract specific information as directed by problem statements related to relational databases. Mastering query elements like selection and filtering will be advantageous.
+- Utilize your knowledge of SQL to create queries that answer various data-related questions by selecting and filtering information from tables.
+- In this role, you need to articulate your knowledge of databases through well-structured SQL queries, ensuring they align with specific requests posed within the question framework.
+- You must construct valid SQL queries tailored toward fetching exact data requested through various high-level questions about the contents of assigned tables.
+- Compose SQL queries aimed at generating precise outputs based on various conditions outlined as necessary for given assessments. A strong understanding of filtering and sorting results will be beneficial.
+- You are expected to craft diverse SQL statements capable of extracting relevant details from interconnected tables as specified by different analytical questions posed throughout the task. Understanding of aggregation and selection criteria is advantageous.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task107_splash_question_to_sql
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task107_splash_question_to_sql
+user_prompt_template: '{task_def}
+
+
+  {problem}'

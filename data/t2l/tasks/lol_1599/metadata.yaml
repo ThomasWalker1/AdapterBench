@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You will review parts of conversations where one party often asks for assistance, and the other replies. Identify whether each utterance comes from the requesting user or answering agent.
+- The objective is to determine the speaker of each utterance in a conversation, understanding the typical functions of both users and agents.
+- Your job is to differentiate between the two roles in a conversation, identifying who is requesting information versus who is supplying it.
+- The goal of this task is to identify who is communicating in a dialogue, distinguishing between direct requests from users and informative answers from agents.
+- Identify whether statements made in a conversation are coming from a user who directs tasks or an agent who provides assistance and answers questions.
+- This task requires you to discern between two speakers in a conversation based solely on their wording. Identify who is leading the dialogue with requests versus who is providing assistance with answers.
+- Your responsibility is to pinpoint who is communicating in various conversational exchanges, distinguishing between inquiries made by users and responses given by agents.
+- This task focuses on distinguishing between two distinct roles in dialogue—user versus agent—by analyzing their spoken interaction.
+- The challenge lies in understanding conversational dynamics, focusing on whether a statement is made by a user's inquiry or an agent's feedback.
+- Your challenge is to decode conversational snippets into their respective roles within a dialogue, determining who is making assertions and who is responding.
+- In this task, you are required to clarify who's speaking in given excerpts of conversation, focusing on either user explorations or agent explanations.
+- In this activity, you will determine whether the spoken line comes from the user or the agent in a dialogue. Understanding conversation dynamics will be key.
+- You are tasked with analyzing dialogue excerpts to recognize and label speakers as "User" for someone issuing commands or inquiries, and "Agent" for responses.
+- This task involves analyzing dialogue excerpts to determine who is speaking—either the user or the agent. Understanding conversational contexts is key to success.
+- Your task is to identify who is speaking in a dialogue between a user and an agent, where users typically make requests while agents provide answers or information.
+- Your role is to interpret conversational exchanges and determine if they are articulated by users making requests or agents executing replies.
+- Analyze each utterance within its conversational context to classify it accurately as coming from the user who prompts actions or the agent that aids with those actions.
+- Focus on brief exchanges between users and agents, identifying who takes on each role based on their typical interactions in requesting and responding to information.
+- This task requires you to interpret brief dialogues and categorize utterances as coming from either the user or the agent based on their roles in the conversation.
+- In this task, you will listen to conversational snippets and identify which participant is speaking. Users usually initiate tasks, while agents respond to those requests.
+- You will assess snippets of text from conversations to identify who is speaking. Recognizing patterns in dialogue can help you distinguish between users and agents.
+- Engage with dialogue segments where one person is seeking information or actions while the other person provides answers. Identify who is who.
+- You need to determine who is speaking in a given conversation segment. The user issues commands or inquiries, while the agent provides responses.
+- The exercise involves parsing through conversational text and identifying who is speaking by considering the context of their remarks within a user-agent framework.
+- Engage with the conversation excerpts provided and identify if they showcase a user's inquiry or an agent's reply based on context cues.
+- Identify whether a line in a conversation belongs to the user or agent by noting the nature of the statements. Users often make requests, while agents usually reply with information.
+- Observe conversations closely and identify if the remarks come from users directing inquiries or agents replying with details.
+- You will be analyzing brief dialogue exchanges to clarify which party—the user or the agent—is currently speaking based on their conversational habits.
+- Your focus lies in identifying and classifying conversational turns based on whether they express a desire for information (user) or present answers (agent).
+- This task consists of interpreting conversational exchanges for speaker identification, enhancing your ability to read dialogue contextually between users and agents.
+- Analyze the provided dialogue excerpt and discern who is speaking based on the phrasing and intent behind their words, distinguishing between user commands and agent responses.
+- Engage with contextual clues in conversation snippets to decide whether the content reflects a user's request or an agent's reply, utilizing your understanding of conversational flow.
+- This task involves listening to a conversation snippet and determining whether the utterance belongs to the user making a request or the agent responding.
+- You will be interpreting fragments of dialogue to decide who is contributing—the user seeking help or information, or the agent responding to those needs.
+- You need to analyze conversational utterances to discern the role of the speaker, distinguishing between user commands and agent responses.
+- Focus on identifying whether dialogue snippets are produced by a user asking questions or an agent providing answers, based on their usual roles in interactive contexts.
+- You will read snippets of conversation and label them as either user or agent speech. This requires understanding typical conversational dynamics between these roles.
+- The task involves listening to snippets of dialogue and discerning the speaker’s identity according to their role within a user-agent interaction framework.
+- Your responsibility is to listen closely to conversational turns and pinpoint who the speaker is, either by recognizing cues that indicate typical user behavior or agent responses.
+- Analyze dialogue instances effectively to categorize them according to their speakers, based on whether they convey a query or an answer regarding scheduled events.
+- This task involves identifying the speaker in a dialogue between a user and an agent, where the user typically makes requests and the agent responds.
+- In this task, you will determine speaker identity within dialogue exchanges, honing your ability to differentiate between inquiry-driven user speech and informative agent replies.
+- Your task is to evaluate spoken text snippets for speaker identification, focusing on how users engage with agents in various contexts of dialogue.
+- Analyze the provided utterance and decide if it comes from the user or the agent based on conversational cues. Look for indications of requests versus replies.
+- Determine speaker roles within a conversation by recognizing who issues requests and who responds with information regarding events or scheduling.
+- Analyze brief conversational exchanges and allocate the lines of speech either to a user commanding or an agent responding.
+- Based on a given utterance, determine if it’s coming from the user asking for help or from the agent providing an answer.
+- Assess dialogues between two roles—user and agent—and ascertain which party is speaking based on the content of their communication.
+- You need to listen closely to a conversation segment and identify who is speaking, distinguishing between commands and responses typical of a user or an agent.
+- Distinguish between user commands and agent responses within provided dialogues. Take note of what prompts action versus what provides information during their exchange.
+- Your job is to assess parts of a conversation involving an agent and a user, distinguishing which statements come from each party based on their conversational roles.
+- Assess each utterance for its speaker identity by determining if it reflects an action request from a user or an informational response from an agent within a conversational context.
+- In this task, your focus is on analyzing a given utterance to ascertain whether it originates from the user making requests or the agent providing answers.
+- You will encounter various utterances from users and agents, and your task is to correctly identify the speaker based on their role in the dialogue.
+- Analyze conversations to pinpoint speakers based on their typical roles; users issue requests, while agents provide information or clarification.
+- Analyze the given utterance to detect if it is spoken by the user making requests or the agent responding to those requests.
+- Inspect each line of conversation and determine which party is speaking, understanding that users typically make requests while agents reply to them.
+- 'This task involves listening to a snippet of a conversation and deciding who is expressing the thought: is it the user requesting assistance or the agent providing information?'
+- Step into dialogues where one speaker assists another. Your task is to recognize who is taking action—the commanding user or the answering agent—through their dialogue styles.
+- Analyze snippets of conversation for speaker identification, focusing on whether remarks are driven by user inquiries or agent solutions within interaction scenarios.
+- Engage with dialogue snippets critically, determining whether each utterance belongs to a questioning user or a responding agent based on their respective conversational roles.
+- This task consists of recognizing whether an utterance belongs to the user or the agent in a structured exchange, where roles are clearly defined.
+- Engage with pieces of dialogue critically, identifying if the statement comes from someone seeking assistance (user) or someone tasked with addressing those inquiries (agent).
+- Examine dialogue snippets for indications of who is initiating and who is responding—this technique helps differentiate user speech from agent speech.
+- Your task is to identify who is speaking in a conversation between a user and an agent, based on the provided utterance.
+- You are asked to evaluate dialogue snippets and classify them as originating from either the user, who gives commands, or the agent, who responds with solutions.
+- Analyze each spoken statement in conversations to establish whether it reflects a user's request or an agent's reply, enhancing your understanding of interaction dynamics.
+- You are tasked with interpreting dialogue snippets to classify them according to speaker roles – identifying if they originate from the user or the agent.
+- Your job is to analyze a piece of dialogue to ascertain whether the utterance is made by the user or the agent based on their roles in a conversation.
+- Focus on interpreting statements in dialogue and identify if they originate from the user engaged in interactions or from the agent providing assistance.
+- Your aim is to read through interactions and determine who is speaking at any point in time, relying on your knowledge of how users and agents typically behave in conversations.
+- Use your understanding of dialogue dynamics to determine the speaker based on context clues surrounding command issuance or information provision.
+- Engage with dialogue excerpts where your main focus will be to identify whether an utterance denotes command (user) or support (agent) within their exchange.
+- Your skill in discerning conversational patterns will be essential as you distinguish between user statements and agent responses throughout various dialogue examples.
+- By examining conversational context, identify the speaker as either the user initiating commands or the agent offering responses related to scheduling and inquiries.
+- The goal is to discern whether an utterance comes from the user asking for information or commands, or from the agent providing responses to those requests.
+- You’ll need to evaluate snippets of conversation to determine the speaker's identity, focusing on whether they are a user issuing a command or an agent replying to that command.
+- Your task is to identify whether a given utterance in a conversation belongs to the user or the agent. Focus on the language and context clues to determine the speaker.
+- Your task involves identifying who is speaking in a conversation between a user and an agent based on their utterances.
+- Your responsibility is to figure out whether a sentence in a dialogue was spoken by the user or the agent, looking closely at the context of their interactions.
+- This task asks you to sift through conversational elements and distinguish between interactions initiated by users or replies from agents.
+- The goal is to interpret gathered utterances and establish whether they come from a user making a request or an agent responding with information.
+- Your job entails identifying whether statements belong to a user making requests or an agent responding with information throughout conversational exchanges.
+- Observe the conversation carefully; your goal is to classify each sentence as being spoken by either the user or the agent based on the context of their dialogue.
+- The goal is to discern the speaker in snippets from a conversation, identifying whether the comment came from the user giving commands or questions, or from the agent providing responses.
+- Explore dialogue snippets to uncover who speaks in each instance, identifying users’ commands against agents’ responses through linguistic cues.
+- This task involves recognizing the conversational roles within dialogues, where users typically ask questions or give commands and agents respond accordingly.
+- You will be provided with parts of interactions, and your challenge is to distinguish if they are made by the user giving directives or by the agent addressing those directives.
+- The goal here is to dissect conversational snippets to classify them as coming from either a user making requests or an agent confirming details.
+- This task asks you to understand and label parts of a dialogue as either coming from a user or an agent. Recognize that users command and question, while agents answer and assist.
+- You’ll evaluate conversational lines to determine their speaker based on common interactions between users and service agents. Look for context clues that suggest who is communicating.
+- Tasked with discerning speaker roles within conversations, your job consists of categorizing parts of speech as either commands from users or informative responses from agents.
+- Your responsibility is to pinpoint whether the speaker in a conversation is issuing a directive (user) or providing support (agent).
+- Listen for cues in conversation fragments that indicate whether the speaker is a user seeking assistance or an agent fulfilling that request.
+- Your objective is to label each statement in a back-and-forth exchange as originating from either an inquisitive user or a responsive agent. Focus on intent and phrasing for clues.
+- Differentiate between user-generated queries aimed at scheduling tasks and agent-initiated answers during an interaction involving event management.
+- In this task, you'll listen to dialogue excerpts and determine whether a particular statement originates from the user asking for help or from the agent providing assistance.
+- Analyze conversational snippets for cues that reveal whether the speaker is an active user requesting information or an agent providing assistance.
+- Your challenge is to listen closely to turns in conversation, determining if they reflect a user's instruction or an agent's follow-up response.
+- The challenge lies in recognizing predominant speech characteristics that signify whether an utterance is from a user issuing commands or an agent providing assistance.
+- Engage with conversation excerpts where you identify if an utterance belongs to the user asking questions or commands, or to the agent providing information and assistance.
+- Assess the provided conversational excerpt and determine if it is the user asking questions or the agent responding to those inquiries.
+- In this activity, you will differentiate between the user and the agent in conversational exchanges, using context clues from their statements.
+- By reading conversational snippets, classify who is speaking by understanding their intent—whether they are seeking information or responding to it.
+- This task involves recognizing contextual clues in conversations that indicate whether a speaker is engaging in requests typical of users or answers commonly associated with agents.
+- Your task is to distinguish between contributions made by users who offer commands and agents who deliver answers, based on contextual clues in short dialogues.
+- This task requires you to differentiate between statements made by the user and those made by the agent within a conversation context.
+- This exercise requires you to identify speakers in a dialogue by distinguishing between user commands and agent responses based on context.
+- You will analyze short dialogues with the objective of detecting which participant—user or agent—is making each statement based on context clues.
+- You'll need to interpret statements within conversations correctly, establishing whether they reflect user instructions or agent replies.
+- Examine dialogue pieces and ascertain whether they express a user's command or an agent's answer. Use context and tone to guide your categorization.
+- This task engages your analytical skills as you work through conversational strings to ascertain which party—user or agent—is communicating at any given moment.
+- Carefully evaluate an utterance to identify whether it reflects a user’s need for information or an agent’s subsequent provision of details.
+- You need to listen to a snippet of conversation and determine who made each statement—was it the user interacting with the agent, or was it the agent responding?
+- Analyze the provided dialogue to distinguish between the user and the agent, understanding their roles in the conversation.
+- In this task, recognize speech patterns to determine if the utterance is from a user discussing their agenda or an agent responding with details.
+- Your job is to identify the speaker in a conversation. You need to recognize the typical roles of users and agents in interactions, especially regarding requests and responses.
+- Examine snippets of dialogue to ascertain which party—the user making requests or the agent offering responses—contributes a given utterance.
+- You will need to determine which part of a dialogue belongs to the active user seeking assistance versus the agent supplying replies.
+- Work through segments of conversation to identify if they are initiated by a user making commands or followed up by an agent giving information.
+- The task entails discerning speaker roles in an interaction, focusing on commands versus responses as key indicators of who is speaking.
+- Review conversational interactions where one participant seeks information while another provides it; correctly label each speaker type.
+- Identify whether an utterance comes from a user requesting assistance or an agent answering questions by considering phrases and context clues.
+- You will need to detect the participant in a dialogue, focusing on understanding who is asking questions versus who is answering them.
+- This task involves examining utterances within conversations and assigning them roles—recognizing when a user is communicating versus when an agent is responding.
+- You will analyze conversations between a user and an agent to recognize who is making a statement in each utterance.
+- You will analyze conversation snippets for their roles, figuring out if utterances belong to users making requests or agents offering answers.
+- You will evaluate brief interactions to discern the speaker's identity, based on their engagement in scheduling, retrieving, or confirming events.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1599_smcalflow_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1599_smcalflow_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

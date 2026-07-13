@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- In this task, you will distinguish between identifiable and unidentifiable gender references in sentences featuring different professions.
+- Your task consists of evaluating professional descriptions within sentences and determining if their respective genders can be classified as clearly identifiable or obscure.
+- Engage with sentences that present two different professions, paying attention to pronouns that could reveal or obscure the gender of the highlighted role.
+- You will analyze a sentence presenting two jobs, identifying if the indicated profession's gender can be discerned based on the context provided by gendered pronouns.
+- This task involves analyzing sentences to determine the gender identifiability of certain professions mentioned within them. Understanding pronoun usage is key.
+- In this task, you will evaluate sentences to see if the profession in question has a discernible gender based on pronouns used within the text.
+- Your role is to discern from given sentences if gender indicators suggest clarity or ambiguity regarding a specific job title mentioned alongside another profession.
+- You will need to evaluate a given sentence and identify if the gender associated with the mentioned profession can be inferred from the text.
+- Review a set of sentences to establish if gender clarity exists for one of the professions described, based on contextual pronoun usage.
+- Your role is to interpret sentences with dual professions, discerning whether clear indicators of gender exist for an explicitly mentioned job based on language.
+- You’re required to analyze statements for hints regarding gender identification connected to certain professions, based on contextual clues from pronouns used.
+- Analyze the given sentence with two mentioned professions and determine if you can confidently identify the gender of the specified profession based on context clues.
+- You will determine if the profession mentioned can have its gender recognized from the context of a sentence that references two different roles.
+- The goal is to examine sentences that reference two jobs and their associated genders. You need to determine if the gender of the selected profession is recognizable or ambiguous.
+- Analyze each sentence carefully to identify if, based on described characters, one of the professionals can be identified by their gender through language hints.
+- Your role is to analyze contextual clues in sentences that mention various professions, discerning whether one’s gender can be confirmed or remains ambiguous.
+- Analyze the sentence in relation to the provided profession to decide if its gender is identifiable or unidentifiable. Focus on the context and pronouns presented.
+- Your job involves scrutinizing sentences for pronouns that indicate gender and figuring out if they reveal anything about the specified profession’s gender.
+- The challenge lies in interpreting sentences about different professions and making judgments on whether their genders are explicitly articulated or left open-ended.
+- This activity calls for critical reading skills as you determine if specific sentences enable clear identification of a profession's gender based on used pronouns.
+- This task requires you to examine how language is used in a sentence to discern whether it explicitly indicates the gender of a certain profession mentioned in the text.
+- Examine sentences for references to professions and assess if they reveal distinct genders through context, focusing on clarity versus ambiguity.
+- Assess each sentence carefully to see if the profession's gender is clearly stated or if it remains ambiguous due to lack of identifiable pronouns.
+- You are asked to evaluate constructed sentences that point out multiple professions while referencing gendered aspects. Your aim is to discern if a specified profession's gender is explicitly stated or hidden.
+- Delve into sentences discussing two job roles and decipher whether one role possesses an identifiable gender while leaving another’s ambivalent according to the context.
+- Focus on whether your reading of a sentence allows for clear recognition of one profession's gender based on accompanying pronouns, while another remains ambiguous.
+- This task requires analyzing textual clues to assess whether a profession's gender is explicitly mentioned or remains ambiguous within the sentence.
+- Your objective is to analyze provided text snippets that involve job roles and their respective genders, determining visibility through language employed in each context.
+- The challenge is to discern any ambiguity regarding occupational gender by analyzing given sentences through their use of gendered language.
+- Evaluate sentences containing mentions of various roles. Determine if the context provides enough information to identify one profession's gender from its pronoun reference.
+- Given a sentence, identify how the gender of a specified profession is revealed through language and pronouns. Determine if it's identifiable or ambiguous.
+- In this task, your role involves decoding sentences with professional references and evaluating if the indicated occupation has an identifiable gender attached.
+- In this exercise, you will study sentences describing relationships between professions and decide if one job's gender can be directly inferred from the text.
+- Your role involves examining sentences for their use of gendered language, specifically focusing on whether you can identify the gender of the named profession based on pronouns.
+- The focus of this task is on determining whether a selected profession's gender is easier to identify compared to another one mentioned, guided by language clues in the text.
+- You are tasked with analyzing sentences that mention two professions, assessing if the highlighted profession’s gender can be identified through contextual cues.
+- You will assess sentences where one professional identity is paired with another, deciding if the degree of clarity regarding the specified profession’s gender is identifiable or not.
+- You need to engage with the provided text and determine if it clearly conveys the gender of a referenced profession using grammatical clues.
+- Your challenge involves parsing sentences that discuss various occupations and concluding if one has an unmistakable gender association based on language cues in use.
+- Your goal is to assess sentences to determine if the gender of a specified profession is clear or ambiguous, relying on contextual clues and pronouns.
+- Explore sentences containing mentions of both professions and corresponding pronouns, and determine whether one specific profession consistently indicates a defined or an ambiguous gender identity.
+- In this task, you will analyze a statement where two professions are referenced. You must pinpoint whether the gender for one specific profession can be identified based on available hints in the text.
+- Your mission is to classify whether a profession’s associated gender can be inferred through contextual clues in sentences where multiple professions are discussed.
+- You will assess sentences that reference two professions, deciding if gender can be inferred for the one highlighted by the assigned prompt.
+- This task requires you to look closely at how individuals in professions are referenced in text and analyze whether their gender can be identified from pronouns used.
+- You need to identify whether the gender of a chosen profession can be clearly understood based on mentions in sentences that feature multiple jobs.
+- Evaluate narratives containing references to multiple professions and assess whether one has identifiable gender traits from language choices made in the text.
+- Use your skills in language comprehension to evaluate sentences where professions are discussed, focusing on whether their genders are explicit through accompanying pronouns.
+- In this task, evaluate whether you can figure out the gender associated with a particular job from information given in a sentence.
+- You’ll need to quickly ascertain if a specific job title’s gender is directly tied to its portrayal in the accompanying statement or shrouded in uncertainty.
+- The focus of this task is on understanding language clues that indicate whether you can confidently identify someone's gender based on their profession in a sentence.
+- You’re required to read sentences with paired occupations and utilize your analytical skills to judge whether one role's gender is explicitly clear through pronoun identification.
+- Analyze sentences that discuss different professions, focusing on understanding if one person's gender can be determined while considering another's remains unclear.
+- Your role is to examine a provided sentence and identify if the gender associated with a given profession is clear from the context or not.
+- Your task involves reading a sentence that contains two professions and determining if the gender of one profession can be inferred from gendered pronouns used in the sentence.
+- In this challenge, you are expected to discern whether the gender related to a particular occupation can be pinpointed based on hints within sentences that juxtapose two professions.
+- This task involves reading a statement about two jobs and using pronouns to determine if the highlighted profession's gender can be confirmed or remains ambiguous.
+- Review descriptions of situations involving various professions and judge whether any linguistic elements within those contexts indicate a known gender associated with one of them.
+- This task involves identifying whether the gender of a given profession can be determined based on the gendered language in a provided sentence.
+- You are asked to look at sentences mentioning professions, evaluating linguistic cues to determine whether a specific profession’s gender can be identified through context.
+- Examine the given sentence and the associated profession, focusing on whether there's enough information to ascertain the gender based on pronouns.
+- Analyze given sentences to check if they provide enough information to identify the gender associated with a specific profession, based on the pronouns used.
+- The task centers on understanding sentences where two professions are mentioned, prompting you to recognize if one’s gender can be inferred while another’s cannot.
+- You will scrutinize statements featuring two professions and determine if you can confidently ascertain gender identification for a specified role based on contextual usage.
+- This task requires reading sentences that discuss various professions, identifying whether pronouns clearly portray someone's gender linked to a specific job title.
+- In this activity, you will determine whether a sentence's context allows you to pinpoint the gender associated with a described profession using linguistics cues.
+- Your objective is to evaluate sentences describing roles and ascertain if the gender linked to a specified profession can be recognized from pronouns in the sentence.
+- This process involves critical reading of sentences with professions alongside examining pronouns to determine gender clarity for specified roles.
+- Your challenge is to interpret a sentence to see if it offers clues about the gender of a particular profession, and identify if that information is definitive or not.
+- You will engage in determining gender identities related to specific professions based on gendered language present in the surrounding text of a sentence.
+- This task asks you to consider the language within a sentence and conclude whether the gender tied to a specific profession is identifiable through used pronouns.
+- Your task involves dissecting a sentence where grammatical cues hint at certain professions. You then need to reveal whether a person's assigned role has an identifiable or obscured gender association.
+- This task asks you to look at how professions are described in text to figure out whether their associated genders are explicitly identifiable or not.
+- This activity focuses on reading comprehension skills, where you need to extract information related to professionals and their identifiable genders based on sentence structure.
+- Your job is to read provided sentences and decide if the gender associated with a particular profession is identifiable through the use of gendered language in the context.
+- Your task is to determine whether the gender of a specific profession mentioned in a sentence can be identified based on gendered pronouns used in the text.
+- You are required to evaluate whether the gender of a particular profession mentioned in a sentence is explicitly identifiable from context clues, specifically gendered pronouns.
+- The goal is to read a sentence and identify whether the gender associated with a certain profession can be determined from the context provided.
+- Read the provided sentences carefully, as you need to interpret whether the gender for a particular occupation can be inferred or remains unspecified.
+- Your role is to interpret sentences and recognize whether they clarify or obscure gender information regarding specified occupations.
+- Analyze how professional roles are depicted in sentences to conclude if you can discern their genders through explicit language cues or lack thereof.
+- Your responsibility involves determining whether there are clear indications of gender associated with specific professions as indicated by their referring pronouns in given sentences.
+- Engage with sentences containing dual references to professions and analyze if you can derive an identifiable gender for one profession based on context provided by language used.
+- You'll be tasked with distinguishing between identifiable and non-identifiable genders for specified professions based on contextual clues in given sentences.
+- The objective is to discern if the identity of the profession's gender can be gleaned from the context provided in a single sentence that includes referential pronouns.
+- In this task, analyze a sentence to understand if the gender of a given profession is clear or unclear, using clues from gendered pronouns.
+- You are tasked with reviewing sentences that involve dual professional identities, determining if context clues allow for a clear identification of gender concerning a specified job title.
+- Engage with provided text samples featuring references to various jobs. Your objective is to differentiate whether the selected job's identity as related to gender is straightforwardly evident or unclear.
+- Examine each instance where a sentence lists two professionals and determine if the meaning derived from pronouns allows you to ascertain the gender of the specified job role.
+- Analyze sentences containing two occupational references, using linguistic cues to determine if the indicated profession has an identifiable gender through context.
+- Analyze the provided sentence to ascertain whether the profession specified has a gender that can be identified using context clues from associated pronouns.
+- This task involves analyzing a sentence to determine if the gender of a specified profession can be inferred based on the pronouns used in the text.
+- Focus on the relationships between mentioned professions and their genders in given text snippets, establishing if one profession's identity is clearer than another's.
+- This task challenges you to look at sentences with dual job mentions and determine if you can tell the gender associated with a specific profession through context clues in pronoun use.
+- Read the provided sentence carefully to determine whether the occupation in question has an identifiable gender based on pronoun indicators.
+- Your skill in understanding gender implications in language will be put to the test as you assess whether a job title's associated identity is clearly defined among peers in text.
+- Your challenge is to interpret sentences containing professions and assess whether the gender is identifiable through the use of gendered pronouns.
+- Here, your task is to interpret linguistic cues within sentences and decide if they enable identification of the gender related to a certain profession or leave it ambiguous.
+- Your goal is to read each sentence and identify if the gender associated with a listed profession can be clearly determined or if it remains unclear due to lack of explicit clues.
+- Read and interpret each sentence concerning its mention of professions, assessing any explicit gender indications provided by language cues.
+- Engage with sentences discussing various roles and decide if you can ascertain the gender tied to one profession while recognizing vagueness in another’s description.
+- The objective is to interpret a sentence and recognize if the gender of a particular profession is identifiable or remains unidentifiable through contextual analysis.
+- This task calls for an understanding of linguistics as you decode sentences where professions are mentioned alongside identifiable and unidentifiable gender references.
+- The task consists of figuring out how well a sentence communicates gender information related to a certain profession based on its use of pronouns.
+- For this task, focus on discerning whether a given profession has identifiable gender characteristics by interpreting references made in related sentences.
+- This assignment challenges you to interpret sentences regarding professions and deduce whether the articulated profession has a recognizable gender reference.
+- The focus here is to interpret pronouns within given sentences and ascertain if they provide clear information about the gender of a specific profession mentioned.
+- Investigate how pronouns are used in connection with two different occupations in a sentence, deciding if they reveal enough to identify one’s gender.
+- Examine a sentence that features different professions and gendered pronouns. Decide if the gender of one specific profession is clear or not clear from this context.
+- This task requires you to read a sentence and decide if the gender of a particular job title is clearly indicated or remains ambiguous.
+- Analyze given sentences for their implications about gender identification concerning specific professions, distinguishing between what's clear and what's not.
+- Consider each sentence to assess if one of the professions has an identifiable gender based on the language used, specifically looking for pronouns that indicate gender.
+- Identify and differentiate between identifiable and unidentifiable genders for professionals mentioned in sentences based on grammatical cues like pronouns.
+- This task involves interpreting sentences that describe professional roles and associated pronouns, leading you to judge if one profession's gender is definitively indicated or remains uncertain.
+- Evaluate the relationship between professions and their mentioned genders in sentences, determining clarity based on the use of specific pronouns or lack thereof.
+- Your job is to assess a sentence to see if you can ascertain the gender of a certain profession based on pronouns and context clues.
+- This task challenges your ability to interpret sentences for underlying gender information about specific professions based on contextual pronoun usage.
+- Analyze sentences featuring two professions and deduce if there are clear indications of gender for one specified profession through pronouns and other context clues.
+- This task challenges your ability to read between the lines in sentences containing professions; assess whether their genders are prominent or hidden.
+- In this exercise, your role is to interpret sentences containing two distinct jobs and evaluate whether one job's gender can be specifically identified based on the context given.
+- This task asks you to interpret sentences that indicate various professional roles and discern if one particular role's gender is explicitly recognized through accompanying pronouns.
+- You will read a sentence that includes two professions and decide whether the gender of the specified profession can be determined based on the pronouns used.
+- Observe and interpret language nuances in sentences that discuss two occupations, focusing on whether you can ascertain one’s gender through identifiable pronouns.
+- You’ll need to investigate sentence structures and pronoun usage to assess whether the gender linked to the designated profession stands out or remains ambiguous.
+- In this activity, you will evaluate sentences that include references to two professions and decide if the gender related to a specific profession is clear or not from the wording used.
+- The objective is to discern if the gender mentioned in relation to a specific profession in a sentence is evident from the surrounding context.
+- Your task is to evaluate whether the gender of one profession is explicitly indicated by the pronouns in a sentence featuring multiple jobs.
+- Delve into sentence structures that refer to different professions, determining if one profession has identifiable gender characteristics based on how it’s described.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task351_winomt_classification_gender_identifiability_anti
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task351_winomt_classification_gender_identifiability_anti
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The focus here is to locate a substring that appears in both strings, normalize it by making it all lowercase and arranging its letters alphabetically before reinserting it.
+- Focus on analyzing character sequences of two given strings for overlaps that are longest. Once determined, those substrings should be made all lowercase and sorted accordingly before being reinserted where they originally appeared in both input forms.
+- The challenge is to select the longest substring found in both provided strings, modify its formatting by converting it to lowercase, sort its letters, and reflect these changes within both strings.
+- Your goal is to process two given strings by extracting their longest matching portion, transforming it, and replacing it in both strings.
+- Your challenge is to identify the longest segment common to both of the provided strings. Following identification, you'll convert it into lowercase and reorder its letters appropriately for final output.
+- In this task, you'll find the longest substring present in both given strings and replace it with an alphabetically sorted version in lowercase.
+- You need to analyze two given strings to locate the longest sequence of characters they share. After determining this substring, the task is to convert it to lowercase, sort its letters, and replace it in both strings with this updated version.
+- Here, your goal is to find the biggest overlapping piece of text within two provided strings. You'll adjust this piece's case and order according to the rules before reintegrating it back into the original strings.
+- Find and extract the longest common substring from two given inputs, convert its characters to lowercase, sort them in order, and put that modified substring back into each of the initial strings.
+- You need to review two string sequences to identify their longest common substring. Next, convert that part to lowercase, reorder its characters alphabetically, and update both strings with this refined substring.
+- Engage in string comparison as you extract common elements from pairs of inputs. Adjust these elements into lowercased sorted versions while maintaining overall structure in final outputs.
+- The objective is to identify the longest sequence of characters that appears in both strings. Once found, transform it to all lowercase letters and arrange those letters alphabetically before updating the original strings with this new version.
+- Your assignment is to analyze two given strings for their common characters by finding the longest substring they share. Following that, you'll modify this substring and put it back in both original strings at the appropriate positions.
+- This activity involves comparing two distinct sequences of characters to uncover the longest repeated section, formatting that section according to specified rules, and updating the original sequences accordingly.
+- You will work on finding a shared string pattern within two given texts. Once identified, you will reform that pattern and place it back where it came from in each text.
+- This activity involves working with two strings where you will extract their longest shared sequence of characters. Following extraction, you will manipulate that sequence based on certain criteria.
+- The aim is to discern the longest matching characters between two strings. You will then change this sequence based on specific guidelines concerning its case and order before finalizing your output.
+- The task requires you to examine two input strings, determine their longest common substring, alter it by changing its case and order, and then replace it within both strings.
+- Analyze pairs of strings to discover their most extensive common portions, then apply systematic changes to those portions for clarity and uniformity in expression.
+- By working with pairs of strings, identify the longest sequence of characters they share. Adjust this sequence in terms of case and order before reintegrating it into the original strings.
+- You will extract the longest shared string value within two given inputs and apply formatting changes that include lowering cases and sorting letters chronologically.
+- The task requires you to search for a significant overlap between two input strings. You’ll need to make changes to this overlapping section—transforming it into lowercase and organizing its characters—before inserting it back into each string.
+- Involvement in this task requires understanding how substrings relate within pairs of texts. You will recognize their similarity lengths, manage transformations, and deliver updated versions promptly.
+- This task is about inspecting pairs of strings for their longest overlapping characters. Post-identification, you'll need to process these characters—lowercasing and sorting them—and place them back accurately in both original contexts.
+- Your objective is to unearth the parallel elements of two string entries, refine them following a series of transformation rules centered on character case and order adjustments.
+- You will conduct an analysis between two input strings to discover their longest common segment. Upon finding this segment, alter its format by changing it to all-lowercase letters and sorting them before replacing them in both original texts.
+- This task requires a comparative analysis of two strings to discover their longest shared substring. You will need to modify this substring by changing its case and sorting it prior to reinserting it into both input strings.
+- You are asked to find common ground in two disparate text entries. Upon identification of their longest shared substring, modify its format before inserting this change in each string.
+- Delve into the realm of string manipulation to discover matches in sequences between two text entries while reformulating those matches into a low-key sorted structure.
+- In this activity, you'll dig deep into string comparisons to find previously shared segments. The task will conclude with you reformatting that segment consistently across both originals.
+- You will examine two input strings to find their longest shared section. Once you've identified it, you'll need to convert that section into lowercase and arrange its letters alphabetically, then replace the original section in both strings.
+- This task entails recognizing the longest overlapping sequence in two given strings. You will then change this overlapping section to all lowercase letters, sort it alphabetically, and place it back into each string accordingly.
+- Your role is to find and adjust the longest matching parts of two text entries, simplifying them into lowercase entries while ensuring they are sorted in alphabetical order.
+- The objective here is to unveil the longest substring shared by two sequences of characters, change its case and order, then present the new configurations of the original strings.
+- The task involves examining how two provided texts intersect regarding their sequences. Finding the greatest overlap necessitates transformation through sorting and case changes before execution of re-insertion into both entries.
+- The essence of this task is to find a common substring between two strings that is the longest. Once you have identified it, you need to convert that substring to lowercase, alphabetically sort it, and replace it accordingly in both of the original strings.
+- This task requires string analysis where you need to determine shared characters in two strings. You'll transform this common portion into a new format based on given instructions.
+- In this exercise, focus on extracting the longest shared substring from two different strings. Change its case to all lowercase and sort the letters alphabetically, then update both input strings using this transformed substring.
+- For each pair of given strings, detect their longest overlapping sequence. Transform that sequence by making it all lowercase and arranging its letters in alphabetical order before incorporating it back into both source strings.
+- You will compare two strings to identify their longest common substring and process this duplicate by converting it into lowercase letters, sorting those letters, and updating both strings with the new version.
+- In this task, analyze two given strings for any overlapping sequences. Once found, these sequences must undergo alterations in format before being put back in their respective places within each string.
+- Engage in a string manipulation exercise where you discern the longest repeating segment across two provided strings and alter it based on defined transformations.
+- This task requires you to explore two different strings for their longest common sequence of characters. Once determined, you should convert it to lowercase letters and arrange those letters in alphabetical order before replacing it in the original strings.
+- The task requires identifying a shared sequence in two different strings that has the maximum length. Following that identification, you'll modify that part by converting it to all lowercase letters and arranging these in alphabetical order before reinserting them into each string.
+- You will examine two strings looking for their largest shared substring. This substring will be converted into lowercase letters and sorted alphabetically before you replace it in the respective locations of both source strings.
+- In this assignment, your objective is to pinpoint the longest segment of text that the two input strings have in common. This segment must then be altered to lowercase letters and sorted before updating the original strings with this new substring.
+- Your challenge consists of determining the longest matching part from a pair of input strings. Convert this match into all lowercase format and organize its characters alphabetically before replacing all occurrences in each string.
+- In this task, you need to find a common part of two given strings. Then, you will modify this part by changing it to lowercase and sorting its letters. After that, you will replace the original part in both strings with the new version.
+- Your task is to sift through two strings to determine their longest shared characters, adjust these characters for uniformity and order, and place them back into their respective places.
+- Engage in a string analysis task focusing on unearthing parts that are present in both inputs while applying necessary alterations for improved presentation.
+- In this task, focus on two provided strings and determine their longest substring that they share. Convert that substring for a refined output.
+- Analyze the provided string pairs for their longest common segment. Transform it into lowercase letters and apply alphabetical sorting before updating both original strings with this newly formed substring.
+- This task requires extracting the common sequence between two strings, modifying it to all lowercase letters, and then sorting the characters before reinserting it into the original strings.
+- Your role is to identify shared sequences between two given textual inputs. Upon finding the longest repeated section, switch its case to lowercase and arrange its characters alphabetically for future use within both constructs.
+- In this exercise, focus on two provided strings to uncover their longest shared letters. You'll then convert this substring to lowercase and sort its letters before reinserting it into the original strings.
+- This task is about string manipulation, where you need to find and alter the longest common substring between two provided strings. The alteration involves lowercase conversion and sorting of that substring.
+- Your responsibility is to analyze two strings and find their longest common substring. After locating this substring, change all its letters to lowercase and sort them alphabetically, then insert this modified substring back into both strings.
+- Expect to engage with pairs of strings by scrutinizing them for significant overlaps. Not only must you locate the longest overlap but also modify its presentation according to predefined rules before restoring it accurately.
+- The aim is to find the longest matching character sequence present in both input strings. Change that sequence into all lowercase characters, sort them, and use this modified version to replace the original substring in each string.
+- This task necessitates recognizing commonalities in pairings of strings through the identification of their longest shared subsection and transforming it as per specified rules.
+- In this task, you are required to extract the longest common section from two strings, adjust it by changing it to lowercase and sorting it, and finally reintegrate this modified substring into its original position in both strings.
+- Your mission is to identify the longest common sequence within two specified strings. Once that sequence is found, revise it by lowering its case and sorting its arrangement before updating both input strings with this adjusted form.
+- Start by determining the longest substring that both input strings contain. After identifying this substring, you will change it into lowercase and alphabetize its letters. Replace occurrences of this substring in both input strings with the modified version.
+- Your mission is to explore similarities in two given strings by pinpointing their longest common segments and stylizing them as specified by laid-out rules.
+- The objective here is to work with two strings, pinpoint their longest shared section, adjust this section according to specific rules, and present the transformed strings.
+- This assignment centers on extracting information from two strings by recognizing their mutual segments, adjusting those segments as per specific lexical guidelines.
+- In this task, identify the longest substring shared between two input strings and execute function-driven changes to have them formatted in lowercase and sorted arrangement.
+- You will work with two textual inputs searching for their most extensive common substring. Then, using specified transformations, you'll recreate that part and substitute it correctly within each source string.
+- This task entails finding a common substring within two given strings and making specific character transformations on that substring before embedding it back into the original context.
+- Your task is to identify the longest common substring between two given strings and modify them according to specific rules.
+- You will engage in a string processing exercise where you find and modify the longest sequence of matching characters between two given text strings.
+- The work consists of examining two strings for their most extensive shared section. You will revise this shared section following prescribed guidelines before returning the adjusted versions of both input strings.
+- Analyze two input strings for the common substring that appears at their greatest length. Once you find this segment, adjust it by converting into lowercase letters and sorting alphabetically before inserting that version in place within each of the original inputs.
+- This task focuses on procedural analysis of string data. Capture the essence of similarity within these character groups and turn them into standardized formats while preserving overall structure.
+- This task requires you to work with pairs of strings to identify their similarities. You'll need to locate the longest matching segment and update it by sorting it alphabetically in lowercase.
+- This task consists of analyzing two strings to pinpoint their longest commonality, reformatting it, and producing modified versions of the original strings.
+- The job entails discovering the longest matching segment between two input strings. Once you identify this segment, you will need to convert it into all lowercase letters and sort its characters, subsequently placing it back into its original context in each string.
+- This exercise challenges you to identify shared character sequences within two texts, make specified alterations to these sequences, and weave them back into their respective originals.
+- The focus of this task is on identifying a substantial overlap between two string inputs. You should change that section into a specific formatting style before inserting it back into both inputs.
+- In this task, you analyze two strings to find the longest segment they share in common. Once discovered, you will convert this segment into lowercase and sort its characters alphabetically, substituting the original segment in both strings with your new version.
+- This task is centered around finding commonalities within string pairs. You're required to adapt these shared parts by formatting them alphabetically in lowercase for revised outputs.
+- In this creative task, you’re tasked with locating the longest identical substring from two provided strings. You must then adjust this substring by converting it into lowercase characters and sorting them alphabetically for re-insertion into the strings.
+- Your goal is to find a substring that appears in both provided strings, convert it to lowercase, sort its characters, and substitute it back in the strings accordingly.
+- Your task is to dissect two given strings by locating their longest shared segment, transforming this segment's case and order, and reintegrating it into each respective string.
+- This task involves two strings where you need to identify and manipulate their longest common substring by transforming it into a sorted lowercase format.
+- Here you are required to highlight significant similarities between two text sequences by finding their longest shared section and adapting this component per predetermined formatting rules before replacing it.
+- The goal is to extract the longest common sequence from two strings. Once found, you are to change this substring to a lowercase format and arrange its characters alphabetically before replacing the original parts of both strings accordingly.
+- Focus on extracting shared sequences from two inputted strings as you perform specified transformations on these sequences. The end result will incorporate changes reflecting those transformations into each of the original strings.
+- This exercise tasks you with finding overlapping parts in two strings and then modifying those parts by formatting them in lowercase and sorting their letters.
+- The challenge lies in dissecting two separate strings to identify their longest common sequence of characters. After altering this sequence according to certain guidelines, merge the changes back into both strings.
+- The challenge here is to find the longest substring common to two strings. You then need to lower its case and sort the characters alphabetically before modifying both original strings with this new version of the substring.
+- You will need to identify the longest identical portion of text between two strings. Following this discovery, you should convert this substring into all-lowercase characters, order them alphabetically, and replace them in both strings.
+- In this task, locate the longest common substring between two inputs. Convert that one substring into lowercase format and sort its letters before integrating it back into their respective positions within each input string.
+- Your task involves taking two provided string inputs and uncovering their most extensive mutual sequence of characters. Transform that sequence accordingly by converting it entirely into lowercase letters and organizing the characters strategically before returning them thoroughly updated within both original texts.
+- You are tasked with using skills in string analysis to find a matching segment between two words, manipulate that segment before reinserting it into its originating context in both strings.
+- Your main focus will be identifying the longest common substring between two strings. Once you find it, turn it into lowercase and arrange its characters in alphabetical order before adjusting both original entries with the new modified string.
+- Your responsibility involves scrutinizing character sequences from two inputs. Determine which section is longest and most alike; convert it as necessary before reasserting it back into your inputs.
+- This task involves identifying a shared portion of text present in both strings. After finding the longest such portion, you will change it to lowercase and organize its letters alphabetically for use in updating both initial text entries.
+- In this exercise, assess the relationship between two provided strings to find their most significant overlapping segment. Update this segment's style and replace it seamlessly into both strings.
+- Tasked with an analysis of two separate string inputs, you must find their longest shared sequence. Convert that sequence into a correctly ordered set of lowercase letters and update each string with this revised version.
+- For this task, you need to conduct a comparison of two input strings, isolate the longest matching segment, and update both strings accordingly by replacing this segment with its modified version.
+- This exercise involves string manipulation where you need to seek out a common substring from two inputs, modify it, and reflect these changes back in the original strings.
+- Engage in string analysis by locating the most extended segment shared between two input strings. Adjust this segment by changing it to lowercase format and arranging its characters alphabetically, then reintegrate this new version back into each string.
+- This task involves comparing two strings to identify their longest shared sequence of characters. You will then need to modify this sequence by converting it to lowercase and sorting it alphabetically before replacing the original sequence in both strings.
+- Your work involves comparing two strings to identify their shared sequences, transforming those sequences, and replacing them within each string accordingly.
+- In this challenge, you are tasked with finding the longest sequence that appears in both provided strings, followed by transforming that sequence according to specific rules before inserting the edited version back into each string.
+- You are required to compare two given strings, extract the longest matching substring, convert it to lowercase, and then replace it in both strings with this modified version.
+- You will delve into the realm of string comparison, pinpointing a shared substring between two strings and adjusting this snippet to meet the specified formatting rules for output clarity.
+- Your challenge is to search through two strings for the longest identical segment they each hold, modify this segment by changing its case and order, and finalize the adjusted outputs.
+- Analyze character arrays for mutual positions where they share commonalities. Implement changes to these substrings for a structured presentation of modified output results.
+- This exercise emphasizes pattern recognition in text pairs. Identify prominent shared characters, execute modifications as guided, and ensure that both original texts reflect those changes accurately.
+- Engage in the exploration of pairs of string inputs; your task is centered on finding their most extended overlapping character sequences. Following your discovery, reformat that sequence to be entirely in lowercase letters while sorting them for integration back into each string.
+- You will enhance two input strings by recognizing their longest common substring and then adjusting that substring to meet specific formatting criteria.
+- You will explore pairs of text strings for common subsequences, alter these sequences into lowercase letters arranged alphabetically, and substitute them back into the original text.
+- This job emphasizes string comparison techniques where you not only find overlaps but also innovate those overlaps through conversion to lower case followed by sorting.
+- This task requires you to detect the longest substring that appears in both of two given strings. After identifying it, you must change it to lowercase, organize its characters alphabetically, and replace the original segments in both strings.
+- You will be tasked with identifying a common segment in two strings and then updating that segment by converting it into lowercase letters and sorting them alphabetically.
+- The objective here is to identify overlapping segments between two strings and to manipulate this overlap by converting it into sorted lowercase letters before placing it back into both strings where it originally appeared.
+- You’re expected to extract and refine common substrings from paired inputs. After adjusting the identified substrings per given criteria, incorporate them back into each string appropriately.
+- In this task, you are required to analyze two strings and identify the longest common substring between them. You will then modify this substring by converting it to lowercase and sorting its characters alphabetically.
+- The focus here is manipulating textual data by identifying shared substrings between two given options and performing character formatting changes before reassembly.
+- The task requires you to analyze pairs of given strings for similarities by locating their longest common substring and making required modifications before placing it back within the context of those strings.
+- This task is centered on locating the longest common portion of two text strings. You must then alter this portion by converting it to lowercase and sorting its letters before returning it to its original spot within each string.
+- This task requires you to compare two strings, extract the longest sequence they have in common, and convert that sequence into a lowercase, sorted format.
+- Identify the longest continuous character sequence appearing in both provided strings. Following that, transform it into all lowercase letters and sort it before reinserting it into each string at its original location.
+- This undertaking calls upon you to skillfully analyze two textual inputs for overlapping strands. The end goal is transforming their longest match into a standardized format subsequently inserted back into the original strings.
+- This task is about string comparison where your goal is to find the longest common substring of two inputs. Transform that substring into completely lowercase letters and reorder them alphabetically, followed by substituting that modified version back into its correct places.
+- Your goal is to identify and modify the longest portion of text that two provided strings have in common. After adjusting the case and order of this section, you will incorporate it back into both strings at the correct locations.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task755_find_longest_substring_and_replace_its_sorted_lowercase_version_in_both_lists
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task755_find_longest_substring_and_replace_its_sorted_lowercase_version_in_both_lists
+user_prompt_template: '{task_def}
+
+
+  {problem}'

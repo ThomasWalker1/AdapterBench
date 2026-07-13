@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- In this task, you'll look for pairs of adjacent words in a sentence that have been interchanged and provide the indices of these words.
+- Investigate the arrangement of words given in a sentence to discern which ones have been switched, and specify their original order's indices.
+- This task involves going through sentences carefully to find pairs of consecutive words that were placed incorrectly due to swapping.
+- You are required to analyze sentences and find the specific locations of consecutive words that have been mistakenly swapped.
+- You will analyze sentences for transitions between paired words that should not be exchanged, highlighting their locations effectively.
+- In this activity, you’ll look for adjacent word pairs in a sentence that have been placed incorrectly and provide their correct indices.
+- This task challenges you to pinpoint specific words that have been incorrectly ordered next to each other in a sentence, requiring keen observation and language skills.
+- Analyze the given sentence to find pairs of adjacent words that are out of order and determine their original positions.
+- Scrutinize the sentence structure for any consecutive word swaps, indicating where both words were situated before they were switched around.
+- You will be tasked with scanning sentences to spot any pairs of consecutive words that have swapped places. Once identified, indicate their respective indexes.
+- This task asks you to look for specific word variations in a sentence where two adjacent elements are not properly aligned and note their places.
+- The challenge focuses on finding pairs of adjacent words that have been interchanged in the provided sentence and specifying their locations.
+- You will read sentences looking for two words that are next to each other and have traded places, then identify their locations.
+- Detect and provide the positions of two consecutive words in a sentence that have been swapped incorrectly.
+- In this exercise, you will sort through provided sentences to spot and locate two adjacent words that were swapped.
+- Examine a sentence for any errors where two consecutive words are switched. You should output the indices of these words.
+- In this activity, you are identifying two neighboring words that have been switched in placement within a sentence and providing their position indexes.
+- Your task is to identify which two consecutive words in a given sentence have been switched around and mark their original positions.
+- You will evaluate a sentence to discover any consecutive words that are incorrectly arranged, and you need to specify where in the sentence this occurs.
+- Your challenge is to filter through provided sentences, spotting swapped pairs of adjacent terms, then accurately listing their original positional indexes as required.
+- Your job is to take note of any consecutive word positions in a sentence that appear to be swapped and report those locations clearly.
+- The objective is to pinpoint two consecutive words that have switched places in the provided sentences and articulate their original positions.
+- In this task, you will look at given sentences and determine which two adjacent words have exchanged places. The goal is to pinpoint their original positions within the sentence.
+- This task asks you to engage with sentence structures where two consecutive words have been improperly arranged. Find these swaps and note where they occur.
+- Look through the input sentence carefully to find any pair of adjacent words that have been repositioned, and output their indices.
+- This task requires careful reading of sentences to uncover which two neighboring words have switched places and where they are found.
+- The focus of this task is recognizing consecutive words that have been swapped in a sentence and pinning down their indices.
+- This exercise requires you to discern between correct and incorrect word pairings in a sentence by recognizing which adjacent words have swapped places.
+- In this exercise, your mission is to pinpoint two neighboring words that have changed places in a sentence, focusing on their index locations for clarity.
+- Analyze the text provided in sentences for inconsistencies in word order, particularly focusing on consecutive word pairs that need repositioning.
+- Your responsibility is to decipher which consecutive words within a statement were exchanged, requiring you to define where those terms originally fell in relation to one another.
+- Analyze the provided text carefully for instances where two adjacent words appear swapped. Record their original placements within the given sentence structure.
+- Examine each word position in the sentence closely; your goal is to uncover which two word placements were modified through inversion.
+- This task involves identifying the positions of two words in a sentence that have been switched. You need to closely analyze the sentence to pinpoint where the swap occurred.
+- Scrutinize the input sentences and locate the two swapped words, paying attention to their original sequence in the sentence structure.
+- Determine which adjacent words in a sentence are out of sequence; locate these swapped words based on their positions within the text.
+- This task requires careful reading of a sentence to spot any consecutive words that are incorrect in order, followed by reporting their positions.
+- Analyze the word arrangement within a provided phrase to find any instances of wrong positioning between two successive words.
+- You will encounter sentences featuring two adjacent misordered words, requiring you to uncover their previous positions based on context and language flow.
+- Your job is to parse through a provided phrase to find any swapped pairs of consecutive words, then report on where they are situated.
+- Identify the positions in a given sentence where two consecutive words have been mistakenly interchanged. This involves understanding word order and syntax.
+- The goal is to observe and identify instances where adjacent words in a sentence are out of sequence due to swapping, and denote their locations.
+- The focus of this task is on word arrangement within sentences. Locate two adjacent words that have been exchanged and record their sequential positions.
+- Your job is to scrutinize a sentence for any swapped consecutive words and specify their respective locations in the sentence.
+- Evaluate the given sentences to detect and state where two adjacent words have been interchanged in their order.
+- You will be provided with sentences featuring swapped words. Your task is to identify the exact locations of these two words that are next to each other in the incorrect order.
+- Scrutinize the provided statement for any mistaken placements of neighboring words, then indicate where these misplacements occur.
+- You need to process sentences where positioning errors exist between consecutive words. Focus on determining where these mismatches occur within the text.
+- This task requires linguistic skills as you detect swapped consecutive words within sentences and accurately denote their positions.
+- In this task, you will look for consecutive words that have had their places exchanged and report the affected word positions.
+- Your task is to identify the positions of two words that have been switched in a given sentence.
+- In this exercise, you’ll analyze a sentence where two adjacent words have been incorrectly positioned. Identify their original places and output those positions as a pair.
+- This task involves finding the positions of two words that are next to each other in a sentence but are swapped. Determine their locations and represent them with numbers.
+- This task focuses on detecting swapped consecutive words in sentences and specifying where they have been switched.
+- Analyze the syntax of a provided sentence carefully to locate erroneous pairs of neighboring words and establish their respective index numbers.
+- You are required to examine a sentence to find two consecutive words that have changed places and record their positions.
+- This task requires careful observation of a sentence to see which two consecutive words are out of order and document their indices.
+- The goal of this task is to identify two consecutive words that have been reversed from their intended placement within a sentence and note down their indices accurately.
+- You will evaluate sentences for pairs of adjoining words that have been interchanged and output their original locations.
+- The goal is to find where two adjacent words in a sentence have been transposed and provide their position numbers.
+- Your objective is to look closely at sentences that contain errors in word order and determine where those changes occurred between pairs of adjacent words.
+- Your role is to carefully inspect sentences for pairs of adjacent words that have had their positions switched, recording where this swap occurred.
+- You are tasked with analyzing provided sentences for swapped neighboring word pairs, requiring precision in identifying their positions.
+- Your job is to inspect sentences looking for instances of neighboring word swaps. Identify these misplaced pairs and present their positional numbers clearly.
+- The goal here is to detect alterations within sentence structures due to consecutive word swaps. Recognize which words don’t belong together and indicate their positions.
+- The task is to carefully inspect the order of words in sentences to find errors introduced by swapping two adjacent terms.
+- 'The objective is straightforward: find clusters of two adjacent words that have had their order reversed within sentences and report back with their locations.'
+- In this task, you will be looking for pairs of words that have swapped places within a sentence and must report the indices of these words.
+- Your objective is to examine a given sentence and find out which two consecutive words are out of order. The challenge lies in precisely locating their original positions.
+- You will engage with sentences to find out which two consecutive word placements have been altered due to swapping, ensuring you note where they appear.
+- Your mission is to uncover errors in word sequences within sentences by determining which adjoining pairs are out of place and noting their positions.
+- Your job is to examine sentences where two consecutive words are not in their correct order. Find out where those words are by noting their positions.
+- You are expected to unravel sentences by identifying pairs of words that have erroneously exchanged places, detailing their numerical indexes.
+- You will be tasked with identifying changes in word positioning for adjacent pairs within example sentences. This requires close reading comprehension and analytical skills.
+- The mission here is to inspect the structure of a sentence for any adjacent words that have been transposed and state their respective indices.
+- You will analyze sentences where two consecutive words are swapped and indicate their original positions based on the shifted order.
+- Your task is to identify which two consecutive words in a given sentence have been swapped. You will need to locate the positions of these words and report them.
+- Your task is to find pairs of words in a sentence that are out of order and provide their indices based on this swap.
+- Your assignment involves examining a series of sentences with incorrect word orders. By analyzing the syntax, find out where the swapped words should actually be placed.
+- Your task is to dissect a sentence and identify the specific positions of two mistakenly swapped adjacent words.
+- For this task, your role is to carefully inspect dialogue or narration for instances where two adjacent words misalign from their expected order and report their positions.
+- Look closely at the provided sentence to find any two neighboring words that have been switched; you’ll need to report their locations.
+- Your assignment is to pick out two consecutive words in a sentence that are reversed from their intended order and identify where they are located.
+- This task requires careful observation as you search for two words that have switched places within a sentence. Identifying their indexes is key to successfully completing the task.
+- You will analyze sentences where two neighboring words have exchanged their order. The goal is to specify their correct places in the sequence of the sentence.
+- This task requires attention to detail as you must find and return the positions of two words that are next to each other but have been switched around in a given sentence.
+- You will work with sentences featuring pairs of words that have changed places. Identifying these pairs and marking their positions is crucial for this exercise.
+- This task challenges you to sift through sentences and locate words that are no longer in their intended order due to swapping. Find their original place in the sequence.
+- In this task, you need to identify and track down any switched neighboring word pairs within the input text and mark their indices explicitly.
+- In this exercise, you must recognize swaps between adjacent words and report their positions as part of the sentence's structure assessment.
+- Your focus should be on analyzing a provided sentence for nearby word swaps. Recognizing these swaps and assessing their positions are the tasks at hand.
+- Focus on a sentence where some consecutive words are now switched around, and help ascertain their intended placements by finding their indices.
+- In this challenge, you’ll review sentences where errors exist due to word order changes. Identify and specify the positions of the swapped words.
+- Evaluate the sentence provided and pinpoint the indices of the two words that are out of their regular sequence after being swapped.
+- The assignment is about examining sentence structures for errors caused by adjacent word swaps. Identify which words are misplaced and mark their positions accordingly.
+- This challenge revolves around recognizing word order discrepancies caused by swapping two adjacent terms and providing their respective indices.
+- This challenge involves determining which two adjacent terms have been exchanged in given phrases and stating their corresponding positions.
+- This task involves examining a sentence where two words are out of order, and you need to determine their original positions.
+- The goal is to spot which two consecutive words in a sentence are reversed and specify where they originally belonged.
+- Your job is to detect errors in word placement within a sentence by finding pairs of consecutive words that have been interchanged.
+- This task requires careful reading of a sentence to recognize which neighboring words have swapped their positions and where these malpositions occur.
+- You will be working with sentences where word placement is incorrect due to a swap. Figure out which two words are out of place and what their original positions were.
+- This exercise involves working with sentences that contain shuffled adjacent words. Identify the swapped pair and provide their correct indices in your report.
+- This task invites you to inspect sentences and pin down pairs of similar components that have shifted places. Record precisely where each component should be.
+- The task involves identifying and reporting the positions of two words that have been incorrectly swapped in a sentence.
+- In this task, you are required to pinpoint the positions of two words that appear in the wrong order and need to be switched back.
+- In this task, you must inspect a series of sentences for any two sequential words that no longer align correctly and document their positional numbers.
+- Determine which two consecutive words within a given sentence have been incorrectly interchanged, and indicate their placement.
+- Your challenge is to detect and record the index points of two adjacent words which have undergone a swap in an otherwise normal sentence structure.
+- The objective here is to analyze how the order of certain words affects the overall structure of a sentence. Spot the pairs of swapped words and record their positions.
+- The exercise focuses on detecting word arrangement issues within sentences. Locate pairs of swapped words by paying close attention to each word's index in the structure.
+- In this task, you need to spot misplaced consecutive words within sentences and report their indexes. Attention to detail in understanding word order is essential.
+- Your challenge is to sift through sentences and pinpoint the index of two consecutive words that need to be rearranged.
+- You will be given a sentence with two words that appear in the wrong order. Identify their locations to indicate the swap.
+- You will analyze a sentence structure, specifically searching for consecutive words that are out of place, and describe where each one is situated.
+- You are required to analyze a sentence and find where two consecutive words have exchanged places, indicating their original positions.
+- Look closely at the given sentences to find pairs of consecutive terms that are not in the correct order; report their positions accurately.
+- The task involves identifying the positions of two words in a sentence that have been mistakenly swapped.
+- You are tasked with finding two neighboring words in a sentence that no longer appear in their original order. Specify their positions.
+- Examine each sentence for instances where two nearby words have been exchanged and provide their accurate positions within the phrase.
+- Analyze the provided sentence to locate two consecutive words that are out of order and determine their respective positions.
+- The task revolves around detecting errors in word placement within sentences. Focus on adjacent words that have swapped positions and indicate where each word belongs.
+- In this exercise, your main goal is to detect the errors in word order within a given sentence by locating the swapped words.
+- Look for swapped consecutive words in each sentence. You must track down both words’ indices based on their appearance in the text.
+- The focus of this task is on identifying errors in sentence structure caused by word swaps, requiring attention to linguistic details.
+- Analyze the provided sentence to locate the position of two adjacent words that are no longer in the correct order due to swapping.
+- You will engage with sentences that contain intentional word placements errors by swapping two neighboring words, necessitating an attentive reading to find where they were switched.
+- This task involves finding instances where consecutive words have been erroneously exchanged in a written sentence, which will require you to assess their locations thoroughly.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task089_swap_words_verification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task089_swap_words_verification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

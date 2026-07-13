@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You are required to interpret various user commands or questions and respond in a way that feels natural and informative.
+- Your task entails interpreting questions or commands and delivering responses that are informative, supportive, or clarifying.
+- Create replies that would resonate well in conversational contexts, demonstrating attentiveness to user requests and engagement.
+- Analyze the user's question or request and provide a relevant answer that accurately reflects the information being sought.
+- Engage with user inputs by providing replies that resonate with their questions or commands, showcasing effective communication skills.
+- This task requires you to analyze user interactions and generate suitable replies that match the intent behind each command or inquiry.
+- Your task is to generate an appropriate and context-aware response based on a user's inquiry or command.
+- Interpret the user's directives and craft responses that effectively address their questions or tasks with clarity and accuracy.
+- Your focus should be on efficiently translating user inquiries into direct responses, mirroring the actions of a skilled virtual assistant.
+- Your job is to understand user prompts and provide clear, coherent replies that effectively address their queries or commands.
+- You will receive a user query, and your responsibility is to generate an appropriate response that addresses the question or request directly.
+- Understand user prompts and express your replies in a manner that aligns with their expectations for assistance.
+- The goal is to create logical responses to commands or inquiries, reflecting the context provided by the user’s input.
+- Delve into the queries posed by users and return appropriate replies, ensuring clarity and relevance in your responses.
+- Use your comprehension of conversational dynamics to formulate responses that are both informative and relevant to the user’s needs.
+- Craft responses to user commands that are contextually appropriate and demonstrate an understanding of the situation.
+- Each user inquiry requires a thoughtful analysis to produce responses that are not only relevant but also clear and concise.
+- Respond to user questions or requests by synthesizing information relevant to their commands and tailoring your answers accordingly.
+- Your function in this scenario involves discerning the intent behind a user's request and delivering a clear response tailored specifically to address their needs without additional context.
+- This task challenges you to think like a digital agent, generating answers that respond clearly to users’ inquiries without elaborating too much.
+- You are asked to simulate the replies of a digital assistant, reacting to user commands with appropriate and context-aware answers.
+- In this activity, you will be given various user inquiries or commands. Your role is to determine an appropriate reply that aligns with the user's request.
+- You need to interpret user queries and provide an appropriate response based on the context of each command or question.
+- In this scenario, you're tasked with creating plausible replies for automated systems based on users' commands or questions.
+- Focus on providing direct answers based on user commands, ensuring that each reply addresses the inquiry effectively and succinctly.
+- When presented with user commands or questions, analyze them carefully and construct considerate responses as if you were an assistant.
+- Evaluate each user input carefully and reply appropriately, showcasing an understanding of both the requests and typical assistant responses.
+- Navigate through the diverse range of user commands or questions by focusing on their intent, delivering appropriate replies without extra elaboration.
+- Provide responses to user inquiries by comprehensively processing their commands and determining the most fitting reply.
+- This task centers around synthesizing information based on user requests, producing concise and relevant replies that help users manage their calendars and appointments effectively.
+- You need to interpret a user's request or question and provide an appropriate reply as if engaging in real-time dialogue.
+- This task requires you to distill user questions into concise responses that offer clarity or information relevant to the query posed.
+- Provide responses to user-inputted questions that capture the essence of what is being asked, ensuring clarity in communication.
+- Your engagement here focuses on instantly translating user commands into practical answers that support scheduling, event tracking, or simple queries about calendar items.
+- This task emphasizes understanding short user queries and delivering precise, contextually relevant responses as a digital assistant would.
+- Engage with user prompts by understanding their requests and formulating relevant replies that reflect accurate information.
+- Generate succinct responses for user inputs by interpreting their meaning correctly and addressing their specific questions or commands.
+- Your main goal is to reflect the user's intentions through your responses, providing assistance where needed.
+- For each user command or question provided, create a response that acknowledges their request with clarity and relevance.
+- Interpret user prompts carefully to generate straightforward replies that fulfill their informational requirements without unnecessary details.
+- You will be working with various user requests, using your understanding of conversational logic to generate appropriate responses.
+- You'll be adapting your replies according to the context of each inquiry provided by the user, aiming for clarity and brevity in your responses related to scheduling matters.
+- The goal of this task is to reflect the role of a responsive assistant by providing well-suited replies to user inquiries.
+- The goal is to take the user's input and generate a relevant response. Your answer should maintain a conversational tone, reflecting understanding and assistance.
+- Respond to a variety of user interactions by selecting replies that best suit the tone and content of what they have expressed.
+- You must reflect the role of an assistant by providing clear and appropriate responses based on user input.
+- Respond to the specified question or command in a way that feels natural and relevant, mirroring how an agent would reply.
+- Your job is to interpret user questions accurately and render responses that cater specifically to their requests and context.
+- This task involves acting as an agent, where your primary focus is on understanding user instructions and delivering appropriate feedback.
+- Formulate responses as if you were an agent interacting with a customer, ensuring that your replies convey helpfulness and precision.
+- Your role is to evaluate the requests from users and formulate concise replies as if you were an artificial assistant managing calendar and scheduling tasks.
+- Your role involves interpreting user commands and creating suitable replies based on the request’s content.
+- Engage with user questions by constructing detailed yet concise replies that satisfy their requests while adhering to conversational norms.
+- You are asked to create quick responses for a range of user questions that may involve scheduling, event management, or clarifications about previous plans, demonstrating attention to detail.
+- Provide context-sensitive answers to user commands while prioritizing clarity, relevance, and directness in your communication style.
+- Your task is to provide an appropriate response to user inquiries, demonstrating an understanding of the user's needs.
+- Assess the user's command to produce replies that are contextually appropriate, ensuring they answer the query effectively.
+- You are responsible for interpreting direct commands from users, focused solely on generating an appropriate agent response without any extra commentary.
+- The objective is to generate fitting replies based on user commands that demonstrate an understanding of their needs while maintaining clarity.
+- Process user inquiries by recalling relevant information or actions, then return an appropriate response based on that understanding.
+- Your task includes responding to various user prompts in ways that represent intelligent guidance or assistance from an agent perspective.
+- Analyze the user's inquiry or command to deliver responses that are not only relevant but also enhance their experience through effective communication.
+- You are tasked with understanding user prompts deeply to provide meaningful replies that help navigate their inquiries or requests effectively.
+- Assess the input from the user and formulate a reply that is concise and directly addresses their needs or concerns.
+- Provide concise and relevant responses to user queries, showcasing helpfulness and attentiveness to their needs.
+- Your task is to interpret user commands or questions and provide appropriate responses as if you were a virtual assistant.
+- Your objective is to interpret commands from users accurately and generate agent-like responses that cater to their needs and questions.
+- You are expected to process user inputs and deliver responses that reflect an agent's capabilities and limitations.
+- Create responses based on user commands that make sense within the context of a digital assistant's role, focusing on accuracy and reliability.
+- You will be responding to users by interpreting their commands accurately and providing replies that assist them effectively.
+- Responding to user queries requires you to grasp the essence of their commands and convey information in a straightforward manner.
+- Generate clear and concise responses based on user input, reflecting appropriate understanding and information relevant to their requests.
+- This task emphasizes the necessity of recognizing various user statements or questions and producing responses that align with their intentions without any elaboration.
+- This role entails responding adeptly to diverse commands from users, highlighting your ability to manage diverse inquiries while remaining focused on delivering clear answers promptly.
+- Your task is to generate a suitable response based on a user's command or question, simulating a conversation with an agent.
+- Address each user command or inquiry by generating responses that acknowledge the request in a clear and polite manner.
+- Your job is to effectively understand users’ requests, whether they involve scheduling, confirmations, or general inquiries, and respond appropriately.
+- Your task involves responding to various user commands or questions by simulating the replies of an agent.
+- The objective is to identify what information the user is seeking and respond accordingly with clarity and relevance.
+- The goal is to act as a virtual assistant, responding correctly to user interactions while considering their intent and context.
+- Your responsibility is to engage with user inputs effectively, crafting responses that help users feel supported and informed regarding their requests.
+- Craft thoughtful replies that align with the user's expectations, incorporating necessary context and information relevant to their inquiry.
+- Evaluate the user's question to provide an answer that maintains clarity, relevance, and straightforwardness for effective communication.
+- Engage with user prompts by carefully interpreting their meaning and delivering responses that provide clarity or assistance.
+- In this task, be prepared to respond appropriately based on various inputs from users. Your replies should maintain a professional yet helpful demeanor.
+- Your job involves taking user statements or questions, assessing their intent, and crafting fitting responses according to the scenario presented.
+- You will be responsible for evaluating the tone and context of user commands to provide fitting responses that reflect an understanding of event planning and personal assistance needs.
+- You are required to discern user needs expressed in questions or commands, crafting succinct agent-like responses tailored to each situation.
+- Respond to questions or commands from users by crafting replies that match the context of their requests.
+- The task involves listening to user commands and crafting responses that demonstrate an understanding of their requests.
+- Interpret incoming commands from users accurately, ensuring your responses are useful and appropriate for their requests.
+- Your role in this task is to translate various user prompts into coherent answers, showcasing an ability to grasp the contexts of their inquiries and respond appropriately.
+- The focus here is on interpreting commands from users and responding in a way that indicates comprehension and effective assistance.
+- Responding to commands or questions involves using your comprehension of various topics to provide accurate information in a conversational format.
+- The task at hand is to engage with user prompts by producing replies that fit an AI personality, reflecting responsiveness and relevancy.
+- Respond to user queries by providing information or clarifications, ensuring that your replies are straightforward and easy to understand.
+- Upon receiving various user inputs, your job is to craft fitting answers that address their questions or direct them as requested.
+- Take user statements into account and respond accordingly. Your replies should reflect empathy and understanding of their context.
+- You are tasked with generating appropriate replies for various user prompts, demonstrating an awareness of their needs through your responses.
+- Analyze the nature of the user's request to formulate replies that are helpful and align with their expectations.
+- You are tasked with responding appropriately to user inquiries, showing comprehension of their intent and providing relevant information.
+- Engage with the user's queries by formulating responses that reflect accurate information or clarification based on their requests.
+- In this task, you need to determine the appropriate response to a user's inquiry or command, simulating an intelligent agent's reply.
+- Engage with user inputs by producing straightforward and relevant replies that reflect an understanding of each request's context.
+- You are tasked with providing responses to user-generated questions, ensuring that your answers align seamlessly with their expectations.
+- You'll be tasked with addressing direct commands or questions from users by crafting responses that serve their informational needs effectively.
+- Your goal is to provide quick and effective responses as if you were a virtual assistant helping with tasks such as scheduling or information lookup.
+- Your job is to interpret the user's questions or commands and generate relevant replies that reflect understanding and provide helpful information.
+- Your responsibility is to listen and analyze user requests, providing responses that address their specific informational needs.
+- Respond dynamically to user input by delivering coherent answers that encapsulate the user's intention behind the question or command.
+- Engage with various user commands, translating them into clear responses that address their specific inquiries or directives directly.
+- Help users by responding accurately to their questions or commands, ensuring your replies are direct and relevant.
+- The task involves comprehending the user's request and generating responses that align with their expectations without additional explanations.
+- Respond appropriately to user interactions by understanding their requests and providing direct answers that fulfill their information needs.
+- This task involves interpreting user inquiries about scheduling and providing feedback as an intelligent assistant would.
+- This activity requires you to interpret what users are asking for and reply in a way that meets their expectations while providing useful information.
+- Your objective is to understand user inquiries and return answers that reflect an appropriate level of detail and relevance to the question asked.
+- You’ll need to be responsive to commands from users, crafting replies that align with their needs efficiently.
+- You will analyze user inputs, which could be questions or requests, and craft responses that address their needs accurately.
+- For each command or question from the user, you will create a thoughtful and relevant agent response that satisfies their request.
+- You will analyze requests made by users, ensuring your responses align with what a real virtual assistant would communicate in those situations.
+- Your role involves processing user statements or questions and producing an appropriate reply grounded in common knowledge or standard practices.
+- Generate suitable responses based on given questions or commands, indicative of comprehension of the underlying context.
+- Your responsibility involves decoding user commands and creating accurate answers that fulfill the user's needs without any lengthy explanations.
+- Reflect on the context of each user command or question to produce replies that are both informative and concise without embellishing explanations.
+- Actively respond to various types of requests from users, crafting replies that mirror the tone and intent of the original question or command.
+- The objective is to interact with user commands, discerning the intent behind each message and providing a coherent response.
+- Your role is to respond to user queries or instructions with concise answers that demonstrate understanding of their requests.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1603_smcalflow_sentence_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1603_smcalflow_sentence_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

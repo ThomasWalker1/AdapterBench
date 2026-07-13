@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your task is to extract the highest integers from several lists provided within an outer list, returning a new list that illustrates these highest values while maintaining their sequence.
+- In this exercise, you are engaged in identifying maximum values within multiple sets of integers. The goal is to summarize these maxima into a single output list.
+- The aim here is to pinpoint the largest integer from various inner integer lists contained within a larger structure, emphasizing numerical comprehension.
+- Here, you will find yourself sorting through several sets of numbers. Your objective is to track down the largest integer within each set for further analysis.
+- The goal here is to sift through multiple lists of numbers, selecting the largest number from each inner list and returning them in their original order as a new list.
+- The objective is to analyze a given set of lists filled with numbers. For each inner list, find the maximum value and create a new list that includes these maximums.
+- You must evaluate several lists of integers, selecting the largest number from every sub-list and assembling these maximum values into one cohesive list.
+- Your assignment is to inspect various lists containing integers. Your aim is to extract the highest value from each inner list and return them sequentially in a new overarching list format.
+- The objective is to parse through diverse lists filled with numbers, determining their highest values. Collectively gather these maximums into a single cohesive result for easy reference.
+- The assignment consists of scanning through multiple groups of integers listed within inner lists. For every group, determine its maximum integer and gather these into one single result.
+- In this exercise, you’ll be sifting through lists of integers, extracting the highest values from each group to form a cohesive summary of maximums.
+- In this task, you'll be working with nested lists of integers. The challenge is to determine the maximum value from each inner list and compile these maximums into a new list.
+- As part of this task, you'll assess groups of integer sequences to determine their maximal values. Each sum will provide insight into which number ranks highest within its subset.
+- You need to sift through various lists, searching for their highest numbers. This will culminate in a new aggregate list that represents the greatest strengths across all provided sets.
+- In this exercise, you will be handling several integer-laden lists. Your responsibility lies in identifying the largest value found in each one and putting together an output that highlights those maxima.
+- Engage with an assortment of integer groups where your task is straightforward—identify the largest item from each internal array and create a collective summary showcasing all identified maximums.
+- This task will test your ability to evaluate lists of integers. You must locate the largest integer in each sublist and return a list that contains these maximum values.
+- You are tasked with processing sets of integers to extract the highest number from each set. The output should be organized as a new list that mirrors the original order of sets.
+- 'The goal here is straightforward: sift through a variety of nested integer lists and pick out their maximum values, enabling a consolidated overview of these peaks.'
+- You are challenged to sift through lists of varying integers, extracting the peak values from each inner list and together formulating an output that retains their order.
+- Your goal is to sift through multiple sub-lists filled with integers and extract the maximum value from each one, organizing the results in the same sequence as the original lists.
+- Your task is to review a list that contains other lists filled with integers. You need to find and report the highest number from each smaller list.
+- The exercise revolves around identifying key figures in collections of numbers grouped within lists. Each subgroup will yield its highest contributor as you analyze their contents closely.
+- Expect to engage in a comparative analysis involving integer lists, where finding peak values in every subgroup is essential for completing your output requirements effectively.
+- Examine various inner lists filled with integer values, detect which number is the greatest for each list, and compile those findings into another focused list format.
+- You are required to sift through nested lists containing integers, pinpointing the largest value from each sublist and generating a new list showcasing these maximums.
+- In this task, you are presented with a structure containing lists of integers, where your responsibility lies in retrieving the highest value from every sublist provided.
+- Your job involves examining a collection of integer lists to pinpoint the greatest number within each list. The output should reflect these maximum values in their original order.
+- This task entails scrutinizing numerous inner lists comprised of integers. From these sets, you will extract the largest numbers and format them into one collective representation.
+- The goal here is to delve into multiple lists packed with integers and find out which number stands at the top in every individual list.
+- The assignment involves assessing several collections of integers where your primary goal is to find and gather up the biggest numbers from each section into one organized output.
+- In this challenge, your responsibility is to explore each list of numbers carefully, retrieving the maximum value from every inner list to create a new compiled list.
+- In this exercise, you'll look at various lists made up of integers. Your job is to locate the maximum integer within each sublist and return these values together in a new list.
+- This challenge involves working with groups of integers arranged in lists. Your role is to find the largest number in each sublist and compile those findings.
+- This task involves finding the distinct peaks among groups of integers presented in lists. Your final result should emphasize the largest values from each group.
+- Your job is to systematically evaluate several lists and report back with the maximum integer found in each one, reflecting your analytical skills with numbers.
+- You are tasked with reviewing several sublists made up of integers. The challenge is to pinpoint the maximum integer from each sublist and present them collectively.
+- In this task, you need to identify the maximum number from several inner lists of integers. Your final output should accurately reflect these maximum values in the order they appear.
+- Explore different groups of integers where you aim to uncover the maximum values present in each sub-list, curating these results into a singular new listing for clarity.
+- The goal of this task is to analyze multiple nested lists of integers, selecting and showcasing the highest value found within each smaller group.
+- This activity entails working with arrays of integers. For each subarray, determine the highest number and compile an output list consisting of these maxima.
+- This exercise involves extraction of maximum values from various lists of integers. Each inner list will be analyzed to find its peak value, which should then be recorded in a new list.
+- In this exercise, you are expected to sift through multiple lists of numbers and extract the maximum value from each list, generating a summary list of these maximums.
+- Your responsibility is to look through inner lists containing various integers, find their maximum values, and summarize results by creating a new list containing those maximum figures.
+- You are tasked with assessing several groups of numbers within lists. For every group, find the largest number and compile these maxima into an ordered output list.
+- Your task is to analyze a series of lists containing integers and determine the largest number from each individual list.
+- You will be working with inner lists that contain integers. Your mission is to identify the highest value present in each list while preserving their original order for presentation.
+- Your mission is to explore sets of numbers arranged in lists, extract the largest element from each, and assemble them into a new consolidated list reflecting their original order.
+- You will be working with nested lists of integers. Your job is to extract the maximum value from each inner list and combine them into one cohesive output.
+- You will explore several lists consisting of integers and work towards identifying the largest number present in every sub-list, then articulating those results as one comprehensive output.
+- This task requires recognizing the largest number from multiple groups of integers, emphasizing your ability to handle lists and perform comparisons efficiently.
+- As part of this task, you'll evaluate groups of numbers arranged in a nested fashion. Your aim is to derive the highest value per group for eventual listing in order.
+- The objective is to find the greatest integer in several given lists. You need to assess the contents of each list and pinpoint the largest number.
+- You will navigate through multiple sets of integers to find the big numbers hidden within them. Each group has its own maximum that you’ll need to collect in order.
+- You must scrutinize distinct lists comprising integers and isolate the largest value from each. The completion of this task results in an organized display of these peak integers.
+- Within this challenge, you must traverse through multiple lists of numbers to find the highest number contained within each inner grouping, ultimately producing a resultant list of all maximums.
+- In this task, you will sift through multiple lists filled with integers. Your primary responsibility is to find and gather the largest integer from each sublist into a unified list.
+- This task requires you to review multiple integer sets arranged in lists. Your objective is to identify the maximum for each set and construct a new collection of these maximal values.
+- This exercise invites you to delve into lists filled with numbers. Your responsibility lies in pinpointing each group's highest number for an organized output based on your findings.
+- In this activity, you’ll work with structured data comprised of integer lists. Identifying the max number in these inner collections tasks you with analytic thinking and attention to detail.
+- The objective is to navigate through multiple lists that contain integers, determine the maximum number from each one, and summarize these findings in a new list.
+- Your challenge is to parse through carefully organized lists containing integers and ascertain their maximum values in an iterative manner.
+- You will encounter several lists, each containing integers. Your responsibility is to find the largest value within each of these lists and gather them together as a new list.
+- Engage with multiple sets of integer data organized in lists, extracting the maximum value from each subset and offering a consolidated version that showcases those values.
+- The task involves scrutinizing multiple lists made up of integers, determining the most significant number in each individual list, and bringing them together in order.
+- Engage in a numerical exploration where your responsibility is to discover the highest values across different sets of integers organized within their respective lists.
+- The task involves examining lists of integers organized into sublists. For each sublist, identify the maximum number and collect these results into a single list in order.
+- Examine a set of integer collections where each collection consists of several numbers. Determine the highest integer from each collection for an ordered final output.
+- Tasked with multiple inner lists bursting with integers, your mission is to discover the highest numbers from these arrays and create an output that reflects only those peaks.
+- You will engage with a composite list consisting of various smaller lists filled with integers. The goal is to find the largest integer in each small list and assemble a new list of these maxima.
+- Assess various nested lists comprised of integers. Your aim is to retrieve the largest number from each sub-list and format these maxima into a single output list.
+- Assessing different lists of integers, your goal is to extract the highest numbers from each collection. This will help in summarizing the data efficiently.
+- The task is about taking different lists filled with integer numbers and deducing their respective maximums. You should then encapsulate these findings in an orderly fashion.
+- The goal here is to retrieve the highest integers from various nested lists. After determining these values, you will produce a single composite list that mirrors their sequence.
+- You are required to examine different groups of integers organized in several sublists. Your task is simple—find out which integer is the greatest within each subgroup and compile your answers properly.
+- Given several collections of integers in nested arrays, your challenge is to find the tallest integer in each group and assemble these maxima into an overall response list.
+- Your mission is to dissect multiple lists containing integers and extract their maximum elements, arranging these results in a cohesive manner afterward.
+- This task involves processing lists of integers to find the largest number in each sublist. You will need to systematically analyze each inner list and identify its maximum value.
+- You will work with lists composed of other lists filled with integers, from which you must identify the largest integer in each and collect them all together.
+- You will encounter a collection of integer lists, and your task will be to uncover the maximum value from each individual list presented, demanding good analytical skills.
+- You are required to analyze several groups of integers. For every set of numbers, identify and gather their largest value into one single list for easy reference.
+- As part of this task, you'll need to extract the largest number found among various grouped integers, creating a summary that reflects these findings accurately.
+- You'll be tasked with evaluating several lists where each contains a variety of integers. For every inner list, your job is to find out which number is the greatest and assemble a list of these maximums.
+- This task requires you to sift through several lists of integers, pulling out the highest number from each one and collecting them into an ordered output format.
+- This task requires you to evaluate several groups of integers and find the largest number within each group. The results will be presented as a list of these maximum values.
+- The challenge at hand involves analyzing nested integer structures to uncover peaks in value from each small group, ultimately presenting these peaks in an ordered manner.
+- You are required to review a nested list structure, determine the highest number from each sub-list of integers, and provide a summary list showing these maximums.
+- In this activity, you're tasked with probing multiple inner lists of integers. The mightiest integer from each sublist must be extracted and assembled into a unified output list.
+- The task involves reviewing lists of numbers and picking out the greatest number from each list to form a new aggregate list of maximums.
+- You will analyze grouped integers presented as lists. It is your job to find the highest integer within each group and combine these findings into one comprehensive output list.
+- The focus here is on extracting maximum values from nested lists of integers. You'll sift through each inner list to locate its largest element.
+- Identify and extract the biggest numbers from multiple sets of integers structured as lists, synthesizing your findings into a single list format.
+- You will navigate through a series of nested integer lists, identifying all maximums within them and producing a single output list that includes these findings in sequence.
+- You will analyze several collections of integers, focusing on identifying the maximum value within each collection and compiling these into an overall summary list.
+- Your job is to evaluate several lists filled with integers. From each inner list, you will determine the maximum value and create a final list that reflects these findings.
+- Your job is to analyze a collection of integer lists and determine the highest number from each one. This requires careful comparison within each sublist.
+- Your assignment entails traversing through several collections of integers, identifying the peak or maximum numbers present within individual inner lists.
+- In this task, you need to sift through multiple lists of integers and pinpoint the largest number found in each list. Your final output will consist of these maximum numbers.
+- In this task, you focus on evaluating inner lists composed of integers, selecting their maxima, and bringing together these peak values into one descriptive output list.
+- The job entails analyzing various subsets of integers to find out which ones hold the top values, resulting in a succinct listing of collected maxima that follows the original arrangement.
+- Explore various lists that contain integers and extract the maximum elements from them, showcasing your capacity for numerical assessment.
+- You will assess different lists of integers, finding the highest number in each. Collectively, this will result in a structured list reflecting all identified maxima.
+- This task is focused on maximizing. You will search through various lists of integers to find the highest number in each list and compile these into another list.
+- The focus here is on evaluating a collection of integer lists. You are to identify the highest number from each sublist and compile these into a comprehensive output list of maximums.
+- This task invites you to explore various integer groups, requiring sharp analytical skills to conclude which number reigns supreme within each subset for inclusion in an overall summary list.
+- You are tasked with examining several integer lists and determining the highest number present in each one, ultimately creating a new list that showcases all maximum values.
+- This task centers on extracting the largest integers from multiple inner lists. The outcome will be a single list that showcases these maximum numbers clearly.
+- In this activity, you need to process multiple lists containing integers. The goal is to find and return the largest number from each sub-list.
+- In this problem, work through different inner lists made up of integers and identify their maximums, reinforcing your numeric comparison abilities.
+- In this task, your responsibility is to extract the maximum value found within each inner array of integers and return an ordered list containing all those maximum values.
+- You need to take several inner lists structured with integers and identify the peak value from each. The final product should be a cohesive list reflecting these maximum figures.
+- Your challenge is rooted in reviewing several sets of integers where your goal is to isolate the highest figure present in each set for subsequent compilation into a larger result set.
+- This task requires you to review a series of integer lists. From each, you must determine the maximum value it contains and assemble these values in a sequentially ordered list.
+- In this task, you must comb through several distinct sub-lists containing integers. Extracting their maximum values will allow you to compile them neatly into a single output.
+- This task is centered around exploring sets of integers presented in nested lists. You are expected to highlight the peak value from each group and create an output that accurately reflects this information.
+- You need to traverse through groups of integers presented as lists and collect only the highest number from each group into a new output list.
+- This task invites you to explore several lists composed entirely of integers. You'll focus on finding out which number stands tallest within each inner list before combining those results into one cohesive output.
+- Your goal is to compare items within multiple integer lists to discover their biggest elements, ultimately leading to a comprehensive list that accounts for all maxima discovered.
+- In this project, you are tasked with interpreting a series of integer lists. For every inner list, you should ascertain its maximum integer and output it alongside others in sequential order.
+- The focus here is on finding the peaks among given integer lists. You are tasked with discovering the largest number from each group and returning that information systematically.
+- Your aim is to locate the most significant integer in several groups of numbers, eventually assembling a comprehensive list that reflects all identified highest numbers sequentially.
+- Your role is to review collections of numbers housed within different sub-lists and select the peak integer from each to create an ordered summary reflecting these maxima.
+- Delve into a matrix of numbers where your goal is to find the tallest integer from every separate row (sub-list), creating an overarching list that displays these peak values.
+- In this activity, your goal is to determine the largest integer in each of several provided lists and document these findings in a concise manner as another list.
+- Your task involves analyzing lists of integers. You will identify the highest number in each inner list and compile these maximums into a new list.
+- Your task is to evaluate a collection of integer lists and identify the highest number in each individual list, ultimately producing a new organized list of these maximum values.
+- Your challenge involves multiple lists filled with integers. For every inner list provided, you should identify the largest number and compile a final list that encompasses all found maximums.
+- You are invited to work with a hierarchical structure of integer lists where your goal will be to locate and report the highest number from each contained list into a new organized array.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task207_max_element_lists
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task207_max_element_lists
+user_prompt_template: '{task_def}
+
+
+  {problem}'

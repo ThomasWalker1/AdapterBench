@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your role is to classify relationships between entities based on meronymy, identifying whether a designated part exists within a designated whole.
+- Your focus will be on clarifying relationships where one term potentially defines a subset or component of another term, enhancing semantic analysis skills through comparison.
+- Your role is to classify two provided entities based on whether one can be deemed a part of the other. This challenges your understanding of semantic relationships.
+- In this task, consider two entities and determine if they are related such that one is an integral part of the other.
+- The goal is to investigate whether the second term in each pair holds any intrinsic connection as being a part associated with its respective first term.
+- Your task is to evaluate each pair's connection and specify if it can be classified as having a meronymic relationship or not.
+- This task prompts you to assess pairs of entities. Your goal is to classify their relationship by determining if one can be considered part of the other in a linguistic sense.
+- You'll need to interpret pairs of words and figure out if they embody a meronymy relationship, emphasizing the understanding of components within broader contexts.
+- Your job entails recognizing if there’s a dependent relationship where one item is embedded within or belongs to another. A command over language concepts will guide your evaluation.
+- This task revolves around analyzing associations between two terms and classifying them based on whether one represents a part of the other. Knowledge of holonyms and meronyms is important.
+- You are tasked with identifying and classifying whether one entity can be considered a subset or a component of another entity.
+- This task requires you to determine whether a specific entity is intrinsic to another, identifying systematic relationships between terms.
+- Determine whether each second term is encompassed by its respective first term. This exercise hinges upon grasping basic linguistic concepts about how things can relate as parts and wholes.
+- You will be given pairs of words and must classify them according to whether one can be considered a component or part of the other, highlighting your knowledge of definitions and relationships.
+- Examine two related entities and classify their relationship by determining if one represents a segment of the larger whole represented by the other.
+- Assess two entities and determine if they share a part-to-whole relationship. This task requires familiarity with how different concepts can be interconnected semantically.
+- Identify whether the second entity is a component of the first by analyzing their semantic relationship as part and whole.
+- By examining pairs of terms, identify whether they display a relation where one term is viewed as an integral part of another term.
+- You will be identifying part-to-whole relationships in word pairs, focusing on whether the second entity fits within the conceptual framework of the first.
+- Engage with two provided entities to determine if their relationship fits within a part-to-whole classification system.
+- You need to evaluate pairs of entities to establish whether the second one can be considered a component of the first one. Recognizing these hierarchical relationships is essential.
+- In this task, you will explore the relationships between different entities by determining if one serves as a subcomponent of another. Your analytical skills regarding semantic structures will be important.
+- The focus here is on understanding whether the second entity is functionally integrated as a portion of the first entity. Your reasoning skills will play a key role in evaluation.
+- This task involves classifying the relationship between two entities. You will identify if one term represents a part of the other, relying on your knowledge of linguistic meronymy.
+- The purpose of this job is to clarify whether a given entity can be deemed a portion of another entity. Knowledge about linguistic frameworks supports effective evaluation.
+- Your job involves recognizing part-to-whole relationships between two entities and assessing if one belongs to the other.
+- The task involves determining whether one entity is a part of another. This requires an understanding of relationships between objects and words.
+- Identify and evaluate semantic links between two entities to determine if they depict a valid part-of relationship, enhancing your understanding of language structure.
+- This task demands careful analysis of pairs to ascertain their relationships in terms of meronymy, evaluating whether one entity has a physical or conceptual inclusion in another.
+- The assignment requires you to analyze pairs of words and recognize whether there exists a part-to-whole relationship between them. This demands attention to linguistic details and semantic meanings.
+- Your task involves classifying relationships between two entities by determining if one serves as part of another. This requires attention to their inherent meanings.
+- Analyze given pairs to establish whether there exists a structural relationship in which one entity is contained within or contributes to forming the other.
+- The challenge lies in your ability to assess word pairs and classify them effectively based on their interrelation concerning wholes and parts in a semantic context.
+- Identify if the second entity can be considered a part of the first entity. Knowledge of semantic relations is essential for accurate classification.
+- You'll explore pairs of entities to decipher whether they share a relationship where the second is inherently included as part of the first, drawing from your understanding of relational linguistics.
+- Your task is to gauge the relationship between pairs of entities, specifically focusing on whether the second is encompassed within the first. This involves analyzing linguistic connections carefully.
+- Consider two entities and determine if the second one belongs structurally as part of the first. This type of classification involves knowledge of how components fit within larger wholes.
+- The objective here is analyzing relationships between two entities and establishing whether they align with part-whole semantics, relying on your knowledge of language structure and meaning.
+- You will analyze pairs of entities to classify whether one is a component of the other, focusing on understanding part-whole relationships.
+- The task requires you to accurately classify pairs of words based on whether the second word is an integral part of the first, tapping into your understanding of their meanings.
+- This task requires you to analyze two entities and determine their connection, specifically if one is a subset or component of the other.
+- Examine pairs of entities to decide if the second entity is included within the first, reflecting on their structural or functional relationships.
+- The objective is to analyze whether two provided terms represent different levels of a hierarchical relationship; this involves discerning when one can rightly be considered a fragment or aspect of the other.
+- From given pairs of words, distinguish whether there is a constructive link whereby one represents an element contained within another.
+- You are tasked with deciding if one term can be seen as an integral part of another in a semantic sense. Explore language relationships to arrive at your conclusion.
+- Evaluate provided entities in terms of how they relate, deciding if one can be classified as a subordinate component of another.
+- In this task, pay attention to pairs of terms and ascertain if there exists a constituent relationship where the second term forms part of the first.
+- Your role is to classify pairs of terms based on their connections, specifically whether one can be described as a portion of the other.
+- Your job is to discern whether the second item is a segment or a constituent of the first item. This task focuses on semantic relations in linguistics, specifically meronymy.
+- Your task is to evaluate two terms and decide if there exists a meronymic relationship where the second term is a subset or a part of the first.
+- Your challenge is to classify the connection between two provided entities, assessing whether one can be defined as a part of the other, using knowledge of linguistics.
+- In this task, you will analyze two entities to assess if one is a component of the other, drawing from concepts of part-whole relationships.
+- This exercise involves examining whether the second entity can be categorized as a part of the first entity, requiring an understanding of hierarchical relationships in language.
+- Your job is to examine two given items and analyze if the second item forms a part of the first. This requires knowledge of the specific characteristics associated with each entity.
+- Engaging with pairs of items, you will discern whether the second can be seen as part of the first. Critical analysis and recognition of semantic relationships are key.
+- You will assess pairs of terms for their relevance in part-whole semantics, determining if one can be identified as an element of the other.
+- The task focuses on classifying pairs of items in terms of their structural relationship, specifically identifying if one entity functions as part of the other.
+- The aim is to analyze pairs for their part-whole interactions and reach conclusions regarding their classification. This requires familiarity with linguistic concepts and definitions.
+- In this exercise, you need to consider two provided entities and discern if one entity serves as a component within another. Your reasoning about parts will guide your decision.
+- Here, you need to identify whether one entity functions as a part of another based on their descriptions. A solid background in descriptive relationships will be beneficial for this task.
+- You will engage with pairs of words and determine if one can be viewed as forming part of another. Understanding distinctions between parts and wholes in various contexts will aid in making accurate classifications.
+- The goal is to classify relationships between pairs of terms; determine if one term represents a part of the whole denoted by the other term based on linguistic definitions.
+- This analysis involves establishing connections between pairs of items to see if they align as parts and wholes, tapping into your understanding of semantic relations in linguistics.
+- Assess pairs of terms to see if there exists a fitting part-whole relation. Understanding how concepts interconnect is vital for successful classification here.
+- Assess two given items to establish whether there exists a part-whole connection where one serves as a component within the broader classification represented by the other.
+- The focus here is to investigate the connections between entities with respect to their structural significance in language.
+- This task requires you to investigate the connection between two entities and ascertain if one serves as a part of the whole represented by the other.
+- Examine pairs of terms and classify them into categories that reflect their part-whole relationships. Your success in this task depends on insights into how different entities interrelate.
+- Understand and evaluate the nature of two given entities, deciding if they embody a part-whole dynamic based on linguistic principles.
+- Your job is to classify pairs of entities based on their relationships. You will need to discern if one entity belongs to the other as a part.
+- You are to examine two terms and classify them based on whether the second term is included in the first term's identity or structure. Think about how different parts relate within wholes.
+- Your job is to classify conceptual links between entities by determining if one can be understood as a component or part belonging to the other in language.
+- You need to evaluate two given entities and decide if the second one is a component of the first. This task tests your knowledge of parts and wholes in linguistic terms.
+- Focus on relationships between pairs of entities where you must ascertain if one is contained within or is a segment of the other. This requires critical thinking regarding their characteristics.
+- Assess relationships between two entities and categorize them as either connected through a part-whole relationship or not, based on your comprehension of linguistic semantics.
+- The objective here is to classify whether the second entity belongs to the first, exploring how different items are interconnected through their properties or definitions.
+- In this exercise, you are expected to explore linguistic relationships between two identified entities and classify whether one exists within or outside the scope defined by the other.
+- Identify whether the second mentioned entity is included as a component within the first entity provided. This analysis hinges on an understanding of relational semantics.
+- Your objective here is to assess whether a given entity is included as a part within another entity. A clear comprehension of how entities relate in terms of parts and wholes is essential.
+- Engage in an analysis of two entities and assess their relationship to identify if one acts as a component or part of the other.
+- Delve into meronymy by inspecting pairs of items and evaluating whether they share a part-to-whole relationship influenced by your understanding of their meanings.
+- Engage with complementary pairings and evaluate their connections based on whether one functions as a segment within the entirety represented by the first entity.
+- You are tasked with analyzing two linguistic entities to establish if one serves as a component within another, necessitating knowledge about how different parts coexist within larger structures.
+- Your focus will be on classifying two given entities according to their relationship in terms of components and wholes. Keen analytical skills are essential here.
+- Your task is to determine if one entity is a part of another entity. This involves recognizing relationships between objects in terms of their components and wholes.
+- Based on pairs of words provided, you will classify their relationship type by analyzing if one belongs considerably as part of another's identity or meaning.
+- You will be tasked with identifying component relationships between two entities, deciding if one can be considered a subset or part of the other in a linguistic context.
+- For each provided pair, identify whether there exists a structural or definitional inclusion signifying that one entity forms a part of another in linguistic terms.
+- Your focus should be on understanding and assessing the semantic relationship that indicates whether one entity belongs to another as its part.
+- You are set with two entities and must evaluate if one exists as an element or part within another. Understanding the nature of these components is key to completing your assessment accurately.
+- The task asks you to scrutinize word pairs for their integral relationships where your output hinges on correctly identifying part-whole distinctions based on linguistic conventions.
+- In this task, analyze two provided elements for their possible inclusion relationship; decide if one is inherently part of another, requiring semantic insight into object relationships.
+- Skillfully classify pairs of given entities, determining their relational status with regards to being parts or wholes, based on linguistic understanding.
+- You will classify pairs of words as either exhibiting a part-whole relationship or not, emphasizing your understanding of linguistic semantics.
+- Investigate pairs of entities for their semantic connection, determining if one stands as a part of the whole represented by the other.
+- Assess two items and classify their relationship based on whether the second can be viewed as part of the first, which entails a solid understanding of linguistic concepts.
+- This task centers around classifying two entities according to their structural relationship, specifically determining if the second entity qualifies as a constituent of the first entity.
+- Examine pairs for their structural relationships, particularly focusing on assigning an appropriate classification based on parts and wholes in language and meaning.
+- For each pair of entities provided, determine if the second entity falls under the definition of a part related to the first entity.
+- The task involves determining whether one entity is a part of another, based on the relationship between them. You'll need to identify and analyze the connections between the two entities given.
+- Evaluate pairs by determining if there’s a relevant relationship where one concept acts as a component within another, requiring a nuanced understanding of linguistic relations.
+- In this task, you are engaged in identifying structural relations between words, particularly assessing if one word denotes a part of another word's composition or meaning.
+- Analyze entities closely for their relational quality, distinguishing between components and wholes based on definitions in linguistics.
+- Examine pairs of items to see if there exists a relationship where one can be categorized as part of the other. This analysis involves semantic reasoning abilities.
+- The task requires you to analyze pairs of entities and determine whether one is a component of the other. This involves an understanding of part-whole relationships.
+- You need to determine if the second entity is a part of the first entity by assessing their relationship.
+- Your task is to classify two entities according to their relational divide—determining if one entity can logically be considered a piece or segment within the other.
+- Determine if the second provided entity is included within or defined by the first entity. This task involves critical thinking regarding categories and their interrelations.
+- Examine the given entities and classify them based on their relationship—whether the second entity serves as a part of the first entity or not. This requires a clear grasp of part-whole dynamics.
+- This exercise focuses on understanding hierarchical relationships between two entities where your task is to ascertain if one is a part within the larger structure indicated by the other.
+- You will classify pairs based on whether the second term constitutes a part of the first term. Familiarity with concepts like meronymy will aid success in this evaluation.
+- Analyze given pairs of terms and determine if one can logically be considered a segment or piece of the other, relying on your understanding of relational semantics.
+- This task challenges you to identify part-whole relationships between two specified entities, requiring you to leverage your analytical thinking and understanding of linguistic meanings.
+- Your task revolves around discerning relations between words, specifically focusing on identifying which components function as parts within defined wholes.
+- Your mission is to evaluate pairs of words and determine their relational integrity; specifically, you need to figure out if one falls under the category of being part-of another's whole.
+- In this assessment, your focus should be on recognizing whether one entity denotes something that exists within or alongside another entity, achieving clarity through an understanding of their semantic roles.
+- This assignment requires evaluating two terms and deciding if they share a connection where one expresses an aspect or element of the other term, necessitating insight into semantic relationships.
+- This task involves classifying the relationship between two entities as either inclusive or exclusive, determining their respective roles as parts or wholes within a broader conceptual framework.
+- In this task, you will look at pairs of words or terms and identify if there exists a part-whole relationship, where the second term can be understood as part of the first.
+- Analyze specified entities and decide if they share a hierarchical relationship that qualifies one as a part of the other.
+- Assess each entity pair to discern if a part-whole relationship exists, enabling clear classification into yes or no categories.
+- The objective is to recognize and label the relationship between two entities, specifically whether one serves as an integral part of another. Clarity in semantic understanding is required.
+- The aim is to classify pairs by interpreting whether one term indicates inclusion within another, emphasizing your understanding of their semantic roles.
+- This task involves judgement about two entities to decide if they embody a part-whole relation, drawing on your comprehension of linguistic terminology.
+- This activity consists of judging whether a specific entity can be defined as a part of another specified entity. Previous knowledge of meronymy will greatly assist in this classification exercise.
+- The undertaking involves clarifying relationships between two entities by interpreting whether one serves as a part within the framework established by the other. Proficiency in recognizing such connections is crucial.
+- The task involves determining whether one entity is a part of another. You will evaluate two provided terms and classify their relationship based on semantic connections.
+- Examine item pairs in relation to their parts versus wholes, requiring an analytical mindset to define how each entity interacts with or relates to the other.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task472_haspart_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task472_haspart_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

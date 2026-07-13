@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You are tasked with translating the evolution of attributes into coherent sentences, reflecting both their original and altered conditions systematically.
+- The challenge lies in accurately illustrating changes in entities’ attributes through succinct sentences that clarify their statuses at two different times.
+- Identify changes in an object's specific attribute over time by generating a sentence that reflects these changes based on the provided context.
+- You are tasked with creating sentences that describe how an entity's attribute changes before and after a specific event occurs.
+- You are tasked with summarizing the shift in an entity’s attribute in response to two events occurring at different times, using straightforward language.
+- Describe how an attribute of a given entity evolves before and after a specific event, creating a sentence that effectively conveys this transformation.
+- This task requires you to describe the evolution of an entity's characteristic by summarizing its prior and subsequent conditions in a single sentence.
+- Provide a description of how an entity’s trait has changed over time through certain actions by piecing together information into an informative sentence.
+- Capture the transformation of an attribute related to an entity through concise language, detailing how its circumstances have shifted from one state to another.
+- In this task, you'll illustrate the evolution of an attribute for a specified entity, using clear language to depict how it was affected over time.
+- In this task, produce a sentence showing the progression of an attribute associated with an entity as it transitions from one state to another.
+- You need to synthesize the given information into a coherent sentence that highlights alterations in an entity's attribute during specified events.
+- Your role is to highlight and document alterations in attributes associated with particular entities by reflecting on their conditions at two different points in time.
+- This process requires synthesizing information about an entity's attribute transition from one state to another, resulting in a clear descriptive sentence.
+- The objective is to describe how an attribute associated with an entity has changed from one condition to another by constructing a concise statement.
+- This task asks for an explanation of how an entity’s attribute evolves from a previous condition to a new one, structured as a clear and concise sentence.
+- Create a narrative that explains the progression or decline of a specific aspect of an entity through designated phases described by before and after instances.
+- Produce sentences that reflect how the properties of specified entities transition between distinct stages, explicitly indicating what has changed.
+- Reflect on changes related to entities and their attributes over time, then articulate these changes through well-structured sentences.
+- Generate descriptive sentences that clearly illustrate how a certain quality or condition of an object transforms from one state to another.
+- For any provided entity, recognize its attribute and the impact of changes on that attribute during an event, then express this in a sentence.
+- You will generate a statement that captures the transformation of an attribute related to an entity based on its previous and current states.
+- Illustrate how certain features of any given object shift from one status to another due to specified events, captured in a direct sentence structure.
+- Construct a brief but informative sentence that delineates the evolution of an aspect related to a given entity as it undergoes certain events.
+- The goal is to describe the changes an entity undergoes in relation to a given attribute, based on two different scenarios.
+- The challenge is to convey the shift in a particular quality of an entity as it moves from one condition to another, encapsulating this transition in your writing.
+- Formulate sentences that summarize and depict the transformation of attributes associated with various entities, highlighting their initial and final conditions.
+- The objective is to express changes in the attributes of various entities through concise sentences that clearly show their before and after states.
+- Your objective is to convey the alterations in an attribute related to an entity by juxtaposing its previous state with its new state in a concise manner.
+- You are required to compose a statement that illustrates how the value or state of a specific property linked to an entity changes due to defined circumstances.
+- You will formulate a sentence that describes how an entity's attribute has changed, highlighting its previous and current conditions.
+- You will need to present changes in specific qualities of different entities in narrative form, simplifying complex transformations into comprehensible sentences.
+- The objective is to articulate in one sentence how an attribute of a specified entity transforms through an action or event.
+- Generate a coherent sentence that shows the evolution of an associated attribute for a given entity based on its previous and current states.
+- Your task is to create a sentence that illustrates how an entity's attribute changes due to specific events over time.
+- This task involves transforming information about an entity's state or location, comparing its situation before and after a particular event, into a clear and concise sentence.
+- The task involves generating a sentence that illustrates a change in a specific attribute of an entity as it transitions from one state to another.
+- This exercise requires you to illustrate the changes in ownership, state, or location concerning an entity by crafting a clear sentence structure.
+- The task involves creating a sentence to express how the state of an entity changes over time, focusing on a specific attribute.
+- Your objective is to summarize changes related to an entity's attribute across two distinct scenarios, highlighting the transition effectively.
+- Your challenge is to synthesize information about an entity and formulate a statement reflecting the changes in one of its characteristics due to an event.
+- You are to express movement or change in regards to an entity's characteristics, showing how it differs before and after an event takes place in a clear manner.
+- Your task is to create a sentence that captures how an attribute of an entity changes from one state to another based on given events.
+- Express how the location, size, or difficulty level of something changes over time based on certain events using one complete sentence for clarity.
+- Demonstrate your ability to convey significant changes in attributes for various entities as they experience transformations due to events by crafting articulate sentences.
+- Create a sentence that captures the difference in a specific quality of an entity before and after an observable event has taken place.
+- Capture the transformation of an entity's feature as it undergoes change. Your output should clearly indicate what the attribute was and what it became.
+- Your job is to communicate clearly how an attribute related to an entity has switched from one condition to another through a structured sentence.
+- The aim here is to identify shifts in an entity's defining traits through written description, working with specified attributes before and after specific occurrences.
+- You are expected to track and present the alteration in an entity's trait as it transitions from a before state to an after state within a single sentence.
+- The exercise consists of capturing the essence of change for an entity's feature, using factual information about its conditions at different times.
+- You need to create a sentence that illustrates how a certain attribute of a given entity has evolved over time.
+- Write sentences that communicate how different attributes of items evolve, showcasing a clear contrast between their former and current scenarios.
+- This activity focuses on narrating the shift in characteristics of specific entities by contrasting their states before and after selected occurrences.
+- Your task involves generating clear descriptive content that showcases the alterations in an attribute tied to an entity as it moves from one stage to another.
+- This task focuses on transforming information about an entity's state into clear and impactful sentences that denote before and after scenarios regarding its attribute.
+- Translate observations about changes in an object’s features into sentences that highlight the distinct states before and after various influencing factors occur.
+- This involves taking specified attributes and communicating how they evolve through clear and concise written expressions reflecting on their prior and current states.
+- Write clear statements that demonstrate how specific aspects of entities transform, ensuring each sentence contrasts the before state with the after state comprehensively.
+- This task requires you to capture the transition of an object's attribute by constructing a sentence that reflects its status before and after a specified event.
+- This challenge invites you to translate changes in attributes into written form, ensuring clarity while linking past and present states of an identified object.
+- 'Your task is to create a sentence that illustrates the change in a specific attribute of an entity based on two events: what happened before and what happens after.'
+- Using contextual clues regarding changes, frame a concise description portraying how the characteristic of an entity varies from one event to another.
+- In this task, you’re asked to reflect on how an object's characteristics evolve, requiring you to create a sentence that illustrates those changes over time.
+- Convey the changes experienced by an entity over two distinct states, emphasizing the evolution of a chosen attribute in your response.
+- Analyze the situation involving an entity’s attribute pre- and post-event and relay this insight in a brief, straightforward statement.
+- This task centers on expressing transformations linguistically, where you highlight shifts in the states or conditions of various entities over time.
+- Focus on detailing the transformation experienced by an entity’s specified characteristic by generating a clear sentence that links its previous and current states.
+- This task involves taking an entity along with changes in its state and formulating a sentence that captures these transitions clearly.
+- You are required to express the changes experienced by an entity’s attribute, providing clarity on its situation before and after the change occurs.
+- Your task is to create sentences that describe changes in an attribute of a given entity over time, using specific before and after states.
+- You need to formulate a statement that indicates how an attribute of an entity has shifted from one state to another as a result of an event.
+- In this task, focus on articulating the evolution of an entity's attribute over time as it transitions from one condition to another.
+- Synthesize the relationship between an event and its impact on an attribute of an entity by writing a coherent sentence about this transformation.
+- The task involves summarizing transformations in a specific quality of an entity, using straightforward language to present the before-and-after perspective.
+- Your mission is to synthesize the concept of change for given entities into cohesive sentences outlining their attributes' evolution stemming from defined actions.
+- You will need to describe how the features of an entity vary over time, highlighting changes in a single defined attribute through clear wording.
+- You will generate a descriptive sentence that emphasizes the shift in an attribute related to an entity, focusing on what it was like before and after a significant occurrence.
+- The goal is to articulate a change in an entity's characteristic by framing it in a before-and-after context.
+- You will express the transformation of an attribute of a specified entity, comparing its condition before and after a certain event.
+- Your role involves reporting on the transformation of particular attributes over time while ensuring clarity in indicating their previous and current states within sentences.
+- The task is to detail how certain events have affected a specific aspect of the entity, summarized neatly in one grammatically correct sentence.
+- Your task is to succinctly represent the modifications in the characteristic of various entities, clearly marking the transition between their previous and new states.
+- Your job is to illustrate transformations through writing. You'll capture and convey how specific characteristics of entities have changed due to identifiable events.
+- You'll generate a sentence reflecting how the status of an attribute linked to an entity has altered over time due to defined events.
+- You should compose sentences that effectively communicate the transformation of certain characteristics within entities caused by preceding and upcoming events.
+- Your function here is to narrate the change in an entity's selected quality through a chronological event sequence, crystallized into a coherent line of text.
+- Use the provided details to construct a statement showing the difference in an attribute of an entity before and after a change occurs.
+- You need to describe how certain characteristics of objects shift over time by comparing their states before and after designated events.
+- You need to construct a meaningful sentence that shows the progression or regression of an entity's characteristic in relation to specific events.
+- You are to produce a statement that effectively communicates the differences in an entity's attribute from its prior state to its new state.
+- Express the transition affecting an attribute linked with a particular entity by summarizing its previous and current states in one cohesive statement.
+- The goal is to create a sentence that captures the evolution of a specific feature of an entity, noting its prior and subsequent conditions.
+- For each set of information provided, your role is to articulate the transformation in a specific attribute of an entity by forming a clear descriptive sentence.
+- The essence of this task is to encapsulate information about entities' attributes into clear statements that denote changes as they undergo various events.
+- Synthesize information about an entity’s state before and after an event while emphasizing the specific attribute being altered, all within one coherent sentence.
+- Formulate sentences that effectively encapsulate changes in specified attributes of entities over time, aiding comprehension of their transition from past states to new ones.
+- Your role is to articulate changes in particular attributes of various entities and present these changes in a clear, sentence format.
+- Generate a meaningful sentence that showcases how the condition of an entity has shifted due to specified events, paying attention to a particular attribute related to that entity.
+- In this task, you will articulate the changes in an entity's attribute, demonstrating the contrast between its former and present situations.
+- The goal is to articulate the journey of an entity through distinct states by creating a sentence that captures how its attribute has evolved from before to after an event.
+- The goal here is to write a descriptive statement that encapsulates the transition of an entity’s relevant attribute from one state or condition to another.
+- Create a sentence that captures the essence of how an entity's attributed status has shifted, highlighting both the starting point and the result.
+- Expressing how an entity's characteristic has shifted is your main focus. You'll create sentences that communicate what has changed from one circumstance to another.
+- Produce a sentence that effectively communicates how the state of a specific characteristic of an entity changed over time due to a certain event.
+- Your role is to summarize changes in an attribute related to an entity by illustrating the difference between its states before and after a significant event.
+- The objective is to express how the specified attribute of an entity has evolved by forming a sentence that highlights its previous and current conditions.
+- Here, you will write sentences that reveal the progression of an entity's attributes by comparing their conditions before and after a defined event or process.
+- Your job is to generate a concise sentence that captures the evolution of a particular aspect of an entity between two distinct states.
+- Your task is to articulate the transition of an entity's attribute from one state to another, capturing the essence of the change in a clear sentence.
+- Analyze the provided details about an entity, including its prior and subsequent conditions, to generate a coherent sentence highlighting the transformations in its attribute.
+- Task yourself with articulating the change applicable to an entity's feature, highlighting its state before and after significant actions or events.
+- The task at hand involves composing sentences that convey how specific events affect the attributes of entities, marking their conditions before and after these occurrences.
+- You are tasked with expressing the alteration in an attribute related to an entity by crafting a statement that reflects its state change due to certain events.
+- Your assignment is to illustrate how an entity's characteristic has altered due to specific circumstances by formulating a structured sentence.
+- Prepare to convey alterations in the traits of an entity by stating its conditions prior to and following a given scenario, using clear and concise language.
+- Your challenge is to express the dynamics of an object's attributes throughout a change process by referring to its condition prior and subsequent to an event.
+- This task invites you to connect the dots between two states of an entity, highlighting how its attributes have changed over time through a well-structured sentence.
+- Clearly describe how the condition of certain properties regarding an entity evolves due to events, delivering this understanding in written form.
+- You are to express the evolution of an entity’s attribute by crafting a sentence that summarizes its status before and after a specified event.
+- You will be tasked with expressing the evolution of an entity's attribute, noting what it was like prior to a change and how it appears afterwards.
+- Generate a concise statement that illustrates the alteration of a defined characteristic of an entity as it transitions from one condition to another.
+- Your responsibility is to combine details about an entity's state before and after specific actions into a single flowing statement elucidating change.
+- For each provided entity, identify the shifts in a particular attribute from one event to another, and express this change in a clear sentence.
+- Formulate a concise statement that demonstrates the change in the characteristic of an entity as it moves from one defined event context to another.
+- This task focuses on identifying and articulating the transformation of a specific characteristic of an entity based on the context provided by prior and subsequent events.
+- Formulate a sentence that communicates the change in a defined property of an entity arising from specific actions it underwent.
+- This exercise requires you to synthesize information about an object and its states at different moments, demonstrating the changes in a chosen attribute.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1631_openpi_answer_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1631_openpi_answer_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

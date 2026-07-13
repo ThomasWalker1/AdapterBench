@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Engage with descriptive text focused on specific events and their outcomes for entities. Your role is to classify whether those entities still exist, where their locations stand, and choose from specified categories appropriately.
+- Examine how actions presented influence certain entities mentioned in a context. Determine whether each entity continues to exist and where it can be found based on given information.
+- In this analytical task, you will process paragraphs that detail interactions impacting entities. Your goal is to classify these entities according to their existence status and whether their locations can be determined.
+- Engage closely with paragraphs describing processes, aligning them with their outcomes on specified elements while considering potential changes in state or location.
+- Examine narratives where particular changes occur, deducing whether entities remain existent, have shifted to an unknown status, or occupy identifiable locations.
+- Your goal is to analyze narratives focusing on specific events that impact entities, subsequently classifying their states based on what has happened to them as per the context given.
+- For this task, read a detailed paragraph about a series of events, identify an impactful moment for a specified entity, and determine how that moment affects its status in terms of existence and location.
+- Your challenge is to interpret a given scenario where an event modifies how an entity is perceived. You will classify this perception into three specified states based on your interpretation.
+- Your mission is to extract meaningful data from descriptions of events concerning certain entities, determining new classifications based on changes implied by those events.
+- In this task, you're asked to consider an event within its narrative context and to classify how that event affects an existing entity’s condition—whether it still exists and if so, where it might be located.
+- Analyze how events unfold in connecting narratives to discern changes in entities' states. Your classification work should indicate these states based on their continued existence and what is understood about their locations.
+- In this task, you'll examine a situation and determine whether an entity still exists after the described changes have taken place.
+- Analyze how events described in a passage relate to certain entities. Your role is to dissect these relationships and categorize the entities based on their new inferred states.
+- Assessing how actions or changes in a narrative affect entities is central to this task. You will categorize these entities as either non-existent, uncertain in location, or definitively located based on the context.
+- The aim here is to examine occurrences described in text that influence certain entities, requiring you to decide if they continue to exist and if so, whether their locations are known or unknown.
+- In this task, your objective is to dissect a paragraph containing an event related to an entity. You must identify how the event affects the entity’s existence and provide a classification based on this change.
+- You are required to deduce the status of an entity as influenced by a specific event within a broader narrative. Classify it correctly into one of three defined states based on your understanding of the text.
+- This task involves interpreting a narrative to understand how a specific event alters the state of an entity. You need to categorize the entity based on its existence and location after the event occurs.
+- In this assignment, you'll parse through descriptive content about processes involving certain entities. Your role is to establish their current circumstances, focusing on existence and location specifics.
+- Engage with descriptive text to ascertain how certain events alter entities' states, determining whether they are nonexistent, have an unknown location, or are situated in a known place.
+- You'll be tasked with identifying changes in the status of various entities following specific events detailed within paragraphs, determining their classification based on given criteria.
+- You will engage with narrative texts that describe scenarios involving specific actions impacting entities. Your role is to classify each entity's state accurately based on its current existence status and any locational information present in the text.
+- This task involves analyzing how events interact with entities to determine whether they exist or are present in known or unknown locations.
+- This task engages you in understanding environmental interactions within paragraphs that affect entities, leading you to make informed classifications.
+- This job involves scrutinizing shifts in an entity’s situation after particular events described in a paragraph, classifying its current status relative to existence and location.
+- You will investigate how events mentioned in a passage affect an associated entity. Your classification will reflect whether the entity still exists and if it has a known location or not.
+- Your job is to dissect a narrative segment where specific events change entities, classifying these entities as extinct, conditionally present with unknown location, or definitively located.
+- In this task, analyze shifts brought about by particular events within narratives that influence specified entities and classify these changes into distinct categories regarding their existence and location status.
+- This task involves analyzing a provided text to determine the current state of a specific entity based on an event described within that text.
+- You will read a paragraph that contains an event linked to an entity. Your responsibility is to determine how that event changes the state of the entity and classify it correctly.
+- Your responsibility is to read through a detailed scenario and identify how certain events influence the state of an entity. Then categorize this state effectively into one of three classifications based on what you glean from the text.
+- The task consists of evaluating an event within a broader context and determining how it influences an entity's state. You'll place the entity into one of three categories regarding its existence and location status.
+- You will be examining a text where certain events influence the status of an entity, and your goal is to determine how these events affect its existence or whereabouts.
+- You will be given a narrative context involving an event that impacts an entity. Your task is to assess the outcome for that entity and categorize it with respect to its existence and geographical context.
+- You will evaluate how specific actions within scenarios influence certain entities’ states. Categorization will help identify whether these entities no longer exist, are in unknown locations, or have known placements.
+- This task involves understanding a process described in a paragraph. You will focus on an event that influences an entity and determine the entity’s state afterward.
+- You must analyze how actions described in a passage influence certain elements or entities, deciding if they remain existent and in what state.
+- Analyze how events presented in a paragraph affect particular entities, classifying each based on whether they exist at all or if their locations are known or unknown.
+- You'll be working with narratives that detail events affecting specific entities. The challenge lies in correctly identifying and classifying these entities concerning their presence and location status following each event.
+- You will evaluate a scenario described in a paragraph to determine the state of an entity after an event occurs, deciding if it no longer exists, its location is unknown, or if its location is known.
+- Analyze the provided context to assess how a particular event transforms an entity's state. The classification pertains to whether the entity has disappeared, exists without a known location, or has a specific location.
+- Your job is to evaluate a scenario described in a paragraph and assess the status of a specified entity after an event has occurred.
+- Your mission is to evaluate how events portrayed in paragraphs alter the state of associated entities, determining whether they continue to exist or if their location can be identified.
+- This assignment challenges you to consider how actions impact the state of described entities, classifying their existence and positional awareness based on contextual clues within the text.
+- In this task, you analyze paragraphs that describe events affecting entities. Your classification involves determining if these entities are absent or still exist with varying degrees of locational clarity.
+- You will consider a scenario detailed in a paragraph, identifying the influence of events on entities. Each outcome must be classified as either existing or non-existent, along with details about location if applicable.
+- You will read a process description that involves events affecting an entity. The challenge is to evaluate the scenario and correctly classify the entity's state regarding its existence and whereabouts.
+- You will read a passage that includes events affecting certain entities. Your job is to recognize how these events alter the existence or location of the entities and categorize them accordingly.
+- Explore a segment of text that connects events with entities, aiming to classify the resultant status of the entity outlined in the scenario.
+- Interpret a scenario where an event occurs and decide on the implications for the existence or location of an entity mentioned in the text.
+- This task involves understanding how defined events can impact entities outlined in a paragraph and properly classifying those impacts based on predefined classification criteria.
+- The task engages you in assessing information related to particular entities and events detailed in the text. You'll then categorize these entities based on their presence and geographical status as described.
+- Delve into descriptive passages showcasing events that modify certain entities’ circumstances. The task lies in recognizing these modifications and classifying the outcome reliably with respect to each entity's status.
+- In this task, you must carefully evaluate a paragraph about events involving certain entities. Based on the event highlighted, you will categorize the state of the entity into three defined classes regarding existence and location.
+- Examine a narrative text where changes occur due to specified events. Your challenge is to classify the affected entities depending on their current existence status and any information regarding their locations.
+- The task involves dissecting a text to understand how specific events impact particular entities. Based on this understanding, you will classify the entity into one of three states concerning its existence and location.
+- Your task is to analyze a given paragraph and identify how an event alters the status of a particular entity, classifying it into specific categories based on its existence and location.
+- This task involves analyzing a paragraph to understand the impact of specific events on an entity, determining its current state from three possible classifications.
+- The focus of your analysis will be on how events described impact targeted entities within paragraphs. Your classification should reflect their conditions regarding existence and geographic awareness.
+- This assignment involves examining text excerpts that highlight actions affecting certain entities. You need to determine the resulting state of each entity as it relates to existence and locational awareness.
+- You need to read through narratives that detail processes involving different entities. These processes influence their states, which you must categorize based on whether they exist or where they might be located.
+- You are tasked with analyzing how particular events within a paragraph change certain entities' conditions. Classifying these entities requires understanding both their participation in the mentioned processes and their current states.
+- You will delve into narratives depicting changes affecting particular entities due to specified actions or events. Classifying these states will involve comprehension of both existence status and location information.
+- You will interpret narratives that involve changes brought about by events and classify entities by determining their existence status following those events.
+- Assess the text to see how an occurrence impacts an associated entity's state. Your classification should reflect whether that entity has ceased existing or if its whereabouts are uncertain or certain.
+- Your task is to analyze narrative contexts where certain actions impact entities. You must decide whether these entities no longer exist, are in an unknown location, or reside in a known location based on contextual clues.
+- Your focus will be on understanding how descriptive events in written passages alter the condition of certain entities. You'll categorize entities based on logical deductions about their existence or whereabouts.
+- In this task, you'll be working with a passage that outlines various events. Your objective is to classify an entity regarding its status based on the event's impact—whether it's non-existent, has an unknown location, or is in a specified place.
+- You will read a paragraph and identify how a particular event impacts an entity's existence or location. The classification is essential for understanding environmental changes.
+- The objective here is to interpret actions in a provided paragraph that affect mentioned entities. You'll have to classify each entity according to specific criteria concerning its existence and spatial awareness.
+- Your task will involve scrutinizing paragraphs containing significant events tied to named entities. You should assess these changes and determine the appropriate classification based on their current status.
+- You must interpret information about changes to entities prompted by events within paragraphs and classify those changes using defined categories relevant to existence and location.
+- In this task, you’re presented with information about processes or actions impacting specific entities. Your role is to determine the current status of those entities based on the events occurring around them.
+- Analyze text discussing events related to different entities and assess their impact on those entities’ states—categorizing them into classifications representing their existence or vagueness pertaining to locations.
+- This task involves interpreting the relationship between an event and an entity within a context, requiring you to categorize the entity based on whether it still exists and where it might be located.
+- Read passages detailing processes involving different entities. Your task is to find how specific events affect these entities’ states and group them accordingly into clear categories.
+- Engage with narrative elements to determine how specific events transform entities' statuses. Classify their states according to clear definitions concerning existence and geographic awareness.
+- Identify the relationship between actions described in a paragraph and the states of entities involved, categorizing them appropriately based on their existence or location.
+- Here, you will analyze the context of a paragraph and recognize the implications of specific events for an entity’s state, classifying it into one of three categories based on your findings.
+- Utilize your reading skills to discern the implications of specific occurrences on defined entities and react by categorizing their state accurately.
+- As part of this exercise, you'll analyze narrative descriptions where specific events influence entities. Your conclusion will reveal whether these entities still exist, are lost in terms of location, or have identifiable locations.
+- This task requires you to assess the state of an entity mentioned in a paragraph after a specified event has taken place, identifying if it no longer exists, exists without a known location, or has a known location.
+- You are required to read a paragraph and recognize an event that alters the condition of a designated entity. Your goal is to classify the entity's new state into one of three categories.
+- This activity engages you in evaluating paragraphs where specific events interact with entities. You are tasked with determining the current form of these entities according to clearly defined classifications.
+- You will determine whether an entity continues to exist after an event happens within the context of a given paragraph, and if so, what its locational status is.
+- In this task, interpret how specific occurrences mentioned in a paragraph change the condition of given entities. Based on this assessment, classify them accurately within defined parameters regarding existence and location.
+- You will analyze provided text that discusses events relating to entities. Your goal is to determine if the entity in question exists, if its location is ambiguous, or if its position is clearly defined depending on the described event.
+- In this exercise, you explore how descriptive paragraphs depict events that influence certain entities. The objective is to categorize those entities based on their changed states after these events.
+- Analyze a paragraph, locate the event related to an entity’s condition, and categorize the entity using the provided classifications based on its state of existence and location.
+- This task involves examining a paragraph to understand changes caused by a specific event. You will classify the current state of an entity based on its existence and location.
+- Analyze the provided text, pinpoint the critical event affecting an entity, and classify that entity's status as either existing or not existing within a defined location.
+- As part of this task, you will analyze textual descriptions of processes involving entities and pinpoint events that transform their state before categorizing them accordingly.
+- This task requires you to interpret a paragraph describing a situation where certain events alter an entity's condition. You should classify the status of that entity in terms of its existence and whether its location is identifiable.
+- Your focus will be on determining how stated events within a passage affect particular entities. You'll need to categorize their states as required by their situational context.
+- The focus here is on determining alterations in states caused by events within narratives concerning specific entities. You'll classify those changes based on whether they are present or absent and where they stand in terms of location.
+- Examine scenarios where certain actions alter entities’ situations, categorizing them according to whether they exist or their locations are known or unknown.
+- In this assignment, you'll encounter paragraphs detailing various elements and their transformations due to events. Your responsibility is to determine the current state of associated entities based on these narrative changes.
+- You are required to interpret information from a paragraph and recognize an event that changes the status of an entity. Your classification should reflect whether the entity has ceased to exist, is in an unclear location, or is situated somewhere known.
+- Using your comprehension skills, figure out whether an event has led to an entity's absence, uncertain location, or known location within a given context.
+- In this task, you analyze a paragraph to determine how an event impacts the state of a given entity. Your goal is to classify whether the entity still exists and what is known about its location.
+- For this task, you'll read through a paragraph that outlines a scenario involving an entity. Based on an event linked to this entity, you need to classify its state with respect to existence and location.
+- The focus of this task is to interpret changes in state resulting from specified events within a given text, categorizing the status of an entity accordingly.
+- Participate in a classification exercise where you analyze textual information about events linked with various entities. The objective is to establish clear states for these entities based on their described circumstances.
+- Through careful reading of described processes, you’ll identify the impact of events on certain entities. Your decisions will be based on their existence and if their locations are clear or not.
+- You'll read through passages illustrating events related to specific entities and assess how these events change their classification regarding existence and location.
+- You are provided with a scenario that describes events impacting various entities. The goal is to determine whether each entity still exists, has an unknown location, or is at a specific known location based on the context provided.
+- Your job is to analyze how a particular event influences an entity's status, deciding if it is nonexistent, located with certainty, or located but indeterminately.
+- Your goal is to examine a narrative contextually to infer how specific actions alter the presence or positioning of a designated entity.
+- You will work with descriptive text about events affecting certain entities. The challenge is to understand these relationships and classify the entities based on their states after the events.
+- In this task, you will interpret a paragraph and assess how a specific event affects the state of an entity mentioned in it. You need to categorize the entity's state accordingly.
+- You will look at a paragraph that describes an occurrence and classify the state of a related entity based on that occurrence.
+- In this task, interpret detailed paragraphs explaining various scenarios involving changes that affect specific entities' states. Determine appropriate classifications relating to their existence and known locations in response to those changes.
+- You are required to classify the impact of specific events on entities as they appear in various contexts, using defined categories to express their new state.
+- This task challenges you to extract key information from paragraphs about events that affect entities. Your role is then to classify these entities' states based on established criteria.
+- The job requires tracing how particular events described in a paragraph alter the status of various entities. This involves identifying if they still exist or if their locations are identifiable or yet unknown.
+- This task requires you to assess how an event in a narrative alters the condition of an entity by categorizing its state.
+- This task involves critical reading and comprehension skills where you'll assess whether an entity still exists and if its whereabouts are known following related events in the text.
+- Here, your task involves examining a paragraph to find relevant events affecting an entity's status. You must classify that status according to predefined categories about existence and location.
+- Understand a paragraph discussing sequences of events and recognize how one specific event impacts an entity's current existence or location, then categorize this impact accordingly.
+- This task requires you to interpret information from a paragraph, pinpoint an event that impacts an entity, and classify the entity's state into one of three categories regarding its existence and location.
+- Involves understanding narratives where particular actions impact designated entities within. You need to assess these impacts and classify each entity’s status based on your analysis.
+- Work through paragraphs describing processes and decide how these processes affect the entities mentioned by categorizing their statuses accordingly.
+- Assess a given passage where an event affects an entity. Determine if this entity continues to exist, or if its location is known or unknown based on the context provided.
+- This task requires you to interpret a given text, identify crucial events, and determine the resulting state of an associated entity. Classification will focus on whether this entity exists, has an unknown location, or is found at a known location.
+- Your task is to read through a scenario and identify how an event changes the nature of a particular entity, concluding whether it is absent, its location is unspecified, or it is situated in a defined place.
+- Your goal is to scrutinize provided descriptions where events interact with specified entities. Based on this interaction, classify the entity concerning its continuing presence or its known versus unknown location.
+- In this challenge, you'll identify how events transform the state of an entity within a narrative context, categorizing that state based on whether it means the entity exists or not.
+- The focus of this task is to interpret a narrative, pinpoint an event, and conclude if an entity still exists, its location, or if it has transformed.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1568_propara_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1568_propara_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

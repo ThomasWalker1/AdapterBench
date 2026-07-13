@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The goal is to find and provide the correct 3-digit code that represents a country's barcode system, indicating products from that nation.
+- Your task involves identifying and providing the barcode prefix associated with a specific country. This requires knowledge of international standards for product barcoding.
+- Your responsibility is to match country names with their respective barcode prefixes. This requires familiarity with global trade identification standards.
+- Engage with international commerce by identifying the barcode prefixes associated with different countries, contributing to broader knowledge about market dynamics.
+- This task is about pairing country names with their respective barcode prefixes, enabling better navigation in international trade contexts.
+- You will be working with a list of countries and providing their barcode prefixes, which aids in understanding product sourcing and categorization.
+- The aim is to correctly identify and state the barcode prefix for each country provided based on existing standards.
+- You need to leverage knowledge of product identification codes to find and present the appropriate barcode prefix for different countries.
+- This exercise involves listing out barcode prefixes for countries, illustrating the interconnections between geography and product identification.
+- Identify and return the proper barcode prefix for a given country. This indicates the ability to reference international standards for product identification.
+- You’ll be examining countries and determining their official barcode prefixes, ensuring accurate product categorization globally.
+- The task involves recognizing and returning the numeric code that denotes where products are manufactured based on their origin country’s barcode standard.
+- Your objective is to provide the correct prefix used in barcodes for a given country. Understanding how barcoding works and which prefixes apply to each nation is essential.
+- Your task is to identify the barcode prefix for a specific country. This requires knowledge of barcode systems and the ability to locate relevant information.
+- You need to look up and provide the specific barcode prefix that corresponds to the input country. This requires an understanding of numeric codes used in product barcoding.
+- The objective is to match each country provided with its corresponding barcode prefix, an essential element for identifying product distribution networks globally.
+- The job requires giving back the designated barcode prefix for an input country, relying on knowledge about international barcode standards.
+- In this task, your goal is to supply the correct barcode prefix for a country name provided. This knowledge supports recognizing products and their origins through barcodes.
+- Your task is to find and report the barcode prefix for different countries. This involves understanding international labeling practices for consumer goods.
+- You need to retrieve the barcode prefix linked to a country's name, which helps in identifying where products originate. Knowledge about how barcodes are structured by country will assist you.
+- Given a country's name, your job is to look up and report the relevant barcode prefix that appears on products from that nation.
+- For each country mentioned, provide its designated barcode prefix, reflecting an understanding of how products are classified internationally.
+- Your job is to match the name of a country with its barcode prefix, which is vital for tracking and identifying products internationally.
+- In this task, you must determine the barcode prefix for various countries, understanding that each country has its unique numbering system for barcodes.
+- Your task is to identify the barcode prefix associated with a specific country. This requires knowledge of how barcodes are organized globally.
+- For each country mentioned, you need to identify its associated barcode prefix, which is crucial for understanding product origin in international trade.
+- For this task, pair each provided country's name with its official barcode prefix. Knowledge of how different countries use barcodes will assist you here.
+- You'll need to know or look up the specific number range used for barcodes in a given country and provide that in your response.
+- This task challenges your knowledge of global shipping by requiring you to identify which barcode prefixes correspond to each country.
+- In this task, you will match each country name to its respective barcode prefix, understanding the significance of these numbers in global trade.
+- Your challenge lies in recognizing and providing accurate barcode prefixes associated with various countries, drawing upon your research skills.
+- For each country provided, you must return its associated barcode prefix. This involves recognizing how different nations are assigned specific ranges of barcode numbers.
+- Find and report the appropriate barcode prefix corresponding to specific nations. This task draws upon your understanding of international coding systems for products.
+- Your objective is to connect each given country name with its corresponding three-digit barcode prefix, reflecting your understanding of international standards in product labeling.
+- You need to identify barcode prefixes linked to specific countries. This task demands knowledge of global barcoding practices and standards used in product labeling.
+- Your task is to identify the barcode prefix associated with a specific country. A barcode prefix is a 3-digit number that appears at the start of product barcodes and signifies the country of origin.
+- You are tasked with identifying specific numeric prefixes that appear on goods from different countries. Recognition of how codes are distributed among nations is key to succeeding here.
+- Match country names with their designated barcode prefixes, a skill essential in navigating the complexities of international product identification.
+- The goal of this task is to ascertain the barcode prefix corresponding to a provided country name. Understanding international barcode assignment will aid in accuracy.
+- You'll need to determine which three-digit number appears as a prefix on barcodes for products originating from specific countries based on your knowledge of worldwide standards.
+- Identify and output each country's corresponding barcode prefix based on its name. The awareness of how global merchandise is encoded will be helpful here.
+- Provide the numeric codes that correspond with given countries in terms of their barcode representations. Familiarity with geographical coding standards will aid in accomplishing this effectively.
+- You must determine the correct 3-digit barcode prefix associated with each specified country. Understanding how different countries are coded in barcoding systems is key.
+- The job requires you to provide the barcode prefix for a selected country. Each country has a unique prefix or range of prefixes linked to its products.
+- Your role involves connecting countries with their corresponding barcode prefixes, an important aspect of identifying the source of products.
+- You need to supply the barcode prefix linked to each country provided. Knowing which prefixes correspond to which countries will be crucial in completing this accurately.
+- For each country name provided, you must state the associated barcode prefix. Familiarity with number ranges assigned to different countries is necessary for this task.
+- Your job involves matching a country name to its unique barcode prefix. This tasks you with recalling or researching international product codes.
+- This task involves pinpointing the specific barcode prefix for various nations, a key component for businesses dealing with imported products.
+- You are responsible for providing the relevant barcode prefix for specified countries. This requires an understanding of assigned numerical identifiers in commercial goods.
+- Find the specific barcode prefix for each country given. This entails knowing how barcodes classify products based on their countries of origin.
+- Your task is rooted in recognizing the importance of barcode prefixes as identifiers for products from specific countries within global distribution networks.
+- This exercise involves identifying and retrieving specific national barcode prefixes that facilitate trade and commerce through standardized labeling.
+- You are required to tap into your understanding of barcode systems to provide the correct prefix linked with listed countries.
+- The focus here is on establishing the connection between countries and their respective barcode prefixes, an important aspect of logistics and supply chains.
+- Your objective is to find and report the correct barcode prefix used for products from a specific country. This means you will need knowledge of corresponding code ranges.
+- The task consists of supplying the correct barcode prefix for the given country name. You will need to understand the significance of barcode prefixes in global commerce.
+- This task needs you to connect country names with their respective barcode prefixes, reflecting your understanding of how these codes are organized internationally.
+- You are tasked with identifying the numeric codes that denote countries in barcodes, showcasing your understanding of global commerce and product identification.
+- In this task, your aim is to understand how different countries are represented through specific barcode prefixes tied to their products.
+- You are expected to recognize and name the barcode prefixes that represent different countries—information valuable for trade and retail operations.
+- You will be tasked with looking up and indicating the three-digit barcode prefix that matches each given country's name—this requires an understanding of barcodes as identifiers in commerce.
+- In this task, you will associate each country with its unique initial digits in product barcodes, which requires familiarity with labeling standards across different countries.
+- Your role is to extract the relevant barcode prefix from a country's name provided, which relies on your awareness of coding systems used internationally for products.
+- You are tasked with associating country names to their specific barcode prefixes, highlighting your knowledge of global commerce standards.
+- In this task, you will connect a country with its unique barcode prefix, which involves recognizing the numerical coding system used worldwide.
+- You are required to identify the proper barcode prefix that corresponds with a given country's products, reflecting your knowledge of product identification methods.
+- Given the name of a country, you need to supply its designated barcode prefix, showcasing your knowledge of the coding system used worldwide for products.
+- Here, your role is to identify a unique number associated with a country that appears at the beginning of barcodes. Knowledge of which prefixes apply to which nations is key.
+- Tasked with identifying barcode prefixes by country name, this requires awareness of how different regions are assigned specific prefixes in the context of product inspection and pricing.
+- Your challenge involves providing a specific prefix from a list of countries based on established international standards for barcodes.
+- This task involves translating a country name into its associated barcode prefix, tapping into an understanding of how these prefixes operate within international trade.
+- You’ll need to provide the correct three-digit prefix used on barcodes for given countries. Familiarity with barcode systems and international country codes will facilitate your responses.
+- You will analyze provided country names to produce their respective barcode prefixes, emphasizing your familiarity with international numbering systems.
+- The task involves translating a country name into its corresponding barcode prefix. Familiarity with international barcoding conventions will help in this process.
+- You will be tasked with identifying the correct barcode prefix that represents products from a particular country. An awareness of barcode ranges and assignments is important here.
+- The objective is to connect country names to their specific barcode prefixes, an important part of international product labeling.
+- In this task, you will connect a variety of countries with their designated barcode prefixes. Knowledge about international barcoding standards is vital.
+- The task challenges you to utilize your knowledge of national barcode systems in order to pinpoint the correct prefix for different countries.
+- In this assignment, you explore the relationships between countries and their unique barcode numbers, revealing insights into global distribution practices.
+- Your task is to find and return the barcode prefix for a specified country. This demands knowledge of barcodes, especially how they are categorized by geographical regions.
+- You need to accurately determine the barcode prefix for a listed country, which is essential for recognizing product origins.
+- You will be working with country names and need to recall their corresponding barcode prefixes, which help identify the source of products.
+- The focus here is on linking countries with their barcode prefixes—numbers that signify where products come from on a global scale.
+- You are to provide the unique barcode prefix designated for various countries whenever prompted. This requires you to know how barcodes signify origin in trade.
+- This task involves determining the barcode prefix for various countries. You must be familiar with international standards that assign specific numeric ranges to different nations.
+- In this task, you will provide the barcode prefix associated with a given country name. Understanding how global barcodes work will help you complete this task correctly.
+- This task involves using your knowledge of barcodes to determine what numerical prefix is assigned to products from various countries.
+- You need to provide the barcode prefix associated with individual countries given in the task. Familiarity with product categorization via barcode systems is essential here.
+- 'The objective is straightforward: find and articulate the barcode prefix that typifies products from various nations. An understanding of international product identifiers gives context to this task.'
+- The assignment involves providing the official barcode prefix for a country, essential for understanding international product labeling.
+- You are tasked with determining the correct barcode prefix for countries listed, showcasing your knowledge of global business practices.
+- You will match countries with their respective barcode prefixes. This demands an understanding of how barcodes function in global distribution networks.
+- Your role is to report on the barcode prefixes for given countries, based on established international coding systems. Each prefix identifies where products are manufactured.
+- This task consists of linking country names with their designated barcode prefixes, requiring knowledge about global standards in product identification and regional coding systems.
+- Your job involves using standard barcode data to supply the correct prefix for each country mentioned, reflecting international commercial practices.
+- Engage with a list of countries and provide their respective barcode prefixes based on established standards. A thorough understanding of how these prefixes are assigned will be beneficial.
+- For each country presented, your job is to ascertain its corresponding barcode prefix. This involves recalling or referencing knowledge of barcodes and their geographical associations.
+- You are tasked with finding the 3-digit barcode prefix for a country. Knowledge of international standards for barcode numbering will guide your answer.
+- In this role, you’re tasked with providing accurate barcode prefixes based on given countries, relying on your learning about international product identifiers and their significance.
+- In this task, you must find out the specific barcode prefix for a given country name. Understanding barcode numbering conventions is essential for this assignment.
+- For this task, you must identify which barcode prefix is linked to each mentioned country. Barcodes play an important role in product tracing and are linked to geographic regions.
+- You need to identify the barcode prefix associated with a given country, relying on knowledge of the international barcode system.
+- You are charged with identifying and relaying the proper barcode prefix for each input country name based on existing standards in barcode assignment.
+- You are required to retrieve and list the barcode prefix for a specified country, reflecting your awareness of barcode classifications.
+- This task tests your ability to match countries with their designated barcode prefixes, which are crucial for commerce and tracking.
+- Your objective is to provide the correct numerical representation for a country’s product barcodes, indicating your understanding of global product tracking systems.
+- You will work with country names to find their respective barcode prefixes, providing insights into product categorization and country representation.
+- This task involves connecting countries with their respective barcode prefixes. These numeric codes facilitate global trade and product identification through barcoding systems.
+- In this challenge, you will match countries with their unique barcode identifiers. Insight into the relationship between countries and their product codes is crucial for success.
+- Dive into the realm of barcodes as you match them to countries, showcasing an understanding of how international product labeling works.
+- In this exercise, you will determine the appropriate numeric code related to barcodes for specified nations. Knowledge about how these codes are allocated globally will aid in your answers.
+- This exercise requires you to connect countries with their respective barcode numbers, enhancing your awareness of international trade and logistics.
+- You are asked to provide the correct 3-digit barcode prefix for a given country name, which involves recognizing the relationship between countries and their product identifiers.
+- In this task, you will match countries with their corresponding ranges of barcode prefixes, demonstrating your understanding of product categorization by origin.
+- The focus here is on identifying barcode prefixes assigned to specific countries, leveraging your knowledge of international product coding standards.
+- Identify and provide the barcode prefix associated with a country. It leverages understanding of how these prefixes function as identifiers for international products.
+- The assignment requires you to pinpoint a specific three-digit barcode prefix for listed countries. Knowledge of global product identification systems is key to completing this task accurately.
+- You will need to find the barcode prefix for a given country. Understanding global barcode systems and how prefixes are designated is essential for this task.
+- Your objective is to pinpoint the exact barcode prefix tied to a given country. Knowledge of international commerce and product labeling standards will be beneficial.
+- Here you need to return the unique prefixes that correspond with certain countries. This task emphasizes knowledge of barcoding systems that link products and locations.
+- This task involves tracing back a country's name to its unique barcode prefix, helping understand the global system used for tracking products through codes.
+- The goal is to return the correct barcode prefix when presented with a country's name. Familiarity with how barcodes are organized by country is essential.
+- You must accurately locate the appropriate barcode prefix associated with a country name provided, applying your understanding of international commercial norms.
+- Your responsibility here is to connect each country with its corresponding barcode prefix, an essential detail in the world of product management and logistics.
+- You are asked to find the barcode prefix that corresponds to a specified country. This requires knowledge of international barcode standards and how they are categorized by country.
+- Given a country’s name, you’ll identify its unique barcode prefix, which aids in product categorization worldwide. It’s important to be versed in barcode classification systems.
+- Your job is to pinpoint a country's barcode prefix, requiring a grasp of how product codes operate and their significance in trade practices worldwide.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1319_country_by_barcode_prefix
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1319_country_by_barcode_prefix
+user_prompt_template: '{task_def}
+
+
+  {problem}'

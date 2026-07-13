@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Read the provided sentences and classify them according to their violent or non-violent nature. Identify any phrases that suggest inhumanity.
+- This task necessitates pinpointing language that conveys threats or suggestions of violence, allowing you to categorize responses effectively.
+- Engage with the text critically to identify any harmful sentiments or ideologies present within, guiding your classification judgment.
+- Go through the given sentences and gauge their nature related to violence. Note specific references that imply aggressive behavior towards others.
+- Your task is to meticulously read statements for traces of hostility or violence, making a judgment based on this evaluation.
+- Assess the tone and content of the sentences to conclude if they advocate for physical harm to individuals or groups.
+- The task involves evaluating statements to determine if they contain elements of inhumanity or violence based on specific criteria.
+- Consider the context and wording of the statement you are provided with. Your job is to determine whether it aligns with the definition of violence or if it's benign.
+- Evaluate each statement for intent; recognize and classify any hints towards violence based on context and word choices used by the speaker.
+- This task is about interpreting language nuances where potential for violence exists. You'll be determining if certain phrases reflect sentiments of aggression toward individuals.
+- Analyze the provided text to assess whether it contains violent language or implications of harm towards individuals. Classify it accordingly.
+- Analyze various expressions in the provided texts, determining whether they reflect violence. This involves critical reading and understanding of language nuances.
+- Engage with the text by looking for expressions of hostility or aggression. Classifying a statement as violent requires insight into underlying meanings and implications.
+- 'This task involves categorizing text into two groups: those that express violence and those that do not. Recognizing aggressive or harmful content is essential.'
+- Your objective is to categorize text based on its potential impact on others. This involves understanding phrases related to aggression and identifying when they cross into violence.
+- Focus on identifying terminology and phrases that imply violence, determining if they should be classified as such.
+- Your job is to categorize texts as either violent or non-violent based on their content. Key indicators of violence include language that suggests inflicting harm on others.
+- Identify and classify the underlying emotional tone of different text samples, specifically looking for those that suggest aggression or lack of humanity.
+- In this task, you need to evaluate statements for any indications of violence or inhumanity. Your judgment will be essential in identifying harmful statements.
+- You must read given texts and decide if they express violence or not. Look for keywords or phrases that suggest harm or aggression.
+- This requires you to identify any expressions of harm or inhumanity in the text and label it accordingly.
+- Your task is to determine whether the provided text expresses violence. Look for indicators like mentions of killing or hurting others.
+- You are tasked with assessing textual content for violence, identifying language that expresses aggressiveness, threats, or intentions that could lead to physical harm.
+- Consider the words used in the given passage carefully. Decide if they represent an attitude towards harm or aggression and classify them accordingly.
+- This task revolves around understanding which phrases might evoke violence and making an informed decision about their characterization accordingly.
+- You are required to assess whether a text expresses violent ideologies or actions. Identify if there's any implication of hurting others, and classify accordingly.
+- Analyze the content of the text for violent implications. You should focus on words or phrases that convey threats, injury, or an aggressive stance.
+- Assess the tone and content of the provided text, searching for signs of violent expression so you can classify it accurately.
+- Your job is to look at the wording of a statement and decide if it expresses violence, requiring an understanding of both context and language.
+- Scrutinize the language used in each phrase; your goal is to determine if there are threats or suggestions of physical harm that would qualify it as an act of violence.
+- The objective is to critically evaluate textual content for indications of violence, requiring both comprehension and discernment.
+- You will analyze a statement to classify it as either 'violence' or 'not violence' based on the presence of harmful intent, such as threats or actions that cause physical harm.
+- Your job is to determine if certain texts contain violent rhetoric, focusing on the context and implications behind the words used.
+- This task requires you to assess different inputs and identify whether any expression of inhumane behavior or sentiments is exhibited.
+- Assess the language used in each statement to identify and classify references to violence and inhumanity.
+- Your focus should be on dissecting language for violent overtones. Identify expressions that convey harmful intentions towards others for proper classification.
+- Analyze discussions in the provided text for references to harm. If any violent implications arise, categorize them appropriately; otherwise, designate them as ‘not violence’.
+- You need to assess each statement to see if it promotes violence, focusing on language that might suggest aggression or dehumanization.
+- Your role is to interpret written sentences and judge whether they express violent intentions. Identify language that reveals hostility or threats to wellbeing.
+- Assess the context of various statements and determine if they promote violence. Your understanding of sensitive language will be important in making these classifications.
+- Analyze the provided text for any mention of actions that inflict harm on others. Classify the text based on whether it displays violent sentiments or not.
+- Your role is to read and assess statements to decide if they exhibit violent intentions or expressions.
+- You will be determining if the given text includes any notions of harming others, as this qualifies as violent behavior.
+- This task is about identifying statements that may involve violence. Look for any implications that someone could be harmed based on the presented words.
+- Examine each text for references to physical harm, threats, or degrading sentiments, and classify them accordingly into two defined categories.
+- This requires an understanding of language nuances, as you classify statements that might promote violence versus those lacking such elements.
+- Review each piece of text to assess if it reflects violent ideologies by checking for language related to physical harm or aggression.
+- Your task involves sifting through a text to identify expressions of harm. If found, mark them as ‘violence’; if absent, classify as ‘not violence’.
+- Your job is to sift through text samples, marking those that express inhumanity while distinguishing them from benign statements.
+- Analyze the provided text for clues that indicate violence, such as mentions of harm or killing, and categorize it accordingly.
+- This task involves scrutinizing written content to find signs of hostility or inhumanity. Your classification should reflect whether the text promotes violence or not.
+- The aim is to distinguish between expressions of violence and those lacking such elements by examining context clues within the given text closely.
+- Review the statement for any signs of hostility or inhumanity. Classify your findings into either 'violence' for harmful expressions or 'not violence' if they lack such implications.
+- Analyze the provided phrases for any indications of aggression or hostility, classifying them based on whether they promote harmful actions.
+- You are tasked with interpreting statements through a lens focused on humanity, deciding if a sentiment reflects cruelty or aggression.
+- You will be determining if the phrasing within each piece promotes harm or carries inhumane sentiments.
+- Scrutinize the language within the text for any signs of injury or hostility toward others. Your judgment will lead you to either classify it as ‘violence’ or ‘not violence’.
+- To complete this task, interpret the message conveyed in the text. Identify if there are any harms implied and classify accordingly.
+- Read each statement and classify it by recognizing signals of abuse or violent suggestions within the language used.
+- Analyze the texts critically to discern their nature—violent or non-violent. Recognizing harmful intent is vital in completing this classification successfully.
+- Classify text according to its implications regarding violence; sentences that advocate harm should be marked differently from those that do not.
+- You need to assess a piece of writing and decide if it is violent or not. Look for keywords that indicate hostility, injury, or threats to others.
+- You will read statements and classify them based on whether they express violent ideas or not. Identifying harmful intentions or suggestions is key to this task.
+- You will categorize text based on a criterion of violence, looking for phrases that depict harm or cruelty towards others.
+- Consider the meaning and implications behind the words written to classify them as either promoting violence or expressing non-violent opinions.
+- You will classify texts based on their potential for invoking violence, analyzing diction and meaning for elements that could lead to harm.
+- Interpret the text and decide if it suggests violent actions or thoughts. The classification rests on whether there’s an indication of physical aggression or not.
+- Your role is to discern whether a statement embodies violent content based on its language. Mark it as 'violence' if there are indications of cruelty; otherwise, label it as 'not violence'.
+- Evaluate the text to identify any indications of inhumane treatment. Depending on your analysis, assign either 'violence' or 'not violence' as the classification.
+- The job is to determine whether the language used in a text falls under the category of violent rhetoric or is a mere expression of opinion.
+- Your job includes evaluating language carefully to establish whether it encourages violence, threatening behaviors, or hateful ideologies.
+- Your role involves detecting violent intent within statements and categorizing them based on whether they imply actions of physical aggression or harm toward others.
+- Examine whether the given text conveys dangerous sentiments that could be interpreted as incitement or endorsement of violence against people.
+- Your goal is to categorize a text as reflecting violence or being harmless. Analyze the language used and notice references to pain or suffering imposed on others.
+- Engage with each provided passage to establish if there’s an intention toward aggression against individuals. Classify based on your assessment of such intentions.
+- Engage with the content critically by assessing its implications toward groups or individuals. Thoughts of harm will lead you to flag statements as violent.
+- You are tasked with identifying language in messages that could be interpreted as inciting violence or promoting harm.
+- You need to evaluate statements to identify any threats or violence expressed within them, separating harmful content from neutral remarks.
+- Identify and categorize expressions within various texts based on their potential to inflict harm, aligning with standards of what constitutes violence.
+- In this exercise, you are required to discern whether the language used in given phrases suggests a violent or aggressive nature, focusing on any indications of physical harm toward others.
+- This task wants you to employ your analytical skills to classify text as either violent or not, paying close attention to words and phrases that suggest inhumane attitudes.
+- Analyze various statements for underlying themes of inhumanity or violence, considering context as important for classification.
+- Your task involves a nuanced evaluation of statements to extract their underlying messages regarding violence, ensuring accurate classification.
+- The task requires a careful reading of statements to find out if they articulate thoughts about violence or inciting harm against individuals or groups.
+- Task yourself with sifting through expressions of language to unearth any latent aggressive intentions that may fall within the sphere of violence.
+- This task calls for a critical lens as you investigate text for violent undertones that might not be immediately obvious.
+- In this task, you must decide if the text reflects violent sentiments. Consider any implications of physical harm or aggression toward people.
+- Review the text and discern if it conveys inhumane sentiments, labeling it accordingly as either 'violence' or 'not violence.'
+- Your job is to gauge the severity of statements based on their expressions of hostility or inhumanity, creating a clear line between two classifications.
+- Engage critically with provided texts, discerning between messages that promote violence and those that express harmless sentiments.
+- Decide if the provided texts illustrate violence by recognizing harmful language. Focus on identifying words indicating intentions to inflict pain or suffering.
+- Examine the provided text closely to discern if any part reflects aggressive or harmful sentiments.
+- Identify whether the text portrays aggressive views or comments that suggest harm towards others, resulting in classifications related to violence.
+- Examine the expressions and sentiments in the provided statements, classifying them by identifying whether they contain violent implications.
+- Engage with provided texts by critically thinking about their connotations and context, separating those that illustrate violent intentions from those that do not.
+- Your objective is to discern between violent and non-violent expressions found in the text. Spot indications of malice or threats within the language used.
+- The goal is to discern whether the text demonstrates violent sentiment. Look for indications of physical harm or inhumane attitudes.
+- Engage with texts critically, looking for indicators of aggression, including threats or negative sentiments towards others.
+- This task requires you to judge text passages for their potential to harm or incite hatred. Your classification will help identify harmful sentiments.
+- Analyze the emotional weight behind statements to discern potential threats that imply violent actions against individuals.
+- The task challenges you to identify and label text where there is potential for harm, distinguishing between violent expressions and those that do not convey such implications.
+- Your goal is to read through each text and assess whether it reflects violent sentiments, specifically looking for mentions of harm or killing.
+- This task involves analyzing a text to see if it conveys violence. Pay attention to expressions that suggest intent to harm individuals or groups.
+- Review the provided text and classify it as either violent or not based on its content. Look for expressions that indicate cruelty or harm directed at others.
+- You will examine provided statements to see if they convey any violent actions or thoughts, requiring sensitivity to language and intent.
+- Required is a judgment of text to ascertain if it exhibits sentiments associated with violence. This includes recognizing threats or the intent to harm individuals.
+- This task requires you to analyze snippets of text for violent implications. Pay close attention to references to harm, death, or aggression in your assessment.
+- This task involves assessing a provided text to determine whether it reflects violent behavior or language. You will classify each text based on its content and implied meaning.
+- Assess whether the statements made suggest actionable harm towards individuals. Assign labels based on the presence or absence of violent implications in the text.
+- Delve into the text's phrasing and tone to ascertain if it depicts violent behavior or sentiments. Your insights will guide the classification process.
+- The objective is to discern the nature of the language in each statement and classify them to reflect whether they propagate violence or not.
+- The task involves examining pieces of writing for any signs of violent rhetoric. Look for explicit threats or harmful sentiments to make your evaluation.
+- This task centers on understanding whether certain phrases imply harmful behavior, allowing you to discern between violence-related content and neutral expressions.
+- Identify and categorize texts based on their implications regarding violence, focusing specifically on mention of harm or killing.
+- Carefully evaluate the language used in each example to determine if it includes phrases that suggest violence, leading to an appropriate classification.
+- Examine the content provided and judge whether it fits into categories of violent expression based on indications of harm.
+- The challenge lies in interpreting various pieces of text for indications of violence. You must apply critical thinking skills to differentiate harmful remarks from those that are benign.
+- You will classify each textual input based on whether it expresses violence through suggestions of harm, threats, or aggressive language.
+- Read through the sentence to determine its tone and intent. Classify it as either reflecting violence through harmful expressions or not.
+- Your task is to assess a given text for violent or harmful language, determining if it promotes inhumane actions.
+- Review and judge the given texts for violent implications by scrutinizing their content for emotive language related to aggression.
+- Analyze sentences for hostile sentiment, determining whether the language suggests actions or thoughts that threaten safety, which would qualify them as violent expressions.
+- The task involves evaluating the provided text to determine whether it demonstrates inhumanity or violence. You must understand the context and definitions of violent behavior.
+- Investigate language nuances in the provided text to determine if there are mentions of harm, which would qualify it as violent.
+- Evaluate statements for signs of violence by discerning the intent behind the words used. Context is crucial as you classify each text accordingly.
+- You are tasked with classifying text based on understood definitions of violence, using critical thinking to make your determination.
+- The challenge lies in interpreting written statements for traces of violent thoughts or actions. Understanding nuanced language will aid in making accurate classifications.
+- The objective is to read through the text and determine its nature—categorizing it as violent if it includes calls for harm or hate.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1605_ethos_text_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1605_ethos_text_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

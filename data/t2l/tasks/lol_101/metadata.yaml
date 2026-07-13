@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You'll be tasked with identifying elements in an array based on non-negative indices. This includes slicing out those specific elements, reversing their order before creating your final output string.
+- You are required to perform operations on a list where you select certain elements based on specified indices, then reverse them and combine them into one contiguous output.
+- This challenge focuses on selecting specific entries from a dataset identified via indices, reversing the selected entries' sequence, and joining them into one resultant string output.
+- You are required to work with segments of data in the form of lists where you pull portions defined by integer indices before reversing their internal order for final concatenation.
+- You need to take a subset of a given list, specified by two indices, reverse that subset, and output the concatenated result.
+- You need to analyze a list using two index values to gather specific elements, reverse that selection in order, and output the result as a single string format.
+- Engage with an input list where your job is to select, reverse, and stitch together elements from specific index positions into one unified string.
+- Your mission is to identify sections within an array based on index values, flip those segments' order upside down, and then seamlessly connect them into one output. Understanding how arrays work is crucial for this operation.
+- You will work with lists where you're provided with starting and ending points. The challenge is to pull out that slice of the list, reverse it, and output the joined elements as a string.
+- This task asks you to operate on an indexed part of a dataset - reverse its order and present it as one continuous string without altering the original data structure.
+- In this exercise, you are required to extract a segment from a provided list, reverse the order of those elements, and then concatenate them into one continuous string.
+- In this task, work with arrays where you'll select parts based on provided integers. Reverse that section completely before combining all elements for your final output.
+- The objective is to focus on two indices provided along with an array of elements, extract the corresponding section, reverse it in order of appearance, and concatenate it into one result.
+- The job involves selecting elements from a list between two specified positions, reversing their order, and then combining them into one string.
+- This task involves manipulating lists based on provided indices. You need to find a range of list items, reverse their order, and concatenate them into one string for the final answer.
+- The activity involves taking portions of an existing list defined by two index values, reversing that segment's order, and then forming them into one coherent output string.
+- In this task, you should identify elements within specified boundaries in a list, transform their order by reversing them, and then return them as one linked string.
+- Engage with lists where your focus will be on slicing specific portions between two integer markers and reversing these segments to generate one concise output string.
+- The goal here is to extract certain indexed elements from a list based on positional inputs. Once obtained, you are required to reverse this group before combining them into one output string.
+- The objective here is to handle a list by selecting elements based on index inputs. After selecting, you'll reverse the segment's sequence and combine it into a complete string.
+- This activity requires skill in working with lists; specifically, extracting certain elements defined by starting and ending indices, reversing their organization, and creating a concatenated result from those reversed elements.
+- The task requires examining a specified range in an array, reversing that range's order, and producing an output as a unified string from those elements.
+- You will be tasked with manipulating an array by pulling out certain elements defined by numeric boundaries, rearranging their order, and merging them into one composed string.
+- The focus here is on taking part of an array based on given positions, reversing it completely, and creating a final string from that reversed section.
+- Your role is to manipulate parts of an array derived from index input by reversing that segment’s order and presenting it as a solidified string outcome.
+- Examine arrays with given index pairs in this task. Extract the desired elements between these two indices, flip their order for output purposes, and provide them as one continuous string.
+- This task requires extracting a segment of values from an input array defined by start and end indices. The specific step involves reversing their arrangement prior to final concatenation.
+- The challenge lies in taking a specified segment from an array and reversing that segment's order before compiling it into a single output. This demands familiarity with slicing lists in programming scenarios.
+- Your assignment consists of selecting parts of a list based on given integers. These parts should be reversed then combined into a resultant string for submission.
+- This task centers around working with numerical index limits and making selections from corresponding elements in a list. You'll need to flip those selected items’ order before presenting them together in one string.
+- This task asks you to take selections from an array based on specified criteria, rearranging that section backwards and producing it as output in one complete string format.
+- You must identify specific elements within a list defined by two integer indices. The selected elements need to be reversed in order and compiled into one string for your response.
+- This task involves working with a list of items where you need to focus on a segment defined by two positions. You should reverse this segment and join the pieces into one cohesive string.
+- This task requires you to identify a segment of a list based on given indices, reverse the extracted segment, and then produce the resulting characters as a string.
+- This task requires you to parse through a list of strings, select elements from two given indices, perform a reversal on the selection, and join them into one continuous string. Attention to list boundaries will be vital.
+- In this exercise, you will handle a set of inputs that includes index values and a list. Your work involves isolating elements between those indices, reversing them, and forming them into one string output.
+- The assignment requires you to extract a slice from a list of characters or numbers, reverse that slice, and assemble it into a new string.
+- The assignment is to take parts of a list within defined index limits, flip the order of those parts, and join them to form a string as the result.
+- This task encourages you to explore list segments—defined through indexes—reverse their sequence accurately, and produce a single string containing those rearranged elements.
+- The assignment at hand is to identify certain parts of a list using index values, change their sequence by reversing them, and unite these elements into a single coherent output.
+- Your goal is to take a slice of data from a list based on two index values, reverse that slice, and concatenate it into a plain string format.
+- The challenge here is to select items from a list given specific start and end points, reverse the sequence of those items, and create a single output string.
+- You must extract elements from a specified section of a list using two provided integers, reverse the extracted section’s order, and concatenate to form an output.
+- The goal here is to extract elements from an indexed section of a list, invert their arrangement, and generate a single string from this reversed subset.
+- In this exercise, you must extract list segments between two indices you’re given, alter their order by reversing it, and then concatenate the items into a single output string.
+- For this task, you will derive elements from an array based on given indices, reverse their order, and concatenate these elements to create an output string.
+- This task requires you to extract specific elements from a sequence defined by numerical positions, reverse those selected elements, and produce them as a continuous string.
+- Your job is to access selected elements from an array, reorder them in reverse, and output the result as a string without any spaces.
+- Your job is to take parts of a list defined by two integer positions, reverse the order of those parts, and concatenate them into one string output.
+- You will identify specific ranges within an array using provided integer boundaries, reverse these sections in orientation for clarity prior to combining them seamlessly into one output.
+- In this task, you will manipulate a list of items based on given index positions. You'll identify a range in the list, reverse that selected portion, and create a final string output from it.
+- This exercise involves processing an array where you determine which slice to choose based on integers. After selecting it, you'll reverse the contents and merge them into a new formatted string.
+- Your challenge is to operate on a list by selecting a range of elements defined by two integers, reversing the collection of those elements, and outputting them as one string.
+- In this challenge, you’ll need to take slices of lists determined by index positions, invert their arrangement, and stitch the results together into a singular output format.
+- The challenge here is to carefully select elements from an array defined by two numerical indices. Rearranging this selection in reverse order before appending everything together is what you'll need to successfully complete this process.
+- You will engage with numerical indices and a collection of values, extracting data from specified positions, reversing the order of that data, and producing a string as the result.
+- The task consists of selecting elements from a specified segment of a list defined by two index numbers. After selecting, you will reverse their sequence and merge them into a final result.
+- Your task is to find specific items in a list by their positions. You will then need to reverse the order of these items before merging them into one string for output.
+- The task at hand requires extracting data from an array using two markers. You will need to change their arrangement and produce an output in the form of a seamless string.
+- This task focuses on reconstructing segments drawn from an array based on two integer values while ensuring each extracted section is reversed before merging back together as one final product.
+- Utilize two integer inputs to determine which elements to extract from an array and rearrange their order before merging them into one consolidated output.
+- You are tasked with taking two numbers that define positions within an array. Your goal is to gather the specified slice from the array, invert that slice's order, and then stitch it together into a single string.
+- The objective is to isolate elements from a list using two indices, flip their order around, and create one continuous string combining those elements.
+- You will work with integer indices to pull out elements from a list, reverse their order as they appear in the list, and concatenate them into one cohesive string.
+- Your task involves manipulating a list by selecting a specific range of elements, changing the order of these elements, and then combining them into a single string.
+- Your assignment entails extracting elements from selected locations in an array based on provided index values, reversing that extraction’s order before concatenating them into one unified text.
+- In this exercise, you're challenged with extracting specific sections from an array, inverting the order in which they are arranged, and rendering them into one continuous output.
+- The job at hand is to focus on select entries from a list using integer markers. You will need to flip those entries around prior to merging them into one seamless string output.
+- The goal is to identify and reverse the order of certain entries in a list based on given positions and then link those entries into one string.
+- In this task, you must navigate through lists using numerical indicators to select ranges of items. Reverse these selected items before presenting them as one cohesive string response.
+- Your challenge consists of manipulating an array by accessing its components via specified indices to reverse their arrangement before creating a singular output string from them.
+- This task requires you to locate elements within a list using two integer indices, reverse those elements, and then merge them into one string for the final result.
+- In this assignment, you will utilize given integer inputs to define a segment of a list. The segment must be arranged in reverse order, and then merged to create an output string.
+- The task involves manipulating a list of items based on specified indices. You will extract a subset of the list, reverse their order, and then combine them into a single output string.
+- The goal is to retrieve elements from specific positions in a list, flip their sequence, and concatenate them to produce a specific formatted output.
+- This task revolves around working with lists where selection points are provided. You need to gather elements within those points, rearrange them in reverse order, and combine them into one output format.
+- In this activity, you will manipulate a set of data elements by cutting out a segment of it, reversing that slice, and putting it back together in a specified format. Understanding how slices work in programming is important here.
+- You will be asked to work with lists by identifying parts based on positional indices, reversing that portion, and constructing a final output string. Logical thinking and list management skills will aid in solving this task.
+- In this operation, you must select parts of an array marked by starting and ending points, rearranging those chosen items backwards before merging them into a singular text result.
+- You’ll be taking specific slices from provided arrays based on integer inputs. Once you have those slices, your job is to flip their order before merging into a final string output.
+- This task entails working with array segments dictated by index values—reversing the selected segment's order—and compiling it into one string result.
+- Your task is to manipulate the order of certain items from an array based on index positions by reversing their arrangement and merging them into one continuous output.
+- You're tasked with manipulating lists based on integer inputs representing positions within the array. The main steps include gathering those elements, reversing their positions, then assembling them into an output string.
+- You will analyze a specified part of an array using two index values. By reversing this segment’s order and combining the elements into a string, you can fulfill the task requirements.
+- The task involves extracting a specific subsequence from a list based on provided indices, reversing that subsequence, and combining it into a single string.
+- The main requirement here is to interact with arrays by selecting indices, reversing the corresponding values between those indices, and combining everything into a cohesive string.
+- This task focuses on handling sequences. You’ll extract elements from a list based on given indices, reorder them by reversing their arrangement, and then output all as one continuous string.
+- The goal is to assess your ability to manipulate an array's contents by selecting elements in between two positions, reversing that selected portion's order, followed by transforming it into a single combined output string.
+- In this activity, you will take parts of a list defined by two integer values, change their order from last to first, and unify them into one cohesive string.
+- In this exercise, you will navigate through a list structure by defining start and end points. After isolating these elements, you will need to reverse their sequence for final concatenation into one coherent string.
+- You will be tasked with taking segments of a list marked by two integers, reversing their arrangement, and synthesizing these elements into one conjoined output.
+- Your responsibility in this task includes extracting portions of an array using provided position markers, reversing the resultant slice's order, and assembling it into one flowing string output.
+- You will work with a list to capture elements within designated index boundaries, reverse their sequence, and combine them into a resultant string.
+- You are expected to work with a list and two integers that represent the starting and ending positions, reverse the specified segment, and present it as a continuous string.
+- In this task, you will select elements from a list between two specified indices, perform a reversal on the selected elements, and return them as a concatenated string.
+- This task requires you to manipulate lists by defining a range with two numbers, reversing that section of the list, and producing an output as a joined string of the elements.
+- In this exercise, you will handle an array by selecting entries from specific positions. After reversing them, your goal is to concatenate the elements into one unified string.
+- You are required to analyze input parameters that specify boundaries within an array. Your goal is to reverse the specified section and present it as a single concatenated entity.
+- This task requires you to focus on provided integers and a list. You are to select items from the list within the range defined by those integers, flip their order, and compile them into one concatenated output.
+- This task challenges you to manipulate an array by picking elements between two points, reversing their arrangement, and forming a string from that reversed segment.
+- You will need to identify a subset of elements within an array using two specified points. The next step is to reverse their arrangement and return the result as a string.
+- The task involves selecting a range of elements from a list, reversing their order, and joining them to produce a new string.
+- In this task, focus on sections of lists defined by two integer inputs. You will rearrange the selected elements in reverse order and produce a single string from them.
+- You are asked to work with indexed sections of data within an array - extract those indices, reverse their order, and compile the output into usable text format.
+- The objective is to extract values from an array using given start and end positions, reverse the collected values' order of appearance, and produce that as an output string.
+- Your role entails isolating parts of an array defined by specific integers after which you'll reverse this subset's arrangement and compile it all into a singular output string.
+- The work at hand is to manipulate specified portions of an array defined by numeric limits to extract elements, flip their order, and create a unified string representation.
+- Your job is to select items from a specified part of an array, reorder these items in the opposite direction, and combine them into one seamless string for the final output.
+- In this task, find elements between two given positions in an array, reverse their arrangement, and output them as one combined string.
+- The objective is to work with a list of items using two provided index values to extract specific entries. You then need to reverse their arrangement and concatenate them for the final output.
+- You need to work with a list of items by first selecting part of it, reversing the selection's order, and finally concatenating the items to form a string.
+- Engage with an array by determining which slice to focus on, flipping those entries around, and synthesizing them into one complete string output.
+- You will gather items from an array between two integer indices, rearrange those items in reverse sequence, and then merge them into one unified output.
+- In this task, you will identify a subsection of an array using index values, reverse the selected elements, and concatenate them to generate a final string output.
+- You are tasked with selecting slices from a list based on two provided integers and reordering them in reverse before concatenating them into one string output. Detail-oriented index management is key in this process.
+- You are assigned the job of operating on parts of an array according to given indices, reversing their order for proper organization, and outputting them as a concatenated string.
+- This task challenges you to derive specific segments from a list using integer-based indexing. After reversing these sections as specified, your final step will merge them into one seamless string.
+- This assignment involves taking certain entries from within a list based on numerical positions, flipping their order around, and creating one continuous string from those entries.
+- In this exercise, you will take part of an array indicated by two inputs, flip that segment around in terms of order, and join everything together in one smooth output format.
+- You're tasked with identifying elements within defined bounds from a larger set. Reverse their order and piece them together for your final response.
+- Manipulate lists based on index parameters in this task. Your goal is to extract elements from the defined range and then present them in reverse order as one continuous string.
+- The task involves manipulating a list by selecting a specific range of elements and modifying their order. You must understand list indexing and string formation to complete this task effectively.
+- You are tasked with extracting a specific segment of a list based on given indices, reversing that segment, and forming a single output string from it.
+- The objective here is to handle elements in an array by specifying limits through two indices, reversing the pertinent elements within those limits, and finally combining them into one output string.
+- This task involves filtering elements within a defined range in a list according to given indices. Once filtered, you’ll need to reverse these elements and express them as one cohesive string.
+- You are tasked with pulling specific entries from a collection using positional markers, reversing their arrangement in the process, and outputting the result as one string.
+- In this work assignment, your objective is to slice out pieces from an array using index markers designated by the input while ensuring they are reversed for the final combination.
+- Here, you are required to extract elements from a given list between two defined positions and then reverse their sequence before combining them into one string. Familiarity with list operations is essential.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task101_reverse_and_concatenate_all_elements_from_index_i_to_j
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task101_reverse_and_concatenate_all_elements_from_index_i_to_j
+user_prompt_template: '{task_def}
+
+
+  {problem}'

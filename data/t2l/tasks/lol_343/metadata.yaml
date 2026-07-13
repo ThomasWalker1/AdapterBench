@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- This exercise involves understanding a sentence where only one profession's gender can be identified through language cues. Identify and return that profession based on its corresponding gender.
+- For each example, you will interpret a sentence featuring two roles and discern which role is associated with the specified gender using the context provided.
+- In this task, you should identify and return the job title from a sentence that explicitly relates to a specified gender using pronouns.
+- In this task, you will read a sentence containing two professions and identify one of them using the gender provided. This requires understanding gender references in the text.
+- The objective is to discern the profession associated with a specified gender from a sentence mentioning two roles, with one being identifiable through context clues in the pronouns used.
+- The task involves identifying a profession based on contextual clues in a sentence and matching this to a specified gender.
+- Analyze the sentence to find a profession linked to a certain gender, paying attention to pronouns that reveal gender information.
+- Follow clues found in sentences that present two occupational roles. Use these insights along with assigned genders to reveal which profession should be recognized as fitting that identity.
+- This task emphasizes understanding and interpreting sentence structures where one of two professions correlates with a specified gender; your responsibility is identifying it correctly.
+- Engage in interpreting sentences that reference professions while solving for how they connect to specific genders indicated outside of the profession itself.
+- This activity requires you to analyze professional roles mentioned in sentences along with linked genders. Your objective is to correctly associate the specified gender with its corresponding profession.
+- In this task, you're examining sentences where one profession has a specific gender linked through pronouns, while the other does not. Your duty is to identify and name the profession that matches the given gender.
+- You will analyze text about different professions and discern which one refers to a specific gender indicated in the task instructions.
+- You will encounter sentences discussing two distinct job roles. One role's associated gender is made clear through pronouns, requiring you to pinpoint which title matches that specified gender.
+- This task involves analyzing a sentence that includes two professions and identifying the one whose gender can be determined. You must utilize the context provided by gendered pronouns.
+- This task revolves around understanding phrases that involve two professions. You'll use linguistic cues about gender to inform your identification of the correct job role.
+- You will process sentences where two professions are mentioned, and your goal is to discern the profession that aligns with the specified gender.
+- Engage with sentences that refer to two professions and determine one’s gender based on clear indicators found within those sentences.
+- The assignment is to extract and identify a specific profession in relation to a gender mentioned in a sentence featuring two different roles.
+- For this assignment, you'll evaluate sentences showcasing pairs of careers, aiming to ascertain which profession correlates with a stated gender by leveraging contextual grammatical hints.
+- You will evaluate the information in sentences, focusing on gendered pronouns to determine which of the mentioned professions fits the provided gender.
+- You will parse through sentences mentioning different jobs and analyze pronoun usage indicating genders. Your task is then identifying the correct profession that correlates with the stated gender description.
+- Here, you will evaluate sentences that present two different professions, focusing on recognizing which one is linked to a particular gender based on relevant language cues in the text.
+- In this exercise, you will analyze a sentence with two professions mentioned. One profession's gender is conveyed through pronouns, and your goal is to extract the profession that matches the specified gender.
+- Review sentences for mention of professional roles and match them with their corresponding genders as indicated, focusing on any pronounding clues present.
+- In this situation, you're asked to process sentences where two occupations are presented along with a given gender. You must utilize indicators from language to choose correctly between them.
+- Analyze sentences structured around two professions and determine which one is linked to a given gender by utilizing contextual information from pronouns utilized in the text.
+- The task involves reading sentences where two professions are mentioned, and you must pinpoint the one connected to the gender indicated.
+- The aim of this exercise is to identify within provided sentences which of two mentioned professions aligns with a specific gender by interpreting relevant vocabulary indicators within the text.
+- You need to assess sentences that describe two occupations and discern the one that aligns with the indicated gender based on pronoun usage.
+- The exercise involves parsing sentences that feature professional titles while utilizing pronouns to deduce which profession matches the stated gender.
+- You'll be presented with sentences featuring pairs of professions along with a given gender. Your job is to deduce which role corresponds with that gender by analyzing the associated grammatical cues.
+- Your task is to identify the profession associated with a specified gender based on a sentence that contains gendered pronouns.
+- In this focused task, examine how professionals are portrayed in sentences that highlight specific genders through pronouns, and determine which job closely corresponds with those identifiers.
+- Your assignment is to interpret sentences that describe professional roles. With knowledge of gendered references, determine which role matches the specified male or female identifier.
+- Interpret sentences featuring dual professions and extract which job corresponds with provided genders using sensibilities toward gender cues embedded in language.
+- This task requires you to extract a profession from a sentence where one profession is linked to a specific gender through pronouns.
+- Examine sentences containing mentions of professions and determine which one relates to an explicitly stated gender through analyzing context and pronoun references.
+- The goal is to apply your comprehension skills to assess sentences containing dual professional references, choosing correctly based on explicit or implicit indications of gender found in the text.
+- Focus on interpreting sentences containing professional titles while attending closely to gender references embedded in them. Identify which profession aligns with either male or female as provided.
+- This task requires you to read a sentence that describes two jobs, one of which has an identifiable gender through pronouns. From this, you need to identify the job that aligns with the gender indicated.
+- Your objective is to extract a specific profession from a given sentence, using clues from gendered pronouns within the text. This requires understanding context and relationships between characters.
+- This task revolves around understanding sentences involving two jobs, where you will identify which job corresponds to a specific gender via the use of pronouns within the context.
+- Engage in analysis of statements about various professions while recognizing indications of gender, leading you to ultimately specify which role pertains to the given gender outlined.
+- Examine the provided sentence that references two occupations and includes gender clues. Identify which profession aligns with the given gender.
+- In this task, you will refine your reading comprehension skills by pinpointing which profession relates to an identified gender through the use of narrative context cues.
+- Here, you must interpret sentences containing two professionals, identifying which one matches the gender described by the pronouns used.
+- This task requires careful reading of sentences that contain two job titles and comprehension of how pronouns indicate gender in order to identify the appropriate profession.
+- Using provided sentences featuring two jobs, your task is to isolate and identify one profession based on its relationship with clearly defined gendered expressions found within those sentences.
+- Your mission is to analyze textual context where two professions are compared. Utilize pronoun references to make informed choices about which job aligns with the provided gender.
+- Engage with sentences that pair professions with gendered language. Your aim is to recognize and return the job linked to the indicated gender based on pronouns in the text.
+- The challenge here is to focus on a sentence featuring two jobs. By understanding the gender clues from pronouns, you will establish which occupation fits the assigned gender.
+- This exercise involves analyzing sentences where two professions are discussed. You'll need to understand which one's gender can be inferred and select the appropriate title as per the given gender.
+- You will read and assess sentences that detail two jobs, extracting relevant information to find out which one corresponds with the stated gender.
+- This involves extracting professional names from sentences where one person's gender is made clear through pronouns, and matching it with an input gender.
+- The task involves interpreting sentences about different job titles and using gender indicators to select the relevant profession that matches the specified gender.
+- In this exercise, you will examine sentences that introduce two different professions while focusing on relevant pronouns to determine which role is linked to the specified gender.
+- Analyze sentences that describe two jobs, using context clues from pronouns to identify which job corresponds with a given gender requirement.
+- This task tests your ability to connect professions with their corresponding genders as deciphered from provided sentences containing both job titles and contextual pronouns.
+- This task requires you to read sentences mentioning two different jobs and discern which one corresponds to a specified gender using pronoun cues.
+- You will be given a sentence mentioning two roles, with one being associated with a specific gender through language. Your job is to pinpoint the profession that corresponds to the indicated gender.
+- The objective of this task is to recognize jobs mentioned in sentences. Using pronoun cues indicating gender, identify and return the corresponding profession for either male or female.
+- You are tasked with deciphering which of the two professions mentioned in a sentence is referred to by the provided gender label.
+- Identify relationships between gender indications and professional roles mentioned in sentences; use clues from language to solve for the correct match.
+- The task focuses on reading comprehension and gender recognition within sentences. You must return the profession associated with the specified gender based on how it's articulated in the text.
+- The task consists of understanding how gender is represented within sentences about professions and using this knowledge for identification purposes.
+- You will analyze a sentence containing references to two professions, one with an identifiable gender. Your job is to extract the profession associated with the given gender.
+- Your objective is to extract from a sentence the profession that fits with an assigned gender by interpreting relevant pronouns and context clues.
+- Review and interpret sentences conveying occupational identities while determining which role pertains specifically to the assigned gender through direct linguistic association.
+- Review sentences that feature multiple roles. Determine which profession's gender is identifiable and aligns with the given specification based on context clues.
+- You are required to extract the appropriate profession from a text, considering the given gender and the context provided within the sentence.
+- The objective of this task is to extract and return the profession associated with a given gender based on clues in a provided sentence.
+- Evaluate sentences discussing careers, using pronouns as guides to identify which position corresponds to the specified male or female gender.
+- Analyze each sentence carefully, looking for indications of profession correlated with the assigned gender, ensuring careful consideration of context clues throughout.
+- Engage with sentences where professions are discussed, and your task is to discern which role aligns with the stated gender using pronoun cues.
+- This task requires careful reading of sentences where two professions are mentioned, one identifiable by its associated pronoun. Your goal is to determine which role corresponds to the indicated gender.
+- Evaluate given sentences for references to two distinct jobs while paying attention to mentioned genders through pronouns, directing you towards identifying the right occupation linked to that gender.
+- You are expected to discern the profession connected to a particular gender in a sentence that references two occupations, using available linguistic clues like pronouns for guidance.
+- Navigate through sentences containing dual professions and use gender indicators within those sentences to arrive at your answer.
+- You will read sentences featuring two distinct roles. Utilizing context clues around gender, your aim is to pinpoint the profession that matches the specified gender.
+- The objective here is to discern which profession in a given sentence is associated with a specified gender. You will rely on pronouns within the text to make this determination.
+- This task challenges you to discern professions based on contextual clues within a sentence. You will extract the job title linked with a given gender revealed by pronouns.
+- In this activity, you need to analyze sentences containing mentions of two jobs while focusing on determining their relationships to a specified gender through contextual usage of pronouns.
+- You will read a sentence that includes two job titles, where one person's gender is clear from pronouns. The goal is to select the profession that matches the specified gender in your response.
+- Your task is to analyze a sentence containing two professions and identify the one that corresponds to a specified gender based on contextual clues.
+- Your task centers on understanding contextual clues within sentences about occupations. Identify and match one of those roles with a provided gender based on pronoun usage.
+- Given a sentence about two jobs, your objective is to find out which job belongs to the person indicated by a specified gender reference.
+- In this activity, you will work with sentences that highlight two distinct professions. Using the provided gender information linked to pronouns, identify and select the correct job.
+- You will take part in an evaluation of texts discussing two professions, based on which you need to identify and state the one linked with a defined gender through pronouns within those texts.
+- The focus of this task is on understanding sentences that introduce two professions along with an indication of gender. You will use contextual clues to make associations between them.
+- The aim of this task is to comprehend sentences discussing professional roles and recognize which of them fulfills the criteria of a designated gender.
+- Analyze the provided sentence to find the profession that matches the gender described.
+- Analyze sentences that describe two professions while using gendered pronouns. Your objective is to pinpoint the occupation that corresponds to the indicated gender.
+- Match genders with appropriate job titles based on contextual data from given sentences featuring paired professions.
+- Given a context of two professions in a sentence and an associated gender, you need to discern which profession corresponds to that gender based on identifying pronouns.
+- The focus of this task is on parsing sentences that feature different occupations and understanding which one is connected to a particular gender by means of contextualization within pronouns.
+- This activity challenges you to read a sentence containing professional roles where only one correlates with a given gender; discern this connection through context analysis.
+- The goal of this task is to identify a profession mentioned in sentences that include gender specifications. You will decipher which occupation is associated with the stated gender through context clues.
+- In this challenge, you will identify an occupation by focusing on how it’s represented in a sentence with accompanying gender prompts related to two professions.
+- As part of this task, you will identify which occupation refers to a given gender by interpreting sentences that mention two different professions and utilize indicative pronouns effectively.
+- In this exercise, interpret sentences that include references to two jobs, using gendered indicators. The aim is to match the correct job with the given gender.
+- In this description analysis task, discover which of two professions relates to a given gender based on pronoun use throughout the sentence context.
+- You need to discern which profession in the sentence fits the gender specified, focusing on identifying gendered references within the text.
+- The task involves analyzing a sentence that contains two professions, one of which has identifiable gender pronouns. You must determine and name the profession corresponding to the provided gender.
+- You are tasked with reading sentences that refer to different career roles, one whose gender can be determined by contextually placed pronouns. Identify which job aligns with the given gender distinction.
+- From a sentence containing two job titles, determine which one corresponds to a specified gender based on context clues and pronouns.
+- Use your understanding of language and grammar to decode the relationship between mentioned professions and corresponding genders in provided text.
+- You need to examine a sentence containing two professions, where one can be identified by gendered language. Your responsibility is to find which profession corresponds to the specified gender.
+- Using context clues from the sentence, your goal is to identify the profession that matches the given gender, considering how pronouns are used.
+- In this task, you need to look at a sentence presenting two professions. One is gender-neutral, while the other is referred to with gendered pronouns. Your job is to identify the profession related to a specified gender.
+- In this task, you are asked to interpret sentences that contrast two professions and select the one associated with the given gender reference.
+- Read through sentences mentioning two jobs, where one’s gender can be inferred from pronouns. Your task is to derive which job corresponds to the provided gender.
+- Analyze the sentence provided; it consists of two professions, with one made clear by the use of gender pronouns. Your task is to link that pronoun with the appropriate profession that fits the specified gender.
+- In this task, you’ll engage with descriptive sentences containing two distinct professions and employ logical reasoning through pronoun references to determine their genders.
+- Your mission in this task is to read sentences containing two job titles and extract which one corresponds to a given gender, utilizing gendered language as your guide.
+- In this exercise, your skills will be tested as you distinguish between genders linked to professions mentioned in sentences based on their context and supporting pronouns present in the text.
+- Your focus is on interpreting sentences that mention two professions and deciding which one aligns with the specified gender based on pronoun usage.
+- This task asks you to interpret a sentence containing professions and identify which one aligns with a given gender based on pronoun usage.
+- Extract insights from sentences where both male and female roles are highlighted, pinpointing which role corresponds with the provided gender.
+- This task presents sentences featuring two occupations where one can be linked to a specific gender via language elements. Use these cues to extract and name the profession accurately.
+- Analyze each sentence containing professions and use contextual clues to determine which job is associated with the indicated gender identity.
+- The challenge here is to extract relevant information from sentences that involve two professionals. Identify the profession tied to the stated gender by interpreting context clues.
+- Task yourself with deciphering roles mentioned in given sentences while aligning your findings with an indicated male or female reference based on contextual clues.
+- The goal here is to interpret statements that include references to two different jobs. You will use contextual hints made by pronouns to link one profession to a certain gender.
+- Your objective is to read sentences that reference two different roles and use pronouns to connect one of those roles to a specified gender.
+- Analyze provided sentences containing two specific professions and ascertain which one aligns with an indicated gender by examining pronoun references.
+- The task involves analyzing a given sentence to identify the gender of a profession based on context clues, specifically gendered pronouns.
+- You are tasked with recognizing professions from sentences while taking note of specific gendered language. Identify which profession relates to the gender indicated in your input.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task343_winomt_classification_profession_anti
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task343_winomt_classification_profession_anti
+user_prompt_template: '{task_def}
+
+
+  {problem}'

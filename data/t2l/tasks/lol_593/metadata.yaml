@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your task requires you to deepen understanding by providing supporting details or explanations for selected answers stemming from scientific queries.
+- In this task, you will generate explanations for specific answers to science-related questions by offering relevant facts.
+- For each provided scientific inquiry and its answer, your role is to construct supporting information that elaborates on the topic at hand.
+- Your task is to provide additional information that supports a given answer to a scientific question, showcasing your understanding of the topic.
+- Focus on articulating relevant facts that directly correlate with an answer to clarify and enhance the understanding of the inquiry at hand.
+- Your task is to provide additional factual information that explains a given answer to a scientific question.
+- Engage in presenting supportive facts that align with given scientific answers, enhancing understanding of the topic covered in the question.
+- This task involves producing explanatory facts related to given scientific answers, requiring a good grasp of scientific principles.
+- You are expected to take provided answers to scientific questions and enrich them with factual statements that explain their relevance or accuracy.
+- You need to contextualize a provided scientific answer by supplying relevant details that clarify its significance.
+- In this activity, you will construct affirming statements that illuminate the reasoning behind an answer linked with specific scientific inquiries.
+- Your job involves interpreting a question about science and its corresponding answer, and then producing detailed facts that help explain that answer further.
+- Your task involves transforming questions and answers into clearer insights by generating informative statements that support the correctness of each answer provided.
+- The task involves summarizing key information related to a scientific topic to justify the provided answer to a question.
+- For a given scientific query and its corresponding answer, your responsibility is to articulate supporting facts that underscore the rationale behind the answer.
+- You will engage with scientific topics by creating explanations that reinforce the correctness of an identified answer while drawing from established knowledge.
+- The aim is to clearly articulate how given answers correspond logically with their related questions in a scientific context through supportive facts.
+- Use your grasp of science to create logical explanations that validate answers given in response to relevant questions within this domain.
+- You will be responsible for providing concise yet informative statements that support a response to various scientific questions.
+- Analyze the provided scientific questions and their answers, then create relevant supporting facts that explain why the answers are correct.
+- You need to generate supportive evidence that highlights and elaborates on the correctness of an answer associated with a scientific inquiry.
+- You will establish clear relationships between questions and their respective answers in science by providing concise supporting statements.
+- You will engage in enriching responses by highlighting key facts that support or explain the answers derived from various scientific questions.
+- By analyzing a scientific question and its answer, your job is to produce informative statements that clarify and support the correctness of that answer.
+- In this exercise, you'll connect provided scientific questions with their correct answers by writing supportive facts that reinforce those answers.
+- The goal is to elaborate on the correct answer to a scientific inquiry by producing relevant and concise supporting facts that enhance understanding.
+- In this task, you are called upon to substantiate a provided answer with clear reasoning or principles derived from scientific concepts, enriching understanding.
+- Craft informative details that elucidate the answers to scientific questions, ensuring the explanations are straightforward and accurate.
+- The objective is to write relevant and accurate supporting facts that explain why a particular answer is valid in response to scientific questions.
+- Your challenge lies in bridging the connection between scientific questions and their answers by providing informative support through detailed explanation.
+- Generate supportive narratives that go hand-in-hand with specific scientific answers, explaining their implications while connecting to known facts or theories.
+- You are tasked with explaining a scientific answer by adding supporting evidence or details related to that specific concept.
+- Your role focuses on elaborating on scientific answers by crafting supportive statements that relate directly to the question asked, deepening understanding of the topic.
+- The goal is to elaborate on a given answer by providing factual background or evidence related to the question asked.
+- You will produce detailed explanations anchored in scientific knowledge that correspond with answers provided for given questions.
+- Your responsibility is to articulate key truths or data points that substantiate the correctness of a scientific response.
+- You'll be tasked with providing explanations or facts that reinforce a given answer to enhance comprehension of scientific concepts.
+- Develop supporting content that connects a scientific question with its answer, clarifying the underlying principles involved.
+- Explore the scientific concepts contained within each question and provide contextual facts that reinforce the corresponding answer.
+- You are required to create factual statements that underpin the answers to various scientific inquiries, demonstrating your knowledge of the subject matter.
+- Combine analytical skills with scientific knowledge to generate explanations for given answers in response to posed questions in the field of science.
+- Your task is to provide supporting facts that elaborate on the given answer to a scientific question, showcasing your understanding of the underlying principles.
+- You will synthesize information from given questions and answers and craft supportive facts that elucidate the accuracy of those answers.
+- Engage with scientific knowledge by articulating detailed facts that provide insight into why an answer is correct based on the question asked.
+- Derive enriching facts from given questions and their associated correct answers, showcasing understanding of core scientific concepts and principles.
+- Your responsibility is to provide contextual information related to scientific inquiries, thereby enhancing comprehension of both questions and supplied answers.
+- Employ your understanding of scientific concepts to generate thorough explanations for stated answers, ensuring clarity in presenting the relationship between the two.
+- For the given scientific question and answer, your role is to articulate supportive facts that enhance understanding of the answer.
+- Your role involves translating factual knowledge into coherent statements that demonstrate how the proposed answer connects with the posed question.
+- You will create clear and informative statements that elaborate on answers to scientific inquiries, reinforcing the logical progression of thought.
+- Your role is to clarify and elaborate on correct answers pertaining to scientific questions through systematic explanations or statements grounded in established knowledge.
+- You will delve into science-related queries and construct reasoning behind the correct answers by offering supportive observations or facts.
+- You are expected to supply factual statements that reinforce a scientific response, highlighting important concepts or details.
+- Engage your scientific knowledge by responding with thorough elaborations or supportive facts for specific answers, aiming for clarity and depth of information.
+- The goal is to take a scientific question and its correct answer, then generate succinct supporting information that illustrates the reasoning behind the answer.
+- For each scientific question paired with its answer, you are required to generate relevant facts that further clarify and support the answer provided.
+- You need to synthesize knowledge related to various scientific topics and articulate supporting details for specific answers based on clear evidence and reasoning.
+- Your focus should be on defining or clarifying key scientific concepts by offering supporting statements that build upon the information in the answer.
+- Your assignment is to validate answers to questions through succinct explanations or facts related to the underlying science behind them.
+- You will be required to articulate relevant details or explanations linked to a scientific question and its given answer, expanding the knowledge within the subject.
+- You are charged with producing factual statements that elaborate on the correctness of answers given for various scientific inquiries in order to foster deeper understanding.
+- You are tasked with adding depth to a scientific answer by articulating essential information that strengthens its connection to an inquiry.
+- You are expected to generate explanatory text that illustrates why the answer given is correct in response to the scientific question provided.
+- In this task, your goal is to give concise supporting information that frames a scientific response in context for better understanding.
+- In this task, you will create a supporting statement that explains or elaborates on the relationship between a scientific question and its answer.
+- The goal is to articulate supporting facts for a scientific response, emphasizing the underlying principles or reasons that lead to the answer.
+- This task involves enriching a provided answer with supporting information, helping to validate the answer in the context of science.
+- You will articulate factual explanations linked to the answers of scientific questions, enhancing understanding of complex concepts.
+- The goal here is to produce complementary facts that connect back to the answer attributed to a scientific question in order to enrich understanding.
+- This activity involves synthesizing supporting facts that relate directly to an answer for a specified scientific inquiry.
+- Your task consists of taking a scientific query answered correctly and providing related facts that offer insight into why this response holds true.
+- Describe the factual basis of an answer within the realm of science, ensuring that your explanation connects directly to the related question.
+- Generate succinct explanations that bridge the relationship between a scientific question and its answer, emphasizing clarity and correctness.
+- This task requires you to connect the dots between a scientific question and its corresponding correct answer through relevant supportive facts.
+- Create explanatory information relevant to the response given for each scientific question, making sure to highlight essential details.
+- You’ll respond to scientific inquiries by connecting the dots between the questions and their answers by providing logical and factual explanations.
+- Based on a scientific inquiry and its resolution, provide concise facts that explain why the answer is correct.
+- The objective is to generate supporting explanations for answers in a scientific context, affirming their correctness through additional facts.
+- For each question, you should provide insightful facts that help illuminate the reasoning behind the selected answer in a scientific context.
+- This task involves providing meaningful context related to scientific questions and responses through well-articulated supporting facts.
+- Aim to produce coherent statements that explain why a particular scientific answer is correct, reinforcing knowledge of fundamental principles.
+- The task requires you to formulate definitions or descriptions based on specific questions and correct answers within science, including backing context for clarity.
+- In this task, you will take a scientific question and an answer, and you must provide a relevant explanation that expands on why that answer is correct.
+- Your goal is to develop explanations or facts that logically align with a given scientific answer, illustrating how it relates to broader concepts in science.
+- You will delve into relevant scientific concepts and articulate them as explanations for why an answer is both true and fitting for a posed question.
+- Your task is to generate supporting facts that explain the answers to scientific questions, demonstrating your understanding of the subject matter.
+- Your job is to explain the reasoning behind scientific answers by creating informative statements based on the initial question and answer combination.
+- This exercise asks you to provide connected explanatory statements that highlight how specific scientific knowledge underpins correct responses.
+- You are expected to create explanatory content that aligns with and strengthens the validity of the given scientific response.
+- Your role is to create informative statements that back up a specific answer given for a scientific question, utilizing your knowledge of the subject matter.
+- The task involves deriving contextual facts from a scientific question-answer pair in order to explain and support the correctness of the response.
+- The goal is to enhance comprehension of scientific concepts by generating explanations for correct answers given in response to specific questions.
+- The objective of this task is to elaborate on a correct answer related to a scientific question, giving supporting information.
+- You will be presented with scientific questions along with their correct answers, and your job is to create factual statements that clarify these answers.
+- The mission is to reinforce a scientific answer with appropriate contextual facts, enhancing understanding of the topic at hand.
+- For a posed scientific question and its corresponding answer, your job is to generate relevant information that backs up the answer.
+- The assignment is to expand on a correct scientific answer by delivering informative content that explains why it is accurate.
+- Your task is to provide precise explanations for scientific answers based on given questions, capturing essential relationships and concepts.
+- Generate supporting sentences that clarify and describe the connection between scientific questions and their answers, showcasing your understanding of the subject matter.
+- Ultimately, your job is to expand upon given answers by constructing relevant facts based on scientific knowledge and reasoning.
+- By examining each question with its correct response, your job is to illuminate these responses with relevant factual details that add depth to the understanding of concepts.
+- Your responsibility is to elucidate the answers provided to scientific questions by generating supportive statements grounded in relevant facts.
+- This assignment requires expanding on an answer by providing clear and relevant supporting information that relates directly to the scientific question.
+- Your work involves synthesizing information to support scientific answers while explaining concepts thoroughly following specific questions received.
+- This task involves taking a scientific query and its answer, then building on that answer with details that enhance understanding of the topic.
+- The assignment is about producing supporting details for answers in science, which helps to clarify and elaborate on what has been presented.
+- Create comprehensive explanations that clarify how specific scientific concepts are connected to their answers in response to posed questions.
+- You are expected to generate informative facts that illustrate or clarify why a particular answer is accurate in respect to its related scientific question.
+- Generate context-specific facts that help illustrate why a particular answer is accurate in relation to a science-related query.
+- The task requires you to delve into scientific ideas and create detailed explanations linking the given questions to their respective answers through factual support.
+- Your role involves elucidating a specific scientific answer by crafting additional facts or explanations related to it.
+- Develop concise explanations that detail the relationship between a specified scientific question and its corresponding answer, highlighting key concepts.
+- Synthesize relevant facts and insights from your knowledge base to produce supporting information for answers tied to scientific questions.
+- Your role involves generating informative context which distinctly reinforces an answer regarding a principle or concept in science.
+- Clarify scientific answers by generating relevant supporting information that provides additional insight into why an answer makes sense.
+- Explore each scientific inquiry and articulate meaningful context or details regarding its answer in order to bolster comprehension of the topic.
+- The objective is to elaborate on a scientific response by adding supporting details that explain the underlying concepts related to the given answer.
+- Your responsibility is to strengthen understanding through detailed descriptions that tie scientific questions to their appropriate answers.
+- You will take a scientific question and its correct answer and then create a set of facts that elucidate why that answer is accurate.
+- In this task, you need to create accurate supporting information for given answers, which speaks to your understanding of key scientific ideas and phenomena.
+- This task requires you to build a bridge between scientific knowledge and specific questions by creating facts that explain how and why certain answers are accurate.
+- You will take each question-answer pair from a scientific context and craft additional statements that support the correctness of the answer given.
+- Generate explanations or facts that frame and elucidate an answer, ensuring it connects logically with the question being asked.
+- You will need to connect scientific concepts by providing informative details that highlight why a particular answer fits a given question.
+- This task involves illustrating the relationship between a question posed in science and its corresponding answer through well-supported statements.
+- You will be asked to expand on a correct scientific answer by generating relevant supporting information that explains why the answer is accurate.
+- Provide insightful details that link a scientific question to its answer, demonstrating clarity in explaining why the answer is valid.
+- The goal is to enhance the understanding of provided answers by generating concise facts that are informative and relevant to the scientific question.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task593_sciq_explanation_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task593_sciq_explanation_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- This work requires keen observation as you navigate through integer collections aimed at isolating and calculating products of odd values efficiently.
+- In this exercise, your aim is to manipulate lists that contain various integers. Focus specifically on odd values within those lists and compute their products appropriately.
+- This task involves analyzing groups of integers. For each group, your goal is to compute the product of all odd numbers, and if there are none, you will indicate a specific value.
+- Your responsibility is to explore several lists and derive products from their contained odd numbers. Special care should be taken if certain lists contain no odd entries at all.
+- This task challenges you to evaluate nested integer lists by identifying all odd numbers and calculating their product while ensuring you handle empty cases appropriately with zeros.
+- Your job is to evaluate sets of integers scattered across different lists. Focus on finding and multiplying all odd integers; if an inner list has none, note that with an alternative response.
+- Your goal is to explore a collection of integer lists and identify the product of all odd elements in every sub-list, while ensuring to return a predefined value when no odds are found.
+- Each provided list needs a thorough examination for odd numbers; you will compute their cumulative product and structure your findings into a new format.
+- You'll be given multiple lists containing integers. The challenge is to calculate the product of only the odd integers in each list or return a predetermined value if no odd integers exist.
+- Your goal is to explore lists filled with integers and compute the product of the odd integers in each sublist. For sublists without odd integers, you will note a value of zero.
+- This task involves iterative multiplication of all odd numbers from inner lists, producing solutions that mirror the input structure while adhering to specific output rules.
+- Here, you need to analyze multiple lists of integers and compute a product based on odd numbers. Lists without odd numbers will yield a product of zero.
+- In this challenge, you're given multiple lists of integers. You'll compute the product of all odd integers in each list, returning zeros for lists that don't include any odd numbers.
+- In this task, you are required to process lists of integers. Focus on multiplying only the odd numbers in each sublist, ensuring to return zero when there are no odds available.
+- You must engage with a series of integer arrays where your job is to compute the product of all included odd numbers while defaulting to zero for lists missing odd integers.
+- You’re tasked with working through sets of integer values, concentrating on extracting and multiplying only those that are classified as odd for each respective list.
+- In this assignment, your analytical skills will be put to test as you process lists filled with numbers, focusing specifically on performing multiplications on their odd values.
+- You will analyze multiple lists containing integers. The task involves calculating the product of every odd number in those lists or acknowledging when no odds are found by providing a predefined output.
+- You will be presented with several collections of integers formatted as inner lists. It’s your responsibility to identify and multiply the odd items in each list while handling cases with no odds efficiently.
+- In this task, you will process several lists filled with integers. Your job is to examine each list for odd numbers and determine their product, returning a list of results.
+- The task involves processing lists of integers by identifying and multiplying the odd numbers present in each inner list. If a list has no odd integers, the result should be zero for that entry.
+- You will be given lists that include varying integers. The challenge is to calculate the product for only the odd entries, while providing a fallback of zero for lists lacking odd integers.
+- For every group of integers provided in lists, your objective is to multiply the individual odd numbers. In cases where no odd numbers exist in a list, ensure to include a zero in your results.
+- You will handle multiple lists of integers and specifically deal with odd integers by calculating their product, noting instances with no odd numbers for special output.
+- This task involves evaluating lists that contain integers. You must identify odd numbers in each sublist and compute their combined product, providing results for multiple sublists.
+- Your job here is to engage with a collection of integer lists by calculating products for all found odd numbers in each inner subset. If a subset lacks these characteristics, signify it with zero.
+- This task asks you to work with several lists of integers. Focus on extracting the odd numbers from each list, compute their products, and ensure that lists without any odds have a result of zero.
+- The assignment tasks you with evaluating grouped values of integers where your mission is to isolate and multiply every occurrence of an odd number present in sublists, returning zero if none appear.
+- In this task, you'll sift through various integer lists, focusing on extracting and multiplying every odd number while producing an output that reflects the absence of odd numbers with a zero.
+- Engage with multiple lists of integers, identify all odd elements in each, calculate their product, and gracefully handle cases where no odds are present.
+- Given tasks involving comprehensive integer listings, deduce which values are odd and perform multiplications on these figures while defaulting results to zero when encountering empty sets of odds.
+- Your task is centered around mathematics involving integers. You'll identify odd values in lists, compute their products, and generate an output that summarizes these calculations.
+- You need to assess and process multiple inner lists with integer values. The goal is to compute the product entirely based on their odd number constituents, addressing cases with zero odds uniquely.
+- You are tasked with evaluating several input sets involving integers. Extracting and multiplying the odd components should lead to your results while ensuring those that come up empty return zero.
+- The task consists of going through given integer lists to extract all odd values and calculating their product. Return zero if an inner list contains no such values.
+- You will be tasked with examining numerous integer collections, specifically focusing on odd integers and calculating their product for a defined output format.
+- You will be tasked with evaluating groups of integers arranged in lists. Your challenge is calculating these individual group outcomes based on odd-number multiplication or assigning defaults as necessary.
+- In this task, you will work with lists containing integers and perform multiplication operations on certain numbers based on specified criteria.
+- This involves dealing with various inner lists of numbers. Your task is to find the odd numbers in each list, find their product together, and if there are none, simply return zero as the outcome for that inner list.
+- In this task, you'll work with lists of integers. Your goal is to focus on the odd numbers in each inner list and calculate their product.
+- This task requires you to sift through nested lists filled with integers. Your aim is to extract and calculate the product of all the odd numbers found in each sublist.
+- Your responsibility lies in processing several lists of integers, pinpointing the odd values present in each sub-list for multiplicative results.
+- The task involves processing a series of lists composed of integers, where you need to find the product of all odd integers within each list.
+- You will analyze diverse lists of integers and compute the product of all odd numbers within those lists, offering insights into how many products you attain per list.
+- You need to examine a series of integer lists and pinpoint all the odd integers. Multiply these together for each list while assigning a value of zero for any empty or devoid-of-odd entries.
+- This task involves working with nested lists of integers. You need to examine each inner list to find and multiply odd integers, returning a list of results that indicates the multiplication or a default value if there are no odd integers.
+- As you process various sets of integer lists, be vigilant about extracting odds from each inner grouping and calculating their product, ensuring to default to zero if odds aren’t found.
+- Your job entails dissecting grouped integers into individual lists where multiplication occurs specifically for odd numbers, while treating cases without odds as zeros.
+- The goal here is to traverse through given lists of integers, identify the odd ones, multiply them together for each list, and handle cases where no odd numbers exist by providing a zero.
+- Explore multiple levels of integer data presented in sublists. Your main focus will be extracting and reacting to the presence of odd numbers through multiplication or handling their absence properly.
+- In this exercise, you’ll be looking at various lists of numbers and calculating the product of the odd ones within those. If a list lacks odd numbers, you will note that accordingly.
+- You will encounter structured data consisting of lists of integers. The task requires you to extract odd numbers from these lists and calculate their product for each one.
+- Focus on multiple inner lists of integers to determine how their included odds influence overall multiplication results, being mindful to return different outputs when odds do not exist.
+- Here, you will work with multiple inner lists of integers and determine their odd number products. If an inner list has no odd numbers, you will replace it with a zero in your output.
+- You’re going to explore various lists comprised of integers. The goal is to comprehend which among them consists of valid odd number products, defaulting where necessary if none are discovered.
+- The objective is to evaluate several inner lists filled with integers. For each list, calculate the product of all odd numbers it contains.
+- The task revolves around analyzing various lists of integers. Determine the product of all odd integers in each inner list, noting when none are present to ensure correct outputs.
+- Your task is to collect results from various integer-filled inner lists by focusing solely on the products derived from their odd components; use zero when no odds are present.
+- In this task, explore different inner lists containing integers. Compute the product for all present odd values while returning zero if any inner list holds no such values.
+- This exercise invites you to delve into nested numeric arrays where you'll identify every odd number present per sublist and compute their product or assign a zero if no odds are found.
+- As part of your task, you'll need to sift through numerous integer groups—taking special note only for the odds before computing their products or designating zeros when absent.
+- Your role is to work through a series of integer lists where you must identify odd numbers, perform multiplication on them if they exist, and show zero in cases of their absence.
+- Work with a collection of lists filled with integers. Your responsibility is to determine the product of odd numbers for each inner list, returning a specified result for lists that lack odd integers.
+- You are tasked with evaluating groups of integers organized as lists. Focus on the odd numbers within these lists, calculating their product while noting zero for any that lack odd totals.
+- You will undertake an analysis involving lifting values from lists that consist solely of integers and arrive at results by concentrating on multiplying the odd numbers from within each list while noting zeros otherwise.
+- You will deal with a collection of integer sublists. For each sublist, find the odd integers and multiply them together, or return zero if no odds are present.
+- 'In this exercise, handling nested integer lists is essential. Your mission is clear: calculate products from all identified odd integers or return zero if no odds are available in any list.'
+- You are asked to analyze a series of lists filled with integers, specifically focusing on the odd numbers. Your goal is to calculate their product for each sublist and provide an output list that reflects these calculations.
+- The focus here is on several inner integer arrays where your goal will be to identify and multiply any existing odd numbers; if none are available within a given array, yield a result of zero instead.
+- This task centers around filtering inner integer lists based on their odd numbers, undertaking multiplications and returning results while giving special attention to zero outcomes when applicable.
+- As part of this challenge, you'll examine collections of integer lists and isolate the odd values within them. Multiply these and note zero for any collection lacking odds.
+- The objective is to look through lists filled with integers, isolate the odd ones, perform multiplication on them, and generate an output that reflects your findings accurately.
+- The goal of this task is to analyze multiple inner lists of integers. You are expected to find and multiply all odd numbers in each list, ensuring that if there are none, you output zero.
+- You need to process an input consisting of lists containing integers. Your objective is centered around multiplying odd values while returning zero when no such values are available in a list.
+- The task invites you to dive into groups of integers and ascertain the multiplication results exclusively from their odd components, ensuring proper handling when there are no odds.
+- Your assignment involves analyzing a set of lists containing integers where your focus will be exclusively on calculating the product of the odd numbers found within each sublist.
+- This task involves analyzing various integer arrays where your mission is to locate and multiply all odd numbers in every sublist efficiently while addressing cases without any odds correctly.
+- In this challenge, work with structured integer data within lists. You need to focus on odd numbers, computing their products individually per list or defaulting to a value where applicable.
+- The goal is to extract odd integers from various lists, multiply them together, and return a new list of results that reflects the computations for each inner list.
+- The assignment consists of evaluating lists made up of integers, focusing on computing products for odd numbers present in each list. Handle special scenarios when lists lack odd numbers.
+- The challenge lies in processing several nested lists of integers to discern and multiply only the odd numbers. If any inner list has no odds, that result should be recorded as zero.
+- This is about analyzing nested numerical arrays focused solely on the interactions of their odd components—summarizing results as products or returning zero for absence cases.
+- This activity revolves around manipulating structured lists packed with integers, seeking out all individual odds for multiplication—handling cases without any by indicating a result of zero efficiently.
+- Embrace the task at hand involving multiple integer lists, focused on identifying products formed exclusively by odd values while addressing cases lacking such values with predetermined alternatives.
+- You have a set of lists filled with integers, and your job is to calculate how odd numbers multiply together within each inner list, while providing a fallback output for empty cases.
+- The objective is to traverse through given lists of integers, isolating the odd numbers to multiply them. If none are present in any list, the output will be zero for that specific list.
+- Explore list-based structures filled with integer values. The challenge consists of identifying products formed from all the odd integers while providing a substitute answer in the absence of such values.
+- In this activity, examine inner lists comprising various integers to identify products formed exclusively from odd values while addressing absent odds appropriately.
+- In this exercise involving lists of integers, you need to identify the odd components for multiplication verification across numerous inner arrays while managing exceptions gracefully.
+- Analyze sets of integers organized in inner lists as part of this task. Evaluate their contents for odd numbers and calculate products accordingly while recognizing scenarios devoid of such entries.
+- You will be working with several lists filled with integers, where your objective is to multiply all odd integers in each list together to derive a final result for that group.
+- You'll be challenged with various lists loaded with integers; your mission is to spot the odds within those lists and calculate their collective product or note down zero when necessary.
+- 'You will sort through nested lists of integers with a specific aim: to multiply all the odd numbers you encounter. If an inner list doesn''t feature any odds, simply return zero for that one.'
+- Engage with multiple integer lists and extract only the odd values from within them. Multiply these values together while keeping track to return zero when there are no odds present in a given list.
+- This task focuses on manipulating lists of integers. You must compute the product of odd numbers for each provided list and address scenarios without any odds specifically.
+- In this activity, you will interact with grouped lists of numbers. Your goal is to multiply all odd numbers in each subgroup and handle the scenario where there are no odds available.
+- You are required to navigate through collections of integers, focusing exclusively on their odd components and performing multiplications to produce an accurate outcome list for each sublist.
+- This task requires extracting odd numbers from several integer lists and performing multiplication on those values to generate a corresponding output list.
+- The task involves processing lists of integers to identify and multiply only the odd numbers within each sub-list, resulting in a new list for output.
+- For each inner list of integers provided, your job is to calculate the product of the odd integers, creating a new list based on your findings.
+- This task requires examining lists filled with integers and performing multiplication on the identified odd values only. Any inner lists lacking odds should result in a placeholder zero in your final output.
+- This challenge requires analyzing multiple integer lists to calculate products that comprise only the odd elements therein, ensuring appropriate responses for empty scenarios.
+- The aim of this task is to sift through a list of integer lists and identify the odd values. For each inner list, compute the product of these values or return zero if none exist.
+- This task involves dissecting various integer lists and discerning products solely from their odd numbered items while returning an alternative output when no such items are found.
+- The challenge lies in navigating through nested lists of integers, identifying odd numbers, and calculating their products to generate outcomes for each list provided.
+- This task challenges you to handle a set of integer lists. Each inner list should be checked for odd numbers, which you will then multiply together to produce the result.
+- Engage with a series of integer lists in this task. Your objective is to isolate odd numbers from these lists and calculate their product accordingly for every individual sublist.
+- In this exercise, assess various lists filled with integers. Focus particularly on the calculations concerning odd numbers and manage outputs for cases without such entries correctly.
+- This task revolves around arithmetic operations within various integer lists. You'll identify odd elements in each list and determine their product while handling any absence suitably.
+- This task requires you to take several lists made up of integers and perform multiplication on all the odd numbers found in each sublist. If there are no odd numbers present, simply return zero for that entry.
+- The central theme of this task involves investigating various numerical collections to identify multiples stemming from only the odd figures present, yielding actionable results for future use.
+- The assignment involves handling groups of integers where your objective is to find and multiply all the odd ones within individual lists while indicating zero where applicable.
+- Engage with an assortment of integer lists while focusing on identifying products only from the odd digits present in those sub-lists, keeping track of cases lacking such digits distinctly.
+- Your task is to examine a series of integer collections, calculating how their odd entries multiply together while specifically handling those without any odd contributions carefully.
+- You will be required to evaluate multiple groups of integers, multiplying together only the odd numbers from each group and preparing results accordingly.
+- This task requires you to analyze groups of integers and compute the product of only the odd values in each subgroup, ensuring to note when there are none to return a zero.
+- Embark on an analytical journey through multiple integer arrays where your main goal is to compute products exclusively from the odd numbers present in those arrays.
+- The main objective here is to work with number lists where you must focus on the multiplication of only odd integers, while also considering scenarios with none present.
+- The goal is to take given lists of numbers and filter out the odd integers before computing their product, ensuring to reflect the count of original lists in your output.
+- The task requires you to evaluate several inner lists of integers. For each inner list, find the odd numbers and multiply them together. If no odd numbers exist in a list, note it as zero.
+- The task examines how well you can filter through integer lists, pull out odd numbers, compute their products, and reflect this process in your outputs.
+- In this activity, you will examine collections of integer arrays. Extract odd values, compute their total multiplicative result, and account for instances where no odds exist.
+- You will process multiple lists of numbers. For each list, your focus should be on multiplying all the odd numbers found within it while handling cases where no odd numbers exist.
+- You will be given collections of numbers organized in lists. Your responsibility is to find the odd numbers in each collection, multiply them, and if there are none, report back with zero.
+- This task challenges you to handle several lists of integers. Concentrate on the odd integers within each inner list and calculate their product. If you find no odds in a list, output zero.
+- Your responsibility is to take each inner list of integers and determine a product solely based on odd figures within them, returning results that match the length of the input lists.
+- You'll be working with groups of integers in this task. For each group, check for odd numbers and find their product, ensuring that groups without odd numbers yield a result of zero.
+- 'The goal is straightforward: evaluate nested integer lists, compute the products of only their odd elements, and provide a result of zero where no odds are found.'
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task852_synthetic_multiply_odds
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task852_synthetic_multiply_odds
+user_prompt_template: '{task_def}
+
+
+  {problem}'

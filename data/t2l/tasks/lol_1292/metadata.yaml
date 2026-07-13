@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Review the emotional content in customer feedback regarding various places. Use this emotional context to inform your star rating decision from one to five stars.
+- Your role is to consider both favorable and unfavorable mentions in customer reviews for various places and reflect this in a star rating that accurately depicts their level of satisfaction.
+- The task involves interpreting sentiments from a review. Decide whether the remarks suggest a positive, negative, or neutral experience, then rate it accordingly.
+- Your job is to summarize customer opinions into a clear star rating based on their level of satisfaction from the reviews provided.
+- You'll interpret user comments about locations, aiming to reflect their level of satisfaction with a clear star rating system from one to five stars.
+- Examine customer feedback about a location and summarize the overall impression into a star rating based on satisfaction levels expressed in the review.
+- Take into account the various aspects mentioned in a review and give a comprehensive rating between one and five stars based on the overall sentiment conveyed.
+- Given a review, your role is to judge how good or bad the experience was and rate it accordingly on a one-to-five-star scale.
+- In this task, you will analyze customer reviews and determine an appropriate star rating for the place described, reflecting overall satisfaction and experiences shared.
+- Your task involves decoding customer experiences relayed in reviews and transforming them into numeric ratings that reflect their enjoyment or disappointment.
+- Analyze the pros and cons highlighted in customer feedback about eating establishments and translate those insights into appropriate star ratings that reflect the overall customer experience.
+- Your task is to evaluate reviews of various establishments and assign a star rating based on the overall sentiment expressed in the review.
+- Gather insights from diverse customer reviews reflecting their visits or interactions with different establishments. Then provide an informed star rating based on those observations.
+- Identify key sentiments within reviews. Each review should yield a numerical representation of customer satisfaction in terms of stars.
+- Evaluate reviews that express personal experiences in various establishments—balance favorable attributes against complaints to decide on your star rating.
+- Read and analyze the provided reviews to gauge customer satisfaction. Your goal is to translate their experiences into a star rating between 1 and 5.
+- Read through a customer’s experience at a venue and determine an overall star rating that encapsulates their satisfaction or dissatisfaction.
+- Take into account the details in customer reviews, considering factors such as food quality, service speed, and ambiance, to provide an accurate star rating.
+- Your task is to extract the overall sentiment from a review of an establishment and translate it into a star rating. Look for key details that highlight both good experiences and areas needing improvement.
+- The task involves judging different eateries based on user feedback. You will rate each establishment with stars according to how well it satisfies customer expectations.
+- Your job is to interpret customer feedback about various establishments, focusing on the quality mentioned, and rate them with stars accordingly.
+- Your task is to evaluate customer reviews of various places and assign a suitable star rating based on the quality of the experience described.
+- You will gauge customer sentiments through their written reviews of different entities, summarizing their experiences with a clear star rating system that communicates satisfaction levels.
+- Read through the provided reviews and assess the feelings conveyed about each place. Based on this analysis, give a star rating that reflects the reviewer's satisfaction.
+- Analyze the sentiments expressed in reviews about dining experiences. Your goal is to rate these experiences with a star system, reflecting the review's tone and content.
+- Your task involves interpreting qualitative feedback from reviews to arrive at an accurate star rating that expresses customer satisfaction.
+- Read through descriptions of places shared by customers; then use your findings to rate each one on a scale from one to five stars.
+- Dive into various reviews and determine how well each place is perceived. Assign a star rating that captures the general sentiment from those reviews.
+- Determine how well a place is rated based on customer feedback. Look for specific comments about the experience to guide your rating from 1 to 5 stars.
+- Based on expressed opinions in reviews, determine how satisfied guests were with their experiences by assigning a suitable star rating from one to five.
+- Read through a series of reviews and assign a star rating from one to five that encapsulates the overall experience described by the reviewer towards a venue.
+- Deliver an informed judgment about different locations by reading through provided reviews. Your assessment will be showcased as a star rating that reflects how reviewers experienced those places.
+- From the provided review, gauge the quality of the experience described and deliver a corresponding star rating that encapsulates that evaluation.
+- Your duty is to evaluate personal experiences shared in reviews and respond with an appropriate star-based assessment reflecting those experiences.
+- For each review provided, you will judge the sentiments expressed about a location, taking into account positive or negative feedback, then rate accordingly from one to five stars.
+- You will read a review about an establishment and use your judgment to rate it on a scale of one to five stars, reflecting the experience described.
+- You will classify customer experiences based on detailed reviews into categories from one to five stars, reflecting satisfaction levels in relation to service, atmosphere, and food quality.
+- The task requires you to consider various customer opinions expressed in reviews about specific venues and assign them a rating that quantifies their overall view of these places.
+- Based on the qualitative feedback given in reviews, provide a numerical star rating that encapsulates how customers rate their experiences at various locations.
+- Your role is to evaluate a place based on a provided review and assign a star rating from 1 to 5 that reflects the overall sentiment expressed by the reviewer.
+- After reading a review, evaluate the strengths and weaknesses mentioned by the reviewer. Use this evaluation to give a star rating that encapsulates their experience.
+- Take into account key points mentioned in several reviews regarding particular places before concluding which score best represents how users regard their experiences with those establishments.
+- For every review given, assess the feedback shared and express your evaluation by rating the place from one to five stars according to how well it was received.
+- Your responsibility is to assess the tone and content of reviews about places and designate them a star rating that accurately reflects customer opinions.
+- Take note of the aspects highlighted in customer feedback and gauge their overall impression through an appropriate star rating scale from 1 to 5.
+- Your task involves reflecting on personal experiences shared by customers about various services or products and translating those insights into a standardized star rating.
+- Take into account the feelings conveyed in a review of a place’s atmosphere, food, and service to assign it an accurate star rating from one to five.
+- Assess the overall sentiments conveyed in a selection of reviews concerning dining experiences, then provide a star rating that captures how patrons felt about their visits.
+- By examining customer reviews, you will assign a star rating to the establishment being reviewed, grounding your evaluation in your understanding of customer satisfaction metrics.
+- In this task, you will interpret the sentiments in reviews and translate those feelings into a numeric star rating, guiding others on their choices.
+- Read customer reviews critically to understand their sentiments toward a place and assign it an appropriate star value representing their experience level.
+- Sift through customer narratives about their experiences at establishments to convey their overall satisfaction level through corresponding star ratings.
+- Interpret reviews focusing on overall feelings towards restaurants or attractions, and provide ratings that capture those insights concisely with stars.
+- Engage with reviews that provide insights into users' experiences at various locations. From this engagement, derive meaningful ratings encapsulated in stars based on positive remarks and any noted shortcomings.
+- Gauge customer feedback from multiple reviews of places, combining both praise and criticism, leading to a comprehensive star rating that sums up their dining experiences.
+- Your role is akin to a reviewer yourself; you'll need to assess how positive or negative feedback translates into a visual representation of approval via star ratings.
+- Read through the review carefully and judge the atmosphere, service, food quality, and other mentioned aspects of the place to give it a fair star rating.
+- Determine how well-received a place is according to reviews, considering factors like atmosphere, service quality, and overall satisfaction in your rating.
+- Determine an overall satisfaction level based on detailed reviews about various places. This requires recognizing both positive comments and criticisms.
+- Delve into customer remarks regarding their time at restaurants. Filter through different opinions to arrive at a condensed star rating that best captures their overall satisfaction.
+- Assess reviews for any indicators of positive or negative experiences at a venue. Translate those observations into an appropriate star rating from 1 to 5 stars.
+- Analyze the sentiments expressed in a review about a location, focusing on what the reviewer liked and disliked in order to give an appropriate star rating.
+- Read through each review carefully, and then assign a star rating that corresponds to the satisfaction level indicated by the reviewer.
+- Look at how customers describe their experiences at restaurants, focusing on both good and bad details, and then give an overall star rating based on your interpretation.
+- Your job is to examine feedback regarding various businesses, assessing elements like service quality, product satisfaction, and overall experience, then assigning a star rating.
+- Your mission is to interpret a review of a business and express this interpretation through a star rating. Focus on how the reviewer describes their experience and whether they recommend the place.
+- Evaluate reviews for different establishments by identifying key points of praise or criticism and providing a star rating to reflect those sentiments.
+- Read reviews attentively to understand patrons' feelings toward their experience at various establishments. After this analysis, present your findings in the form of a star rating that reflects overall satisfaction.
+- You will read a customer review about a location and provide a rating from 1 to 5 stars. Consider the sentiments and details in the review to guide your decision.
+- Your task is to evaluate reviews of various places and assign them a star rating based on the quality of food, service, and overall experience described.
+- Review the provided commentary about a place, looking for clues about satisfaction or dissatisfaction to guide your decision on an appropriate star rating.
+- You will read through customer reviews and determine how positive or negative the experience was, rating it from 1 to 5 stars accordingly.
+- Look closely at customer feedback to rate their experience from one star for poor experiences to five stars for exceptional ones, based on their comments.
+- Given user feedback about services or venues, your objective is to assess the quality based on their comments and assign a corresponding star rating.
+- Your challenge is to interpret reviews critically, considering both praises and criticisms, to arrive at a justified star rating for each venue discussed.
+- Examine reviews for clues about quality in service and food offered at different locations. Use this insight to determine a fitting star rating for each review.
+- The job requires you to synthesize information from an array of customer reviews and assign a numerical value that represents their opinions clearly through a star system.
+- Your task is to decipher customer sentiments from various establishment reviews and assign appropriate star ratings that reflect those sentiments accurately.
+- Your job involves interpreting reviews of places and assigning a star rating based on the positivity or negativity of the comments made by customers.
+- Evaluate written feedback about different locations based on food experience and customer service. Your assessment should lead to a star rating indicative of overall satisfaction.
+- Consider the positive and negative aspects mentioned in a review, then summarize your assessment with a star rating between one and five stars.
+- Your task involves translating customer experiences described in reviews into numerical ratings expressed in stars based on overall satisfaction.
+- Read through a review carefully and provide a star rating that encapsulates the essence of the reviewer’s feedback. Consider factors such as food quality, service level, and personal feelings about their experience.
+- For each review given, focus on the key points made regarding service and food quality. Use this information to determine an appropriate star rating that encapsulates the experience.
+- You will read a review that describes someone's experience at a location. Your role is to judge the overall impression and provide an appropriate star rating.
+- Your task is to evaluate reviews of various places and assign a star rating from 1 to 5 based on the sentiments expressed in those reviews.
+- Synthesize information from a review regarding various elements of a place’s appeal and arrive at a suitable star rating based on implied quality.
+- Evaluate the tone and content of a written review to decide a suitable star rating that sums up the reviewer's experience at the location discussed.
+- You will be engaging with customer-written evaluations of venues, assessing their overall satisfaction levels as expressed through their words. Translate these assessments into corresponding star ratings that encapsulate their experience.
+- Read through reviews that discuss experiences at specific locations. Use your understanding of customer satisfaction to evaluate and provide an appropriate star rating.
+- Your responsibility is to interpret individual reviews and convey an overall assessment by assigning a numerical star rating that represents customer satisfaction levels.
+- Read through the review carefully, note the positives and negatives mentioned, then assign a star rating, with 1 being the worst and 5 being the best.
+- Interpret customer reviews that discuss various aspects of their experiences at establishments. Use their insights to formulate an appropriate star rating.
+- Assess written opinions on restaurants or service providers and convert those opinions into a star rating that accurately represents customer satisfaction levels.
+- Assess the quality of a place based on a written review. Use the feelings expressed in the review to determine an appropriate star rating.
+- Based on the tone and content of customer reviews, make an assessment of satisfaction levels by determining an appropriate numerical star rating from one to five.
+- Look closely at each review's sentiments—from enthusiasm to frustration—and translate these into an evaluative star rating for each location assessed.
+- Given a review, your role is to interpret the opinion and experiences shared by the reviewer, then determine an appropriate star rating that reflects their sentiment.
+- Sort through specific reviews about businesses and provide an accurate star rating based on overall satisfaction conveyed in the text. Assess both positive highlights and criticisms when making your decision.
+- You need to read through feedback about different locations and provide a star rating that captures the reviewer's perception and experience with the service or product.
+- After reviewing customer feedback, rate each venue using stars. Your rating should reflect overall experience based on specific mentions in the review.
+- Review the feedback provided about a location and evaluate its qualities to give an appropriate star rating based on your interpretation of the text.
+- Dive into the details of customer reviews to gauge sentiments related to dining experiences or service interactions. Use this insight to deliver an appropriate star rating reflecting how well or poorly guests perceive the venue.
+- Your task is to gauge the sentiments expressed in customer reviews, weighing both positive praises and negative critiques to derive an accurate star rating for each place covered.
+- Read through evaluations of various places while considering factors like service efficiency and product quality in order to assign an insightful star rating that communicates client satisfaction.
+- Read through customer experiences shared in reviews, identifying levels of enjoyment or disappointment, before translating those reflections into numerical star ratings.
+- The objective is to interpret customer feedback about different locations and assign a star rating from one to five, considering the positive and negative aspects mentioned.
+- Your goal is to interpret a review and deliver a star rating that captures the essence of what was said about the place's quality and service.
+- You'll be rating different places based on customer feedback, reflecting how well they met expectations or provided services as described in the reviews.
+- Assess the given review of a location and determine an appropriate rating that captures the reviewer's experience, considering both positive and negative comments.
+- Reflect on the positive and negative points mentioned in the review, using them as a basis for assigning an accurate star rating for the establishment.
+- Analyze written feedback about different establishments and assess the overall satisfaction level by providing a rating between one and five stars.
+- Analyze customer-written reviews for tone, sentiment, and recommendations made by others when deciding how many stars best reflect their experiences at each venue.
+- Analyze the text of a review to gauge the quality of an establishment, then provide a star rating that best represents the reviewer’s opinion.
+- Your task is to digest consumer feedback expressed in qualitative reviews and translate them into a star count that signifies overall satisfaction or dissatisfaction.
+- Review and synthesize various opinions expressed in a customer’s feedback, leading to an appropriate numeric rating reflecting their experience.
+- Analyze the content of a review for a location and assign a star rating that reflects the reviewer's opinion. Take into account their satisfaction with service and offerings to determine the appropriate score.
+- Read through customer experiences with specific places, focusing on both positive and negative aspects, and rate the overall impression from one to five stars.
+- Review the details shared about a place and evaluate them to assign a star rating. Think about the overall impression given by the comments.
+- Take into account both commendable aspects and areas for improvement mentioned in reviews in order to settle on a fitting star rating.
+- You will evaluate consumer experiences reported in reviews and provide star ratings that best represent the overall impression shared by reviewers.
+- This job requires you to thoroughly read and interpret customer reviews, evaluating the experiences shared before deciding on an appropriate star rating for each venue.
+- Reflecting on customer insights from reviews, your job is to assign a star rating that mirrors their satisfaction with their visit to the venue.
+- Your task is to evaluate a review of a place and assign it a star rating based on the overall impression conveyed by the reviewer.
+- Evaluate customer accounts of their experiences at businesses or eateries by focusing on particularly highlighted points, then decide on an appropriate star rating accordingly.
+- Evaluate customer feedback in the form of reviews about various places and provide a corresponding star rating. This involves consideration of multiple elements such as ambiance, service efficiency, and satisfaction with offerings.
+- Based on a detailed review, assess the establishment's performance through a star rating system. The goal is to reflect how the reviewer felt about their visit, capturing both positive and negative aspects.
+- Consider various aspects mentioned in restaurant reviews—like food quality and staff interaction—and use these observations to allocate a suitable star rating for them.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1292_yelp_review_full_text_categorization
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1292_yelp_review_full_text_categorization
+user_prompt_template: '{task_def}
+
+
+  {problem}'

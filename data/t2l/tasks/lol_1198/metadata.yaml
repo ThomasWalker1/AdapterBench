@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Engage with scenarios involving participants' interactions, examining if one participant's behavior instills a yearning or wish in another participant regarding a particular outcome.
+- This task requires you to critically think about how an action from one participant might prompt others to want certain outcomes, identifying connections between events.
+- Your goal is to assess a scenario where one person’s actions might trigger a desire in someone else for a specific outcome. Consider if the described situation logically leads to that desire.
+- Analyze how specific actions expressed can lead to subsequent wants or needs articulated outside those actions. This requires assessing implications and motivations inherent in human behavior.
+- You will be tasked with deciding if a described situation encourages someone else to want what is mentioned in a following phrase. It requires understanding human interactions and motivations.
+- Explore various scenarios where initial actions provoke reactions from others in terms of wants and desires, evaluating how situations intertwine emotionally and logically.
+- You will assess various interactions, determining whether they influence desires or motivations, particularly focusing on how one action can lead another individual wanting something.
+- Break down sequences of actions and their results. Determine if a character's request or action leads another character to want something presented later.
+- The challenge here is to interpret events involving individuals and ascertain whether these events lead another person to wish for something identified in the task.
+- In this task, you will parse through pairs of phrases, identifying whether an action leads someone else to want what follows in a logical way.
+- Evaluate different scenarios where one person's action may influence another's feelings or desires about a certain situation. Understanding emotional responses is central to this task.
+- Scrutinize phrased interactions where motives are implied between actions taken by one person and potential desires elicited from another's perspective within a dichotomy.
+- Your task is to analyze a pair of phrases, determining if one leads to a desire expressed in the second. This involves understanding context and the implications of actions.
+- You will decipher a scenario involving distinct actions and determine if they lead to a desire for something by another individual, based on contextual clues provided in the phrases.
+- You are analyzing interpersonal scenarios to determine if an action leads someone else to want something else, requiring an understanding of motivation.
+- In this exercise, you will draw conclusions about intention and motivation by looking at an initial action and its potential impact on someone else’s desires or needs.
+- Your role here is to critically evaluate events and their effects on desires, specifically whether one event prompts interest or wishfulness in another participant.
+- In this task, you need to analyze relationships between events and determine if one event leads another participant to have a desire related to a given outcome.
+- Your task requires evaluating a scenario where one action influences another person's wants or needs. You'll decide whether that influence is present based on the information given.
+- Your task is to gauge connections between two events and assess if the desire for additional actions emerges as a consequence of the first event.
+- You are tasked with evaluating pairs of events to judge whether the first event causes the second participant to want something specified in the second event. This requires understanding cause and effect in social situations.
+- This task requires you to interpret a sequence of events and decide if the outcome leads to a desire for what is stated in the Tail phrase.
+- You will scrutinize situations involving two parties and evaluate if one party's action leads to yearning for something specific by the other involved party.
+- You need to look at how actions described in the first part of the statement affect the wishes of other participants mentioned in the second part.
+- In this task, interpret how particular scenarios create emotional responses, focusing on whether one event encourages another person’s desire for something mentioned next.
+- The task involves interpreting short phrases related to events involving generic participants. You need to analyze whether one participant's action will lead to another participant wanting something.
+- You will explore whether certain actions by one individual create a heartfelt wish or need in someone else for specific goals expressed afterward.
+- Focus on understanding relational cues and determine if actions taken lead others to seek satisfaction or fulfillment related to those actions.
+- The goal is to identify if an occurrence involving a person leads to another person’s interest or intent regarding a subsequent activity indicated in the statements.
+- You are required to analyze the relationships between two phrases that indicate actions or events. Your job is to assess whether one event creates a desire in another person.
+- You will evaluate event pairs by identifying if there is a motivational link from one person's action that influences another's desires mentioned afterward.
+- In this task, consider how actions taken by one person can generate wants or desires in another, focusing on interpersonal dynamics and motivations.
+- Given two short statements, your responsibility is to interpret whether the action of one person instigates a desire in another for what follows in the second statement.
+- The challenge requires discerning whether an individual's behavior leads others to have hopes or aspirations linked with situations presented, testing relational comprehension skills.
+- In this analytical task, you are tasked with connecting cause and effect within social interactions by assessing whether one participant's behavior drives interest or desire for something else by others involved.
+- In this evaluation task, examine different scenarios where one individual's actions might lead others to have certain desires. Understanding context and implication is crucial.
+- This involves reasoning whether an event leads another individual to develop an interest or desire related to mentioned circumstances, analyzing cause and effect in social interactions.
+- You are asked to evaluate a situation involving two events, considering whether one event leads another person to want something specific. Understanding people's intentions is key.
+- This task focuses on decoding situational dynamics to unveil whether specific behaviors lead to an expressed desire from other characters involved.
+- You will need to consider how specific actions by one individual influence others and whether these actions lead them to want what is outlined in another phrase.
+- The focus of this task is on scenarios where one person's actions impact another's wants. You need to determine if there's a clear connection between the Head and the Tail.
+- This exercise invites you to deduce connections between narrated events, determining whether they bring about a yearning or intent within other specified individuals following each main statement.
+- The task requires you to discern whether an event will lead to a longing for something else by another individual, based on the context provided.
+- Your job is to assess given scenarios where actions involve different participants and decide if those actions will create a desire in others for certain outcomes.
+- In this task, focus on the linkage between actions performed by one individual and the resulting desires they might inspire in others. It tests your understanding of motives and consequences.
+- Your task is to extract insights regarding human behavior and desire from pairs of events, focusing on how actions can shape others’ states of mind.
+- Engage with pairs of statements about actions taken by one party and explore if those actions create a longing for something in another person according to what is presented.
+- This task involves examining relationships and intentions, where you interpret what someone may want based on another's actions in a given situation.
+- Your goal is to deduce whether an action taken by PersonX affects PersonY's subsequent desires, looking for logical connections between events.
+- You will consider short event phrases and infer if there is a resulting want from PersonY or others due to the actions of PersonX.
+- Evaluate situations where personal actions influence others' aspirations, considering relational psychology and the nuances of human interactions.
+- You will be interpreting the dynamics between two described events, determining if the first event makes others desire what is conveyed in the second event.
+- This exercise demands attention to cause and effect relationships within everyday events, aimed at establishing whether actions elicit desires in others involved.
+- Analyze a sequence of actions and reactions to determine if there is a resultant desire in others following the initial action. Understanding social dynamics is key to making these evaluations.
+- Delve into the nature of communication between individuals, assessing whether actions inspire subsequent feelings or needs as captured in additional phrasing.
+- This task entails evaluating interactions where desires may arise from specific actions, requiring careful reasoning about emotional responses.
+- Focus on short phrases that outline specific events. Your goal is to ascertain if an initial action prompts some kind of wanting or interest from another party involved.
+- The focus of this task is on decision-making based on hypothetical interaction scenarios. You must identify if an initial action generates an interest or desire from another participant.
+- Evaluate if PersonX's actions are likely to inspire PersonY’s needs based on the context provided, considering motivations behind their responses.
+- In this task, focus on how an action described in the first phrase impacts the potential wants or needs of another person mentioned in the second phrase.
+- The essence of this task lies in assessing causal relationships between events, specifically checking if they initiate desire in other participants following those events.
+- You’ll need to think critically about cause-and-effect relationships between actions and desires, evaluating how they affect various persons in a scenario.
+- You will review short phrases describing actions and relationships between people, aiming to identify if an initial action gives rise to a particular wish from another person.
+- You will look at pairs of statements that illustrate interactions between characters. Your goal is to identify if the first statement would make a second person wish for something.
+- This task challenges you to consider short events described in phrases and figure out if someone will want what is mentioned in the subsequent part as a result of the first event.
+- You will analyze brief scenarios to ascertain whether a particular action influences someone else's desire for a subsequent event or object.
+- Analyze the relationship between events where one character’s conduct may evoke a desire for something from another character, assessing their interactions.
+- The focus here is on evaluating scenarios where one person's performance may lead another to express their needs or desires subsequently articulated.
+- This task challenges you to distinguish between events and their potential outcomes on people’s feelings and desires, focusing on implications within interpersonal interactions.
+- This task requires you to interpret events and their aftermaths, particularly concerning whether they evoke desire in another character based on given phrases.
+- Your task involves evaluating interactions and inferring whether one character’s behavior can lead to a desire for something in another character as described in the second phrase.
+- Investigate brief exchanges between characters where one influences another’s wants, interpreting the relational aspect of their interactions accurately.
+- Your goal is to evaluate interactions between participants and assess if one person's actions create a desire for something specific in another person.
+- You’ll explore how one character’s decision can inspire or indicate desire in others, highlighting key motifs from relational dynamics in language.
+- The essence of this task is about linking actions to desires. Analyze whether the first statement, defined by a person’s action, would make another want what comes next.
+- Your job is to evaluate connections between two related phrases. Decide whether the action in the first phrase would naturally lead another person to have a specific desire as outlined in the second.
+- Determine if a particular action taken by PersonX results in PersonY developing a desire for what is mentioned next, exploring relational dynamics.
+- Analyze the implications of one person's action on another's desires. Your decision will reflect an understanding of relational dynamics between individuals.
+- You will analyze pairs of actions and determine if a character's action influences another character's wants or needs, reflecting on interpersonal motivations.
+- Examine two parts of an event — the head and the tail. Determine if the head event causes a desire or interest in what is mentioned in the tail event.
+- In this exercise, determine if the outcome of one person’s actions naturally leads someone else to yearn for what is introduced in the following segment.
+- Your objective is to investigate whether one person’s behavior makes another want something else mentioned later. Analyzing interpersonal dynamics will play a crucial role in your decision-making.
+- Engage with short event phrases and determine if an action influences another person's wishes or intentions, requiring attention to cause and effect relationships.
+- Delve into event pairs to clarify how one person's initiative impacts another's desires, determining potential interests or wants resulting from that initiative.
+- Your responsibility is to assess a pair of event phrases to decide if one action influences another person's desire regarding a specific outcome mentioned in the second phrase.
+- Your task involves interpreting relational events in phrases, particularly assessing if one action logically leads another person to wish for something specific mentioned next.
+- Examine pairs of short phrase events for their relational consequences, particularly focusing on whether one event aligns with resulting wants from another participant.
+- This task involves interpreting short phrases to understand how an action taken by one person could translate into a desire for something by another person or group.
+- You will look at situations where one person's action might impact what someone else wants or wishes to do, identifying the connection between the two.
+- You will examine pairs of statements to see if one leads to a desire in another person. It calls for insights into human behavior and reasoning about relationships.
+- In this assessment, you analyze short event descriptions and evaluate how one participant's behavior may influence another person's wants, as indicated by subsequent information.
+- You must figure out how particular actions can spark interest or desire from someone else, focusing on emotional responses embedded within relational dynamics.
+- Your mission is to connect events and discern whether there’s a logical flow where one event induces a desire articulated in another phrase.
+- Evaluate how actions taken by one individual can create an impetus for another person’s wants. This requires an understanding of social cues and motivations.
+- Your task involves determining if the result of an action leads another individual to wish for something specified in another phrase, highlighting motivation analysis.
+- Analyze situations where an event might lead someone else to have a craving for something specific. Reflect on human psychology as part of your reasoning process.
+- You will evaluate situations to see if an event instigated by one person influences others' desires for specific results. Think about the implications of each action.
+- Your analysis involves determining the influence of an event conducted by PersonX on the desires of other individuals as portrayed through accompanying statements.
+- Investigate and see if there’s enough connection between two statements where one might encourage a wanting reaction from someone else involved.
+- In this task, you assess two events involving specific characters and decide if one event causes the other character to desire something mentioned in the second event.
+- Your task is to discern if an initial event triggers a subsequent wanting behavior in another character, emphasizing cause-and-effect reasoning.
+- Assess if an individual's behavior has enough significance to create a desire or wish expressed by another, considering social interactions and implications.
+- The service of this task lies in gauging psychological responses in social settings. Reflect on how actions lead to desires among participants, as expressed across two segments of information.
+- Engage with simple statements that describe actions between people. Your goal is to assess if these actions lead to a desire or longing for something by another person.
+- Analyze the relationship between actions and desires in various scenarios. Your goal is to see if an action motivates someone else to want something more.
+- Delve into sequences of actions and their potential influence on desires, determining if an initial action yields specific wishes from another individual involved.
+- In this task, you will explore whether a specified event encourages another person’s interest in a particular outcome. Understanding emotional responses will help guide your judgments.
+- The exercise focuses on discerning emotional or desire-based responses triggered by certain actions involving predefined individuals in various scenarios.
+- Look at given phrases to uncover underlying desires influenced by actions. Assess how they might correspond based on social interaction norms.
+- You should assess two related expressions, identifying whether one event prompted by PersonX creates interest or longing within PersonY or others involved.
+- This exercise involves interpreting two connected phrases to assess if one action leads another individual to want something specified in the second phrase.
+- This exercise tasks you with determining if one person's actions influence another's wishes related to an event that follows. Think deeply about connection between actions and desires.
+- You will explore how events lead to desires, examining whether what's presented in one part causes a following reaction of longing or wanting from someone else.
+- The task requires you to connect actions with desires in social situations. You'll evaluate whether one event fosters a desire for something else within another person.
+- Here, you will look at events described in tuples and evaluate whether they spark a desire in another person as articulated in the following phrase.
+- Reflect on how each participant interacts through given events. Your analysis should reveal whether these interactions ignite any wants or needs mentioned later on.
+- Engage with a set of phrases that describe social interactions. Your task is to assess if these interactions engender a want or desire in others mentioned in the second phrase.
+- Review paired phrases to identify if there is a causal relationship, where the first event influences what the second individual may want or desire thereafter.
+- In this exercise, you must look at pairs of phrases where the first indicates an action. Your goal is to determine if that action makes someone else wish for something related in the second phrase.
+- The task requires you to consider the implications of actions described in short phrases. Determine if the result of one person's action fosters a want in someone else.
+- This task involves understanding how verbalized actions affect emotions or desires of other individuals within a context provided by paired statements.
+- This task examines the narrative flow between events, asking you to testify to whether one action inspires another's longing as stated in following remarks.
+- This activity involves reasoning about relational dynamics between characters represented by placeholders. Your goal is to determine if actions elicit any form of desire from others involved indirectly.
+- In this task, you will evaluate scenarios involving two events and determine if one event leads another person to desire something related to the second event.
+- The task requires you to consider how one person's decision or action can inspire another's desire for something mentioned afterward. It's about understanding motivation and response.
+- Consider the implications of one person's actions on others' desires. You must decide if the relationship hints at a craving or interest in what’s mentioned next.
+- Your job is to connect the dots between one person's action and its potential impact on another's desires. Assess how they relate based on the context provided.
+- In this task, you analyze a situation involving PersonX and determine whether PersonY or others will desire the outcome described in the Tail based on the action mentioned in the Head.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1198_atomic_classification_owant
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1198_atomic_classification_owant
+user_prompt_template: '{task_def}
+
+
+  {problem}'

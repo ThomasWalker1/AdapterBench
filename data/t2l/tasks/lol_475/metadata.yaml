@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Interpret customer sentiments from detailed reviews and categorize them appropriately, ensuring clear identification of positive versus negative feelings.
+- Your job here is to read through Yelp reviews and classify them as expressing either a positive vibe from happy customers or a negative feeling from those who were let down.
+- The exercise here is to examine customer critiques from Yelp and identify the predominant sentiment conveyed by each reviewer—whether they were pleased with their service or felt let down.
+- Review customer feedback from Yelp and assign each review as either "POSITIVE" or "NEGATIVE" according to how pleased or displeased the reviewer appears to feel.
+- The task requires you to read Yelp reviews and determine the overall sentiment expressed in each one, categorizing it as either positive or negative based on the language used.
+- In this task, you will evaluate Yelp reviews to determine their overall sentiment. You will categorize each review as either positive or negative based on the feelings conveyed in the text.
+- Your challenge is to decode customer feedback on Yelp by determining if each review showcases a positive opinion or reveals disappointment.
+- Work with Yelp reviews, using your understanding of customer satisfaction, to judge whether a review conveys a favorable or unfavorable experience.
+- In this task, you will assess customer feedback in Yelp reviews and assign a label of "POSITIVE" or "NEGATIVE" according to the reviewers' sentiments.
+- In this exercise, you are asked to consider Yelp reviews and classify them. Determine if the experiences described by customers are overwhelmingly positive or negative in nature.
+- This task focuses on reading customer feedback from Yelp and determining whether it indicates satisfaction with a business or an inclination towards discontent, assigning appropriate labels accordingly.
+- As part of this task, you will interpret customer reviews on Yelp, choosing to label them as either positive or negative depending on the tone and content of the remarks.
+- Your task is to analyze Yelp reviews and determine whether the overall sentiment is positive or negative based on the content provided.
+- Read and evaluate customer feedback provided in Yelp reviews, and categorize each review based on whether it reflects a positive experience or a negative one.
+- Analyze personal experiences described in Yelp reviews to conclude whether they signify joy or frustration, denoting them as positive or negative accordingly.
+- This involves evaluating Yelp reviews for their overall emotional tone. Determine if each review celebrates a positive customer experience or highlights dissatisfaction with products or services.
+- The aim is to judge the overall sentiment in Yelp reviews. Decide if the reviewer's feelings align more with satisfaction (positive) or dissatisfaction (negative).
+- Your task is to evaluate different Yelp reviews and classify each one as expressing either a positive or negative opinion about a restaurant or dining experience.
+- Examine the wording used in Yelp reviews closely. Use this analysis to categorize each review as either conveying a positive impression or revealing a negative experience.
+- In this task, interpret various Yelp reviews by identifying emotional cues and classifying them as favorable reactions or adverse ones based on customer satisfaction.
+- This involves reading analyses of dining experiences shared by customers on Yelp, categorizing their sentiments into two distinct classes—those with a positive outlook versus those with negative feelings.
+- Your task is to assess reviews on Yelp and determine their emotional stance, categorizing them as positive if they express enjoyment, or negative if they reflect dissatisfaction.
+- You’ll be reviewing several Yelp evaluations to tag each one as expressing good vibes (positive) or bad experiences (negative).
+- Evaluate customer feedback found in Yelp reviews for their emotional accuracy. Decide if customers felt positively about their visits or negatively due to unsatisfactory service.
+- Analyze customer reviews from Yelp to categorize them based on sentiment. Your focus should be on identifying whether the reviewer had a positive experience or a negative one.
+- This task involves sentiment analysis of Yelp reviews. You will identify if the reviewer had a good or bad experience at a business based only on what they wrote.
+- The task is about understanding user experiences captured in Yelp reviews. Identify whether the feelings conveyed lean toward approval or disapproval of the service received.
+- Examine a set of Yelp reviews, focusing on discerning whether each reflects a positive experience worth recommending or a negative one that warns others.
+- You will be scrutinizing customer reviews on Yelp, focusing on emotional content to label each review as either positive or negative based on the reviewer’s satisfaction level.
+- This assignment requires you to interpret customer sentiments in Yelp reviews, discerning whether the feedback praises or criticizes the service received.
+- Your role is to evaluate the feelings expressed in Yelp reviews. Determine if the reviewer is pleased with their experience, indicating a positive sentiment, or unhappy, which signifies a negative sentiment.
+- The task requires you to evaluate feedback provided in Yelp reviews, focusing on identifying if the majority of the sentiments expressed are factors of satisfaction (positive) or sources of complaint (negative).
+- The task at hand requires you to understand customer sentiments articulated in Yelp reviews, distinguishing between those that convey positive and negative feedback.
+- In this task, you analyze Yelp reviews to determine whether the overall feeling expressed is positive or negative.
+- Read through detailed Yelp reviews and decide if they reflect a positive view of the service or product, or if they showcase negativity and disappointment regarding the experience.
+- Your goal is to read and evaluate customer feedback from Yelp. You must decide whether each review reflects a positive experience or a negative one.
+- In this task, you will look at customer sentiments expressed in Yelp reviews and categorize them accordingly as either positive for happy customers or negative for those who were let down by their experiences.
+- Examine Yelp reviews for indications of either positive or negative experiences. Use your judgment to classify each review based on overall satisfaction expressed by the customer.
+- Your job is to interpret feedback left on Yelp by customers. You should assess if the sentiment of each review falls into positive sentiments or negative ones.
+- In this assessment, you will read multiple Yelp reviews and classify them based on overall sentiment. Determine if they reflect a delighted experience or an unhappy one.
+- Analyze customer feedback on Yelp to determine if the reviews express approval or disapproval regarding their experiences.
+- The target of this task is to classify Yelp reviews by understanding the sentiments involved. Determine whether the sentiments align more with enjoyment or disappointment.
+- Read through numerous Yelp reviews and gauge the general sentiment behind them. Classify these reviews into either positive feedback for commendable service or negative feedback for unsatisfactory experiences.
+- Identify sentiment in Yelp reviews by analyzing phrases and descriptors used by customers. Classify each review according to whether it is generally positive or negative.
+- Review the provided Yelp text snippets to evaluate customer sentiments, deciding if they are favorable or critical based on the language used.
+- You'll be identifying overall sentiments within Yelp reviews—deciding if customers felt happy about their visit or not carding on with negative critiques.
+- You will explore shades of emotion in various Yelp reviews, deciding if the sentiment reflected is favorable (positive) toward the dining experience or unfavorable (negative).
+- Read the Yelp reviews carefully, focusing on the feelings and opinions expressed, to determine if they reflect a good or bad experience.
+- Your goal is to read through Yelp reviews and gauge the overall happiness or discontent reflected in these customer experiences, categorizing them appropriately.
+- Analyze customer experiences shared in Yelp reviews, then mark each review as positive or negative based on how customers describe their encounters with businesses.
+- Read Yelp reviews closely to gauge the sentiments expressed by customers. Your task is to categorize these sentiments accurately as either positive sentiment for commendations or negative for complaints.
+- Focus on interpreting Yelp reviews with an emphasis on sentiment analysis. Classify each review according to whether it expresses a positive sentiment or a negative sentiment based on user feedback.
+- This task requires you to analyze Yelp reviews and classify them based on their emotional tone. You will identify whether a review reflects a positive experience or a negative one.
+- The task involves scrutinizing customer feedback provided through Yelp. You’ll need to discern whether each review indicates a favorable impression or a critical viewpoint.
+- Focus on the language used in Yelp reviews to identify the underlying sentiment, assigning classifications based on the expressions of joy versus frustration shown.
+- Delve into customer feedback through Yelp reviews and evaluate each one for its general mood. Decide whether each review reflects approval or criticism of the dining experience.
+- As part of this task, you will read customer evaluations from Yelp and classify these evaluations based on whether they suggest a positive encounter or a negative issue.
+- For this task, assess several Yelp reviews to see how customers feel about their dining experiences, categorizing each review into positive and negative groups.
+- In this task, your job is to analyze customer sentiment captured in Yelp critiques by marking each review either as expressing satisfaction (positive) or anger/disappointment (negative).
+- 'The goal is to categorize Yelp reviews into two groups: those that convey satisfaction, which are categorized as positive, and those that reflect disappointment, labeled as negative.'
+- Read through customer experiences shared in Yelp reviews and assess whether they exhibit satisfaction or disappointment.
+- Assess Yelp reviews for their general sentiment where you will conclude whether each review is filled with commendations indicative of a positive experience or criticisms pointing towards negativity.
+- Analyze the content of Yelp reviews to assess the emotions expressed, tagging them as either positive when the experience is enjoyed or negative when dissatisfaction is noted.
+- Your task is centered around evaluating customer experiences shared in Yelp reviews and determining whether they reflect satisfaction or disappointment.
+- Tasked with evaluating Yelp reviews, you must categorize each one based on its emotional tone—deciding between a positive experience shared by the reviewer versus a negative one.
+- Your task is to process different customer sentiments listed in Yelp reviews, categorizing them as either supportive cheering for a place (positive) or as complaints (negative).
+- Your challenge is to sift through Yelp feedback and classify it according to sentiment. Look for expressions of joy and satisfaction versus expressions of frustration and disappointment.
+- Engage with Yelp user reviews by analyzing their sentiments and determining whether the experience shared is positive, indicating satisfaction, or negative, indicating disappointment.
+- Your job is to assess short Yelp reviews and classify them according to their sentiment. You must decide if the feedback reflects a positive or negative experience.
+- Your objective is to go through Yelp customer feedback particularly attentive to its sentiment, labeling it "POSITIVE" for good mentions and "NEGATIVE" for bad mentions accordingly.
+- The objective is to evaluate Yelp reviews and classify them based on the emotional tone, designating them as either positive or negative feedback.
+- Your duty is to read through customer experiences reflected in Yelp reviews and assign them as either positive testimonials or negative observations on the service received.
+- Your focus will be on identifying customer emotions reflected in their reviews, classifying each review as either reflecting a positive experience or indicating dissatisfaction.
+- This task focuses on gauging customer sentiment from Yelp reviews. You must discern whether each review contains generally favorable comments or critical feedback.
+- The objective here is to scrutinize Yelp reviews and decide how each review feels overall, categorizing them as positive responses to good service or negative feedback regarding bad experiences.
+- Review various Yelp comments and determine how customers felt about their interactions. Identify whether the sentiments were predominantly positive or predominantly negative.
+- Analyze the provided Yelp reviews to identify the sentiment expressed by the reviewer. Choose "POSITIVE" for favorable comments and "NEGATIVE" for critical ones.
+- Assess comments in Yelp reviews to classify customers' feelings towards services received at businesses, distinguishing between positive endorsements and negative criticisms.
+- Engage with various Yelp reviews, assessing them for overall sentiment and deciding whether they depict an enjoyable experience or reflect issues that led to dissatisfaction.
+- You will be tasked with interpreting Yelp reviews, classifying them based on overall sentiment—either highlighting enjoyment or dissatisfaction.
+- Your job involves reading customer reviews on Yelp and deciding if the sentiment expressed is favorable or unfavorable. Think about the emotions and opinions shared in each review.
+- This task centers on classifying customer sentiments in Yelp reviews. Analyze the content to see if it leans more towards approval (positive) or disapproval (negative).
+- The task involves evaluating the sentiment of various Yelp reviews, classifying them based on whether customers had a good or bad experience.
+- You're tasked with examining Yelp feedback and categorizing it based on customer emotions. Your classification should reflect whether the experiences shared were good or bad.
+- You will be tasked with interpreting Yelp reviews, classifying them into positive or negative sentiment by assessing how reviewers describe their experiences with various businesses.
+- You need to read through various Yelp reviews and determine if they convey a positive or negative experience based on the overall message delivered by the customers.
+- You must assess the tone of Yelp reviews, determining whether they convey a sense of pleasure with the service or dissatisfaction with it.
+- The objective here is to consider user reviews on Yelp and ascertain whether the sentiment conveyed is favorable or unfavorable, reflecting their overall satisfaction.
+- You will analyze how customers feel about businesses based on their written Yelp reviews, determining whether these feelings are generally positive celebrations or critical negative remarks.
+- You will be reading Yelp reviews and must identify the general sentiment of each review, labeling them as either "POSITIVE" for favorable comments or "NEGATIVE" for unfavorable ones.
+- Read through given Yelp reviews and analyze the underlying feelings of the reviewers. Classify their comments as either having a positive outlook or a negative one based on context clues.
+- You will assess Yelp reviews for their sentiment, distinguishing between positive feedback about experiences and negative critiques reflecting disappointments.
+- Your task involves reading Yelp reviews and determining the overall sentiment expressed in each review, classifying them as either positive or negative.
+- In this exercise, your challenge is to sift through Yelp reviews and judge their tone to classify them accordingly as expressing either satisfaction or frustration.
+- Engage with Yelp customer reviews by reading them carefully and deciding if each review communicates a positive outlook or a negative impression of the service experienced.
+- This activity involves examining customer reviews on Yelp to classify them as either expressing positivity or negativity. Reflect on how well the service met the reviewers’ expectations.
+- Read through different customer reviews on Yelp and distinguish between satisfied patrons and dissatisfied ones by interpreting their overall emotional tone.
+- Analyze the Yelp reviews you encounter in this task to determine their sentiment. Identify if the feedback is favorable, reflecting enjoyment, or unfavorable, signaling dissatisfaction.
+- Engage with a selection of written reviews from Yelp, classifying them into two distinct groups based on the sentiments they express—either positive feelings about services received or negative ones.
+- Classify the sentiment of Yelp reviews based on descriptive phrases and overall impressions shared by customers regarding their experiences at restaurants or services.
+- Your mission is to read through customer testimonials on Yelp. Each review should be classified as either expressing satisfaction (positive) or dissatisfaction (negative).
+- You will read customer reviews on Yelp and assess their emotional tone. Decide whether the reviews express satisfaction or dissatisfaction towards the experience described.
+- Read through customer reviews on Yelp and evaluate their sentiments. Classify them into two groups, recognizing whether they convey a sense of approval or disapproval.
+- The task involves reading Yelp reviews and determining if the sentiment expressed is positive or negative. You will need to assess the review's overall tone and the writer's feelings about their experience.
+- In this assignment, you will evaluate Yelp reviews to understand how customers felt about their visits. Categorize their experiences into positive if they enjoyed it, or negative if they were dissatisfied.
+- This task centers around identifying customer satisfaction levels as articulated in Yelp reviews. Analyze wording and context to assign each review a positive or negative label.
+- Utilize your analytical skills to sift through sentiment-driven reviews on Yelp, determining which feedback indicates customer satisfaction versus customer grievances.
+- Your job is to interpret opinions from Yelp users regarding local businesses and identify whether those opinions are predominantly positive or negative based on their reported experiences.
+- 'Examine the language used in Yelp reviews to classify them into two categories: those that reflect positive sentiments and those that indicate negative sentiments.'
+- In this task, you will classify Yelp reviews based on whether they exhibit positive feelings or negative feelings about a service or product mentioned in the review.
+- Take a close look at various Yelp reviews to identify overall consumer feelings and accurately label them based on whether they are satisfied (positive) or unhappy (negative).
+- Read the provided Yelp reviews and assess the general sentiment. Classify each review based on the degree of satisfaction or frustration expressed by the reviewer.
+- Assess the sentiment of each Yelp review, identifying whether it conveys a positive experience or highlights disappointment.
+- You will analyze customer feedback in the form of Yelp reviews, categorizing each as either reflective of a positive experience or indicative of a negative one.
+- Engage with Yelp customer feedback by reading through their personal experiences. Classify these sentiments as either positive, indicating contentment, or negative, indicating frustration.
+- You are tasked with interpreting reviews written by customers on Yelp and labeling them with either a positive or negative sentiment. Consider the language used to capture their overall experience.
+- For this task, you will review a selection of Yelp critiques and decide if they convey a positive sentiment or a negative sentiment regarding the service or food.
+- The goal of this task is to classify Yelp reviews based on their emotional sentiment. Use your understanding of language to gauge whether the reviewer had a good or bad experience.
+- Your goal is to sift through Yelp reviews and label them according to their sentiments, understanding which ones express positivity and which signal negativity.
+- In this task, your focus is on Yelp feedback. You need to categorize the emotional tone of the reviews as positive if customers are happy or negative if they express displeasure.
+- In this exercise, assess Yelp reviews to judge the feelings expressed. You'll categorize each review as either positive, indicating satisfaction, or negative, indicating disappointment.
+- 'Analyze the given Yelp reviews and classify them based on the emotional tone: positive reviews highlight good experiences, while negative reviews reveal dissatisfaction.'
+- Tasked with reviewing customer feedback on Yelp, you'll distinguish between positive comments that highlight good service and negative remarks that point out failures or issues.
+- Delve into Yelp reviews where you'll be classifying sentiments. Your analysis will help determine if the overall experience described is good or bad.
+- This task requires you to interpret and classify customer feedback found in Yelp reviews, identifying whether the responses lean toward positivity or negativity based on sentiment expressed.
+- This task involves scrutiny of Yelp reviews; you need to determine if they carry an uplifting message of approval or reflect grievances and disappointments.
+- In this task, you will evaluate Yelp reviews for emotion and tone. Classify each review as positive if it conveys happiness about the experience, or negative if it shows disappointment.
+- In this exercise, you will take Yelp reviews into consideration and classify them as "POSITIVE" for good experiences or "NEGATIVE" for poor ones based on content clues.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task475_yelp_polarity_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task475_yelp_polarity_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

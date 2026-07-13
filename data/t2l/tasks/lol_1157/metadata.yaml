@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your aim is to establish links between various household items and their respective rooms, piecing together the right associations based on learned analogies presented in your input.
+- Your task is to find the appropriate room associated with a given object based on a known analogy of another object and its room.
+- Your task involves interpreting analogies that link objects with rooms, necessitating knowledge of where items usually belong in typical living environments.
+- This task requires finding the right room for an object by interpreting relationships seen in earlier analogies, showcasing your ability to categorize based on settings.
+- Your role here is to leverage relationships between items and rooms using logical reasoning to figure out where a new object belongs.
+- This task is about translating relationships into categories. You will establish which space fits a new item by analyzing its characteristics alongside known pairings.
+- In this task, you will explore the correlation between specific items and the rooms they belong to, applying logical reasoning to deduce the appropriate associations.
+- Use your understanding of domestic spaces to align a new object with a suitable room based on previously established relationships in other examples.
+- This task is centered around identifying common placements for various objects by interpreting the connections made through the provided comparisons.
+- Interpret analogies that associate items with different rooms, employing logical reasoning to deduce the correct room for a given item.
+- This task involves interpreting comparisons that relate items to their appropriate places within a house. You’ll identify where an unassociated object would typically belong based on prior examples.
+- This task involves analyzing relationships between household items and their corresponding rooms. Use your knowledge of typical home layouts to find the right match.
+- This activity calls upon your ability to recognize patterns in household organization by relating specific items with their corresponding areas in a home environment.
+- The goal here is to exercise logical thinking about household organization by determining which room an unfamiliar object should be associated with, using established analogy comparisons as your guide.
+- This exercise requires you to leverage your knowledge of home layouts and functions of various rooms to identify the appropriate spaces for different objects listed.
+- You need to analyze relationships between two known object-room pairings and apply that understanding to assign another object to its corresponding room.
+- You'll examine analogies involving rooms and common household items to determine where a specific object fits best within those contexts.
+- By analyzing the connections between given pairs of objects and rooms, you will be expected to reason out where an additional item falls within that structure.
+- Your task is to derive insights from established correlations between specific objects and their corresponding spaces, applying this reasoning to find where another object should be placed.
+- The objective is to interpret analogies linking objects to rooms in order to provide a logical place for a different object based on similar reasoning.
+- You'll leverage your understanding of home layouts to fill in the missing room for a specific object by drawing from established analogies provided to you.
+- You will utilize existing parallels between objects and their matching rooms to deduce suitable placements for new items, demonstrating comprehension of household organization norms.
+- The assignment focuses on drawing parallels between specific objects and the rooms they occupy based on described relationships. Use this knowledge for further reasoning.
+- Examine the relationship between an object and its associated living space as presented in the format of an analogy. Then, determine where a new item typically resides.
+- The goal of this task is to deduce the relevant room for an object by following patterns from previously provided analogies. Strong reasoning and familiarity with household items and their typical locations will help in finding the right connections.
+- Analyze the relationship presented between an object and its room, and apply that understanding to determine the most suitable room for another object.
+- By studying provided analogies, you will identify where new objects belong in the context of familiar household arrangements, enhancing your spatial reasoning skills.
+- Here, you'll connect objects with their respective rooms based on examples provided. Your reasoning should draw from everyday experiences in domestic environments.
+- You'll need to think about how certain objects are typically linked to specific areas in a home and apply that understanding to find the right location for another item.
+- This task revolves around recognizing the association between objects and their respective living spaces. By using provided analogies, you will identify the most fitting room for a new object presented to you.
+- The task at hand involves determining the suitable room for an object by drawing parallels from given examples of other object-room pairs.
+- In this activity, identify appropriate locations for various household items based on previous examples. Your reasoning needs to draw upon common placements within a house.
+- This task involves drawing parallels between objects and their commonly associated rooms. Consider the logical placements of items and rooms to find the answer.
+- Using provided analogies as a reference, your goal is to match a given object to its appropriate room in a similar manner.
+- Your task is to determine which room is associated with a given object based on a provided relationship. You will need to think about common items and where they are typically found in a household.
+- Engage in identifying logical relationships among household items and their associated spaces through analogies. Using established links, determine the correct location for a new item.
+- Dive into relationships between household objects and their respective rooms. Analyze these connections to find an appropriate match for an additional item.
+- Determine the appropriate room for an item by reflecting on previous relationships between objects and their corresponding spaces in a home.
+- Engage with examples that illustrate how certain objects are associated with particular rooms, then use that insight to find a match for another object.
+- Utilize existing analogies between objects and rooms to infer the appropriate space for another specified item by observing their common traits.
+- This task is about discerning the relationship between objects and their typical surroundings within a home. Use this insight to categorize a separate object correctly.
+- Your skill in reasoning about household organization will help you match objects with their commonly associated rooms based on given examples.
+- You will be matching objects with their likely rooms in a home setting. Consider where each object is most commonly located to come to the right conclusion.
+- You are called upon to think about various rooms in a house and identify where different objects logically fit based on provided analogies that establish a clear relationship.
+- The challenge lies in translating provided object-room relations into new scenarios, requiring strong reasoning skills and familiarity with household organization.
+- The goal of this exercise is to understand how certain objects are linked to particular rooms, allowing you to fill in the blanks and make logical associations.
+- The challenge is to think critically about where items belong in a living space, following analogical reasoning from supplied relationships between objects and rooms.
+- Your role involves understanding the typical associations between objects and their rooms in a home. Leverage these associations to complete an analogy regarding another item.
+- This task requires examining relationships among household items and their typical rooms and using this context to determine where another specified item would be found.
+- The goal of this activity is to streamline your understanding of domestic spaces, ensuring items are identified correctly in relation to where they belong based on existing comparisons.
+- The goal is to recognize the corresponding environment for different objects through analogical reasoning based on given examples.
+- Understand how certain household items correspond with specific areas in a home, then apply this relationship to find where another related item might fit.
+- You will work with familiar concepts regarding the placement of household items in defined areas. This thought process will guide you in relating new objects to appropriate rooms effectively.
+- The job requires you to think about common household items and determine their standard rooms by using existing relationships between other items and rooms as clues.
+- Your task is to find the appropriate room for a given object based on provided analogies. You will analyze the relationship between objects and rooms to make connections.
+- In this task, you will relate a new object to its corresponding room based on established pairs. It expects you to know where different items are usually stored or used in a home environment.
+- Your challenge is rooted in connecting objects with spaces they populate within homes, emphasizing familiarity with what belongs where based on previous examples.
+- You'll need to exhibit your spatial awareness and knowledge about home organization by determining which room suits a particular object within established analogical frameworks.
+- The objective is to understand spatial associations between various items and their locations and use that knowledge to find a location for an additional meant-to-be associated item.
+- Your task is centered on exploring established comparisons between household objects and their corresponding rooms, allowing you to place a new object correctly based on those insights.
+- You will be presented with examples that link an object to a specific room. Your job is to apply similar logic to find out what room corresponds to another object.
+- Analyze the relationship dynamics between objects and their designated rooms through presented analogies, and apply similar reasoning patterns to discover a fitting match for another item.
+- Using provided examples of objects linked to rooms, your role is to figure out where another object would logically fit according to similar relationships.
+- The challenge here is to recognize patterns in which certain objects are placed in specific rooms and use that insight to match a new object with the appropriate room.
+- Engage in a task that requires you to map objects to suitable rooms using the clues provided in existing analogies. It's about thinking of where you commonly find these objects.
+- You will use your knowledge of home organization to infer where specific objects typically reside based on analogies presented in the format of item-room relationships.
+- This task revolves around using analogies that establish room-object relationships, allowing you to discern appropriate placements for given items within domestic settings.
+- This task challenges you to apply your understanding of household organization, linking objects to their most appropriate spaces based on existing patterns.
+- For this task, analyze the relationship between an object and the room it belongs to, then identify another object's appropriate room based on that relationship.
+- Analyze connections between familiar objects and their designated spaces in order to pinpoint where an unrelated item most logically belongs based on established patterns.
+- You are required to connect objects with their corresponding rooms by synthesizing information from existing relationships in analogies provided.
+- Your goal is to categorically match given objects with their appropriate rooms by recognizing patterns in how items are typically arranged in homes.
+- Evaluate how certain objects relate spatially within a home environment, then identify where a new object should reside based on these relationships.
+- The challenge is to take an established relationship between objects and their locations, and determine the correct location for a new, unrelated object based on that relationship.
+- You are tasked with figuring out which room corresponds to various household objects based on provided relationships. Reflect on typical uses and placements in family life.
+- This exercise focuses on analogies that connect household items to their respective locations. Your job is to think about where certain objects like shelves or tables are usually placed within a home.
+- You need to analyze relationships between objects and rooms, using provided analogies to infer the correct location for the new object.
+- Navigate through relationships between objects and their usual placements in rooms, applying insight from existing examples to find new alignments.
+- This task requires you to reflect on how different household objects are used and positioned, drawing logical connections from examples provided regarding other objects.
+- You will be given an analogy that pairs an object with its corresponding room. Your job is to identify the correct room for a different object using the same relationship.
+- You will work with analogies that link items to specific locations in a house. Your goal is to discern which room fits with a new object based on these established connections.
+- You will be working with pairs of objects and their related rooms. The challenge is to determine the most fitting room for another object based on an established analogy.
+- You will explore the relationships between various items and their designated spaces in a house, using logical reasoning to complete analogies correctly.
+- Find connections between unlisted objects and their ideal locations by leveraging the analogical reasoning demonstrated in provided examples.
+- Your role is to interpret analogies that connect objects with their likely rooms, applying reasoning based on common knowledge of how spaces are utilized in homes.
+- You are tasked with connecting various household items to their respective rooms based on established examples and using that knowledge to resolve inquiries about other items.
+- Your role is to assess the provided pairings and draw conclusions about where an unrelated item would fit within the context of its related analogies.
+- Use your familiarity with domestic spaces to deduce which room would house a specified object by referring back to an initial analogy you are provided with.
+- This task requires quick thinking and application of knowledge about household objects and their typical locations to find a corresponding room for a new object presented.
+- In this exercise, you will analyze relationships between various objects and their corresponding rooms. By drawing parallels from the given examples, you will determine the correct room for a new object.
+- You are required to match an object with its likely location in a house by analyzing an analogy. This task tests your knowledge of general domestic settings and object placement.
+- By exploring how certain items correlate with specific locations in a home, you will uncover where another related object may be placed.
+- Identify the connection between an object and its related room based on given analogies, and then apply that understanding to find the correct location for another specified object.
+- Your goal is to determine the appropriate room where a specified object would commonly be found, using existing relationships as guidance.
+- This exercise challenges you to think about where certain objects belong by examining how they relate to specific types of rooms from prior analogies.
+- You will be asked to fill in a missing room by understanding how objects are related to specific locations, drawing from an example analogy.
+- Utilize your understanding of household organization to match objects with appropriate rooms. This task involves recognizing common placements for various items in a living space.
+- The task requires you to utilize knowledge of spatial relationships between various items and their usual placements within homes or buildings.
+- You will apply inferential skills and reasoning from prior knowledge of where certain items typically belong in order to determine an appropriate location for new objects.
+- Your task is to interpret analogies that connect objects with the rooms they are typically found in and identify the corresponding room for a different object.
+- Use your knowledge of common household scenarios to connect separate objects with their rooms. This involves reasoning out where an additional item should logically fit based on similar relationships.
+- The focus here is on figuring out where objects belong within a home's structure by leveraging existing relationships between other known items and rooms.
+- In this task, you explore analogies that link objects with rooms, applying critical thinking to find the best fit for an unpaired item based on known associations.
+- This involves reasoning about spatial relationships in everyday contexts, allowing you to infer connections between specific objects and their usual environments.
+- The task involves identifying the correct room associated with a specific object based on a given analogy. This requires understanding how different items relate to each room in a house.
+- Engage your understanding of household arrangements as you deduce which rooms are appropriate for given objects based on previous analogies.
+- For this task, you need to use your knowledge of how various objects are related to specific locations within a home, identifying the proper setting for a given item.
+- Understanding how particular items fit into designated spaces in a home is your goal here. Use existing relationships to deduce the correct location for an additional item.
+- Your job is to deduce what room an object belongs in by using comparisons made in previous statements. This requires thought about typical usage of each object.
+- Your objective is to discern the relationship between specific items and rooms, enabling you to establish logical conclusions that guide your selections.
+- Analyze the relationships between objects and their respective rooms to deduce where another specified object belongs within a home structure.
+- The objective is to establish logical connections between objects and their typical locations in a house, inferring the correct room for each new item listed.
+- This exercise asks you to think critically about where objects belong in a house by completing analogies that describe these relationships.
+- In this task, analyze how certain objects are associated with specific rooms and use that understanding to categorize a new object accordingly.
+- You are tasked with relating different objects to rooms in a home. Using complete analogies, you need to assess and decide which room fits best with another object based on context.
+- Your task is to identify the room associated with a given object based on a previously established analogy.
+- The challenge here is to demonstrate your understanding of household organization by matching items to their related rooms through analogical reasoning.
+- The goal is to determine the right room for an object by following established analogies. Understand the relationship between the first pair to apply it to the second.
+- Your task is to identify the appropriate room associated with a given object based on established analogies. This requires understanding common relationships between objects and the spaces where they are typically found.
+- You need to evaluate how certain objects relate to specific rooms and transfer that understanding to deduce the correct room for another object mentioned.
+- This task involves using knowledge of common household items and their locations to infer the correct room for a new item based on existing associations.
+- You will analyze the context of various household items and rooms, matching a new item with its logical placement through analogy reasoning.
+- Identify which room would suit a particular object, using prior examples as guidelines. It’s about enacting spatial reasoning related to household items and their locations.
+- You need to establish connections between known items and their associated spaces in a home. Apply this reasoning when determining the placement for another given object.
+- In this task, you’ll work with relationships between objects and areas of a house. By identifying common pairings, you can extend that logic to another scenario.
+- The objective here is to connect a solitary object to the room where it naturally fits, influenced by examples that show similar relationships between other items and rooms.
+- The task emphasizes your ability to reason and recognize patterns in how different objects are typically organized within spaces like homes or offices.
+- Your attention will be focused on recognizing the ordinary associations between objects and their respective rooms, promoting an understanding of typical household environments through analogy.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1157_bard_analogical_reasoning_rooms_for_containers
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1157_bard_analogical_reasoning_rooms_for_containers
+user_prompt_template: '{task_def}
+
+
+  {problem}'

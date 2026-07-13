@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Read through user reviews for restaurants and decide if they convey a good or bad dining experience. Your judgment should be based on the review’s overall sentiment.
+- Your mission is to assign classifications to user reviews based on their sentiment. Determine if they are expressing a positive or negative dining experience from the content provided.
+- The goal is to assess customer reviews of restaurants, identifying them as either positive or negative. Pay attention to emotional cues in the text that reveal how the reviewer feels.
+- Your aim is to evaluate customer feedback on dining experiences and decide if it is expressed positively with enthusiasm or negatively with disappointment.
+- Your task is to gauge customer perceptions from their reviews of restaurants, dividing them into categories based on positivity or negativity regarding their experience.
+- Review criticism from users regarding their dining experiences and accurately label each review based on positive or negative sentiment.
+- Evaluate user-generated comments about restaurants to classify them as positive when reflecting good service and food quality, or negative when highlighting poor experiences.
+- You will evaluate customer reviews about dining experiences and categorize them as either positive or negative based on the reviewer’s feelings and feedback.
+- You will analyze customer insights about restaurant visits, categorizing the feedback based not just on feelings but also on specific mentions of service quality, atmosphere, and food taste.
+- Your responsibility is to determine if a restaurant review expresses a positive or negative sentiment. This requires an understanding of common expressions used in customer feedback.
+- Engage with user reviews of restaurant experiences to classify them as either positive, reflecting enjoyable visits, or negative, indicating issues faced during their dining experience.
+- The objective is to evaluate customer reviews of dining establishments and determine if they reflect a positive experience or a negative one through careful reading and comprehension.
+- Identify the sentiment behind restaurant reviews, categorizing them based on whether they reflect a favorable impression of the dining experience or highlight dissatisfaction.
+- You'll analyze individual restaurant reviews and decide whether they convey happiness with the meal and service or frustration and dissatisfaction with your dining experience.
+- Your task is to evaluate a restaurant review and determine whether the sentiment expressed is positive or negative based on its content.
+- Analyze user-generated content related to dining experiences and categorize each review appropriately, focusing on whether it describes a good time or issues encountered.
+- Review the provided evaluations for dining establishments and assign a category of positive or negative, relying on the overall tone and specific details shared by the reviewers.
+- Examine user feedback on restaurants and classify each review based on its overall sentiment, indicating whether it provides a positive or negative impression.
+- Read each review about a dining experience and determine whether it reflects a good or bad impression of the restaurant.
+- Your task is to evaluate user reviews of restaurants and categorize them based on whether they express positive or negative sentiments.
+- Your role is to sift through restaurant reviews, identifying key phrases and sentiments that indicate whether the customer's experience was good or bad.
+- You are tasked with reviewing customer comments about restaurants and deciding whether they fall into friendly, upbeat sentiments or critical, downbeat expressions.
+- You will assess restaurant reviews to decide if they express satisfaction or dissatisfaction with the dining experience.
+- Read through the provided user reviews of restaurants and classify each one as having a favorable or unfavorable impression.
+- Your task involves reviewing customer feedback concerning restaurants, determining whether the remarks are appreciative (positive) or critical (negative).
+- Your task is to evaluate restaurant reviews and decide if the sentiment expressed is positive or negative based on the content provided.
+- Analyze ratings and personal experiences shared in restaurant reviews, identifying whether they convey a sense of satisfaction or dissatisfaction.
+- You are tasked with judging a restaurant review based on its content, determining if it's a positive endorsement or a critical comment.
+- Your task is to interpret user reviews regarding dining experiences and decide if they lean towards praise (positive) or complaints (negative).
+- Your job is to classify customers' sentiments expressed in reviews as either favorable about their dining experience (positive) or critical of service/food quality (negative).
+- Your task is to read a restaurant review and judge its sentiment, categorizing it as either positive or negative based on the expressed feelings and experiences.
+- Through this exercise, your aim is to gauge overall customer sentiment captured in online restaurant reviews and effectively categorize these impressions accordingly.
+- 'Examine the sentiment expressed in restaurant reviews and categorize them into two groups: those that are complimentary and those that are critical.'
+- Study the context of various restaurant reviews and categorize them according to their sentiment—positive for good experiences or negative for bad ones.
+- You need to read the reviews customers have written about restaurants, assessing the language used to determine if they felt positively or negatively about their experience.
+- Your job is to read through feedback on restaurants, recognizing key phrases that indicate whether a review should be categorized as positive or as expressing negative sentiments.
+- Assess various restaurant reviews, identifying language that indicates customer approval or disapproval, leading you to classify their experiences accordingly.
+- Your task is to discern the emotional tone of restaurant reviews, deciding if they portray an enjoyable experience (positive) or one that was disappointing (negative).
+- Your task is to read and evaluate a restaurant review and decide if it reflects a positive or negative sentiment based on the language and overall impression given by the reviewer.
+- Your task is to evaluate customer reviews of restaurants, determining whether the overall sentiment expressed is positive or negative based on the language and tone used.
+- Assess restaurant reviews to determine their general sentiment, identifying which reviews celebrate a great dining experience and which highlight issues that led to disappointment.
+- Investigate customer feedback for dining venues, falling into two categories based on emotional tone—either favorable reactions or negative impressions.
+- Look at the text of each restaurant review and decide if the overall tone is favorable or unfavorable toward the eating place.
+- Read through various restaurant reviews, focusing on emotional cues to categorize the feedback as positive praise or negative discontent.
+- The task entails understanding customer satisfaction levels reflected in their reviews of restaurants and sorting those comments into positive or negative groups.
+- The task involves identifying the sentiment in various restaurant reviews and classifying them as positive or negative by examining the language used throughout each review.
+- Your task involves reading through user reviews for restaurants and determining whether each expresses positive vibes or negative feelings towards their visit.
+- The focus here is on critically evaluating user opinions concerning their restaurant experiences, effectively classifying these opinions as either positive celebrations or negative lamentations.
+- In this task, you’ll review comments about restaurants, pinpointing expressions of delight or disappointment to classify each review appropriately as positive or negative.
+- Review feedback concerning eating establishments to classify comments as suggesting a good experience (positive) or highlighting issues that led to disappointment (negative).
+- Your role is to sift through restaurant feedback and decide if each piece leans more towards approval of the service and food or frustration with them.
+- Evaluate the given reviews to decide if they reflect a positive dining experience filled with commendations or if they express grievances regarding poor service or quality.
+- Analyze the content of restaurant reviews to clearly determine if they are positively inclined, praising aspects of dining, or negatively inclined, pointing out problems encountered by the reviewer.
+- Analyze user opinions on eateries to understand if they were pleased or displeased with their dining experiences based on their written feedback.
+- Your role is to examine feedback regarding dining experiences at different establishments, determining the overarching sentiment of each review while recognizing signs of approval or disapproval.
+- For this task, you will evaluate written reviews for restaurants, categorizing them based on their sentiment – identifying if they convey positivity about the experience or dissatisfaction.
+- Explore consumer opinions about food establishments, making distinctions between positive praise and negative remarks regarding their experiences.
+- Analyze written feedback from diners about their restaurant experiences and assign each review to a category indicating positive support or negative critique.
+- Examine the content of restaurant reviews and make a judgment about their positivity or negativity, focusing on the reviewers' comments about their experiences.
+- The goal is to interpret user opinions on restaurant experiences and sort them into either positive or negative evaluations based on descriptive clues.
+- 'Your job involves categorizing restaurant reviews into two groups based on their content: one for satisfying experiences and one for disappointing ones.'
+- Your role is to examine customer feedback on restaurants to see if it's more about praise or criticism, and classify it accordingly.
+- This task involves classifying user-generated restaurant reviews into positive or negative based on emotional language and the overall impression conveyed in the text.
+- Review snippets of user commentary about their restaurant visits and identify if they depict a feel-good experience or a troubling encounter.
+- You will assess a user’s review of a dining establishment and classify the sentiment expressed in the review as either good or bad.
+- Review customer comments about their dining experiences and discern whether they are predominantly positive or negative by analyzing emotional expressions within their reviews.
+- Analyze user reviews of dining establishments and classify them as expressing satisfaction or dissatisfaction with the service and food provided.
+- 'Assess user reviews of restaurants to classify them into two categories: positive experiences or negative experiences.'
+- Determine the sentiment conveyed in restaurant reviews by identifying words and phrases that suggest a positive or negative experience.
+- Your task is to read a restaurant review and decide if the overall sentiment expressed is positive or negative. This requires you to analyze the language and tone used in the review.
+- Look through user experiences at various eateries and label each review as either a positive endorsement or a negative critique.
+- You need to interpret consumer remarks about restaurants, focusing on sentiment analysis to categorize these remarks into two main types—positive feedback versus negative critique.
+- You will read through customer feedback about a restaurant and decide if the review reflects satisfaction or dissatisfaction.
+- Analyze restaurant reviews for their emotional tone, selecting whether each review is predominantly positive due to praise or negative due to criticism.
+- 'You will read through restaurant reviews written by customers and classify each review into one of two categories: positive or negative, based on the language used and the reviewer''s experience.'
+- Examine the provided restaurant review closely to determine whether the experience shared is favorable or unfavorable. Focus on key phrases and overall tone.
+- 'Classify restaurant reviews into two distinct groups: those that express pleasure with the dining experience and those that voice dissatisfaction.'
+- 'Your job involves reviewing descriptions of customer experiences at restaurants to classify them into two distinct categories: one for positive experiences and one for negative experiences.'
+- Your work involves interpreting customer feedback in the context of their dining experiences, identifying whether it leans towards enjoyment or frustration.
+- Your task involves reviewing customer feedback on a restaurant and determining if the tone of the review is positive or negative.
+- Analyze a provided restaurant review and classify it as either positive or negative. A good understanding of customer feedback will help you in making this judgment.
+- Your role is to interpret sentiments in dining reviews, categorizing them according to whether they indicate satisfaction or dissatisfaction with the service received.
+- Review different opinions on dining establishments and sort them into positive impressions or negative complaints based on their wording.
+- Evaluate and sort user-generated restaurant reviews into two categories, focusing on whether the reviews highlight a positive experience or articulate complaints.
+- Classify restaurant reviews into two distinct groups based on their sentiment. Recognize words and phrases that signal whether the reviewer had a favorable or unfavorable experience.
+- Engage with various restaurant reviews to classify them in terms of sentiment. This requires an understanding of both positive reinforcement and criticism through customer experiences.
+- Dissect restaurant customer reviews carefully, noting keywords and tone that will indicate whether patrons left pleased or discontented with their visit.
+- Read through restaurant feedback provided by users and distinguish between reviews that highlight good experiences versus those that emphasize negative aspects.
+- Classify restaurant reviews based on consumer sentiments expressed in their writing, focusing on whether they convey enjoyment or disappointment.
+- Delve into user reviews of restaurants and classify them based on whether they celebrate great food/service or criticize poor experiences.
+- Review user comments about their experiences in restaurants and determine the overall impression they convey. Classify these impressions as either positive or negative.
+- Your mission is to assess user opinions on dining establishments, breaking them down into happy testimonials versus unhappy reports based on their content.
+- Read through customer feedback for restaurants and decide on its overall tone, classifying it as positive if it reflects satisfaction or negative if it shows disappointment or frustration.
+- Analyze the text of a user review for a dining establishment and categorize it as either a positive or negative experience.
+- Your task is to evaluate a restaurant review and determine whether the sentiments expressed are positive or negative based on the language and tone used.
+- You will analyze user critiques of restaurants and sort them into positive or negative categories. Pay attention to words that reflect satisfaction or dissatisfaction.
+- You are required to evaluate restaurant reviews, identifying key emotion-driven vocabulary to categorize them as showing customer satisfaction or disappointment.
+- Your task is to read through customer reviews and decide if they express happiness about their meal or disappointment with their experience.
+- Assess various restaurant reviews and classify them as either positive or negative. Look for key phrases that indicate how customers felt about their meals and service.
+- Determine the emotional tone of user-submitted restaurant reviews by categorizing them as either favorable or unfavorable.
+- The task requires you to interpret user reviews, capturing their sentiments to classify them into two labels based on overall satisfaction.
+- Read each restaurant review carefully, noting expressions of approval or discontent, and classify the review into one of two distinct categories accordingly.
+- Your focus will be on reviewing restaurant evaluations, categorizing them as either good or bad depending on how reviewers articulate their satisfaction with food and service.
+- You need to evaluate various user-written restaurant reviews and classify them as either reflecting a positive experience or a negative one based on how customers express their sentiments.
+- Assess user experiences at restaurants described in their reviews, deciding if the overall message is one of satisfaction or dissatisfaction.
+- In this task, you'll sift through reviews about restaurants and identify whether the overall impression is one of pleasure or discontent, considering descriptive language and emotional cues.
+- 'You will read through restaurant reviews and categorize them into two groups: those that reflect a favorable experience and those that indicate disappointment or frustration.'
+- You will need to analyze restaurant reviews for key indicators of customer satisfaction or dissatisfaction, categorizing them as either positive or negative based on linguistic cues.
+- Your objective is to take a critical look at customer reflections on their dining experiences and sort these reflections into two distinct categories based on sentiment analysis.
+- Engage with customer feedback about restaurants, identifying whether each review reflects a positive sentiment or a negative one.
+- Assess customer feedback regarding restaurant services and food quality, categorizing each comment as positive if it reflects satisfaction or negative if it indicates disappointment.
+- You will read reviews of a restaurant and assess the overall sentiment, deciding if the feedback reflects a good or bad experience.
+- You will need to categorize restaurant reviews based on whether they communicate a favorable impression or an unfavorable experience, requiring attention to detail in language and context.
+- Examine the content of various restaurant reviews and identify whether they convey a good or bad impression of the establishment.
+- Examine restaurant user reviews critically to categorize them based on whether they express commendation (positive) or criticism (negative).
+- Engage with consumer feedback related to dining experiences and determine whether each review reflects positive sentiments about the service offered or critiques of poor experiences.
+- Assess various user-generated reviews about dining experiences, distinguishing between those that celebrate good service or quality food (positive) and those critiquing their meal (negative).
+- Read different user reviews about restaurants, focusing on the sentiment expressed to classify them as either positive (praising) or negative (criticizing).
+- Your focus will be on interpreting customer feedback regarding restaurants, categorizing each review as either expressing happiness with their meal/service (positive) or frustration/disappointment (negative).
+- You are expected to assess restaurant feedback by discerning whether reviews demonstrate satisfaction with what was offered or dissatisfaction that warrants a negative classification.
+- Your assignment is to evaluate written customer experiences at restaurants, using your judgment to classify their sentiment as either positive or negative based on the content presented.
+- Analyze a given restaurant review and determine if the overall tone is favorable or unfavorable. This involves understanding the reviewer’s feelings and opinions about their experience.
+- 'The task involves reviewing qualitative feedback from restaurant patrons and classifying their experiences into two segments: those expressing contentment (positive) versus those expressing unhappiness (negative).'
+- You are to interpret customer feedback for restaurants, deciding if the sentiment leans towards approval and appreciation or disapproval and critique based on the review's details.
+- Your task is to read through different experiences shared by diners at restaurants and classify each review into either a good or bad response.
+- Interpret user feedback on restaurants and assess whether the sentiment is leaning towards positivity or negativity based on specific phrases and overall impressions.
+- Determine the sentiment of restaurant-related reviews by analyzing language and context to see if they describe a pleasant (positive) or unpleasant (negative) customer experience.
+- Process customer feedback about restaurants and identify whether their sentiments lean towards appreciation or dissatisfaction in their dining experiences.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task746_yelp_restaurant_review_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task746_yelp_restaurant_review_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

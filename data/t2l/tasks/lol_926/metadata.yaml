@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The objective is to pinpoint any direct references to films in a discussion. Each conversation may contain one or more titles that you will identify.
+- The aim is to extract a movie name from a text-based conversation, paying attention to details that indicate which films are being referred to.
+- Analyze dialogues to identify any films that users talk about or praise. This requires careful attention to their responses regarding their favorite movies.
+- Delve into chat excerpts looking for notable references to movies. You need to provide the accurate title mentioned within the text.
+- You are tasked with recognizing movie names in conversational exchanges. Collaborate with user input to determine and extract their favorite films.
+- Your goal is to navigate through conversations seeking references to actual movie titles made by users. Stay alert for clear mentions throughout the dialogue.
+- Your role is to discern which movies are referenced during discussions with users. Look out for any explicit statements regarding likes or dislikes of certain films.
+- Monitor conversations between users for any discussions around films, focusing on extracted movie titles as they relate to personal enjoyment or memories.
+- Engage with the conversation and look for hints or direct mentions of movie names that indicate what the user enjoys watching.
+- Your task is to extract the name of a movie from a conversation. Pay attention to the user’s comments about their preferences and favorite films.
+- Review dialogues to find and note down specific movie references that users express admiration for or enjoyment of.
+- Here, you need to pinpoint any movies that are brought up during a conversation about film preferences. Take note of any explicit titles given by the user.
+- Your goal is to extract movie titles from given conversations. Focus on the specific film names mentioned by the users without additional context.
+- Read through the dialogue to unearth any film titles that might be tucked within the user's expressions of their cinematic preferences.
+- Your assignment is to extract film names from dialogues that reflect users' tastes or favorites. Look out for specific references throughout the exchange.
+- Your task includes recognizing when a film title is said during a conversation and relaying that information appropriately as your output.
+- Listen attentively to the dialogue, looking specifically for any film titles that are relevant to the user’s conversation about their favorites.
+- This task calls for identifying movie titles woven into spoken exchanges. Attention to detail during the dialogue is crucial for success.
+- Examine the dialogue carefully for any references to movies given by the user. Record any titles you find; if there are none, report it as unknown.
+- Carefully examine conversational exchanges where users may express preferences or opinions on films, keeping an ear out for named movies.
+- Your challenge is to listen for movie titles embedded in a discussion about film preferences and deliver that title as your answer.
+- Engage with the dialogue content to capture any movie titles shared by users. The ability to comprehend context will be helpful in this task.
+- Your role is to identify if there are any movies being talked about in a back-and-forth dialogue; focus especially on what users have stated explicitly.
+- Identify movies based on conversations where individuals express their preferences or experiences with certain films. Focus on distinct titles mentioned.
+- In this assignment, listen to discussions related to movies and identify if a specific title has been shared. Detect the references made by the user for clarity.
+- Your objective is to discern whether a movie title is explicitly stated in the exchange and report it accurately as your answer.
+- In this activity, you need to find movie titles mentioned in dialogues. Focus on how the user describes their favorite films to pinpoint the exact name.
+- You need to sift through a dialogue and determine if any movie titles are stated. Look for specific mentions while ignoring general conversations.
+- The focus of this task is analyzing dialogue snippets for any recognizable movie names provided by users talking about their interests and favorites.
+- You are expected to extract specific movie titles from dialogues based on what characters discuss regarding their preferences and favorites.
+- Your task is to identify the title of a movie based on a conversation. Listen carefully and extract the name mentioned by the user.
+- The task at hand requires you to extract movie names from conversations. Watch for when users express enjoyment or preference for particular films.
+- As you read through the exchange, focus on identifying any movies that are talked about. Your output should be the title of the film mentioned.
+- Your objective is to extract any stated movie names from an exchange and list them as they appear within the context of the discussion.
+- Extract specific film names from dialogues where users express their love for certain genres or titles, utilizing comprehension skills throughout.
+- The task requires you to extract information regarding a movie from a dialogue, determining which title stands out based on user input.
+- Listen closely to the dialogue exchanges for mentions of movies. Your job is to identify and name any film titles presented by the users.
+- Analyze the provided chat to find out which movie the user references. If no movie is named, you should label your response as "unknown."
+- You are tasked with finding out which movies are mentioned in a conversation. Look closely at how users describe their tastes in film regarding particular titles.
+- Engage with the dialogue provided and determine if there is a specific movie referenced. Your focus will be on user responses considering their interests.
+- In this task, you will parse through discussions and highlight any instances where the speakers refer to specific movies by name.
+- Extract movie titles from conversations about personal tastes in films, concentrating on direct responses about favorite films offered by users.
+- Your goal is to carefully read through conversations and note down any film titles that participants talk about or inquire about.
+- The goal is to recognize and pull out movie names mentioned by users in a dialogue format. Pay careful attention to their stated preferences.
+- Extract a movie name from a conversation. You'll need to understand what constitutes a film title as mentioned by the user in their responses.
+- The goal is to listen for direct mentions of movie names during a discussion about film preferences and interests.
+- Your objective is to pick apart discussions concerning user interests in films and highlight any mentioned titles within those dialogs.
+- Look for clear references or statements about movies in dialogues and report back the name of any film mentioned by users.
+- Parse through an interaction sequence with keen eyes for film discussions, aiming to pinpoint exact titles mentioned by users in their responses.
+- This task requires you to carefully read a conversation and pinpoint any film title that comes up. Recognize the context and the user's responses to find the right name.
+- Examine user interactions for hints toward specific movies they appreciate. Sifting through personal remarks can reveal notable film titles.
+- Analyze the given conversation to find a movie title. Focus on the user's references to films they enjoy or mention explicitly.
+- The focus of your task is on extracting movie titles from dialogues. Notice when users refer to films and identify their preferences accordingly.
+- Discern the relevant movie names embedded in a conversation where individuals discuss their cinematic interests.
+- Scrutinize the back-and-forth chat for key indicators of movie references provided by the user. Document any titles verbatim.
+- Examine the dialogue carefully to find any movie names brought up by the users. This task requires attentive listening and comprehension skills.
+- Your role involves listening or reading through conversations attentively to catch any instances where official movie names are presented.
+- Your role involves interpreting a conversation about film preferences and recognizing any titles mentioned by users when discussing their favorites.
+- Analyze dialogues and highlight any instance where users name movies they appreciate. Sift through conversational content for exact titles or clear references.
+- Your task is to identify a movie title mentioned within a conversation, using your understanding of movie genres and common titles.
+- From a discussion about movies, your goal is to find any mentioned film name. Pay attention to the details as you search through the exchange.
+- This task involves sifting through chat messages to discover any film titles that people mention during the discussion.
+- In this activity, your goal is to discover movie titles hidden within statements made by users in a dialogue. Highlight phrases that indicate specific films they admire.
+- The focus here is on tracing specific mentions of movies within an interaction where users discuss their likes and dislikes in cinema.
+- You need to find out which movie is referenced in a back-and-forth chat. Look for clear statements from the user about their favorite films.
+- The goal is to extract movie titles from conversations. Look for direct mentions by users regarding which films they like, as this will guide you in your response.
+- Your task involves stringing together clues from spoken dialogue in order to identify and reiterate a specific movie title mentioned.
+- Engage with the conversation by identifying movie titles spoken by the user. Ensure to provide a response based on these mentions or state "unknown."
+- Your mission is to listen for and identify any film names specified by the user in a conversational context and relay those titles back.
+- You are required to find and provide the name of a movie discussed within a chat. Focus on keywords and phrases that signal a movie title from the user's dialogue.
+- Listen closely to the conversation and determine if a specific movie is named. Report that title if it is present; otherwise, indicate that it's unknown.
+- Utilize your comprehension skills to sift through conversational exchanges regarding film preferences, aiming to pinpoint mentioned movie titles.
+- You will analyze conversational text to highlight any specific movie names mentioned. This requires good listening skills and familiarity with film terminology.
+- Your responsibility is to recognize movie titles discussed in a chat between two people. If there's no clear mention of a title, respond with "unknown."
+- The goal here is to sift through a dialogue and determine if any movie titles are mentioned, returning those titles as responses.
+- Focus on discussions where films might be mentioned and identify which titles are referenced directly in the conversation, if any.
+- You will determine which movie names appear in the conversation by tracking the user's mentions of films they enjoy or find significant.
+- Your job is to comb through the interaction and highlight recognized titles of films that users express enthusiasm for, based on their discussions.
+- Examine the conversation critically to find out if any movie names are shared, using context clues provided by the users' comments.
+- As part of this challenge, you will be searching for titles of movies within conversational text, focusing on explicit user references to their choice films.
+- Your task is to extract the name of a movie from a conversation. Pay attention to what the user says about their preferences to identify the title effectively.
+- This task requires you to extract titles of movies referenced by users in dialogues about their preferences and experiences with films.
+- The task focuses on conversation analysis where you'll need to pinpoint any movies referenced during discussions about film genres and preferences.
+- Your role entails focusing on parts of the discussion where movie titles are shared or discussed, identifying them from contextual clues given by users.
+- Your role involves connecting users’ expressions about cinema with actual movie titles, thus honing in on specific references made during the discussion.
+- Engage with the content of conversations focusing on identifying specific film titles shared between speakers during their exchanges.
+- You will sift through a conversational exchange to pinpoint movie titles that are explicitly mentioned by the user.
+- Your job here is to listen to a dialogue and find movie names mentioned by the user. Highlight any relevant conversations about film preferences or specific titles.
+- Work through dialogues to retrieve any mentioned film names, interpreting hints from users about their cinematic interests as you do so.
+- Your challenge is to find and list out films mentioned within user conversations. Listening for their favorite or recommended movies is key.
+- You will analyze a back-and-forth exchange to determine if a specific movie title comes up. Your goal is to listen for direct mentions of films throughout the discussion.
+- As you read through the chat, your aim is to discover and identify any explicit movie titles. If there's nothing mentioned, indicate this as "unknown."
+- Listen for explicit references to films within a conversation and clarify which movie is being discussed. Provide that title as your answer.
+- You need to capture movie titles from a chat between an assistant and a user. Focus on any direct references the user makes about movies that resonate with them.
+- Look through the dialogue for explicit mentions of films, identifying and relaying any titles that emerge from the user's conversation.
+- Your task is to identify a movie title from a conversation. Listen for specific mentions of films and record those titles.
+- Analyze a conversation to locate and name movies mentioned by users. Be attentive to conversational turns where favorites are highlighted.
+- From the given conversation, extract any names of films as they are mentioned by the speakers. If no film is mentioned, state it as unknown.
+- Assess conversational exchanges for direct film mentions, identifying them as part of your task to capture culturally relevant names.
+- Listen closely as conversations unfold, as your goal is to deduce which movies users mention or discuss in relation to their viewing choices.
+- Review a given set of discussions and capture any movie names discussed by the participants. Look for definitive answers rather than vague feelings.
+- Analyze conversations to discover which specific movies users mention as part of their reflections on different genres they enjoy.
+- Your job is to discover the name of a movie from the dialogue provided. Focus on the user’s responses, as they might reveal their favorite films.
+- Focus specifically on user interactions in a dialogue, aimed at catching explicit references or names of movies.
+- In this exercise, you are aiming to locate specific movie names within a given chat context. Pay attention to users' comments about their favorite films and genres.
+- You need to extract information from conversations that might lead you directly to the names of movies. Understanding context can help identify these titles.
+- In this task, you need to identify movie titles mentioned in a dialogue. Listen carefully for any specific movies that users express enjoyment for.
+- Your responsibility is to recognize conversations where movies might be mentioned. If a movie title comes up, that’s the answer you’ll provide.
+- Engage with the provided text and search for movie title references. Your goal is to highlight a specific movie if it appears in the conversation.
+- Your objective is to listen for and identify any explicit film titles during conversations regarding personal movie likes or recommendations provided by users.
+- Your job is to find and report on any movie titles that arise during dialogue exchanges. Be attentive to user reflections and statements related to cinema.
+- Your challenge is to find and return movie names based on conversational cues. Identify keywords and statements made by users expressing their interests in movies.
+- In this task, you will sift through a conversation to pinpoint any movie titles that are mentioned by the user.
+- Navigate through given dialogues and report back with any movie titles that are specified by users, noting their enthusiasm or preferences as clues.
+- Your mission is to pinpoint movie names from discussions. Identify any instances where users mention movies they enjoy or describe their favorites.
+- Your attention should be devoted to discerning the names of films during discussions where users reveal what they enjoy watching, ensuring accurate identification of mentioned titles.
+- Navigate through a chat to find mentions made by users regarding their favorite films or genres, pinpointing specific titles when stated.
+- This task involves comprehending conversational exchanges about movies and isolating any titles that have been explicitly mentioned by users.
+- You are tasked with finding a specific movie name from an exchange, based solely on what the user has expressed about their favorite types of films.
+- The goal of this task is to retrieve a movie title from a conversation while disregarding irrelevant details. Look for clear mentions by the user.
+- Your challenge is to extract specific movie titles from a dialogue, noting any personal preferences expressed by the user throughout the conversation.
+- Engage with the conversation and locate any movie names that the user brings up in reference to their likes and dislikes.
+- Identify and select movie names from conversational exchanges based on users' past experiences or preferences shared in their dialogues.
+- The task involves hearing out user conversations carefully and spotting any movies they reference when discussing their cinematic favorites.
+- Analyze conversations carefully to understand which movies are being talked about and respond with those names accurately when they appear.
+- Listen to the dialogue provided and extract the specific name of a movie that the user mentions, making note of their preferences.
+- In this task, you will discern movie titles hidden within dialogues. Pay attention to the spoken preferences and recollections related to films.
+- The task is to locate and present any movie name that appears in the dialog, taking care to differentiate it from other content discussed.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task926_coached_conv_pref_word_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task926_coached_conv_pref_word_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

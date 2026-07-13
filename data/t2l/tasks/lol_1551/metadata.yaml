@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- This task involves selecting specific items from a list based on given starting and interval points. It requires careful indexing to ensure the right elements are retrieved.
+- Here, your focus is on dissecting a list into its components based on directional input regarding distance from an initial index. The essence of the task centers around precision in selection.
+- Your task is about selecting elements systematically from a provided list based on set parameters for where your extraction begins and how often it occurs along the way.
+- This exercise entails navigating through a sequence of values with consideration for dimensions set by starting point and spacing, ultimately forming a concise output based on these criteria.
+- You need to identify every nth item from a list, beginning at a specified index, until you run out of elements to select.
+- Engage with sequences by extracting certain entries determined via initial positions coupled with consistent stepping rules, executing this process until all potential selections are exhausted.
+- Your assignment is to interact with given lists of values by extracting specific entries determined by starting index and interval size.
+- This exercise puts your analytical skills to the test as you demonstrate your capability to filter a list based on criteria of position and selection intervals.
+- You will extract elements from a list using specified positions. Understanding how to navigate lists and use indices correctly is essential for completing this task.
+- Your goal is to retrieve items from a collection based on specific instructions regarding their position and spacing. Accurate counting and attention to detail are key factors in achieving the right answers.
+- The task at hand entails navigating through a collection of elements, focusing on a start point and establishing increments for further selections as long as they stay within valid boundaries.
+- This task requires you to work with lists and locate certain elements by starting at a given position and selecting items at regular intervals until the end of the list is reached.
+- In this activity, you'll pinpoint certain items within an array by utilizing provided starting indices and step sizes, ensuring that you don't overlook any boundaries imposed by the list length.
+- You will perform an operation involving lists, using specific inputs that denote where to start and how frequently to choose subsequent items. Your quest for extraction pauses at logical boundaries dictated by input parameters.
+- This task prompts you to select elements from an array by starting at a given index and stepping through it in fixed increments. Maintaining focus on the limits of the array is essential.
+- The objective here is to use logical reasoning to traverse through an indexed collection and select data points that meet criteria of position and step size.
+- The goal is to navigate through a list and extract specific values using indices based on supplied parameters.
+- This task involves using arithmetic logic to retrieve every ith element from a listed series based on provided starting points.
+- This task emphasizes systematic extraction of elements from an array using initial set points and intervals defined numerically.
+- This task involves navigating through a list to select items based on specific counting rules.
+- The goal is to pick out elements from a given list starting at a specified index and using a consistent interval. This will involve a systematic approach to indexing into the list.
+- This task focuses on pinpointing specific elements within an array by following designated starting rules and intervals.
+- You need to select items from an array by starting at a particular index and then skipping elements according to another integer, stopping when you reach the end of the list.
+- You are required to track down items in a sequence based on initial parameters that guide your selection steps, ceasing when you surpass what the list can provide.
+- Your objective is to filter out specific items from a list by following given positions and skips, ensuring accuracy in selection as you progress through the array.
+- Your task is to extract specific elements from a list based on given starting and interval values. This requires understanding how to navigate lists by using indices effectively.
+- Your role is to determine which elements of a list correspond to a sequence defined by two integers provided as input.
+- In this task, you need to find every nth element in a sequence derived from an input list, making sure to respect the given parameters for both initiation and iteration.
+- This exercise involves choosing and listing items from an array while adhering to rules set by numerical inputs for starting positions and steps.
+- You are required to navigate through a list to find every nth element, starting from a particular position and stopping when you go beyond the list's length.
+- You'll engage with lists to extrapolate certain values, initiating at selected points with fixed steps that lead through the array without transgressing its limits.
+- Your job involves analyzing input values that dictate your movement through a list of elements, and it requires careful adherence to indexing rules as you select items systematically.
+- You need to utilize your skills in array traversal, where the aim is to collect elements based on designated starting positions and intervals.
+- In this task, you will identify and select elements from a sequence based on a starting index and a step, which trains your ability to manipulate array structures in programming contexts.
+- You will work with a list and select its elements according to defined starting and stepping rules. This requires understanding of list indexing and movement through the data.
+- Your assignment consists of identifying select entries from an array through careful navigation defined by positional instructions given in the form of integers.
+- In this task, you will be working with a list to gather elements positioned at regular intervals, starting at a specified point. Make sure your selections adhere to the bounds of the list provided.
+- The intent of the task is to evaluate an input sequence for regularly spaced items beginning from a predetermined index value.
+- In this task, you will need to critically assess a sequence of elements, extracting those that fit within predefined indices and increments.
+- This task requires you to select every nth element from a given position in a list, stopping when you go beyond its length. A clear understanding of indexing is necessary for successful completion.
+- You are tasked with selecting elements out of an array using index parameters that tell you where to begin and how far apart each selected element should be. It's vital not to exceed the array limits.
+- In this task, you need to extract specific elements from a given list based on provided starting and step positions. Your focus is on identifying and listing these elements correctly.
+- Your job involves iterating over a set of values in an intelligent manner by defining both where your exploration starts and how far apart selections should be, taking care not to extend beyond available data.
+- Identify and extract specified values from an array based on set rules for starting positions and step counts; careful attention will be necessary for position management.
+- You are tasked with sifting through a list and pulling out certain items according to defined parameters. Understanding how to work with list indices is important for success in this task.
+- You will be engaging with lists by hopping along them using specified start points and intervals, capturing pertinent entries as instructed, up until the edges of the list.
+- You will evaluate items within an array, drawing upon knowledge of numerical sequencing and interval selection as you extract relevant data points from the list.
+- You will apply a structured method to find elements in an array, beginning from a specific position and moving through the list at regular intervals. This must be executed until you can no longer choose items that meet the criteria.
+- The focus of this task is to pick elements from a list using specific integer inputs. You'll need to utilize your understanding of indexing and array traversal effectively.
+- You are to identify every nth entry in a sequence beginning from a specified location, enhancing your skills in algorithmic thinking and data selection strategies.
+- This task requires locating particular values in a sequence using specified indices and steps, ending when the index goes beyond the available list.
+- You are tasked with identifying segments within an array using given conditions for extraction that highlight basic computational skills related to indexing.
+- This task requires you to sift through an array of values, pinpointing elements using a combination of indexing and interval counting techniques.
+- Your job is to apply given start and interval numbers to identify specific elements within an array of items. Ensure that all selections adhere to the criteria without exceeding the array's size.
+- Your job is to track down every nth item in a series, originating from a defined starting position until the end of the series.
+- You should be able to interpret index-based information to collect specific values from an ordered list, following systematic spacing.
+- You are required to analyze a list and pick elements at regular intervals, starting from a designated position. The challenge lies in maintaining an accurate count and staying within the list limits.
+- This task challenges you to identify every element at specified intervals from a given starting location within a list. Staying mindful of the total length of the list is important for correct selection.
+- You need to analyze an array of items and systematically pick them according to specific index parameters provided, ceasing when you can no longer find applicable items.
+- The essence of this activity lies in managing elements within a list according to distinct numerical guidelines. You'll need integer values for effective navigation through the data set.
+- You are required to dissect lists methodically based on specified guidelines related to initial positions within the array and consistent steps thereafter; only valid selections count toward your output.
+- Given a list along with two integers, your goal is to identify and return elements at regular intervals starting from a specified index.
+- The aim is to pull information from a sequence guided by specified parameters for start and selection intervals, enhancing your technical aptitude with lists in programming contexts.
+- Your challenge is centered around list indexing whereby you'll extract values that align with numerical directives regarding their position in the collection.
+- The challenge lies in navigating through a collection of items by choosing ones that meet particular criteria for their positions and ensuring you remain within the valid range of the list.
+- You are required to extract values from a dataset according to defined start and skip parameters. Attention to detail in counting and positioning will greatly influence the accuracy of your results.
+- Your task involves extracting specific items from an array using integer references that define your starting point and interval. Awareness of index limitations will help you complete this correctly.
+- The goal of this task is to systematically retrieve values from an array by applying defined parameters related to their position and selection frequency.
+- This task requires you to traverse through a list, picking out elements at regular intervals starting from a designated point.
+- Your job is to locate and return specific items in a collection using interval-based logic, ensuring not to exceed the boundaries of the collection.
+- In this exercise, you will be working with lists and integers to isolate every nth element, beginning at a specified location. Accuracy in tracking your position in the list is crucial.
+- The goal here is to extract components of an array according to specified integers that determine both the starting location and subsequent selections.
+- This exercise requires you to methodically derive items from an array using precise numbers for where to start and how far between selections you should go.
+- This task requires you to find elements from an array, starting at a specified position and continuing at regular intervals until you can no longer proceed within the bounds of the list.
+- This task requires you to pinpoint certain entries from a collection based on prescribed starting points and interval steps. Your index manipulation skills will be tested here.
+- In this task, understanding of integer indexing within lists will be critical as you are required to extrapolate items starting from one index while skipping others systematically.
+- Your task is to extract specific elements from a list based on given starting points and intervals.
+- Here, you'll delve into a set of values and choose items at specific intervals starting from designated points. Precision in indexing is key as you work through the arrays.
+- This task involves indexing into a list to select elements based on the input parameters that define the starting point and the step size.
+- This task challenges you to apply logic in processing lists, pulling specific entries dictated by numerical inputs around initiation points and step sizes—ceasing when boundaries are reached.
+- You are expected to navigate through a list of items, selecting elements based on a starting position and a step count. The process requires careful counting to ensure you choose only those that fit within the list's range.
+- Your job is to systematically pull elements from a list beginning at a specified index, continuing at predetermined intervals until you reach the end of the list's boundary.
+- This task is about finding and collecting elements from an ordered set based on defined positional parameters, thereby strengthening your skills in list management.
+- Your role is to traverse through an indexed list and sequentially select elements while adhering strictly to provided selection rules.
+- The task focuses on working with sequences, requiring you to pinpoint items in a consecutive manner based on initial inputs, navigating through them until the designated criteria are no longer met.
+- This task involves selecting elements from a list by specifying a starting index and a step size. You will need to ensure that you only include those elements that fall within the bounds of the list.
+- You need to exhibit your understanding of arrays by selecting specific elements according to assigned starting points and stepping values, developing critical reasoning in data manipulation.
+- Your responsibility includes evaluating array structures to access particular items at specified distances from one another, reinforcing your understanding of sequential data retrieval.
+- In this challenge, you will navigate through a list of items based on given integer values that dictate where to start and how often to select elements. Mastery over index handling is essential for success.
+- Your task involves extracting elements from a list based on specified starting and interval points. You need to follow the instructions to gather specific items without explaining your method.
+- You are to sift through a list and select elements based on their order from a starting position, adhering to a defined selection frequency.
+- This activity involves strategically pulling elements from an array using defined indices to start and increment your choice, careful not to exceed the array’s total length.
+- In this task, you will navigate through a collection of items, picking out those that match a specific pattern defined by two numbers, ensuring that your selections stay within the list's limits.
+- In this exercise, the focus is on leveraging basic programming concepts to filter and retrieve specified data from structured input lists.
+- Your role involves processing an array by extracting certain elements according to defined starting and stepping rules. You should be attentive to the length restrictions of the array.
+- The objective is to loop through a list and collect elements that appear at regular intervals after starting at a given index.
+- The challenge requires you to locate certain elements in a sequential series based on specified inputs for both starting index and interval. Keeping track of your position is key for achieving the desired output.
+- This activity centers on selecting elements from a range based on starting points and intervals given in the input. Precision in identifying the valid indices will guide you toward the right results.
+- Your task is to find specific elements in a list based on given starting points and intervals. You need to identify elements at certain positions and stop when you reach the end of the list.
+- In this task, you need to extract specific elements from a list based on given starting and step values.
+- For this task, you will explore a list and gather elements according to defined positions, creating a subset based on set parameters.
+- The focus here is on utilizing stipulated indexes to decipher which items can be drawn from given collections, exercising caution not to surpass the established size restrictions during this operation.
+- You will engage with data sequences, extracting designated entries based on integer-driven criteria about where to start and how far apart to choose items.
+- The objective is to identify certain elements from a list by following a start point and taking steps defined by an interval. You must ensure that you stop when the index exceeds the list length.
+- You are set to explore a sequence of items by beginning at designated indices and moving in intervals determined by another value—your focus is on successfully managing these selections.
+- In this task, your analytical skills will be utilized as you select elements at specified intervals from a given position in a sequence, paying attention not to exceed set limitations of length.
+- You must find and return items from a particular section of an array, guided by predetermined positional arguments. It’s crucial to pay attention to how far down the list you can go.
+- You are required to find elements in a sequence by following a pattern that starts at a specified index and moves in regular steps.
+- The challenge is to navigate through an array and gather items spaced apart by a set interval, commencing from a certain point in the array.
+- This task revolves around systematic data retrieval, whereby you will extract data points from a sequence based on both a starting point and predetermined spacing between selections.
+- You will analyze a list of items and use two integers to determine which elements to select. The goal is to find every item at the specified intervals starting from a defined point.
+- You will engage in a systematic approach to extract items from a list, utilizing starting and interval values that dictate your collection of elements until it's no longer feasible to continue.
+- Here, you're expected to efficiently gather information from a sequence by determining which elements should be sampled based on your inputs.
+- This task emphasizes your ability to apply indexing rules in order to efficiently gather relevant data from an orderly arrangement of items.
+- The focus here is on iterating through a list of values and collecting items based on constraints related to starting position and step count.
+- Your challenge involves working through an array using given counters that dictate both where to begin your selection and how frequently you should pick items, stopping when no further valid selections can be made.
+- Given a list and specific instructions, your job is to navigate through the elements, capturing those that fit the selection criteria laid out by the starting point and step size.
+- The goal is to methodically determine which elements from a provided list fit certain positional parameters. This hones your ability to work with arrays efficiently.
+- You need to explore lists and pick out select items based on clear numeric indicators defining start index and gap between selections.
+- Here, you will work with sequences, determining which items should be selected based on their calculated positions within the original list.
+- You are required to extract certain entities from an array based on positional rules that define how deep into the list you delve for selection. Maintain awareness of the end of the list as you operate.
+- You will determine which elements to extract from a list of values using two guiding integers to direct your selection process, ceasing when you can no longer select an element.
+- Your task is to extract specific elements from a list based on given starting and step positions. You need to follow the provided indices carefully to select the correct items.
+- The goal is to filter elements in a sequence based on positional parameters to see which ones fit the given criteria for selection.
+- The objective is to extract specific sequences of data from a larger set formulated by input parameters indicating where to start and how frequently to select elements.
+- This task challenges you to interact with lists by computing which items should be picked based on numerical rules regarding their positions, fostering analytical thinking.
+- The task requires navigating through given lists in order to extract data at certain intervals, pushing your capabilities in algorithm design and comprehension of data structures.
+- In this task, you'll apply an understanding of sequence indexing to retrieve elements from a list in accordance with given parameters.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1551_every_ith_element_from_kth_element
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1551_every_ith_element_from_kth_element
+user_prompt_template: '{task_def}
+
+
+  {problem}'

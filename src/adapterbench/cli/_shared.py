@@ -17,8 +17,18 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_CATALOG = REPO_ROOT / "configs"
 
+# Vendored Text-to-LoRA data (see data/t2l/NOTICE.md) - the Lots-of-LoRAs per-task
+# metadata, the decontaminated 479-task train split, and the held-out eval-task
+# descriptions, sliced from SakanaAI/text-to-lora at the pinned commit. Vendored into the
+# repo so the T2L setting is self-contained and needs no `upstream/` clone (which is
+# gitignored and gets cleaned). Every t2p-* command defaults to these paths.
+T2L_DATA_DIR = REPO_ROOT / "data" / "t2l"
+T2L_TASKS_DIR = T2L_DATA_DIR / "tasks"
+T2L_DECONTAM_CONFIG = T2L_DATA_DIR / "hyper_lora_decontam_lol_tasks.yaml"
+T2L_EVAL_DESCRIPTIONS = T2L_DATA_DIR / "eval_ds_info.yaml"
+
 # lol_022/043/044/045/047/050/063/064 are all confirmed present in T2L's own
-# train_ds_names (upstream/text-to-lora/configs/hyper_lora_decontam_lol_tasks.yaml).
+# train_ds_names (data/t2l/hyper_lora_decontam_lol_tasks.yaml).
 # The previous default (lol_022,033,034,035,039,043,044,045) trained on lol_033/034
 # (two of T2L's 10 contamination-removed tasks) and lol_035/039 (two of T2L's own 11
 # held-out zero-shot validation tasks) - exactly the leakage a training pilot should

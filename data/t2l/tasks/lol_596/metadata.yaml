@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Generate questions inspired by a descriptive passage or scenario, ensuring they can be addressed through clues found within what has been communicated.
+- Read carefully through an informative piece, then construct relevant interrogatives aimed at uncovering more about the details shared therein.
+- You need to extract meaningful questions from given passages. Each question must be answerable by referencing specific parts of the provided text.
+- Your task involves scrutinizing a narrative for pertinent details and subsequently crafting questions that would help convey its essence or seek further clarification.
+- In this task, you are expected to produce insightful questions based on a narrative or informative excerpt. Focus on ensuring potential answers are rooted in the given material.
+- The task involves interpreting a narrative or description and generating inquiries about its content. The questions should promote engagement with the text.
+- After reviewing a brief passage, you'll be required to generate thoughtful inquiries related to the facts or implications presented, making sure they align with the text.
+- Analyze a provided context while keeping its central themes in mind; pose relevant questions aimed at clarifying or elaborating on elements discussed in that context.
+- Draw upon your reading comprehension skills to generate questions about important themes, events, or details illustrated in the provided context.
+- After reading a short context, come up with specific questions that can uncover deeper understanding or implications of the situation described in the passage.
+- Your goal is to think critically about a piece of text and develop questions that connect directly to the main ideas or events presented in it.
+- Your focus here is on synthesizing information from a given context into coherent questions that can elicit responses based exclusively on that text.
+- By engaging with a brief text, your task is to generate various questions that capture important aspects or nuances from the narrative.
+- You are tasked with generating questions that arise naturally from a given context passage. These questions should directly relate to the details presented in the text.
+- In this task, consider the essence of a provided passage, then create thought-provoking questions derived from it. Make sure your inquiries align accurately with the narrative's details.
+- After reading the given text, use your comprehension abilities to formulate clear and engaging questions about it.
+- In this activity, you are asked to dissect a short narrative and generate questions based on it. Look for significant actions or implications in the text to guide you.
+- Craft inquiries related to specific details in a context. This requires identifying main ideas and implicit information within the passage for clarity.
+- Focus on understanding the narrative and propose questions relevant to the situations or characters described in the passage.
+- For each passage you read, your task is to think critically and develop questions that would help someone else understand or further explore the information presented.
+- Analyze the provided context and create relevant questions that reflect the details mentioned. Your questions should connect directly to what is described.
+- In this exercise, generate insightful questions from a given piece of writing. Each question should stem directly from the passage without adding external interpretations.
+- In this task, you will extract information from a context passage to ask questions that someone could answer by referencing that same passage.
+- Your task is to read a narrative carefully, then think of questions someone might have that could be answered by looking closely at what you've just read.
+- The task involves reading a detailed context and crafting questions that encourage further exploration of its content while relying strictly on what is presented.
+- Reflect on the details of the text you've read, and devise questions that can help clarify or expand on those points.
+- You will create inquiries that stem from the narratives or facts given in a passage. The goal is to produce questions that a reader could consider while engaging with the text.
+- Read through the provided context and think critically to come up with questions that align with the happenings or facts presented in that passage.
+- Analyze the context provided and generate questions that capture the essence of the information shared. The questions should draw directly from what you read.
+- Analyze segments of text closely and create articulate questions designed to probe deeper into its meanings, ensuring they align well with what has been stated.
+- You need to interpret a passage and formulate inquiries that can be answered without additional explanations, purely based on the given material.
+- Part of your task is to extract relevant facts from a narrative and devise questions around them, ensuring they are easily answerable by referring back to the text.
+- Your focus will be on creating relevant questions from details found in a context, ensuring they are answerable through the information provided.
+- Your role is to read a context passage and ask questions that explore its themes or events. Think about what readers might want to know after reading the text.
+- You will analyze a written passage, identifying critical information around which you can base questions for further inquiry or discussion.
+- After reading, your objective is to ask thoughtful questions based entirely on what you've understood from the passage provided.
+- Your task involves reading a passage and generating questions that can be directly answered by the text. This requires comprehension and an understanding of the content.
+- This assignment involves interpreting narrative details to formulate questions aimed at exploring thoughts or events depicted directly in the context.
+- The task involves reading a brief story or scenario and then generating targeted questions that allow for exploration of its content, focusing on character actions and emotions.
+- Use context clues from the passage to generate thought-provoking questions that can be found directly within the text.
+- Your assignment is to produce relevant questions arising from a text you've read, requiring you to reflect on and engage with its ideas.
+- Engage with a short passage, then create questions based on the information presented. The questions should be clear and directly related to the text.
+- You are tasked with reading a passage and coming up with meaningful questions that can be directly answered by the information in that passage.
+- You are tasked with reading a passage and generating questions that relate directly to its content. Consider what information can be drawn from the text to form these inquiries.
+- Your task is to read a provided passage and come up with questions that can be answered based on the information in that passage.
+- This task requires synthesizing information from a context in order to produce questions related to people's feelings, actions, or events mentioned.
+- In this task, you will generate questions based on a specific context. The goal is to create queries that relate closely to the information provided in the text.
+- Your job is to interpret a context passage and formulate questions that reflect the information contained within it.
+- Analyze the content of the passage and create relevant questions that encourage further exploration of its themes or facts mentioned.
+- Your task is to read a given passage and come up with questions that are directly related to its content.
+- Interpret the information found in a passage and generate relevant questions. The aim is to reflect your understanding of the text while stimulating further thought.
+- Your job is to extract information from a context passage and formulate specific questions that can be answered based solely on that passage's content.
+- Develop questions based on a narrative fragment. Ensure your inquiries are pertinent to aspects such as character intentions, reactions, and overall plot points as presented in the text.
+- The task consists of taking insight from a piece of writing and posing inquiries that focus directly on the themes or actions outlined therein.
+- For this task, read the provided passage and develop questions that reflect key details or information contained within it, ensuring clear connections to the text.
+- Your task is to read a provided passage and come up with meaningful questions that can be answered based on the information in that passage.
+- Task yourself with taking key insights from a context piece and turning them into questions that can enhance understanding or provoke thought based on its content.
+- Your job is to create questions based on a provided narrative. The goal is to formulate queries that can be clearly answered by the details within the passage.
+- In this task, your goal is to engage with a narrative by formulating questions that reflect the main ideas or events within the passage.
+- The challenge lies in constructing specific questions based on a comprehension passage, enabling a reader to gain insights into the details shared.
+- Craft inquiries based on details from a short excerpt—your focus should be on promoting clarity regarding character dynamics and story developments.
+- The challenge here is to understand the passage and create questions that reflect its key points or events.
+- Engage with the text to come up with questions that prompt further exploration of its themes or details.
+- Analyze the narrative provided and create specific, relevant questions that relate directly to its content.
+- Read a context carefully, then articulate questions stemming from it. This process demands both understanding and analytical skills in recognizing important aspects of the passage.
+- The goal of this task is to generate insightful questions from a provided text, ensuring that those queries can be answered by referring back to the passage.
+- From the context provided, think critically about what questions arise regarding the characters' motivations or situations and express them clearly.
+- The goal is to read a context snippet and devise pertinent questions that are firmly grounded in its content for clarity and relevance.
+- The task involves generating questions that can be answered by the information presented in a short excerpt. Aim for clarity and relevance in your inquiries.
+- You will read through a contextual statement and generate inquiries focused on what unfolds or is portrayed within that narrative.
+- Your challenge is to engage with a passage and generate relevant questions that link back to its main components or messages effectively.
+- This task consists of identifying significant information within a passage and forming related questions that reflect this understanding accurately.
+- You need to carefully analyze a given text and generate relevant questions that are answerable by referring to specific details in the passage.
+- This task tasks you with reading a context and producing questions that probe for deeper understanding of the events or facts mentioned in the material.
+- You'll dive into the story or information presented and formulate inquiries that could be addressed using the specifics from the passage provided.
+- Develop thoughtful inquiries based on specific passages. Each question should be designed to draw attention to details and allow for easy reference back to the original text.
+- Your objective is to derive meaningful inquiries from a passage by focusing on its descriptions, characters, or events.
+- This exercise involves deriving insightful questions from indicators found in a text. Use comprehension skills to identify parts of the story that provoke curiosity.
+- Examine the given text and generate inquiries that can be answered by referring back to what you've read.
+- Read a short passage and brainstorm questions related to its content. These inquiries should provide insight into themes or character decision-making based on what you read.
+- Your assignment is to thoughtfully review a context and contrive meaningful questions whose answers can be immediately found within the provided excerpt.
+- You need to distill main ideas from brief narratives and craft questions that align with those ideas, enabling others to explore them further.
+- The objective is to engage with a written excerpt and come up with constructive questions that can be straightforwardly addressed by the text itself.
+- Based on a short context, you need to think critically and create questions that touch on the main ideas or events described in the text.
+- Examine the given narrative and creatively develop questions that evoke critical thinking while being rooted in the details presented in that narrative.
+- Read through a scenario and then think critically to produce relevant questions about it, aiming to capture key elements like character motivations and feelings expressed in the story.
+- The task involves reading a provided passage and crafting relevant questions based on its content, ensuring they can be answered using information from the text.
+- The goal here is to understand a short context and then devise questions that require engagement with the text for accurate answers.
+- Analyze the provided context and generate meaningful questions that can be answered using information from the text.
+- This task challenges you to engage with a narrative and think about what questions could emerge from it. Focus on capturing the essence of the story through your queries.
+- Analyze the information provided in the context and devise inquiries that lead back to specific elements or themes discussed in the text.
+- You will synthesize content from a brief narrative into coherent questions. Consider what follow-up inquiries might engage someone who has just read the passage.
+- Based on the provided information, create questions that explore different aspects of the scenario outlined in the passage.
+- Your challenge is to read a description and come up with relevant questions that can derive answers purely from what has been written. Stay true to the information provided.
+- Engage with the material by generating questions that can only be answered by referencing back to specific parts of the provided passage.
+- This task requires you to produce questions based on a provided passage, ensuring they can be clearly answered by referring back to the text's specifics.
+- Analyze given contextual information and generate insightful questions that can be definitively answered by referencing the details outlined in the text.
+- The task involves reading a passage and creating questions that can be directly answered based on the content provided.
+- Your role is to identify important themes in a passage and construct questions that stem from these themes, ensuring they can be answered using the passage itself.
+- You will generate questions based on a provided context. The questions should directly relate to elements and details mentioned in the passage.
+- From an excerpt presented, devise clear and focused questions designed to extract details or clarify understandings about actions or sentiments depicted within it.
+- Upon reviewing a context passage, think about potential questions an inquisitive reader might ask, focusing on components that could be expanded upon.
+- You will need to identify key events or emotions described in a passage and design relevant questions based on those observations.
+- Your task involves examining a narrative closely and asking pertinent questions related to character actions, motivations, or outcomes inherent in the situation described.
+- The aim of this task is to read through a passage and come up with questions that logically derive from its content, requiring comprehension of the material.
+- Your job is to interpret the context and ask questions that directly connect to the statements or themes mentioned within it.
+- Examine a brief context and think critically to produce questions about it. This exercise emphasizes clarity in inquiry relating directly back to what was read.
+- Generate relevant questions that relate directly to the context given in the passage. This requires understanding the main ideas and details presented.
+- After reading a text, your task is to distill it into relevant questions that reflect its main ideas or events. These should lead to concise answers found within the passage.
+- This task involves synthesizing information from a passage to form questions that are grounded in its content.
+- From a context passage, gather thoughts to create insightful questions that can lead to discussing important aspects of the text presented.
+- This task requires you to extract key details from a narrative and turn them into questions that seek clarification or information mentioned in the text.
+- Interpret the key themes or events described in a text, and generate insightful questions which can guide further discussion or understanding of those aspects.
+- Use your reading comprehension skills to extract coherent questions from context passages. These inquiries should relate closely to essential themes or facts contained in the material.
+- Engage with a piece of text and develop questions that are logically tied to its content, emphasizing clarity in the relationship between the question and the passage.
+- Read the given text carefully, and then generate questions that logically connect to its content, seeking to explore various aspects of the characters or actions mentioned.
+- You are required to come up with relevant queries after reading an excerpt. Look for actions, feelings, or conclusions within the text as inspiration for your questions.
+- Consider the relationships and events in the passage; your goal is to produce relevant questions for deeper understanding.
+- Analyze a given context and formulate relevant questions that depend on information found within that context. This exercise tests your ability to extract details.
+- In this task, you will analyze a brief story and devise questions that reflect its core elements. Focus on the key actions and events to guide your question formation.
+- Here, you will read a given passage and think critically about it to create pertinent questions. Your questions should stem from what was explicitly stated or implied in the narrative.
+- Using the information in the passage, create questions that can be easily answered by referencing the text. Focus on important themes and statements.
+- The task is focused on reading comprehension and assessment; you'll need to derive suitable questions from the content of a short piece of writing.
+- Your role is to examine a short narrative and formulate appropriate questions that can be directly addressed using only the information found in that narrative.
+- Your role is to create meaningful questions from a supplied passage, tapping into your comprehension skills and ability to distinguish noteworthy details within the text.
+- Take a context passage and formulate questions that delve into the motivations or outcomes of the characters involved. Each question should align with the information stated.
+- You are required to create questions that derive from the content of a passage, focusing on specific details and events described therein.
+- Your job is to reflect upon a brief context and construct queries that can highlight important aspects or narratives found within it, connecting them back to specific lines or ideas presented.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task596_mocha_question_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task596_mocha_question_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

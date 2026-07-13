@@ -60,10 +60,11 @@ pipeline (see § "Roadmap").
     (whole-decoder-layer) outputs. `PooledVectorConditioner` (task-description) and the
     document conditioner both plug into the same trunk/heads/codec path via a pluggable
     `conditioner`.
-  - `t2p/lol_data.py` — Lots-of-LoRAs/SNI training data. `load_decontaminated_train_task_ids`
-    reads T2L's own 479-task training split from `hyper_lora_decontam_lol_tasks.yaml`;
-    `validate_training_tasks` refuses any task outside it (never one of T2L's
-    contamination-removed or held-out-validation tasks).
+  - `t2p/lol_data.py` — Lots-of-LoRAs/SNI training data, read from the **vendored** `data/t2l/`
+    (per-task `metadata.yaml` + the split yaml; see `data/t2l/NOTICE.md`) so the setting needs
+    no `upstream/` clone. `load_decontaminated_train_task_ids` reads T2L's own 479-task training
+    split from `hyper_lora_decontam_lol_tasks.yaml`; `validate_training_tasks` refuses any task
+    outside it (never one of T2L's contamination-removed or held-out-validation tasks).
   - `t2p/sft_trainer.py` — the T2L training loop. `train_downstream_hypernetwork` (fixed
     step budget) and `train_with_checkpoints` (several budgets under one persistent
     optimizer, for step-budget sweeps) both support `grad_accum_steps` and `warmup_steps`
@@ -161,7 +162,7 @@ stochastic (lands anywhere ~1500–2500+ steps), which is why the protocol requi
 seeds (see § "The four invariants"). `aggregate_lengthgen.py` emits the per-run length curve
 plus transition step and crossover length from the training logs.
 
-## T2L: task-description setting (validated)
+## T2L: task-description setting (works end-to-end; control added — conditioning unproven)
 
 `t2p-sft-pilot` trains a hypernetwork from scratch, conditions on a task-description
 embedding, and scores held-out boolq/hellaswag (generation + answer-extraction, dropout
@@ -169,10 +170,64 @@ disabled during scoring per the eval-mode gotcha). With the LoRA baseline on the
 479-task decontaminated corpus (3 seeds, upstream's recipe), **LoRA clears the frozen
 interpreter on the discriminative task** (hellaswag ≈ 39% vs frozen ≈ 23%); boolq barely
 separates (most everything sits near frozen's 75%), which is itself a finding about the eval
-set, not the adapter — see the difficulty-knob invariant. The setting works end-to-end; the
-missing rigor before it is a *benchmark* rather than a demo (a mismatched-description control,
-a scale sweep, a graded difficulty knob) is specced in § "The four invariants" and deferred
-below the image domain.
+set, not the adapter — see the difficulty-knob invariant.
+
+**Rigor pass (2026-07-13) — the mismatched-description control changes the read.** The setting
+now has the control it was missing: `live_evaluator.py` computes `accuracy_mismatched` (each
+family scored with an adapter generated from a *different* family's description — the T2L
+analogue of D2L's `accuracy_ctxswap`), `t2p-sft-pilot --scales` sweeps LoRA scale, and the
+eval spans a difficulty spread (frozen headroom hellaswag 0.23 → boolq 0.70). Run at the
+validated recipe (full 479-task corpus, lr 1e-5, warmup 0.1, effective batch 256), **3 seeds,
+eval-limit 80** (`results/t2p_rigor_ms/`, summarized by `scripts/t2p_rigor_aggregate.py`):
+
+| family | frozen | matched | mismatched | matched − mismatched |
+|---|---|---|---|---|
+| arc_easy | 0.713 | 0.733 ± 0.05 | 0.750 | **−0.017** |
+| arc_challenge | 0.475 | 0.500 ± 0.06 | 0.521 | **−0.021** |
+| hellaswag | 0.225 | 0.325 ± 0.05 | 0.346 | **−0.021** |
+| boolq | 0.700 | 0.729 ± 0.03 | 0.758 | **−0.029** |
+
+The adapter **does** beat frozen (hellaswag +0.10, others +0.02–0.03), but the **mismatched
+adapter gains just as much** — matched − mismatched is a consistent, tight ≈ **−0.02** across
+all four families and three seeds. So at this recipe the T2L gain over frozen is **real but not
+task-description-specific**: a wrong description works as well as the right one. This is exactly
+the over-attribution the control exists to catch — the earlier "hellaswag 39% vs frozen 23%"
+was measured *without* a control and credited to conditioning that the control does not support.
+
+**Strong control — the confound is removed; the null holds (2026-07-13, `results/t2p_strong/`).**
+The weak swap above deranges among four similar QA descriptions, so a skeptic could argue the
+descriptions were too close to tell apart. The strong control (`t2p-sft-pilot
+--adversarial-control`) instead scores each family with an adapter generated from a maximally
+*dissimilar / meaningless* description — Text-to-LoRA's own `additional_eval_descs`
+(`"dogs;cats;bananas;"`, random noise `"7@9.qwepra#…"`, `"gggg…"`). Run as a 3-scale × 3-seed
+grid (scales 2.83/5.66/11.31 = 0.5×/1×/2× the default, eval-limit 80):
+
+| family | frozen | matched | adversarial-mismatched | matched − adv |
+|---|---|---|---|---|
+| arc_easy | 0.713 | 0.714 ± 0.055 | 0.731 | −0.017 |
+| arc_challenge | 0.475 | 0.540 ± 0.044 | 0.528 | +0.013 |
+| hellaswag | 0.225 | 0.364 ± 0.060 | 0.333 | +0.031 |
+| boolq | 0.700 | 0.700 ± 0.056 | 0.756 | −0.056 |
+
+Even against pure junk, matched ≈ mismatched (−0.056 … +0.031, all inside the seed std): a
+`"dogs;cats;bananas;"` adapter delivers the same gain over frozen as the real description. So
+the null is **not** an artifact of similar descriptions — **at this recipe T2L is genuinely not
+task-description-conditioned**; the from-scratch hypernetwork has learned a task-*independent*
+"apply a generically-helpful LoRA" transform, and the real gains over frozen (hellaswag +0.14,
+arc_challenge +0.065) are that generic effect, not conditioning.
+
+**Scale sweep (invariant #2).** Matched accuracy is essentially flat across scale — 2.83:0.598
+· 5.66:0.571 · 11.31:0.570 (mean over seeds×families; best-of 2.83) — so unlike I2P (where
+scale is the dominant knob and has a sharp optimum), T2L is scale-robust in this range and no
+scale rescues description-conditioning.
+
+**Why this matters.** This is the benchmark working as designed: a controlled measurement
+overturns an uncontrolled headline. The prior T2L "win" (hellaswag ≈39% vs frozen ≈23%),
+reported without a control, credited task-conditioning that neither the weak nor the strong
+control supports. Whether conditioning emerges under a *different* recipe (encoder, hook site,
+much longer training, more descriptions per task) is the open T2L question; the harness to
+answer it — matched, both controls, scale sweep, multi-seed — now exists (`--adversarial-control`,
+`--scales`, `scripts/t2p_rigor_aggregate.py`).
 
 ## Image domain: I2P — reward-tilting (HyperNoise), validated
 
@@ -224,22 +279,49 @@ train/eval prompts). CLI: `i2p-hypernoise` (one atomic cell). Pipeline:
 4. **Multi-seed** — reward maximization is stochastic; ≥3 seeds, mean±std.
 
 **Validated recipe:** frozen SD-Turbo (fp32) · `DirectCodecAdapter` LoRA rank 16 over the 128
-attention linears · SGD+momentum lr 1e-3 · `reg_weight` the difficulty knob · f_φ difference
-form · 1-step generation. Redness is the zero-dependency swap-control partner (trivially
-hackable — the NIAH-needle analogue); **ImageReward-v1.0 is the headline reward** (BLIP-based
-human preference, fidelity intrinsic, hard to hack), backpropagated through the frozen reward
-model to the generator's noise.
+attention linears · SGD+momentum lr 1e-3 · **LoRA scale ≈ 2–4** (the operating point; see
+below) · `reg_weight` a secondary knob · f_φ difference form · 1-step generation · 3000 steps.
+Redness is the zero-dependency swap-control partner (trivially hackable — the NIAH-needle
+analogue); **ImageReward-v1.0 is the headline reward** (BLIP-based human preference, fidelity
+intrinsic, hard to hack), backpropagated through the frozen reward model to the generator's
+noise.
 
-**Headline results (2026-07-12).** *(produced by `i2p_hypernoise_pipeline.py`; fill from
-`i2p_hypernoise_aggregate.py` on completion.)*
+**Headline results (2026-07-13, LoRA codec, 3000 steps, `results/i2p_hypernoise_v2`).**
+Produced by `i2p_hypernoise_pipeline.py` + `i2p_hypernoise_aggregate.py`. All four invariants
+satisfied with a genuine positive matched signal (the first run's default scale=2/reg=0.5 was
+under-powered — the matched gain was within noise; a scale sweep pinned the operating point).
+
+1. **Reward-swap control (invariant #1) — decisive, and now carried by a real matched signal.**
+   At the operating point (LoRA scale 4, reg 0.25): the **imagereward** adapter raises
+   ImageReward by **+0.160 ± 0.015** (3 seeds: 0.17/0.17/0.14) with CLIP-T essentially preserved
+   (drop +0.004), while the **red** adapter (wrong reward) drives IR gain to **−3.34 ± 0.01**
+   and CLIP-T down ~0.11. Headline **matched − control = +3.50** — the matched side is a
+   consistent, fidelity-preserving gain, not just the control collapsing.
+2. **Scale sweep (invariant #2) — a clear optimum (inverted-U).** IR gain vs LoRA scale (reg
+   0.25): 2:**+0.185** · 3:+0.079 · 4:+0.170 · 6:+0.106 · 8:−0.107 · 16:−1.20 · 32:−0.36.
+   Best-of ≈ scale 2–4; above the optimum the noise edit grows large enough to wreck the image.
+   Scale is the **dominant knob** — the image-domain echo of "scale dominates shape."
+3. **Difficulty knob (invariant #3) — `reg_weight`, most active in the high-scale regime.** At
+   the stable scale 4, reg 0.1→0.5 holds IR gain ≈ +0.14–0.16 with CLIP-T drop rising as reg
+   falls; at scale 16 reg is the safety valve (reg 0.1 → −3.38, reg 0.25 → −1.20), i.e. it
+   controls how destructive an over-large scale becomes. Fidelity↔reward tradeoff is real but
+   scale-mediated.
+4. **Multi-seed (invariant #4).** The matched gain is tight across 3 seeds (±0.015), so the
+   +0.16 signal and its separation from the −3.34 control are both statistically clean.
+
+**This is the closed-out I2P result: a genuine, multi-seed, fidelity-preserving ImageReward
+gain with a razor-sharp reward-swap control and a scale optimum** — a full member of the codec
+panel. (First-run artifact for the record: at scale=2/reg=0.5 the matched gain was ~0, which is
+why an operating-point sweep was needed; the peak is at low scale, not high.)
 
 ## How to run
 
 ```bash
 # I2P: image-domain reward-tilting, one cell (LoRA codec, ImageReward headline). Restart-safe.
+# Operating point: LoRA scale ~2-4, reg ~0.25 (higher scale destroys the image - see § I2P).
 .venv/bin/adapterbench i2p-hypernoise \
-  --device cuda:0 --reward imagereward --steps 1500 --eval-every 300 \
-  --reg-weight 0.5 --n-seeds 2 --output results/i2p_hypernoise/imagereward_s777
+  --device cuda:0 --reward imagereward --scale 4 --reg-weight 0.25 \
+  --steps 3000 --eval-every 500 --n-seeds 2 --output results/i2p_hypernoise/imagereward_s777
 
 # I2P: the full four-invariant pipeline across GPUs (reward-swap x scale-sweep x reg-knob x seeds),
 # then the derived summary. Restart-safe (skips cells whose results.jsonl exists).

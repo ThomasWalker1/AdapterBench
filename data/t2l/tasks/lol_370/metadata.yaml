@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You will work with a list of integers, filtering out the ones that can be divided by three without leaving a remainder, using your knowledge of basic arithmetic.
+- The main objective is to remove integers from a list based on their divisibility by 3, which involves recognizing numbers that fit this criterion.
+- In this exercise, focus on identifying numbers in each list that do not divide evenly into three, removing their counterparts that do.
+- The job requires you to take a collection of integers and eliminate any instances where those integers can be evenly divided by three, ensuring clarity in your final output.
+- This task focuses on integer manipulation where you must remove items from a list if they can be divided evenly by three, paying attention to special cases.
+- The goal is to process a group of numbers, eliminating any that are multiples of 3, effectively changing the list's composition.
+- Your task is to process a list of integers by identifying and removing those that are divisible by 3.
+- In this activity, determine which integers from a provided list can be excluded based on their divisibility by the number three.
+- Perform an assessment of a set of integers, discarding those values which are evenly divisible by three for an updated selection.
+- This task asks you to modify an integer array whereby every element divisible by three is stripped out, leading to a customized selection of values remaining.
+- In this task, you need to take a list of integers and remove any that are divisible by 3. If no integers are left after the removal, your output should be an empty list.
+- The activity involves scrutinizing a set of integers to exclude those divisible by three. Accurate identification is essential for success in this endeavor.
+- The focus here is on integer manipulation; specifically, you'll need to discard any integer in a given list that shares divisibility with three.
+- The job is to refine a set of integers by excluding full multiples of three, ensuring only non-divisible numbers remain in the output.
+- Your mission is to take a list of numbers and return only those that are not multiples of 3, dropping any numbers that meet this condition.
+- Your job is to analyze a list of integers and remove every number that is divisible by three, considering the mathematical rules governing divisibility.
+- You will interact with lists containing various integers and must apply a specific criteria—removing every integer divisible by three—to yield the final selection.
+- Your task is focused on sorting through numbers to eliminate any that fall into the category of being divisible by 3.
+- Engage with various integer lists; your objective is to delete all elements divisible by 3 and keep those that aren't.
+- You will work with a list comprised of various integers and will need to eliminate those that can be evenly divided by 3—this tests your knowledge of number division.
+- Your job entails taking a range of integer values and filtering them according to whether they can be evenly divided by three; keep only what does not fit this span.
+- You will analyze a set of integers and filter out any numbers that can be evenly divided by 3. The goal is to retain only those numbers that do not meet this criterion.
+- You will need to sift through different lists of integers and separate those divisible by the number three from those that are not.
+- The goal of this task is to filter out integers from an input list based on their divisibility by 3, ensuring only non-divisible integers remain.
+- The task requires you to analyze a series of integers and discard any that are multiples of 3, with a special case for entire lists consisting only of such numbers.
+- You are required to analyze a list and strip away all integers that are multiples of 3, including zero. This ensures only numbers not divisible by 3 remain.
+- The task involves processing a list of integers to identify and remove those that are divisible by 3, leaving only the numbers that are not divisible.
+- The goal is to take a list of integers and eliminate any values that are multiples of 3, returning only the remaining numbers.
+- You will encounter a set of integers and must filter them based on whether or not they are divisible by 3. This requires quick recognition of the divisibility rule.
+- This task focuses on filtering integer lists by recognizing which values are divisible by three and eliminating them from the final output.
+- In this exercise, you will examine a list of numbers and eliminate any that are divisible by the number three, ensuring only relevant integers remain.
+- You’re challenged to identify and discard all integers from input lists that are divisible by three, thereby isolating the remaining non-divisible values.
+- The task at hand is to sift through a list of numbers and identify any that are divisible by three. These numbers should be removed from the final result.
+- In this task, focus on identifying and removing numbers from a list that meet the divisibility rule for 3.
+- In this exercise, your job is to inspect integer values for divisibility against the number three and sanitize the lists accordingly by removing those values.
+- You'll engage with integer lists in this task and must take care to remove those elements that are multiples of three as part of refining your results.
+- This activity will require you to cleanse lists of integers by identifying those divisible by three and eliminating them entirely from the original data set.
+- 'The aim here is clear: given an array of integers, strip away any elements that are multiples of three and present just those remaining.'
+- You are required to assess integers in an input list and eliminate any multiples of three from your final output.
+- This task requires you to go through a list of integers, removing any that are divisible by three, thus refining the list to only include those that are not.
+- In this task, you will focus on reducing a list of integers by removing every instance of a number divisible by 3, leaving behind only those integers that do not meet this criterion.
+- This task involves examining integers in various lists, where your objective is to filter out any that are divisible by three, resulting in a new output list.
+- This task focuses on curating a selection of integers where only those not falling under divisibility by three remain intact after processing the provided input list.
+- Your job is to parse through a list and extract all integers that do not divide evenly by 3, focusing on the non-divisible elements.
+- This activity involves manipulating lists where your focus lies in recognizing numbers that are divisible by three and ensuring they do not appear in the final selection.
+- This task challenges you to evaluate lists of integers and remove any value that can be divided evenly by three, leading to a cleaner set of data.
+- You will work with a collection of integers and your aim is to filter out any that can be perfectly divided by 3. The remaining numbers should make up your final output.
+- You will analyze a list of numbers and exclude every integer that is divisible by 3, resulting in a refined output.
+- You will analyze a list containing various integers. The goal is to remove all integers divisible by three and return the remaining numbers.
+- Your mission is to analyze a list of integers and filter out any number that is divisible by 3 to refine the dataset.
+- This involves evaluating each number in a collection and removing any integers that fit the criteria of being divisible by three.
+- You will take a set of integers and apply a filter criteria based on their divisibility by three, effectively altering each list accordingly.
+- In this exercise, you will evaluate a series of integers to filter out any that are divisible by 3, ensuring that non-divisible integers remain.
+- Your role is to evaluate each integer in a given list and create a version of that list free from numbers that can be divided evenly by 3.
+- Your challenge is to refine lists of integer values, removing elements that can be evenly divided by three while understanding how divisibility works.
+- Here, your skill in number analysis will be put to use as you need to filter out all integers divisible by three from given lists and report what's left.
+- Delve into lists composed of various integers and filter them based on divisibility by three—keeping what remains non-divisible.
+- You need to look at a collection of integers and return just those that do not divide evenly by 3, offering a filtered output.
+- This assignment challenges you to find non-divisible numbers from an integer list, demanding an understanding of basic number properties.
+- This exercise asks you to take a group of integers and minimize the list by eliminating numbers that meet the condition of being divisible by three.
+- This task requires you to modify a given list of numbers by stripping out the integers that can be evenly divided by 3.
+- In this task, the goal is to create a new list consisting only of numbers that cannot be divided by 3 without a remainder.
+- In this assignment, you'll curate a list by taking out any integers that can be evenly divided by three, ensuring only specific numbers remain.
+- Here, your responsibility is to filter out certain integers from a given list solely based on their divisibility by the number three, keeping only the remainder.
+- The assignment is to take a given list and eliminate all entries that are divisible by 3, presenting a refined selection of numbers.
+- In this task, you will work with a list of integers and identify which ones are divisible by 3. Your goal is to remove those integers from the list.
+- Your goal is to effectively manage a set of integers, filtering out those which can be classified as multiples of three from the input provided.
+- You will look closely at a series of integers in this task, filtered through the criterion of divisibility by three; every such integer must be excluded.
+- This task focuses on eliminating numbers from an integer list based on divisibility rules related to the number three.
+- Interpret the input numbers and weed out every integer linked to the divisor three while maintaining others in your response.
+- Here, you'll be working with lists of integers where you must take out any values divisible by the number 3. If all values are divisible, you should return an empty list.
+- Your job is to trim down lists of numbers by erasing any integers that are completely divisible by 3, resulting in a more focused selection.
+- The requirement here is to interact with lists containing integers, discerning which ones can divide evenly into three and taking them out of consideration.
+- In this task, you will evaluate a list of integers to find those divisible by three and eliminate them from consideration.
+- The goal is to produce a new collection of integers from the input, leaving out any that are divisible by 3, enhancing the diversity of numbers.
+- Your focus should be on taking an integer list and providing a new version with all numbers divisible by three removed.
+- The assignment requires you to determine divisibility in integers within a given list and produce an output that omits those divisible by three.
+- The aim here is to scan through given integer sequences and remove those meeting the condition of divisibility by three, creating an updated list.
+- This task requires identifying integers within a given list and eliminating any that can be evenly divided by 3.
+- Your challenge is to identify and remove all integers from a provided list that can be divided evenly by 3, creating a cleaner dataset.
+- Engage with the contents of an integer array to identify and remove any members that are multiples of three.
+- You are tasked with refining a provided list by discarding integers divisible by 3, while keeping track of special cases like zero.
+- The task involves evaluating a list of integers and removing those that are multiples of three, highlighting your ability to manipulate numerical data.
+- You will work with lists of numbers, where your responsibility is to remove entries that are divisible by 3 and present the cleaned list.
+- This task requires you to go through a series of integers and remove those divisible by the number 3, potentially resulting in an empty list if all numbers fall into this category.
+- You will receive lists of integers in this task. The goal is to exclude all those numbers that are divisible by three before presenting your final selection.
+- Analyze the provided list and remove integers divisible by 3 from it, including zero, while ensuring that if all numbers are removed, an empty list is returned.
+- In this task, you need to sift through a list of numbers and eliminate those that can be divided evenly by three, focusing on number properties.
+- You are expected to reduce the size of the input list by necessitating the removal of all multiples of three while ensuring correctness in the remaining numbers listed.
+- You’ll be tasked with refining sets of integers to ensure no multiples of three remain. If all elements are removed due to this criterion, an empty result is expected.
+- The task involves examining each integer in a given list and excluding those divisible by three, generating an output with only non-divisible integers.
+- Your task consists of reviewing integer entries in a list and filtering out those divisible by three, leading to a refined set.
+- Look through a list and focus on returning only those integers which cannot be divided evenly by three, achieving a specific outcome.
+- In this assignment, you'll filter out integers that are divisible by three from a provided list, showcasing your skills in basic mathematical operations.
+- Engage with a list of integers and apply the rule of divisibility by 3 to filter out unwanted numbers.
+- Your objective in this task is to evaluate lists of numbers for their divisibility by three and curate a new collection without those specific integers.
+- The objective is to analyze a series of integers and discard those associated with the number 3 in terms of divisibility.
+- In this task, you need to filter integers based on their divisibility by 3, retaining only those that do not belong to this group.
+- Assess integer lists and remove every number that divides neatly into three, ensuring your final list comprises only non-divisible options.
+- The objective is to clean up given numerical lists by striking out any integers that meet the divisibility criteria of being divisible by three.
+- Your challenge is to sift through a collection of integers and meticulously eliminate those divisible by three from the original set.
+- You need to assess a list of integers to find which ones are not divisible by 3. This involves both familiar arithmetic skills and attention to detail.
+- Your job involves checking each number in a given list and ensuring that only those not divisible by 3 are kept. Any number that meets this divisibility criterion will be omitted.
+- Your task is to process a list of numbers by identifying and removing those that can be evenly divided by 3.
+- Your task is to analyze a list of integers and identify which numbers are not divisible by 3. This requires basic knowledge of divisibility.
+- The function here is to scrutinize a collection of integers for divisibility against the number three, excising any qualifying candidates.
+- You need to execute a filtering operation where all integers in the initial list that meet the divisibility rule of three are systematically removed.
+- This exercise requires you to evaluate a collection of integer data points and filter them based on their divisibility by three, focusing your analytical skills on numerical properties.
+- Your responsibility is to apply divisibility criteria to a list of integers and extract only those that are not divisible by three.
+- In this task, you're tasked with cleaning up a list of integers by removing all entries that can be divided by 3, resulting in a refined list of numbers.
+- You need to examine a list of integers and exclude any that are divisible by the number 3. This involves identifying which numbers do not fit this divisibility rule.
+- This task involves processing a collection of integers and eliminating those that are divisible by 3, requiring careful evaluation of each number.
+- Your responsibility in this activity is to engage with lists of integers and skillfully remove those that are identifiable as divisible by three.
+- Analyze a provided list and filter out integers where division by 3 results in no remainder, thus refining the data set.
+- This challenge entails identifying which numbers in a provided list are divisible by three and removing them from your final output.
+- In this task, you'll engage in numeric analysis. You'll check each integer in a list and discard those divisible by 3, presenting only the qualifying integers.
+- You are tasked with purging a list of integers, specifically targeting those which can be divided evenly by 3. What’s left will be the relevant numbers for your answer.
+- You will work with lists of numbers, filtering out any integer that divides cleanly by three and returning the remaining values.
+- This task requires you to inspect a collection of integers and discard any that are divisible by three, ensuring you understand which numbers fit this criterion.
+- Your focus should be on analyzing integers in order to present only those not divisible by three, which requires sharp numerical awareness.
+- You are presented with a collection of numbers, and your responsibility is to filter out any numbers that can be evenly divided by three.
+- The task entails evaluating lists of integers for divisibility by 3 and removing any offending numbers from the original list to leave only compatible entries.
+- You are tasked with sorting through integers; your objective is to weed out any integer that meets the criterion of being divisible by three.
+- In this activity, you need to process integer lists by identifying which numbers can be divided by 3 without leaving a remainder and filtering them out.
+- You will work with an integer list and draw out the elements not divisible by 3, which will involve some critical selection skills.
+- Your mission is to sort through provided integer lists and eliminate any numbers that can be evenly divided by three, yielding a cleaner subset of values.
+- Your assignment is to refine a numerical list by removing all integers that are divisible by three, encouraging the application of fundamental arithmetic rules.
+- Your goal is to filter out numbers from a given list based on their divisibility, specifically removing integers that can be evenly divided by 3.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task370_synthetic_remove_divisible_by_3
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task370_synthetic_remove_divisible_by_3
+user_prompt_template: '{task_def}
+
+
+  {problem}'

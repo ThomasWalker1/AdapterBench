@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Utilize your understanding of therapeutic drugs to identify and categorize instances where adverse effects have occurred in reported cases.
+- Your responsibility is to assess reports and recognize instances of adverse drug reactions, differentiating them from non-adverse mentions related to medical products.
+- You are required to evaluate various medical scenarios and discern if they mention adverse drug reactions, which can have serious implications for patient safety.
+- In this exercise, you will be classifying reported cases regarding any adverse outcomes from medication usage. Understanding pharmacodynamics and patient responses will inform your decisions.
+- This task asks you to analyze specific medical cases and determine if the reports indicate side effects or adverse reactions related to drug use.
+- The task involves assessing medical case reports to identify whether they describe harmful or unpleasant reactions due to medications.
+- This task centers on understanding patient safety in medicine by identifying whether reported cases include adverse events from drugs.
+- The task involves analyzing medical case reports to determine if any harmful or unpleasant drug reactions are mentioned, using knowledge of pharmacology and adverse effects.
+- In this task, you will categorize case reports by identifying whether they document any harmful reactions that could arise from medication use.
+- Examine the details of each case report, determining whether it highlights any negative reactions to medical treatments, showcasing your comprehension of drug safety.
+- You are tasked with the important role of interpreting clinical case reports for indications of serious negative responses due to drug interventions.
+- You are required to interpret medical data concerning drug responses and classify them into adverse versus non-adverse categories based on their content.
+- This task asks you to sift through clinical case reports for evidence of harmful drug responses. Critical assessment skills will help distinguish genuine adverse events from benign conditions.
+- This task requires you to evaluate case reports from MEDLINE in search of any harmful or unpleasant drug reactions. Classify these reports based on their content regarding adverse effects.
+- Review case reports concerning drug therapies and categorize them based on the identification of adverse reactions versus normal outcomes.
+- The purpose of this task is to evaluate reported cases for references to adverse drug reactions, utilizing an understanding of drug safety and clinical manifestations.
+- In this task, you evaluate case reports to classify the presence of harmful reactions due to medical products. This requires knowledge of pharmacology and the ability to identify symptoms related to drug reactions.
+- This task centers on identifying and classifying reports that discuss adverse reactions related to medications based on your clinical knowledge.
+- The task involves analyzing medical case reports to identify whether they refer to adverse drug reactions, which are harmful or undesirable effects caused by medications.
+- Your task is to read through case summaries and pinpoint any adverse reactions mentioned, which denotes a negative impact from medical products.
+- Evaluate provided medical cases to spot any adverse effects that could signal hazards from medication use, using your understanding of drug reactions.
+- The task involves reviewing medical case reports and determining if they mention harmful reactions to drug treatments, known as adverse drug reactions.
+- You are tasked with investigating medical cases for any indicators of negative reactions to drugs and categorizing them as either detrimental or not.
+- You must look through medical cases to find mentions of adverse drug reactions, analyzing the details to categorize them correctly based on established definitions.
+- This task requires a critical examination of medical literature to spot mentions of adverse reactions related to pharmacological interventions.
+- This task focuses on assessing medical records for mentions of adverse drug events. It demands a keen eye for details that signify unpleasant or harmful reactions to medication.
+- This assignment calls for careful reading and classification of medical reports regarding drugs, focusing particularly on the identification of harmful side effects.
+- Your task involves scrutinizing clinical documents to recognize any harmful reactions stemming from drug use, emphasizing the significance these findings have for future treatment protocols.
+- The task at hand involves investigating case histories for adverse drug reactions, a critical aspect of evaluating patient care and treatment protocols.
+- Evaluate given case studies to identify whether any adverse effects from medication are reported. This requires understanding both the terminology and the context of drug reactions.
+- The task centers around critically reviewing medical cases for references to complications caused by drugs, requiring a clear understanding of what qualifies as an adverse event.
+- You will classify medical case descriptions into two categories, focusing on whether they contain elements of adverse drug events based on the given definitions.
+- The objective is to sift through healthcare-related case reports and determine the presence of adverse drug reactions. This involves careful consideration of the reported effects associated with medications.
+- Interpret case reports with an aim to discern whether they indicate any adverse drug events, highlighting important aspects that contribute to patient safety and treatment efficacy.
+- Use your analytical skills to examine case reports and discern if they mention any detrimental responses linked to medications administered to patients.
+- The assignment is to classify each medical account based on whether it notes adverse effects related to drug administration, important for healthcare decisions.
+- Your task is centered around classifying whether reported instances constitute adverse drug events, requiring an understanding of the relationship between treatment and side effects.
+- Analyze provided medical case reports and determine if they include instances of adverse drug reactions related to medical products. Your classification should reflect the presence or absence of harmful effects.
+- Your role involves reviewing clinical case reports and making a determination about the occurrence of adverse drug reactions, emphasizing safety in medication administration.
+- The assignment centers on evaluating medical documentation for references to adverse reactions from drugs and categorizing insights based on the nature of these reactions.
+- Analyze and classify medical case studies in order to find mention of any harmful effects associated with medications, distinguishing them from non-adverse occurrences.
+- The task entails a thorough examination of case documentation to uncover mentions of negative reactions arising from medication use, involving critical assessment skills.
+- This task requires you to analyze case studies and decide if they document negative effects associated with medications, highlighting your understanding of pharmacology.
+- You will read through case reports and classify them as either indicating an adverse drug event or not, based on your understanding of drug side effects.
+- Your job is to read through clinical case reports and determine if they describe any adverse drug reactions that could affect patient safety.
+- Your role is to scrutinize and categorize reports regarding medication-related issues, emphasizing the detection of any adverse drug events for safety measures.
+- The primary focus here is on identifying and categorizing reports of harmful reactions associated with medical interventions. Your analysis skills will play a crucial role in making accurate classifications.
+- Focus on clinical reports to verify whether they mention adverse drug events, relying on your understanding of potential medication side effects.
+- You will sift through medical reports focusing on identifying whether they reference any undesirable side effects resulting from medication use.
+- You will be categorizing case reports based on their mention of adverse events tied to pharmaceutical interventions, focusing on identifying harmful outcomes related to drugs.
+- You’ll be tasked with interpreting summaries of medical cases to discern if there are any references to dangerous or unpleasant responses attributable to medication use.
+- In this assignment, you will review case studies to highlight instances of harmful effects caused by medications, categorizing them appropriately.
+- Analyze the provided case histories for indications of adverse drug reactions, with a focus on understanding the risks associated with medication use.
+- This task focuses on scrutinizing and classifying medical narratives concerning drugs, ensuring accurate reflection on health consequences experienced by patients.
+- You are tasked with categorizing medical case reports according to whether patients experienced negative drug-related outcomes during treatment.
+- The task involves evaluating medical case reports to identify whether they document any adverse drug reactions, utilizing knowledge of pharmacology and clinical medicine.
+- You will analyze medical reports for indications of adverse drug reactions—recognizing when treatment may lead to unintended harmful effects based on known risks.
+- Analyze medical case reports for evidence of adverse drug reactions, using your understanding of pharmacology and clinical risk assessment.
+- Your role is to ascertain whether specific medical histories include indications of adverse drug reactions. Clear comprehension of medical implications is necessary for accurate classification.
+- Your job is to scrutinize medical reports for evidence of harmful effects from drug use, helping ensure that such reactions are recognized and addressed.
+- The task involves analyzing medical case reports to determine if they mention adverse drug reactions. You must understand the implications of drug usage and its potential harmful effects on patients.
+- This task involves a careful examination of clinical reports to determine if they reflect harmful or unpleasant outcomes resulting from medication use.
+- Your task is to methodically evaluate reports on drug-related incidents for signs of adverse reactions that necessitate monitoring and attention.
+- The focus here is on assessing case studies for references to adverse drug reactions, using critical thinking and a background in medicine or pharmacology will enhance your evaluations.
+- The objective is to classify whether reported cases show signs of adverse drug reactions, requiring understanding of medical terminology related to drug effects.
+- The task challenges you to identify and classify mentions of harmful effects from medications in case reports, drawing on both clinical knowledge and observational skills.
+- Your job is to determine if the provided medical case reports reveal any unpleasant or harmful reactions tied to the administration of drugs.
+- This assignment involves determining the presence or absence of negative side effects in case studies involving drugs. Clear analytical reasoning will facilitate accurate assessments.
+- The goal is to evaluate clinical narratives and label them as adverse events or not, demonstrating knowledge of drug safety and patient outcomes.
+- Your job is to identify adverse drug reactions in given medical cases and differentiate between those that involve harmful effects and those that do not.
+- Your job is to discern the presence of significant harmful effects from medications in case reports and classify these findings appropriately.
+- You will review different medical cases to determine whether any described events are negative side effects from drug treatments. Accurate classification of these events is vital for patient safety.
+- Your mission is to translate complex medical findings into clear classifications about patient safety related to drug treatments, focusing on adverse effects.
+- You must investigate the details in medical reports to identify any adverse reactions linked to drug therapy, applying your knowledge of pharmacological risks.
+- You'll evaluate clinical scenarios for indications of negative drug interactions and determine how these impact patient health, all while categorizing the findings effectively.
+- This task focuses on determining the implications of reported medical conditions in relation to drug treatments and their potential adverse effects.
+- Assess case reports extracted from medical literature for references to harmful effects caused by medications, aiming to enhance understanding about patient safety in pharmacological treatments.
+- The task requires you to sift through medical records, focusing on identifying signs of adverse drug effects as noted by healthcare professionals.
+- Your job is to read through medical reports and decide if there is evidence of adverse effects following drug administration. Critical thinking is necessary to differentiate between harmful and non-harmful outcomes.
+- The task involves analyzing medical case reports to determine if they mention any harmful or unpleasant reactions related to drug use.
+- The task is to analyze medical documentation for mentions of harmful drug reactions and accurately classify them to inform future treatment strategies.
+- Your task is to assess whether provided medical text includes adverse drug events and classify those events into two distinct categories based on their implications.
+- Analyze information from clinical cases to identify mentions of adverse drug reactions, making nuanced distinctions between serious and non-serious events based on reported details.
+- The objective is to dissect case reports for insights into harmful or unexpected effects associated with medication use, crucial for improving therapeutic approaches in healthcare.
+- Engage in reviewing medical documentation to uncover potentially adverse reactions linked to prescribed medications. Your knowledge in clinical pharmacology will enhance your evaluation process.
+- This exercise requires a careful examination of clinical scenarios with an eye toward recognizing any implications linked to drugs that result in undesirable effects.
+- The goal is to classify case reports based on the presence or absence of adverse drug reactions, requiring familiarity with medical terminology and pharmacology.
+- You will be reviewing patient case studies to ascertain the presence of any adverse reactions associated with medications reported in those cases.
+- The task calls for identifying whether reported symptoms in case studies are due to adverse drug events or are unrelated. Analytical skills in interpreting clinical data will aid your decision-making.
+- You need to delve into medical reports and discern if harmful drug reactions are documented. Applying knowledge of medicinal effects will be key in making your classifications.
+- In this role, the focus is on distinguishing between typical health observations and those that signal an adverse reaction to medication through careful reading and interpretation.
+- Your role is to classify medical cases based on the presence or absence of adverse drug events, focusing on how medications affect patient health.
+- You are tasked with determining the presence of adversities related to medication in various case scenarios—using both your analytical capabilities and knowledge about healthcare.
+- The objective is to sift through clinical case notes and identify whether harmful drug reactions are present, thereby improving medication safety awareness.
+- Analyze clinical documentation for mentions of negative side effects caused by pharmaceutical interventions, showcasing your understanding of patient safety issues.
+- Your job is to classify medical case reports based on whether they note harmful drug reactions. An awareness of medical terminology and potential drug effects will aid your assessment.
+- In this task, analyze case reports extracted from research databases for mentions of harmful drug interactions and classify the findings appropriately.
+- Your responsibility is to read and classify medical case reports based on whether they describe negative side effects caused by medications.
+- You will evaluate case reports taken from medical literature to decide if they illustrate an adverse drug reaction that requires attention.
+- The focus here is on reviewing case reports and recognizing any negative outcomes resulting from medical treatments or drugs prescribed.
+- Your focus will be on determining the presence or absence of adverse drug reactions in various medical case records, thus requiring an analytical approach towards textual information.
+- This assignment entails analyzing reported cases to check for mentions of harmful medication effects, engaging your analytical skills in healthcare contexts.
+- The focus here is on reviewing and categorizing medical reports concerning the effects of drugs, specifically highlighting whether adverse drug reactions were documented.
+- Your responsibility is to assess reports for indications of adverse drug events, contributing to a better understanding of medication safety.
+- The objective is to evaluate cases concerning medication effects, identifying any that signify detrimental outcomes and applying your understanding of drug interactions accordingly.
+- This task involves critically analyzing reports to uncover any potential risks associated with medications, focusing on how they may negatively impact patients.
+- You’re tasked with evaluating clinical reports for evidence of harmful responses triggered by pharmaceuticals, ensuring accurate classification of each case.
+- You will classify clinical cases based on whether they reveal problematic reactions triggered by drug treatments, enhancing your understanding of pharmacovigilance.
+- The task involves reviewing medical case reports to determine whether they indicate any adverse drug reactions related to the use of pharmaceuticals.
+- This task requires you to classify medical findings as either indicating an adverse reaction to a drug or confirming that no such reaction is present.
+- Analyze incoming case reports for details that could suggest an adverse drug reaction has occurred, leveraging your knowledge of pharmacovigilance and clinical symptoms.
+- You must review clinical reports to identify any references to negative drug reactions, ensuring clarity in understanding the risks involved in treatments.
+- You will assess reports detailing patient drug interactions for indications of negative health impacts, categorizing each as either adverse or not adverse events.
+- Utilize your knowledge of adverse drug reactions to sift through medical records, determining whether they discuss harmful outcomes from drug use.
+- In this task, you will review summaries of medical cases to identify if there are any documented adverse drug events. Understanding the implications of such reactions is essential.
+- Explore case studies for potential drug-related issues, pinpointing reactions that could imply risk versus safe medical intervention.
+- This task requires critical thinking as you navigate through provided medical data to pinpoint mentions of detrimental effects resulting from pharmaceutical interventions.
+- Explore clinical case details with an eye toward assessing the severity and nature of any adverse reactions caused by drugs prescribed or administered.
+- Through careful evaluation of case studies, you will classify discussions about the effects of drugs on patients and whether these were detrimental or not.
+- This assignment centers around evaluating the existence of adverse drug reactions within patient case reports. You should be able to recognize and assess harmful outcomes from medication use.
+- This task asks you to sift through clinical case reports and decide if they mention any harmful effects linked to medications, categorizing each report correctly.
+- Review the provided MEDLINE case reports to classify them based on whether they indicate the occurrence of adverse drug reactions according to defined criteria.
+- You will be engaged in reviewing and categorizing multiple medical scenarios for potential adverse drug events—requiring analytical thinking grounded in medicine and pharmacology.
+- This task involves determining the impact of certain medications on patients by identifying if any described interactions led to adverse side effects.
+- The task requires you to interpret medical case files and distinguish between instances that describe adverse drug reactions and those that do not.
+- In this task, you will determine if specific case reports highlight adverse drug reactions, necessitating attention to detail and familiarity with pharmaceutical risks.
+- Through this task, you will classify reported instances in case studies as either related or unrelated to adverse reactions resulting from drug administration.
+- This task requires you to discern between normal health issues and those that can be attributed to medications, highlighting instances of adverse drug reactions.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1495_adverse_drug_event_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1495_adverse_drug_event_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

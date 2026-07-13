@@ -128,7 +128,8 @@ class HypernetworkDownstreamEvaluator:
         return by_family
 
     def _evaluate_group(
-        self, family: str, examples: list[TaskExample], split: str, condition_embedding: Tensor | None
+        self, family: str, examples: list[TaskExample], split: str, condition_embedding: Tensor | None,
+        mismatched_embedding: Tensor | None = None,
     ) -> EvaluationResult:
         started = time.perf_counter()
         with self._active(condition_embedding) as model:
@@ -136,13 +137,24 @@ class HypernetworkDownstreamEvaluator:
         inference_seconds = time.perf_counter() - started
 
         metric_name = "exact_match" if family == "gsm8k" else "accuracy"
+        metrics = {metric_name: correct / len(examples), "n_examples": float(len(examples))}
+        # Mismatched-description control (the T2L analogue of D2L's context-swap, invariant #1):
+        # score this family with an adapter generated from a *different* task's description. A
+        # genuine task-conditioned adapter scores near this family's frozen/chance level here;
+        # only matched >> mismatched is evidence the hypernetwork uses the description, not a
+        # task-independent bias. Never headline raw accuracy - headline matched - mismatched.
+        if mismatched_embedding is not None:
+            with self._active(mismatched_embedding) as model:
+                mm_correct = sum(1 for example in examples if self._score(model, example))
+            metrics[f"{metric_name}_mismatched"] = mm_correct / len(examples)
+
         adapter = self.hypernetwork.adapter if condition_embedding is not None else "frozen_interpreter"
         return EvaluationResult(
             trial_id=self.trial_id,
             task_id=family,
             split=split,
             adapter=adapter,
-            metrics={metric_name: correct / len(examples), "n_examples": float(len(examples))},
+            metrics=metrics,
             generated_parameter_count=(
                 self.hypernetwork.generated_parameter_count() if condition_embedding is not None else 0
             ),
@@ -151,12 +163,20 @@ class HypernetworkDownstreamEvaluator:
             metadata={"condition_variant": examples[0].metadata.get("condition_variant") if examples else None},
         )
 
-    def iter_evaluate(self, condition_embeddings: Mapping[str, Tensor], examples: Iterable[TaskExample], split: str):
+    def iter_evaluate(
+        self, condition_embeddings: Mapping[str, Tensor], examples: Iterable[TaskExample], split: str,
+        mismatched_embeddings: Mapping[str, Tensor] | None = None,
+    ):
         """Yield one EvaluationResult per task family as it completes — prefer this
         over ``evaluate()`` for anything long-running, so a caller can print progress
-        and persist partial results and an interrupted run keeps what finished."""
+        and persist partial results and an interrupted run keeps what finished. When
+        ``mismatched_embeddings`` is given, each result also carries the mismatched-description
+        control (``accuracy_mismatched``/``exact_match_mismatched``)."""
         for family, family_examples in self._group_by_family(examples).items():
-            yield self._evaluate_group(family, family_examples, split, condition_embeddings.get(family))
+            yield self._evaluate_group(
+                family, family_examples, split, condition_embeddings.get(family),
+                mismatched_embeddings.get(family) if mismatched_embeddings else None,
+            )
 
     def iter_evaluate_frozen(self, examples: Iterable[TaskExample], split: str):
         for family, family_examples in self._group_by_family(examples).items():

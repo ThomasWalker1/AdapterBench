@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The aim is to recognize language in the text that may convey criticism of a specific gender and assign it a label based on your interpretation.
+- Decipher whether the given text contains comments directed against a gender group, providing a clear designation based on your evaluation.
+- Your task is to read a piece of text and determine if it contains comments that criticize or stereotype based on gender.
+- Examine the input text for any signs of gender-based criticism. You will label it as 'gender criticism' or 'not gender criticism' based on your findings.
+- Your role is to dissect the text to find instances of gender-based criticism. This requires critical thinking about language and intent.
+- Scrutinize the language in the provided texts for contextual meaning related to gender, assessing whether such language embodies criticism.
+- Your job is to read a given piece of text and determine if it contains any derogatory remarks about gender. The goal is to recognize and categorize these remarks as either "gender criticism" or not.
+- Analyze the text to see if it makes derogatory or critical comments about a specific gender, marking it appropriately.
+- Identifying and labeling criticisms related to gender in provided texts is your task. You will discern whether each statement promotes harmful perspectives on genders.
+- This task involves analyzing given texts to identify whether they contain comments that criticize or reinforce gender stereotypes. You will label each text based on this analysis.
+- Sift through the text for possible instances of gender-related negativity, making sure to categorize them according to their nature.
+- Review the statements carefully and identify if they include gender-specific critiques, providing a label based on your judgment.
+- Your role is to evaluate pieces of text to see if they contain any negative remarks about gender. Identifying such commentary will help you label the content correctly.
+- Read the provided texts carefully to detect any critical comments aimed at genders. You will classify them based on their nature, either as criticism or not.
+- Proceed with assessing the provided text for negativity directed at individuals based upon their perceived gender roles, helping you categorize responses effectively according to those standards.
+- Your role involves analyzing written material for instances of derogatory comments about gender. You will mark each piece of text based on whether it reflects such criticism.
+- The goal is to filter text samples for expressions that may constitute gender criticism and classify them based on their impact and intent.
+- Carefully analyze if statements made in the text reflect any form of discrimination against genders; categorize your findings.
+- Interpret the given statements for underlying criticisms that pertain to gender, providing an accurate classification.
+- Take on the responsibility of discerning whether texts contain observations or critiques that are decidedly negative towards a particular gender, thus helping highlight societal biases.
+- Your job is to sift through textual content for any instances of gender criticism and categorize it accurately.
+- Analyze the given statements for any language that may belittle or criticize specific genders, labeling them accordingly.
+- This task involves analyzing a text to identify whether it contains comments that criticize or demean a specific gender. You will need to discern the underlying message and label it accordingly.
+- The challenge is to discern whether a given statement carries gender-specific criticism and label it based on your findings.
+- Determine if the statements in the text present views that are derogatory regarding gender matters. Classifying these texts aids in identifying societal attitudes toward gender.
+- The task calls upon you to filter through texts for any specific remarks that might undermine or criticize individuals based on their gender, reflecting societal attitudes toward femininity and masculinity.
+- The task involves analyzing text for any remarks that show bias or negative opinions directed at a particular gender, labeling them appropriately.
+- The task involves scrutinizing a piece of text for negative comments pertaining to gender, then deciding how to classify it based on your judgment.
+- Analyze the content for any offensive or critical comments that target a specific gender. You need to make a clear distinction in your labeling.
+- This task involves a careful reading of material aimed at isolating expressions of criticism that specifically relate to gender, allowing you to address issues pertinent to equality and respect.
+- Engage critically with the text provided, looking for explicit or implicit gender-related criticisms. Understanding context and connotation in language is key to your analysis.
+- Read the text carefully and assess whether it expresses any negative or critical remarks regarding a particular gender.
+- In this task, consider whether the text reflects biased attitudes toward gender issues. It requires an understanding of context and meaning within social discussions about gender.
+- Review the text critically for any expressions of gender bias or negative evaluations based on gender characteristics and classify your findings.
+- Examine each piece of writing to see if it contains comments that target genders negatively, and label these instances appropriately.
+- In this assignment, you'll read and analyze comments for any indications of gender bias. Depending on your interpretation, you will classify the statements as either critical or non-critical.
+- You are tasked with evaluating a piece of text for any comments that may be interpreted as critical of gender. Label your findings appropriately based on this evaluation.
+- Your role involves searching through the text for any indications of derogatory remarks targeted at a gender, categorizing your findings appropriately.
+- Analyze the text to identify language or statements that may be derogatory towards a specific gender, and assign the correct label.
+- Your focus is on identifying whether specific comments in the text reflect biases against a gender. Label it based on your conclusion.
+- Investigate whether the given text contains harmful sentiments relating to gender issues. Your classification should reflect any such occurrences.
+- Task yourself with identifying in the text where sentiments specific to gender identities might be expressed critically or disparagingly, enhancing your ability to recognize and counteract prejudice.
+- Analyze the provided text to identify any gender-specific negative remarks and classify the text accordingly.
+- Determine if the given text makes any remarks that could be considered critical of a specific gender and tag it appropriately.
+- Evaluate the provided text to identify if it contains any gender-specific criticisms, labeling it accordingly.
+- You are asked to scrutinize text passages for any elements that criticize or judge based on gender. Clear recognition of problematic statements is crucial for accurate labeling.
+- Your goal is to examine brief textual excerpts for indications of gender discrimination or denigration. Identifying underlying themes or frustrations related to gender is key in this examination.
+- Determine if there are any comments that reflect negatively on a gender in the text provided, and label them accordingly.
+- Read through the text and use your understanding of gender dynamics to spot any critical remarks directed at a particular gender. Your role is to recognize these sentiments and categorize accordingly.
+- In this task, you will investigate the text to see if it contains many types of comments that target people based on gender, labeling them accurately according to your findings.
+- Read the provided text carefully and determine whether it expresses gender-specific criticism. Classify the text based on your assessment.
+- The task involves examining texts to extract any phrases that might be deemed harmful or denigrating toward a particular gender, leading to an appropriate classification.
+- Your job is to examine the language used in texts for any signs of disdain directed at a gender and to categorize the comments as needed.
+- Review the provided statements and judge whether they express criticism aimed at a gender. This requires understanding the nuances of gender-related language.
+- You'll analyze textual content to decide if there's any targeted criticism of gender present, considering societal norms and perceptions.
+- Assess language within the provided text for evidence of gender-related negative remarks, choosing the right label based on your conclusions.
+- You are required to differentiate between texts that express negative views about gender roles and those that do not. Your evaluation should be guided by sensitivity to gender issues.
+- Scrutinize the supplied texts for critiques or disapprovals relating to any gender, deciding how these are best represented in your labeling.
+- The goal of the task is to discern whether certain comments in a text target gender identities in a negative manner. This assessment helps highlight societal attitudes towards different genders.
+- Dig into the language of the text focusing on any potential for gender issues expressed through criticism, providing a clear classification at completion.
+- Your role is to interpret the text and identify whether it expresses biases or critical sentiments towards a particular gender group.
+- Assess the text for any statements that unfairly criticize or demean individuals based on their gender, labeling them appropriately.
+- You need to evaluate a piece of text to decide if it contains comments that specifically criticize a gender.
+- Your objective is to filter through statements, pinpointing those that could be classified as criticism related to gender issues.
+- Your assignment is to filter through the content provided and notice if there are any criticisms aimed at a particular gender, then label these observations.
+- Investigate the piece of text for any mentions or implications that criticize a particular gender and classify the remarks as either critical or non-critical.
+- You need to sift through text excerpts and judge whether they reflect gender-based slurs or critical remarks against a specific gender.
+- Your task involves finding and categorizing any remarks in the text that may perpetuate negative stereotypes about a specific gender. Thoughtful interpretation is key.
+- Investigate the language used in the text to see if it conveys negative opinions about a specific gender, determining its classification as appropriate.
+- This task challenges you to sift through written content for signs of gender-specific criticism. You must identify and label texts that exhibit such views.
+- Analyze whether the comments found in the text disparage certain genders, labeling them as either condescending or neutral based on your interpretation of each sentence's intent.
+- Reflect on the tone and content of each text snippet you encounter, identifying marked criticisms related to gender and marking them as required.
+- Sift through the writing to unearth any sentences that showcase biased opinions about gender, then categorize these remarks correspondingly.
+- Look through the provided statements for signs of any negative judgments directed at gender groups. Clarify whether they qualify as criticism or not.
+- Your task involves reviewing statements for any potential gender biases or criticisms and marking them properly.
+- Analyze the input text to determine if it includes specific criticisms related to gender identities or expressions, and label it accordingly.
+- Analyze the provided text for any remarks that criticize individuals based specifically on their gender. Your role is to label the text correctly as containing or not containing gender criticism.
+- Your goal is to sift through the text and decide if it falls into the category of gender criticism based on its content.
+- Review the provided text closely for language that might reflect gender bias or criticism and assign an appropriate label based on your findings.
+- Your focus will be on identifying phrases within the text that could be seen as negative towards one gender. Understanding social constructions around gender will aid your judgment.
+- In this exercise, you'll be analyzing statements to see if they include negative commentary towards genders. Sift through the language used for clues about criticism.
+- Your job is to identify any gender-related criticisms within the provided text. This requires a keen eye for language that might be derogatory towards gender.
+- The goal is to review given texts for comments that reflect poorly on specific genders, helping you discern social attitudes through language analysis.
+- Your role is to evaluate statements in the text for potential gender bias or derogatory comments and categorize them correctly.
+- You need to inspect the excerpts for any language that signals disapproval or biases against a particular gender. Clearly indicate whether it qualifies as gender criticism.
+- Consider each provided text and decide if it expresses a negative viewpoint regarding a particular gender, marking your findings appropriately.
+- Your mission is to identify commentary in the text that targets gender, and categorize it as either gender criticism or not.
+- You need to identify text that makes negative comments about a gender and evaluate whether it counts as 'gender criticism'.
+- Examine each piece of text carefully and label it according to whether it expresses criticism related to gender issues.
+- This task involves scrutinizing various statements to determine if they carry undertones of gender criticism, deciding on their classification.
+- Focus on identifying narratives within the text that may contribute negatively to discussions about gender. Clearly categorize these narratives according to their impact.
+- Evaluate each piece of feedback in the text for its potential to undermine or criticize a specific gender, using your critical judgment.
+- Engage with diverse pieces of text, marking those that reveal gender-based antagonism while noting those that do not contain such sentiments.
+- Read the provided text and decide if it includes any remarks that can be considered derogatory or critical toward a specific gender.
+- Look closely at the content of the text and determine if there are any comments that could be viewed as critical of gender, then classify it.
+- Read the provided statements and identify if they express opinions that demean or insult individuals based on their gender. Properly label each instance according to its content.
+- You must read and interpret the text to determine if it bears any markings of gender criticism, requiring thoughtful reflection on the wording.
+- The objective is to discern whether the text expresses negative sentiments towards either gender, categorizing the content as such.
+- Evaluate the text to see if it contains sentiments reflecting negative stereotypes about a particular gender and identify them correctly.
+- The task involves examining a given text to identify comments that show gender-based criticism. You need to assess the language used and decide if it reflects negative stereotypes or biases related to gender.
+- Carefully read each sentence to identify remarks pertaining to gender criticism and categorize them based on their implications.
+- Delve into the provided passage to check for remarks that could be classified as critical towards a particular gender. Decide on its classification based on your assessment.
+- Your mission is to scrutinize texts for phrases or comments that can be categorized as critiques based on gender. This requires both analytical skills and sensitivity to language.
+- Your responsibility is to inspect declarations for any expression of disapproval aimed at genders, classifying them according to their critical nature regarding gender issues.
+- Your task involves looking for phrases in the text that could be interpreted as critical of different genders, helping line out areas needing awareness or addressing prejudice.
+- This task requires you to assess various statements for any sign of gender criticism. Pay attention to the language used to determine if it reflects biased attitudes.
+- Assess whether the text includes remarks that could be seen as derogatory towards a gender. Your judgment will guide how you label the statement.
+- In this task, you need to read through a text and ascertain if any remarks within it negatively target a particular gender.
+- The assignment is focused on detecting tones of negativity directed at genders within provided text excerpts and labeling them as critical or not based on your judgment.
+- As you read through the provided examples, consider whether they contain criticisms specific to genders and note your evaluation clearly.
+- Your task is to evaluate a piece of text to determine if it contains comments that criticize a specific gender.
+- The goal is to read and interpret textual content to recognize and flag gender-specific criticisms. You'll decide if a statement adheres to or challenges traditional gender roles.
+- Your assessment will focus on knowing how to identify and label remarks connected to gender negativity present in diverse texts. This task taps into your awareness of societal issues.
+- In this task, you will evaluate texts to identify whether they contain gender-specific criticism.
+- Analyze the provided text for any phrases or ideas that express criticism towards a specific gender. You will categorize the text based on whether such criticism is present.
+- You will review written pieces, searching for instances where one gender is unfairly criticized or stereotyped, then establish a classification based on what you find in the text.
+- Read the provided text and identify if it expresses any criticism related to gender, labeling it based on your assessment.
+- This involves analyzing texts with an eye for any statements that disparage genders. You’ll conclude whether the content contains criticisms based on the language used.
+- In this task, you will assess various texts to uncover any comments that may reflect gender bias or negativity. Your insight into language and societal perceptions will guide your evaluation.
+- Scrutinize the given text to uncover underlying tones of criticism directed at gender and assign an appropriate classification based on your analysis.
+- You are tasked with determining if the text reflects any negative commentary on gender. Your decision will categorize it as either criticism or not.
+- Read the provided text carefully and determine whether it includes any remarks that specifically criticize gender. Label the text as either gender criticism or not.
+- Take a close look at the words used in the text for signs of bias against a certain gender and classify your observations appropriately.
+- Your task is to examine a piece of text and identify if it contains comments that are critical of gender. You will categorize the text accordingly.
+- Evaluate each statement for any expression of negative sentiment towards specific genders, categorizing as needed based on your findings.
+- The task demands careful reading for comments that could be viewed as derogatory towards genders, requiring an informed judgment for categorization.
+- Investigate the language used in the text, focusing on its implications toward different genders, to determine its classification.
+- Assess each piece of text for potentially discriminatory remarks related to gender and categorize them based on their content.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1606_ethos_text_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1606_ethos_text_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

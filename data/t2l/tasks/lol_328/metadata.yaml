@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You are tasked with reviewing online comments to identify whether the sentiments expressed are harmful or ordinary, helping to discern their nature.
+- You need to identify and label comments as insults or non-insults, using your judgment on the social norms regarding respectful speech.
+- Your mission is to consider the context of various public comments and classify them based on their likelihood of being hurtful or disparaging.
+- 'You will classify user-generated content into two simple categories: those that insult others and those that do not, based on contextual cues.'
+- Analyze public comments from various platforms and classify them as either insulting or not. This requires an understanding of tone and the nuances of language.
+- Analyze offered commentary and decide if it can be classified as an insult, focusing on any offensive or scornful remarks made against individuals or groups.
+- The primary focus is on identifying insulting remarks among various online statements, evaluating them for disrespectful content.
+- Your objective is to categorize comments based on tone, identifying those that convey disdain or insult versus those that are straightforward opinions.
+- Read through public commentary and categorize each entry based on its level of respectfulness. Distinguishing between provocative insults and neutral statements is essential.
+- Your task is to thoroughly read public comments and discern if they are directed as insults or expressed in a more neutral manner.
+- Your task involves reading user comments online and identifying instances where the language might be considered offensive or aggressive.
+- Your role is to interpret the intent behind public comments, drawing a line between expressions of disdain and neutral observations.
+- Analyze comments to find negative sentiments, sorting them into categories of insults versus more neutral phrasing.
+- Your role is to distinguish between casual commentary and disparaging language, carefully classifying each comment based on its respectful value.
+- Your task is to analyze comments from online platforms and determine whether they contain insulting language or are respectful in nature.
+- The goal is to discern whether a comment is derogatory or simply a neutral statement. Use your judgment based on the language used.
+- Your task is to assess online comments and determine whether they are disrespectful insults or neutral/non-insulting remarks.
+- You will analyze and categorize online comments by assessing whether they express derision or contempt towards others.
+- In this activity, you will evaluate public comments for any disrespectful content. The goal is to identify whether the remarks are insulting or simply non-offensive expressions of opinion.
+- Assess and classify public comments regarding their insulting nature. Use your judgment on how words can affect perceptions of respect or disrespect amongst individuals.
+- This assignment is about carefully examining public commentary for any signs of disrespectful language, categorizing those that qualify as insults.
+- The goal is to examine comments for any abusive or demeaning language, categorizing them as either insults or non-insults.
+- Analyze given comments to reveal the underlying sentiment. Classify them based on whether they express contempt or are simply non-insulting opinions.
+- You will need to interpret various comments and determine if their messaging is hurtful, classifying them as insults when necessary.
+- As part of this task, you’ll read comments from users and decide if they exhibit attacking or negative connotations versus more neutral expressions.
+- The aim here is to filter through a set of online remarks and discern which ones convey insult, identifying any negative intent behind the words.
+- Engage with the content of various online comments and classify them based on the presence of insults, utilizing your understanding of effective communication.
+- Analyze comments shared publicly to determine their nature—whether they convey insults directed at individuals, or maintain a non-insulting stance. Contextual understanding plays a key role.
+- Review the comments critically to understand their implications and determine whether they contribute to a respectful dialogue or contain insults.
+- You are assigned with the job of filtering through comments from various platforms, seeking to classify language that may be deemed abusive or insulting.
+- Assess public commentary for signs of insult. It's crucial to recognize language that may be deemed disrespectful in order to categorize them properly.
+- Evaluate public comments by classifying them as either insulting or non-insulting. Justify your decisions based on the tone and context provided within each remark.
+- Analyze different online commentary to label them according to their level of respectfulness. Your job requires you to be attentive to how language conveys attitudes toward others.
+- Your mission is to classify comments based on their language, identifying any that might be considered insulting versus neutral expressions.
+- In this exercise, your task is to sort through online opinions and determine which ones express contempt versus those that do not.
+- Your task is to evaluate online comments and determine whether they contain insults or are respectful statements. You'll need to recognize language that shows disrespect or scorn.
+- Your job is to read through various online comments and classify them based on whether they exhibit insulting behavior or maintain a respectful tone.
+- Analyze online comments for any signs of insulting language, marking those remarks as offensive while identifying benign comments as non-insult.
+- You will look closely at online user comments to determine if they are insulting in nature, focusing on identifying any scornful sentiments expressed.
+- Your role is to determine if a given comment contains insulting content, which often involves recognizing negative and scornful language directed at others.
+- Your role is to distinguish between derogatory remarks and non-hostile observations in public comments. Pay close attention to how language reflects feelings toward others.
+- For every public comment given, assess the tone and content to decide if it can be classified as an insult.
+- In this task, you will read through various public comments and determine their nature, deciding if they are respectful or insulting in intent.
+- In this task, you'll identify and classify comments as either insults or neutral observations, paying attention to the tone and context.
+- Evaluate the nature of comments shared on online platforms, distinguishing between those that are insulting and those that do not contain offensive language.
+- Engage with various comments from digital platforms, using your judgement to label them according to their insulting or non-insulting content.
+- The goal here is to interpret online comments and identify instances of insult, which involves recognizing elements of disrespectful communication.
+- Analyze public comments and differentiate between those that express scorn or disrespect and those that do not.
+- Your job is to assess public comments for offensive content, marking those that qualify as insults according to typical standards of respect.
+- Your task is to classify online remarks based on their intent—whether they serve as an insult or remain neutral.
+- The focus of this task is to discern the tone of online comments, specifically identifying any language that is abusive or derogatory.
+- Your job is to sift through online comments to figure out which ones use language that can be labeled as insulting or disrespectful.
+- The assignment involves critical thinking as you evaluate comments for their overall respectfulness, determining which ones cross the line into insult territory.
+- In this task, your focus will be on identifying insults among public opinions provided in comments. Evaluate the words used for indications of disrespect or animosity.
+- By reading through comments, you’ll identify which ones contain disrespectful content and which are polite, categorizing them as such.
+- This task involves sifting through comments to recognize and label insults while differentiating them from more neutral or constructive remarks.
+- Read through various public comments and categorize them based on their tone. Determine if they convey disrespect or if they maintain civility without insult.
+- Analyze the emotional tone behind public comments, deciding if they represent an insult or maintain a non-insulting stance.
+- Evaluate the comments you receive to determine whether they are mean-spirited or simply neutral, and provide your classification.
+- Your focus will be on identifying characteristics of insult within comments, deciding which are meant to demean others versus those that express opinions without offense.
+- Your task is centered around distinguishing between hateful rhetoric and regular opinion sharing in public comments by marking any identified insults.
+- Investigate a collection of online remarks and classify each one based on its tone—insulting or respectful.
+- You will be classifying various public commentary as either abusive or non-abusive, based on an understanding of what constitutes insultive language.
+- This task focuses on understanding context and intent behind online commentary, allowing you to assess whether a given remark could potentially harm or offend someone.
+- Review public statements made by users online and determine if they contain any language deemed insulting as opposed to respectful commentary.
+- Your role includes scrutinizing publicly shared thoughts to pinpoint those inflicted with negativity towards others, marking them as insults accordingly.
+- You will assess comments made by individuals online, deciding if they include insulting language. Look for signs of disrespect or offensive remarks.
+- You will review various comments from the internet and classify them based on whether they contain insulting language or not.
+- This task requires a careful reading of comments to evaluate their nature, deciding if they fit the criteria of disrespect or abuse in language.
+- In this task, you will read public comments and classify them into 'insult' or 'non-insult' based on their content. This demands careful reading skills and an understanding of offensive language.
+- The task involves evaluating online comments to determine if they are offensive or respectful, categorizing each based on the presence of insulting language.
+- You need to analyze the sentiment in public comments and categorize them based on whether they include insulting language aimed at individuals or groups.
+- Read and analyze various public comments to classify them as either insulting or not, considering the overall tone and intent behind the words used.
+- Read through diverse online remarks and classify them. Your goal is to differentiate between hurtful insults and neutral statements.
+- The objective is to read through comments and make judgments about their nature—determine if they are disrespectful or merely observations without ill intent.
+- Identify whether specific online comments qualify as insults by analyzing their tone and content for disrespectful language that targets individuals or groups.
+- This task involves understanding phrases that may carry negative connotations, enabling you to classify comments accurately as insults or not.
+- Analyze each comment to determine if it contains scornful or offensive language. Classify them accordingly into the categories of insult or non-insult.
+- Your task is to read public comments and determine if they contain insults. An insult is language that is disrespectful or scornfully abusive.
+- You are tasked with identifying written remarks that express offense versus those that constructively contribute to conversations. Recognizing emotional undertones matters greatly here.
+- Examine how people express opinions in public comments and differentiate between disparaging remarks and those that are simply non-offensive.
+- You are examining a set of public comments for their tone, determining which ones cross the line into insult territory.
+- Classify comments based on their nature—whether they are engaging in insults or remaining neutral or positive. Understanding the context will help in your assessment.
+- Your role involves reading comments and deciding if they fall into the category of insults, which are disrespectful, or if they are benign non-insults.
+- Examine the provided comments and discern whether they convey scornful or abusive sentiments, classifying them accordingly.
+- Your role is to critically assess the content of various public comments and label them appropriately based on their potential offensiveness.
+- This task focuses on the interpretation of online discourse to find out if comments are derogatory or benign.
+- Your objective is to understand the tone of online comments and judge if they contain insults, recognizing scornful or abusive expressions.
+- Dive into the world of online discourse by identifying which comments express disrespectful sentiments and categorizing them appropriately.
+- This task requires attention to language nuances in public comments, distinguishing between those that are hurtful and those that are benign.
+- Your assignment is to sift through online statements and judge their respectfulness. Spotting potentially harmful or insulting phrases is crucial for this classification task.
+- You will be presented with public comments, and your job is to judge whether each comment is disparaging or not. Focus on the language used to identify any scornful statements.
+- Engage with posted remarks and categorize them based on their content as insult or non-insult, tapping into an understanding of abusive language.
+- Your job is to examine comments made by users online to see if they fall into the category of insults. You'll need to pick out any scornful or abusive phrases.
+- Explore a selection of comments from online platforms and determine their classification based on the presence of abusive language.
+- Your responsibility is to sift through various public comments and classify them as either insults or non-insults, requiring a keen sense for language nuance and interpersonal communication.
+- In this task, you will assess various online comments, identifying which ones are hurtful or derisive, categorizing them as insults.
+- Review public remarks to determine their tone and intent, specifically looking for elements that qualify as insulting language.
+- Engage with online comments and make a judgment about their nature—whether they are disrespectful insults or simply non-insulting observations.
+- You will determine how each public comment fits into the categories of insult or non-insult by evaluating its connotation and societal implications.
+- You need to assess public remarks found on digital platforms, deciding if they fall into the category of insult based on their disrespectful nature.
+- This task involves categorizing online comments by identifying those that are insulting versus those that are simply sharing opinions without any disrespect.
+- You will be presented with comments from online platforms. Your job is to identify whether these comments contain disrespectful or abusive language.
+- 'The goal is to categorize remarks found in public forums into two groups: those that insult and those that do not. Critical thinking and comprehension are key to making accurate classifications.'
+- Examine comments posted online and identify whether they express insults or maintain a neutral/positive tone. Pay close attention to the wording used by the commenter.
+- The goal here is to classify comments from online platforms. You must discern whether they are disrespectful insults or simply neutral statements.
+- Your job involves analyzing public comments and categorizing them as either insulting or non-insulting based on the language used.
+- Analyze public comments for tone and intent, distinguishing between those with disrespectful undertones and those that maintain civility.
+- Your responsibility is to classify online discussions by analyzing whether they include dismissive language or maintain respectful dialogue.
+- Your job is to determine the nature of public commentary by evaluating if it falls into the category of insult due to its disrespectful content.
+- Classify each comment you encounter as either insulting or not, relying on your ability to recognize disrespectful language patterns within a statement.
+- This task requires you to critically evaluate comments for any signs of disrespect, identifying those that can be categorized as insults.
+- Review various online remarks to identify whether they are insulting or simply expressing opinions without derogatory implications. Insight into social interactions is beneficial here.
+- Gather insights by reviewing comments online, filtering them into two categories based on their use of abusive language or lack thereof.
+- Read through given comments and use your judgment to identify whether they contain offensive language directed at others.
+- 'Examine the language in public comments to classify them into two distinct types: those that insult and those that do not.'
+- The task involves sifting through online comments, focusing on identifying any that may demean or belittle others through insults.
+- Your responsibility involves classifying public comments by evaluating their language and tone for any indications of insult or negativity.
+- Examine a range of online remarks to identify any instances of insult. Your ability to interpret language accurately will be crucial in distinguishing between harmful and harmless comments.
+- The task calls for distinguishing between derogatory remarks and benign statements found in the collection of public comments provided for review.
+- The goal is to analyze public comments and determine whether they express scorn or abuse. Classify each comment accordingly.
+- You are expected to interpret social interactions through comments, making distinctions based on respectful communication versus disdainful remarks.
+- Your job is to scrutinize public expressions to ascertain if they contain any words or phrases meant to demean others.
+- Your task is to quickly identify whether each comment contains elements of insult—such as disrespectful language—or is simply unoffensive.
+- Look at different online comments critically and decide if they cross the line into insult. Understanding subtle nuances in language is key here.
+- The goal here is to review comments shared on platforms, identifying which use insulting language aimed at others versus those that do not offend.
+- You will be reviewing public comments and classifying them as either insults or non-insults based on the tone and wording used.
+- You’ll be examining comments from online discussions and deciding if each one contains insults based on the harshness or negativity expressed in the language.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task328_jigsaw_classification_insult
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task328_jigsaw_classification_insult
+user_prompt_template: '{task_def}
+
+
+  {problem}'

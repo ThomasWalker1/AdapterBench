@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The purpose here is to check individual dates against established rules dictating the nature of months and days to ensure correctness in format and content.
+- This assignment involves scrutinizing dates formatted as “mm/dd/yyyy” and deciding their validity through an understanding of month lengths and general date conventions.
+- The challenge lies in confirming whether a supplied date qualifies as valid. This will involve checking how many days correspond with the indicated month and ensuring all values fit into an acceptable range.
+- In this task, you examine a date to see if it adheres to established guidelines regarding valid months, days, and years.
+- Determine the legitimacy of each presented date by verifying that its parts—month, day, and year—are consistent with standard timekeeping principles.
+- In this task, you need to evaluate the validity of given dates based on standard rules regarding months, days, and years.
+- Your job is to check whether specified dates follow logical consistency in how months and days relate according to recognized conventions, determining their validity as real dates.
+- The objective is to ensure that the provided date aligns with common understanding of calendar formats, taking into account variations in days per month.
+- Your role is to ascertain whether given dates are appropriate by applying logical checks against standard month-day-year formats recognized globally.
+- Analyze given date formats to establish their legality in terms of structure and conventional limits for each segment according to calendar logic.
+- This task entails checking various dates for legitimacy by confirming they follow correct month-day associations and leap year rules where necessary.
+- Your task is to determine the validity of a given date formatted as "mm/dd/yyyy". This involves checking if the month, day, and year components are all valid according to specific rules for each month.
+- In this task, you will assess whether a date formatted as "mm/dd/yyyy" is valid or not. This requires knowledge of the correct number of days in each month and leap year rules.
+- This task entails analyzing and validating dates using knowledge of calendar composition, including months with varying numbers of days.
+- The task includes confirming whether each component of a provided date respects conventional limits, requiring an understanding of how many days are in each month.
+- Assessing date validity requires scrutiny of three components—month, day, and year—to ensure they all meet standard calendar requirements.
+- Analyze the provided date strings for validity by applying knowledge of how dates are formatted and what constitutes a legitimate calendar date.
+- The assignment requires you to tally up incoming dates against customary legal standards governing what constitutes a legitimate date scenario.
+- The focus of your analysis will be on establishing whether presented dates are logically sound through scrutinizing their individual parts based on conventional wisdom about timekeeping.
+- This is about validating dates by ensuring that they comply with general principles on how days relate to specific months and years in a standard calendar.
+- Confirm the legitimacy of various formatted dates by ensuring that all components adhere to general calendrical rules concerning months and days within those months.
+- You are tasked with performing a check on provided date strings to determine if they can be considered valid dates according to common calendrical standards.
+- Your role is to confirm the authenticity of entered dates through logical reasoning about month and day combinations along with year validations based on standard calendar norms.
+- You will scrutinize each component of a date to verify that they are appropriate according to the defined rules of dates.
+- The task is centered on evaluating the correctness of various dates by confirming that their components (month, day, year) meet the conditions outlined for valid date formats.
+- Your job is to determine whether a given date is legitimate by checking the validity of the month, day, and year according to common calendrical standards.
+- Your focus will be on determining if certain dates can exist based on regulated constraints for defining proper calendar dates, including checks against invalid configurations.
+- This task centers on confirming whether a specific date is legitimate by analyzing its format and the validity of its elements.
+- Assess whether each date fits into a legitimate structure based on standard rules applicable to any Gregorian calendar date verification process.
+- The goal involves dissecting a particular date into its parts and ensuring it follows all required conventions for being considered valid.
+- You will be verifying the correctness of provided dates by checking their components against conventional definitions of valid dates.
+- You need to determine if a provided date in "mm/dd/yyyy" format is correctly formed according to the standard calendar conventions.
+- Assess a given date by confirming that each part meets validity requirements set by calendar standards relating to days in each month.
+- Your mission is to check the validity of provided dates, ensuring that the month, day, and year align with standard date conventions.
+- You will analyze a date provided in a standard format, checking if each component (month, day, year) meets the criteria for validity.
+- You will determine if various dates adhere to established guidelines about how months correspond with days, making sure each date provided can actually occur.
+- Check given dates against determinations based on typical calendar rules regarding how months relate to their respective maximum days.
+- Your task is to ensure that dates are legitimate by applying rules around valid month ranges, day counts for each month, and confirming proper year structure.
+- Investigate each date's components methodically to confirm whether they are properly aligned with known rules for valid month-day-year combinations.
+- Essential to this task is your understanding of how various components of a date interact and contribute to an overall valid format.
+- Your job is to discern whether each input date meets conventional validity criteria by ensuring that the month has an appropriate number of days.
+- The task focuses on assessing whether each part of a date—month, day, year—aligns with recognized standards for what constitutes a proper date.
+- You are required to assess whether each given "mm/dd/yyyy" date string conforms to proper standards by checking its components against typical calendrical norms.
+- Your job is to assess whether each provided date is valid by checking that the month falls between January and December and that the days are consistent with the respective month's capacity.
+- This task assesses your comprehension of dates as you validate their structure against rules that govern days, months, and years.
+- This task calls for scrutiny of given dates to verify their compliance with traditional timekeeping standards based on established norms for valid month-day-year combinations.
+- You will check if a date is accurately formatted and adheres to the standards concerning how many days can exist in a particular month.
+- The focus of this task is on assessing dates formatted as "mm/dd/yyyy" to confirm if they fit the criteria for being valid, which requires an understanding of the days in each month and leap years.
+- You will assess whether a specified date adheres to the calendar’s requirements. Familiarity with how many days each month has and leap year rules will aid in your analysis.
+- The task involves validating given dates by checking if the month, day, and year comply with the standard rules of the Gregorian calendar.
+- Assess the validity of various date inputs by checking if they fit within the limits set by conventional month lengths and overall structure in date representation.
+- This task requires you to assess if a date follows the correct format and constraints that define valid dates in a calendar year.
+- In this activity, you'll examine a formatted date string and confirm whether it is a proper date by checking the validity of its parts.
+- The objective here is to analyze dates expressed in a specific format to verify if they can actually exist according to accepted calendar conventions.
+- The task consists of evaluating whether various provided dates hold validity according to recognized guidelines about days per month, including leap year considerations for February.
+- Evaluate whether each provided date meets the necessary criteria for day, month, and year validity; this includes checking proper ranges for each component.
+- Review inputted dates by cross-referencing their components against known rules about valid date formation within commonly used calendrical systems.
+- In this exercise, you verify a series of dates for accuracy based on recognized guidelines for months, days, and overall date structuring.
+- Focus on establishing whether specific dates conform to known standards regarding months, days they can contain, and proper year formatting.
+- In this task, you must validate specific date entries by applying your understanding of date formats, identifying any discrepancies that render them invalid.
+- You need to analyze dates provided in a specific format to verify their legitimacy based on how many days each month can have and accounting for leap years.
+- Your responsibility is to evaluate a date string for authenticity by examining if each separate part connects logically according to calendar rules.
+- Your objective is to evaluate if a date given in "mm/dd/yyyy" format meets all criteria necessary for it to be valid according to common practices in calendrical calculations.
+- The main objective is to validate a date by ensuring that its month is between 1 and 12, the day is appropriate for the given month, and the year is expressed correctly.
+- Evaluate the input dates against established rules governing calendar accuracy, focusing on month limits and ensuring that individual day entries correspond correctly.
+- The objective is to determine whether the provided dates are legitimate by checking each component—month, day, and year—against accepted date formats and values.
+- This exercise requires you to scrutinize a provided date and determine its validity based on accepted rules for calendar dates, including considerations for leap years.
+- The focus here is on discerning whether specific dates are legitimate by evaluating the month, day, and year and ensuring they adhere to chronological guidelines.
+- You are tasked with verifying dates against conventional rules in order to ascertain their validity based on month-day-year relationships.
+- Analyze the given date to see if it follows accepted standards for a valid date. You need to confirm that all parts of the date fall within expected ranges.
+- This task involves assessing whether a given date is valid based on specific rules regarding months, days, and years.
+- The task is focused on determining the validity of a date by analyzing its components—month, day, and year—and ensuring they align with accepted calendar standards.
+- The task at hand requires a thorough analysis of individual components of presented dates to determine their correctness under well-established calendar rules.
+- Your task is to determine whether a given date is valid based on the rules regarding months, days, and years.
+- You are required to assess whether dates presented in the "mm/dd/yyyy" format are correctly structured and conform to the rules of leap years and day limitations for each month.
+- In this task, you will examine a series of dates to confirm if they adhere to the required structure and limitations set by the Gregorian calendar system.
+- Your goal is to validate a given "mm/dd/yyyy" formatted date through careful evaluation of its parts. You will apply your knowledge of typical calendar structures in this determination process.
+- The objective is to validate dates given in a specific format, confirming that they adhere to the standard rules for months, days, and years.
+- Here, you will check if a provided date string correctly represents an actual date by evaluating the individual components against calendar rules.
+- Your role is to scrutinize a provided date and determine its validity by adhering to rules surrounding permissible months and days for those months.
+- The essence of this task is ensuring that all elements of a given date comply with traditional expectations for proper formatting and logical coherence.
+- Your responsibility is to assess dates and identify if they follow the conventional calendar structure, ensuring that all parts of the date are valid.
+- In this activity, you will scrutinize each provided date to see if it is acceptable according to standard calendrical calculations governing days and months.
+- Examine a given date carefully and establish its legitimacy by following usual guidelines regarding months and their respective days. Pay attention to exceptions such as leap years when applicable.
+- The focus here is on validating the components of a provided date, ensuring they align correctly with known conventions for dates.
+- Calculate the validity of given dates by cross-referencing them with established criteria pertaining to month lengths and annual cycles.
+- Examine the given date and verify if it is valid based on established calendar norms. This involves ensuring that the day number fits within the limits set by the month's total days.
+- The task involves scrutinizing formatted dates for authenticity through careful checks of their components based on universal conventions about days in months.
+- The task will require you to review a selection of dates to confirm if they are properly formatted and meet the conditions that define valid dates in standard usage.
+- You'll be working with dates, implementing reasoning about numerical representations of time to authenticate their accuracy.
+- Your assessment will involve a systematic review of individual date parts to ensure they form a coherent and acceptable representation according to known calendrical conventions.
+- Evaluate provided dates for accuracy by assessing whether they meet specific criteria regarding the permissible number of days in relation to their respective months.
+- This involves a careful review of dates to establish whether they represent workable temporal values as per typical monthly constraints in common usage.
+- Check whether the dates provided are valid by validating each component against established timing criteria, ensuring the integrity of the calendar system.
+- The activity centers on verifying inputs regarding their status as valid calendar dates, requiring a comprehensive understanding of numerical constraints related to timekeeping.
+- This task requires you to verify given dates are valid by checking that their month is among those recognized and that their day does not exceed what is allowable in that month.
+- In this exercise, evaluate whether a provided date correctly represents an actual moment in time by ensuring all parts are valid together.
+- The task involves checking if a specific date is acceptable according to calendar conventions. Be attentive to the number of days assigned to each month while performing your check.
+- The task involves validating a given date to determine if it is correct based on the established rules of the Gregorian calendar.
+- Your job is to assess whether a specified date is legitimate by checking each part of the date for correctness according to calendrical rules.
+- You will be tasked with checking if specific dates are correctly formatted and valid, using your understanding of how many days each month contains and leap year rules for February.
+- You will analyze each provided date systematically, testing each component against criteria that define what constitutes a valid entry in a calendar.
+- Analyze the input dates thoroughly and assess their soundness based on established criteria for what constitutes a valid date in a standard calendar context.
+- You need to validate whether a presented date is genuine via an analysis that entails checking each unit (month, day, year) and ensuring they align with standard calendar guidelines.
+- The objective of this task is to verify the correctness of provided dates by checking if the components meet specific calendar requirements.
+- Engage in a systematic evaluation of dates to ascertain their validity based on specific rules about how many days each month contains and leap year adjustments.
+- In this task, you examine a date input to see if it meets the criteria for a valid date, ensuring the month, day, and year fit within the ranges specified for date validation.
+- The objective here is to validate different date inputs by ensuring that the mentioned month matches up correctly with its respective days in a given year model.
+- You must evaluate different date entries for their validity by cross-referencing each element (month, day, year) against recognized standards of what constitutes an acceptable date.
+- In this task, you will discriminate between valid and invalid dates based on a comprehensive understanding of calendar months, appropriate day ranges, and annual structures.
+- In this evaluation, you will identify whether a date is genuine or not by assessing its three components. Each part must adhere to predefined criteria based on the calendar system.
+- Determine if a date inputted in "mm/dd/yyyy" format is valid by applying rules related to the number of days in each month and the overall structure of the date.
+- The aim is to categorize dates as valid or invalid based on their configurations. This task demands an understanding of how many days are assigned to different months and leap year occurrences.
+- You will be determining if specific dates are valid by applying knowledge about months, days, and leap years to reject any incorrect submissions.
+- In this activity, you'll evaluate whether a provided date is legitimate by analyzing its month, day, and year. Recognize how many days correspond to each month to make your judgment.
+- The aim is to classify dates as either valid or invalid based on criteria involving the month, day, and year, while considering leap years for February.
+- Evaluate a proposed date’s completeness by scrutinizing its validity across its significant components—the month, day, and year as laid out in standard practice.
+- This task focuses on understanding and applying the rules that dictate what constitutes an acceptable date within defined parameters known globally.
+- Your role involves scrutinizing each presented date against commonly accepted standards for monthly days to affirm its validity or identify errors.
+- This task will require you to engage your understanding of calendars as you check if specified dates hold up against known dating conventions.
+- Your job is to check the correctness of a date provided in "mm/dd/yyyy" format. You must understand how many days are in each month in order to confirm validity.
+- For this task, determine if the supplied date aligns with standard temporal formatting. Each segment must fall within acceptable ranges as outlined by calendar rules.
+- You need to check whether a date formatted as "mm/dd/yyyy" is legitimate by verifying that its month, day, and year are all individually correct.
+- Examine a list of dates for their validity, applying your knowledge of how many days our months contain and ensuring that none exceed stipulated limits.
+- You are required to filter out invalid dates by applying rules regarding month lengths and overall date structure.
+- Your responsibility is to examine each part of a date to ensure it is permissible according to established calendrical rules regarding the number of days in each month.
+- The goal is to determine the legitimacy of a date by verifying that the month, day, and year conform to established standards of correctness.
+- The task involves evaluating dates to determine their validity. You must consider the months, days, and years to check if they conform to standard date conventions.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1403_check_validity_date_mmddyyyy
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1403_check_validity_date_mmddyyyy
+user_prompt_template: '{task_def}
+
+
+  {problem}'

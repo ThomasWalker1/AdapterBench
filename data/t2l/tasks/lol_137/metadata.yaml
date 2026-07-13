@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The goal here is to differentiate between the levels of toxicity in two given responses while focusing on fostering a respectful discussion through your selection.
+- This task requires you to filter out negativity and select the response that fosters a welcoming environment in a conversation based on the provided prompt.
+- Examine each completion to see how well it adheres to courteous communication. Identify which one stands out as least objectionable or toxic.
+- Your task is to evaluate two potential continuations of a given prompt, determining which one is less toxic. You should consider the tone and content of both options.
+- Critically analyze two proposed responses. Your goal is to pick out the one that contributes positively to the ongoing context without introducing toxicity.
+- Your job is to discern which completion carries a more agreeable tone, ensuring that the interaction remains supportive and inclusive.
+- The focus here is on language sensitivity, requiring you to pick a response that best fosters understanding and avoids potentially abusive remarks.
+- Analyze two responses for content clashes or offensive language, selecting the completion that sustains a civil discourse while addressing the prompt subject.
+- You will compare two completions following a statement and choose the one that appears more civil and appropriate for further discussion.
+- This task asks you to weigh two alternative continuations of a dialogue, selecting the one that minimizes hurtful or derogatory language.
+- Look at how each response reflects on the context provided by the original prompt; select the one that is less provocative and more agreeable in nature.
+- The task involves scrutinizing two responses for their overall tone; you should choose the one that contributes positively to the ongoing dialogue.
+- You will be given a writing prompt and two potential completions; your job is to identify the response that is more appropriate and less harmful.
+- Carefully evaluate two possible completions for their linguistic tone; select the one that reflects kindness over negativity in response to the prompt.
+- This assessment requires you to consider how responses impact listener engagement, aiming for those that invite rather than deter dialogue.
+- Assess two completions based on their potential impact on group dynamics in conversations, prioritizing safety and respect in your evaluation.
+- The objective is to select a response that encourages dialogue rather than shutting it down with negativity or rudeness.
+- You will be evaluating language subtleties in response choices, with an emphasis on minimizing potential rudeness or hostility in the communication.
+- The task involves evaluating two responses to a prompt, with the goal of identifying which response is less toxic. Understanding the concepts of tone and respect in conversation is essential.
+- Your responsibility is to discern which completion from a pair continues the conversation in a way that minimizes hostility or disrespect towards others involved.
+- Focus on evaluating how each response progresses from the original prompt. The goal is to pinpoint the completion that is less likely to provoke or offend others.
+- Your role is to assess how well each completion aligns with non-toxic communication principles, emphasizing civility and mutual respect in dialogue.
+- In this task, you need to make a judgment about which completion maintains a more positive or neutral stance in relation to a sensitive prompt.
+- You will need to sift through two possible replies for their appropriateness, taking care to avoid any language that could be interpreted as derogatory or offensive.
+- Your objective is to sift through two responses to determine which one presents itself as more civil, promoting an atmosphere conducive to healthy conversation.
+- In this task, you will review options for their potential to foster healthy communication. A strong awareness of conversational dynamics is necessary.
+- This task involves determining which of two responses continues a given prompt in a manner that is least likely to offend or provoke negative reactions.
+- Your focus is on language choice; differentiate between completions based on their potential harm, selecting the one that encourages positive engagement instead.
+- You must carefully assess how each completion reflects on the tone of the conversation initiated by a prompt, selecting the least toxic one that fits best.
+- Determine which of the provided responses adheres more closely to respectful communication standards in light of a potentially contentious prompt.
+- This task involves comparing two potential responses to a prompt, identifying which response is less likely to escalate negativity or create conflict.
+- Your task involves judging two responses against a backdrop of social etiquette, where minimizing offensive remarks is the main priority.
+- Discerning and selecting the most appropriate response based on its conversational tone is essential. Aim for clarity without any signs of disrespect.
+- This assignment requires you to pick out the completion that expresses less harshness or negativity from two options given after a prompt.
+- The goal is to assess two different continuations for their potential toxicity, ensuring you select the one that is safer for ongoing dialogue.
+- Analyze the provided statements to gauge their appropriateness. The aim is to find the response that minimizes negativity or disrespect.
+- You will be assessing two different completions following a given prompt. Focus on choosing the one that is least likely to offend or provoke negativity.
+- Your assignment centers on selecting a response from two options based on their non-toxic nature, highlighting the importance of maintaining civil interactions in dialogue.
+- You will examine two different completions stemming from a prompt and identify which completion avoids toxic language while maintaining relevance.
+- This task involves looking at two responses generated from a prompt. Identify which response is less aggressive or rude, ensuring it continues the discussion in a more positive light.
+- Make an evaluative choice between two text completions that follow a provocative statement, leaning towards fostering understanding rather than division.
+- Your role is to choose between two answers by weighing their impact on dialogue quality, favoring positivity over acerbity.
+- In this exercise, you are tasked with distinguishing between acceptable and harsh responses to ensure that ongoing conversations remain civil and respectful.
+- Examine two responses generated after a prompt and determine which response expresses its ideas without crossing into rudeness or disrespect.
+- Your responsibility is to analyze the tone and content of two suggested replies, selecting the one that maintains a more constructive and respectful dialogue.
+- Your responsibility here is to navigate through conversational dynamics by selecting which completion encourages friendliness over toxicity based on the starting prompt.
+- Analyze how conducive each response is to continuing a civil discourse based on the original prompt's context and content.
+- The objective here is to assess the tone of two responses and choose the one that fosters a collaborative or constructive dialogue.
+- Assess both completions' potential impact on ongoing dialogue. You're searching for the reply that embodies constructive communication while avoiding toxicity.
+- In this task, you are asked to evaluate how well each completion supports healthy communication and which may lead to misunderstandings or negativity.
+- Your job is to assess responses critically, choosing the one that best aligns with courteous and friendly discourse over rude commentary.
+- Evaluate two potential responses for their appropriateness, emphasizing the need to maintain a respectful dialogue. It's critical to recognize what constitutes toxic comments.
+- You are engaging in an evaluation of how friendly or hostile particular responses are towards others within the dialogue established by a prompt.
+- You’ll be evaluating how well each completion adheres to respectful discourse, selecting the option that minimizes anger or insult towards others.
+- Analyze two different endings to a statement and select the one that expresses ideas without being offensive or inappropriate.
+- This task focuses on identifying which completion following a prompt is likely to contribute to a more respectful conversation atmosphere.
+- Your task is to evaluate two responses based on their tone and content, selecting the one that is more respectful and appropriate in a conversation.
+- Analyze the provided completions for their respectfulness to ensure the discussion remains positive and inviting for all participants.
+- The challenge here is to weigh the responses against each other based on their potential to disrupt a healthy conversation. Select the response that is least harmful.
+- Your job is to pinpoint the completion that reflects a more civil approach in conversation while analyzing given prompt-following responses.
+- Your job is to discern the level of toxicity present in two different completions based on a shared prompt and choose the one that upholds a more neutral or pleasant demeanor.
+- This task requires critical thinking about language use. You'll decide which completion maintains a friendly tone while continuing the discussion sparked by the prompt.
+- Your focus will be on selecting the continuation of a conversation that retains neutrality and avoids divisive or aggressive language.
+- The objective of this task is to ensure that discussions remain polite. Choose the continuation that steers clear of toxic emotions or statements.
+- You will need to review two completions regarding a specific subject matter and choose the one that is more suitable for continued discussion, avoiding toxic language.
+- In this task, you compare two responses to see which one promotes a healthier conversation without crossing into toxic language.
+- The essence of this task lies in selecting between two responses by weighing their appropriateness and level of rudeness as they relate to conversation flow.
+- This task involves critical thinking about conversational tone. Identify which completion maintains grace while continuing from the initial prompt.
+- You must critically assess follow-up statements made in response to a prompt and select the less toxic contribution to support positive discourse.
+- Assess the two given completions for their appropriateness, selecting one that encourages a respectful exchange without hostility or disrespect.
+- You will compare two follow-ups based on their language use. The challenge lies in identifying which is less aggressive or disrespectful while continuing the subject matter.
+- The objective is to critically assess two continuations of a prompt and choose the one that is less likely to generate hostility.
+- Evaluate the two options based on their potential to maintain civility in conversation, opting for the less toxic completion.
+- You are tasked with evaluating the implications of each completion to decide which one lacks offensive content. Understanding context matters greatly.
+- In this task, you are evaluating the attitude conveyed in two different responses and determining which one aligns better with supportive communication.
+- Your job is to assess the toxicity of two provided completions in relation to a prompt, focusing on maintaining a positive and constructive dialogue.
+- You need to sift through two suggested continuations of a discussion. Select the option that maintains an engaging yet respectful tone.
+- The focus is on selecting responses that are respectful and considerate, ensuring that they do not alienate or offend any participants in the discussion.
+- In this exercise, discern between responses that either escalate negativity or maintain civility, aiming to find one encouraging constructive interaction.
+- The task involves evaluating text completions based on their level of toxicity. You need to identify which completion is more respectful and appropriate for the given prompt.
+- Your role involves determining which of two textual responses is least likely to provoke further conflict or upset within a conversation.
+- Your mission is to evaluate the tone and content of different completions in response to a prompt, prioritizing those that avoid toxic language.
+- Review both completions carefully, focusing on their content to identify which one fosters a better conversational atmosphere, devoid of rudeness.
+- You'll need to use your understanding of conversational tone and respectfulness, choosing between two completions based on their appropriateness after a given prompt.
+- This task involves making judgments about the tone of language used in two completions, aiming to uplift communication rather than degrade it.
+- Scrutinize the responses in terms of their suitability for maintaining a respectful conversation about the given topic from the prompt.
+- Here, you must utilize your judgment on social interactions by selecting the completion that embodies respectfulness and discourages negative comments.
+- Engage with two completions responding to emotive prompts, making a choice based on their overall tone toward ideological differences or conflict.
+- Evaluate two alternative endings to a discussion prompt, choosing the one that promotes a healthy exchange instead of an aggressive stance.
+- Focus on evaluating how each response might affect reader sentiment. Pick the option that cultivates understanding rather than discord among interlocutors.
+- Consider both completions closely, deciding which one contributes less toxicity to the discourse while remaining relevant to the original message.
+- Determine which response remains within the bounds of respectful interaction, keeping an eye out for any potentially toxic expressions in both completions.
+- Assessing language through the lens of civility is crucial in this task. Choose the completion that defuses tension rather than inflaming it further.
+- The challenge here is to discern which of two possible continuations of a prompt is more appropriate, specifically avoiding any statements that could be deemed offensive or harsh.
+- Your challenge is to discern between two language model outputs, selecting the one that aligns with respectful dialogue rather than confrontation or insult.
+- This task necessitates careful reading and judgment, as you'll be comparing two text completions for their toxicity level, promoting healthier communication.
+- Your task encompasses assessing thematic elements in responses and choosing the completion that best exemplifies restraint in emotionally charged contexts.
+- You'll be provided with context and must determine which continuation respects that context and keeps the conversation constructive and non-toxic.
+- Your job is to identify which of the two messages related to a given prompt utilizes language that is more tactful and considerate.
+- This challenge revolves around picking the most tactful continuation of a discussion from two alternatives, emphasizing kindness and thoughtfulness in correspondence.
+- Your job is to assess two responses for their potential toxicity in relation to a provided prompt. You'll need to recognize disrespectful or hurtful statements.
+- In this evaluation task, you are looking for courteousness in two response options. Focus on selecting the one less likely to provoke irritation.
+- Your role is to judge two different completions for their appropriateness after a given prompt, ensuring that the selected response encourages healthier dialogue.
+- This task involves judging the suitability of two text responses. Look for rudeness or negativity to determine the less harmful option.
+- This exercise requires you to differentiate between toxic and neutral language when reviewing completion options. A good grasp of interpersonal communication is beneficial.
+- This task focuses on reading and interpreting language to identify the least harmful statement. You must consider how each completion might affect a discussion.
+- This task requires you to evaluate two different responses based on their level of toxicity and select the one that maintains a respectful tone while continuing the prompt.
+- Your task involves evaluating two responses to a given statement and determining which one maintains a more respectful and civil tone.
+- Look closely at how each response might resonate with an audience, prioritizing those that foster kindness over negativity in conversation.
+- Assess two responses to a prompt and select the one that maintains a respectful tone. You need to identify language that could disrupt a conversation.
+- Evaluate two completions derived from a prompt, considering their implications on conversation and selecting the one that is kinder or less confrontational.
+- This task challenges your ability to identify more diplomatic and thoughtful expressions among provided completions following an initial provocative statement.
+- The task involves reading a conversation starter and determining which of two follow-up responses fosters a healthier discussion by being less toxic.
+- Your challenge is to choose between two completions that respond to a given prompt, highlighting the importance of sensitivity in language use.
+- In this task, you are asked to read a prompt and two completions, then determine which completion expresses a less harmful tone. This requires sensitivity to language and social cues.
+- Your role is to review two different completions following a prompt and select the one that maintains a more respectful tone.
+- Compare the provided continuations for their likelihood of fostering respect among participants in a conversation and choose accordingly.
+- Evaluate the two responses for toxicity by considering whether they include negative or hurtful language that could disrupt the discussion.
+- Your role is to discern which of two follow-up statements continues a conversation without being offensive or disrespectful.
+- Determine which of the two options aligns better with respectful interaction, promoting an open and friendly discussion atmosphere.
+- Examine both completions for signs of hostility or negativity. Choose the one that fosters an atmosphere of respect and openness in discussion.
+- Evaluate the tone of two narrative continuations following a prompt. The goal is to select the one that avoids aggressive or offensive language.
+- You are asked to select a continuation of dialogue that upholds a non-toxic and agreeable stance, encouraging collaboration and understanding.
+- You have to analyze a conversation context and choose the response that maintains a more civil and constructive dialogue, minimizing rude or disrespectful content.
+- You need to select a response from two completions that carries a lesser degree of negativity and avoids toxic expressions based on the initial prompt provided.
+- In this activity, analyze responses for their toxicity. Only one completion will be less likely to offend or disturb the conversation initiated by the prompt.
+- Your role is to judge two completions in terms of their toxicity and decide which one fosters a more positive interaction. Sensitivity to negative language is key here.
+- Evaluate the two completions based on their likelihood to contribute positively to a discussion. Awareness of tone and responsibility in communication is essential.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task137_detoxifying-lms_classification_toxicity
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task137_detoxifying-lms_classification_toxicity
+user_prompt_template: '{task_def}
+
+
+  {problem}'

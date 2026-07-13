@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- The task involves interpreting short pieces of text to identify and name a relevant medical condition that matches the description given.
+- This task emphasizes your ability to interpret clinical descriptions and select disease names based on given textual evidence related to health issues.
+- This involves reading specific details about health issues and recognizing the correct disorder that fits these details. It assesses your understanding of both vocabulary and medical significance.
+- In this task, you are tasked with discerning the name of a medical condition described in text, which requires an awareness of symptoms and related terminology.
+- The goal is to interpret sentences related to health conditions accurately and identify specific disorders discussed within them, reflecting your grasp of medical language.
+- You will be identifying various illnesses or conditions within short text segments by gathering context clues and producing accurate labels for each.
+- You are required to analyze given sentences and extract the name of a relevant medical condition or disorder mentioned within them.
+- The goal is to recognize specific disorders mentioned in given contexts, which involves relating descriptions to known diseases and their characteristics.
+- Read through text carefully to extract names of specific diseases or disorders that are implicitly referenced in the context.
+- Analyze provided information about health challenges; extract and specify the name of the corresponding disorder or disease noted in the text based on your medical understanding.
+- The objective is to analyze given sentences and accurately recognize the names of associated diseases or disorders, demonstrating familiarity with medical concepts.
+- Examine the provided information and recognize the name of any disorder mentioned, demonstrating your understanding of medical language.
+- Your job is to analyze descriptions related to health issues and determine the appropriate disorder or disease name that fits the context. This necessitates knowledge of pathology and clinical symptoms.
+- This task requires reading through provided sentences and honing in on particular words that denote diseases, showcasing your knowledge of health conditions.
+- Extract the name of a disorder from sentences that describe various health situations. Knowledge of diseases and their implications will guide your recognition efforts effectively.
+- Focus on recognizing disorders hidden within descriptive sentences; your role involves identifying them accurately, which calls for a comprehensive knowledge of various health conditions.
+- In this task, you must interpret text to find and name an illness or disorder, utilizing your awareness of symptoms and their descriptions.
+- You need to sift through descriptions related to various ailments and pinpoint the specific disorder each scenario references. Knowledge of health conditions will guide your identification process.
+- Your assignment involves parsing sentences to identify and state one relevant health disorder mentioned in them.
+- Your role in this task is to sift through descriptions related to various diseases and identify one that accurately matches what is presented in the text.
+- Your main focus will be on understanding sentences related to diseases, allowing you to extract and state the names of those medical conditions effectively.
+- In this task, you synthesize information presented in sentences about diseases while ensuring you can articulate one recognizable name linked to it.
+- Given a set of information, your task is to accurately extract the name of any named disorder or disease presented.
+- Analyze the given sentences to pinpoint a disorder or disease that is referenced, based on the context and descriptions provided.
+- The task consists of extracting disease names from text about health issues faced by individuals. Recognizing symptoms and related conditions is essential for success in this activity.
+- The task involves recognizing medical conditions described in sentences, requiring familiarity with various health-related terms.
+- You will be reviewing sentences to extract pertinent information related to specific diseases or disorders mentioned, showcasing your understanding of medical language.
+- This task requires identifying a specific disorder or disease based on the information presented in a sentence or sentences. You will use your knowledge of medical terminology and conditions to discern the relevant term.
+- The goal is to interpret sentences regarding healthcare topics and deduce the associated disorders or diseases, showcasing your grasp of medical terminology.
+- You are tasked with recognizing and naming diseases or disorders implied in short textual descriptions using your knowledge of health sciences.
+- Engage in reading comprehension that focuses specifically on medical contexts, where you will identify relevant conditions based on descriptive cues.
+- The challenge here is to identify and name specific diseases from given textual descriptions, calling for a background in medical knowledge and condition recognition.
+- In this task, you need to analyze texts that explain different health problems, focusing on extracting the disease names referenced within them.
+- Your goal is to pinpoint and state the particular health issue referred to in given sentences, demonstrating familiarity with diseases and disorders.
+- Your task involves identifying specific disorders or diseases based on the provided descriptions. This requires understanding medical terminology and knowledge of various health conditions.
+- You will read a statement and identify the name of a specific disorder or disease mentioned in it.
+- Read descriptive sentences meant to illustrate health conditions, focusing on identifying the associated disorder. This requires critical thinking and familiarity with various illnesses.
+- In this task, focus on interpreting lines of text related to health, extracting the relevant names of disorders from the descriptions given.
+- Your role is to interpret sentences to find references to various disorders or diseases, showing your capacity for analytical thinking in a medical context.
+- You are tasked with discerning names of diseases from descriptive sentences, necessitating familiarization with symptomatology and medical nomenclature.
+- Dive into sentences that outline specific medical situations, and your mission is to recognize and name the relevant disorder or disease mentioned within those descriptions.
+- The primary objective here is identifying disease names from contextual clues provided in sentences, showing an understanding of healthcare-related concepts.
+- The project requires you to discern medical disorders from provided texts, identifying their names based on contextual understanding.
+- You are tasked with recognizing diseases based on presented descriptions. This involves careful reading and a background in healthcare topics to provide accurate answers.
+- Your challenge is to extract the name of a disease from provided context about health conditions. Having knowledge in medicine will help clarify meanings behind complex information.
+- You are asked to read a sentence or two and recognize the medical condition that is mentioned, showing your understanding of various health-related terms.
+- You will read through given sentences and recognize the names of medical disorders or diseases mentioned. Familiarity with symptoms and medical conditions will aid in your response.
+- You will identify diseases based on sentence descriptions, applying your understanding of medical conditions as they relate to the specifics in each example.
+- You will analyze provided sentences to uncover related medical conditions or disorders. This task tests your familiarity with various ailments and their descriptions.
+- The challenge is to connect textual descriptions with their appropriate medical terms, correctly naming any disorders indicated by those descriptions.
+- This activity involves parsing through information about various health conditions and extracting the names of disorders based on provided symptoms, requiring an understanding of medicine.
+- This task requires you to extract the name of a disorder from sentences that outline symptoms or effects, utilizing your understanding of health science concepts.
+- The activity centers on analyzing provided text to discover the names of diseases, showcasing your ability to connect language with medical terms.
+- You will be presented with descriptions of conditions, and your task is to extract the relevant name of the disorder, relying on your understanding of medical language.
+- In this exercise, you will interpret descriptions of health conditions and determine which specific disorder is being referenced, testing your knowledge of medical terms.
+- You will be given a context that describes certain health conditions. Your objective is to extract and recognize the name of the relevant disorder or disease based on that description.
+- This task involves identifying and naming a specific disorder or disease based on provided descriptions or context. It requires knowledge of various health conditions and their symptoms.
+- In this task, you're provided with descriptions concerning health problems; you must pinpoint the specific disorder mentioned. Understanding healthcare concepts is key for success.
+- The aim is to recognize and name specific diseases embedded in provided sentences, relying on both comprehension skills and knowledge of health disorders.
+- You must discern medical conditions described in written form, leading you to articulate a specific disorder reflected in that information.
+- This task involves identifying and naming specific disorders or diseases based on descriptive sentences, requiring knowledge of medical terminology.
+- Here, you must translate descriptive information into a recognized health condition or disorder's name. It challenges your ability to connect symptoms with their proper terms.
+- Your job is to assess given statements regarding health issues, aiming to recognize and name any disorders highlighted based on what's described.
+- This task requires you to extract the name of a disorder from a brief description, using your knowledge of medical terminology and conditions.
+- You will encounter phrases about health discrepancies, needing to pinpoint which diseases are being indicated. Insight into medicine will help elucidate these descriptions effectively.
+- This task involves extracting disease names from contextual information in text format, emphasizing comprehension in medical texts and terminologies.
+- In this assignment, you will interpret textual statements concerning disorders or diseases and accurately identify their names. A sound understanding of medical conditions will enhance your performance.
+- In this task, you will encounter phrases that pertain to various medical issues. Your job is to discern and name the disorder or disease indicated in the text.
+- In this task, interpretive skills are necessary as you connect descriptions in writing with appropriate disease names. Knowledge about different health issues enhances your accuracy in recognition.
+- This task requires the analysis of medical sentences to pinpoint the corresponding disorder or disease, engaging your skills in interpreting health information accurately.
+- Analyze the information given in a sentence to pinpoint the related disorder or disease. This requires knowledge of medical issues and attention to detail.
+- Assess the sentence provided to derive a named illness or abnormality, utilizing your understanding of medical contexts.
+- This task involves interpreting short texts to single out the name of a disease or disorder mentioned. It requires comprehension of medical language and concepts.
+- Read through the given sentences carefully and determine the name of the health condition being discussed within that text.
+- Identify the name of a disorder from descriptive sentences. It involves comprehension skills to link patient scenarios with appropriate medical terminology.
+- This exercise focuses on extracting the names of disorders from provided descriptions, emphasizing your ability to connect symptoms or effects to known medical conditions.
+- Read the sentence carefully and determine which disorder or disease it refers to. Being able to connect descriptions with their corresponding medical terms is crucial here.
+- You will engage with brief statements about medical conditions and are required to highlight the specific disorder articulated within those statements.
+- This involves reading descriptions that may pertain to health conditions and accurately naming the specific disorder or disease highlighted within.
+- This activity requests you to focus on textual explanations related to health, pinpointing mentioned disorders for an accurate response based on your knowledge.
+- Your job is to interpret health-related descriptions and deduce which disorder is being referred to, emphasizing your knowledge in medical terminology.
+- Use your understanding of medical language to identify conditions or disorders based on given sentence structures. Interpretation skills will be vital in completing this task.
+- You will read descriptions related to health and medicine and extract the corresponding disorders. Familiarity with medical literature and terminology is necessary for success.
+- The exercise entails understanding written descriptions related to illnesses and accurately identifying relevant disorder names from those details.
+- You are expected to look at medical descriptions closely and identify mentioned disorders, developing your skills in recognizing symptoms connected with specific illnesses.
+- In this task, you're tasked with identifying diseases by analyzing and summarizing contextual information. It taps into your knowledge of various health conditions.
+- Scan through the text for keywords indicating a disease or disorder, and articulate that name clearly.
+- The focus of your task is on recognizing the names of diseases from given descriptions. You should rely on your understanding of health-related terms and conditions.
+- You will be looking for key terms that denote medical conditions within the sentences, focusing on identifying disorders accurately.
+- In this assignment, you analyze given information about healthcare topics and discern the correct disorder based on interpretation of that information's meaning.
+- You will examine statements about health conditions and extract the name of an associated disorder. Knowledge of diseases and their symptoms will greatly aid your judgment.
+- The goal is to derive the name of a specific health condition from textual clues in a sentence. Recognizing symptoms and relevant diseases is key to successful identification.
+- Your task requires synthesizing information from sentences about health phenomena into specific disease names. A strong understanding of medicine aids this process.
+- You will read sentences that describe certain medical situations, and your job is to pinpoint the disorder mentioned within those sentences, demonstrating an understanding of medical terminology.
+- Identify specific disorders based on contextual cues from provided sentences. This task emphasizes analytical thinking and familiarity with healthcare terminology for effective recognition.
+- You will be given text that discusses health-related topics, where your role is to identify the underlying disorder or disease being referred to in the context.
+- The objective is to recognize and identify various disorders discussed in context. You will evaluate sentences for keywords that suggest particular medical conditions.
+- The task challenges you to identify health conditions based on selective information provided, drawing upon your knowledge of medicine and its language.
+- This task involves recognizing diseases or disorders from descriptive sentences. You should be familiar with various health conditions and their manifestations.
+- Your job involves reading sentences about various illnesses or conditions and identifying the specific disorder mentioned. Familiarity with clinical manifestations will assist in your answers.
+- You will engage with text materials to find mentions of specific health conditions, which calls for attention to detail in medical contexts.
+- Your goal is to read each given statement, understand its context, and identify the specific disease or condition it describes. This demands a good grasp of various medical concepts.
+- The objective here is to discern and name a particular disease or disorder based on the information given in the text. This requires familiarity with medical concepts and an ability to recognize symptoms.
+- This task focuses on recognizing and acknowledging various disorders mentioned in sentences, which requires insight into human health and illness.
+- You will evaluate statements about various conditions and articulate their correct names based on context clues within the text provided—critical thinking is key here.
+- Engage with sentences that describe particular ailments; your task is to identify the corresponding disease name using your knowledge of clinical symptoms and terminology.
+- The objective is to analyze statements that describe certain medical issues and correctly name the associated disorders. This requires a blend of comprehension skills and medical knowledge.
+- The assignment is about identifying diseases based on given excerpts. Utilize your knowledge of healthcare and knowledge of symptoms or conditions to find the specific name mentioned.
+- In this task, you need to extract disease names from sentences that describe medical situations. This requires comprehension of how diseases manifest and are referenced in medical language.
+- Your task involves interpreting various sentences about health conditions and indicating a named disorder found within the provided context.
+- Your responsibility is to read through sentences and identify disclosed illnesses or disorders, making use of your medical vocabulary knowledge.
+- The goal is to interpret a statement and name any disorder or disease it refers to, using your knowledge of medical terminology.
+- Here, you are asked to pinpoint the specific name of a disease based on contextual clues in a sentence. Your medical knowledge will guide you in this classification task.
+- Your task is to take a sentence or more and recognize a specific medical condition based on the information given. This calls for an understanding of health-related symptoms and terminology.
+- Your assignment is to find and name the relevant disorder or disease based on a description given in sentences. Competence in medical vocabulary will aid your responses.
+- From each provided sentence, your role is to extract the relevant disorder's name. Clear comprehension and knowledge of various conditions are instrumental for this task.
+- You are required to identify from a sentence the specific illness or disorder mentioned, based on the presented symptoms or circumstances.
+- You'll be presented with health-focused statements where you need to recognize and name specific disorders, reflecting your familiarity with different health conditions.
+- This task asks you to reflect on sentences that signal certain diseases or disorders. Employ your knowledge of healthcare principles to determine what condition is being referenced.
+- This task entails extracting specific disorders from contextual descriptions in sentences, highlighting your comprehension skills regarding medical language.
+- You will explore descriptive sentences regarding health issues with the goal of highlighting particular disorders or diseases conveyed within that text.
+- The assignment entails recognizing and naming medical disorders based on provided textual scenarios that depict certain health phenomena. A good understanding of common diseases will be valuable for completion.
+- You are tasked with pinpointing the specific medical disorders described in sentences, drawing upon your understanding of human health and disease classification.
+- This activity focuses on extracting information about disorders from textual sentences. You will link described symptoms with known diseases effectively.
+- Your job is to read sentences describing symptoms or concerns and determine the corresponding disorder or disease from that information.
+- In this exercise, you read sentences about health problems and identify the associated disorders. This requires good comprehension skills and knowledge of medical concepts.
+- You will be reading sentences and pinpointing the disorder mentioned, necessitating a solid grasp of health-related vocabulary and classifications.
+- You will read a set of sentences and extract the name of a disorder or disease mentioned within them, showcasing your understanding of various health conditions.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1449_disease_entity_extraction_bc5cdr_dataset
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1449_disease_entity_extraction_bc5cdr_dataset
+user_prompt_template: '{task_def}
+
+
+  {problem}'

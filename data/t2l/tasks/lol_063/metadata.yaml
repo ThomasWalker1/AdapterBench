@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- You are required to select and present a subset of items from a list, beginning from the first item and continuing until the specified count is reached.
+- The challenge requires familiarity with operations involving lists where you will select several leading components based on an integer directive.
+- In this activity, you'll be tasked with filtering through a list to retrieve its beginning segment according to an integer index.
+- The objective is to extract and display the top section of a list according to a specified integer input.
+- In this assignment, you'll retrieve the first few entries from a given list based on an integer input. The challenge lies in accurately understanding the relationship between that integer and the list's indexing.
+- You are tasked with selecting a specific number of elements from an array, beginning from the first item.
+- You will navigate through a set of items and produce an output based on criteria that dictate how many initial segments you should focus on.
+- In this task, you will identify how many items to take from the start of a list and return those items as your output.
+- This task is about identifying how many items to extract from a list and ensuring you accurately return that portion in sequence.
+- Here, your job is to work with lists by segmenting them based on length specifications provided through numeric inputs, ensuring that what you capture begins at the top of this collection.
+- The focus of this task is on extracting a specified number of items from an array-like structure. Careful attention to detail is important as you identify which elements to return.
+- In this task, your focus is on choosing elements from a list up to a specified count indicated by an integer input.
+- This task involves extracting elements systematically; your objective is to gather the first few items dictated by an integer from the provided array.
+- This task engages you in processing inputs that include both numbers and lists, helping you practice selection and extraction skills based on provided criteria.
+- You are required to parse through a list using an integer as a guiding threshold to isolate and report only those items that fall within your specified range.
+- The aim here is to accurately capture and return entities from a list per an integer detail that states how many elements to include.
+- You need to focus on a list and return only its initial items up to a certain count. The challenge lies in correctly interpreting how many to take based on the initial input.
+- You need to exhibit your analytical skills by selecting the top items from a list, constrained by a specified integer that informs how many to take.
+- The challenge lies in accessing and providing the first segment of list data dictated by an integer value associated with that list.
+- Your focus should be on taking elements that appear at the beginning of a list, aligned with a number that specifies how many should be gathered.
+- You must efficiently navigate through an array to output just the stipulated number of leading elements as defined by your numeric reference.
+- You are expected to analyze a numeric cue and use it to slice a portion off the start of a list provided in the input.
+- Your assignment takes place within data structures where you must demarcate and extract parts of lists according to numeric guidelines given for how many items to pull out.
+- This task is all about determining how many starting elements you need from a provided list. You will demonstrate your skills in list management by accurately selecting those elements.
+- In this assignment, you'll be extracting specific leading elements from arrays according to numerical directions given with your input data.
+- You are tasked with identifying and listing the first portion of a series based on numerical criteria, effectively filtering out extraneous elements beyond that range.
+- Your responsibility is to take an input number and determine how many initial values to pull from an array structure.
+- In this task, you'll need to demonstrate comprehension and application of basic list operations by selecting elements according to an identified limit presented numerically.
+- Your task involves extracting a specified number of elements from a provided list, starting with the first element.
+- The focus of this task is on recognizing how many items to select from the front of a list, highlighting your proficiency in basic sequential data handling.
+- In this task, you need to identify and list a portion of items from an array. This involves counting how many to take and ensuring you start from the first element.
+- In this exercise, you’ll be tasked with parsing through a list and using a numeric prompt to determine how many top elements should be returned.
+- The job involves taking a defined number of elements from the start of a list, which will help reinforce your understanding of list manipulation.
+- This task requires attention to detail as you retrieve and present a defined count of items from the start of provided lists.
+- Your challenge will require precise engagement with lists, where you must draw out initial components in accordance with set numeric limits.
+- You will be asked to extract a defined set of initial entries from a larger group, emphasizing straightforward selection techniques in problem-solving.
+- You will engage with two components—a numerical guide for quantity and a sequence—to yield an answer consisting only of initial elements defined by that number.
+- You are tasked with working in tandem with two inputs—an integer and an array—to pinpoint and compile a specific number of leading entries.
+- In this activity, you're asked to utilize the first few entries from a given array by counting how many entries you should take, as indicated by an integer.
+- The challenge here is to efficiently list out portions of data stored in arrays, taking only the number of items specified by an integer input.
+- You will engage with lists and understand how to efficiently take out the first few items defined by another integer input.
+- This is a straightforward extraction task requiring attention to detail as you summarize parts of a longer list based on given instructions defined by a numerical indicator.
+- The essential task here is slicing lists to showcase a specific quantity of elements, commencing from the first one.
+- This exercise involves extracting leading items from a list. You are told how many items to take using an accompanying integer value.
+- The goal here is to extract some initial items from a list based on a numeric input. This task emphasizes your ability to navigate and manipulate lists effectively.
+- The goal of this task is to slice a list according to a specified length, where you will output only the leading section as defined by the given number.
+- You will receive an input that specifies how many entries to take from a list and which list to take them from. The task is simply to identify those entries at the start of the list.
+- 'The challenge is to work with two inputs: a number and a collection of items. Your responsibility is to retrieve and display the initial elements from that collection according to the given number.'
+- Your task is to filter and extract a specific number of elements from a list based on a given index.
+- In this scenario, you have a predetermined number of elements that need extracting from the front-end of a provided list. Your focus should be sharp on those selections.
+- This exercise involves manipulating data within lists. You're challenged with isolating preferential portions at their origins while adhering to numerical constraints on how much should be chosen.
+- This task requires you to navigate through a list and selectively output the specified number of elements starting from its beginning.
+- In this task, you will be utilizing your ability to navigate through lists, focusing on selecting and presenting the first several elements as indicated by an integer.
+- In this task, you'll analyze given data—specifically a list—whereby you're expected to extract its beginning portion according to an indicated length through an integer.
+- This exercise requires working with count data and item sets. Your mission is simply identifying which items are positioned at the beginning up until your defined count ends.
+- In this exercise, process sequences by taking a defined amount of head entries from an array whilst focusing on the order of selection as specified.
+- 'The objective is straightforward: you are given a number that tells you how many values to pick from a provided list, starting from its first element.'
+- In this task, you need to focus on extracting an initial batch of elements from a given array as indicated by an accompanying numeric prompt.
+- You need to process an input list by taking a designated count of its elements, starting at the front.
+- Your task is to extract a specific number of elements from the beginning of a list based on an integer input provided.
+- This task tests your ability to efficiently handle and manipulate sequences, producing the desired leading values as prompted.
+- This task tests your ability to process lists by taking an integer count and returning that many elements starting from the first position.
+- 'You are given two inputs: a number and a list. Your goal is to extract just the top items in that list according to the number provided.'
+- With this task, you will be working with two kinds of data inputs. Your goal is to determine and relay back elements found at the beginning of one input structure as told by another input.
+- You will be manipulating lists by taking a defined number of its initial items based on an accompanying numerical value.
+- This task involves selecting and presenting a quantity of items from the start of a given array, guided by an integer input.
+- This exercise calls for retrieving a subset of data from a list, determined by an integer indicating how many to take from the beginning.
+- Your assignment is to show proficiency in managing arrays by extracting a certain number of elements from the beginning of one.
+- The goal is to identify and list the first 'i' elements from a provided list, where 'i' is specified as an integer.
+- Focus on slicing through lists based on certain criteria. The criteria here involves knowing how many elements to select starting from the beginning.
+- You will engage in a simple extraction task where you must return elements from the start of a list, guided by a numeric input indicating how many items are needed.
+- This task involves extracting a specified number of elements from the beginning of a list based on the given integer.
+- This task involves taking an integer that represents how many items to fetch and retrieving those many items from the beginning of a given list.
+- This task requires you to review a collection and determine which items fall within a specific range, based on an initial count.
+- In this task, you must work with lists to retrieve a certain number of items, starting from the first element, using an integer as a guide.
+- This challenge requires you to handle array-like data efficiently, making it necessary to return a designated count of entries starting from the list's beginning.
+- You are asked to take an integer and a list as inputs. Your goal is to return the first portion of the list based on the integer provided.
+- You will manage lists and integers to determine which initial elements should be presented based on the integer value provided.
+- Here, you'll interpret numerical commands as you retrieve designated portions of lists. This exercise reinforces your understanding of indexing and data retrieval.
+- The task involves filtering down entries from a larger collection based on a specified amount, beginning your selection at the front of the list.
+- This task involves working with lists and integers. You will need to gather a specific count of elements from the start of the list.
+- This task evaluates your ability to work with sequences by requiring you to select and present specific entries from a given array as designated by an integer.
+- You’ll engage in list manipulation by gathering specific portion sizes from the forefront of an ordered collection based on given parameters.
+- Engage with visual arrays and numerical directions in order to efficiently clip out specified leading sections for review or use in subsequent operations.
+- The objective here is to pull out a sequence of items from a provided collection. The number of items to collect is determined by an integer input.
+- The objective here centers around utilizing array-based knowledge to efficiently showcase the first few entries defined by a given integer while maintaining accuracy.
+- Here, you are asked to work with a collection of values and return a defined portion that starts from the first item in the list.
+- In this challenge, your main aim is to determine which elements from a list should be selected according to the count provided through an integer, ensuring the output starts at the beginning.
+- Your responsibility is to filter out elements from a list based upon a number provided, ensuring that you retrieve only what’s necessary from the beginning.
+- The main responsibility here is to identify and compile the earliest components of an array according to a defined quantity found in another input.
+- You will be working with a list of items and an integer that tells you how many of those items to return, starting from the first element.
+- The goal is to extract and present a certain number of elements from the start of a provided sequence, demonstrating your skills in list manipulation.
+- This task requires you to showcase your ability to access a subset of elements from a list, using the provided integer to define the size of the subset.
+- The task is about processing a list and fetching its first few entries as indicated by an accompanying number. It requires attention to detail in managing list indexing.
+- You are tasked with selecting a portion of a list based on a provided integer. Focus on identifying and returning only the initial segment of the list.
+- This activity revolves around lists, where you are expected to take a certain number of leading entries as specified by an integer input. Previewing these segments is key.
+- This activity focuses on knowing how to manipulate lists by cutting out a requested number of leading elements as specified in the input.
+- Engaging with this task means being adept at managing arrays and efficiently retrieving an initial segment based on provided criteria.
+- The focus here lies in effectively understanding list structures, allowing for quick extraction of the desired number of items from their start.
+- This task will require you to proficiently handle lists by determining and outputting entries starting from the first position, guided by an integer parameter.
+- Your job is to pull out elements from a list according to a given count, focusing only on the initial entries.
+- Your duty is to apply simple list operations, ensuring you correctly extract the specified number of leading entries indicated by an integer.
+- The goal is to extract the starting portion of a list, as defined by an accompanying integer that indicates how many elements are needed.
+- You are required to interact with list data types and selectively choose the first batch of values based on integer specifications—a crucial exercise in data handling.
+- The goal is to retrieve and present a subset of items from a list, based on how many items are indicated by a given number.
+- Here, you will determine how many elements to pull from a collection based on the integer given. Your task is to capture these elements starting from the first one in the list.
+- Your job here is to pull out the beginning portion of a list as defined by an integer value.
+- Here, you will demonstrate your skills in list handling by providing a certain number of initial elements based on an integer provided alongside the list.
+- Your challenge here involves translating numeric parameters into actual data selections from lists. It’s an exercise in both comprehension and execution within structured data sets.
+- Your objective is to take an integer value that describes how many items to gather and apply it to list data. It requires an understanding of numerical input alongside fundamental programming concepts.
+- The task is centered on manipulating lists; specifically, you will extract and present a defined number of elements from an input list according to specified criteria.
+- This task requires you to extract a specific number of elements from a given list, starting with the first item. You'll need to ensure that the correct number of elements is selected.
+- In this exercise, your objective is to summarize part of a list. You will derive values starting from the beginning and stopping once you've collected as many as designated by an integer.
+- Your role is to return the first several entries from a list. The amount of entries to return is specified by an integer input, which indicates how many to take from the start.
+- You will be given two pieces of information where one is a count and the other consists of multiple entries. Your objective is to output just that many entries starting from the first.
+- The goal is straightforward; interpret an incoming structure made up of numbers and characters while pulling out the leading entries according to set instructions.
+- The focus of this task is on list slicing; you'll be taking the leading items from an array as per the limit indicated.
+- For this task, you need to focus on taking the initial segment of a list as defined by an integer, encapsulating only those elements from the start.
+- Your task is centered around concise data extraction, wherein you parse out leading elements from a larger group based on numeric limits imposed by input parameters.
+- Here, you will need to analyze the incoming data and accurately produce the leading subset of elements from a list according to specified instructions.
+- Given specific criteria, your role is to extract and output the leading entries from a given list according to numerical instructions.
+- You are required to take the initial portion of a list as indicated by an accompanying integer, effectively practicing your ability to work with arrays.
+- The task centers around manipulating lists where understanding how to identify and return specific portions aligned with given counts is crucial.
+- In this assignment, you're expected to process data stored in lists effectively by isolating entry points as determined by given numerical constraints.
+- The task entails drawing out initial portions of elements from arrays as dictated by an integer count. Being precise with these selections is important for accuracy.
+- This task requires you to identify a subsection of a list based on a provided integer. You'll extract elements that correspond to the given count, showcasing your familiarity with lists and indexing.
+- You need to output a selection of items from a larger collection based on an integer input that determines the number of items to include.
+- Your task involves selecting a specified number of elements from a given list, starting at the beginning. You need to apply basic indexing principles to accurately retrieve the desired elements.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task063_first_i_elements
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task063_first_i_elements
+user_prompt_template: '{task_def}
+
+
+  {problem}'

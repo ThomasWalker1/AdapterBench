@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your role is to analyze short sentences for emotional content. You will sort each into categories like joy or sadness based on what is conveyed in the text.
+- Assess the tone of the given sentences to classify them according to distinct emotional categories, involving careful consideration of wording and context.
+- Your goal is to interpret a sentence's message and classify it according to one of five emotional categories. Think about how the wording influences feelings.
+- Examine the emotional context of a sentence and classify it according to specific emotional labels. This involves understanding subtle cues in language.
+- Evaluate various sentences for their expressive qualities and place them into an emotion-based classification system.
+- Your job is to assess emotional content in sentences and assign each one to a specific emotion. This task involves recognizing nuances in language that reflect feelings.
+- Read the provided sentences carefully and categorize them into one of five distinct emotional states based on their content and tone.
+- You will read various statements and decide which of the provided emotions best reflects their sentiment.
+- You need to scrutinize each sentence for the emotions expressed and classify them among options like joy, sadness, or confusion based on your insight into language.
+- Assess how various sentences reflect different emotional states and choose the best-fitting category by weighing context against listed emotions.
+- For each sentence, identify the emotion that dominates its expression. This task involves subtle understanding of language and feeling.
+- Distill the emotional message from each sentence presented to you. Understanding subtle cues is essential for successful categorization into emotions like sadness or joy.
+- You'll be assessing statements for their emotional weight, determining if they reflect feelings like joy or confusion through close textual analysis.
+- The goal is to understand and interpret the emotional tone of sentences. Be attentive to the context and vocabulary that convey different feelings.
+- Your job is to determine how a sentence makes you feel based on its content. Pick one of the five emotions that best aligns with your interpretation.
+- By analyzing expressive language in sentences, you will identify and classify the emotions into predefined categories based on their meaning.
+- The objective is to classify sentences according to their emotional content. Joy, anger, confusion, sadness, or neutrality should guide your decision-making.
+- The task involves interpreting sentiments from statements and categorizing them into defined emotional categories, showcasing your emotional intelligence.
+- For each sentence provided, identify its emotional essence and place it within one of five categories. This requires thoughtful interpretation of the words used.
+- Engage with the text by evaluating each statement's mood and sentiment, allowing you to classify them into distinct emotional categories.
+- Examine the provided statements to determine their emotional context, selecting which emotion from a specified list best represents the feeling conveyed.
+- Take a look at each sentence and decide what emotion it most accurately represents from the available choices.
+- The objective is to assess the emotional undertone of a sentence and decide which emotion—anger, confusion, joy, sadness, or neutral—fits best.
+- Delve into the sentiments shared in sentences, tagging them as one of five distinct emotions. Recognize subtle hints that indicate deeper feelings.
+- You will need to sift through the wording of each sentence, extracting its emotional undertones then sorting it into one of five expressive categories.
+- Utilize your knowledge of emotions to assess brief statements, then categorize them according to predefined emotional responses that you recognize from context clues.
+- Your duty is to interpret language nuances in sentences, categorizing them into defined emotional states based on your assessment.
+- Approach each sentence with a critical eye for how emotions are articulated. The task involves fitting these sentiments into specific predefined categories effectively.
+- Your challenge is to read a sentence and determine its emotional alignment by selecting from a limited range of options. Consider nuances in language use.
+- This task challenges you to read various statements and pinpoint the emotion expressed in each, requiring a good understanding of emotional nuances.
+- Tasked with understanding emotional expressions, you will analyze sentences for their underlying emotions and categorize them accordingly.
+- Your objective is to interpret the emotions tied to each sentence, classifying them accurately against a backdrop of common human feelings.
+- Identify emotional expressions within sentences, categorizing them accurately as one of five possible emotions while considering both implicit and explicit meanings.
+- Determine the emotion conveyed in each sentence by reading carefully and matching them with the corresponding category of feelings.
+- You will categorize sentences based on emotional content into one of five emotions. Reflect on the overall sentiment expressed in each case.
+- Each sentence needs careful reading to uncover its deeper emotional message, allowing you to match it with a corresponding emotion category effectively.
+- The objective is to interpret sentences for emotional content, classifying them as anger, confusion, joy, sadness, or neutral.
+- Delve into each sentence provided and classify its emotional essence into one of five predefined categories using your intuitive comprehension skills.
+- In this task, your goal is to interpret the underlying feelings expressed in a sentence. You will determine which of the specified emotions best fits the tone of the text.
+- Scrutinize the provided sentences for hints about their intended emotions and classify them according to established emotional classifications.
+- Engage with the provided text by identifying and categorizing its emotional content, working with a clear understanding of sentiment analysis.
+- Analyze the sentences provided and categorize them into one of five emotional states, understanding the sentiment expressed in each.
+- Analyze the statements carefully to determine what emotion they convey; this involves understanding both explicit and implicit messages within the text.
+- The task requires you to evaluate sentences for their emotive qualities and categorize them according to a standardized set of emotions.
+- For each provided sentence, you must detect the emotion portrayed by the speaker. The output should reflect whether the emotion leans towards happiness, sadness, confusion, anger, or neutrality.
+- Your responsibility is to evaluate how a sentence communicates feelings, then assign it an appropriate label that reflects its emotional message.
+- Interpret the sentiments expressed in short phrases and classify them according to five key emotional states indicated in your options.
+- The task involves interpreting sentences to determine which specific emotion aligns best with the context presented.
+- Categorize sentences based on their expressive qualities related to emotions provided. This involves making connections between wording and sentiment.
+- The focus here is to evaluate sentences for their emotional significance. You will categorize each one based on the dominant emotion communicated by the speaker.
+- Evaluate the emotional sentiment presented in each sentence and assign it to the appropriate category of emotion, requiring both comprehension and empathy.
+- The task requires you to discern feelings expressed in short statements and organize them into defined emotional groups based on your interpretation.
+- Based on the text provided, your job is to classify its emotional tone into specific categories that represent common human feelings and experiences.
+- For each sentence given, determine its emotional context and classify it as either anger, confusion, joy, sadness, or neutral.
+- This task involves identifying and labeling emotions within written sentences. You will need to comprehend contextual clues that signal how the speaker might be feeling.
+- Your challenge is to interpret simple sentences and attach an emotional label that reflects what they communicate.
+- Assess the provided sentences for their emotional context and effectively categorize them into one of five emotion descriptors.
+- Assess the provided sentence and classify it according to one of five distinct emotions. This requires a keen ability to interpret feelings expressed in text.
+- Examine sentences for emotional cues and classify them into one of the five emotions listed. Use your understanding of human emotion in communication.
+- Use your understanding of human emotions as you assess sentences for their emotional content, assigning each one to the correct category from the five available.
+- You will be tasked with identifying emotions in plain sentences and relating them directly to one of five specified feelings.
+- You need to interpret textual emotion in brief statements and fit them into one of five distinct emotional categories. This involves an understanding of emotional language cues.
+- Focus on determining the sentiment behind various phrases; this involves recognizing diverse emotional expressions and sorting them accurately.
+- Examine the language used in each statement and decide what emotion it embodies. Awareness of tone and context will guide your classification process.
+- You will categorize sentences into specific emotional states. Use your insight into human feelings to match each sentence with one of the predefined emotions.
+- Read through each provided sentence and pinpoint its main emotional tone for proper classification into one of five categories.
+- Focus on distinguishing underlying emotions in sentences by assigning them to predefined categories after analyzing their expression.
+- This task tests your ability to connect linguistic cues with emotional states, categorizing each sentence based on its expressed feelings effectively.
+- In this task, interpret sentences for their emotional depth; your analysis should lead you to correctly label each statement with an appropriate emotion.
+- Given sentences that express different feelings, your challenge is to determine which category of emotion they belong to. The task requires insight into emotional expression in language.
+- Through careful reading, determine the emotion expressed in a sentence and categorize it into one of five distinct feelings, focusing on emotional nuances.
+- Observe how sentiments are expressed in various statements so you can categorize each one into an emotion that most accurately represents its conveyed feelings.
+- Engage with given sentences by interpreting their emotional weight and classifying them under designated emotions based on your understanding of language.
+- The assignment entails sorting sentences into predefined emotional categories. You will need to detect mood indicators and linguistic cues that hint at feelings.
+- You need to decode the emotional significance in written sentences, relating them to established emotional frameworks for accurate classification.
+- For this task, interpreting sentiment in textual form is key. Each sentence should be assessed for emotional resonance and grouped accordingly into designated categories.
+- By focusing on key phrases and expressions within each sentence, categorize them accurately into one of the specified emotional categories provided.
+- You'll be evaluating sentences for their emotional implications, selecting one of several defined feelings to accurately categorize them.
+- Analyze the phrases in each statement for emotional cues, helping you designate the appropriate category that reflects the sentiment expressed.
+- Read through the provided sentences to discern their emotional undertones, labeling each according to a set framework of emotions that include joy, anger, confusion, sadness, or neutrality.
+- Explore various statements and classify their emotional content while reflecting on how expressions can reveal broader human experiences and attitudes.
+- Analyze statements to understand their emotional tone and classify them accurately as anger, confusion, joy, sadness, or neutral.
+- Consider how language conveys mood and sentiment as you assign specific emotions to given phrases based on your interpretation.
+- The task involves analyzing text for emotional resonance and accurately labeling each statement based on its conveyed sentiment.
+- Your task involves discerning underlying emotions in individual sentences to assign an appropriate label from a defined set of feelings.
+- Through close reading, determine which specific emotion is represented in a sentence while considering both direct expression and underlying connotation.
+- Interpret the emotional content within a given sentence and classify that emotion into one of five defined types based on your judgment.
+- Your job is to analyze given sentences and identify the predominant emotion they convey from a specific set of options.
+- Engage with text samples and categorize them according to specific emotions. Think critically about how language shapes our understanding of feelings.
+- This task centers on emotional categorization of phrases, where you identify how the wording reflects underlying feelings or states of mind.
+- Read and evaluate the provided statements to determine the predominant emotion they convey, using your insight into emotional expression.
+- Your focus will be on recognizing emotions encapsulated in short statements. Each statement may evoke a wide range of emotional responses; identify which fits best.
+- In this activity, you are tasked with pinpointing emotions within sentences through analysis. Recognize subtle cues that indicate how someone might be feeling based on their words.
+- For each given sentence, your role is to discern the emotion it expresses and assign it to one of five categories.
+- This task challenges you to identify emotional sentiments within various statements, categorizing them by understanding context and connotation.
+- Determine the sentiment behind each given sentence by analyzing its language and categorizing that feeling based on established emotional types.
+- Examine short statements and identify the emotional state they represent, using criteria for anger, confusion, joy, sadness, or neutrality.
+- The task involves analyzing a given sentence to identify the emotional tone it conveys. You will classify the emotion into one of several predefined categories.
+- The assignment requires you to sift through sentences and pinpoint their emotional essence, helping hone your understanding of human sentiments through words.
+- Your responsibility is to discern and label the emotions portrayed in given texts, utilizing your skills in emotional recognition and interpretation.
+- Engage thoughtfully with given statements to classify their conveyed emotions accurately. Insight into emotional expression within language is necessary for success.
+- Your role is to identify which emotion best fits the sentiment expressed in a short statement among the options provided.
+- Examine sentences for emotional cues and classify them according to one of five specific emotions outlined in your options.
+- Read carefully and discern the emotional message within the sentences. Recognize key phrases or words that indicate specific feelings.
+- Engage with textual expressions to uncover their emotional implications and organize them according to specified feelings.
+- Interpret brief sentences in order to categorize them by emotional content into established emotional categories.
+- Engage with emotion-laden language by recognizing sentiments within sentences and assigning them correct classifications based on their tone.
+- Consider both the explicit and implicit feelings conveyed in a sentence so you can choose the correct emotional classification.
+- Read the given sentence carefully and determine the underlying emotion. Your classification will showcase your grasp of emotional intelligence as expressed through language.
+- Evaluate the sentiment expressed in a sentence and assign it to one of five emotional categories.
+- Analyze the provided sentence to determine its underlying emotion. Classify it based on a set of predefined emotional states.
+- The task involves recognizing emotions in written form by connecting sentiments with their respective categories from a given list.
+- Evaluate each sentence’s emotional weight and assign an appropriate emotional label from the given options based on your perception of their intent.
+- Engage with each sentence to ascertain its emotional content. Your challenge is to figure out whether it expresses anger, confusion, joy, sadness, or a neutral tone.
+- Delve into short expressions and classify them based on their perceived emotional content from a specified range of feelings.
+- You need to reflect on language used in sentences to isolate their emotional significance and assign them correctly to one of five reaction categories.
+- Categorize emotional expressions found in sentences, assessing tone and meaning while recognizing diverse feelings conveyed through language.
+- This task entails evaluating language to discern and classify emotional signals, connecting words with feelings such as joy or confusion.
+- Your task is to identify the emotional tone of a given sentence, selecting from five specific emotions based on the context and wording.
+- Your goal is to convey understanding of emotional expressions through words by linking each sentence to an appropriate emotional state from a set list.
+- Engage with text through an emotional lens by assessing how sentences resonate emotionally and categorizing them into distinct feelings based on your analysis.
+- Examine each provided sentence and deduce the emotional tone behind it, choosing from a set of five emotional categories.
+- Observe the given sentences and determine their emotional classifications, using your ability to interpret human feelings in text form.
+- You will evaluate sentences and determine which emotion they convey. This involves recognizing nuances in language that reflect anger, joy, confusion, sadness, or neutrality.
+- You are tasked with categorizing sentences by emotion, focusing on understanding the underlying feelings being expressed in them.
+- You will evaluate textual expressions to determine their associated emotions, categorizing them into predefined groups based on sentiment.
+- Your job is to interpret brief texts and categorize them into one of five emotional states based on their content.
+- The aim is to classify sentences according to emotions they evoke. You are selecting from a limited set of options based on your interpretation of each sentence's tone.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task889_goemotions_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task889_goemotions_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

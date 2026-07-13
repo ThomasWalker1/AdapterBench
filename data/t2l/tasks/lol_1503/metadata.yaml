@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Scrutinize tweets to see if they harbor hostility towards specific groups. A sensitivity to social justice issues will aid in performing this task effectively.
+- Analyze the text of various tweets to identify any allegations or harmful sentiments targeting a defined group. This requires engagement with conceptions of community and marginalization.
+- In this task, you must interpret the sentiment of tweets to identify derogatory comments aimed at specific communities and classify them accordingly.
+- In this task, you will evaluate tweets that could be hateful or offensive. You need to extract the community mentioned within the tweet that bears the brunt of negative sentiments.
+- Determine whether the tweets target specific groups with negative sentiments and classify them according to an established list of communities.
+- For this task, you will interpret tweets to see if they convey hate towards any communities. Understanding social context and implications is crucial in making these distinctions.
+- You are required to read through tweets and determine if they are aimed at a particular community. This task necessitates sensitivity and understanding of social issues related to hate speech.
+- Your responsibility lies in identifying negative themes within tweets that may disproportionately impact certain communities based on identity factors.
+- Your responsibility is to sift through tweets and identify whether they utilize hate-filled language against a particular group of people. Recognizing the intent behind the words is key.
+- You’ll need to interpret tweets for indications of hate speech directed towards specific communities by focusing on offensive phrases or ideas presented within each post.
+- You need to read tweets that may contain hate speech or offensive remarks and identify the particular community they are directed toward, categorizing them into predefined groups.
+- Evaluate the content of tweets to ascertain any prejudicial language that targets specific groups and identify those communities in your output.
+- Evaluate the provided tweet for language that might indicate it is directed against a particular group, and specify which community is affected.
+- In this task, you will evaluate tweets for hate speech or offensive content. By understanding the context, you will figure out which community is being targeted based on specific keywords and sentiments.
+- Your analysis focuses on determining whether a tweet expresses hateful views toward one of several defined communities. Critical thinking about context will assist in your conclusions.
+- Assess the content of tweets for hateful or derogatory language and output the community it targets, if any, according to specified categories.
+- Evaluate the context of tweets to discern which community, if any, is being targeted. This requires critical thinking and awareness of cultural sensitivities.
+- Your task is to identify communities targeted in tweets that contain hate speech or offensive content. Understanding social issues and language nuances is essential.
+- Your task involves finding out if a tweet contains directed criticism towards particular communities. This requires sensitivity towards social themes and discourse.
+- Analyze the messages within tweets to ascertain if they convey negativity towards any of the specified communities, thus allowing for accurate categorization.
+- This task involves reviewing tweets to identify any that contain hate or offensive speech directed at specific communities. Use your sensitivity to language and context to identify the target group.
+- Carefully read tweets to identify whether they exhibit hostility towards certain communities, categorizing them as necessary based on your findings.
+- The aim of this task is to categorize tweets based on their potential harmful intent towards defined communities using your understanding of hate speech.
+- Review the content of various tweets and identify any targeting language. Your task is to pinpoint the affected community based on offensive content present in the text.
+- You need to assess the content of tweets for any potential hate speech, focusing on identifying targeted communities as mentioned within the text.
+- As you navigate through different tweets, your challenge is spotting any instances where language may offend targeted communities, requiring an understanding of sociocultural references.
+- Review each tweet carefully with the objective of identifying harmful words or phrases directed at specific groups, assessing whether those are aimed at any named community.
+- In this task, analyze social media posts for negative commentary aimed at specific communities. Use your judgment to discern the intended audience and evaluate the tone of the tweet.
+- You are tasked with identifying communities referenced in tweets that may contain hate speech or offensive language. Understand the distinctions between different groups to categorize correctly.
+- Your job is to discern the impact of language in tweets and recognize which community, if any, is subjected to negative remarks.
+- Understand the context of various tweets and evaluate any negative implications toward certain communities, recording your findings clearly.
+- Interpret tweets by understanding their context and intent, focusing on recognizing any potentially offensive remarks aimed at specified communities.
+- This task involves identifying if a tweet targets one of several defined communities through offensive language. Use analytical thinking to interpret the meanings behind the words.
+- Examine the language in tweets for negatively charged remarks directed at specific groups. Pay attention to words commonly associated with hate speech or bias against communities.
+- Inspect tweets to see if they are directed at certain communities through derogatory language or slurs. Recognize patterns that point to targeting behavior in communication.
+- Analyze tweets for potential discrimination or negativity directed at different communities. Focus on extracting implications from the wording that reveal targeting behavior.
+- Your responsibility is to recognize whether a tweet is aimed at a community with hateful intent. Critical analysis and cultural awareness are necessary skills.
+- Analyze each tweet carefully for any indications of discrimination or disdain towards a group, identifying who is being insulted or targeted.
+- Your responsibility is to check if tweets harbor hate speech or offensive messages about certain communities. Recognizing underlying sentiments used in the language will be key.
+- Interpret tweets to discover if they include language that maligns a specific community and accurately designate the targeted group.
+- The task is to critically read tweets and match their hostile language to one of the defined communities, confirming if hatred or offense is present.
+- The task involves analyzing a tweet to identify if it contains Hate Speech or Offensive content directed at a specific community. You need to pinpoint the targeted group based on the message's wording.
+- Engage with tweet content critically to pinpoint when communities are targeted by offensive discourse, specifying which community this involves.
+- The aim is to scrutinize a series of tweets and figure out any communities that are being targeted by derogatory language or sentiments presented in those tweets.
+- Interpret the language in tweets to find out which community, if any, faces hostility. This requires an acute awareness of community relations and online discourse.
+- You need to scan tweets for inflammatory language directed at specific groups and categorize them appropriately, considering cultural sensitivities.
+- The objective is to analyze tweets for community-targeted hate speech or offensive language. Determine the affected group based on the context of what is said.
+- Your responsibility here is to review the context of each tweet to see if it targets any specific community mentioned in the provided list and classify it accordingly.
+- Your job is to review tweets for potentially harmful language that attacks certain communities. From the tweet, you must deduce which community is being targeted, if any.
+- Review the language of each tweet critically to conclude if it reflects hate or offense towards a specific identified group and return the corresponding label.
+- Focus on identifying negative sentiments in tweets towards specific groups and linking them with the appropriate community label from the list provided.
+- The task requires evaluating whether a tweet blames or criticizes a particular community, informing responses based on an understanding of social issues.
+- Your job is to interpret tweets and pinpoint the community being addressed in derogatory or negative manners. This involves careful consideration of the language used.
+- For each tweet reviewed, decide if it targets any listed community through its wording and create an appropriate response reflecting that community.
+- Focus on the tweet's content to detect any instances of hate or offense directed toward recognized communities, providing the name of that community.
+- The objective is to closely examine tweet messages for any indications of hate speech that directly targets specific sectors of society.
+- Analyze tweets and identify if they express hostility towards certain groups, choosing from listed communities based on the content's sentiment.
+- Your task involves classifying tweets based on their content—specifically identifying if they contain hateful speech aimed at particular demographic groups.
+- The objective here is to classify tweets as either hateful, offensive, or normal based on their content and determine the community being attacked, if any.
+- Analyze Twitter posts for racial or gender-based slurs aimed at certain communities. The goal is to determine which group, if any, is being negatively portrayed in each tweet.
+- You are required to examine messages on social media platforms for hostility aimed at certain demographic groups and identify which group that hostility targets.
+- Examine tweets for potentially harmful rhetoric towards particular demographics, identifying and labeling the targeted community when applicable.
+- Assessing tweets for harmful language directed at certain groups falls within your task. You need to determine the target community based on context and keywords used in the text.
+- Examine tweets critically for any signs of targeted hostility against certain groups, determining which community might be impacted by such remarks through careful assessment of content.
+- By analyzing provided tweet content, your task is to identify if it carries hateful connotations towards specific communities and categorize it as such.
+- You are expected to scrutinize tweets for signals of hate speech or discrimination against defined communities. Identifying these groups is crucial for completing this task accurately.
+- You are tasked with interpreting tweets to decide if they display hate or offense against one of several defined communities, using your comprehension of language and social dynamics.
+- Analyze the emotional tone and overt messaging within each tweet to classify them according to their impact on specific groups.
+- This task involves reviewing tweets for context and sentiment, particularly looking for language that targets groups based on their identity or background.
+- Your task is to ascertain whether a tweet expresses hate towards one specific community. Evaluate the tone, language, and context to determine who is being targeted.
+- Determine the communities affected by hate speech within tweets, using your comprehension of social dynamics and language use.
+- The focus here is on evaluating the tone and context of tweets to uncover any targeted hate speech against recognized communities.
+- You'll evaluate tweets to see if they express hate or offense towards a particular community. Look for keywords or derogatory terms associated with any of the nine specified groups.
+- In this task, you will interpret Tweets for any implicit bias directed at defined communities and respond by identifying those targeted groups carefully.
+- Evaluate tweets for content that could be classified as hate speech or offensiveness, determining if they specify a particular community that experiences discrimination.
+- You need to discern the intended target community from a tweet, noting any offensive or hateful language that points to a specific demographic.
+- This task involves analyzing tweets to determine if they express hate speech or offensive content targeting a specific community. You will identify the community that is affected.
+- Focus on understanding the implications of tweets that may reflect prejudice against certain communities. Analytical thinking and empathy are important attributes for this task.
+- Assess tweets for possible harm caused by language targeting specific social groups. Identifying these groups accurately will require a keen understanding of derogatory expressions.
+- Your analysis should focus on identifying harmful discourse within tweets aimed at specified communities, employing a strong understanding of societal issues relating to hate speech.
+- Tasked with reviewing tweets, you need to recognize harmful expressions aimed at particular groups, categorizing the affected community accordingly.
+- The task consists of evaluating the sentiment and content of tweets to establish if they reference a particular community negatively. This requires understanding social dynamics and subtexts in language.
+- Evaluate tweets for any expression of hate directed at specific groups based on their identity. Discernment and an understanding of societal norms are vital.
+- The goal is to sift through tweets and discern whether they address a specific community in a derogatory manner. Understanding the nuances of language is essential for this task.
+- You need to analyze a tweet and determine if it targets a specific community. Focus on identifying the key phrases or slurs that hint at a particular group.
+- When given a tweet, ascertain whether it directs harmful language towards specific communities. Knowledge of societal issues and discrimination will inform your decision.
+- You will engage in evaluating tweets to detect whether they harbor negative feelings towards particular demographics. Understanding social tensions will aid in making distinctions.
+- Evaluate whether a tweet contains offensive messages aimed at particular social groups, empowering you to identify the group accurately if necessary.
+- The mission involves scrutinizing tweets for potential harm directed at associated communities. Your assessment should clarify whether such communities are being singled out in hate speech.
+- Engage with tweets by assessing their implications for various communities, deciding where hateful or offensive statements are directed.
+- Your assessment of tweets should enable you to highlight instances of harmful language directed at particular groups as detailed in the instructions.
+- You will sift through tweet messages to find disparaging remarks against particular social groups and identify the associated community under attack.
+- Your job involves reading tweets carefully to see if they include derogatory remarks aimed at specific social groups and categorizing them accordingly.
+- Your job is to sift through social media tweets and discern if they harbor hate speech directed at specific communities while labeling them appropriately.
+- Review and interpret tweets with a focus on identifying negative sentiments towards communities like African or Asian, as specified in your guidelines.
+- Analyze tweets with an eye for instances of hate speech. You should identify and provide which specific community is being targeted while differentiating between normal discourse and offensive remarks.
+- Your job is to dissect tweet content closely for potential hate speech or offense targeting designated community identifiers.
+- Carefully study tweets to reveal any discriminatory language aimed at one of several key communities mentioned in your task description.
+- You need to evaluate whether tweets convey messages that hurt specific communities. Identify any targeted group from a predefined list in your analysis.
+- This task involves analyzing tweets to identify if they contain Hate Speech or offensive remarks aimed at specific communities.
+- You need to review tweets to assess whether they target one of several defined communities, such as women or refugees, and categorize them accordingly.
+- This task involves interpreting social media dialogue to uncover prejudice directed at communities and labeling these sentiments thoughtfully.
+- Unpack the meaning behind tweets, focusing on whether they attack or discriminate against certain groups. Awareness of cultural context plays a significant role here.
+- The goal is to assess tweets for negativity directed at certain communities. Your analysis should clarify whether the content targets a specific group or is considered neutral.
+- This task asks you to examine tweets and determine their content's impact on various communities, identifying specific groups affected by potentially negative statements.
+- Review the provided tweets carefully to discern if they contain any offensive language targeting a specific community. Your understanding of social issues will help in this identification process.
+- Analyze the nuances of tweets for signs of hate toward specific groups, making informed classifications based on your reading of the text.
+- This task requires you to scrutinize tweets for expressions of hatred or offense against particular demographics, recognizing which communities are affected.
+- Your goal is to assess a tweet and determine which community, if any, is being targeted by the language used in the message.
+- Analyze language used in tweets for potential discrimination or offense directed at identified communities and specify which one is targeted.
+- Your role involves scrutinizing tweets for signs of hate speech, pinpointing which community is being unjustly targeted with such content.
+- Assess tweets for derogatory remarks that target a particular community from a defined category and deliver your findings clearly.
+- Your goal is to detect potentially harmful statements within tweets that may target specific communities and provide an assessment based on your interpretation of the text.
+- The objective is to analyze tweets for offensive language targeting defined communities. You should clearly identify the specific demographic mentioned in hateful comments.
+- Examine each tweet closely to understand its implications and identify any targeted community based on the language used.
+- Identify the targeted demographic in tweets that may spread hateful or offensive sentiments. Knowledge of various communities will enhance accuracy in your judgments.
+- Your challenge is to identify and label communities in tweets that embody hate or offensive expressions, ensuring clarity in which group is affected.
+- Your task is to analyze tweets to identify if they target a specific community. You will discern whether the content is hateful or offensive and determine which community, if any, is affected.
+- This involves scrutinizing a tweet to discern whether it contains harmful speech directed at one of several recognized groups.
+- Your aim in this task is to detect hate speech within tweets by identifying the communities targeted. This involves considering undertones in language that suggest animosity toward specific groups.
+- Your focus should be on understanding the implications of the language used in tweets and identifying if they point toward a vulnerable community.
+- This task requires careful reading of tweets to spot negative comments aimed at particular groups. Your insights will help determine if and which community is being insulted or demeaned.
+- Here, you will read through various tweets and recognize if any community is being singled out for hate or derogatory comments.
+- The challenge here is to explore tweets for any offensive remarks that target specified communities. You should identify patterns in language that indicate negativity towards these groups.
+- Analyzing tweets for bias or prejudice forms the basis of this task. Look closely at the wording used in each tweet to pinpoint any directed animosity toward certain groups.
+- Your responsibility is to determine if the content of the tweet is aimed at disparaging a specific group, and if so, which group it is.
+- Your role is to scrutinize social media messages for prejudiced commentary aimed at various groups. Determining whether a community is being referenced is essential in your analysis.
+- Identify which specific community, if any, is being disparaged in a given tweet. This involves a nuanced understanding of both language and community identities.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1503_hatexplain_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1503_hatexplain_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

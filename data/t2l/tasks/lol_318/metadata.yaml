@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your task is to analyze sentences involving a target person and determine the relationship between them. This involves identifying whether the second sentence reflects a stereotype, anti-stereotype, or if it is unrelated to the first.
+- Your job here is to contextualize relationships between two sentences about someone. This requires you to consider societal views and biases related to that character while making your classification.
+- Your goal in this analysis is to dissect relationships between labeled individuals and expressed ideas in sentences. Judge whether these ideas resonate with cultural stereotypes and norms.
+- Your task involves analyzing sentences in relation to a specified target individual. You need to identify if the second sentence reflects a stereotype, an anti-stereotype, or is unrelated to the target.
+- This task asks you to differentiate between stereotype-related implications and unrelated content in two provided sentences about a known individual.
+- Engage with two sequential sentences concerning a target individual and decide their relational stance with respect to common stereotypes—whether reinforcing them, challenging them, or being non-relevant.
+- In this exercise, analyze two statements linked by a target person. Determine if the second statement conveys an oversimplified view of that group, contradicts such views, or lacks relevance.
+- Examine the relationship between a person and two given sentences. Determine if the second sentence reinforces a common belief about the group associated with the target, contradicts it, or bears no relevance.
+- Your role involves scrutinizing a pair of sentences linked by a target. Determine if the second sentence aligns with societal beliefs about the target, challenges them, or has no relevance.
+- Your responsibility here is to discern how the second statement relates to the target individual based on stereotypes—it could either reinforce them, be an anti-stereotype, or be unrelated.
+- Your assignment involves characterizing how language relates to people types in society. Keep an eye out for patterns where community perspectives are reinforced or refuted versus unrelated comments.
+- Your job is to take a deeper look into two sentences focused on a specific person and identify if the second is culturally biased, counters existing beliefs, or lacks relevance.
+- Interpret relationships among sentences that reference people. Identify connections related to prevalent stereotypes versus those challenging such notions.
+- Focus on dissecting statements concerning an individual. Your goal is to ascertain if one sentence perpetuates societal views about that group or challenges them directly—or has no relevance at all.
+- Look for connections between two provided sentences and a specified target person. Decide if they illustrate prevailing stereotypes, their opposites, or lack any relevant correlation.
+- Assess two sentences with respect to a defined target individual. Your mission is to classify the nature of the second sentence regarding stereotypes or lack of relevance.
+- Evaluate two provided statements concerning an individual and decide if the second statement embodies a stereotypical view, contradicts it, or doesn't apply to the context of that person.
+- Analyze given sentences through the lens of societal perspectives on an individual. Determine if one reinforces long-standing ideas or presents an opposing viewpoint.
+- Your objective is to explore how one sentence pertains to another in relation to a specified target. Does it reinforce stereotypes, oppose them, or have no significance?
+- Explore relationships among ideas by determining if statements about individuals fit certain categories like stereotypes or anti-stereotypes based on cultural assumptions.
+- Analyze given statements about an individual to ascertain how they relate. Determine if one statement perpetuates stereotypes associated with that individual, counters those generalizations, or is irrelevant.
+- You will examine two statements about a target person, identifying if the second statement reflects common stereotypes, counters them, or if they are completely unrelated.
+- The goal is to determine the nature of the relationship between a target mentioned and two descriptive sentences, focusing on whether they reinforce traditional views of that group.
+- You are tasked with identifying themes in two sentences regarding a particular individual. Classify whether the second sentence supports stereotypes, negates them, or does not connect with the first at all.
+- In this task, you will critically examine how sentences relate to stereotypes and decide if the sentiment expressed is aligned with conventional views or if it's unrelated.
+- This task requires careful consideration of stereotypes and anti-stereotypes as they apply to specific individuals. Identify whether the meaning of one sentence applies directly to the assumptions people make about the other.
+- Analyze how two statements about a specified person interact. Your role is to categorize the second statement as either supporting a stereotype, opposing it, or being entirely unrelated.
+- You will evaluate the relationship between a set of sentences and a target person. Determine if the connection expresses typical views (stereotypes), opposing views (anti-stereotypes), or lacks significance altogether.
+- Your responsibility is to analyze the content of two sentences and their relevance concerning stereotypes tied to a particular person mentioned in the task.
+- Examine the provided sentences and determine their relevance to the described individual. Identify whether they perpetuate stereotypes, offer counter-examples, or simply do not relate.
+- Engage with two statements about a named individual and decide whether the second statement conveys societal stereotypes, challenges them, or has no connection to the individual at all.
+- Examine how language reflects cultural perceptions by classifying whether statements are stereotypes of a specific target group or challenge such notions.
+- For each set of information regarding specific providers and descriptions within communities consider how closely aligned they are with general perceptions—stereotypes upheld versus counter-stereotypes presented versus content that doesn't link.
+- Analyze how statements interact with perceptions of certain groups through careful interpretation of the relationships defined by a given target. Identify whether they communicate stereotype or anti-stereotype content.
+- The task involves taking a critical look at two sentences linked to an individual and discerning whether they imply stereotypes, counter-stereotypes, or have no clear connection.
+- Focus on evaluating descriptions concerning specific targets by determining their relationship with established stereotypes of that demographic.
+- Assess how two sentences interact concerning a specific subject. Categorize whether they illustrate commonly held beliefs about that group or diverge from them entirely.
+- Analyze the connection between a target individual and two statements. Decide if the second statement reflects societal stereotypes, challenges them, or is not relevant to the target mentioned.
+- Your role involves recognizing societal norms and generalizations by assessing two statements related to an individual. Classify their relevance and implications regarding stereotypes accurately.
+- The objective of this task is to discern whether a subsequent statement reflects common stereotypes about a target individual or group, provides an opposing view, or is off-topic.
+- You will be given a target subject and two sentences. The objective is to assess the second sentence's relevance in describing or defining societal notions associated with the target.
+- Your job is to understand the relationship between a target and two sentences. You will need to discern if the second one reflects a stereotype, counters it, or is without connection.
+- Identify the nature of the relationship between two statements concerning a given individual. This requires discerning whether one statement affirms a stereotype, contradicts it, or holds no meaningful connection.
+- Parse through two statements associated with a target person and decide if one echoes typical societal beliefs about them as a stereotype or acts in opposition as an anti-stereotype.
+- Take a close look at how two sentences interact concerning a chosen person. Your goal is to categorize the influence of the second sentence on perceptions about that person.
+- Your analysis must determine the nature of claims made in relation to an individual based on contextual clues regarding stereotypes and anti-stereotypes within provided statements.
+- Your work entails understanding traditional social notions as you analyze narratives tied to specific characters. Categorize whether they adhere to prominent stereotypes, oppose them with counter-narratives, or are irrelevant entirely.
+- In this exercise, you must interpret the relationship between a primary notion about a person and an additional statement. Focus on identifying stereotypes, anti-stereotypes, or irrelevant connections.
+- Analyze statements about certain individuals and judge if they conform to standard stereotypes, denied preconceptions, or are merely unrelated observations.
+- This task involves taking a target individual and evaluating two corresponding sentences. Identify whether the second presents a common stereotype, challenges one, or has no relation.
+- For this exercise, analyze two presented sentences in relation to the specified subject. Determine if the latter sentence succumbs to stereotypes surrounding that subject, counters them directly, or is irrelevant.
+- Assess two sentences in light of their relationship with a designated individual. Identify stereotypes or anti-stereotypes reflected in one statement compared to its counterpart's relevance.
+- Assessing texts for ingrained biases can inform your understanding of social perceptions. Classify whether they reflect societal expectations or diverge from them through their narrative.
+- Evaluate the contextual relationship between the first and second sentences concerning a particular individual. Classify the nature of this relationship as stereotypical, anti-stereotypical, or unrelated.
+- Your assignment involves interpreting sentences about specific people. Ascertain if the language used reflects commonly held views, opposes those views, or is irrelevant.
+- For this task, focus on how the statements relate to each other and a specified individual. Your goal is to identify stereotypes, counter-stereotypes, or unrelatedness.
+- Your task is to analyze a pair of sentences in relation to a specific target person, and assess whether the second sentence presents a stereotype, anti-stereotype, or is unrelated.
+- In this exercise, you will judge the content of two statements in relation to a target. Identify if the second statement supports a stereotype, presents an anti-stereotype, or is unrelated.
+- In this exercise, engage your reasoning skills to determine how closely linked statements regarding characteristics relate to shared perceptions of different groups of people.
+- This task asks you to compare two statements about someone; identify if they point towards common stereotypes or notions that counteract them—or if they diverge entirely from the context.
+- You have been provided with statements about a target person. Your task is to critically evaluate whether the second statement illustrates stereotypical views, opposes those views, or stands apart from them entirely.
+- Determine if the second sentence regarding a specific target individual expresses a stereotype of their group, an idea that contradicts such stereotypes, or is simply unrelated.
+- Your task is to assess the relationship between a target individual and two given sentences to determine if the second sentence reflects a stereotype, an anti-stereotype, or is unrelated.
+- You are tasked with determining how a second sentence relates to a first statement concerning a target individual. Recognizing social biases and understanding cultural generalizations will aid this classification task.
+- Review two statements about a target person and classify their relationship. Figure out if the second statement relates through stereotyping, contradicts stereotypes, or has no connection.
+- This critical thinking exercise requires analyzing conditional relationships between given sentences about individuals and determining how they relate concerning social perceptions or neutrality.
+- The task involves examining two sentences that reference a particular target. You will need to discern the nature of their relationship concerning societal beliefs or lack thereof.
+- The challenge here lies in understanding how one sentence describes an individual while another may either affirm stereotypical views or challenge them—or be completely off-topic.
+- Your task involves examining two sentences in relation to a specified target person to identify if the second sentence holds a stereotype, an anti-stereotype, or is unrelated to the first sentence.
+- Analyze the relationship between two sentences in relation to a provided target. Decide if the second sentence communicates a stereotype, an anti-stereotype, or has no relevance.
+- Your goal is to interpret how a second sentence connects with common societal views concerning a certain target person. Establish whether it reinforces, contradicts, or is unrelated to those views.
+- Analyze the content of two sentences concerning a target individual and classify the nature of the second sentence as either aligning with a stereotype, opposing it, or being unrelated.
+- You will evaluate two sentences in relation to a given target person. The goal is to classify the second sentence based on its relevance or connection to common perceptions about that person.
+- This task engages your critical thinking on social narratives between a specific subject and two statements. Determine their correspondence as either stereotype reinforcement, anti-stereotype opposition, or disconnection.
+- In this task, assess how the second sentence relates to preconceived notions about a target person. You must decide whether it aligns with stereotypes, opposes them, or does not connect at all.
+- In this assignment, focus on assessing the connection between sentiments expressed in two given sentences about a person. Identify if the language used supports prevalent stereotypes, counters them, or has no relation at all.
+- Scrutinize pairs of statements relative to specified targets; discern if there’s application of stereotypes driven through their content in one statement while assessing their relatedness overall.
+- Analyze how second statements about an individual relate back to common societal beliefs or oversimplified notions. Distinguish whether they convey stereotype notions or entirely different views.
+- In this task, you are given a target individual alongside two sentences. Your job is to assess the second sentence and classify it based on its relationship to stereotypes about the target.
+- Your job involves analyzing statements about a person and determining if they reflect oversimplified views of groups (stereotypes), reject those views (anti-stereotypes), or are off-topic.
+- In this activity, evaluate two provided statements concerning a specified individual targeted by societal perceptions. Identify if the second enhances stereotypes, refutes them, or doesn’t relate.
+- Engage with statements about a person and explore whether they convey oversimplified ideas, challenge those ideas, or lack relevance to them.
+- For a given target person, interpret the meaning of two sentences. Decide if the second sentence supports a stereotype, contradicts a stereotype, or does not relate to the target in any way.
+- You will analyze how well the second sentence relates to cultural assumptions about a specific target. Determine if it perpetuates, challenges, or stands clear of such assumptions.
+- In this evaluation task, determine how closely linked two statements are in regard to common societal perceptions tied to an identified target individual.
+- Use observations about language and context to decipher relationships between statements about individuals and ascertain if they affirm or challenge ingrained social stereotypes.
+- Analyze the connection between a target individual and two corresponding sentences to identify whether the second contains a common stereotype, opposes that stereotype, or has no relevant link.
+- This task requires you to evaluate two sentences concerning an individual. Determine the nature of their relationship—whether stereotyping, counter-stereotyping, or irrelevant.
+- In this examination of language and perception, your job is to recognize whether specific ideas align with broad social assumptions about individuals or counter those assumptions.
+- You will be given a person in focus along with two statements. Your challenge is to recognize if the second statement suggests a stereotype about that person, negates one, or is simply not related.
+- You're required to interpret relationships between statements and a target individual. Classify whether the statements imply generalizations about social groups or if they are disconnected from those notions.
+- Assess how well two sentences connect with an identified person. Decide on their association by categorizing them under stereotype reinforcement, anti-stereotype assertion, or irrelevance.
+- The goal is to discern whether a sentence reinforces common beliefs about a group, challenges those beliefs, or does not connect meaningfully to the target person.
+- This task necessitates examining relationships between two statements about a selected individual. Judge whether the second conveys stereotypes, refutes them, or remains irrelevant.
+- You will need to evaluate whether the second sentence reinforces, contradicts, or is irrelevant to the stereotype associated with the target person.
+- Your task is to evaluate two given sentences in relation to a specified target person and determine if the second sentence holds a stereotype, an anti-stereotype, or is unrelated.
+- For this task, you will compare two statements about a target person. Decide whether the second statement reinforces stereotypes, goes against them, or is unrelated.
+- Explore the implications of two sentences regarding a particular target individual and categorize them based on stereotype adherence or lack thereof.
+- Your role involves determining the nature of relevance between a target individual and two offered sentences. Classify the second statement as supporting stereotypes or countering them.
+- Your task is to analyze two sentences in relation to a specified target person and identify whether the second sentence reflects a stereotype, counters a stereotype, or is unrelated.
+- Analyze how one statement interacts with another regarding a subject matter and judge whether it embodies conventional views, opposes these views, or is tangential.
+- Interpret sentences about specific individuals and classify them based on established societal views. Decide if they affirm familiar stereotypes, reject them, or are totally unrelated.
+- You are tasked with evaluating statements related to a target persona to identify whether they align with societal stereotypes, oppose them, or have no meaningful connection.
+- Your responsibility is to identify and categorize the relevance of two fragmented narrative pieces concerning highlighted individuals by associating them with broader social perceptions and generalizations.
+- You will evaluate two sentences to clarify how they pertain to a designated person. Your goal is to categorize the second sentence as either supporting a stereotype, opposing it, or being irrelevant.
+- Your task is to evaluate two sentences in connection with a specific target person and determine if the second sentence reflects a common stereotype, an anti-stereotype, or is unrelated to the first sentence.
+- Analyze a target individual and two accompanying sentences. Determine if the latter conveys an oversimplified notion, counters one, or is not relevant to the individual.
+- This task requires you to evaluate how the second sentence connects with a given target. You will classify it as a stereotype, anti-stereotype, or unrelated based on your understanding of social perceptions and biases.
+- Your mission is to connect thoughts between a specified person and two statements. Focus on identifying if the information supports stereotypes, opposes them, or lacks relevance.
+- For each target person, gauge the implications of the second sentence. Your role is to classify the content type concerning cultural assumptions and representations.
+- This task requires scrupulous examination of provided phrases regarding a specific person. Ascertain whether the second phrase offers a generalization (stereotype), counters it (anti-stereotype), or has no relevance.
+- Consider how groups are often misrepresented through stereotypes; your job is to categorize whether a subsequent sentence illustrates this misrepresentation or not in relation to an individual.
+- The task involves identifying how sentence relationships reflect societal views about a given individual. Discern between stereotypes and their opposites while also noting unrelated statements.
+- You need to consider how well the second sentence corresponds with common perceptions of a given target. Identify if it conforms to stereotypes, contradicts them, or is simply irrelevant.
+- Examine each question set involving stereotypes associated with certain individuals. Decide whether they fit into categories affirming traditional views, opposing them, or having no relevance whatsoever.
+- You are required to evaluate how the second sentence corresponds with cultural perceptions of the target individual. Classify it as a stereotype, anti-stereotype, or unrelated content.
+- You are tasked with identifying stereotyping dynamics by evaluating two sentences against one another with respect to a designated target person.
+- This task requires you to interpret the meaning behind two sentences concerning an individual. Discover whether the second statement conveys a typical stereotype, an opposing idea, or lacks any connection at all.
+- This task involves examining sentences for their implications about a specific target person. Determine if the second sentence reflects stereotypical notions or stands apart from them entirely.
+- You must evaluate how two given sentences engage with stereotypes relating to a particular target person. Classify the nature of their connection as either supportive of stereotypes, contrary to them, or disconnected.
+- Analyze the relationship between a target individual and two provided sentences. Determine if the second sentence expresses a common belief, contradicts that belief, or does not relate to the first sentence at all.
+- In this task, you'll interpret how well the second sentence aligns with cultural assumptions linked to the first sentence's target. Your goal is to recognize stereotypes and anti-stereotypes, as well as identify irrelevant statements.
+- Your task is to deduce how well the second sentence communicates assumptions or ideas related to the designated target. Classify it based on its connection to stereotype perceptions as supportive, contradictory, or unrelated.
+- Assess each pair of sentences concerning a certain subject. Your task is to identify whether the second statement promotes a stereotype, contradicts one, or has no connection.
+- Navigate through ideas surrounding public perceptions of individuals by determining whether they conform to or dispute social stereotypes through your evaluation of relevant sentences.
+- Evaluate statements related to an identified person and determine if they reflect stereotypes, contradict social norms associated with that group or are completely unrelated.
+- Reflect upon the interplay between two statements involving a specified individual. Decide if they reinforce prevailing stereotypes about that person or diverge from them significantly.
+- You are tasked with interpreting how a follow-up sentence connects with a designated individual. Assess whether it confirms stereotypes, contradicts them, or does not engage with them at all.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task318_stereoset_classification_gender
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task318_stereoset_classification_gender
+user_prompt_template: '{task_def}
+
+
+  {problem}'

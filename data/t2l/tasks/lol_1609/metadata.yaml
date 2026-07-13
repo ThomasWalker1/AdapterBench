@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- Your duty is to distill information from a passage by generating pointed questions about crucial details, facilitating an understanding of essential components addressed in it.
+- Your task is to cultivate a set of meaningful questions about a given paragraph, targeting clear elements such as people, places, dates, or events described within its lines.
+- This task invites you to derive questions from the reading material that are positioned to elicit straightforward responses relating to various subjects explained in the text.
+- In this task, you’re expected to create concise questions that reflect important points made in a paragraph. The generated questions should aim for clarity and precision in addressing details from the text.
+- You will extract fundamental ideas from a textual passage and formulate questions that demand straightforward, factual answers. This requires careful reading and understanding of the text's core themes.
+- Develop questions that align directly with specific factual elements in a provided paragraph, focusing on unraveling clear and distinct answers from what you read.
+- Use your reading skills to comprehend paragraphs meaningfully enough to produce inquisitive statements aimed at extracting crucial facts integral to understanding the text.
+- Examine paragraphs carefully to generate questions seeking concise entities or responses explicitly present in the text. This requires thorough reading paired with an analytical mindset.
+- Your task is to take in the narrative provided and develop pertinent questions that can retrieve particular details about people, events, or concepts stated therein.
+- You will interpret information from a written passage and create focused questions aimed at extracting single facts or entities present within the narrative.
+- This exercise involves taking a passage and developing questions that are answerable with straightforward details extracted from the text itself.
+- The task involves reading a provided text and generating relevant questions that extract specific information from the passage. Each question should seek a singular answer that relates directly to the content.
+- The task asks you to derive insightful questions that can be answered by specific facts found in the paragraph. Focus on entities, dates, or relevant details reflected in the content for your queries.
+- Your mission is to produce inquiries from a written narrative focused on key information embedded in it, ensuring those inquiries prompt responses rooted firmly in the text provided.
+- Analyze the input paragraph and compose questions that point to distinct facts or entities mentioned in the passage.
+- In this activity, you will review a piece of text and generate questions aimed at understanding its significance and details. Each question should seek clear, verifiable responses found within the text.
+- Your task requires you to identify chunks of information in a paragraph and convert them into questions that spotlight key individuals, dates, or concepts relevant to understanding the text better.
+- You will generate questions from a passage with the aim of highlighting and seeking answers to distinct facts or individual concepts conveyed in the text.
+- The task involves creating inquiries about the content of a paragraph, looking for direct answers that represent factual details.
+- Your task is to read a paragraph and craft questions based on the information provided within that text. These questions should focus on extractable facts, such as names, dates, or specific entities.
+- The objective is to distill information from a paragraph by generating meaningful questions. Aim for clarity and ensure that your questions can be directly answered by referring back to the passage.
+- Develop accessible questions reflecting key components of the source text, ensuring each question is directed toward identifiable elements found within it.
+- This task asks you to distill essential information from a written passage into clear questions. Concentrate on crafting precise inquiries that are answerable based on the contents of the paragraph.
+- After reading a passage, your role is to formulate questions aimed at specific entities or facts presented in the text. This encourages precision in understanding the material.
+- Your task involves interpreting text passages and subsequently crafting questions designed to uncover particular data or concepts expressed in them. This emphasizes comprehension and synthesis skills.
+- This task requires you to examine a passage and formulate questions focused on extracting distinct entities or significant details mentioned in the text.
+- The job entails navigating through textual content to formulate logical questions about important subjects discussed, allowing straightforward extraction of answers related directly to what is read.
+- You'll be tasked with extracting relevant information from a paragraph by developing questions centered on notable individuals or significant moments mentioned within it.
+- You will read through a given text and produce questions that can be answered using specific information from that text, focusing on extracting relevant factual responses.
+- Identify significant parts of the passage and transform them into questions designed to elicit informative responses based on what has been read.
+- Your responsibility is to analyze the content of a paragraph and come up with targeted questions seeking explicit answers embedded in the text.
+- Your job revolves around interpreting a given paragraph and producing relevant questions regarding noteworthy facts or entities mentioned within it. Focus on clarity and relevance in your questioning.
+- Craft inquiries based on a narrative while ensuring that each question relates back to identifiable information contained within the paragraph.
+- Engage with textual material by developing relevant questions that arise directly from it. Each question should align closely with specific factual details present in the writing for accurate answer retrieval.
+- The objective of this activity is to read a given text and draft questions aimed at uncovering specific pieces of information referenced in that text.
+- Generate questions based on the content of a given passage that seek specific, concrete information like names, dates, or events. This assesses your understanding of the text.
+- Read the provided text carefully and create inquiries aimed at discovering precise entities or important points highlighted in the writing.
+- Examine the provided paragraph and devise questions that can pinpoint exact information embedded within it, making sure they lead to definitive answers.
+- Your job is to extract information from a paragraph and formulate questions that directly relate to key entities, events, or concepts mentioned in the text.
+- This task requires you to comprehend a written piece thoroughly and create relevant questions that focus on extracting single entities mentioned in the text.
+- Your role is to interpret a section of writing and formulate questions that target concrete facts, making sure the responses consist of identifiable subject matter.
+- The task involves reading a block of text and creating questions that probe deeper into its content. Each question should seek a specific detail or fact, ensuring that the answer can be found in the provided material.
+- Formulate questions derived from the content of a paragraph, focusing on clarity and precision so that each question leads to identifiable answers rooted in the text.
+- This assignment requires you to thoroughly comprehend a given passage and produce potential questions that could be answered based on its details. Look for important names, dates, events, or concepts.
+- Formulate inquiries directing attention toward particular insights provided within a passage, facilitating clear understanding and knowledge acquisition based on textual analysis.
+- Engage with a text by identifying significant parts of the content and transforming that knowledge into clear questions aimed at achieving specific answers.
+- From a interpretative standpoint, derive questions that encapsulate essential aspects of the passage while making sure they necessitate concise factual responses.
+- Review the content of a paragraph thoroughly to create targeted questions that relate closely to exclusive details within the text and can be answered distinctly.
+- Your challenge is to interpret a given narrative and generate precise inquiries that reveal significant details present within it.
+- Analyze a provided segment of writing to craft questions that seek precise responses, digging into aspects such as individuals, events, or ideas explicitly mentioned in the textual content.
+- You need to derive questions from a given paragraph, ensuring they relate closely to the content and can be answered by locating explicit information within it.
+- Utilize your comprehension skills to turn a written passage into a series of insightful questions that seek specific answers reflective of the content.
+- Analyze the provided text and come up with questions that focus on specific pieces of information derivable from what you read.
+- Your challenge is to transform paragraphs into informative questions by identifying main themes or significant facts contained therein. Ensure each question corresponds directly with elements in the passage.
+- Engage with a written paragraph to construct thoughtful questions designed to elicit specific information that exists within the context of the reading material.
+- The task involves creating questions based on a given text. These questions should be answerable with a specific piece of information extracted from the passage.
+- The task involves scrutinizing a paragraph for key details and crafting questions that encourage answers highlighting unique individuals, events, or terms introduced in the text.
+- Your objective is to derive questions from a given paragraph that can be directly answered with specific items or data mentioned. This involves closely examining the text for factual points.
+- Analyze the provided passage and generate relevant questions that focus on specific entities or details mentioned within it.
+- The task is about interpreting a written paragraph and coming up with questions that prompt answers regarding distinct subjects or elements found within that text.
+- The goal of this task is to synthesize information gleaned from reading a passage in order to generate specific, answerable questions regarding its content.
+- Your objective is to extract identifiable facts from the given passage and generate questions that could elicit these facts as answers.
+- The focus is on reviewing a written piece and generating precise questions that elicit factual responses about people, dates, and significant occurrences in the text.
+- The goal is to create inquiries from a paragraph that delve into particular facts or elements discussed in the writing, enabling easy extraction of answers.
+- This exercise asks you to survey written content for information and develop pertinent inquiries aimed at revealing significant details directly linked to what was read.
+- From the information in the paragraph, craft questions that seek specific elements, such as names, dates, or significant concepts highlighted in the text.
+- From the given text, your job is to create questions that seek concrete answers, highlighting important figures, dates, or concepts.
+- From a given text, your job is to extract essential information by formulating relevant questions that lead to factual answers contained in the materials presented.
+- The task consists of articulating questions derived from a text you read. Each question should focus on obtaining specific pieces of information that the paragraph explicitly includes.
+- The aim of this task is to formulate inquiries based on a specified passage, directing attention towards elements that can be identified and verified through the text.
+- This task involves pinpointing and questioning critical components highlighted in the passage to foster comprehension and retention of factual material.
+- Read through the supplied content and formulate targeted questions that require single answers related directly to what has been discussed in the paragraph.
+- You are tasked with articulating questions regarding notable items within a paragraph, ensuring they can yield straightforward answers sourced from the content.
+- This task revolves around understanding a passage well enough to raise relevant questions aimed at uncovering direct answers rooted in factual information from within the text.
+- This process requires understanding the essence of a paragraph and creating direct questions aimed at eliciting specific, answerable information contained therein.
+- Engage with a written passage by generating thought-provoking inquiries based on its contents. Your questions should be relevant and facilitate clarity in identifying key elements discussed in the text.
+- From the provided text, generate relevant questions that look for specific details or facts mentioned within the paragraph.
+- You will be tasked with identifying important details within a paragraph and generating corresponding questions that can be answered using those details.
+- The task is to extract key information from a passage by creating focused questions that lead to identifiable answers. This requires analytical thinking to pick out relevant points from the text.
+- The task involves reading a provided passage and crafting questions that can find clear answers within the text. This requires comprehension and the ability to identify specific details.
+- You will analyze the contents of a paragraph and create specific inquiries that can unearth factual details laid out in it. Focus on clarity and relevance when formulating these questions.
+- Your job is to dissect a provided passage to formulate straightforward questions that are directly answerable using details from the text.
+- Analyze the narrative of the paragraph and produce succinct questions focused on direct elements described therein for which answers can be distinctly drawn out.
+- Generate inquiries based on the paragraph's contents to identify significant figures, concepts, or events articulated throughout the narrative.
+- Your task is to generate clear and concise questions from a provided passage that seek to uncover distinct subjects or critical details revealed in the text.
+- Your task is to read a given paragraph and create questions that can be directly answered based on the information provided in that passage.
+- Focus your reading efforts on generating effective questions derived from a detailed passage. The aim is to ensure your inquiries are connected to measurable outcomes stated in the text.
+- Carefully read through the material and devise pertinent questions meant to distill focused responses regarding clearly articulated facts or figures included in the paragraph.
+- You will engage with a descriptive passage and then formulate questions relevant to its content. Ensure that your inquiries aim for concrete answers present within the text.
+- The objective is to compose coherent questions that tap into important details outlined in a paragraph. Each question should seek clear and direct answers based on textual evidence.
+- Carefully analyze the passage and conceive questions geared towards unveiling specific elements or facts that might be central to understanding its content.
+- This task requires you to derive clear, focused questions from a text that can be addressed with concrete answers taken straight from it.
+- Engage with a short text and craft questions from it. The goal is to pull out clear, concise information that can be identified without ambiguity in the context of the paragraph.
+- Review a passage thoroughly and come up with questions that reflect key aspects discussed, demanding clarity about different elements mentioned in the text.
+- The goal is to derive thoughtful questions that require a clear extraction of answers directly linked to the content of the paragraph.
+- This activity requires you to read a segment of text and formulate questions that connect to explicit details within the passage. The questions should be designed to elicit single, concrete answers.
+- Review each passage and devise targeted queries aimed at drawing out distinctive pieces of information embedded within the narrative. Focus on clarity to ensure direct answers are obtainable from your questions.
+- You will analyze a given passage and generate relevant questions that can be directly answered by the content. This exercise requires comprehension of the text to identify key pieces of information.
+- The task is to read a passage attentively and formulate thoughtful questions that draw out specific information or knowledge contained within it.
+- This activity involves interpreting a written paragraph and producing focused questions related to identifiable subjects or singular items within the text.
+- Analyze the content of a paragraph and develop clear, direct questions aimed at eliciting factual or specific answers derived from it. Your work will reflect an understanding of essential details within the context.
+- You will engage with written material and articulate questions derived from its context. Questions should zero in on finite details enabling straightforward responses appearing directly in the passage.
+- You are required to draft questions based on a paragraph, with each question targeting definitive answers contained within the text. This necessitates an understanding of the context and details provided.
+- The aim is to read closely and create clearly defined queries resulting from specific facts or entities discussed in an input passage.
+- You need to read a provided paragraph and generate relevant questions that lead to concise answers found within the text.
+- Based on the information in the paragraph, craft questions aimed at uncovering essential details such as names, events, or definitions found within the text.
+- Your task is to think critically about a given passage and create questions that highlight important names, facts, or timelines extracted from the reading material.
+- The task requires you to derive clear and unambiguous questions from a paragraph that can be answered by a specific entity referenced within it.
+- Analyze a provided text and generate relevant questions that focus on key entities, such as people, dates, or significant concepts discussed in the content.
+- The intention is to dissect the text into question formats that target distinct answerable entities revealed through careful reading of the passage.
+- Reflect on the paragraph and generate inquiries focusing on unique entities or critical events described, ensuring they are answerable based on the given context.
+- The goal of this task is to extract key pieces of information from a paragraph and formulate questions that can retrieve that information. These questions should be straightforward and directly related to the content of the passage.
+- Your task is to read a provided passage and create relevant questions whose answers can be found within that text. The questions should focus on specific facts or entities mentioned in the passage.
+- You must digest a paragraph and ask questions related to entities or events, ensuring that your inquiries can be answered using direct references from the passage.
+- Create direct questions from the passage with an emphasis on identifying singular pieces of information, such as names, dates, or definitions presented in the text.
+- The objective is to derive clear questions from a piece of text, ensuring that these inquiries can be answered with straightforward facts provided in the passage.
+- Tasked with creating distinct questions from a block of text, your goal is to extract clear and explicit details from what has been conveyed within it.
+- Your objective is to derive meaningful questions from a detailed narrative. Craft inquiries that lead to concise answers found within the scope of the provided information.
+- After reading the paragraph, generate queries that probe into critical aspects of the content, requiring precise answers that can be located in the text.
+- You need to showcase your understanding by formulating questions related to major points in the reading material, focusing on things like individuals or significant happenings.
+- The process includes interpreting provided passages and innovating inquiries focused on notable facts or information contained within the tens. This necessitates familiarity with critical reading strategies.
+- The objective is to produce questions that arise naturally from a narrative or expository paragraph. Each question should elicit specific details or entities mentioned within the passage.
+- The exercise requires you to dive into a written summary and develop inquiries targeted at extracting specific details regarding people, dates, or other singular facts illustrated in the passage.
+- Analyze the text given to you, and create questions based on it. The questions should focus on extracting single pieces of information, such as names, dates, or specific terms mentioned in the passage.
+- You need to develop questions aimed at uncovering precise details mentioned within a given text, focusing on concrete references or statements.
+- Analyze the paragraph closely and transform verbatim insights into queries that target tangible details or significant concepts described in the text.
+- In this exercise, interpret a piece of writing by creating precise queries aimed at drawing out factual responses mentioned within it. Highlight significant aspects of the narrative as your frame for questioning.
+- Engage with a text to generate focused questions aimed at discovering precise facts or concepts that can be pulled from the content, highlighting important elements.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1609_xquad_en_question_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1609_xquad_en_question_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

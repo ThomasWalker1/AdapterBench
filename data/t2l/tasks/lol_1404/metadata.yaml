@@ -1,0 +1,141 @@
+assistant_prefill: ''
+descriptions:
+- This involves transforming dates from one presentation style to another. You're expected to maintain accuracy while switching these formats effectively.
+- Your job is to reformat dates correctly according to specified patterns, demonstrating your ability to manipulate date formats effectively.
+- You are required to convert dates from one format style to another. This requires understanding how dates are structured in different formats.
+- Your task is to apply a set conversion rule to dates formatted in either "dd/mm/yyyy" or "mm/dd/yyyy" to produce the alternate representation accurately.
+- Here, you must demonstrate your ability to process and reformat date strings while keeping track of their individual parts.
+- Your challenge here is to work with date representations, ensuring that you switch them while comprehending which parts constitute day and month.
+- This task involves converting date formats. You must understand the two given styles and apply the correct transformation to represent the same date in a different format.
+- This task focuses on recognizing and rearranging date formats. You will need to ensure that the day, month, and year are correctly positioned as per the target format.
+- The focus here is on understanding date values and their arrangements; you'll be reformatting them in accordance with specific rules.
+- You will work with date strings, needing to identify and rearrange their elements based on defined conversion guidelines.
+- This exercise aims at enhancing your skill in date manipulation by converting given dates according to predefined format rules.
+- Your responsibility is to manage dates by converting them from one organizational style to another while maintaining their original values.
+- The task expects you to accurately translate a date from one formatting style to another, utilizing your skills in numerical organization.
+- You will be engaging in a transformation process where each date is restructured from one recognizable format to another.
+- Your objective is to rewrite dates according to specified formatting instructions. This necessitates a clear understanding of the different components that make up a date.
+- The task requires converting given dates into another specified format without elaboration or explanation, emphasizing your ability to manipulate date representations fluidly.
+- 'The objective here is straightforward: change how a date looks by reorganizing its components from one accepted format to another.'
+- Your role is to format dates correctly based on specific guidelines. An understanding of standard date formats will help you achieve the right conversions.
+- Your task is about date conversion, translating a given input format into its corresponding output structure while maintaining accuracy.
+- You need to work with dates by converting them from one established format to another, ensuring that you switch the day and month values appropriately.
+- Engage with dates by expertly modifying their formats, which entails a comprehensive understanding of how they are formatted originally.
+- In this activity, your responsibility includes accurately altering the date format while keeping its integrity intact, requiring precision in your work.
+- This task focuses on converting dates between specific numerical formats. You'll need to apply your knowledge of how these formats differ.
+- You will engage with the task of interpreting and modifying dates based on specific formatting rules, demanding an understanding of numeric arrangement.
+- You are required to adjust the way dates are formatted, demonstrating an understanding of how day, month, and year can be interchanged correctly.
+- The objective is to convert given dates while focusing on their structure and ensuring that all parts correspond accurately in the new arrangement.
+- You will be tasked with reformatting dates. This requires you to correctly identify and reorganize the day, month, and year elements.
+- This task tests your ability to recognize and convert date formats. A firm grasp of how day, month, and year are ordered is essential for successful completion.
+- In this assignment, you will practice your skills in date conversion, switching between different representations of the same date.
+- This task requires you to convert dates between two different formats. Understanding how to identify day, month, and year is essential for completing this accurately.
+- This involves understanding how dates are formatted differently and successfully changing their presentation from one version to another without losing meaning.
+- The challenge involves converting dates that follow strict formats into other specified formats. Precision in formatting is key.
+- You are tasked with changing the order of day and month in dates based on the specified initial format.
+- The task requires precision in date manipulation, as you will convert dates between two common formatting styles.
+- Your role is to bridge between two different representations of dates by understanding how each piece fits into the formats at play.
+- You have to translate dates into different formats. This requires recognizing and manipulating day, month, and year placements correctly.
+- Your role here is to manipulate the format of given dates, which requires understanding how to rearrange day and month components correctly.
+- The job consists of translating date formats by interpreting the input correctly and outputting it in the specified new format.
+- The task requires you to systematically change the structure of given dates, ensuring you can handle both "day/month/year" and "month/day/year" formats.
+- Your objective is to manipulate date strings by changing their order based on the given input format for proper representation.
+- The objective is to alter the presentation of dates. When provided with a date in a certain format, you will need to express it in another established format.
+- The challenge is to correctly interpret a date in one style and convert it into another style, highlighting proficiency in both visual recognition and textual manipulation.
+- Engage with a task requiring you to translate dates expressed in one format into another. Familiarity with standard date formats will assist you in performing this task correctly.
+- This task focuses on the conversion of dates. You will need to switch between different styles of representing dates, which demonstrates your numerical processing skills.
+- Here, you’ll convert date presentations by effectively switching the position of days and months as per specified formats.
+- You will be helping by converting dates between two common formats. This requires an awareness of how numerical representations of dates function.
+- This task involves understanding dates' structure and accurately transforming them from one format into another as required.
+- Your mission is to take dates from one writing style and turn them into another style. Understanding the nuances of date formats is vital here.
+- You will work with dates formatted in various ways. The goal is to change these formats without any explanation, demonstrating your ability to manipulate date styles effectively.
+- Your task is to change the representation of a date from one common format to another. You will need to recognize and rearrange the parts of the date accordingly.
+- The focus here is on recognizing the different structures of dates and being able to interconvert them effectively based on specified requirements.
+- You are asked to handle date conversion between formats, which calls for logical reasoning about how components such as day, month, and year interact visually.
+- This task will test your ability to reinterpret date formats, requiring you to accurately change how a date is expressed based on given input.
+- This task focuses on dated information processing, where you will need to diligently convert formats while adhering strictly to the specified guidelines.
+- The challenge is to reinterpret dates properly by identifying their current format and converting them to a new one.
+- In this exercise, your goal is to transition dates into another layout, emphasizing precision in moving numerical components around correctly.
+- Your assignment is to modify the way a date is written. This requires you to understand the positions of days and months based on the provided format.
+- You are tasked with the conversion of dates by modifying their structure according to specified formatting rules.
+- You will work with formatted dates, altering their structure appropriately based on the input specification provided.
+- The assignment involves taking dates in varying structures and reformatting them ensure clarity and correctness according to specified rules.
+- You will be tasked with altering how dates are displayed. This requires knowledge of date structures like day/month/year and month/day/year.
+- In this task, you will convert dates from one format to another, requiring attention to detail and understanding of date representations.
+- This assignment centers on the conversion of date formats, demanding careful attention to ensure accuracy in distinguishing between day and month.
+- The challenge here is to correctly convert a date into its alternate form by ensuring the elements are placed in the right sequence.
+- This task involves working with dates presented in various standard formats. You need to manipulate them into a different format while ensuring clarity and correctness.
+- Your role is to interpret given dates and reformat them based on specific rules for modern dating conventions, expecting attention to detail.
+- The objective here is to modify how a date is displayed by altering its format. Understanding the significance of each component of the date is key.
+- This job involves adapting given dates into other formats by rearranging their parts logically while maintaining accuracy in representing time.
+- You need to take a given date in a specific format and change it into a different format accurately.
+- The task requires you to switch the arrangement of dates based on predetermined formats while being mindful of each component's position.
+- Here you need to execute quick conversions of formatted dates into their corresponding alternative formats while ensuring no detail is overlooked during the change.
+- You will be tasked with interpreting a date’s presentation in one style and reconstructing it in another format, ensuring clarity and precision.
+- You need to understand the given date format and translate it into another format, ensuring precision in your conversion process.
+- Your objective is to take a date written in one specific format and change it to another format. This requires an understanding of how to rearrange and structure the components of the date.
+- Your role is to take dates described in a specified way and rearrange them into a new order, necessitating careful attention throughout the process.
+- This task tests your ability to interpret and reformat dates from one structure to another without losing any essential information.
+- You will be engaged in rewriting dates in various formats, showcasing your ability to handle changes in data presentation.
+- Your role involves revising date formats from one standard to another. Grasping the correct order of days, months, and years is essential for this transformation.
+- The job involves transforming dates from one system of notation to another, demanding attention to detail and understanding of date structures.
+- Your responsibility is to convert given date formats through systematic rearrangement while adhering strictly to established conversion rules.
+- In this task, you need to change the arrangement of a date's components. Being familiar with date formats is essential to execute this correctly.
+- The objective is to take a date and express it in an alternate format, which tests your familiarity with date notation conventions.
+- This task entails converting given dates into alternate formats while adhering strictly to defined input-output relationships for accuracy.
+- Your task consists of navigating between different ways of displaying dates, requiring an understanding of how days and months interchange in various formats.
+- Your job is to transform a given date from either "dd/mm/yyyy" format to "mm/dd/yyyy" or vice versa. This task tests your attention to detail when handling numerical information.
+- The task is about adjusting how a date is displayed by switching its layout according to certain formatting conventions.
+- This task requires changing how dates are structured while keeping their meaning intact. You must be careful in handling the numbers involved.
+- The focus is on converting given dates between two distinct formats, which necessitates attention to detail in order placement.
+- The task centers around dating conventions and involves transforming how those dates are expressed according to specific input-output rules.
+- The task requires you to reformat dates provided in a specific structure. You will need to handle the numbers carefully and ensure that they reflect accurately in the new arrangement.
+- This task centers on converting dates provided in specific styles, requiring you to have a clear understanding of how different formats work.
+- Your expertise is needed in rearranging how a date is expressed, ensuring that you follow established formatting standards with correctness.
+- You are required to take a specific date format and alter it into another one, emphasizing clarity in separating day, month, and year for correct reorganization.
+- The goal is to successfully translate dates into their alternate forms by recognizing which elements correspond to days and months in different formats.
+- Here, your job is about changing how dates are formatted. Understanding which parts correspond to each placement is key in achieving correct conversions.
+- This task demands an adjustment in how dates are displayed, requiring clarity in separating the day from the month and year during conversion processes.
+- This task requires converting dates between two formats, focusing on accurately altering the order of day and month components without altering the underlying date.
+- You are engaging with date formatting tasks, where your goal is to switch between different date layouts while maintaining accuracy.
+- This exercise challenges you to convert given dates into alternate formats, relying on your knowledge of how the elements of a date can be rearranged correctly.
+- The challenge entails converting presented dates into alternative structures according to specified rules. Clear comprehension of both formats is crucial for success.
+- This task focuses on the conversion of date formats wherein accuracy in transforming how the day, month, and year are ordered is required.
+- This entails dealing with date formats, where you will extract information accurately from one representation to create another without mistakes.
+- In this task, you will utilize your understanding of date structures to seamlessly transition between different formats for clarity and utility.
+- The challenge involves adapting dates into different accepted formats. Success in this task comes from your ability to manipulate numerical data systematically.
+- The objective is to transform dates provided in a specific format into another format by switching the day and month while keeping the year intact.
+- Your challenge will be to reflect upon the nuances of date formatting while ensuring accurate conversions from one setup to another.
+- The work entails redefining the presentation of dates from one familiar pattern into another distinct pattern by carefully adjusting the order of components.
+- This involves rearranging the components of a date provided in one style into another style while maintaining accuracy.
+- You need to take a date presented in a specific layout and change it to a different layout, ensuring that the day and month are correctly swapped as necessary.
+- You will be working with dates expressed in two different ways, switching their arrangement to match the requested output format.
+- Your job is to transform dates between two common formats, ensuring that you recognize the components of each format accurately.
+- Your job is to take a date expressed in one way and give it a new expression by switching its format. Familiarity with various date structuring conventions is necessary.
+- The task involves converting dates from one format to another, requiring attention to detail and understanding of date formatting conventions.
+- The goal is to take a date formatted in one particular way and reformat it according to another established guideline, ensuring each component is correctly placed.
+- This requires you to change how dates are formatted by reordering elements according to clear guidelines while ensuring clarity and correctness in the result.
+- You will be engaging with date transformations where the rearrangement of day and month values is essential for achieving the correct output.
+- This task focuses on converting dates into prescribed formats. You must ensure that each part of the date remains intact while changing its structure.
+- The focus of this task is on transforming presented dates into different structures. It calls for attention to detail as you move elements around thoughtfully.
+- Here, you are asked to work with dates and convert them between two widely-used formats. A solid understanding of these formats will aid you in executing the task correctly.
+- In this task, you will take a date given in a specific arrangement and transform it into a different arrangement, utilizing your knowledge of date formatting rules.
+- This task requires you to adjust the presentation of a date so that it aligns with a different standard format while keeping the information intact.
+- In this project, you will change the organization of a date from one common format to another. Pay close attention to how information is structured in each case.
+- You will be tasked with converting a series of dates into new arrangements based on input specifications. Each transformation should reflect an accurate reading of the original date.
+- Your task involves converting dates from one format to another, requiring an understanding of different date representations.
+- Here, you need to interpret dates that follow specific structures and reformat them into an alternative configuration while maintaining accuracy.
+- Your job here involves formatting dates differently, which means you'll need to understand how to read and represent dates across various styles.
+- The assignment consists of changing the way dates are represented by switching their format while maintaining their integrity, testing your ability to manipulate strings correctly.
+- You will take a date presented in a specific order and reformat it into a new, required order. This requires a careful understanding of how days, months, and years are represented.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1404_date_conversion
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: Lots-of-LoRAs/task1404_date_conversion
+user_prompt_template: '{task_def}
+
+
+  {problem}'
