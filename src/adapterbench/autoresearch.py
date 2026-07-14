@@ -60,6 +60,13 @@ class SettingSpec:
     objective: Callable[[list[dict]], float]       # (cells for one config+seed) -> matched-control
     objective_name: str
     launch_argv: Callable[[str, dict, int, Path], list[str]] | None = None
+    # Per-setting run profiles: fixed launch overrides (steps, eval cadence, breadth) merged into
+    # every cell's config. `proxy` is the validated lightweight profile (cheap but faithful); `full`
+    # is the paper-scale profile. Reducing training length below the proxy breaks the operating-point
+    # ranking (empirically, for I2P the scale ranking is single-seed noise until ~1500 steps), so the
+    # proxy trades eval breadth + modest step reduction — NOT aggressive step-slashing — and stays
+    # multi-seed. A proxy is only valid once it recovers the full profile's best-of (validate first).
+    profiles: Mapping[str, Mapping[str, object]] = None
 
     def hps_of_class(self, cls: str) -> list[str]:
         return [h for h, c in self.hp_classes.items() if c == cls]

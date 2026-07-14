@@ -1,9 +1,0 @@
-trial_id,task_id,split,representation,generated_parameter_count,generation_seconds,inference_seconds,metric.accuracy,metric.n_examples,metadata
-t2p_sft_pilot::frozen_interpreter,boolq,test,frozen_interpreter,0,0.0,1.6839755810797215,0.75,20.0,"{""condition_variant"": 0}"
-t2p_sft_pilot::frozen_interpreter,hellaswag,test,frozen_interpreter,0,0.0,2.5117043554782867,0.2,20.0,"{""condition_variant"": 0}"
-t2p_sft_pilot::lora,boolq,test,lora,1146880,0.0,1.726293470710516,0.15,20.0,"{""condition_variant"": 0}"
-t2p_sft_pilot::lora,hellaswag,test,lora,1146880,0.0,3.3806801810860634,0.1,20.0,"{""condition_variant"": 0}"
-t2p_sft_pilot::ia3,boolq,test,ia3,86016,0.0,1.4442448392510414,0.85,20.0,"{""condition_variant"": 0}"
-t2p_sft_pilot::ia3,hellaswag,test,ia3,86016,0.0,2.852638818323612,0.25,20.0,"{""condition_variant"": 0}"
-t2p_sft_pilot::activation_steering,boolq,test,activation_steering,28672,0.0,1.4012147709727287,0.85,20.0,"{""condition_variant"": 0}"
-t2p_sft_pilot::activation_steering,hellaswag,test,activation_steering,28672,0.0,2.7266452722251415,0.25,20.0,"{""condition_variant"": 0}"

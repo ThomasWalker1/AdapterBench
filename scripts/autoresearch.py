@@ -49,17 +49,19 @@ def _is_num(s: str) -> bool:
         return False
 
 
-def _launch(spec, out_root: Path, search_dims: dict, fixed_free: dict, seeds, codec, gpus, extra_steps):
+def _launch(spec, out_root: Path, search_dims: dict, fixed_free: dict, seeds, codec, gpus, profile_overrides):
     """Concurrent launch: one cell per (config × seed), fanned across GPUs, restart-safe (skip a
-    cell whose results.jsonl exists). Mirrors scripts/i2p_hypernoise_pipeline.py's proven pool."""
+    cell whose results.jsonl exists). Mirrors scripts/i2p_hypernoise_pipeline.py's proven pool.
+    `profile_overrides` (the selected run profile's fixed launch params — steps/eval cadence/breadth)
+    are merged into every cell so the whole sweep runs at one profile."""
     from adapterbench.autoresearch import _cell_dirname
 
     jobs = []
     for combo in itertools.product(*search_dims.values()):
         config = dict(zip(search_dims, combo))
         config.update(fixed_free)
-        if extra_steps is not None:
-            config.setdefault("steps", extra_steps)
+        for k, v in (profile_overrides or {}).items():
+            config.setdefault(k, v)
         for seed in seeds:
             jobs.append((config, int(seed)))
 
@@ -105,7 +107,8 @@ def main() -> None:
     ap.add_argument("--launch", action="store_true", help="produce missing cells via the setting's CLI first")
     ap.add_argument("--gpus", default="0", help="launch mode: comma-separated GPU ids")
     ap.add_argument("--seeds", default="777,778,779", help="launch mode: seeds to run")
-    ap.add_argument("--steps", type=int, default=None, help="launch mode: steps per cell")
+    ap.add_argument("--profile", default="proxy", help="launch mode: run profile (proxy|full) from the SettingSpec")
+    ap.add_argument("--steps", type=int, default=None, help="launch mode: override steps per cell (else the profile's)")
     ap.add_argument("--out-json", default=None, help="write the SearchReport dict here")
     args = ap.parse_args()
 
@@ -119,8 +122,12 @@ def main() -> None:
 
     if args.launch:
         seeds = [int(s) for s in args.seeds.split(",")][: args.n_seeds]
+        overrides = dict((spec.profiles or {}).get(args.profile, {}))
+        if args.steps is not None:
+            overrides["steps"] = args.steps
+        print(f"[autoresearch] profile={args.profile} overrides={overrides}")
         _launch(spec, out_root, search_dims, fixed_free, seeds, args.codec,
-                [g.strip() for g in args.gpus.split(",")], args.steps)
+                [g.strip() for g in args.gpus.split(",")], overrides)
 
     cells = load_cells(out_root)
     report = search_over_cells(spec, cells, search_dims=search_dims, fixed_free=fixed_free,

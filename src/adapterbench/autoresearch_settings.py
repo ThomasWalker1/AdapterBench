@@ -36,7 +36,23 @@ def _i2p_launch(codec: str, config: dict, seed: int, out_dir: Path) -> list[str]
         argv += ["--reg-weight", str(config["reg_weight"])]
     if "steps" in config:
         argv += ["--steps", str(int(config["steps"]))]
+    if "eval_every" in config:
+        argv += ["--eval-every", str(int(config["eval_every"]))]
+    if "n_seeds" in config:
+        argv += ["--n-seeds", str(int(config["n_seeds"]))]
+    if "batch_size" in config:
+        argv += ["--batch-size", str(int(config["batch_size"]))]
     return argv
+
+
+# Run profiles. `proxy` is the lightweight-but-faithful profile: for I2P the scale ranking is
+# single-seed noise until ~step 1500 (verified from the full run's per-step eval history), so the
+# proxy halves steps (3000→1500) and eval breadth rather than slashing training, and stays
+# multi-seed. Validate a proxy recovers the full profile's best-of before trusting it.
+_I2P_PROFILES = {
+    "full":  {"steps": 3000, "eval_every": 500, "n_seeds": 2, "batch_size": 4},
+    "proxy": {"steps": 1500, "eval_every": 750, "n_seeds": 2, "batch_size": 2},
+}
 
 
 I2P_SPEC = SettingSpec(
@@ -56,6 +72,7 @@ I2P_SPEC = SettingSpec(
     objective=_i2p_objective,
     objective_name="ImageReward gain (adapter − frozen)",
     launch_argv=_i2p_launch,
+    profiles=_I2P_PROFILES,
 )
 
 
