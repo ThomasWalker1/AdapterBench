@@ -5,11 +5,11 @@ passed to `TextToPeftHypernetwork` — `"block"` resolves to the whole decoder l
 `hypernetwork.py::_resolve_target`), anything else resolves to a named `nn.Linear`
 submodule.
 
-**LoRA is the only codec in the current baseline** (see PROJECT_PLAN.md § "LoRA-only
-baseline"). The whole point of the framework is that a new adapter shape is just a new
+**LoRA is the only codec in the current baseline** (see PROJECT_PLAN.md's session
+handoff and roadmap). The whole point of the framework is that a new adapter shape is just a new
 `GeneratedUpdateCodec` subclass + one entry in `make_codec` + an adapter manifest;
 additional shapes (FreezeALoRA, LoKr, FourierFT, IA3, activation steering, …) are
-reintroduced one at a time as reviewed codecs, each with its own leaderboard entry, not carried here
+reintroduced one at a time as committed codecs, each with its own leaderboard entry, not carried here
 speculatively. `GeneratedUpdateCodec` deliberately keeps the full contract
 (`dense_delta`, `initial_bias`, the `"block"` residual-stream hook path) so those shapes
 plug back in without framework changes.
@@ -128,13 +128,13 @@ def make_codec(
     alpha: float = 16.0,
     lora_scaling: float | None = None,
     seed: int = 777,
-    # Accepted-and-ignored so call sites (and future pipeline-added codecs) can pass a
+    # Accepted-and-ignored so call sites (and future codecs) can pass a
     # uniform kwarg set without every caller special-casing which codec is registered.
     **_unused_codec_kwargs,
 ) -> GeneratedUpdateCodec:
     """Build the codec named `name`. LoRA is the only registered shape in the current
     baseline; a new adapter shape adds one entry to `constructors` (plus its
-    `GeneratedUpdateCodec` subclass above and its manifest), added one at a time as a reviewed codec.
+    `GeneratedUpdateCodec` subclass above and its manifest), added one at a time with a leaderboard entry.
     """
     constructors = {
         "lora": lambda: LoRACodec(in_features, out_features, rank, alpha, scaling=lora_scaling, seed=seed),
@@ -146,4 +146,3 @@ def make_codec(
             f"unsupported differentiable adapter: {name!r} "
             f"(baseline registers only {sorted(constructors)}; new shapes arrive via the pipeline)"
         ) from error
-

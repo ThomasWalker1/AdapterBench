@@ -297,7 +297,7 @@ class EarlyExitPerceiverConditioner(nn.Module):
     Perceiver-IO cross-attention stack, producing the same `(batch, task_dim)` per-layer
     output `PooledVectorConditioner`/`DocumentPerceiverConditioner` produce, so it slots
     into `TextToPeftHypernetwork` (via `conditioner=`) and the existing trunk/heads/codec
-    seam unchanged - all six codecs still plug in.
+    seam unchanged so additional codecs plug in without conditioner-specific plumbing.
 
     This is the generation path that empirically learns held-out NIAH retrieval where the
     per-layer `DocumentPerceiverConditioner` did not (see PROJECT_PLAN.md's D2P section).

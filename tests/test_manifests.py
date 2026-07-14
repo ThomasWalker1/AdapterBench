@@ -16,7 +16,7 @@ def test_catalog_and_trial_ids_are_complete_and_stable():
         "text_to_peft_gemma2b_sft",
         "text_to_peft_sft_pilot",
     }
-    # LoRA is the only baseline adapter; more are added as reviewed codecs.
+    # LoRA is the only baseline adapter; more are added one at a time with leaderboard entries.
     assert len(adapters) == 1
     # Every registered adapter supports the downstream objective, so a downstream setup
     # builds a trial against all of them - matching how `adapterbench validate`/
@@ -33,7 +33,7 @@ def test_make_trial_rejects_an_objective_the_adapter_does_not_support():
     # An adapter that declares compatible_objectives=[downstream] only must not build a
     # trial against a reconstruction-objective setup. No reconstruction setup and no
     # downstream-only adapter ship in the LoRA-only catalog, so synthesize both from real
-    # manifests to exercise the guard (this is exactly how a pipeline-added codec that
+    # manifests to exercise the guard (this is exactly how a newly added codec that
     # restricts its objectives would be gated).
     reconstruction_setup = setups["text_to_peft_gemma2b_sft"].model_copy(
         update={
@@ -61,7 +61,7 @@ def test_all_upstream_peft_manifests_build_configs():
 def test_custom_adapter_is_not_silently_mapped_to_upstream_peft():
     _, adapters = load_catalog(ROOT / "configs")
     # No custom-implementation adapter ships in the LoRA-only catalog (LoRA is
-    # implementation="peft"), so synthesize one to exercise the guard - a pipeline-added
+    # implementation="peft"), so synthesize one to exercise the guard - a newly added
     # codec with a hand-rolled implementation must not be silently routed to HF PEFT.
     custom = next(iter(adapters.values())).model_copy(update={"implementation": "custom"})
     with pytest.raises(ValueError, match="custom implementation"):

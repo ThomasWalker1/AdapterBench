@@ -44,7 +44,7 @@ def test_dense_delta_matches_apply(name):
 
 def test_make_codec_rejects_unregistered_shape():
     # Only LoRA is registered in the baseline; other shapes (ia3, lokr, fourierft,
-    # activation_steering, …) return as reviewed codecs, not this map.
+    # activation_steering, …) return as committed codecs, not this map.
     with pytest.raises(ValueError, match="unsupported differentiable adapter"):
         make_codec("ia3", 8, 8, num_layers=2)
 
@@ -177,4 +177,3 @@ def test_bilinear_codec_contributes_zero_at_init_but_has_nonzero_gradient(name):
     output.square().mean().backward()
     assert hypernetwork.heads["q_proj"].weight.grad is not None
     assert hypernetwork.heads["q_proj"].weight.grad.abs().max() > 0
-

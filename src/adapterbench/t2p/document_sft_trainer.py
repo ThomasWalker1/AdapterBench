@@ -167,7 +167,7 @@ def train_doc_niah_checkpointed(
     killed long runs). `evaluate` must return a JSON-serializable dict of metrics (e.g.
     per-family exact-digit `accuracy` and `accuracy_ctxswap`) - it is logged and stored in
     the returned/checkpointed history, never used to gate training (NIAH loss is not a
-    retrieval signal - gotcha #16). Returns the eval-history list.
+    retrieval signal - gotcha #9). Returns the eval-history list.
 
     `train_items` are the raw per-document dicts (a `DocSFTDataset`), NOT pre-collated
     batches: batches are reformed from a **document-level reshuffle every epoch**

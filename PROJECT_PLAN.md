@@ -61,8 +61,20 @@ leaderboards" and `leaderboards/README.md`.
   command** (§ "T2L" IN-PROGRESS block) — it resumes from the last 10K checkpoint. When it finishes:
   `.venv/bin/python scripts/t2p_rigor_aggregate.py --results results/t2p_cond_1M/s777/results.jsonl`,
   extend the emergence curve (5K→20K→60K→150K→**1M**), decide multi-seed-at-1M.
+- **3-seed D2L base-retrieval baseline** — seeds 777/778/779 on cuda:1/2/3 →
+  `results/repro/document_niah_lora/s{777,778,779}/`, started 2026-07-14. All use the
+  validated 384-token/512-document/6000-step recipe at scale 45.25 and are restart-safe.
+  When they finish: `.venv/bin/python scripts/d2p_niah_aggregate.py --root
+  results/repro/document_niah_lora --min-seeds 3`, then update the D2L leaderboard row.
 - Other users (`sa86`) intermittently share the GPUs; `nvidia-smi` before launching, prefer 0%-util
   GPUs, never touch cuda:0's 1M run.
+
+**Completion checklist — aggregate both running experiments when they finish:**
+- [ ] **T2L 1M:** run `.venv/bin/python scripts/t2p_rigor_aggregate.py --results
+  results/t2p_cond_1M/s777/results.jsonl`, then update the emergence curve, T2L leaderboard,
+  and paper.
+- [ ] **D2L 3-seed:** run `.venv/bin/python scripts/d2p_niah_aggregate.py --root
+  results/repro/document_niah_lora --min-seeds 3`, then update the D2L leaderboard.
 
 **LoRA results status + gaps** (the "complete the baseline" work):
 - **Image (I2P): complete.** Operating point (scale 4, reg 0.25) × 3 seeds + reward-swap control ×
@@ -72,13 +84,13 @@ leaderboards" and `leaderboards/README.md`.
   scale running**. Gap = finish 1M (+ optional multi-seed-at-1M).
 - **Document (D2L): length-gen is 6-seed** (`d2p_lengthgen_lora_s777..782`) but **base NIAH
   retrieval is single-seed** (`d2p_niah_lora`). Gap = ≥3-seed base retrieval; confirm the scale
-  operating point (≈45). **Not currently running.**
+  operating point (≈45). **Three-seed completion run is now in progress** at the paths above.
 
 **Next steps (priority order):**
 1. **Finish the 1M T2L run** (running) → aggregate, extend the emergence curve, update the T2L
    leaderboard row and paper.
-2. **Complete the D2L base-retrieval baseline** — ≥3 seeds at the operating point (the one real
-   experimental gap); the reproduce command is in `leaderboards/document_niah_d2l.md`.
+2. **Complete the D2L base-retrieval baseline** — the ≥3-seed operating-point run is in
+   progress; aggregate it and update `leaderboards/document_niah_d2l.md` when it finishes.
 3. **Codebase cleanup** — audit for anything orphaned by the machinery removal (dead scripts,
    stale docstrings); keep only the setting CLIs + aggregate/smoke helpers.
 4. **Then add alternative shapes** (IA³, LoKr, FourierFT, activation-steering — in git history), one
@@ -447,7 +459,7 @@ uv run adapterbench t2p-sft-sweep \
 ```
 
 ```bash
-uv run pytest -q   # 97 tests (LoRA-only baseline)
+uv run pytest -q   # 101 tests (LoRA-only baseline)
 ```
 
 ## Gotchas (read before touching the pipeline again)
@@ -632,7 +644,7 @@ optimize" claim splits into two sub-claims, and the image domain cleanly separat
 
 **Next active phase: complete the LoRA baseline, then add alternative shapes.**
 1. Finish the 1M-step T2L run (running) and update its leaderboard row + the emergence curve.
-2. Fill the one experimental gap — a ≥3-seed D2L base-retrieval baseline at the operating point
+2. Finish and aggregate the running ≥3-seed D2L base-retrieval baseline at the operating point
    (length-gen is already 6-seed; image and T2L operating points are 3-seed).
 3. Codebase cleanup after the machinery removal (dead scripts, stale docstrings).
 4. **Then add alternative codec shapes** (IA³, LoKr, FourierFT, activation-steering — all in git

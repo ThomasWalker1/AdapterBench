@@ -16,6 +16,9 @@ for SEED in 777 778 779; do
     --output "results/repro/document_niah_lora/s$SEED"
 done
 
+.venv/bin/python scripts/d2p_niah_aggregate.py \
+  --root results/repro/document_niah_lora --min-seeds 3
+
 # Length-generalization variant (difficulty knob): train short, eval a length sweep.
 # for SEED in 777 778 779; do
 #   .venv/bin/adapterbench d2p-niah --adapters lora --seed "$SEED" --needle-style generic \

@@ -57,6 +57,6 @@ fixed_controls:
   - 8-task training split (lol_022, lol_043, lol_044, lol_045, lol_047, lol_050, lol_063, lol_064 — all confirmed in T2L's own decontaminated train_ds_names; none source from boolq or hellaswag, the eval families used here, so no train/eval leakage. The earlier split additionally included lol_033/lol_034 — two of T2L's 10 contamination-removed tasks — and lol_035/lol_039 — two of T2L's own 11 held-out zero-shot validation tasks — which adapterbench.t2p.lol_data.validate_training_tasks now rejects.)
   - hypernetwork hidden architecture
 notes:
-  - "Restructures the benchmark around live end-to-end SFT training (see PROJECT_PLAN.md Phase 4) — supersedes the retired reconstruction-matching approach (archived under archive/) as the sole training/eval mechanism."
-  - "Small model (Qwen3-0.6B) and small task set chosen deliberately for a first honest end-to-end validation, not a competitive result — mirrors this project's established small-scale-first pattern (Phase 1/2/3 pilots)."
+  - "Uses live end-to-end SFT training, which supersedes the retired reconstruction-matching approach as the sole training/eval mechanism."
+  - "Small model (Qwen3-0.6B) and small task set chosen deliberately for a plumbing smoke test, not a competitive result."
   - "Only 6 of the 8 listed training tasks are decontamination-clean against ALL benchmark families (lol_033/lol_034 are winogrande-sourced); safe here specifically because this setup only evaluates boolq/hellaswag, not winogrande — re-check before adding new eval families."

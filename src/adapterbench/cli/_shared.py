@@ -4,7 +4,7 @@ Every command that loads a frozen interpreter, embeds task-description condition
 or streams results to disk went through a byte-for-byte copy of the same block
 before this module existed; extracting them here keeps that plumbing in one place
 without changing any command's behavior. Command *logic* stays in the per-command
-modules (`meta.py`, `reproduction.py`, `live_sft.py`); only the mechanical setup
+modules (`meta.py`, `image_sft.py`, `live_sft.py`); only the mechanical setup
 lives here.
 """
 
@@ -37,7 +37,7 @@ DEFAULT_SFT_TRAIN_TASKS = "lol_022,lol_043,lol_044,lol_045,lol_047,lol_050,lol_0
 
 # Default hook site per adapter, shared by every live-SFT pilot/sweep command so they
 # never drift apart. LoRA (the only baseline codec) modifies attention projections; as
-# new codecs are added one at a time as reviewed codecs; they register their own hook site
+# new codecs are added one at a time with a leaderboard entry; they register their own hook site
 # here (e.g. activation steering -> ["block"], IA3 -> ["k_proj", "v_proj", "down_proj"]).
 PILOT_DEFAULT_TARGET_MODULES = {
     "lora": ["q_proj", "v_proj"],
@@ -58,7 +58,7 @@ def load_frozen_interpreter(interpreter_id: str, device: str):
     This is the exact setup every live-SFT command shares. Note it deliberately does
     NOT `.resolve()` the interpreter id (it's a HF model name, not a path). `eval()`
     here freezes the *interpreter's* dropout only - each command still calls
-    `hypernetwork.eval()` separately before held-out scoring (PROJECT_PLAN gotcha #14).
+    `hypernetwork.eval()` separately before held-out scoring (PROJECT_PLAN gotcha #7).
     """
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer

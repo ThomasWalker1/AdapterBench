@@ -211,6 +211,7 @@ def test_warmup_ramps_lr_linearly_then_holds_constant():
     lrs = []
     for _ in range(6):
         lrs.append(optimizer.param_groups[0]["lr"])
+        optimizer.step()
         scheduler.step()
 
     assert lrs[0] == pytest.approx(1e-2 * 1 / 4)

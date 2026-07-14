@@ -3,14 +3,12 @@
 anywhere in Sakana's own Text-to-LoRA repo (no raw/original SNI dataset reference exists
 there). Ports the exact preprocessing/tokenization convention their pipeline uses
 (``hyper_llm_modulator/utils/preprocessing.py``, ``data.py``), scoped down per project
-decision: point at the existing per-task ``tasks/*/metadata.yaml`` descriptions as-is (a
-small prefix, not the paper's full 128) rather than reproducing how those descriptions
-were generated.
-
-TODO: Sakana's paper claims these descriptions are GPT-4o-mini-generated replacements
-for SNI's own inconsistent default templates, but nothing in the cloned upstream repo
-documents or implements that generation step (no provenance comment found anywhere) —
-come back to this if reproducing the paper's exact description quality matters later.
+decision: use the descriptions already published in the per-task
+``tasks/*/metadata.yaml`` files rather than attempting to regenerate them. The vendored
+metadata includes the full 128 descriptions used by the paper-matched recipe. Sakana's
+paper says these are GPT-4o-mini replacements for SNI's inconsistent default templates,
+but the upstream repository does not document the generation step; AdapterBench therefore
+treats the published descriptions as source data.
 """
 
 from __future__ import annotations
@@ -40,7 +38,7 @@ class LolTaskMetadata:
 
 
 def load_task_metadata(tasks_root: Path, task_id: str, *, max_descriptions: int | None = None) -> LolTaskMetadata:
-    """Read ``tasks/<task_id>/metadata.yaml`` (already cloned under upstream/text-to-lora)."""
+    """Read the vendored ``data/t2l/tasks/<task_id>/metadata.yaml``."""
     payload = yaml.safe_load((tasks_root / task_id / "metadata.yaml").read_text())
     ds_kwargs = payload["ds_kwargs"]
     descriptions = payload["descriptions"]

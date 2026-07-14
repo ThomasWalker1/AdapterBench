@@ -20,7 +20,7 @@ Baseline commit: `1ec5951`.
 
 | Shape | scale | lr | steps | seeds | accuracy | ctxswap | **matched − control** |
 |-------|:-----:|-------:|------:|:-----:|---------:|--------:|----------------------:|
-| LoRA (r=8) | ≈45.25 (default) | 4e-5 | 6000 | 3 | 1.00 | 0.00 | **1.00** |
+| LoRA (r=8) | ≈45.25 (default) | 4e-5 | 6000 | 1 | 1.00 | 0.00 | **1.00** |
 
 **Difficulty knob — length generalization:** train on 128–256-token documents, evaluate out to
 8192; report the retrieval-vs-length curve and the eval/train length ratio at which retrieval

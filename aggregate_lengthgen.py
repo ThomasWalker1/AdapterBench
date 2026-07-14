@@ -67,7 +67,11 @@ def mean_std(xs):
 
 def main():
     runs = {}  # adapter -> {seed -> (recs, done)}
-    for log in sorted(glob.glob("results/d2p_lengthgen_*.log")):
+    # Canonical baseline logs are archived after completion; prefer an active scratch
+    # run over an archived run with the same adapter/seed when both exist.
+    logs = sorted(glob.glob("results/_archive/d2p_lengthgen_*.log"))
+    logs += sorted(glob.glob("results/d2p_lengthgen_*.log"))
+    for log in logs:
         name = os.path.basename(log)[len("d2p_lengthgen_"):-len(".log")]
         adapter, _, seed = name.rpartition("_s")
         recs, done = parse_log(log)

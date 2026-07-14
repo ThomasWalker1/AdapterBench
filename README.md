@@ -13,11 +13,11 @@ varies only the generated representation. A new adapter here needs exactly two t
 The training loop, data pipeline, and evaluator are the same for every adapter that plugs
 in this way — that's the whole point.
 
-> **Current state: LoRA is the only codec on `main`.** It's the baseline used to develop
-> and validate the benchmark's evaluation pipeline. Every other shape is (re)introduced
-> one at a time through the **autoresearch git-merge pipeline** — propose a codec on a
-> branch, gate the PR on correctness (not on winning), merge, then evaluate and append to
-> the leaderboard. See PROJECT_PLAN.md § "Git-native benchmark" and § "LoRA-only baseline".
+> **Current state: LoRA is the only codec on `main`.** It validates all three settings:
+> task-description conditioning (T2L), document conditioning (D2L), and image reward-tilting
+> (I2P). New shapes are added one at a time as a codec + registration entry + manifest, then
+> evaluated with the setting CLIs and recorded in the committed per-setting leaderboards.
+> Hyperparameter selection is manual and explicit; there is no automated search or merge gate.
 
 ## The setting
 
@@ -35,8 +35,10 @@ See [PROJECT_PLAN.md](PROJECT_PLAN.md) for architecture, results, and hard-won g
   + generalized hook (`hypernetwork.py`), the training loop (`sft_trainer.py`),
   Lots-of-LoRAs/SNI data loading (`lol_data.py`), and the hook-based downstream evaluator
   (`live_evaluator.py`).
-- `configs/setups/`, `configs/adapters/` — declarative manifests; `adapterbench
-  catalog`/`validate`/`matrix` operate on these.
+- `src/adapterbench/i2p/` — image reward-tilting on a frozen SD-Turbo generator.
+- `leaderboards/` — the benchmark results and exact reproduction commands, one file per
+  setting.
+- `configs/setups/`, `configs/adapters/` — declarative setup and codec metadata.
 
 Start with [SETUP.md](SETUP.md) for environment setup, then
 [BENCHMARK_CONTRACT.md](BENCHMARK_CONTRACT.md) for the interfaces every setting
@@ -65,7 +67,7 @@ uv run adapterbench t2p-sft --device cuda:0 --tasks lol_022 \
 
 Train the baseline on the full 479-task decontaminated corpus, across several seeds,
 scored against real held-out benchmark examples (`--adapters` currently accepts `lora`;
-pipeline-added shapes extend the list):
+newly committed codecs extend the list):
 
 ```bash
 uv run adapterbench t2p-sft-pilot --device cuda:0 \
@@ -82,3 +84,7 @@ uv run adapterbench t2p-sft-sweep --device cuda:0 \
   --adapters lora \
   --checkpoint-steps 100,200,400,800,1200 --output results/t2p_sft_sweep
 ```
+
+The validated D2L and I2P recipes, scale sweeps, controls, and longer reproduction
+commands are recorded in [PROJECT_PLAN.md](PROJECT_PLAN.md) and
+[leaderboards/](leaderboards/README.md).

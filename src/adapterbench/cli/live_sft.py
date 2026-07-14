@@ -448,7 +448,7 @@ def _d2p_sft_pilot_command(args) -> None:
 # Hook site per adapter for the Doc-to-LoRA-parity NIAH path. Upstream's NIAH recipe hooks
 # `down_proj` only; we hold that site fixed for every weight-space codec so a multi-codec
 # comparison varies only the generated *representation*, not the attachment point. LoRA is
-# the only baseline codec; pipeline-added shapes register their site here (weight-space ->
+# the only baseline codec; newly committed shapes register their site here (weight-space ->
 # ["down_proj"]; activation steering must intervene on the whole residual block -> ["block"]).
 D2L_PARITY_TARGET_MODULES = {
     "lora": ["down_proj"],
@@ -456,15 +456,14 @@ D2L_PARITY_TARGET_MODULES = {
 
 
 def _d2p_niah_command(args) -> None:
-    """Doc-to-LoRA-parity NIAH training inside the six-codec framework: the first
-    document-conditioned config that genuinely learns held-out needle retrieval (see
-    PROJECT_PLAN.md's D2P section). Trains one hypernetwork per `--adapters` entry with the
+    """Doc-to-LoRA-parity NIAH training through the shared codec seam: the validated
+    document-conditioned config for held-out needle retrieval (see PROJECT_PLAN.md's D2L
+    section). Trains one hypernetwork per `--adapters` entry with the
     early-exit context encoder + Perceiver-IO generation path (`EarlyExitPerceiverConditioner`)
     on generic-needle chat-tokenized NIAH documents, checkpointing model+optimizer every eval
     (restart-safe) and logging exact-digit `accuracy` AND `accuracy_ctxswap` per eval - never
-    gating on loss (gotcha #16). Once LoRA retrieves, the other five codecs plug into the same
-    recipe unchanged (the codec seam), which is the six-codec comparison under document
-    conditioning.
+    gating on loss (gotcha #9). Additional committed codecs plug into the same recipe
+    unchanged so the document-conditioning comparison varies the generated representation.
     """
     import torch
 
@@ -500,7 +499,7 @@ def _d2p_niah_command(args) -> None:
     num_layers = len(layers)
     exit_layer = args.exit_layer if args.exit_layer > 0 else max(1, num_layers // 4)
     lora_scaling = args.lora_scaling if args.lora_scaling > 0 else 2 * args.rank**1.5
-    # Both train and eval documents are packed into one context window (gotcha #12), so
+    # Both train and eval documents are packed into one context window (gotcha #5), so
     # every eval length must fit too - length generalization pushes eval far past training.
     for context_length in sorted(set(context_lengths) | set(eval_context_lengths)):
         assert_context_fits_in_one_pass(context_length, interpreter.config.max_position_embeddings)
@@ -604,7 +603,7 @@ def _t2p_sft_sweep_command(args) -> None:
     train_with_checkpoints`), instead of only ever reporting a single fixed-step endpoint.
 
     Originally motivated by an apparent finding that longer training made held-out
-    accuracy worse for every adapter (see PROJECT_PLAN.md's Phase 4 section) - but running
+    accuracy worse for every adapter - but running
     this swept the ground out from under that framing: most adapters were already
     flat/collapsed by the *first* checkpoint, with no peak-then-decline curve at all, and
     the numbers didn't even match an earlier pilot run at the same nominal step count.
@@ -748,11 +747,11 @@ def register(subparsers) -> None:
 def _register_d2p_niah(subparsers) -> None:
     p = subparsers.add_parser(
         "d2p-niah",
-        help="Doc-to-LoRA-parity NIAH training in the six-codec framework: early-exit context encoder + "
+        help="Doc-to-LoRA-parity NIAH training through the shared codec seam: early-exit context encoder + "
         "Perceiver-IO generation path on generic-needle chat-tokenized documents, restart-safe "
         "(checkpoints model+optimizer every eval), logging exact-digit accuracy AND accuracy_ctxswap per "
-        "eval. The first document-conditioned config that genuinely learns held-out NIAH retrieval; pass "
-        "several --adapters for the six-codec comparison under document conditioning.",
+        "eval. This is the validated document-conditioned recipe for held-out NIAH retrieval; pass "
+        "several --adapters as additional codecs are committed.",
     )
     p.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
     p.add_argument("--adapters", default="lora", help="comma-separated codecs (see 't2p-sft-pilot --adapters')")
@@ -772,8 +771,8 @@ def _register_d2p_niah(subparsers) -> None:
     p.add_argument("--lora-scaling", type=float, default=-1.0,
                    help="LoRA scale applied directly; <=0 (default) computes D2L parity 2*r^1.5 (=45.25 at r=8)")
     p.add_argument("--scale-weight-codecs", action="store_true",
-                   help="also apply --lora-scaling to any other LoRA-family weight codecs added via the "
-                        "pipeline (none in the LoRA-only baseline, so currently a no-op) so a multi-codec "
+                   help="also apply --lora-scaling to any other LoRA-family weight codecs added later "
+                        "(none in the LoRA-only baseline, so currently a no-op) so a multi-codec "
                         "comparison isn't confounded by only LoRA getting the load-bearing scale")
     p.add_argument("--l2-reg-generated-w", type=float, default=0.0, help="D2L NIAH parity uses ~0 (see gotcha)")
     p.add_argument("--grad-accum-steps", type=int, default=1)
@@ -792,7 +791,7 @@ def _register_d2p_niah(subparsers) -> None:
 def _register_t2p_sft(subparsers) -> None:
     t2p_sft = subparsers.add_parser(
         "t2p-sft",
-        help="live end-to-end SFT: hook the hypernetwork's generated output into a real interpreter's forward pass and train on real next-token loss (Phase 4)",
+        help="live end-to-end SFT: hook the hypernetwork's generated output into a frozen interpreter and train on real next-token loss",
     )
     t2p_sft.add_argument("--tasks-dir", default=str(T2L_TASKS_DIR))
     t2p_sft.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
@@ -828,9 +827,8 @@ def _register_t2p_sft(subparsers) -> None:
 def _register_t2p_sft_pilot(subparsers) -> None:
     t2p_sft_pilot = subparsers.add_parser(
         "t2p-sft-pilot",
-        help="small multi-task live-SFT pilot: train 2-3 adapters to convergence on the shared 8-task "
-        "training split, then score each via HypernetworkDownstreamEvaluator against real held-out benchmark "
-        "examples (Phase 4's 'next' step)",
+        help="multi-task live-SFT pilot: train the selected codecs on a shared task corpus, "
+        "then score each via HypernetworkDownstreamEvaluator against real held-out benchmark examples",
     )
     t2p_sft_pilot.add_argument("--tasks-dir", default=str(T2L_TASKS_DIR))
     t2p_sft_pilot.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
@@ -850,8 +848,8 @@ def _register_t2p_sft_pilot(subparsers) -> None:
         "--adapters",
         default="lora",
         help="comma-separated adapters to train and compare; each uses a fixed default hook site "
-        "(lora -> q_proj,v_proj). LoRA is the only baseline codec; more are added one at a time "
-        "as reviewed codecs, each with its own leaderboard entry (see PROJECT_PLAN.md).",
+        "(lora -> q_proj,v_proj). LoRA is the only baseline codec; more are added one at a time, "
+        "each with its own leaderboard entry (see PROJECT_PLAN.md).",
     )
     t2p_sft_pilot.add_argument("--condition-encoder", default="Alibaba-NLP/gte-large-en-v1.5")
     t2p_sft_pilot.add_argument("--max-descriptions", type=int, default=8)
@@ -973,7 +971,7 @@ def _register_t2p_sft_sweep(subparsers) -> None:
         "t2p-sft-sweep",
         help="checkpointed counterpart to t2p-sft-pilot: scores held-out accuracy at several step budgets per "
         "adapter under one persistent optimizer, to tell 'still converging' apart from 'already past the point "
-        "where held-out generalization peaks' - see PROJECT_PLAN.md's Phase 4 section for why this exists",
+        "where held-out generalization peaks'",
     )
     t2p_sft_sweep.add_argument("--tasks-dir", default=str(T2L_TASKS_DIR))
     t2p_sft_sweep.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
