@@ -12,11 +12,5 @@ hyperparameters:
   bias: none
 compatible_objectives: [downstream, reconstruction, hybrid]
 supports_batched_generation: true
-# Shape-identity budget for the correctness merge gate: at a 2048-d reference linear, an r=8
-# RS-LoRA emits 8*(2048+2048)=32768 generated values per target. The band caps the panel at r<=8
-# capacity here (r=16 -> 65536 would exceed), so shapes compete at matched capacity.
-parameter_budget:
-  reference_dim: 2048
-  max_output_size: 40000
 notes: [Exact adapter configuration from the released Text-to-LoRA Gemma checkpoint.]
 

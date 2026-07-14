@@ -44,7 +44,7 @@ def test_dense_delta_matches_apply(name):
 
 def test_make_codec_rejects_unregistered_shape():
     # Only LoRA is registered in the baseline; other shapes (ia3, lokr, fourierft,
-    # activation_steering, …) return through the autoresearch pipeline, not this map.
+    # activation_steering, …) return as reviewed codecs, not this map.
     with pytest.raises(ValueError, match="unsupported differentiable adapter"):
         make_codec("ia3", 8, 8, num_layers=2)
 

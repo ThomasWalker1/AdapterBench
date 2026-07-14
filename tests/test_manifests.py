@@ -16,7 +16,7 @@ def test_catalog_and_trial_ids_are_complete_and_stable():
         "text_to_peft_gemma2b_sft",
         "text_to_peft_sft_pilot",
     }
-    # LoRA is the only baseline adapter; more arrive via the autoresearch pipeline.
+    # LoRA is the only baseline adapter; more are added as reviewed codecs.
     assert len(adapters) == 1
     # Every registered adapter supports the downstream objective, so a downstream setup
     # builds a trial against all of them - matching how `adapterbench validate`/

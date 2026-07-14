@@ -13,7 +13,7 @@ def make_peft_config(adapter: AdapterManifest, task_type: str = "CAUSAL_LM"):
     values = dict(adapter.hyperparameters)
     targets = adapter.target_modules or None
     # LoRA is the only baseline family; new families register their PEFT config here as
-    # they arrive through the autoresearch git-merge pipeline (see PROJECT_PLAN.md).
+    # they are added one at a time as reviewed codecs (see PROJECT_PLAN.md).
     constructors = {
         "lora": lambda: LoraConfig(task_type=task_type, target_modules=targets, **values),
     }

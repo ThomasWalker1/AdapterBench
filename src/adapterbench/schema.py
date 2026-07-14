@@ -98,22 +98,10 @@ class SetupManifest(StrictModel):
     notes: list[str] = Field(default_factory=list)
 
 
-class ParameterBudget(StrictModel):
-    """The panel's declared parameter-efficiency band for the shape-identity merge lint. A codec is
-    instantiated on a square `reference_dim × reference_dim` linear (so counts are comparable across
-    shapes at matched dimensions) and its per-target generated-output size must not exceed
-    `max_output_size` — shapes compete at matched capacity, not "as dense as the budget allows"
-    (PROJECT_PLAN § "The merge gate is correctness"). See `merge_gate.check_shape_identity`."""
-
-    reference_dim: int = Field(gt=0)
-    max_output_size: int = Field(gt=0)
-
-
 class AdapterManifest(StrictModel):
     schema_version: Literal[1]
     name: str
-    # LoRA is the only baseline family; new families are added here as they arrive
-    # through the autoresearch git-merge pipeline (see PROJECT_PLAN.md).
+    # LoRA is the only baseline family; new families are added here as they arrive.
     family: Literal["lora"]
     implementation: Literal["peft", "custom"]
     output_structure: str
@@ -121,9 +109,6 @@ class AdapterManifest(StrictModel):
     hyperparameters: dict[str, Any]
     compatible_objectives: list[Literal["downstream", "reconstruction", "hybrid"]]
     supports_batched_generation: bool
-    # Optional shape-identity budget checked by the correctness merge gate. Optional so the field
-    # is additive; a codec joining a *matched-capacity panel* is expected to declare one.
-    parameter_budget: ParameterBudget | None = None
     notes: list[str] = Field(default_factory=list)
 
 

@@ -9,7 +9,7 @@ submodule.
 baseline"). The whole point of the framework is that a new adapter shape is just a new
 `GeneratedUpdateCodec` subclass + one entry in `make_codec` + an adapter manifest;
 additional shapes (FreezeALoRA, LoKr, FourierFT, IA3, activation steering, …) are
-reintroduced one at a time through the autoresearch git-merge pipeline, not carried here
+reintroduced one at a time as reviewed codecs, each with its own leaderboard entry, not carried here
 speculatively. `GeneratedUpdateCodec` deliberately keeps the full contract
 (`dense_delta`, `initial_bias`, the `"block"` residual-stream hook path) so those shapes
 plug back in without framework changes.
@@ -134,7 +134,7 @@ def make_codec(
 ) -> GeneratedUpdateCodec:
     """Build the codec named `name`. LoRA is the only registered shape in the current
     baseline; a new adapter shape adds one entry to `constructors` (plus its
-    `GeneratedUpdateCodec` subclass above and its manifest) via the autoresearch pipeline.
+    `GeneratedUpdateCodec` subclass above and its manifest), added one at a time as a reviewed codec.
     """
     constructors = {
         "lora": lambda: LoRACodec(in_features, out_features, rank, alpha, scaling=lora_scaling, seed=seed),

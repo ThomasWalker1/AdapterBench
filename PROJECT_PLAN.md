@@ -27,60 +27,67 @@ set up and validated end-to-end with a **LoRA baseline codec**:
 
 LoRA is the only codec on `main`. It exists to prove the *evaluation pipeline* works with a
 single, well-understood representation; any pipeline failure is then attributable to the
-plumbing, not the codec. **Additional adapter shapes are introduced one at a time through an
-autoresearch git-merge pipeline** (see § "Git-native benchmark") — a codec is proposed on a
-branch, gated on correctness, merged, then evaluated and appended to a derived leaderboard.
-Previously-explored shapes and their results live in git history.
+plumbing, not the codec. **Additional adapter shapes are added one at a time** — a codec subclass
++ `make_codec` entry + manifest — each landing with its own row in the relevant setting's
+leaderboard (see § "The benchmark: per-setting leaderboards"). Previously-explored shapes and
+their results live in git history.
 
 **The modality-transfer question is now answered for LoRA**: the adapter-shape seam and the
-four invariants port to a visual generator (I2P). The remaining goals are the generated
-(hypernetwork-produces-the-adapter) upgrade of I2P and the autoresearch codec-comparison
-pipeline (see § "Roadmap").
+four invariants port to a visual generator (I2P). The remaining goals are completing the LoRA
+baseline results on every setting and then adding alternative shapes (see § "Roadmap").
 
 ## Session handoff (2026-07-14) — read this first
 
-**What just happened this session:**
-- **I2P closed out** as a controlled positive (matched ImageReward +0.16 ± 0.015 vs a −3.34
-  reward-swap control, scale optimum ≈ 2–4). See § "Image domain: I2P".
-- **T2L rigor added and the result corrected.** A mismatched-description control (weak +
-  adversarial-strong), a LoRA-scale sweep, and a difficulty knob were added; they first showed
-  *no* conditioning, which was diagnosed as an under-powered recipe (8 vs 128 descriptions, ~few
-  hundred vs ~1e6 steps). With the paper-matched recipe, description-conditioning **emerges with
-  training** and is a confirmed controlled positive at 150K × 3 seeds (all 4 families, mean
-  matched−adversarial ≈ +0.033). See § "T2L".
-- **Self-containment:** the T2L data is vendored to `data/t2l/` (13 MB; 479 training tasks × 128
-  descriptions) so no `upstream/` clone is needed; `upstream/text-to-lora/` can be deleted.
-- **Repo hygiene:** `results/` is gitignored (scratch by default); checkpoints/`*.pt`/`*.log`
-  never committed. The paper (`~/adapterbench-paper.tex`) got the Image Domain section + the T2L
-  recipe/control corrections, **but no result numbers yet** (deliberately deferred).
+**Design (current).** The benchmark is **committed per-setting leaderboards** (`leaderboards/*.md`):
+each entry is `(shape, free hyperparameters, matched−control ± std, #seeds, reproduce command)`,
+reproducible by running the setting's CLI against the committed codec. There is **no** automated
+search, proxies, or merge gate — that machinery was built, validated on LoRA, then removed as
+over-engineering. What survives as *rules* (not code): the HP partition (shared substrate fixed,
+only free HPs vary per entry, rank fixed) and the four invariants (matched−control never loss;
+scale swept; difficulty knob; multi-seed). A new shape is a codec subclass + `make_codec` entry +
+manifest, added one at a time, each with its leaderboard row. See § "The benchmark: per-setting
+leaderboards" and `leaderboards/README.md`.
+
+**Validated LoRA baselines** (recorded in the leaderboards): image reward-tilting matched−control
+**+3.50** (IR gain +0.160 ± 0.015 vs −3.34 reward-swap; scale optimum 2–4); T2L conditioning
+**+0.033** (150K × 3 seeds, all 4 families); D2L NIAH **+1.00** (acc 1.0, ctxswap 0.0). The paper
+(`~/adapterbench-paper.tex`) is updated to this design with these numbers.
 
 **⏳ RUNNING right now (do not kill unless intended):**
-- **1M-step T2L run** (paper scale), pid may change — output `results/t2p_cond_1M/s777/`,
-  restart-safe, ~2 days on cuda:0. Full details + the resume command are in § "T2L" under
-  "IN PROGRESS — the paper-scale (1M-step) run". **When it finishes:** aggregate it, add the
-  numbers to the T2L trajectory table, then decide on multi-seed-at-1M.
-- Other users (`sa86`) intermittently share the GPUs; check `nvidia-smi` before launching more.
+- **1M-step T2L run** (paper scale, the *task* setting — not document) — `t2p-sft-pilot` →
+  `results/t2p_cond_1M/s777/`, single seed 777, on cuda:0, restart-safe (`--checkpoint-every 10000`),
+  ~2 days. Recipe: 128 descriptions, batch 8, lr 2.5e-5, warmup 0.1, `--adversarial-control`,
+  eval-limit 80. `results.jsonl` is written only at the end. **If it dies, re-run the identical
+  command** (§ "T2L" IN-PROGRESS block) — it resumes from the last 10K checkpoint. When it finishes:
+  `.venv/bin/python scripts/t2p_rigor_aggregate.py --results results/t2p_cond_1M/s777/results.jsonl`,
+  extend the emergence curve (5K→20K→60K→150K→**1M**), decide multi-seed-at-1M.
+- Other users (`sa86`) intermittently share the GPUs; `nvidia-smi` before launching, prefer 0%-util
+  GPUs, never touch cuda:0's 1M run.
+
+**LoRA results status + gaps** (the "complete the baseline" work):
+- **Image (I2P): complete.** Operating point (scale 4, reg 0.25) × 3 seeds + reward-swap control ×
+  3 seeds + full scale sweep (single-seed tails) + reg difficulty knob. Archived
+  `results/_archive/i2p_hypernoise_v2/`.
+- **Task (T2L): 150K × 3 done** (`results/_archive/t2p_cond_long/s{777,778,779}_150k`); **1M paper
+  scale running**. Gap = finish 1M (+ optional multi-seed-at-1M).
+- **Document (D2L): length-gen is 6-seed** (`d2p_lengthgen_lora_s777..782`) but **base NIAH
+  retrieval is single-seed** (`d2p_niah_lora`). Gap = ≥3-seed base retrieval; confirm the scale
+  operating point (≈45). **Not currently running.**
 
 **Next steps (priority order):**
-1. **Finish the 1M T2L run** → record its matched−adversarial in PROJECT_PLAN (extends the
-   5K→20K→60K→150K→1M emergence curve); decide multi-seed-at-1M.
-2. **Integrate results into `~/adapterbench-paper.tex`** — the structure is in place; fill the
-   I2P numbers (from `results/i2p_hypernoise_v2/`, via `scripts/i2p_hypernoise_aggregate.py`) and
-   the T2L numbers (from `results/t2p_cond*/`, via `scripts/t2p_rigor_aggregate.py`).
-3. ~~I2P Path B~~ **DONE — negative result (2026-07-14):** generation feasibility transfers to
-   images (generated adapter beats frozen), but conditional specialization does not (the
-   generation-side prompt-swap control doesn't separate) — see § "Roadmap" for the full result and
-   the SGD-not-AdamW lesson. Path B code was removed; the tree carries only the validated Path A.
-4. ~~The autoresearch codec-comparison pipeline~~ **BUILT + validated on LoRA (2026-07-14):** the
-   per-codec free-HP search (§ "Per-codec autoresearch") AND the git-native merge machinery — gate,
-   path guard, shape-identity lint, provenance-stamped leaderboard, and the propose→gate→merge→
-   evaluate→report loop, all dry-run end-to-end on LoRA (§ "Git-native benchmark"). Remaining: a real
-   CI job on a `codec/<name>` branch, launch-mode autoresearch on D2L-NIAH (compute), and the first
-   genuinely new codec shape as the payload.
+1. **Finish the 1M T2L run** (running) → aggregate, extend the emergence curve, update the T2L
+   leaderboard row and paper.
+2. **Complete the D2L base-retrieval baseline** — ≥3 seeds at the operating point (the one real
+   experimental gap); the reproduce command is in `leaderboards/document_niah_d2l.md`.
+3. **Codebase cleanup** — audit for anything orphaned by the machinery removal (dead scripts,
+   stale docstrings); keep only the setting CLIs + aggregate/smoke helpers.
+4. **Then add alternative shapes** (IA³, LoKr, FourierFT, activation-steering — in git history), one
+   PR at a time, each with its leaderboard row.
 
-**Key result dirs (all gitignored; regenerate via the aggregate scripts):** `i2p_hypernoise_v2/`
-(I2P), `t2p_cond/` + `t2p_cond_long/` + `t2p_cond_1M/` (T2L conditioning trajectory),
-`t2p_rigor_ms/` + `t2p_strong/` (T2L controls at the under-powered recipe).
+**Repo hygiene:** `results/` is gitignored scratch (the LoRA baseline data is under
+`results/_archive/`); checkpoints/`*.pt`/`*.log` never committed. Stage-ready: `leaderboards/`,
+`data/`, modified `src/`/`scripts/`/docs. **Nothing has been committed — the human drives that.**
+The T2L data is vendored to `data/t2l/` (13 MB) so no `upstream/` clone is needed.
 
 ## Architecture
 
@@ -96,7 +103,8 @@ pipeline (see § "Roadmap").
 - **The codec seam:**
   - `t2p/codecs.py` — differentiable generated-parameter codecs (`GeneratedUpdateCodec`
     base). **LoRA (`LoRACodec`) is the only registered codec in the baseline**; a new
-    shape is a subclass + one `make_codec` entry + a manifest (see § "The merge unit").
+    shape is a subclass + one `make_codec` entry + a manifest, added one at a time with its
+    own leaderboard row (see § "The benchmark: per-setting leaderboards").
     The base contract (`dense_delta`, `initial_bias`) and the hypernetwork's `"block"`
     residual-stream hook path are deliberately kept general so weight-space and
     activation-space shapes both plug in without framework changes.
@@ -543,9 +551,9 @@ the image domain) MUST satisfy them.
 2. **Scale is a swept axis, not a fixed choice.** Run a small **per-codec scale sweep and
    report best-of**. Then "shape matters" means "even at its own best scale, shape X
    underperforms" — a claim that survives scrutiny. Comparing at default scales is exactly
-   what NOT to publish as a shape result. `d2p-niah --scale-weight-codecs` applies one scale
-   across a codec family; the real need is a `--scale-sweep` per codec (see § "Per-codec
-   autoresearch").
+   what NOT to publish as a shape result. Each leaderboard entry records the winning scale (the
+   contributor sweeps it manually; `d2p-niah --lora-scaling` / `i2p-hypernoise --scale` /
+   `t2p-sft-pilot --scales` set it).
 3. **A graded difficulty knob so codecs actually spread.** A setting where everything
    saturates at 1.0 (or all fail) teaches nothing. **Length generalization is the ideal knob
    for the document setting** — continuous, cheap, and exactly where a shape either
@@ -566,198 +574,23 @@ length-extrapolation ratio (most discriminative axis); sample efficiency (retrie
 budget?". Different shapes differ here by orders of magnitude, which is precisely what makes
 the shape question interesting.
 
-### Per-codec autoresearch: generalizing the scale sweep (invariant #2, done right)
-**BUILT AND VALIDATED ON LoRA (2026-07-14).** Driver: `src/adapterbench/autoresearch.py`
-(setting-agnostic core) + `src/adapterbench/autoresearch_settings.py` (declarative `SettingSpec`s
-for I2P/D2L-NIAH/T2L) + `scripts/autoresearch.py` (CLI: read-only-aggregate + launch modes) +
-`tests/test_autoresearch.py` (10 tests). It encodes the **HP partition explicitly** (`SUBSTRATE` /
-`FREE` / `SHAPE_IDENTITY`) and refuses to search anything not `FREE` (`validate_search_space` raises
-— a codec can't cheat by tuning the substrate), selects **best-of on `matched − control`, never
-loss**, aggregates **multi-seed** with a guardrail that a single-seed point can't out-rank a
-multi-seed one (`min_seeds`; under-seeded winners are flagged), and reports the **tuned-HP table +
-search budget/space** (guardrail #3). **Validation (no new compute):** run read-only over the
-existing `results/i2p_hypernoise_v2` scale sweep, it recovers LoRA's known optimum unaided —
-`--search "scale=2,3,4,6,8,16,32" --fixed "reg_weight=0.25" --n-seeds 3` selects **scale 4
-(+0.160 ± 0.015, n=3)**, the documented headline point, correctly excluding the noisier single-seed
-peaks and reproducing the full inverted-U. D2L/T2L specs are declared with their confirmed
-`accuracy − accuracy_ctxswap` objective extractors; searching a given free HP on those settings
-requires that HP to be present in the runner's cell metadata (I2P is the fully-metadata'd,
-end-to-end-validated setting). Remaining before a full board: launch-mode runs on D2L-NIAH to
-recover its scale ≈ 45 optimum (compute-bound), and ASHA/successive-halving for cost (prune with
-care — some NIAH seeds first transition at ~4500 steps).
+## The benchmark: per-setting leaderboards (current design, 2026-07-14 later)
 
-**This loop is the post-merge *Evaluate* step of the git-native pipeline** (see § "Git-native
-benchmark"): once a codec PR merges to `main` on correctness, this is how its numbers are
-produced and appended to the leaderboard. The section below specifies that inner HP search;
-the git section specifies the outer propose→gate→merge→evaluate wrapper around it.
+An autoresearch search driver, lightweight proxies, and a git-native merge gate were built,
+validated on LoRA, then **removed** as over-engineering (see the session handoff). The benchmark is
+now deliberately simple:
 
-Invariant #2 sweeps *one* hyperparameter (scale) per codec and reports best-of. But scale is
-not special — it is simply the HP caught being load-bearing first. Several HPs are neither the
-task nor the adapter *shape* yet strongly move the result (lr, warmup, step budget, scale; the
-length-gen runs show transition steps spanning ~1500–4500). So the honest generalization is a
-**per-codec autoresearch loop**: fix the shape, search its HPs to best-of, and only then
-compare. This upgrades the claim from "at one shared recipe, shapes differ" (a shape can lose
-merely because the recipe suits LoRA) to "even at its *own* tuned optimum, shape X
-underperforms." It stays a *shape* benchmark only under a strict HP partition and three
-guardrails — get either wrong and the benchmark eats itself.
-
-**HP partition (decide per HP, empirically, before searching):**
-1. **Shared substrate — identical across codecs, never tuned per-codec.** Task data, the
-   conditioner/hypernetwork trunk (`n_latents`, `num_blocks`, `exit_layer`), eval protocol,
-   and the control. Tuning the conditioner per codec stops the comparison being about the
-   adapter.
-2. **Free optimization HPs — the loop may tune these.** `lr`, `warmup`, `steps`, `scale`.
-3. **Shape-identity HPs — the trap; fix by definition or sweep only along the
-   parameter-efficiency axis, never *maximize*.** e.g. `rank`. A loop that freely maximizes
-   these drives every shape toward "as dense as the budget allows" and "shape" dissolves.
-
-**Three guardrails (each grounded in a failure this project hit):**
-- **Optimize `matched − control`, never loss.** Seeds reached loss ~0.02 with ~0.2 retrieval
-  (memorization basin, gotcha #9). A loop pointed at loss tunes every codec into memorization.
-- **Every config is multi-seed.** The transition is stochastic; a single trial mostly measures
-  seed luck. The inner objective must be transition-rate or best-of-k over ≥3 seeds.
-- **Equal search budget and search space per codec, both reported.** "Best-of-N over space S"
-  makes N and S part of the result. Publish the tuned HPs — the tuned-HP table is a richer
-  artifact than a leaderboard.
-
-**Cost and the pruning hazard.** Cost is `codecs × configs × seeds × steps` — feasible on
-Qwen3-0.6B (why it was chosen) but a week not a day of GPU. ASHA/successive-halving helps
-because non-transitioning configs are flat at 0 for a long time and `d2p-niah` is
-restart-safe/checkpointed — **but prune with care**: some seeds first cross 0.5 only at
-~step 4500. Aggressive early-stopping would prune the slow-but-real configs and falsely label
-a shape "incapable at any config."
-
-## Git-native benchmark: merge unit, leaderboard, and the proposal loop
-
-**BUILT AND DRY-RUN VALIDATED ON LoRA (2026-07-14).** The whole flow is wired and proven end-to-end
-without a new codec (LoRA is the guinea pig):
-- **Correctness merge gate** — `src/adapterbench/merge_gate.py` (+ `scripts/codec_merge_gate.py`,
-  `tests/test_merge_gate.py`): path guard, shape-identity lint, then `validate` + `catalog` +
-  `pytest -q` + the `peft-smoke` generate→hook→backprop check via an injected runner. Correctness
-  ONLY — it never inspects whether the codec won.
-- **Path guard** — a codec PR may touch only `t2p/codecs.py` + `configs/adapters/` + `schema.py` +
-  `results/`; a substrate change (trainer/evaluator/conditioner/CLI) fails the gate (tested).
-- **Shape-identity lint** — new `ParameterBudget` manifest field (`reference_dim`, `max_output_size`);
-  the codec's per-target generated-output size at the reference dim must fall in the band (LoRA r=8
-  → 32768 ≤ 40000 passes; r=16 → 65536 fails), so shapes compete at matched capacity. The LoRA
-  manifest declares its budget.
-- **Derived, provenance-stamped leaderboard** — `src/adapterbench/leaderboard.py` (+
-  `scripts/leaderboard.py`, `tests/test_leaderboard.py`): append-only records keyed by
-  `(main_git_sha, trial_id, setting, codec, data_split, search_budget)`, idempotent on re-run, a new
-  sha adds rows; the board is a regenerated *view* (never hand-edited, never a merge gate) that keeps
-  losers. Records live under `results/leaderboard/` (gitignored scratch → force-add or side store,
-  caller's choice).
-- **Proposal loop** — `scripts/codec_proposal_loop.py` sequences propose→implement→**gate→merge→
-  evaluate→report** and dry-runs on LoRA over `results/i2p_hypernoise_v2`: gate PASS → (merge
-  dry-run) → autoresearch selects scale 4 (+0.160±0.015) → provenance-stamped leaderboard row
-  written and board rendered. Steps 1–2 (author the subclass + manifest) are the human/agent input;
-  3–6 are automated.
-
-Remaining (not blocking the mechanism): a real CI job invoking the gate on a `codec/<name>` branch
-(CODEOWNERS + the gate script), and the first genuinely new codec shape as the payload.
-
-### LoRA-only baseline (current code state, 2026-07-12)
-The code on `main` registers **exactly one codec: LoRA** (`t2p/codecs.py::make_codec`,
-`configs/adapters/lora_t2l.yaml`, `schema.py`'s `family: Literal["lora"]`). This is a
-deliberate baseline, not a limitation:
-- The benchmark's whole thesis is that a codec is a *small, self-contained, mergeable* unit (a
-  `GeneratedUpdateCodec` subclass + one `make_codec` entry + a manifest). Keeping extra shapes
-  sitting in `main` unmeasured would contradict that — code with no live leaderboard row,
-  exactly the survivorship pattern this design rejects.
-- The immediate goal is to prove the *evaluation pipeline* end-to-end with a single,
-  well-understood baseline at **basic fixed parameters** (no autoresearch HP search yet — see
-  the deferral in "Per-codec autoresearch"). LoRA is that baseline, and the two language
-  settings above are validated on it.
-- Every additional shape re-enters through the pipeline below, one PR at a time, each arriving
-  *with* its leaderboard evidence rather than as speculative dead code. The framework kept the
-  full contract to make this cheap: `GeneratedUpdateCodec` still exposes
-  `dense_delta`/`initial_bias`, the hypernetwork still supports the `"block"` residual-stream
-  hook site, and `make_codec` accepts-and-ignores extra kwargs — so reintroducing a shape is
-  additive, touching only `codecs.py`'s registry region + a manifest. **Previously-explored
-  shapes and their results are recoverable from git history** if wanted as a starting point.
-
-The benchmark should live as a Git repository where the *framework, evaluation protocol, and
-the four invariants are the fixed substrate on `main`*, and each new adapter shape arrives as a
-reviewable PR. The design rule that makes this work — and keeps it honest — is a strict
-separation of what gets merged from what gets measured:
-- **Merged = code only.** A PR adds a *codec* and nothing about its performance.
-- **Measured = derived, never hand-authored.** The leaderboard is a *view* recomputed from
-  provenance-stamped `EvaluationResult` records produced by `main`'s evaluator. It is
-  regenerated, not edited, and is never a merge gate.
-
-This deliberately breaks the survivorship bias of the prior art (T2L/PaW/D2L each report only
-the shape that worked): a codec that plugs in correctly but *loses* to LoRA is a valid, kept
-data point — the "does shape matter?" question needs the losers on the board.
-
-### The merge unit (already exists in the code)
-A new shape is exactly three things, all small and reviewable:
-1. A `GeneratedUpdateCodec` subclass in `t2p/codecs.py` + one line in `make_codec`'s
-   `constructors` dispatch.
-2. A `configs/adapters/<name>.yaml` manifest (`schema_version`, `family`, `output_structure`,
-   `target_modules`/hook site, `hyperparameters`, `compatible_objectives`) — what
-   `catalog`/`validate`/`matrix` already operate on. (Adding a `family` value also means one
-   line in `schema.py`'s `Literal`.)
-3. Its hook site, if novel (a named linear submodule, or a whole decoder layer's residual
-   stream) — most reuse an existing one.
-
-Nothing downstream — trainer, conditioner, evaluator, the four invariants — changes. A PR that
-touches `sft_trainer.py`, `live_evaluator.py`, the conditioner, or the eval protocol is a
-*substrate* change, not a codec proposal, and follows a separate, more scrutinized path.
-Enforce with a CODEOWNERS/CI path guard: codec PRs may touch only `codecs.py`'s registry
-region + `configs/adapters/` + `schema.py`'s family list + `results/`.
-
-### The merge gate is correctness, not quality (CI)
-A codec PR merges iff it is a *valid, deterministic, fairly-comparable* member of the panel —
-never because it won. CI on the PR branch runs:
-- `adapterbench validate` (manifest well-formed, objective-compatible) and `adapterbench
-  catalog` (it registers), plus `pytest -q`.
-- `adapterbench peft-smoke` / a short `d2p-sft` smoke on `cuda` — proves the codec generates,
-  hooks, and backprops via the `hypernetwork.apply(...)` path (not `peft.load_adapter`).
-- **Shape-identity lint:** the manifest declares its capacity on the parameter-efficiency axis;
-  CI refuses a codec whose generated-parameter count exceeds the panel's declared budget band.
-  Shapes compete at matched capacity, not "as dense as the budget allows."
-
-Quality — did it beat LoRA — is answered *after* merge by the evaluation job, as records.
-
-### Evaluation and the leaderboard (post-merge, derived)
-On merge to `main`, the full evaluation runs under the existing rigor — this *is* the
-"Per-codec autoresearch" loop (fix the shape → search free HPs to best-of on the frozen shared
-substrate → multi-seed) scored on `matched − control`, not loss. `aggregate_lengthgen.py`-style
-aggregation emits the per-codec vector (reliability / speed / reach / parameter efficiency),
-which is what the leaderboard shows — not a single scalar.
-
-Every record is provenance-stamped so the board is reproducible and re-runnable:
-- `make_trial` already builds `trial_id = {setup}--{adapter}--{sha256(setup,adapter)[:12]}`.
-  Extend the key to `(main_git_sha, trial_id, seed, data_split, search_budget)`. The
-  `main_git_sha` is load-bearing: without it "inspect the research through git history" breaks
-  the first time `main` moves and old numbers no longer correspond to current code.
-- Records are **append-only** under `results/leaderboard/` (or a side store / GH Releases) —
-  keyed, never overwritten. Re-running an old sha reproduces its numbers; a new sha produces
-  new rows. The rendered board is regenerated from the record set.
-
-### The proposal (autoresearch) loop
-One iteration, fully automatable, each producing one PR whose diff *is* the research log entry:
-1. **Propose.** From `main`'s current board + the shape taxonomy, an agent proposes a new shape
-   with a written hypothesis about *which invariant axis* it should move (reach? parameter
-   efficiency? reliability?). Branch `codec/<name>`. The previously-explored shapes in git
-   history are natural first candidates and double as the loop's own shakedown before genuinely
-   novel shapes (a new factorization, a hybrid, a different hook site).
-2. **Implement.** Author the subclass + `make_codec` entry + manifest. Open PR.
-3. **Gate.** CI runs the correctness gate. Red → the agent iterates on the branch; it never
-   merges on results.
-4. **Merge.** On green, merge the codec to `main` (winner or loser).
-5. **Evaluate.** The post-merge job runs the per-codec autoresearch + four invariants, appends
-   provenance-stamped records, regenerates the board.
-6. **Report.** A follow-up commit records the outcome vs. the step-1 hypothesis (confirmed /
-   refuted / scale-starved). Refuted-but-correct shapes stay on `main` and on the board as
-   negative results.
-
-**Deliberate constraints to decide before building:** (a) losers stay on `main` — curating them
-off turns a *benchmark* into a *hall of fame*; (b) the substrate is frozen relative to the
-board — a substrate change invalidates cross-sha comparability and must trigger a full re-eval
-under the new sha; (c) evaluation cost is real (~a week of Qwen3-0.6B GPU per full board), which
-is why this loop is **deferred below the Path B I2P upgrade**, but the structure above is what it
-should be when picked up.
+- **`leaderboards/*.md`** — one committed leaderboard per setting (image / T2L / D2L). Each entry is
+  `(shape, free HPs, matched−control ± std, #seeds, reproduce command)`. See `leaderboards/README.md`
+  for the format and the rules. LoRA baseline entries are recorded (image +3.50, T2L +0.033, D2L +1.00).
+- **Eval scripts = the existing setting CLIs** (`i2p-hypernoise`, `d2p-niah`, `t2p-sft-pilot`), which
+  already take HPs and emit matched−control. A leaderboard entry's "reproduce command" is exactly one
+  of these invocations; re-running it against the committed codec regenerates the number.
+- **No automated HP search, no proxies, no merge gate.** HP selection is manual (by hand or a sweep
+  the contributor runs) and recorded with the entry. What survives as **rules** (not code): the HP
+  partition (shared substrate fixed, only *free* HPs vary per entry, rank fixed) and the four
+  invariants (matched−control never loss; scale swept; difficulty knob; multi-seed). A new shape is a
+  codec subclass + `make_codec` entry + manifest, added one at a time, each with its leaderboard row.
 
 ## Roadmap
 
@@ -797,19 +630,19 @@ optimize" claim splits into two sub-claims, and the image domain cleanly separat
   destroyed → NaN). **Use SGD+momentum** (as Path A does): with grad-clipping its step norm is
   exactly `lr`, preserving the reg-vs-reward balance. SGD lr 1e-3 / scale 2 / reg 0.25 was stable.
 
-**Next active phase: the autoresearch pipeline + per-codec scale sweep** — the git-merge machinery
-and the generalization of invariant #2 (full spec in § "Git-native benchmark" and § "Per-codec
-autoresearch"), built and proven on the LoRA baseline. With the modality-transfer question
-answered (Path A transfers; Path B is a documented boundary), this is the next thrust.
+**Next active phase: complete the LoRA baseline, then add alternative shapes.**
+1. Finish the 1M-step T2L run (running) and update its leaderboard row + the emergence curve.
+2. Fill the one experimental gap — a ≥3-seed D2L base-retrieval baseline at the operating point
+   (length-gen is already 6-seed; image and T2L operating points are 3-seed).
+3. Codebase cleanup after the machinery removal (dead scripts, stale docstrings).
+4. **Then add alternative codec shapes** (IA³, LoKr, FourierFT, activation-steering — all in git
+   history), one at a time, each landing with its own leaderboard row at its own best free-HP config,
+   under the fixed substrate + four invariants. This is the "does shape matter" payload.
 
 **Deferred (valuable, lower priority):**
-- **Reintroducing additional codec shapes** through that pipeline, each with its own scale
-  semantics tuned before it joins a matched panel (previously-explored shapes are in git
-  history).
-- **The T2L setting's missing invariants** — a mismatched-description control
-  (`accuracy_mismatched`, mirroring `accuracy_ctxswap`), a per-codec scale sweep, and a graded
-  difficulty knob / eval-task curation where the frozen baseline leaves headroom.
-- **Multi-seed live-SFT at full 479-task scale, a second independent replication.**
+- **Multi-seed at 1M for T2L** (a second/third full-scale trajectory) once the first 1M run lands.
+- **A graded difficulty knob / eval-task curation for T2L** where the frozen baseline leaves more
+  headroom (the current families are QA with similar descriptions).
 
 ## Reference: prior art
 

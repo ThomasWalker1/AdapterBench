@@ -850,8 +850,8 @@ def _register_t2p_sft_pilot(subparsers) -> None:
         "--adapters",
         default="lora",
         help="comma-separated adapters to train and compare; each uses a fixed default hook site "
-        "(lora -> q_proj,v_proj). LoRA is the only baseline codec; more arrive via the "
-        "autoresearch pipeline (see PROJECT_PLAN.md).",
+        "(lora -> q_proj,v_proj). LoRA is the only baseline codec; more are added one at a time "
+        "as reviewed codecs, each with its own leaderboard entry (see PROJECT_PLAN.md).",
     )
     t2p_sft_pilot.add_argument("--condition-encoder", default="Alibaba-NLP/gte-large-en-v1.5")
     t2p_sft_pilot.add_argument("--max-descriptions", type=int, default=8)
