@@ -125,7 +125,7 @@ def _t2p_sft_pilot_command(args) -> None:
         lol_collate_fn,
         validate_training_tasks,
     )
-    from ..t2p.sft_trainer import train_downstream_hypernetwork
+    from ..t2p.sft_trainer import train_downstream_hypernetwork, train_downstream_hypernetwork_restartable
 
     if args.all_decontam_tasks:
         task_ids = sorted(load_decontaminated_train_task_ids(args.decontam_config))
@@ -258,18 +258,30 @@ def _t2p_sft_pilot_command(args) -> None:
                 for codec in hypernetwork.codecs.values():
                     if isinstance(codec, LoRACodec):
                         codec.scaling = scale
-            stats = train_downstream_hypernetwork(
-                hypernetwork,
-                interpreter,
-                layers,
-                batches,
-                steps=args.steps,
-                learning_rate=args.learning_rate,
-                max_grad_norm=args.max_grad_norm,
-                l2_reg_generated_w=args.l2_reg_generated_w,
-                grad_accum_steps=args.grad_accum_steps,
-                warmup_steps=warmup_steps,
-            )
+            # For long runs, --checkpoint-every > 0 uses the restart-safe trainer (atomic
+            # model+optimizer+step checkpoint, resumes if the run is killed/restarted).
+            if args.checkpoint_every > 0:
+                stats = train_downstream_hypernetwork_restartable(
+                    hypernetwork, interpreter, layers, batches,
+                    steps=args.steps, learning_rate=args.learning_rate,
+                    checkpoint_path=output_dir / f"ckpt_{adapter}_seed{seed}_scale{scale_tag}.pt",
+                    max_grad_norm=args.max_grad_norm, l2_reg_generated_w=args.l2_reg_generated_w,
+                    grad_accum_steps=args.grad_accum_steps, warmup_steps=warmup_steps,
+                    checkpoint_every=args.checkpoint_every,
+                )
+            else:
+                stats = train_downstream_hypernetwork(
+                    hypernetwork,
+                    interpreter,
+                    layers,
+                    batches,
+                    steps=args.steps,
+                    learning_rate=args.learning_rate,
+                    max_grad_norm=args.max_grad_norm,
+                    l2_reg_generated_w=args.l2_reg_generated_w,
+                    grad_accum_steps=args.grad_accum_steps,
+                    warmup_steps=warmup_steps,
+                )
             print(f"  seed={seed} {adapter} scale={scale_tag}: initial_loss={stats.initial_loss:.4f} final_loss={stats.final_loss:.4f}", flush=True)
             loss_curves.setdefault(str(seed), {})[f"{adapter}::scale{scale_tag}"] = {
                 "target_modules": target_modules,
@@ -890,6 +902,12 @@ def _register_t2p_sft_pilot(subparsers) -> None:
         "--adversarial-descs", default="",
         help="'||'-separated adversarial description strings to override the decontam yaml's "
         "additional_eval_descs for --adversarial-control.",
+    )
+    t2p_sft_pilot.add_argument(
+        "--checkpoint-every", type=int, default=0,
+        help="if >0, train with the restart-safe trainer, checkpointing hypernetwork+optimizer "
+        "every N steps to results/<output>/ckpt_*.pt and resuming from it on re-run - use for "
+        "long (multi-hour/day) runs so a crash or restart does not lose progress.",
     )
     t2p_sft_pilot.add_argument("--eval-tasks", default="boolq,hellaswag")
     t2p_sft_pilot.add_argument("--eval-limit", type=int, default=20, help="eval examples per family")

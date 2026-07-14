@@ -171,6 +171,71 @@ def train_downstream_hypernetwork(
     return SFTTrainStats(initial_loss=losses[0], final_loss=losses[-1], steps=steps, losses=tuple(losses))
 
 
+def train_downstream_hypernetwork_restartable(
+    hypernetwork: TextToPeftHypernetwork,
+    interpreter: nn.Module,
+    layers: nn.ModuleList,
+    train_batches: Iterable[SFTBatch],
+    *,
+    steps: int,
+    learning_rate: float,
+    checkpoint_path,
+    max_grad_norm: float = 1.0,
+    l2_reg_generated_w: float = 0.0,
+    grad_accum_steps: int = 1,
+    warmup_steps: int = 0,
+    checkpoint_every: int = 5000,
+    loss_sample_every: int | None = None,
+) -> SFTTrainStats:
+    """Restart-safe long-run variant of ``train_downstream_hypernetwork``: atomically
+    checkpoints hypernetwork+optimizer+scheduler+step to ``checkpoint_path`` every
+    ``checkpoint_every`` steps and resumes from it if present, so a multi-day run survives a
+    crash or restart. Losses are downsampled (``loss_sample_every``, default ~2000 points over
+    the whole run) to keep the checkpoint and returned curve small. Batch order is not
+    fast-forwarded on resume, so the post-resume batch sequence differs (harmless for a long
+    run). Behavior otherwise matches ``train_downstream_hypernetwork``."""
+    from pathlib import Path
+
+    optimizer = torch.optim.AdamW(hypernetwork.parameters(), lr=learning_rate)
+    scheduler = _linear_warmup_then_constant(optimizer, warmup_steps)
+    ckpt = Path(checkpoint_path)
+    if loss_sample_every is None:
+        loss_sample_every = max(1, steps // 2000)
+    start, losses = 0, []
+    if ckpt.exists():
+        state = torch.load(ckpt, map_location="cpu", weights_only=False)
+        hypernetwork.load_state_dict(state["model"])
+        optimizer.load_state_dict(state["optimizer"])
+        scheduler.load_state_dict(state["scheduler"])
+        start, losses = state["step"], list(state["losses"])
+        print(f"[resume] hypernetwork from step {start}/{steps}", flush=True)
+
+    def _save(done: int) -> None:
+        tmp = ckpt.with_suffix(ckpt.suffix + ".tmp")
+        torch.save(
+            {"model": hypernetwork.state_dict(), "optimizer": optimizer.state_dict(),
+             "scheduler": scheduler.state_dict(), "step": done, "losses": losses},
+            tmp,
+        )
+        tmp.replace(ckpt)
+
+    batch_iter = itertools.cycle(train_batches)
+    last = losses[-1] if losses else float("nan")
+    for step in range(start, steps):
+        micro_batches = list(itertools.islice(batch_iter, grad_accum_steps))
+        last = train_step(
+            micro_batches, interpreter, hypernetwork, layers, optimizer,
+            max_grad_norm=max_grad_norm, l2_reg_generated_w=l2_reg_generated_w,
+        )
+        scheduler.step()
+        done = step + 1
+        if done % loss_sample_every == 0:
+            losses.append(last)
+        if done % checkpoint_every == 0 or done == steps:
+            _save(done)
+    return SFTTrainStats(initial_loss=losses[0] if losses else last, final_loss=last, steps=steps, losses=tuple(losses))
+
+
 def train_with_checkpoints(
     hypernetwork: TextToPeftHypernetwork,
     interpreter: nn.Module,

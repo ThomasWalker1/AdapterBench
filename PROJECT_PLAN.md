@@ -37,6 +37,51 @@ four invariants port to a visual generator (I2P). The remaining goals are the ge
 (hypernetwork-produces-the-adapter) upgrade of I2P and the autoresearch codec-comparison
 pipeline (see § "Roadmap").
 
+## Session handoff (2026-07-14) — read this first
+
+**What just happened this session:**
+- **I2P closed out** as a controlled positive (matched ImageReward +0.16 ± 0.015 vs a −3.34
+  reward-swap control, scale optimum ≈ 2–4). See § "Image domain: I2P".
+- **T2L rigor added and the result corrected.** A mismatched-description control (weak +
+  adversarial-strong), a LoRA-scale sweep, and a difficulty knob were added; they first showed
+  *no* conditioning, which was diagnosed as an under-powered recipe (8 vs 128 descriptions, ~few
+  hundred vs ~1e6 steps). With the paper-matched recipe, description-conditioning **emerges with
+  training** and is a confirmed controlled positive at 150K × 3 seeds (all 4 families, mean
+  matched−adversarial ≈ +0.033). See § "T2L".
+- **Self-containment:** the T2L data is vendored to `data/t2l/` (13 MB; 479 training tasks × 128
+  descriptions) so no `upstream/` clone is needed; `upstream/text-to-lora/` can be deleted.
+- **Repo hygiene:** `results/` is gitignored (scratch by default); checkpoints/`*.pt`/`*.log`
+  never committed. The paper (`~/adapterbench-paper.tex`) got the Image Domain section + the T2L
+  recipe/control corrections, **but no result numbers yet** (deliberately deferred).
+
+**⏳ RUNNING right now (do not kill unless intended):**
+- **1M-step T2L run** (paper scale), pid may change — output `results/t2p_cond_1M/s777/`,
+  restart-safe, ~2 days on cuda:0. Full details + the resume command are in § "T2L" under
+  "IN PROGRESS — the paper-scale (1M-step) run". **When it finishes:** aggregate it, add the
+  numbers to the T2L trajectory table, then decide on multi-seed-at-1M.
+- Other users (`sa86`) intermittently share the GPUs; check `nvidia-smi` before launching more.
+
+**Next steps (priority order):**
+1. **Finish the 1M T2L run** → record its matched−adversarial in PROJECT_PLAN (extends the
+   5K→20K→60K→150K→1M emergence curve); decide multi-seed-at-1M.
+2. **Integrate results into `~/adapterbench-paper.tex`** — the structure is in place; fill the
+   I2P numbers (from `results/i2p_hypernoise_v2/`, via `scripts/i2p_hypernoise_aggregate.py`) and
+   the T2L numbers (from `results/t2p_cond*/`, via `scripts/t2p_rigor_aggregate.py`).
+3. ~~I2P Path B~~ **DONE — negative result (2026-07-14):** generation feasibility transfers to
+   images (generated adapter beats frozen), but conditional specialization does not (the
+   generation-side prompt-swap control doesn't separate) — see § "Roadmap" for the full result and
+   the SGD-not-AdamW lesson. Path B code was removed; the tree carries only the validated Path A.
+4. ~~The autoresearch codec-comparison pipeline~~ **BUILT + validated on LoRA (2026-07-14):** the
+   per-codec free-HP search (§ "Per-codec autoresearch") AND the git-native merge machinery — gate,
+   path guard, shape-identity lint, provenance-stamped leaderboard, and the propose→gate→merge→
+   evaluate→report loop, all dry-run end-to-end on LoRA (§ "Git-native benchmark"). Remaining: a real
+   CI job on a `codec/<name>` branch, launch-mode autoresearch on D2L-NIAH (compute), and the first
+   genuinely new codec shape as the payload.
+
+**Key result dirs (all gitignored; regenerate via the aggregate scripts):** `i2p_hypernoise_v2/`
+(I2P), `t2p_cond/` + `t2p_cond_long/` + `t2p_cond_1M/` (T2L conditioning trajectory),
+`t2p_rigor_ms/` + `t2p_strong/` (T2L controls at the under-powered recipe).
+
 ## Architecture
 
 - `src/adapterbench/contracts.py` — `HypernetworkBackend.generate()`,
@@ -176,9 +221,10 @@ set, not the adapter — see the difficulty-knob invariant.
 now has the control it was missing: `live_evaluator.py` computes `accuracy_mismatched` (each
 family scored with an adapter generated from a *different* family's description — the T2L
 analogue of D2L's `accuracy_ctxswap`), `t2p-sft-pilot --scales` sweeps LoRA scale, and the
-eval spans a difficulty spread (frozen headroom hellaswag 0.23 → boolq 0.70). Run at the
-validated recipe (full 479-task corpus, lr 1e-5, warmup 0.1, effective batch 256), **3 seeds,
-eval-limit 80** (`results/t2p_rigor_ms/`, summarized by `scripts/t2p_rigor_aggregate.py`):
+eval spans a difficulty spread (frozen headroom hellaswag 0.23 → boolq 0.70). Run first at a
+first-pass recipe (full 479-task corpus, lr 1e-5, effective batch 256, **8** descriptions/task,
+a few hundred steps — later found under-powered; see "The null was under-training" below),
+**3 seeds, eval-limit 80** (`results/t2p_rigor_ms/`, via `scripts/t2p_rigor_aggregate.py`):
 
 | family | frozen | matched | mismatched | matched − mismatched |
 |---|---|---|---|---|
@@ -192,42 +238,78 @@ adapter gains just as much** — matched − mismatched is a consistent, tight �
 all four families and three seeds. So at this recipe the T2L gain over frozen is **real but not
 task-description-specific**: a wrong description works as well as the right one. This is exactly
 the over-attribution the control exists to catch — the earlier "hellaswag 39% vs frozen 23%"
-was measured *without* a control and credited to conditioning that the control does not support.
+was measured *without* a control and credited conditioning this recipe does not exhibit.
+(This turns out to be a property of the recipe, not the setting — the paper-matched recipe below
+does condition. The value here is that the control flags the difference either way.)
 
-**Strong control — the confound is removed; the null holds (2026-07-13, `results/t2p_strong/`).**
+**Strong control at the under-powered recipe — no conditioning (`results/t2p_strong/`).**
 The weak swap above deranges among four similar QA descriptions, so a skeptic could argue the
 descriptions were too close to tell apart. The strong control (`t2p-sft-pilot
 --adversarial-control`) instead scores each family with an adapter generated from a maximally
 *dissimilar / meaningless* description — Text-to-LoRA's own `additional_eval_descs`
-(`"dogs;cats;bananas;"`, random noise `"7@9.qwepra#…"`, `"gggg…"`). Run as a 3-scale × 3-seed
-grid (scales 2.83/5.66/11.31 = 0.5×/1×/2× the default, eval-limit 80):
+(`"dogs;cats;bananas;"`, random noise, `"gggg…"`). Over a 3-scale × 3-seed grid it too showed
+matched ≈ mismatched (per-family −0.056 … +0.031, all within the seed std) and a flat scale
+sweep (2.83/5.66/11.31 → 0.598/0.571/0.570). So *at this recipe* the gain over frozen is not
+description-specific — but this recipe is **far from T2L's actual SFT recipe**, and the null
+turned out to be an artifact of it (next).
+
+**The null was under-training, not the setting (`results/t2p_cond*/`, 2026-07-13).** Comparing
+against the Text-to-LoRA paper, the runs above were doubly under-powered: **8 task descriptions
+per task** (T2L uses 128, sampled online per example) and **a few hundred SGD steps** (T2L
+scales to ~$10^6$). With only 8 descriptions the hypernetwork can minimize the SFT loss with a
+task-*independent* adapter that never reads the description. Rerunning the **paper-matched
+recipe** (128 descriptions, batch 8, no grad-accum, lr $2.5\times10^{-5}$, warmup 0.1) at a
+step-budget sweep (single seed, eval-limit 40) shows description-conditioning *emerging with
+training*: mean matched − adversarial = **+0.006 (5K) → +0.056 (20K) → +0.044 (60K)** — flat
+noise at 5K, clearly positive by 20K.
+
+**Confirmed positive at 150K × 3 seeds, eval-limit 80 (`results/t2p_cond_long/`):**
 
 | family | frozen | matched | adversarial-mismatched | matched − adv |
 |---|---|---|---|---|
-| arc_easy | 0.713 | 0.714 ± 0.055 | 0.731 | −0.017 |
-| arc_challenge | 0.475 | 0.540 ± 0.044 | 0.528 | +0.013 |
-| hellaswag | 0.225 | 0.364 ± 0.060 | 0.333 | +0.031 |
-| boolq | 0.700 | 0.700 ± 0.056 | 0.756 | −0.056 |
+| arc_easy | 0.713 | 0.700 ± 0.035 | 0.667 | **+0.033** |
+| arc_challenge | 0.475 | 0.542 ± 0.050 | 0.504 | **+0.037** |
+| hellaswag | 0.225 | 0.358 ± 0.062 | 0.338 | **+0.021** |
+| boolq | 0.700 | 0.713 ± 0.080 | 0.671 | **+0.042** |
 
-Even against pure junk, matched ≈ mismatched (−0.056 … +0.031, all inside the seed std): a
-`"dogs;cats;bananas;"` adapter delivers the same gain over frozen as the real description. So
-the null is **not** an artifact of similar descriptions — **at this recipe T2L is genuinely not
-task-description-conditioned**; the from-scratch hypernetwork has learned a task-*independent*
-"apply a generically-helpful LoRA" transform, and the real gains over frozen (hellaswag +0.14,
-arc_challenge +0.065) are that generic effect, not conditioning.
+**All four families are positive** (mean matched − adversarial ≈ **+0.033**), consistent across
+three seeds — the correct description beats pure junk on every family, and the gains over frozen
+concentrate where there is headroom (hellaswag +0.13, arc_challenge +0.07). The effect is
+**real but modest**: 150K steps is ~15% of T2L's budget, so this is plausibly still
+training-limited (the emergence trajectory has not obviously saturated).
 
-**Scale sweep (invariant #2).** Matched accuracy is essentially flat across scale — 2.83:0.598
-· 5.66:0.571 · 11.31:0.570 (mean over seeds×families; best-of 2.83) — so unlike I2P (where
-scale is the dominant knob and has a sharp optimum), T2L is scale-robust in this range and no
-scale rescues description-conditioning.
+**⏳ IN PROGRESS — the paper-scale (1M-step) run (started 2026-07-14).** To test whether the
+effect strengthens toward the paper's numbers at full scale, a **1M-step** run is training in
+the background: single seed 777, same paper-matched recipe (128 descriptions, batch 8, lr
+2.5e-5), `--adversarial-control`, eval-limit 80, restart-safe (`--checkpoint-every 10000`).
+- Output: `results/t2p_cond_1M/s777/` (metrics `results.jsonl` written only at the end; live
+  progress via `results/t2p_cond_1M/s777.log` loss + the `ckpt_lora_seed777_scaledefault.pt`
+  checkpoint's step count).
+- Single-GPU wall-clock is **~2 days** (~0.2 s/step). It is uncheckpointed-safe: if it dies,
+  **re-run the exact same command** (below) and it resumes from the last 10K-step checkpoint.
+- **When it finishes:** `python scripts/t2p_rigor_aggregate.py --results results/t2p_cond_1M/s777/results.jsonl`,
+  then record the matched−adversarial numbers in the table above (extending the emergence
+  trajectory 5K→20K→60K→150K→1M) and decide if multi-seed at 1M (2 more seeds) is warranted.
+- Re-run / resume command:
+  ```bash
+  .venv/bin/adapterbench t2p-sft-pilot --device cuda:0 --all-decontam-tasks \
+    --max-descriptions 128 --limit 40 --batch-size 8 \
+    --eval-tasks arc_easy,arc_challenge,hellaswag,boolq --eval-limit 80 \
+    --adversarial-control --seeds 777 --steps 1000000 --grad-accum-steps 1 \
+    --warmup-frac 0.1 --learning-rate 2.5e-5 --max-grad-norm 1.0 --checkpoint-every 10000 \
+    --output results/t2p_cond_1M/s777
+  ```
+A 3-seed run at 1M would need ~2 days each (parallelizable across GPUs) or a data-parallel (DDP)
+rewrite to speed a single trajectory; deferred until the single-seed 1M point justifies it.
 
-**Why this matters.** This is the benchmark working as designed: a controlled measurement
-overturns an uncontrolled headline. The prior T2L "win" (hellaswag ≈39% vs frozen ≈23%),
-reported without a control, credited task-conditioning that neither the weak nor the strong
-control supports. Whether conditioning emerges under a *different* recipe (encoder, hook site,
-much longer training, more descriptions per task) is the open T2L question; the harness to
-answer it — matched, both controls, scale sweep, multi-seed — now exists (`--adversarial-control`,
-`--scales`, `scripts/t2p_rigor_aggregate.py`).
+**Why this matters.** The control does double duty. First it *caught an over-claim*: the prior
+uncontrolled "hellaswag ≈39% vs frozen ≈23%" credited task-conditioning that, at that recipe,
+neither control supports. Then it *tracked the real thing*: once the recipe is fixed
+(descriptions + training scale — both load-bearing, and both invisible to a loss-only view),
+the same control cleanly registers conditioning emerging and turning consistently positive. The
+harness — matched, weak + adversarial controls, scale sweep, multi-seed, step-budget sweep —
+is in place (`--adversarial-control`, `--scales`, `--max-descriptions`,
+`scripts/t2p_rigor_aggregate.py`).
 
 ## Image domain: I2P — reward-tilting (HyperNoise), validated
 
@@ -485,7 +567,25 @@ budget?". Different shapes differ here by orders of magnitude, which is precisel
 the shape question interesting.
 
 ### Per-codec autoresearch: generalizing the scale sweep (invariant #2, done right)
-**DEFERRED below the image domain (2026-07-11) — spec retained for when it's picked up.**
+**BUILT AND VALIDATED ON LoRA (2026-07-14).** Driver: `src/adapterbench/autoresearch.py`
+(setting-agnostic core) + `src/adapterbench/autoresearch_settings.py` (declarative `SettingSpec`s
+for I2P/D2L-NIAH/T2L) + `scripts/autoresearch.py` (CLI: read-only-aggregate + launch modes) +
+`tests/test_autoresearch.py` (10 tests). It encodes the **HP partition explicitly** (`SUBSTRATE` /
+`FREE` / `SHAPE_IDENTITY`) and refuses to search anything not `FREE` (`validate_search_space` raises
+— a codec can't cheat by tuning the substrate), selects **best-of on `matched − control`, never
+loss**, aggregates **multi-seed** with a guardrail that a single-seed point can't out-rank a
+multi-seed one (`min_seeds`; under-seeded winners are flagged), and reports the **tuned-HP table +
+search budget/space** (guardrail #3). **Validation (no new compute):** run read-only over the
+existing `results/i2p_hypernoise_v2` scale sweep, it recovers LoRA's known optimum unaided —
+`--search "scale=2,3,4,6,8,16,32" --fixed "reg_weight=0.25" --n-seeds 3` selects **scale 4
+(+0.160 ± 0.015, n=3)**, the documented headline point, correctly excluding the noisier single-seed
+peaks and reproducing the full inverted-U. D2L/T2L specs are declared with their confirmed
+`accuracy − accuracy_ctxswap` objective extractors; searching a given free HP on those settings
+requires that HP to be present in the runner's cell metadata (I2P is the fully-metadata'd,
+end-to-end-validated setting). Remaining before a full board: launch-mode runs on D2L-NIAH to
+recover its scale ≈ 45 optimum (compute-bound), and ASHA/successive-halving for cost (prune with
+care — some NIAH seeds first transition at ~4500 steps).
+
 **This loop is the post-merge *Evaluate* step of the git-native pipeline** (see § "Git-native
 benchmark"): once a codec PR merges to `main` on correctness, this is how its numbers are
 produced and appended to the leaderboard. The section below specifies that inner HP search;
@@ -528,6 +628,33 @@ restart-safe/checkpointed — **but prune with care**: some seeds first cross 0.
 a shape "incapable at any config."
 
 ## Git-native benchmark: merge unit, leaderboard, and the proposal loop
+
+**BUILT AND DRY-RUN VALIDATED ON LoRA (2026-07-14).** The whole flow is wired and proven end-to-end
+without a new codec (LoRA is the guinea pig):
+- **Correctness merge gate** — `src/adapterbench/merge_gate.py` (+ `scripts/codec_merge_gate.py`,
+  `tests/test_merge_gate.py`): path guard, shape-identity lint, then `validate` + `catalog` +
+  `pytest -q` + the `peft-smoke` generate→hook→backprop check via an injected runner. Correctness
+  ONLY — it never inspects whether the codec won.
+- **Path guard** — a codec PR may touch only `t2p/codecs.py` + `configs/adapters/` + `schema.py` +
+  `results/`; a substrate change (trainer/evaluator/conditioner/CLI) fails the gate (tested).
+- **Shape-identity lint** — new `ParameterBudget` manifest field (`reference_dim`, `max_output_size`);
+  the codec's per-target generated-output size at the reference dim must fall in the band (LoRA r=8
+  → 32768 ≤ 40000 passes; r=16 → 65536 fails), so shapes compete at matched capacity. The LoRA
+  manifest declares its budget.
+- **Derived, provenance-stamped leaderboard** — `src/adapterbench/leaderboard.py` (+
+  `scripts/leaderboard.py`, `tests/test_leaderboard.py`): append-only records keyed by
+  `(main_git_sha, trial_id, setting, codec, data_split, search_budget)`, idempotent on re-run, a new
+  sha adds rows; the board is a regenerated *view* (never hand-edited, never a merge gate) that keeps
+  losers. Records live under `results/leaderboard/` (gitignored scratch → force-add or side store,
+  caller's choice).
+- **Proposal loop** — `scripts/codec_proposal_loop.py` sequences propose→implement→**gate→merge→
+  evaluate→report** and dry-runs on LoRA over `results/i2p_hypernoise_v2`: gate PASS → (merge
+  dry-run) → autoresearch selects scale 4 (+0.160±0.015) → provenance-stamped leaderboard row
+  written and board rendered. Steps 1–2 (author the subclass + manifest) are the human/agent input;
+  3–6 are automated.
+
+Remaining (not blocking the mechanism): a real CI job invoking the gate on a `codec/<name>` branch
+(CODEOWNERS + the gate script), and the first genuinely new codec shape as the payload.
 
 ### LoRA-only baseline (current code state, 2026-07-12)
 The code on `main` registers **exactly one codec: LoRA** (`t2p/codecs.py::make_codec`,
@@ -641,18 +768,41 @@ unchanged. A shape ranking that holds across modalities is a far stronger claim 
 measured on NIAH alone — so the image setting is now a full member of the codec panel, and any
 new codec shape is scored on it too.
 
-**Next active phase: the generated (Path B) I2P upgrade.** I2P currently uses a *directly
-trained* shared noise-adapter (the identity-hypernetwork case), matching HyperNoise. The
-AdapterBench headline is "a hypernetwork *generates* the adapter vs an optimizer fits one":
-the upgrade keeps the reward-tilted objective but has the hypernetwork emit the noise-adapter
-conditioned on the prompt (or reward target). This is the image analogue of T2L/D2L
-generation and the one piece of the thesis I2P does not yet test.
+**I2P Path B (generated noise-adapter) — EXPLORED, negative result (2026-07-14).** The Path B
+upgrade — have the hypernetwork *generate* the reward-tilting noise-adapter from the prompt
+(single forward pass) rather than train one directly (Path A) — was built, de-risked on two
+rewards, and then **removed** (the tree carries only the working Path A). The "generate vs
+optimize" claim splits into two sub-claims, and the image domain cleanly separates them:
+- **Generation feasibility — SUPPORTED.** A `GeneratedCodecAdapter` (Path A's flat 128-target
+  structure, but each per-target delta emitted by a shared conditioner→trunk→per-shape-head
+  hypernetwork off the pooled CLIP prompt embedding) reliably beat frozen SD-Turbo: ImageReward
+  **+0.14** (vs Path A's optimizer-fit +0.16), CLIP-align up to +2.0, fidelity preserved. A
+  hypernetwork *can* emit a working noise-adapter in one forward pass.
+- **Conditional specialization — NOT SUPPORTED.** The native control (generate the adapter from a
+  *mismatched* prompt, keep content matched — the image analogue of the D2L context-swap) did not
+  stably separate: matched−condswap ≈ 0 for ImageReward and only transient glimpses (+0.45 at
+  mid-training, within ±1 run-to-run noise) for a prompt-*discriminative* CLIP-alignment reward.
+- **Why (unifying explanation).** Training only ever sees matched conditioning, so a prompt-specific
+  adapter emerges only if maximizing the reward *requires* one — as task/document conditioning does
+  in T2L/D2L. Reward-tilting a frozen 1-step generator is served well by a **prompt-generic** nudge;
+  injecting genuinely prompt-specific content via a small noise edit is close to the from-scratch
+  concept-injection capability a prior de-risk already measured at ~zero. So **noise-space adapters
+  do generic reward-tilting but not prompt-specific content steering.** This sharpens the thesis
+  (hypernetwork *conditioning* works for tasks/documents, not for reward-tilting noise edits) and
+  leaves the core "does shape matter" contribution untouched — that runs on **Path A**, which is
+  already validated in the image domain and does not need Path B.
+- **Lesson if revisited (code is gone; in git history if resurrected):** the generated adapter is an
+  ~82M-param hypernetwork; **AdamW diverges** on it (per-parameter normalization makes the effective
+  step ≈ lr·√N ≈ 0.9 even with grad-clip-to-1.0, overshooting the sharp reward optimum → image
+  destroyed → NaN). **Use SGD+momentum** (as Path A does): with grad-clipping its step norm is
+  exactly `lr`, preserving the reg-vs-reward balance. SGD lr 1e-3 / scale 2 / reg 0.25 was stable.
 
-**Deferred (valuable, but below the Path B upgrade):**
-- **The autoresearch pipeline + per-codec scale sweep** — the git-merge machinery and the
-  generalization of invariant #2 (full spec in § "Git-native benchmark" and § "Per-codec
-  autoresearch"). A large compute/engineering investment better spent after the
-  modality-transfer question.
+**Next active phase: the autoresearch pipeline + per-codec scale sweep** — the git-merge machinery
+and the generalization of invariant #2 (full spec in § "Git-native benchmark" and § "Per-codec
+autoresearch"), built and proven on the LoRA baseline. With the modality-transfer question
+answered (Path A transfers; Path B is a documented boundary), this is the next thrust.
+
+**Deferred (valuable, lower priority):**
 - **Reintroducing additional codec shapes** through that pipeline, each with its own scale
   semantics tuned before it joins a matched panel (previously-explored shapes are in git
   history).
