@@ -33,10 +33,13 @@ leaderboard (see § "The benchmark: per-setting leaderboards"). Previously-explo
 their results live in git history.
 
 **The modality-transfer question is now answered for LoRA**: the adapter-shape seam and the
-four invariants port to a visual generator (I2P). The remaining goals are completing the LoRA
-baseline results on every setting and then adding alternative shapes (see § "Roadmap").
+four invariants port to a visual generator (I2P). **The current focus (2026-07-15) is deliberately
+narrow: make the benchmark infrastructure sound and complete a rigorous, reproducible LoRA baseline
+row on all three leaderboards — a showcase of how `(codec, free-HP)` entries get produced and
+reproduced. New codec shapes are explicitly deferred, not the current goal** (see § "Roadmap →
+CURRENT PHASE" for the definition-of-done and the exact gap list).
 
-## Session handoff (2026-07-14) — read this first
+## Session handoff (2026-07-15) — read this first
 
 **Design (current).** The benchmark is **committed per-setting leaderboards** (`leaderboards/*.md`):
 each entry is `(shape, free hyperparameters, matched−control ± std, #seeds, reproduce command)`,
@@ -54,25 +57,43 @@ leaderboards" and `leaderboards/README.md`.
 (`~/adapterbench-paper.tex`) is updated to this design with these numbers.
 
 **⏳ RUNNING right now (do not kill unless intended):**
-- **1M-step T2L run** (paper scale, the *task* setting — not document) — `t2p-sft-pilot` →
+- **Fast DDP T2L run** (the *going-forward benchmark training path*, 2026-07-15) — 4-GPU
+  data-parallel via `scripts/t2p_train_ddp.py` → `results/t2p_cond_ddp/s777/`, on **cuda:1–4**,
+  seed 777, restart-safe (`--checkpoint-every 5000`). **Fixed *data budget*, not step count:**
+  effective batch 128 (4×32) × **62,500 steps = 8M example-visits = the same data/epochs as the
+  1M×batch-8 run**, just repackaged into fewer, larger steps. `torch.compile` + `--fixed-seq-len
+  512` static shapes + persistent codec hooks → **471 ms/step, ~8 h/run (~5.8× faster than the
+  batch-8 1M run)**. lr √-scaled 2.5e-5→**1e-4** for the 16× batch. `results.jsonl` at the end is
+  a drop-in for `t2p_rigor_aggregate.py` (verified). See § "T2L" and § "How to run" for the exact
+  command. This is how each new codec shape's T2L run should be trained (per-shape run tractable).
+- **1M-step T2L run** (the original single-GPU batch-8 trajectory) — `t2p-sft-pilot` →
   `results/t2p_cond_1M/s777/`, single seed 777, on cuda:0, restart-safe (`--checkpoint-every 10000`),
   ~2 days. Recipe: 128 descriptions, batch 8, lr 2.5e-5, warmup 0.1, `--adversarial-control`,
-  eval-limit 80. `results.jsonl` is written only at the end. **If it dies, re-run the identical
-  command** (§ "T2L" IN-PROGRESS block) — it resumes from the last 10K checkpoint. When it finishes:
-  `.venv/bin/python scripts/t2p_rigor_aggregate.py --results results/t2p_cond_1M/s777/results.jsonl`,
-  extend the emergence curve (5K→20K→60K→150K→**1M**), decide multi-seed-at-1M.
-- **3-seed D2L base-retrieval baseline** — seeds 777/778/779 on cuda:1/2/3 →
-  `results/repro/document_niah_lora/s{777,778,779}/`, started 2026-07-14. All use the
-  validated 384-token/512-document/6000-step recipe at scale 45.25 and are restart-safe.
-  When they finish: `.venv/bin/python scripts/d2p_niah_aggregate.py --root
-  results/repro/document_niah_lora --min-seeds 3`, then update the D2L leaderboard row.
-- Other users (`sa86`) intermittently share the GPUs; `nvidia-smi` before launching, prefer 0%-util
-  GPUs, never touch cuda:0's 1M run.
+  eval-limit 80. `results.jsonl` is written only at the end. Now **superseded by the DDP path above**
+  as the benchmark training method, but left running (46%+ done as of 2026-07-15) since it is the
+  batch-8 emergence-curve endpoint; kill only if the cuda:0 GPU is needed. **If it dies, re-run the
+  identical command** (§ "T2L" IN-PROGRESS block) — it resumes from the last 10K checkpoint. When it
+  finishes: `.venv/bin/python scripts/t2p_rigor_aggregate.py --results results/t2p_cond_1M/s777/results.jsonl`,
+  extend the emergence curve (5K→20K→60K→150K→**1M**).
+- **3-seed D2L base-retrieval baseline** — seeds 777/778/779 → `results/repro/document_niah_lora/
+  s{777,778,779}/`, validated 384-token/512-doc/6000-step recipe at scale 45.25, restart-safe.
+  **History: started 2026-07-14 but died at step 1500/6000 (right before the ~1600–2500-step
+  retrieval phase transition — checkpoints had NOT learned retrieval); resumed 2026-07-15 on
+  cuda:5/6/7 (one seed per GPU, parallel), each printing `[resume] loaded checkpoint at step 1500`.**
+  Per-seed logs: `results/repro/document_niah_lora/s{seed}/resume.log`. A background waiter
+  auto-runs `d2p_niah_aggregate.py --root results/repro/document_niah_lora --min-seeds 3` when all
+  three exit. **If a seed dies again, re-run its command** (§ "How to run" D2L block, with
+  `--seed`/`--device`/`--output` for that seed) — it resumes from the last checkpoint.
+- **GPU map (2026-07-15):** cuda:0 = batch-8 1M run; cuda:1–4 = DDP T2L run; cuda:5–7 = D2L 3-seed
+  resume. Other users (`sa86`) intermittently share GPUs; `nvidia-smi` before launching, prefer
+  0%-util GPUs, never touch cuda:0's 1M run.
 
-**Completion checklist — aggregate both running experiments when they finish:**
-- [ ] **T2L 1M:** run `.venv/bin/python scripts/t2p_rigor_aggregate.py --results
-  results/t2p_cond_1M/s777/results.jsonl`, then update the emergence curve, T2L leaderboard,
-  and paper.
+**Completion checklist — aggregate the running experiments when they finish:**
+- [ ] **T2L fast DDP (benchmark default):** run `.venv/bin/python scripts/t2p_rigor_aggregate.py
+  --results results/t2p_cond_ddp/s777/results.jsonl`, record the matched−adversarial number as the
+  T2L leaderboard/paper row at the DDP config, then run seeds 778/779 (same command, `--seed`).
+- [ ] **T2L 1M (batch-8 reference):** run `.venv/bin/python scripts/t2p_rigor_aggregate.py --results
+  results/t2p_cond_1M/s777/results.jsonl`, then extend the batch-8 emergence curve.
 - [ ] **D2L 3-seed:** run `.venv/bin/python scripts/d2p_niah_aggregate.py --root
   results/repro/document_niah_lora --min-seeds 3`, then update the D2L leaderboard.
 
@@ -80,21 +101,30 @@ leaderboards" and `leaderboards/README.md`.
 - **Image (I2P): complete.** Operating point (scale 4, reg 0.25) × 3 seeds + reward-swap control ×
   3 seeds + full scale sweep (single-seed tails) + reg difficulty knob. Archived
   `results/_archive/i2p_hypernoise_v2/`.
-- **Task (T2L): 150K × 3 done** (`results/_archive/t2p_cond_long/s{777,778,779}_150k`); **1M paper
-  scale running**. Gap = finish 1M (+ optional multi-seed-at-1M).
+- **Task (T2L): 150K × 3 done** (`results/_archive/t2p_cond_long/s{777,778,779}_150k`, +0.033);
+  **DDP data-matched run + batch-8 1M both running**. Gaps to a shippable row: land the DDP run as the
+  headline (+ seeds 778/779), reconcile its reproduce command, and settle invariant #2 (best-of-scale
+  — currently "default"; earlier under-powered sweep `t2p_sft_pilot_scaled` was flat). See § Roadmap
+  "CURRENT PHASE".
 - **Document (D2L): length-gen is 6-seed** (`d2p_lengthgen_lora_s777..782`) but **base NIAH
-  retrieval is single-seed** (`d2p_niah_lora`). Gap = ≥3-seed base retrieval; confirm the scale
-  operating point (≈45). **Three-seed completion run is now in progress** at the paths above.
+  retrieval row is single-seed** (`d2p_niah_lora`). Gaps: the ≥3-seed base-retrieval run (resumed on
+  cuda:5–7, above) must land and be aggregated; surface the scale sweep (`d2p_sft_scalefind_lora`
+  archive) in the row rather than only "≈45 default".
 
-**Next steps (priority order):**
-1. **Finish the 1M T2L run** (running) → aggregate, extend the emergence curve, update the T2L
-   leaderboard row and paper.
-2. **Complete the D2L base-retrieval baseline** — the ≥3-seed operating-point run is in
-   progress; aggregate it and update `leaderboards/document_niah_d2l.md` when it finishes.
-3. **Codebase cleanup** — audit for anything orphaned by the machinery removal (dead scripts,
-   stale docstrings); keep only the setting CLIs + aggregate/smoke helpers.
-4. **Then add alternative shapes** (IA³, LoKr, FourierFT, activation-steering — in git history), one
-   PR at a time, each with its leaderboard row.
+**Next steps (priority order) — current phase = sound infra + complete LoRA baseline, NOT new codecs
+(see § Roadmap "CURRENT PHASE" for the full gap list and definition-of-done):**
+1. **Land the fast DDP T2L run** (running, `results/t2p_cond_ddp/s777/`, ~8h) → aggregate, set the
+   T2L leaderboard/paper row at the DDP data-matched config, then run seeds 778/779. The batch-8 1M
+   run keeps finishing on cuda:0 as the emergence-curve context point.
+2. **Complete the D2L base-retrieval baseline** — ≥3-seed run resumed on cuda:5–7 (was dead at step
+   1500); auto-aggregates on completion → update `leaderboards/document_niah_d2l.md` multi-seed row.
+3. **Reconcile reproduce commands with shipped configs** (T2L row + `scripts/reproduce/task_t2l_lora.sh`
+   → DDP command), **pick one canonical headline config per setting**, and **satisfy invariant #2
+   (best-of-scale) uniformly** (T2L scale sweep; surface D2L `d2p_sft_scalefind_lora`). These are the
+   infra/rigor gaps beyond the running compute.
+4. **Commit** the shipped infra (`scripts/t2p_train_ddp.py`, reproduce wrappers, plan, paper) to `main`.
+5. *(Deferred, not now)* alternative codec shapes — the "does shape matter" payload; resumes only
+   after the baseline + infra above are locked.
 
 **Repo hygiene:** `results/` is gitignored scratch (the LoRA baseline data is under
 `results/_archive/`); checkpoints/`*.pt`/`*.log` never committed. Stage-ready: `leaderboards/`,
@@ -319,8 +349,32 @@ the background: single seed 777, same paper-matched recipe (128 descriptions, ba
     --warmup-frac 0.1 --learning-rate 2.5e-5 --max-grad-norm 1.0 --checkpoint-every 10000 \
     --output results/t2p_cond_1M/s777
   ```
-A 3-seed run at 1M would need ~2 days each (parallelizable across GPUs) or a data-parallel (DDP)
-rewrite to speed a single trajectory; deferred until the single-seed 1M point justifies it.
+**⚡ FAST DDP TRAINING PATH — `scripts/t2p_train_ddp.py` (2026-07-15, now the benchmark default).**
+The single-GPU batch-8 trajectory above is ~2 days; that is untenable when *every new codec shape*
+needs its own T2L run. The DDP path fixes the **data budget** (not the step count) and reaches it far
+faster:
+- **4-GPU data-parallel** (frozen interpreter replicated per rank — no grad; only the hypernetwork's
+  few-M params all-reduce, so comm is cheap), `DistributedSampler` shards the corpus, rank-0 does the
+  held-out eval.
+- **Effective batch 128** (world 4 × per-GPU 32) × **62,500 steps = 8M example-visits**, i.e. the
+  *same* total example-visits and ~418 epochs as 1M×batch-8 — just fewer, larger optimizer steps.
+- **`torch.compile` + `--fixed-seq-len 512` (static shapes) + persistent codec hooks** →
+  **471 ms/step**. Measured alternatives at eff-batch 128: eager+dynamic-pad 755 ms, eager+fixed-512
+  792 ms, **compile+fixed-512 471 ms** (1.6×). Full run **~8.2 h** (~5.8× vs the batch-8 1M run).
+- **lr √-scaled 2.5e-5 → 1e-4** for the 16× batch (AdamW; free HP per §optimization — trajectory
+  shape deliberately differs from the batch-8 emergence curve, which is fine: the benchmark ships at
+  this data-matched scale, not at a fixed step count).
+- Restart-safe (rank-0 `--checkpoint-every 5000`, re-run identical command to resume), reuses the
+  pilot's exact eval + `ResultRecorder` so `results.jsonl` is a **verified drop-in** for
+  `t2p_rigor_aggregate.py`.
+- **GPU allocation:** each run uses 4 GPUs (cuda:1–4), so seeds run *sequentially*; cuda:0's batch-8
+  1M run and cuda:5–7 are untouched. Launch/aggregate command in § "How to run".
+- **When the seed-777 run finishes** (`results/t2p_cond_ddp/s777/`): aggregate, record the
+  matched−adversarial number as the T2L leaderboard/paper row at this config, then run seeds 778/779
+  (same command, `--seed`), and add alternative shapes each via one such run.
+- Compile note: hard `mark_dynamic` raises `ConstraintViolationError` under variable-length inputs
+  (transformers specializes the seq dim) — hence `--fixed-seq-len 512` (numerically identical: pad
+  tokens are masked in attention and loss) rather than dynamic shapes. See gotcha #14.
 
 **Why this matters.** The control does double duty. First it *caught an over-claim*: the prior
 uncontrolled "hellaswag ≈39% vs frozen ≈23%" credited task-conditioning that, at that recipe,
@@ -430,7 +484,19 @@ why an operating-point sweep was needed; the peak is at low scale, not high.)
 nohup .venv/bin/python scripts/i2p_hypernoise_pipeline.py --out results/i2p_hypernoise &
 .venv/bin/python scripts/i2p_hypernoise_aggregate.py --out results/i2p_hypernoise
 
-# T2L: full-corpus live SFT, LoRA baseline, three seeds
+# T2L: FAST full-scale training (the benchmark default) — 4-GPU DDP, data-budget-matched
+# effective batch 128 (4x32) x 62.5K steps = 8M example-visits, ~8h. torch.compile + fixed-512
+# static shapes + persistent hooks (471 ms/step). Restart-safe; re-run to resume. cuda:1-4.
+# results.jsonl is a drop-in for scripts/t2p_rigor_aggregate.py.
+CUDA_VISIBLE_DEVICES=1,2,3,4 .venv/bin/torchrun --standalone --nproc_per_node=4 \
+  scripts/t2p_train_ddp.py --all-decontam-tasks --max-descriptions 128 --limit 40 \
+  --per-gpu-batch 32 --steps 62500 --learning-rate 1e-4 --warmup-frac 0.1 \
+  --max-grad-norm 1.0 --fixed-seq-len 512 \
+  --eval-tasks arc_easy,arc_challenge,hellaswag,boolq --eval-limit 80 \
+  --adversarial-control --seed 777 --checkpoint-every 5000 --output results/t2p_cond_ddp/s777
+.venv/bin/python scripts/t2p_rigor_aggregate.py --results results/t2p_cond_ddp/s777/results.jsonl
+
+# T2L: original single-GPU live SFT, LoRA baseline, three seeds (slow reference recipe)
 uv run adapterbench t2p-sft-pilot \
   --all-decontam-tasks --adapters lora \
   --seeds 777,778,779 --steps 380 --grad-accum-steps 64 --warmup-frac 0.1 \
@@ -539,6 +605,18 @@ uv run pytest -q   # 101 tests (LoRA-only baseline)
     transformers moved to `transformers.pytorch_utils`; `i2p/rewards.py` shims them before
     importing `ImageReward` rather than pinning transformers down (which would risk the Qwen3
     language pipeline).
+14. **`torch.compile` on the frozen interpreter fights variable sequence lengths.** With
+    per-batch dynamic padding the seq length changes every step; Dynamo then specializes a graph
+    per length, blows through `cache_size_limit`, and silently falls back to eager (losing the
+    speedup). Hard `torch._dynamo.mark_dynamic(input_ids, 1)` does **not** rescue it — transformers
+    specializes the seq dim internally, so it raises `ConstraintViolationError` and the run dies.
+    The fix (`scripts/t2p_train_ddp.py --fixed-seq-len 512`) is to pad every batch to a fixed length
+    so shapes are static and one graph is traced and reused — **numerically identical** (pad tokens
+    are masked in both attention and the CE loss) and it doubles as removing the DDP variable-length
+    straggler (all ranks do equal work per step). Also register codec hooks **once** (persistent,
+    updating the generated-param dict in place) rather than re-registering per step via
+    `hypernetwork.apply()`'s context manager, which would re-trace every step. Measured on
+    Qwen3-0.6B at eff-batch 128: compile+fixed-512 471 ms/step vs eager 755 ms (1.6×).
 
 ## Benchmark design: the four invariants
 
@@ -642,19 +720,64 @@ optimize" claim splits into two sub-claims, and the image domain cleanly separat
   destroyed → NaN). **Use SGD+momentum** (as Path A does): with grad-clipping its step norm is
   exactly `lr`, preserving the reg-vs-reward balance. SGD lr 1e-3 / scale 2 / reg 0.25 was stable.
 
-**Next active phase: complete the LoRA baseline, then add alternative shapes.**
-1. Finish the 1M-step T2L run (running) and update its leaderboard row + the emergence curve.
-2. Finish and aggregate the running ≥3-seed D2L base-retrieval baseline at the operating point
-   (length-gen is already 6-seed; image and T2L operating points are 3-seed).
-3. Codebase cleanup after the machinery removal (dead scripts, stale docstrings).
-4. **Then add alternative codec shapes** (IA³, LoKr, FourierFT, activation-steering — all in git
-   history), one at a time, each landing with its own leaderboard row at its own best free-HP config,
-   under the fixed substrate + four invariants. This is the "does shape matter" payload.
+**CURRENT PHASE (2026-07-15, refocused): sound infrastructure + a complete, rigorous LoRA
+baseline populating all three leaderboards.** The immediate goal is **not** new codecs — it is to
+make the benchmark *machinery* trustworthy and to fill each leaderboard with a LoRA row that fully
+satisfies the four invariants, so the artifact concretely **showcases how a `(codec, free-HP)`
+entry is produced and reproduced**. Adding alternative shapes (IA³, LoKr, FourierFT, steering) is
+explicitly **deferred** to a later phase (see "Future"). This phase is done when a new contributor
+could read a leaderboard row, run its command, and regenerate the number.
 
-**Deferred (valuable, lower priority):**
-- **Multi-seed at 1M for T2L** (a second/third full-scale trajectory) once the first 1M run lands.
-- **A graded difficulty knob / eval-task curation for T2L** where the frozen baseline leaves more
-  headroom (the current families are QA with similar descriptions).
+*In flight now (compute; see session handoff):*
+1. **T2L** — fast DDP run (`results/t2p_cond_ddp/s777`, the shipped data-matched scale) → aggregate,
+   then seeds 778/779 for the multi-seed row. The batch-8 1M run keeps extending the emergence curve.
+2. **D2L** — ≥3-seed base-retrieval (resumed on cuda:5–7) → aggregate → fill the multi-seed row
+   (length-gen already 6-seed).
+
+*Necessary beyond the running compute (the gap to "phase done"):*
+3. **Reconcile every leaderboard "reproduce" command with the actually-shipped config.**
+   ✅ **DONE (code, 2026-07-15):** `scripts/reproduce/task_t2l_lora_ddp.sh` written (the shipped
+   DDP `torchrun` × 3 seeds + concat + aggregate; bash-syntax-checked); `leaderboards/
+   task_conditioned_t2l.md` reconciled to point at it with the headline number marked **pending the
+   DDP run**; the batch-8 `task_t2l_lora.sh` kept as the emergence-curve reference. **Remaining
+   (needs the run):** drop the "pending" and paste the DDP matched−adversarial number into the row.
+4. **Pick one canonical headline config per setting** and mark the rest as supporting curve points.
+   ✅ **DECIDED + recorded:** T2L headline = the DDP data-matched run; 150K×3 and 1M are
+   emergence-curve context (stated in the T2L leaderboard). No code left; it finalizes when #3's
+   number lands.
+5. **Satisfy invariant #2 (report best-of-scale) uniformly.** ⛔ **NEEDS COMPUTE — not doable from
+   archives.** Checked: `d2p_sft_scalefind_lora` has `scale=None`/all-0.0 rows (unusable) and
+   `t2p_sft_pilot_scaled` has no per-scale breakdown at an under-powered recipe. So T2L needs a short
+   `--scales` sweep at the shipped recipe and D2L a `--lora-scaling` sweep; neither can be surfaced
+   from existing data. Image already ships a full scale sweep. ← top remaining rigor gap.
+6. **Finalize each row to uniform rigor** once runs land: ≥3-seed mean±std, best-of-scale, a
+   difficulty-knob reference, remove standing caveats (D2L "single-seed"; T2L "headline pending").
+7. **Commit the shipped infrastructure** (human drives commits): `scripts/t2p_train_ddp.py`,
+   `scripts/t2p_train_ddp_smoke.sh`, `scripts/reproduce/{task_t2l_lora_ddp.sh,README.md}`,
+   PROJECT_PLAN, `leaderboards/task_conditioned_t2l.md`, and the paper.
+
+*Recommended (raises soundness / makes the showcase land, not strictly blocking):*
+- **A DDP smoke test.** ✅ **DONE (code):** `scripts/t2p_train_ddp_smoke.sh` — a few-step 2-GPU run
+  asserting checkpoint round-trip, trained-adapter + frozen rows, and the adversarial control in a
+  parseable `results.jsonl` (mirrors `i2p_hypernoise_smoke.py`). Codifies the exact pattern validated
+  this session; **run once on a free GPU pair to confirm** (all 8 GPUs were busy at write time).
+- **A reproduce index.** ✅ **DONE (doc):** `scripts/reproduce/README.md` — the table of
+  per-row scripts + the step-by-step "how a leaderboard row is produced" that every future codec
+  follows (directly the requested showcase of how the benchmark gets populated).
+- **≥2 LoRA rows per setting at different free-HP configs** (e.g., T2L at two scales/step budgets;
+  image already shows a scale curve). ⛔ **NEEDS COMPUTE.** With a single codec this is the cleanest
+  way to *showcase* that the leaderboard tracks `(shape, HP-config)` pairs — but each extra row is a
+  run.
+
+**Future (explicitly deferred — not this phase):**
+- **Alternative codec shapes** (IA³, LoKr, FourierFT, activation-steering — all in git history and
+  with archived results under `results/_archive/`), added one at a time, each a subclass +
+  `make_codec` entry + manifest + leaderboard row at its own best free-HPs. This is the "does shape
+  matter" payload and resumes only after the LoRA baseline + infra above are locked.
+- **Multi-seed at the batch-8 1M scale** for T2L (a second/third full trajectory) if the emergence
+  endpoint warrants it.
+- **A difficulty knob / eval-task curation for T2L** with more frozen-baseline headroom (current
+  families are similar-description QA).
 
 ## Reference: prior art
 
