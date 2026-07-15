@@ -21,7 +21,7 @@ class PooledVectorConditioner(nn.Module):
     byte-identical conditioning; only `depth_embedding` (see
     `TextToPeftHypernetwork.forward`/`forward_layer`) differentiates one layer's
     generated output from another's. Contrast with
-    `document_conditioning.py::DocumentPerceiverConditioner`, which *is`
+    `document_conditioning.py::EarlyExitPerceiverConditioner`, which *is`
     layer-index-aware (it has genuinely different per-layer activations available to
     condition on, not just one pooled vector) - see that class's docstring.
     """
@@ -79,7 +79,7 @@ class TextToPeftHypernetwork(nn.Module):
             # this exact `task_dim = latent_dim // 2` - `self.trunk`'s input width is
             # `task_dim + depth_dim + type_dim == latent_dim` regardless of which
             # conditioner produced the `task_dim` slice. Construct e.g.
-            # DocumentPerceiverConditioner(..., task_dim=latent_dim // 2, ...) to match.
+            # EarlyExitPerceiverConditioner(..., task_dim=latent_dim // 2, ...) to match.
             self.conditioner = conditioner
         else:
             if condition_dim is None:
@@ -159,7 +159,7 @@ class TextToPeftHypernetwork(nn.Module):
     def forward(self, condition_embeddings: Any) -> dict[str, Tensor]:
         # `condition_embeddings` is whatever raw form `self.conditioner` expects (a
         # plain (batch, condition_dim) Tensor for the default PooledVectorConditioner;
-        # a DocumentActivations-shaped container for DocumentPerceiverConditioner) -
+        # the early-exit latents container for EarlyExitPerceiverConditioner) -
         # `batch` is derived from the conditioner's *output* (always (batch, task_dim))
         # rather than from `condition_embeddings` directly, since the latter's shape is
         # conditioner-specific.
@@ -190,7 +190,7 @@ class TextToPeftHypernetwork(nn.Module):
         `layer_index` is forwarded to `self.conditioner` (unlike `forward`, which always
         passes `layer_index=None`) - `PooledVectorConditioner` ignores it (so this method
         stays numerically equal to `forward(...)[name][layer_index]` for that conditioner,
-        as documented above), but `DocumentPerceiverConditioner` uses it to condition on
+        as documented above), but `EarlyExitPerceiverConditioner` uses it to condition on
         that one layer's own document-token activations instead of a cross-layer-pooled
         summary - see that class's docstring for the full reasoning. That means for a
         layer-index-aware conditioner, `forward_layer(x, i)` and `forward(x)[name][i]` are
@@ -222,7 +222,7 @@ class TextToPeftHypernetwork(nn.Module):
 
         Only `self.conditioner(condition_embeddings, layer_index=i)` is called once per
         layer here - that part genuinely needs to be per-layer for a layer-index-aware
-        conditioner (e.g. `document_conditioning.py::DocumentPerceiverConditioner`) to
+        conditioner (e.g. `document_conditioning.py::EarlyExitPerceiverConditioner`) to
         produce genuinely different per-layer conditioning (`forward` broadcasts one
         cross-layer-pooled vector to every layer instead). The depth/type embedding
         concatenation + `self.trunk` + `self.heads` computation is then run exactly once,

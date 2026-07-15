@@ -7,7 +7,6 @@ from adapterbench.t2p.niah_data import (
     DocSFTDataset,
     assert_context_fits_in_one_pass,
     build_niah_eval_examples,
-    build_query_prompt,
     doc_collate_fn,
     make_niah_example,
 )
@@ -24,13 +23,16 @@ class FakeTokenizer:
         return {"input_ids": list(range(len(tokens)))}
 
     def apply_chat_template(self, messages, tokenize=False, add_generation_prompt=True, **kwargs):
-        return messages[0]["content"]
+        # Mirror a real chat template's assistant-turn marker so the (bare-number) response
+        # is whitespace-separated from the query - otherwise this naive split-tokenizer
+        # merges "number." and "1234" into one token (a real subword tokenizer would not).
+        return messages[0]["content"] + ("\nassistant\n" if add_generation_prompt else "")
 
 
 def test_make_niah_example_contains_exactly_one_needle_sentence():
     tokenizer = FakeTokenizer()
     example = make_niah_example(tokenizer, context_length=200, rng=random.Random(0))
-    needle = f"The special magic number for {example.topic} is {example.digits}."
+    needle = f"The special magic number is {example.digits}."
     assert example.context_text.count(needle) == 1
 
 
@@ -64,11 +66,6 @@ def test_make_niah_example_is_deterministic_given_the_same_rng_seed():
     a = make_niah_example(tokenizer, context_length=200, rng=random.Random(42))
     b = make_niah_example(tokenizer, context_length=200, rng=random.Random(42))
     assert a == b
-
-
-def test_build_query_prompt_mentions_the_topic():
-    prompt = build_query_prompt(FakeTokenizer(), "biology")
-    assert "biology" in prompt
 
 
 def test_assert_context_fits_in_one_pass_accepts_lengths_within_the_limit():

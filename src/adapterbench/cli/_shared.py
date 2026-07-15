@@ -45,7 +45,7 @@ PILOT_DEFAULT_TARGET_MODULES = {
 
 # TextToPeftHypernetwork's own default (never overridden by any existing t2p-sft*
 # command either) - kept as a plain module constant rather than a new CLI flag so
-# DocumentPerceiverConditioner's task_dim (= latent_dim // 2, see hypernetwork.py's
+# EarlyExitPerceiverConditioner's task_dim (= latent_dim // 2, see hypernetwork.py's
 # comment on that requirement) stays in lockstep with the hypernetwork's own trunk
 # width without the two ever being passed independently.
 D2P_LATENT_DIM = 512

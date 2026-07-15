@@ -4,7 +4,7 @@ held-out benchmarks.
 
 - `t2p-sft`         single adapter, single run, writes a loss-curve JSON.
 - `t2p-sft-pilot`   several adapters x seeds, task-description conditioning.
-- `d2p-sft-pilot`   document-conditioning variant (synthetic NIAH documents).
+- `d2p-niah`        document-conditioning variant (synthetic NIAH; early-exit conditioner).
 - `t2p-sft-sweep`   checkpointed step-budget sweep under one persistent optimizer.
 """
 
@@ -29,6 +29,13 @@ from ._shared import (
     load_frozen_interpreter,
     write_json,
 )
+
+# D2L-parity hook site for the NIAH document-conditioning command (`d2p-niah`): the
+# validated recipe hooks LoRA at `down_proj` (see PROJECT_PLAN.md's D2P section). Kept a
+# module constant here rather than in `_shared.py` since only `d2p-niah` uses it.
+D2L_PARITY_TARGET_MODULES = {
+    "lora": ["down_proj"],
+}
 
 
 def _t2p_sft_command(args) -> None:
@@ -317,144 +324,6 @@ def _t2p_sft_pilot_command(args) -> None:
     print(f"wrote {output_dir}/results.jsonl, {output_dir}/results.csv, {output_dir}/loss_curves.json", flush=True)
 
 
-def _d2p_sft_pilot_command(args) -> None:
-    """The document-conditioning variant of `t2p-sft-pilot`: same "train N
-    adapters from scratch under live end-to-end SFT, then score each via a
-    hook-based evaluator" structure, but conditioned on a frozen interpreter's own
-    per-layer activations on a synthetic needle-in-a-haystack (NIAH) document
-    (`document_conditioning.py`/`niah_data.py`) instead of a pooled task-description
-    embedding (`condition_encoder.py`). See PROJECT_PLAN.md for the documented
-    simplification this setting takes relative to Doc-to-LoRA's own multi-chunk
-    rank-composition (`combine_lora`) - documents here are always packed into one
-    context window per example, never split across chunks.
-    """
-    import torch
-
-    from ..t2p.document_conditioning import DocumentPerceiverConditioner
-    from ..t2p.document_sft_trainer import train_doc_downstream_hypernetwork
-    from ..t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-    from ..t2p.live_evaluator import DocumentHypernetworkDownstreamEvaluator
-    from ..t2p.niah_data import DocSFTDataset, assert_context_fits_in_one_pass, build_niah_eval_examples, doc_collate_fn
-
-    torch.manual_seed(args.seed)
-
-    context_lengths = [int(length) for length in args.context_lengths.split(",")]
-    adapters = args.adapters.split(",")
-    seeds = [int(s) for s in args.seeds.split(",")] if args.seeds else [args.seed]
-    output_dir = Path(args.output)
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    print(f"[1/5] loading interpreter {args.interpreter}...", flush=True)
-    tokenizer, interpreter, layers = load_frozen_interpreter(args.interpreter, args.device)
-    hidden_size = interpreter.config.hidden_size
-    for context_length in context_lengths:
-        assert_context_fits_in_one_pass(context_length, interpreter.config.max_position_embeddings)
-
-    print(
-        f"[2/5] building {args.num_train_documents} synthetic NIAH training document(s) "
-        f"across context lengths {context_lengths}...",
-        flush=True,
-    )
-    dataset = DocSFTDataset(
-        tokenizer, num_examples=args.num_train_documents, context_lengths=context_lengths, seed=args.seed
-    )
-
-    print(f"[3/5] building {args.eval_limit} held-out NIAH eval document(s) per context-length bin...", flush=True)
-    eval_examples_by_family = build_niah_eval_examples(
-        tokenizer, context_lengths, examples_per_bin=args.eval_limit
-    )
-
-    recorder = ResultRecorder(output_dir, lambda r: f"  {r.adapter:20} {r.task_id:16} {r.metrics}")
-    loss_curves: dict = {}
-
-    print("[4/5] scoring frozen interpreter baseline (no document access at all)...", flush=True)
-    frozen_evaluator = DocumentHypernetworkDownstreamEvaluator(
-        interpreter, layers, None, tokenizer, trial_id="d2p_sft_pilot::frozen_interpreter", device=args.device,
-    )
-    for result in frozen_evaluator.iter_evaluate_frozen(eval_examples_by_family, split=args.eval_split):
-        recorder.record(dataclasses.replace(result, metadata={**result.metadata, "seed": None}))
-
-    warmup_steps = int(args.warmup_frac * args.steps)
-    for seed in seeds:
-        # Same reasoning as t2p-sft-pilot: batch order (DataLoader shuffle) depends on
-        # the seed too, not just weight init/dropout - rebuilt per seed, reusing the
-        # already-tokenized `dataset` so the (synthetic but non-trivial to build) NIAH
-        # document set is only ever generated once regardless of how many seeds run.
-        dataloader = torch.utils.data.DataLoader(
-            dataset,
-            batch_size=args.batch_size,
-            shuffle=True,
-            generator=torch.Generator().manual_seed(seed),
-            collate_fn=partial(doc_collate_fn, pad_token_id=tokenizer.pad_token_id),
-        )
-        batches = [batch.to(args.device) for batch in dataloader]
-        print(f"[5/5] seed={seed}: {len(batches)} batch(es)/epoch", flush=True)
-
-        for adapter in adapters:
-            # Re-seeded per (seed, adapter), not just once at the top - see
-            # t2p-sft-pilot's identical comment for why.
-            torch.manual_seed(seed)
-            target_modules = PILOT_DEFAULT_TARGET_MODULES[adapter]
-            print(f"[5/5] seed={seed} adapter={adapter} target_modules={target_modules}: training...", flush=True)
-            module_shapes = infer_module_shapes(layers, target_modules, hidden_size=hidden_size)
-            conditioner = DocumentPerceiverConditioner(
-                hidden_size=hidden_size, task_dim=D2P_LATENT_DIM // 2, num_layers=len(layers), seed=seed,
-            )
-            hypernetwork = TextToPeftHypernetwork(
-                module_shapes=module_shapes,
-                num_layers=len(layers),
-                adapter=adapter,
-                latent_dim=D2P_LATENT_DIM,
-                seed=seed,
-                conditioner=conditioner,
-            ).to(args.device)
-            stats = train_doc_downstream_hypernetwork(
-                hypernetwork,
-                interpreter,
-                layers,
-                batches,
-                steps=args.steps,
-                learning_rate=args.learning_rate,
-                max_grad_norm=args.max_grad_norm,
-                l2_reg_generated_w=args.l2_reg_generated_w,
-                grad_accum_steps=args.grad_accum_steps,
-                warmup_steps=warmup_steps,
-            )
-            print(f"  seed={seed} {adapter}: initial_loss={stats.initial_loss:.4f} final_loss={stats.final_loss:.4f}", flush=True)
-            loss_curves.setdefault(str(seed), {})[adapter] = {
-                "target_modules": target_modules,
-                "initial_loss": stats.initial_loss,
-                "final_loss": stats.final_loss,
-                "steps": stats.steps,
-                "losses": list(stats.losses),
-            }
-            (output_dir / "loss_curves.json").write_text(json.dumps(loss_curves, indent=2) + "\n")
-
-            print(f"[5/5] seed={seed} adapter={adapter}: evaluating...", flush=True)
-            hypernetwork.eval()  # disable dropout for deterministic held-out scoring
-            evaluator = DocumentHypernetworkDownstreamEvaluator(
-                interpreter, layers, hypernetwork, tokenizer, trial_id=f"d2p_sft_pilot::{adapter}::seed{seed}",
-                device=args.device,
-            )
-            for result in evaluator.iter_evaluate(eval_examples_by_family, split=args.eval_split):
-                recorder.record(dataclasses.replace(result, metadata={**result.metadata, "seed": seed}))
-
-            del hypernetwork, evaluator
-            torch.cuda.empty_cache()
-
-    print(f"wrote {output_dir}/results.jsonl, {output_dir}/results.csv, {output_dir}/loss_curves.json", flush=True)
-
-
-# Hook site per adapter for the Doc-to-LoRA-parity NIAH path. Upstream's NIAH recipe hooks
-# `down_proj` only; we hold that site fixed for every weight-space codec so a multi-codec
-# comparison varies only the generated *representation*, not the attachment point. LoRA is
-# the only baseline codec; newly committed shapes register their site here (weight-space ->
-# ["down_proj"]; activation steering must intervene on the whole residual block -> ["block"]).
-D2L_PARITY_TARGET_MODULES = {
-    "lora": ["down_proj"],
-}
-
-
 def _d2p_niah_command(args) -> None:
     """Doc-to-LoRA-parity NIAH training through the shared codec seam: the validated
     document-conditioned config for held-out needle retrieval (see PROJECT_PLAN.md's D2L
@@ -739,7 +608,6 @@ def _t2p_sft_sweep_command(args) -> None:
 def register(subparsers) -> None:
     _register_t2p_sft(subparsers)
     _register_t2p_sft_pilot(subparsers)
-    _register_d2p_sft_pilot(subparsers)
     _register_d2p_niah(subparsers)
     _register_t2p_sft_sweep(subparsers)
 
@@ -755,7 +623,7 @@ def _register_d2p_niah(subparsers) -> None:
     )
     p.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
     p.add_argument("--adapters", default="lora", help="comma-separated codecs (see 't2p-sft-pilot --adapters')")
-    p.add_argument("--needle-style", default="generic", choices=["generic", "topic"],
+    p.add_argument("--needle-style", default="generic", choices=["generic", "realistic"],
                    help="generic = Doc-to-LoRA's topic-free needle+query (the format that retrieves); topic = original")
     p.add_argument("--context-lengths", default="384", help="comma-separated NIAH document token lengths (training)")
     p.add_argument("--eval-context-lengths", default="",
@@ -918,52 +786,6 @@ def _register_t2p_sft_pilot(subparsers) -> None:
     )
     t2p_sft_pilot.add_argument("--output", default="results/t2p_sft_pilot")
     t2p_sft_pilot.set_defaults(func=_t2p_sft_pilot_command)
-
-
-def _register_d2p_sft_pilot(subparsers) -> None:
-    d2p_sft_pilot = subparsers.add_parser(
-        "d2p-sft-pilot",
-        help="The document-conditioning variant of t2p-sft-pilot: train hypernetworks from scratch "
-        "conditioned on a frozen interpreter's own per-layer activations on a synthetic needle-in-a-haystack "
-        "(NIAH) document (not a pooled task-description embedding), then compare adapters via a hook-based "
-        "evaluator on held-out NIAH documents",
-    )
-    d2p_sft_pilot.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
-    d2p_sft_pilot.add_argument(
-        "--adapters",
-        default="lora",
-        help="see 't2p-sft-pilot --adapters'",
-    )
-    d2p_sft_pilot.add_argument(
-        "--context-lengths",
-        default="256,512,1024,2048",
-        help="comma-separated NIAH document lengths (approximate token counts, see niah_data.py) to draw "
-        "training/eval documents from - replaces t2p-sft-pilot's --tasks/--all-decontam-tasks (there is no "
-        "fixed task corpus here; documents are generated fresh)",
-    )
-    d2p_sft_pilot.add_argument(
-        "--num-train-documents", type=int, default=200,
-        help="synthetic NIAH training documents to generate (replaces t2p-sft-pilot's --limit examples-per-task; "
-        "there is no fixed per-task example count here since documents are generated, not loaded)",
-    )
-    d2p_sft_pilot.add_argument("--batch-size", type=int, default=4)
-    d2p_sft_pilot.add_argument("--steps", type=int, default=400)
-    d2p_sft_pilot.add_argument("--learning-rate", type=float, default=1e-3)
-    d2p_sft_pilot.add_argument("--max-grad-norm", type=float, default=1.0)
-    d2p_sft_pilot.add_argument("--l2-reg-generated-w", type=float, default=1e-3)
-    d2p_sft_pilot.add_argument("--grad-accum-steps", type=int, default=1, help="see 't2p-sft-pilot --grad-accum-steps'")
-    d2p_sft_pilot.add_argument("--warmup-frac", type=float, default=0.0, help="see 't2p-sft-pilot --warmup-frac'")
-    d2p_sft_pilot.add_argument("--seed", type=int, default=777)
-    d2p_sft_pilot.add_argument("--seeds", default="", help="see 't2p-sft-pilot --seeds'")
-    d2p_sft_pilot.add_argument("--device", default="cuda:0")
-    d2p_sft_pilot.add_argument(
-        "--eval-limit", type=int, default=20,
-        help="held-out NIAH eval documents per context-length bin (replaces t2p-sft-pilot's --eval-limit "
-        "examples-per-family - same flag name, NIAH-specific meaning)",
-    )
-    d2p_sft_pilot.add_argument("--eval-split", default="test")
-    d2p_sft_pilot.add_argument("--output", default="results/d2p_sft_pilot")
-    d2p_sft_pilot.set_defaults(func=_d2p_sft_pilot_command)
 
 
 def _register_t2p_sft_sweep(subparsers) -> None:

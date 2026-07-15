@@ -26,37 +26,60 @@ from .lol_data import tokenize_prompt_response
 
 DEFAULT_CONTEXT_LENGTHS: tuple[int, ...] = (256, 512, 1024, 2048)
 
-# Cycled (not repeated verbatim) so the haystack isn't trivially compressible in a way
-# that would let a model "solve" NIAH by pattern-matching "the one sentence that isn't
-# identical to its neighbors" rather than actually reading content.
-_FILLER_SENTENCES: tuple[str, ...] = (
-    "The grass is green.",
-    "The sky is blue.",
-    "Trees have leaves.",
-    "Water flows downhill.",
-    "The sun rises in the east.",
-    "Birds can fly through the air.",
-    "Rivers run into the sea.",
-    "Mountains are made of rock.",
-    "Snow falls in the winter.",
-    "Flowers bloom in the spring.",
-)
-
-_TOPICS: tuple[str, ...] = (
-    "engineering", "history", "chemistry", "music", "finance", "biology",
-    "astronomy", "geography", "philosophy", "medicine", "aviation", "cooking",
-)
-
 # Doc-to-LoRA's own NIAH data format (upstream `data/generate_ctx_magic_number.py`): a
-# single generic needle sentence (no topic), a fixed noise block repeated as filler, and
-# a fixed topic-free query. This is the `needle_style="generic"` path, distinct from the
-# original topic-conditioned `needle_style="topic"` above. The generic style is the one
-# that empirically learns held-out NIAH retrieval in the D2L-parity recipe (see
-# PROJECT_PLAN.md's D2P section); the topic style is retained for back-compat and because
-# every existing niah_data test asserts against it.
+# single topic-free needle sentence, a fixed noise block repeated as filler, and a fixed
+# topic-free query. This is the `needle_style="generic"` path - the D2L-parity format that
+# empirically learns held-out NIAH retrieval (see PROJECT_PLAN.md's D2P section). The
+# `"realistic"` style (below) reuses the same needle/query/scoring but swaps the repeated
+# noise block for real prose. (An original topic-conditioned `"topic"` style was removed.)
 _GENERIC_NOISE_BLOCK = "The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again."
 _GENERIC_NEEDLE_TPL = "The special magic number is {digits}."
 _GENERIC_QUERY = "What is the special magic number? Reply with only the number."
+
+# needle_style values that share the D2L-parity query/answer/tokenization path (topic-free
+# generic needle, chat-wrapped context, exact-digit answer). "realistic" differs from
+# "generic" ONLY in the haystack: real English prose instead of a repeated noise block.
+# Because the needle and answer stay the synthetic magic number, the exact-match scoring
+# and the context-swap control remain exactly as clean as "generic".
+_GENERIC_STYLES = ("generic", "realistic")
+
+# Lazily built, process-cached pool of real sentences for needle_style="realistic".
+_REALISTIC_POOL: tuple[tuple[str, ...], tuple[int, ...]] | None = None
+
+
+def _realistic_filler_pool(tokenizer) -> tuple[tuple[str, ...], tuple[int, ...]]:
+    """Build (once, cached) a pool of real English sentences to use as realistic NIAH
+    haystack filler, with their tokenized lengths. Source: the `passage` field of BoolQ
+    (real Wikipedia prose), read from the local HF cache (offline) — the same cache the
+    rest of the pipeline already depends on, so no new download and nothing vendored. The
+    pool is only *distractor* text; the needle/answer are still the synthetic magic number,
+    so there is zero answer leakage and the control stays clean. Deterministic order (fixed
+    shuffle seed), so documents are reproducible across runs. Assumes a single tokenizer per
+    process (token counts are cached for it)."""
+    global _REALISTIC_POOL
+    if _REALISTIC_POOL is not None:
+        return _REALISTIC_POOL
+    import os
+    import re as _re
+
+    os.environ.setdefault("HF_DATASETS_OFFLINE", "1")
+    from datasets import load_dataset
+
+    ds = load_dataset("google/boolq", split="train")
+    seen: set[str] = set()
+    sents: list[str] = []
+    for passage in ds["passage"]:
+        for s in _re.split(r"(?<=[.!?])\s+", passage.strip()):
+            s = s.strip()
+            if 30 <= len(s) <= 220 and s[0].isupper() and s.endswith((".", "!", "?")) and not s.isupper() and s not in seen:
+                seen.add(s)
+                sents.append(s)
+    sents.sort()
+    random.Random(0).shuffle(sents)
+    sents = sents[:8000]
+    counts = tuple(len(tokenizer(s, add_special_tokens=False)["input_ids"]) for s in sents)
+    _REALISTIC_POOL = (tuple(sents), counts)
+    return _REALISTIC_POOL
 
 
 def assert_context_fits_in_one_pass(context_length: int, model_max_position_embeddings: int) -> None:
@@ -87,7 +110,7 @@ class NiahExample:
     topic: str
     digits: str
     depth: float  # requested (not necessarily exact - see make_niah_example) fractional depth in [0, 1]
-    needle_style: str = "topic"  # "topic" (original) or "generic" (D2L-parity) - see make_niah_example
+    needle_style: str = "generic"  # "generic" (D2L-parity) or "realistic" (real-prose haystack)
 
 
 def make_niah_example(
@@ -96,7 +119,7 @@ def make_niah_example(
     *,
     depth: float | None = None,
     rng: random.Random | None = None,
-    needle_style: str = "topic",
+    needle_style: str = "generic",
 ) -> NiahExample:
     """Build one haystack+needle document of approximately `context_length` tokens.
 
@@ -109,14 +132,14 @@ def make_niah_example(
     the realized depth is an approximation of the requested one, not exact; see
     `tests/test_niah_data.py` for the tolerance this is checked at.
 
-    `needle_style` selects the data format:
-    - `"topic"` (default, original): one topic-tagged needle ("The special magic number
-      for {topic} is {digits}.") among a cycled pool of short filler sentences; the query
-      names that topic.
-    - `"generic"` (Doc-to-LoRA parity): one topic-free needle ("The special magic number
-      is {digits}.") among repeated copies of upstream's fixed noise block; the query is
-      topic-free. `topic` is set to "" (unused). This is the format the D2L-parity recipe
-      retrieves under - see PROJECT_PLAN.md's D2P section.
+    `needle_style` selects the haystack (both share the topic-free needle/query/answer, so
+    the exact-match scoring and context-swap control are identical):
+    - `"generic"` (default, Doc-to-LoRA parity): the needle ("The special magic number is
+      {digits}.") among repeated copies of upstream's fixed noise block. The D2L-parity
+      format that empirically learns held-out retrieval - see PROJECT_PLAN.md's D2P section.
+    - `"realistic"`: the same needle among real English prose (BoolQ Wikipedia sentences),
+      a genuine-distractor haystack instead of a repeated noise block.
+    `topic` is always "" (a vestigial field from a removed topic-conditioned style).
     """
     rng = rng or random.Random()
     resolved_depth = rng.random() if depth is None else depth
@@ -141,24 +164,37 @@ def make_niah_example(
             context_text=context_text, topic=topic, digits=digits, depth=realized_depth, needle_style="generic"
         )
 
-    if needle_style != "topic":
-        raise ValueError(f"needle_style must be 'topic' or 'generic', got {needle_style!r}")
-    topic = rng.choice(_TOPICS)
-    needle = f"The special magic number for {topic} is {digits}."
+    if needle_style == "realistic":
+        # Real-prose haystack + the same synthetic generic needle/answer as "generic".
+        topic = ""
+        needle = _GENERIC_NEEDLE_TPL.format(digits=digits)
+        needle_tokens = len(tokenizer(needle, add_special_tokens=False)["input_ids"])
+        pool, counts = _realistic_filler_pool(tokenizer)
+        n = len(pool)
+        target = max(1, context_length - needle_tokens)
+        # Walk a contiguous window from a per-example random start through the (shuffled,
+        # so consecutive entries are unrelated) pool, accumulating real sentences until the
+        # token budget is met. rng-driven => deterministic per (seed, example).
+        start = rng.randrange(n)
+        idxs: list[int] = []
+        total = 0
+        i = 0
+        while total < target and i < n:
+            j = (start + i) % n
+            idxs.append(j)
+            total += counts[j]
+            i += 1
+        sentences = [pool[j] for j in idxs]
+        num_filler = len(sentences)
+        needle_index = min(num_filler, round(resolved_depth * num_filler))
+        sentences.insert(needle_index, needle)
+        context_text = " ".join(sentences)
+        realized_depth = needle_index / num_filler if num_filler else 0.0
+        return NiahExample(
+            context_text=context_text, topic=topic, digits=digits, depth=realized_depth, needle_style="realistic"
+        )
 
-    filler_pool_tokens = [
-        len(tokenizer(sentence, add_special_tokens=False)["input_ids"]) for sentence in _FILLER_SENTENCES
-    ]
-    needle_tokens = len(tokenizer(needle, add_special_tokens=False)["input_ids"])
-    avg_filler_tokens = sum(filler_pool_tokens) / len(filler_pool_tokens)
-    target_filler_sentences = max(1, round((context_length - needle_tokens) / avg_filler_tokens))
-    needle_index = min(target_filler_sentences, round(resolved_depth * target_filler_sentences))
-
-    sentences = [_FILLER_SENTENCES[i % len(_FILLER_SENTENCES)] for i in range(target_filler_sentences)]
-    sentences.insert(needle_index, needle)
-    context_text = " ".join(sentences)
-    realized_depth = needle_index / target_filler_sentences if target_filler_sentences else 0.0
-    return NiahExample(context_text=context_text, topic=topic, digits=digits, depth=realized_depth)
+    raise ValueError(f"needle_style must be 'generic' or 'realistic', got {needle_style!r}")
 
 
 def build_niah_eval_examples(
@@ -168,14 +204,14 @@ def build_niah_eval_examples(
     examples_per_bin: int = 20,
     seed: int = 778,  # deliberately different default from DocSFTDataset's 777 - held-out documents, not the training ones
     fixed_depth: float | None = None,
-    needle_style: str = "topic",
+    needle_style: str = "generic",
 ) -> dict[str, list[NiahExample]]:
     """Build held-out NIAH eval examples grouped by context-length bin (mirrors
     `task_examples.py::build_all_task_examples`'s family -> list[TaskExample] shape, for
     `live_evaluator.py::DocumentHypernetworkDownstreamEvaluator` to group results by the
     same "family" concept the pooled-vector evaluator already uses). Family names are
     `f"niah_{length}"`, one per requested context length bin. `needle_style` is forwarded
-    to `make_niah_example` (see it for "topic" vs "generic").
+    to `make_niah_example` (see it for "generic" vs "realistic").
     """
     rng = random.Random(seed)
     examples_by_family: dict[str, list[NiahExample]] = {}
@@ -187,26 +223,10 @@ def build_niah_eval_examples(
     return examples_by_family
 
 
-def build_query_prompt(tokenizer, topic: str) -> str:
-    """Mirrors `lol_data.py::format_prompt_response`'s chat-template handling
-    (`enable_thinking=False` matters for Qwen3 - see that function's docstring) for
-    this dataset's own fixed query template. Kept as a standalone helper (rather than
-    reusing `format_prompt_response` itself, which is parameterized around
-    `task_def`/`problem`/`user_prompt_template` for Lots-of-LoRAs' schema) since NIAH's
-    query has no task-definition/user-template structure to plug into that.
-    """
-    user_content = f"What is the special magic number for {topic}?"
-    return tokenizer.apply_chat_template(
-        [{"role": "user", "content": user_content}],
-        tokenize=False,
-        add_generation_prompt=True,
-        enable_thinking=False,
-    )
-
-
 def build_generic_query_prompt(tokenizer) -> str:
-    """`needle_style="generic"` (D2L-parity) counterpart to `build_query_prompt`: the
-    topic-free upstream query, chat-wrapped identically (`enable_thinking=False`)."""
+    """The topic-free upstream NIAH query, chat-wrapped (`enable_thinking=False` matters
+    for Qwen3 - see `lol_data.py::format_prompt_response`). Used by both the `generic` and
+    `realistic` needle styles (they share the same query/answer)."""
     return tokenizer.apply_chat_template(
         [{"role": "user", "content": _GENERIC_QUERY}],
         tokenize=False,
@@ -216,32 +236,26 @@ def build_generic_query_prompt(tokenizer) -> str:
 
 
 def build_query_for_example(tokenizer, example: "NiahExample") -> str:
-    """Dispatch the right query prompt for an example's `needle_style` - the one lookup
-    both `DocSFTDataset` and `live_evaluator.DocumentHypernetworkDownstreamEvaluator` use
-    so training and eval never build the query differently for a given style."""
-    if example.needle_style == "generic":
-        return build_generic_query_prompt(tokenizer)
-    return build_query_prompt(tokenizer, example.topic)
+    """The query prompt for an example - the one lookup both `DocSFTDataset` and
+    `live_evaluator.DocumentHypernetworkDownstreamEvaluator` use so training and eval never
+    build the query differently. Both shipped styles (`generic`, `realistic`) are
+    topic-free, so this is always the generic query."""
+    return build_generic_query_prompt(tokenizer)
 
 
 def encode_context(tokenizer, example: "NiahExample", *, max_length: int | None = None) -> dict:
-    """Tokenize a document's context the way its `needle_style` expects, so training and
-    eval encode it identically. `"generic"` (D2L-parity) wraps the document as a chat user
-    message (upstream feeds the context as a chat turn) and adds no extra special tokens
-    on top of the template; `"topic"` tokenizes the raw context as-is (original behavior).
-    Returns a dict with `input_ids` (and, for a real tokenizer, `attention_mask`).
+    """Tokenize a document's context so training and eval encode it identically: wrap the
+    document as a chat user message (upstream feeds the context as a chat turn, D2L-parity)
+    and add no extra special tokens on top of the template. Returns a dict with `input_ids`
+    (and, for a real tokenizer, `attention_mask`).
     """
-    if example.needle_style == "generic":
-        text = tokenizer.apply_chat_template(
-            [{"role": "user", "content": example.context_text}],
-            tokenize=False,
-            add_generation_prompt=False,
-            enable_thinking=False,
-        )
-        add_special = False
-    else:
-        text = example.context_text
-        add_special = False
+    text = tokenizer.apply_chat_template(
+        [{"role": "user", "content": example.context_text}],
+        tokenize=False,
+        add_generation_prompt=False,
+        enable_thinking=False,
+    )
+    add_special = False
     kwargs = {"add_special_tokens": add_special}
     if max_length is not None:
         kwargs["truncation"] = True
@@ -252,7 +266,7 @@ def encode_context(tokenizer, example: "NiahExample", *, max_length: int | None 
 @dataclass(frozen=True)
 class DocSFTBatch:
     """Parallel to `sft_trainer.py::SFTBatch`: `context_input_ids`/`context_attention_mask`
-    are the haystack+needle document (fed through `capture_document_activations` -
+    are the haystack+needle document (fed through the conditioner-agnostic early-exit capture -
     never through the hypernetwork-hooked interpreter directly); `input_ids`/
     `attention_mask`/`labels` are the query+answer, response-only-supervised exactly
     like `SFTBatch`, fed through the hooked interpreter for the actual training loss.
@@ -287,7 +301,7 @@ class DocSFTDataset(Dataset):
         max_query_len: int = 64,
         seed: int = 777,
         fixed_depth: float | None = None,
-        needle_style: str = "topic",
+        needle_style: str = "generic",
     ):
         self.tokenizer = tokenizer
         rng = random.Random(seed)
@@ -305,7 +319,7 @@ class DocSFTDataset(Dataset):
             prompt = build_query_for_example(tokenizer, example)
             # Generic (D2L-parity) response is the bare number (matches upstream + the
             # validated probe); topic keeps its historical leading space.
-            answer = example.digits if needle_style == "generic" else " " + example.digits
+            answer = example.digits if needle_style in _GENERIC_STYLES else " " + example.digits
             response = answer + (tokenizer.eos_token or "")
             tokenized_query = tokenize_prompt_response(tokenizer, prompt, response, max_query_len)
             self.examples.append(

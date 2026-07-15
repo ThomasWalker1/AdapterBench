@@ -199,7 +199,7 @@ class DocumentHypernetworkDownstreamEvaluator:
     conditioning input is a whole per-example document rather than one embedding
     shared by an entire task family - `HypernetworkDownstreamEvaluator._active` hooks
     once per family (one condition_embedding serves every example in that family);
-    this evaluator's `_active` instead runs `capture_document_activations` (a real
+    this evaluator's `_active` instead runs the conditioner's `prepare_condition` (a real
     interpreter forward pass) and hooks a fresh adapter once *per example*, since every
     NIAH document is distinct. Scoring is exact-match on the needle's 4-digit answer
     (substring containment in the generated continuation), not
@@ -236,7 +236,7 @@ class DocumentHypernetworkDownstreamEvaluator:
             return
         # Tokenize the context exactly as training did for this needle_style
         # (generic -> chat-wrapped; topic -> raw), then let the conditioner produce its
-        # own raw_condition via `prepare_condition` - `DocumentPerceiverConditioner`
+        # own raw_condition via `prepare_condition` - `EarlyExitPerceiverConditioner`
         # returns the full per-layer activation stack, `EarlyExitPerceiverConditioner`
         # returns its early-exit-encoded latents - so this evaluator is conditioner-agnostic
         # (the codec seam and generate_per_layer contract are identical for both).

@@ -10,7 +10,7 @@ row up to seed variance — this is the benchmark's reproducibility contract.
 | Image (reward tilting) | `image_lora.sh [DEVICE]` | `image_reward_tilting.md` | matched − reward-swap = **+3.50** |
 | Task (T2L), shipped full-scale | `task_t2l_lora_ddp.sh [GPUS]` | `task_conditioned_t2l.md` | matched − adversarial (DDP run in progress) |
 | Task (T2L), batch-8 reference | `task_t2l_lora.sh [DEVICE] [STEPS]` | `task_conditioned_t2l.md` | **+0.033** (150K × 3, emergence-curve reference) |
-| Document (NIAH) | `document_niah_lora.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **+1.00** |
+| Document (NIAH) | `document_niah_lora.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **+0.887 ± 0.143** (5 seeds, realistic haystack; crossover 16×) |
 
 All scripts are restart-safe: re-run the identical command to resume from the last checkpoint.
 

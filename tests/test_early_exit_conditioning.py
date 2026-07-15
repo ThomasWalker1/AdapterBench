@@ -150,10 +150,8 @@ def test_make_niah_example_rejects_unknown_needle_style():
 def test_generic_query_is_topic_free_and_dispatch_matches_style():
     tok = _Tok()
     generic = make_niah_example(tok, 200, rng=random.Random(1), needle_style="generic")
-    topic = make_niah_example(tok, 200, rng=random.Random(1), needle_style="topic")
     assert "for" not in build_generic_query_prompt(tok).replace("There and back", "")
     assert build_query_for_example(tok, generic) == build_generic_query_prompt(tok)
-    assert topic.topic in build_query_for_example(tok, topic)
 
 
 def test_encode_context_generic_is_chat_wrapped():
@@ -171,3 +169,10 @@ def test_doc_sft_dataset_generic_style_builds_valid_examples_and_records_style()
         assert item["needle_style"] == "generic"
         assert len(item["context_input_ids"]) == len(item["context_attention_mask"]) > 0
         assert len(item["input_ids"]) == len(item["labels"]) == len(item["attention_mask"])
+
+
+def test_hypernetwork_requires_condition_dim_or_conditioner():
+    with pytest.raises(ValueError, match="condition_dim"):
+        TextToPeftHypernetwork(
+            module_shapes={"q_proj": (8, 8)}, num_layers=2, adapter="lora", latent_dim=16, head_dim=16,
+        )

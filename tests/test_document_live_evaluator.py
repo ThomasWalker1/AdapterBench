@@ -3,10 +3,27 @@ from types import SimpleNamespace
 import torch
 from torch import nn
 
-from adapterbench.t2p.document_conditioning import DocumentPerceiverConditioner
 from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
 from adapterbench.t2p.live_evaluator import DocumentHypernetworkDownstreamEvaluator
 from adapterbench.t2p.niah_data import NiahExample
+
+
+class _StubConditioner(nn.Module):
+    """Minimal conditioner-agnostic stand-in for exercising the evaluator's plumbing
+    (hook/unhook, per-example adapter generation, parameter counting) without depending on
+    a real capture path. Exposes the same `prepare_condition` + `forward(_, layer_index)`
+    contract the shipped `EarlyExitPerceiverConditioner` does; the evaluator calls
+    `prepare_condition` then the hypernetwork calls `forward` per layer."""
+
+    def __init__(self, hidden_size, task_dim):
+        super().__init__()
+        self.proj = nn.Linear(hidden_size, task_dim)
+
+    def prepare_condition(self, interpreter, input_ids, attention_mask):
+        return interpreter.embed(input_ids).mean(dim=1)  # (batch, hidden_size)
+
+    def forward(self, raw_condition, layer_index=None):
+        return self.proj(raw_condition)  # (batch, task_dim)
 
 
 class FakeDecoderLayer(nn.Module):
@@ -20,7 +37,7 @@ class FakeDecoderLayer(nn.Module):
 
 class FakeCausalLM(nn.Module):
     """Like test_live_evaluator.py's FakeCausalLM, extended with output_hidden_states
-    support so it can stand in for capture_document_activations's interpreter arg."""
+    support so it can stand in as the frozen interpreter arg."""
 
     def __init__(self, vocab_size, hidden_size, num_layers=1):
         super().__init__()
@@ -72,7 +89,7 @@ class FakeTokenizer:
 def _setup(vocab_size=16, hidden_size=8, num_layers=2):
     torch.manual_seed(0)
     interpreter = FakeCausalLM(vocab_size, hidden_size, num_layers)
-    conditioner = DocumentPerceiverConditioner(hidden_size=hidden_size, task_dim=8, num_layers=num_layers, latent_dim=8)
+    conditioner = _StubConditioner(hidden_size=hidden_size, task_dim=8)
     module_shapes = infer_module_shapes(interpreter.layers, ["block"], hidden_size=hidden_size)
     hypernetwork = TextToPeftHypernetwork(
         module_shapes=module_shapes,

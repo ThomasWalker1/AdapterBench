@@ -53,8 +53,9 @@ leaderboards" and `leaderboards/README.md`.
 
 **Validated LoRA baselines** (recorded in the leaderboards): image reward-tilting matched−control
 **+3.50** (IR gain +0.160 ± 0.015 vs −3.34 reward-swap; scale optimum 2–4); T2L conditioning
-**+0.033** (150K × 3 seeds, all 4 families); D2L NIAH **+1.00** (acc 1.0, ctxswap 0.0). The paper
-(`~/adapterbench-paper.tex`) is updated to this design with these numbers.
+**+0.033** (150K × 3 seeds, all 4 families); D2L NIAH **+0.887 ± 0.143** (in-distribution, 5 seeds,
+realistic-prose haystack, ctxswap 0.000; length-gen crossover 4096 = 16× train length). The paper
+(`~/adapterbench-paper.tex`) reflects this design (D2L number to refresh to the realistic 5-seed).
 
 **⏳ RUNNING right now (do not kill unless intended):**
 - **Fast DDP T2L run** (the *going-forward benchmark training path*, 2026-07-15) — 4-GPU
@@ -75,17 +76,14 @@ leaderboards" and `leaderboards/README.md`.
   identical command** (§ "T2L" IN-PROGRESS block) — it resumes from the last 10K checkpoint. When it
   finishes: `.venv/bin/python scripts/t2p_rigor_aggregate.py --results results/t2p_cond_1M/s777/results.jsonl`,
   extend the emergence curve (5K→20K→60K→150K→**1M**).
-- **3-seed D2L base-retrieval baseline** — seeds 777/778/779 → `results/repro/document_niah_lora/
-  s{777,778,779}/`, validated 384-token/512-doc/6000-step recipe at scale 45.25, restart-safe.
-  **History: started 2026-07-14 but died at step 1500/6000 (right before the ~1600–2500-step
-  retrieval phase transition — checkpoints had NOT learned retrieval); resumed 2026-07-15 on
-  cuda:5/6/7 (one seed per GPU, parallel), each printing `[resume] loaded checkpoint at step 1500`.**
-  Per-seed logs: `results/repro/document_niah_lora/s{seed}/resume.log`. A background waiter
-  auto-runs `d2p_niah_aggregate.py --root results/repro/document_niah_lora --min-seeds 3` when all
-  three exit. **If a seed dies again, re-run its command** (§ "How to run" D2L block, with
-  `--seed`/`--device`/`--output` for that seed) — it resumes from the last checkpoint.
-- **GPU map (2026-07-15):** cuda:0 = batch-8 1M run; cuda:1–4 = DDP T2L run; cuda:5–7 = D2L 3-seed
-  resume. Other users (`sa86`) intermittently share GPUs; `nvidia-smi` before launching, prefer
+- **D2L NIAH — DONE (unified, realistic, 5-seed).** `results/repro/document_niah_realistic/
+  s{777..781}/`, train@256 realistic-prose haystack, eval sweep 256→8192, 12K steps. In-distribution
+  matched−control **+0.887 ± 0.143** (ctxswap 0.000), crossover(0.5) = 4096 = 16× train length.
+  Leaderboard `document_niah_d2l.md` + reproduce script updated. (This supersedes the old synthetic
+  single-bin base-retrieval + separate length-gen runs, now consolidated into one recipe. The earlier
+  synthetic 3-seed@12K gave a noisier +0.740 ± 0.217 — the realistic unified run is the shipped row.)
+- **GPU map (2026-07-15):** cuda:0 = batch-8 1M run; cuda:1–4 = DDP T2L run; cuda:5–7 = free (D2L
+  done). Other users (`sa86`) intermittently share GPUs; `nvidia-smi` before launching, prefer
   0%-util GPUs, never touch cuda:0's 1M run.
 
 **Completion checklist — aggregate the running experiments when they finish:**
@@ -94,8 +92,8 @@ leaderboards" and `leaderboards/README.md`.
   T2L leaderboard/paper row at the DDP config, then run seeds 778/779 (same command, `--seed`).
 - [ ] **T2L 1M (batch-8 reference):** run `.venv/bin/python scripts/t2p_rigor_aggregate.py --results
   results/t2p_cond_1M/s777/results.jsonl`, then extend the batch-8 emergence curve.
-- [ ] **D2L 3-seed:** run `.venv/bin/python scripts/d2p_niah_aggregate.py --root
-  results/repro/document_niah_lora --min-seeds 3`, then update the D2L leaderboard.
+- [x] **D2L unified realistic 5-seed — DONE:** aggregated (+0.887 ± 0.143 in-dist, crossover 16×);
+  `document_niah_d2l.md` + reproduce script updated.
 
 **LoRA results status + gaps** (the "complete the baseline" work):
 - **Image (I2P): complete.** Operating point (scale 4, reg 0.25) × 3 seeds + reward-swap control ×
@@ -104,31 +102,37 @@ leaderboards" and `leaderboards/README.md`.
 - **Task (T2L): 150K × 3 done** (`results/_archive/t2p_cond_long/s{777,778,779}_150k`, +0.033);
   **DDP data-matched run + batch-8 1M both running**. Gaps to a shippable row: land the DDP run as the
   headline (+ seeds 778/779), reconcile its reproduce command, and settle invariant #2 (best-of-scale
-  — currently "default"; earlier under-powered sweep `t2p_sft_pilot_scaled` was flat). See § Roadmap
+  — currently "default"; needs a fresh `--scales` sweep at the shipped recipe). See § Roadmap
   "CURRENT PHASE".
-- **Document (D2L): length-gen is 6-seed** (`d2p_lengthgen_lora_s777..782`) but **base NIAH
-  retrieval row is single-seed** (`d2p_niah_lora`). Gaps: the ≥3-seed base-retrieval run (resumed on
-  cuda:5–7, above) must land and be aggregated; surface the scale sweep (`d2p_sft_scalefind_lora`
-  archive) in the row rather than only "≈45 default".
+- **Document (D2L): DONE** — unified realistic 5-seed (`results/repro/document_niah_realistic/`):
+  in-distribution +0.887 ± 0.143, length-gen curve to 8192, crossover 16×, ctxswap 0.000. Only
+  remaining rigor gap: a fresh `--lora-scaling` best-of-scale sweep (invariant #2; currently the
+  default ≈45.25) — deferred with the T2L scale sweep.
 
 **Next steps (priority order) — current phase = sound infra + complete LoRA baseline, NOT new codecs
 (see § Roadmap "CURRENT PHASE" for the full gap list and definition-of-done):**
 1. **Land the fast DDP T2L run** (running, `results/t2p_cond_ddp/s777/`, ~8h) → aggregate, set the
    T2L leaderboard/paper row at the DDP data-matched config, then run seeds 778/779. The batch-8 1M
    run keeps finishing on cuda:0 as the emergence-curve context point.
-2. **Complete the D2L base-retrieval baseline** — ≥3-seed run resumed on cuda:5–7 (was dead at step
-   1500); auto-aggregates on completion → update `leaderboards/document_niah_d2l.md` multi-seed row.
+2. **D2L — DONE** (unified realistic 5-seed, +0.887 ± 0.143, crossover 16×; leaderboard + reproduce
+   updated). Only the best-of-scale sweep remains (with T2L's, item 3).
 3. **Reconcile reproduce commands with shipped configs** (T2L row + `scripts/reproduce/task_t2l_lora.sh`
    → DDP command), **pick one canonical headline config per setting**, and **satisfy invariant #2
-   (best-of-scale) uniformly** (T2L scale sweep; surface D2L `d2p_sft_scalefind_lora`). These are the
+   (best-of-scale) uniformly** (fresh T2L `--scales` and D2L `--lora-scaling` sweeps; old archives
+   pruned). These are the
    infra/rigor gaps beyond the running compute.
 4. **Commit** the shipped infra (`scripts/t2p_train_ddp.py`, reproduce wrappers, plan, paper) to `main`.
 5. *(Deferred, not now)* alternative codec shapes — the "does shape matter" payload; resumes only
    after the baseline + infra above are locked.
 
-**Repo hygiene:** `results/` is gitignored scratch (the LoRA baseline data is under
-`results/_archive/`); checkpoints/`*.pt`/`*.log` never committed. Stage-ready: `leaderboards/`,
-`data/`, modified `src/`/`scripts/`/docs. **Nothing has been committed — the human drives that.**
+**Repo hygiene:** `results/` is gitignored scratch. **Pruned to leaderboard-only on 2026-07-15:**
+`results/_archive/` now holds *only* the LoRA leaderboard-backing result files (metrics, checkpoints
+stripped) — `i2p_hypernoise_v2/`, `t2p_cond_long/`, `d2p_niah_lora/`, `d2p_lengthgen_lora_s777..782/`
+(+ their `.log`s for the length-gen transition analysis), 14 MB total. Deferred-codec and exploratory
+archives (IA³/LoKr/FourierFT/steering, old reconstruction/vllm/smoke runs) were deleted; those shapes
+re-run fresh when codec work resumes. Live runs (`t2p_cond_1M/`, `t2p_cond_ddp/`,
+`repro/document_niah_lora/`) were left intact. Checkpoints/`*.pt`/`*.log` never committed. Stage-ready:
+`leaderboards/`, `data/`, modified `src/`/`scripts/`/docs. **Nothing has been committed — the human drives that.**
 The T2L data is vendored to `data/t2l/` (13 MB) so no `upstream/` clone is needed.
 
 ## Architecture
@@ -176,21 +180,23 @@ The T2L data is vendored to `data/t2l/` (13 MB) so no `upstream/` clone is neede
     generalization peaks").
 - **Document-conditioning (D2L) variant:** same live-SFT loop, same codec seam, only the
   conditioning input changes — from a pooled task-description embedding to a frozen
-  interpreter's own per-layer token activations on a synthetic NIAH document.
-  - `t2p/document_conditioning.py` — `capture_document_activations` (a `@torch.no_grad()`
-    forward through the frozen interpreter with `output_hidden_states=True`),
-    `capture_early_exit_representation` + `EarlyExitPerceiverConditioner` (the generation
-    path that learns held-out retrieval — see § "D2L NIAH"), and the earlier
-    `DocumentPerceiverConditioner`. All conditioners expose `prepare_condition`, so the
-    trainer/evaluator are conditioner-agnostic; the codec seam and `generate_per_layer`
-    are unchanged.
-  - `t2p/niah_data.py` — synthetic haystack/needle generation (`make_niah_example`,
+  interpreter's own early-exit representation of a synthetic NIAH document.
+  - `t2p/document_conditioning.py` — `capture_early_exit_representation` (a `@torch.no_grad()`
+    forward through the frozen interpreter's first `L//4` decoder layers) +
+    `EarlyExitPerceiverConditioner` (the generation path that learns held-out retrieval — see
+    § "D2L NIAH"), the **only** shipped conditioner. (An earlier full-depth per-layer
+    conditioner + full-activation capture were removed 2026-07-15 — they did not learn
+    retrieval.) The conditioner exposes `prepare_condition`, so the trainer/evaluator are
+    conditioner-agnostic; the codec seam and `generate_per_layer` are unchanged.
+  - `t2p/niah_data.py` — synthetic haystack/needle generation (`make_niah_example`).
     `needle_style="generic"` = one topic-free `"The special magic number is NNNN."` needle
-    among repeated noise, chat-tokenized), `DocSFTDataset`/`doc_collate_fn`/`DocSFTBatch`,
-    `build_niah_eval_examples`. **Documented simplification:** every document is packed into
-    one context window per example — this does NOT replicate Doc-to-LoRA's multi-chunk rank
-    composition (`combine_lora`); `assert_context_fits_in_one_pass` is the guard. Valid
-    because Qwen3-0.6B's `max_position_embeddings` (40960) exceeds every configured length.
+    among a repeated noise block; `needle_style="realistic"` = the same needle among **real
+    Wikipedia prose** (BoolQ passages, loaded offline), a genuine-distractor haystack. Both
+    share the topic-free query + exact-4-digit answer + context-swap control (so scoring stays
+    clean; the needle/answer are always the synthetic number). Also `DocSFTDataset`/
+    `doc_collate_fn`/`DocSFTBatch`/`build_niah_eval_examples`. **Documented simplification:**
+    every document is packed into one context window per example — does NOT replicate
+    Doc-to-LoRA's multi-chunk `combine_lora`; `assert_context_fits_in_one_pass` is the guard.
   - `t2p/document_sft_trainer.py` — the document-conditioned training loop
     (`compute_doc_sft_loss`/`doc_train_step`/`train_doc_downstream_hypernetwork`, and
     `train_doc_niah_checkpointed`, restart-safe with atomic
@@ -198,9 +204,9 @@ The T2L data is vendored to `data/t2l/` (13 MB) so no `upstream/` clone is neede
   - `t2p/live_evaluator.py::DocumentHypernetworkDownstreamEvaluator` — hooks a fresh
     adapter *per example* (every NIAH document is distinct) and scores via exact 4-digit
     substring match, with a **context-swap control** (`accuracy_ctxswap`).
-  - `cli/`'s `d2p-sft-pilot` (mirrors `t2p-sft-pilot` with `--context-lengths`/
-    `--num-train-documents`) and `d2p-niah` (the D2L-parity NIAH command, with
-    `--eval-context-lengths` for the length-generalization sweep).
+  - `cli/`'s `d2p-niah` (the D2L NIAH command: `--needle-style generic|realistic`,
+    `--context-lengths` train length, `--eval-context-lengths` for the unified in-distribution
+    + length-generalization sweep). (The earlier `d2p-sft-pilot` command was removed 2026-07-15.)
 
 ## D2L NIAH: the from-scratch recipe (why the setting is legitimate)
 
@@ -562,8 +568,8 @@ uv run pytest -q   # 101 tests (LoRA-only baseline)
    automatically before building a dataset, so an over-long bin errors instead of silently
    corrupting position encodings).
 6. **The frozen interpreter runs in bf16 but every from-scratch hypernetwork parameter is
-   float32** — `capture_document_activations` casts captured activations to float32 before
-   the conditioner, or `nn.MultiheadAttention` raises a dtype-mismatch `RuntimeError`.
+   float32** — `capture_early_exit_representation` casts the captured representation to float32
+   before the conditioner, or `nn.MultiheadAttention` raises a dtype-mismatch `RuntimeError`.
 7. **Every live-SFT pilot/sweep command must call `hypernetwork.eval()` after training and
    before scoring** — otherwise the trunk's/conditioner's `nn.Dropout(0.05)` stays active
    during held-out scoring, adding non-determinism on top of genuine seed variance. Any new
@@ -672,7 +678,8 @@ now deliberately simple:
 
 - **`leaderboards/*.md`** — one committed leaderboard per setting (image / T2L / D2L). Each entry is
   `(shape, free HPs, matched−control ± std, #seeds, reproduce command)`. See `leaderboards/README.md`
-  for the format and the rules. LoRA baseline entries are recorded (image +3.50, T2L +0.033, D2L +1.00).
+  for the format and the rules. LoRA baseline entries are recorded (image +3.50, T2L +0.033,
+  D2L +0.887 ± 0.143 in-distribution / crossover 16×).
 - **Eval scripts = the existing setting CLIs** (`i2p-hypernoise`, `d2p-niah`, `t2p-sft-pilot`), which
   already take HPs and emit matched−control. A leaderboard entry's "reproduce command" is exactly one
   of these invocations; re-running it against the committed codec regenerates the number.
@@ -731,8 +738,7 @@ could read a leaderboard row, run its command, and regenerate the number.
 *In flight now (compute; see session handoff):*
 1. **T2L** — fast DDP run (`results/t2p_cond_ddp/s777`, the shipped data-matched scale) → aggregate,
    then seeds 778/779 for the multi-seed row. The batch-8 1M run keeps extending the emergence curve.
-2. **D2L** — ≥3-seed base-retrieval (resumed on cuda:5–7) → aggregate → fill the multi-seed row
-   (length-gen already 6-seed).
+2. **D2L** — DONE: unified realistic 5-seed (+0.887 ± 0.143 in-distribution, length-gen crossover 16×).
 
 *Necessary beyond the running compute (the gap to "phase done"):*
 3. **Reconcile every leaderboard "reproduce" command with the actually-shipped config.**
@@ -745,13 +751,13 @@ could read a leaderboard row, run its command, and regenerate the number.
    ✅ **DECIDED + recorded:** T2L headline = the DDP data-matched run; 150K×3 and 1M are
    emergence-curve context (stated in the T2L leaderboard). No code left; it finalizes when #3's
    number lands.
-5. **Satisfy invariant #2 (report best-of-scale) uniformly.** ⛔ **NEEDS COMPUTE — not doable from
-   archives.** Checked: `d2p_sft_scalefind_lora` has `scale=None`/all-0.0 rows (unusable) and
-   `t2p_sft_pilot_scaled` has no per-scale breakdown at an under-powered recipe. So T2L needs a short
-   `--scales` sweep at the shipped recipe and D2L a `--lora-scaling` sweep; neither can be surfaced
-   from existing data. Image already ships a full scale sweep. ← top remaining rigor gap.
+5. **Satisfy invariant #2 (report best-of-scale) uniformly.** ⛔ **NEEDS COMPUTE.** T2L needs a short
+   `--scales` sweep at the shipped recipe (currently "scale default") and D2L a `--lora-scaling`
+   sweep. The old exploratory scale archives were unusable anyway (scale not recorded / under-powered
+   recipe) and were pruned in the 2026-07-15 results cleanup, so both require fresh runs. Image
+   already ships a full scale sweep. ← top remaining rigor gap.
 6. **Finalize each row to uniform rigor** once runs land: ≥3-seed mean±std, best-of-scale, a
-   difficulty-knob reference, remove standing caveats (D2L "single-seed"; T2L "headline pending").
+   difficulty-knob reference, remove standing caveats (T2L "headline pending"; D2L multi-seed now done).
 7. **Commit the shipped infrastructure** (human drives commits): `scripts/t2p_train_ddp.py`,
    `scripts/t2p_train_ddp_smoke.sh`, `scripts/reproduce/{task_t2l_lora_ddp.sh,README.md}`,
    PROJECT_PLAN, `leaderboards/task_conditioned_t2l.md`, and the paper.
@@ -771,7 +777,8 @@ could read a leaderboard row, run its command, and regenerate the number.
 
 **Future (explicitly deferred — not this phase):**
 - **Alternative codec shapes** (IA³, LoKr, FourierFT, activation-steering — all in git history and
-  with archived results under `results/_archive/`), added one at a time, each a subclass +
+  in git history — their exploratory archived results were pruned in the 2026-07-15 cleanup, so each
+  is re-run fresh), added one at a time, each a subclass +
   `make_codec` entry + manifest + leaderboard row at its own best free-HPs. This is the "does shape
   matter" payload and resumes only after the LoRA baseline + infra above are locked.
 - **Multi-seed at the batch-8 1M scale** for T2L (a second/third full trajectory) if the emergence

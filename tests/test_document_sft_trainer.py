@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 
-from adapterbench.t2p.document_conditioning import DocumentPerceiverConditioner
+from adapterbench.t2p.document_conditioning import EarlyExitPerceiverConditioner
 from adapterbench.t2p.document_sft_trainer import (
     compute_doc_sft_loss,
     doc_train_step,
@@ -31,7 +31,10 @@ def _toy_setup(seed=0, adapter="lora", target_modules=("q_proj",)):
 
     module_shapes = infer_module_shapes(layers, list(target_modules), hidden_size=hidden_size)
     latent_dim, task_dim = 16, 8
-    conditioner = DocumentPerceiverConditioner(hidden_size=hidden_size, task_dim=task_dim, num_layers=num_layers, latent_dim=8)
+    conditioner = EarlyExitPerceiverConditioner(
+        hidden_size=hidden_size, task_dim=task_dim, num_layers=num_layers,
+        exit_layer=1, n_latents=4, num_blocks=2, latent_dim=8, num_heads=2,
+    )
     hypernetwork = TextToPeftHypernetwork(
         module_shapes=module_shapes,
         num_layers=num_layers,

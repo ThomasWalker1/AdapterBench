@@ -1,7 +1,7 @@
 """Live end-to-end SFT training for document-conditioned hypernetworks (NIAH): the
 generated adapter is hooked into a real frozen interpreter's forward pass on real
 query/answer examples, exactly like `sft_trainer.py`'s task-description-conditioned
-training loop, but conditioned on `capture_document_activations`'s own per-layer
+training loop, but conditioned on the conditioner's own early-exit
 document token activations instead of a pooled task-description embedding.
 
 `sft_trainer.py`'s `train_step`/`train_downstream_hypernetwork` are hardcoded to call
@@ -13,7 +13,7 @@ reimplements the grad-accumulation/warmup-scheduling *loop shape* for `DocSFTBat
 rather than parameterizing `sft_trainer.py`'s loop functions. It does reuse the two
 conditioning-agnostic pieces those functions delegate to (`masked_cross_entropy`,
 `_linear_warmup_then_constant`) instead of duplicating their logic, and returns the
-same `SFTTrainStats` shape, so downstream callers (the `d2p-sft-pilot` CLI command,
+same `SFTTrainStats` shape, so downstream callers (the `d2p-niah` CLI command,
 tests) see an interface identical to `sft_trainer.py`'s.
 """
 
@@ -45,7 +45,7 @@ def compute_doc_sft_loss(
 
     Captures the frozen interpreter's own per-layer activations on
     `batch.context_input_ids`/`batch.context_attention_mask` (the haystack+needle
-    document - a `@torch.no_grad()` pass, see `capture_document_activations`),
+    document - a `@torch.no_grad()` pass, see `capture_early_exit_representation`),
     conditions the hypernetwork on those instead of a pooled task-description
     embedding, then hooks the generated adapter into a *second*, gradient-tracked
     interpreter forward pass over `batch.input_ids` (the query) - the same
@@ -55,7 +55,7 @@ def compute_doc_sft_loss(
 
     Uses `hypernetwork.generate_per_layer(raw_condition)` (not the batched
     `hypernetwork(raw_condition)`) so a layer-index-aware conditioner (e.g.
-    `DocumentPerceiverConditioner`) actually conditions each layer's generated adapter
+    `EarlyExitPerceiverConditioner`) actually conditions each layer's generated adapter
     on that layer's own document-activation cross-attention, rather than every layer
     sharing one cross-layer-pooled summary vector - see `TextToPeftHypernetwork.
     generate_per_layer`/`forward_layer`'s docstrings for why this differs from

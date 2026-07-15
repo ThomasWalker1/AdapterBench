@@ -94,6 +94,9 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path("results/repro/document_niah_lora"))
     parser.add_argument("--min-seeds", type=int, default=3)
+    parser.add_argument("--train-length", type=int, default=None,
+                        help="training context length; if set, report the length-generalization "
+                             "crossover (largest eval length with mean matched>=0.5) and its ratio to it")
     args = parser.parse_args()
 
     grouped = aggregate(args.root)
@@ -101,6 +104,8 @@ def main() -> int:
         raise SystemExit(f"no completed adapter results found under {args.root}")
 
     insufficient = False
+    # per-adapter {eval_length: mean matched} for the length-generalization curve/crossover
+    curve: dict[str, dict[int, float]] = defaultdict(dict)
     print("adapter  task       seeds  matched       ctxswap       matched-control  transition")
     for (adapter, task_id), results in sorted(grouped.items()):
         matched_mean, matched_std = mean_std([result.matched for result in results])
@@ -117,9 +122,32 @@ def main() -> int:
             f"{control_mean:.3f}±{control_std:.3f}  "
             f"{headline_mean:+.3f}±{headline_std:.3f}       {transition}"
         )
+        if task_id.startswith("niah_"):
+            try:
+                curve[adapter][int(task_id.split("_")[1])] = matched_mean
+            except (ValueError, IndexError):
+                pass
         if len(results) < args.min_seeds:
             insufficient = True
             print(f"  missing {args.min_seeds - len(results)} seed(s): have {', '.join(r.run for r in results)}")
+
+    # Length-generalization summary (invariant #3): the crossover length is the largest
+    # eval length whose mean matched retrieval is still >= 0.5; the ratio to the training
+    # length is the scalar the leaderboard reports alongside the curve.
+    multi_len = {a: c for a, c in curve.items() if len(c) > 1}
+    if multi_len:
+        print("\nlength-generalization (mean matched by eval length):")
+        for adapter, c in sorted(multi_len.items()):
+            lengths = sorted(c)
+            print(f"  {adapter}: " + "  ".join(f"{L}:{c[L]:.2f}" for L in lengths))
+            crossover = max((L for L in lengths if c[L] >= 0.5), default=None)
+            if crossover is not None and args.train_length:
+                print(f"    crossover(0.5)={crossover} tokens  = {crossover/args.train_length:.0f}x train length "
+                      f"({args.train_length})")
+            elif crossover is not None:
+                print(f"    crossover(0.5)={crossover} tokens (pass --train-length for the ratio)")
+            else:
+                print("    never crosses 0.5 (no retrieval at any evaluated length)")
 
     return 1 if insufficient else 0
 
