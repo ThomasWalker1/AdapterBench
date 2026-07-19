@@ -1,0 +1,22 @@
+assistant_prefill: ''
+descriptions:
+- Engage with questions centered around philosophical themes and thinkers. This requires
+  a solid understanding of philosophical arguments and an ability to discern correct
+  interpretations from the given choices.
+- Engage in a thoughtful exploration of significant philosophical questions, focusing
+  on concepts put forth by renowned thinkers. Your task revolves around accurately
+  identifying which interpretation is most aligned with established views.
+- You will navigate through questions that test your grasp of philosophical principles.
+  The task requires critical thinking, as you analyze the provided answers to find
+  the one that accurately reflects philosophical understanding.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task726_mmmlu_answer_generation_philosophy
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: task726_mmmlu_answer_generation_philosophy
+user_prompt_template: '{task_def}
+
+
+  {problem}'

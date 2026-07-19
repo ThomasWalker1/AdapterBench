@@ -3,6 +3,8 @@ from adapterbench.task_examples import (
     _boolq_examples,
     _gsm8k_examples,
     _hellaswag_examples,
+    _openbookqa_examples,
+    _winogrande_examples,
     load_task_descriptions,
 )
 
@@ -78,6 +80,48 @@ def test_gsm8k_examples_extract_final_numeric_answer():
     examples = _gsm8k_examples("gsm8k", "c", GSM8K_ROWS, limit=10, variant=0)
     assert len(examples) == 1
     assert examples[0].target_text == "4"
+
+
+OPENBOOKQA_ROWS = [
+    {
+        "question_stem": "A person wants to save money, so they should",
+        "choices": {"text": ["spend more", "quit eating out", "buy a car", "travel"], "label": ["A", "B", "C", "D"]},
+        "answerKey": "B",
+    },
+    {
+        "question_stem": "Bad row with unknown answer key",
+        "choices": {"text": ["W", "X", "Y", "Z"], "label": ["A", "B", "C", "D"]},
+        "answerKey": "E",
+    },
+]
+
+WINOGRANDE_ROWS = [
+    {"sentence": "Sarah was a better surgeon than Maria so _ got the hard cases.",
+     "option1": "Sarah", "option2": "Maria", "answer": "1"},
+    {"sentence": "Bad row", "option1": "a", "option2": "b", "answer": ""},
+]
+
+
+def test_openbookqa_examples_use_question_stem_and_letter_target():
+    examples = _openbookqa_examples("openbookqa", "c", OPENBOOKQA_ROWS, limit=10, variant=0)
+    # second row's answerKey "E" is not among the labels -> skipped
+    assert len(examples) == 1
+    ex = examples[0]
+    assert ex.target_text == "B"
+    assert ex.metadata["answer_index"] == 1
+    assert "A person wants to save money" in ex.input_text
+    assert "B: quit eating out" in ex.input_text
+
+
+def test_winogrande_examples_map_answer_to_number_target():
+    examples = _winogrande_examples("winogrande", "c", WINOGRANDE_ROWS, limit=10, variant=0)
+    # second row's blank answer is skipped
+    assert len(examples) == 1
+    ex = examples[0]
+    assert ex.target_text == "1"
+    assert ex.metadata["answer_index"] == 0
+    assert ex.metadata["choices"] == ["Sarah", "Maria"]
+    assert "1: Sarah" in ex.input_text and "2: Maria" in ex.input_text
 
 
 def test_load_task_descriptions_reads_eval_ds_info(tmp_path):

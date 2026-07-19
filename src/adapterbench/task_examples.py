@@ -32,6 +32,8 @@ DATASET_SOURCES: dict[str, tuple[str, str | None, str]] = {
     "boolq": ("google/boolq", None, "validation"),
     "hellaswag": ("Rowan/hellaswag", None, "validation"),
     "gsm8k": ("openai/gsm8k", "main", "test"),
+    "openbookqa": ("allenai/openbookqa", "main", "test"),
+    "winogrande": ("allenai/winogrande", "winogrande_xl", "validation"),
 }
 
 _GSM8K_ANSWER_RE = re.compile(r"####\s*([\-0-9,\.]+)")
@@ -58,6 +60,15 @@ _TASK_TEMPLATES = {
     ),
     "boolq": "{passage}\n\nQuestion: {question}?\n\nPlease answer with either `true` or `false` without any explanation.",
     "gsm8k": "Please answer the following question: {question}\n\n",
+    # OpenBookQA is structurally ARC (question stem + 4 labelled choices + letter answer); it reuses
+    # the ARC template via ``question=question_stem`` in the loader.
+    "winogrande": (
+        "Fill in the blank ( _ ) in the following sentence by choosing the correct option.\n\n"
+        "Sentence: {sentence}\n\n"
+        "1: {option1}\n2: {option2}\n\n"
+        "You must respond with the only number (1 or 2) corresponding to the option that best fills "
+        "the blank, without any explanation."
+    ),
 }
 
 # 3-shot ICL, used only when ``use_icl=True`` (matches the T2L paper's Table 8/Gemma
@@ -224,7 +235,9 @@ def load_task_descriptions(args_yaml_path: str | Path) -> dict[str, list[str]]:
 
 
 def _icl_prefix(task_id: str, use_icl: bool) -> str:
-    return f"{_IN_CONTEXT_EXAMPLES[task_id]}\n\n" if use_icl else ""
+    # tasks without an upstream ICL block (openbookqa/winogrande) run zero-shot even under
+    # --use-icl; the paper's Gemma ICL protocol only ships blocks for the original families.
+    return f"{_IN_CONTEXT_EXAMPLES[task_id]}\n\n" if (use_icl and task_id in _IN_CONTEXT_EXAMPLES) else ""
 
 
 def _pad_arc_choices(choices: dict) -> dict:
@@ -348,12 +361,75 @@ def _gsm8k_examples(
     return examples
 
 
+def _openbookqa_examples(
+    task_id: str, condition: str, rows, limit: int, variant: int, use_icl: bool = False
+) -> list[TaskExample]:
+    """OpenBookQA is structurally identical to ARC (question stem, 4 labelled choices, letter
+    answerKey), so it reuses the ARC template/scoring; only the question field name differs."""
+    examples = []
+    prefix = _icl_prefix(task_id, use_icl)
+    for i, row in enumerate(rows):
+        if len(examples) >= limit:
+            break
+        if row["answerKey"] not in row["choices"]["label"]:
+            continue
+        choices = _pad_arc_choices(row["choices"])
+        prompt = _TASK_TEMPLATES["arc"].format(question=row["question_stem"], choices=choices)
+        examples.append(
+            TaskExample(
+                task_id=f"{task_id}::{i}",
+                condition=condition,
+                input_text=prefix + prompt,
+                target_text=row["answerKey"],
+                family=task_id,
+                metadata={
+                    "choices": choices["text"],
+                    "answer_index": choices["label"].index(row["answerKey"]),
+                    "condition_variant": variant,
+                },
+            )
+        )
+    return examples
+
+
+def _winogrande_examples(
+    task_id: str, condition: str, rows, limit: int, variant: int, use_icl: bool = False
+) -> list[TaskExample]:
+    examples = []
+    prefix = _icl_prefix(task_id, use_icl)
+    for i, row in enumerate(rows):
+        if len(examples) >= limit:
+            break
+        if row["answer"] not in ("1", "2"):
+            continue
+        prompt = _TASK_TEMPLATES["winogrande"].format(
+            sentence=row["sentence"], option1=row["option1"], option2=row["option2"]
+        )
+        examples.append(
+            TaskExample(
+                task_id=f"{task_id}::{i}",
+                condition=condition,
+                input_text=prefix + prompt,
+                target_text=row["answer"],
+                family=task_id,
+                metadata={
+                    "choices": [row["option1"], row["option2"]],
+                    "answer_index": int(row["answer"]) - 1,
+                    "condition_variant": variant,
+                },
+            )
+        )
+    return examples
+
+
 _BUILDERS = {
     "arc_easy": _arc_examples,
     "arc_challenge": _arc_examples,
     "boolq": _boolq_examples,
     "hellaswag": _hellaswag_examples,
     "gsm8k": _gsm8k_examples,
+    "openbookqa": _openbookqa_examples,
+    "winogrande": _winogrande_examples,
 }
 
 

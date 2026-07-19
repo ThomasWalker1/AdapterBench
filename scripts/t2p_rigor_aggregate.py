@@ -55,13 +55,44 @@ def main() -> None:
     print("=" * 78)
     print("\nFROZEN baseline:", {f: round(frozen[f], 3) for f in families if f in frozen})
 
-    print("\n[1+4] MATCHED vs MISMATCHED CONTROL  (mean±std over scales×seeds, per family)")
-    print(f"  {'family':14}{'frozen':>8}{'matched':>16}{'mismatched':>14}{'matched-mm':>12}")
+    # Conditioning requires BOTH: (a) matched-mm > 0 (the description changes the adapter) AND
+    # (b) matched-frozen >= 0 (the adapter actually HELPS the task). Reporting matched-mm alone is
+    # gameable: a model that SABOTAGES junk descriptions (junk << frozen) scores a huge matched-mm
+    # while matched merely stays ~frozen (never helps) — a degenerate pass. The matched-frozen
+    # helpfulness floor rejects that. See the T2L conditioning diagnostic.
+    print("\n[1+4] MATCHED vs MISMATCHED CONTROL + HELPFULNESS FLOOR  (mean±std over scales×seeds)")
+    print(f"  {'family':14}{'frozen':>8}{'matched':>16}{'mismatched':>12}{'matched-mm':>12}{'matched-froz':>14}")
+    mj_all, mf_all = [], []
     for f in families:
         rs = [r for r in lora if r["task_id"] == f]
         mt, ms_ = mean_std([acc(r) for r in rs])
         mmv, _ = mean_std([mm(r) for r in rs if mm(r) is not None]) if has_mm else (float("nan"), 0)
-        print(f"  {f:14}{frozen.get(f, float('nan')):8.3f}{mt:10.3f}±{ms_:.3f}{mmv:12.3f}{mt - mmv:+12.3f}")
+        fz = frozen.get(f, float("nan"))
+        if has_mm and not math.isnan(mmv):
+            mj_all.append(mt - mmv)
+        if not math.isnan(fz):
+            mf_all.append(mt - fz)
+        print(f"  {f:14}{fz:8.3f}{mt:10.3f}±{ms_:.3f}{mmv:12.3f}{mt - mmv:+12.3f}{mt - fz:+14.3f}")
+
+    if has_mm:
+        mj, _ = mean_std(mj_all)
+        mf, _ = mean_std(mf_all)
+        # Significance floor ~ the eval sampling noise: per-family SE ≈ sqrt(0.25/eval_limit) ≈ 0.056
+        # at eval_limit=80, and the mean over F families divides that by ~sqrt(F). TOL=0.05 keeps a
+        # single-family blip or noise from reading as a real effect. Tighten it with a larger
+        # eval_limit / more seeds; this is a heuristic, not a significance test.
+        TOL = 0.05
+        if mj <= TOL:
+            verdict = f"NO CONDITIONING (matched-junk within eval noise ±{TOL}; description doesn't change the adapter)"
+        elif mf < -TOL:
+            verdict = ("SABOTAGE / DEGENERATE (matched-junk>0 but matched<frozen — the gap comes from "
+                       "DESTROYING junk, not HELPING matched; FAILS the helpfulness floor)")
+        elif mf < TOL:
+            verdict = ("WEAK/GENERIC (matched-junk>0 but matched≈frozen — the description isn't driving "
+                       "a clearly *helpful* adapter)")
+        else:
+            verdict = "GENUINE CONDITIONING (matched-junk>0 AND matched>frozen — description drives a helpful adapter)"
+        print(f"\n  overall: matched-junk={mj:+.3f}  matched-frozen={mf:+.3f}  (noise ±{TOL})  ->  {verdict}")
 
     scales = sorted({r["metadata"].get("lora_scale") for r in lora}, key=lambda s: float(s) if s not in (None, "default") else -1)
     if len(scales) > 1:

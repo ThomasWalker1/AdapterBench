@@ -1,0 +1,22 @@
+assistant_prefill: ''
+descriptions:
+- Your job is to transform a fill-in-the-blank question by changing just one key word
+  or phrase, allowing for a new but coherent answer. This requires analytical thinking
+  about vocabulary and context.
+- You need to innovate a way to adjust an existing question so it accepts a different
+  name as an answer. This process enhances your skills in vocabulary rich expressions
+  and logical reasoning.
+- The objective is to carefully edit questions such that the identity of the answer
+  changes while keeping most statements intact. It emphasizes the importance of word
+  choice and its impact on meaning.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task035_winogrande_question_modification_person
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: task035_winogrande_question_modification_person
+user_prompt_template: '{task_def}
+
+
+  {problem}'

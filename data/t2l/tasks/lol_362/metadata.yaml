@@ -1,0 +1,22 @@
+assistant_prefill: ''
+descriptions:
+- Your role is to analyze a conversation and select the response that effectively
+  embraces the idea of collaboration in humor. Look for the one that acknowledges
+  the previous statement and adds more to the narrative.
+- This task involves interpreting a given prompt from an improv comedy perspective.
+  You must identify which of two responses aligns with the principle of agreeing and
+  expanding on a topic to keep the dialogue flowing.
+- This task challenges you to determine which response exemplifies a key improvisational
+  concept by accepting what has already been stated and taking it in a new direction,
+  contributing to story development or humor.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task362_spolin_yesand_prompt_response_sub_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: task362_spolin_yesand_prompt_response_sub_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -149,10 +149,18 @@ class LolSFTDataset(Dataset):
         max_len: int = 512,
         limit: int | None = None,
         training: bool = True,
+        strip_task_def: bool = False,
     ):
         self.metadata = metadata
         self.condition_embeddings = condition_embeddings
         self.training = training
+        # The default template `{task_def}\n\n{problem}` puts the task *definition* in the input the
+        # frozen model sees, which makes the hypernetwork's description-conditioning REDUNDANT (the
+        # model reads the task from the input and can ignore the adapter). `strip_task_def` drops the
+        # definition (`{problem}` only) so the task is specifiable ONLY through the description ->
+        # hypernetwork -- the D2L "context is necessary" principle applied to T2L. This is the
+        # pipeline switch that makes conditioning matter; see the T2L conditioning diagnostic.
+        template = "{problem}" if strip_task_def else metadata.user_prompt_template
         raw = load_dataset(path=metadata.dataset_id, split=metadata.split, name=metadata.config_name)
         if limit is not None:
             raw = raw.select(range(min(limit, len(raw))))
@@ -160,7 +168,7 @@ class LolSFTDataset(Dataset):
         for row in raw:
             processed = preprocess_lol_example(row)
             prompt, response = format_prompt_response(
-                tokenizer, processed["task_def"], processed["problem"], processed["answer"], metadata.user_prompt_template
+                tokenizer, processed["task_def"], processed["problem"], processed["answer"], template
             )
             self.examples.append(tokenize_prompt_response(tokenizer, prompt, response, max_len))
 

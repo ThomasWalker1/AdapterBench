@@ -1,0 +1,20 @@
+assistant_prefill: ''
+descriptions:
+- In this activity, you will identify mistakes in given English sentences and produce
+  a version that is free from errors. Attention to detail is important in ensuring
+  clarity and correctness.
+- The goal here is to carefully analyze flawed sentences and create polished versions.
+  Strong language skills are needed to spot errors and make appropriate corrections.
+- This task involves revising sentences that contain mistakes in grammar or style.
+  Your ability to recognize these issues and rewrite them correctly will be key.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task1557_jfleg_answer_generation
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: task1557_jfleg_answer_generation
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -295,6 +295,58 @@ def _resolve_target(layer: nn.Module, name: str) -> nn.Module:
     raise AttributeError(f"could not resolve target module {name!r} in {type(layer).__name__}")
 
 
+class StaticAdapter(nn.Module):
+    """A single directly-optimized adapter of the codec's shape, broadcast across the batch and
+    independent of any condition -- the "multi-task LoRA" reference for the ``matched - static``
+    metric. It holds its own parameters but reuses the (parameter-free) codecs for their output
+    size, saddle-escaping init, and ``apply`` hooks, and is trained by the same SFT loss as the
+    hypernetwork, so it isolates the *generic* help a shape gives with no conditioning. It exposes
+    the same ``forward``/``apply`` surface the downstream evaluator expects, so a trained static
+    adapter drops straight into the existing eval path (its "matched" score, computed for any
+    condition, is the static reference)."""
+
+    def __init__(self, codecs: nn.ModuleDict, num_layers: int):
+        super().__init__()
+        self.codecs = codecs  # parameter-free; shared with (or rebuilt like) the hypernetwork's
+        self.num_layers = num_layers
+        self.params = nn.ParameterDict()
+        for name, codec in codecs.items():
+            p = torch.zeros(num_layers, codec.output_size)
+            bias = codec.initial_bias()
+            if bias is not None:
+                p = p + bias.unsqueeze(0)  # broadcast the codec's saddle-escape init across layers
+            else:
+                nn.init.normal_(p, std=0.01)
+            self.params[name] = nn.Parameter(p)
+
+    def forward(self, condition_or_batch) -> dict[str, Tensor]:
+        # same adapter for every example: accepts a batch size (training) or a (batch, dim)
+        # condition tensor whose shape[0] is used (eval), and ignores the condition's content.
+        batch = condition_or_batch if isinstance(condition_or_batch, int) else condition_or_batch.shape[0]
+        return {name: p.unsqueeze(1).expand(-1, batch, -1) for name, p in self.params.items()}
+
+    @contextmanager
+    def apply(self, layers, generated: Mapping[str, Tensor]):
+        handles = []
+        for layer_index, layer in enumerate(layers):
+            for name, codec in self.codecs.items():
+                module = _resolve_target(layer, name)
+                parameters = generated[name][layer_index]
+
+                def hook(module, args, output, *, codec=codec, parameters=parameters, layer_index=layer_index):
+                    is_tuple = isinstance(output, tuple)
+                    hidden = output[0] if is_tuple else output
+                    updated = codec.apply(args[0], hidden, parameters, layer_index)
+                    return (updated, *output[1:]) if is_tuple else updated
+
+                handles.append(module.register_forward_hook(hook))
+        try:
+            yield
+        finally:
+            for handle in handles:
+                handle.remove()
+
+
 def infer_module_shapes(
     layers: list[nn.Module] | nn.ModuleList, target_modules: list[str], *, hidden_size: int | None = None
 ) -> dict[str, tuple[int, int]]:

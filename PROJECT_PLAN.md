@@ -82,8 +82,14 @@ realistic-prose haystack, ctxswap 0.000; length-gen crossover 4096 = 16× train 
   Leaderboard `document_niah_d2l.md` + reproduce script updated. (This supersedes the old synthetic
   single-bin base-retrieval + separate length-gen runs, now consolidated into one recipe. The earlier
   synthetic 3-seed@12K gave a noisier +0.740 ± 0.217 — the realistic unified run is the shipped row.)
-- **GPU map (2026-07-15):** cuda:0 = batch-8 1M run; cuda:1–4 = DDP T2L run; cuda:5–7 = free (D2L
-  done). Other users (`sa86`) intermittently share GPUs; `nvidia-smi` before launching, prefer
+- **⏳ D2L best-of-scale sweep RUNNING (invariant #2)** — `scripts/d2l_scale_sweep.sh` on cuda:5–7:
+  single-seed (777) sweep of LoRA scale {11.31, 22.63, 45.25(default), 67.88, 90.5} at the shipped
+  realistic recipe (train@256, eval in-dist@256, 12K steps) → `results/repro/d2l_scale_sweep/scale*/`.
+  Auto-summarizes scale→matched−control at the end. **When done:** if a scale beats the default 45.25,
+  confirm it 5-seed (`document_niah_lora.sh` + `--lora-scaling <best>`) and update the D2L row's
+  recorded scale; else the default stands and the sweep is the invariant-#2 evidence.
+- **GPU map (2026-07-15):** cuda:0 = batch-8 1M run; cuda:1–4 = DDP T2L run; cuda:5–7 = D2L scale
+  sweep. Other users (`sa86`) intermittently share GPUs; `nvidia-smi` before launching, prefer
   0%-util GPUs, never touch cuda:0's 1M run.
 
 **Completion checklist — aggregate the running experiments when they finish:**
@@ -105,9 +111,9 @@ realistic-prose haystack, ctxswap 0.000; length-gen crossover 4096 = 16× train 
   — currently "default"; needs a fresh `--scales` sweep at the shipped recipe). See § Roadmap
   "CURRENT PHASE".
 - **Document (D2L): DONE** — unified realistic 5-seed (`results/repro/document_niah_realistic/`):
-  in-distribution +0.887 ± 0.143, length-gen curve to 8192, crossover 16×, ctxswap 0.000. Only
-  remaining rigor gap: a fresh `--lora-scaling` best-of-scale sweep (invariant #2; currently the
-  default ≈45.25) — deferred with the T2L scale sweep.
+  in-distribution +0.887 ± 0.143, length-gen curve to 8192, crossover 16×, ctxswap 0.000. The
+  invariant-#2 best-of-scale sweep is **now running** (`scripts/d2l_scale_sweep.sh`, cuda:5–7);
+  confirm the winner multi-seed if it beats the default 45.25 (see RUNNING block above).
 
 **Next steps (priority order) — current phase = sound infra + complete LoRA baseline, NOT new codecs
 (see § Roadmap "CURRENT PHASE" for the full gap list and definition-of-done):**
@@ -115,20 +121,21 @@ realistic-prose haystack, ctxswap 0.000; length-gen crossover 4096 = 16× train 
    T2L leaderboard/paper row at the DDP data-matched config, then run seeds 778/779. The batch-8 1M
    run keeps finishing on cuda:0 as the emergence-curve context point.
 2. **D2L — DONE** (unified realistic 5-seed, +0.887 ± 0.143, crossover 16×; leaderboard + reproduce
-   updated). Only the best-of-scale sweep remains (with T2L's, item 3).
-3. **Reconcile reproduce commands with shipped configs** (T2L row + `scripts/reproduce/task_t2l_lora.sh`
-   → DDP command), **pick one canonical headline config per setting**, and **satisfy invariant #2
-   (best-of-scale) uniformly** (fresh T2L `--scales` and D2L `--lora-scaling` sweeps; old archives
-   pruned). These are the
-   infra/rigor gaps beyond the running compute.
-4. **Commit** the shipped infra (`scripts/t2p_train_ddp.py`, reproduce wrappers, plan, paper) to `main`.
+   updated). Best-of-scale sweep now **running** (`scripts/d2l_scale_sweep.sh`); confirm winner if it
+   beats default 45.25.
+3. **Invariant #2 (best-of-scale)** — infra built (`--lora-scaling` on the DDP script;
+   `scripts/{d2l,t2l}_scale_sweep.sh`). D2L sweep running; **launch `t2l_scale_sweep.sh` once the DDP
+   run frees cuda:1–4.** Then confirm each setting's winning scale and record it in the row.
+4. **Commit** the shipped infra (`scripts/t2p_train_ddp.py`, `scripts/{d2l,t2l}_scale_sweep.sh`,
+   reproduce wrappers, leaderboards, plan, paper) to `main`.
 5. *(Deferred, not now)* alternative codec shapes — the "does shape matter" payload; resumes only
    after the baseline + infra above are locked.
 
 **Repo hygiene:** `results/` is gitignored scratch. **Pruned to leaderboard-only on 2026-07-15:**
-`results/_archive/` now holds *only* the LoRA leaderboard-backing result files (metrics, checkpoints
-stripped) — `i2p_hypernoise_v2/`, `t2p_cond_long/`, `d2p_niah_lora/`, `d2p_lengthgen_lora_s777..782/`
-(+ their `.log`s for the length-gen transition analysis), 14 MB total. Deferred-codec and exploratory
+`results/_archive/` now holds *only* LoRA result-file metrics (checkpoints stripped), 14 MB total:
+image `i2p_hypernoise_v2/` and T2L `t2p_cond_long/` (both current leaderboard-backing); plus the
+**superseded** synthetic-D2L `d2p_niah_lora/` + `d2p_lengthgen_lora_s777..782/` (historical only — the
+shipped D2L baseline is now the realistic run at `results/repro/document_niah_realistic/`). Deferred-codec and exploratory
 archives (IA³/LoKr/FourierFT/steering, old reconstruction/vllm/smoke runs) were deleted; those shapes
 re-run fresh when codec work resumes. Live runs (`t2p_cond_1M/`, `t2p_cond_ddp/`,
 `repro/document_niah_lora/`) were left intact. Checkpoints/`*.pt`/`*.log` never committed. Stage-ready:
@@ -391,6 +398,146 @@ harness — matched, weak + adversarial controls, scale sweep, multi-seed, step-
 is in place (`--adversarial-control`, `--scales`, `--max-descriptions`,
 `scripts/t2p_rigor_aggregate.py`).
 
+### T2L: the conditioning problem and the pipeline redesign — ✅ COMPLETE (2026-07-19)
+
+**Status: DONE.** Baseline established (2-seed, CE + accuracy), reproducible eval scripts, paper §sec:t2l
++ results + Table 1 finalized. The three-line summary: standard T2L SFT gives near-null conditioning
+because the prompt already states the task; strip the task definition so the description is the only
+route to it; then a from-scratch LoRA hypernetwork learns genuinely description-conditioned adapters
+(matched−static = −0.81±0.06 nats CE on 20/21 held-out tasks; +0.23 accuracy over frozen). It was a
+pipeline problem, not a codec problem. Details below.
+
+
+**The finding.** Standard T2L SFT produces a *generically helpful* adapter, not a
+description-conditioned one. At the shipped config the adapter beats frozen (≈ +0.05) but a **junk
+description** ("dogs;cats;bananas") lifts it just as much — matched ≈ junk. This is **not a capacity
+problem**: a controlled base-model sweep (`scripts/t2l_base_diag.sh`, shipped recipe fixed, only the
+interpreter changes) is flat across scale — mean matched−junk **Qwen3-0.6B +0.003 / gemma-2-2b
++0.022 / Mistral-7B −0.012**, all within the ±0.05 eval noise. The paper's own weight-space null
+result (no correlation between adapter similarity and description similarity) agrees.
+
+**The diagnosis: a pipeline problem, not a codec problem — and the root cause is one line.** The
+standard T2L prompt template is `{task_def}\n\n{problem}` (`lol_data.py`): it puts the task
+**definition in the input the frozen model sees**. So the description fed to the hypernetwork is
+*structurally redundant* — the model reads the task from `task_def` and never needs the conditioned
+adapter (confirmed: with the definition stripped, the prompt for an emotion-classification example
+is just the bare sentence, no task cue). Compounding this, the eval benchmarks (arc/boolq/hellaswag)
+are ones the frozen model already handles, so there is **no headroom** for any adapter to add value —
+matched ≈ frozen ≈ static ≈ junk, all bunched. Under such a pipeline *every* codec reads ≈0
+conditioning, masking the codec-shape differences AdapterBench exists to measure. The pipeline must
+be fixed before any shape comparison is meaningful.
+
+**The template that works — D2L.** D2L conditioning is huge (+0.887) because the needle is *only* in
+the document: the query cannot reveal it, so the adapter **must** carry the context. Conditioning is
+*necessary* there. T2L has to be made necessary the same way.
+
+**The redesign — make conditioning necessary at the data level, then measure it cleanly:**
+1. **Pipeline fix: strip the task definition from the input** (`--strip-task-def`, `lol_data.py`
+   template `{problem}` only). The task is then specifiable *only* through the description →
+   hypernetwork, so the adapter *must* carry it — the D2L "context is necessary" principle. This is
+   the primary, most fundamental fix (no objective can make a redundant description matter; this
+   removes the redundancy). **Validated** (CPU): stripping turns an emotion-classification prompt
+   into the bare sentence with no task cue.
+   - **Still *task* conditioning, not problem conditioning.** strip-def changes only what the frozen
+     model reads in its *input*; the hypernetwork is still conditioned on the task-level
+     **description** (it never sees the individual problem). Two task statements coexist normally —
+     `task_def` (in the input) and `description` (in the condition embedding) — and they are
+     redundant with each other; strip-def removes `task_def` so the description becomes load-bearing.
+     This **keeps T2L's conditioning mechanism unchanged** (description → gte → hypernetwork → LoRA)
+     and departs only from T2L's SFT/eval *input format*. It is the honest test of T2L's own claim
+     ("a description of a new task yields a working LoRA zero-shot"), which the standard self-describing
+     prompt never actually tests — and is why T2L's own reported gains are small ("pinch of salt").
+2. **Metric: `matched − static`.** static = a directly-optimized single adapter of the same shape
+   (`--static`, `StaticAdapter`; the "multi-task LoRA"), trained on the same SFT data — it absorbs
+   all *generic* help. matched − static > 0 means the description-conditioned adapter beats the best
+   static adapter of that shape. **Non-gameable** (no negative to sabotage), **subsumes the
+   helpfulness floor** (static ≥ frozen), needs **no junk prompts**. `scripts/t2p_eval_checkpoint.py
+   --static-snapshot` reports it; junk − static ≈ 0 is an optional description-driven check.
+3. **Eval where conditioning can show — the held-out SNI tasks** (the **21** `lol_###` keys in
+   `eval_ds_info`, distinct from the 479 train tasks; = T2L's own held-out validation set — the other
+   10 `eval_ds_info` keys are standard benchmarks like boolq/arc/gsm8k). With the definition stripped,
+   frozen is *helpless* on them (it can't infer the task) → large headroom, and a single static adapter
+   can't serve all 21 diverse tasks → matched should beat static *if* the pipeline taught conditioning.
+   Free-form tasks → score by **teacher-forced CE**, not answer-extraction. Each held-out task has a
+   **vendored `data/t2l/tasks/<id>/metadata.yaml`** (ds_kwargs/split/template/response_field, same as
+   the train tasks) and **3 published held-out descriptions** in `eval_ds_info[<id>]["descriptions"]`.
+   **Built:** `scripts/t2p_eval_heldout_sni.py` loads each held-out task with `strip_task_def=True`,
+   applies the matched (description-conditioned) / static / frozen adapters via the trainer's own
+   persistent codec hooks, and reports per-task + aggregate `matched − static` (headline; negative CE
+   delta = conditioning helps) and `matched − frozen` (helpfulness floor), plus the fraction of tasks
+   where matched < static.
+4. **Optionally, a training objective that rewards using the description** — the neutral-junk
+   objective (`--neutral-junk-lambda`): `CE_matched + λ(CE_mismatched − CE_frozen)²` via a 3rd
+   no-grad frozen forward. Complements (1); non-gameable, unlike the contrastive hinge (gotcha #16).
+
+**Decisive test:** train the hypernetwork **and** a static reference with `--strip-task-def`, then
+`matched − static` on the 21 held-out SNI tasks. A single static adapter can't specialize to a
+diverse held-out task from a definition-free input; a description-conditioned one can — *if* the
+pipeline taught it to.
+
+**RESULT (2026-07-19, 2 seeds) — conditioning is GENUINE under the redesigned pipeline.** Both
+strip-def runs trained to 20k steps on gemma-2-2b with **standard CE** (no neutral/contrastive —
+`matched − static` needs no junk control): `gemma2b_stripdef_hyper` (hypernetwork) and
+`gemma2b_stripdef_static` (`StaticAdapter`), identical recipe (20k steps, eff-batch 64 = per-gpu-batch
+16 × 4, LIMIT 40, snapshots every 5k). `scripts/t2p_eval_heldout_sni.py` on the step-20000 snapshots,
+**all 21 held-out SNI tasks**, 64 ex × 3 descriptions, teacher-forced CE:
+
+  - **`matched − static` = −0.81 ± 0.06 nats** over 2 seeds (seed 777: −0.858; seed 2: −0.768), and
+    **matched < static on 20/21 tasks (95%) in each seed**. Biggest per-task gaps (seed 777): lol_039
+    −6.79, lol_710 −2.28, lol_701 −1.76, lol_614 −1.35.
+  - **`matched − frozen` = −10.8 nats** (frozen mean CE 13.3, up to ~21) — with the definition stripped
+    the base model is genuinely helpless, so the adapter is *necessary*, not merely additive.
+  - **Training curve (seed 777, `heldout_curve.jsonl`):** matched − static −0.67 (5k) → −0.74 (10k) →
+    −0.60 (15k) → −0.86 (20k) — upward but noisy, not strictly monotonic.
+  - Results: `.../gemma2b_stripdef_hyper/{s777,s2}/heldout_sni_ce_full21.jsonl`. Seed set via `SEED=`.
+  - **Accuracy corroboration** (greedy generation, normalized exact-match, `t2p_eval_heldout_sni_acc.py`,
+    `heldout_sni_acc.jsonl`, 2 seeds): matched **0.508** / static 0.472 / frozen 0.273 → **matched−frozen
+    = +0.23** (adaptation large), **matched−static = +0.035** (conditioning positive, non-reversing,
+    matched ≥ static on ~73% of tasks). Smaller than the CE signal because accuracy **saturates** where
+    both adapters already succeed and because MC tasks (MMMLU) leak answer choices into the stripped
+    input (frozen scores high on content: high CE but high accuracy). Big per-task acc wins where
+    unsaturated: lol_275 +0.375, lol_636 +0.31, lol_1711 +0.15, lol_039 +0.15. **CE stays primary**
+    (non-saturating, well-defined for open-ended tasks) — this is stated in the paper.
+
+This is the decisive evidence the T2L setting needed: **the earlier near-null was a PIPELINE problem,
+not a codec problem.** Once conditioning is made necessary (strip-def) and measured where there is
+headroom (held-out SNI, teacher-forced CE, `matched − static`), the LoRA hypernetwork produces
+description-conditioned adapters that generalize to unseen tasks and beat the best same-shape static
+adapter almost everywhere. The **neutral-junk objective was NOT the lever** — plain CE + strip-def
+suffices; the winning runs use `--neutral-junk-lambda 0`. Results: `results/repro/t2l_base_diag/
+gemma2b_stripdef_hyper/s777/heldout_sni_ce_full21.jsonl`.
+
+**Data recovery.** Of T2L's 21 held-out `lol_###` tasks, only 10 shipped a vendored `metadata.yaml`;
+`scripts/vendor_heldout_sni_metadata.py` resolves the other 11 to their `Lots-of-LoRAs/task###_*` Hub
+datasets (all found; 4 are MMMLU MC, plus MNLI/winogrande/qasc/glucose/etc.), verifies load+parse, and
+writes schema-matching metadata so the full 21 are reproducible.
+
+**Paper (done, 2026-07-19):** §sec:t2l rewritten to the method that worked — strip-def + plain CE +
+`matched − static` on held-out SNI (the neutral-junk objective / matched−junk / arc-boolq narrative is
+dropped; user decision "rewrite to what worked"). Results subsection, Table 1 row (`−0.81 ± 0.06 nats
+CE, 20/21, 2 seeds`), table caption (CE sign convention: more-negative-is-better), and invariant #1
+(static-reference control) all updated. `HF_HUB_OFFLINE=1` is now required for evals (the Hub 429-rate-
+limited us after the vendoring downloads; everything is cached).
+
+**Documented negative (kept):** the earlier neutral-junk run — clean training dynamics (matched CE
+0.23 ≪ frozen 8.19) but a null arc/boolq eval — a self-describing, no-headroom eval set cannot reveal
+conditioning regardless of how clean training looks. That negative is *why* the strip-def +
+held-out-SNI redesign was needed, and why the neutral-junk objective is not in the paper.
+
+**Metric infra:** `scripts/t2p_rigor_aggregate.py` reports **matched − junk AND matched − frozen**
+with a verdict (`NO CONDITIONING`/`SABOTAGE`/`WEAK-GENERIC`/`GENUINE`) and a noise floor (arc/boolq
+protocol). `scripts/t2p_eval_checkpoint.py --static-snapshot` adds `matched − static` on those
+families. The **held-out-SNI CE eval (`scripts/t2p_eval_heldout_sni.py`) is now built** — it is the
+decisive `matched − static` instrument on definition-free held-out tasks; pending its first run on the
+strip-def snapshots.
+
+**Other infra (2026-07-17):** `--snapshot-every N` (model-only step snapshots → training curve);
+`scripts/t2p_eval_checkpoint.py` scores any snapshot (`--avg-descriptions N` for paper-parity
+3-description averaging), validated against gemma to ±1 example; eval task set expanded with
+**gsm8k / openbookqa / winogrande** (PIQA's repo is a rejected loading-script; HumanEval/MBPP need a
+code sandbox — deferred). Memory: 2B/7B bases use **8 GPUs × batch 16 = eff-batch 128**; the
+neutral-junk objective's 3rd forward fits at batch 8.
+
 ## Image domain: I2P — reward-tilting (HyperNoise), validated
 
 The image setting answers the modality-transfer question: does the adapter-shape seam + the
@@ -513,25 +660,23 @@ uv run adapterbench t2p-sft-sweep \
   --adapters lora \
   --checkpoint-steps 100,200,400,800,1200 --eval-limit 40 --output results/t2p_sft_sweep
 
-# D2L NIAH: the recipe that retrieves (LoRA -> held-out acc 1.0, ctxswap 0).
-# Restart-safe (resume by re-running the same command); use .venv/bin for long runs.
+# D2L NIAH: the SHIPPED unified recipe (realistic real-prose haystack; one run = in-distribution
+# headline @256 + length-gen sweep to 8192). Restart-safe. The 5-seed baseline is the reproduce
+# wrapper: scripts/reproduce/document_niah_lora.sh [DEVICE].
 .venv/bin/adapterbench d2p-niah \
-  --adapters lora --needle-style generic --context-lengths 384 \
-  --num-train-documents 512 --steps 6000 --eval-every 500 --learning-rate 4e-5 \
-  --n-latents 208 --num-blocks 8 --eval-limit 32 --device cuda:0 --output results/d2p_niah_lora
-
-# D2L NIAH length generalization: train short, eval a length sweep. --eval-context-lengths
-# decouples eval length from --context-lengths. Restart-safe; one run per seed.
-.venv/bin/adapterbench d2p-niah \
-  --adapters lora --seed 777 --needle-style generic \
-  --context-lengths 128,256 --eval-context-lengths 256,512,1024,2048,4096,8192 \
-  --num-train-documents 512 --steps 6000 --eval-every 500 --learning-rate 4e-5 \
+  --adapters lora --needle-style realistic --seed 777 \
+  --context-lengths 256 --eval-context-lengths 256,512,1024,2048,4096,8192 \
+  --num-train-documents 512 --steps 12000 --eval-every 1000 --learning-rate 4e-5 \
   --n-latents 208 --num-blocks 8 --eval-limit 32 \
-  --device cuda:0 --output results/d2p_lengthgen_lora_s777
+  --device cuda:0 --output results/repro/document_niah_realistic/s777
+
+# Invariant-#2 best-of-scale sweeps (single-seed locators; confirm the winner multi-seed after):
+bash scripts/d2l_scale_sweep.sh 5,6,7   # D2L: sweeps --lora-scaling, self-summarizes scale->matched-control
+bash scripts/t2l_scale_sweep.sh 1,2,3,4 # T2L: sweeps --lora-scaling at the DDP recipe (run when cuda:1-4 free)
 ```
 
 ```bash
-uv run pytest -q   # 101 tests (LoRA-only baseline)
+uv run pytest -q   # 92 tests (LoRA-only baseline; prior-D2L design removed 2026-07-15)
 ```
 
 ## Gotchas (read before touching the pipeline again)
@@ -623,6 +768,23 @@ uv run pytest -q   # 101 tests (LoRA-only baseline)
     updating the generated-param dict in place) rather than re-registering per step via
     `hypernetwork.apply()`'s context manager, which would re-trace every step. Measured on
     Qwen3-0.6B at eff-batch 128: compile+fixed-512 471 ms/step vs eager 755 ms (1.6×).
+15. **The DDP LR (`1e-4`) is tuned for the small base and diverges on a 7B interpreter.** On
+    Mistral-7B the run converged cleanly to loss ~0.004 by step 25k, then the loss *spiked to 1.59*
+    around step 30k and only crawled back — a classic Adam divergence (bigger gradients through the
+    larger frozen base; the `max_grad_norm=1.0` clip alone didn't catch it). The paper uses **8e-5**
+    for SFT; `LR=8e-5 scripts/t2l_base_diag.sh …` is stable on Mistral-7B. Rule: scale the LR *down*
+    with the base model, and don't trust a low-loss prefix — watch the whole trajectory for a spike.
+16. **A "matched > mismatched" conditioning loss is gamed by *sabotaging the negative*.** The
+    contrastive hinge `relu(margin + CE_matched − CE_mismatched)` (`--contrastive-lambda`) is
+    satisfied two ways: make the matched adapter *help*, or make the mismatched adapter *hurt*. Since
+    CE_matched is already floored (the adapter fits), the network takes the cheap route and drives
+    CE_mismatched to ~10+ (a destructive wrong-description adapter). At eval this generalizes to
+    "unfamiliar description → sabotage": matched−junk looks huge (+0.6) while matched never beats
+    frozen — a degenerate pass. Reducing λ only makes the sabotage milder, not genuine. Two fixes:
+    the **neutral-junk objective** (`(CE_mismatched − CE_frozen)²` — punishes sabotage *and*
+    genericness, only rewards matched-helps) and the **matched − static metric** (no negative to
+    sabotage). Also: log cross-rank-*reduced* CE terms — a per-rank contrast value read against the
+    reduced loss falsely looked like "0 contrast" for a whole run.
 
 ## Benchmark design: the four invariants
 
@@ -751,11 +913,13 @@ could read a leaderboard row, run its command, and regenerate the number.
    ✅ **DECIDED + recorded:** T2L headline = the DDP data-matched run; 150K×3 and 1M are
    emergence-curve context (stated in the T2L leaderboard). No code left; it finalizes when #3's
    number lands.
-5. **Satisfy invariant #2 (report best-of-scale) uniformly.** ⛔ **NEEDS COMPUTE.** T2L needs a short
-   `--scales` sweep at the shipped recipe (currently "scale default") and D2L a `--lora-scaling`
-   sweep. The old exploratory scale archives were unusable anyway (scale not recorded / under-powered
-   recipe) and were pruned in the 2026-07-15 results cleanup, so both require fresh runs. Image
-   already ships a full scale sweep. ← top remaining rigor gap.
+5. **Satisfy invariant #2 (report best-of-scale) uniformly.** 🔄 **IN PROGRESS — infra built.**
+   `t2p_train_ddp.py` gained `--lora-scaling`; two reusable sweep scripts exist:
+   `scripts/d2l_scale_sweep.sh` (**running** on cuda:5–7, single-seed locator over 5 scales) and
+   `scripts/t2l_scale_sweep.sh` (**ready** — launches on cuda:1–4 once the DDP run frees them; a
+   reduced 20k-step single-seed locator at the DDP recipe). Protocol: single-seed locate → confirm
+   the winner multi-seed (or accept the default if it wins). Image already ships a full scale sweep.
+   (The old exploratory scale archives were unusable and were pruned 2026-07-15, hence fresh runs.)
 6. **Finalize each row to uniform rigor** once runs land: ≥3-seed mean±std, best-of-scale, a
    difficulty-knob reference, remove standing caveats (T2L "headline pending"; D2L multi-seed now done).
 7. **Commit the shipped infrastructure** (human drives commits): `scripts/t2p_train_ddp.py`,

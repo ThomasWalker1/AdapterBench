@@ -40,9 +40,11 @@ See [PROJECT_PLAN.md](PROJECT_PLAN.md) for architecture, results, and hard-won g
   setting.
 - `configs/setups/`, `configs/adapters/` — declarative setup and codec metadata.
 
-Start with [SETUP.md](SETUP.md) for environment setup, then
-[BENCHMARK_CONTRACT.md](BENCHMARK_CONTRACT.md) for the interfaces every setting
-implements, then [PROJECT_PLAN.md](PROJECT_PLAN.md) for current status and results.
+Start with [SETUP.md](SETUP.md) for environment setup, then **[GUIDE.md](GUIDE.md)** for
+the benchmark's three settings, its metric and controls, how to add a codec, and how to
+run and reproduce each setting. [BENCHMARK_CONTRACT.md](BENCHMARK_CONTRACT.md) gives the
+interface contract every setting implements, and [PROJECT_PLAN.md](PROJECT_PLAN.md) tracks
+current status and results.
 
 ## Quickstart
 

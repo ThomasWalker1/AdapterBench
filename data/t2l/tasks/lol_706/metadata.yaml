@@ -1,0 +1,20 @@
+assistant_prefill: ''
+descriptions:
+- Your task is to apply your knowledge of high school mathematics to solve various
+  problems, requiring logical reasoning and an understanding of mathematical principles.
+- This activity involves interpreting mathematical questions, translating them into
+  calculations, and determining the correct outcomes through analytical thinking.
+- Delve into questions that require you to connect mathematical concepts with practical
+  applications. Your task will be to pull from your math knowledge in order to resolve
+  each query thoughtfully.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task706_mmmlu_answer_generation_high_school_mathematics
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: task706_mmmlu_answer_generation_high_school_mathematics
+user_prompt_template: '{task_def}
+
+
+  {problem}'

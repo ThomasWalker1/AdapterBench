@@ -1,0 +1,22 @@
+assistant_prefill: ''
+descriptions:
+- You are tasked with identifying what the marked number refers to in a conversational
+  excerpt. It requires logical reasoning and an understanding of situational cues
+  present in the text.
+- Engage with dialogues to uncover what meaning lies behind an underlined number.
+  Recognizing references, ages, or other implied categories based on conversational
+  context is essential in this task.
+- This task focuses on determining the definition or representation of a highlighted
+  number within text-based interactions. Understanding context and relationships between
+  elements is crucial for success.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task304_numeric_fused_head_resolution
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: task304_numeric_fused_head_resolution
+user_prompt_template: '{task_def}
+
+
+  {problem}'

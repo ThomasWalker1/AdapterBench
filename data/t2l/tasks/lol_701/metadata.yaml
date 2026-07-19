@@ -1,0 +1,22 @@
+assistant_prefill: ''
+descriptions:
+- In this exercise, you will encounter various computer science-related scenarios.
+  Assess your understanding of programming operations, code functionality, and data
+  management to provide accurate answers.
+- You're tasked with answering questions that assess your understanding of high school
+  computer science topics. Leverage your familiarity with programming languages, computer
+  security, and data structures as you provide your response.
+- This task involves interpreting computer science questions and applying relevant
+  concepts to arrive at a correct answer. You should focus on key ideas in programming
+  and system functionality.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task701_mmmlu_answer_generation_high_school_computer_science
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: task701_mmmlu_answer_generation_high_school_computer_science
+user_prompt_template: '{task_def}
+
+
+  {problem}'

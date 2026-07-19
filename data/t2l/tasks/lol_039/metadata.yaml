@@ -1,0 +1,20 @@
+assistant_prefill: ''
+descriptions:
+- This task is about spotting keywords that appear in both sentences. You need to
+  focus on meaningful words while ensuring not to include common stop words.
+- The goal here is to extract important overlapping vocabulary from two related sentences.
+  This requires critical thinking and familiarity with different word derivatives.
+- Your objective is to analyze two sentences and find words that are shared between
+  them. This requires insight into language nuances and the ability to discern significant
+  terms.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task039_qasc_find_overlapping_words
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: task039_qasc_find_overlapping_words
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -1,0 +1,22 @@
+assistant_prefill: ''
+descriptions:
+- Your role is to navigate through a series of statistics questions that require practical
+  knowledge about quantitative research methods. This includes understanding how different
+  sampling strategies can influence research outcomes.
+- Engage with statistical queries that challenge your knowledge of data interpretation
+  and analysis. The task entails distinguishing correct statements based on principles
+  like mean comparison, sampling distributions, and experimental design.
+- In this exercise, you'll be assessing a range of assertions regarding statistical
+  terms and principles. Drawing upon your background in statistics will enable you
+  to identify valid conclusions from those presented.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task710_mmmlu_answer_generation_high_school_statistics
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: task710_mmmlu_answer_generation_high_school_statistics
+user_prompt_template: '{task_def}
+
+
+  {problem}'

@@ -57,6 +57,7 @@ from adapterbench.cli._shared import (  # noqa: E402
 from adapterbench.task_examples import build_all_task_examples, load_task_descriptions  # noqa: E402
 from adapterbench.t2p.condition_encoder import embed_task_descriptions  # noqa: E402
 from adapterbench.t2p.hypernetwork import (  # noqa: E402
+    StaticAdapter,
     TextToPeftHypernetwork,
     _resolve_target,
     infer_module_shapes,
@@ -121,15 +122,40 @@ def build_args():
     p.add_argument("--decontam-config", default=str(T2L_DECONTAM_CONFIG))
     p.add_argument("--max-descriptions", type=int, default=128)
     p.add_argument("--limit", type=int, default=40, help="training examples per task")
+    p.add_argument("--strip-task-def", action="store_true",
+                   help="drop the task definition from the input (`{problem}` only), so the task is "
+                        "specified ONLY via the description->hypernetwork. Makes conditioning necessary "
+                        "(the frozen input no longer reveals the task); the pipeline fix for T2L.")
     p.add_argument("--per-gpu-batch", type=int, default=32)
     p.add_argument("--steps", type=int, default=62500, help="optimizer steps (each = world_size*per_gpu_batch examples)")
     p.add_argument("--learning-rate", type=float, default=1e-4)
     p.add_argument("--max-grad-norm", type=float, default=1.0)
     p.add_argument("--l2-reg-generated-w", type=float, default=0.0)
+    p.add_argument("--contrastive-lambda", type=float, default=0.0,
+                   help="if >0, add a mismatched-negative conditioning loss: per step also generate "
+                        "an adapter from a WRONG (in-batch rolled) description and penalize "
+                        "max(0, margin + CE_matched - CE_mismatched). Forces the description to matter "
+                        "(the thing the junk-control measures). Costs a 2nd interpreter forward/step.")
+    p.add_argument("--contrastive-margin", type=float, default=0.5,
+                   help="target CE gap (mismatched - matched) the contrastive hinge drives toward")
+    p.add_argument("--neutral-junk-lambda", type=float, default=0.0,
+                   help="NON-GAMEABLE conditioning objective: loss = CE_matched + lambda*(CE_mismatched "
+                        "- CE_frozen)^2. Rewards the matched adapter for HELPING while forcing the "
+                        "wrong-description adapter to stay NEUTRAL (~frozen). Unlike the contrastive "
+                        "hinge, sabotage (junk << frozen) is PENALIZED, so the only way to earn "
+                        "matched-junk is for matched to genuinely help. Costs a 3rd (no-grad) forward.")
     p.add_argument("--warmup-frac", type=float, default=0.1)
     p.add_argument("--seed", type=int, default=777)
     p.add_argument("--adapter", default="lora")
+    p.add_argument("--static", action="store_true",
+                   help="train a single directly-optimized adapter of the codec's shape (the "
+                        "multi-task-LoRA reference for matched-static) instead of the hypernetwork; "
+                        "ignores the condition. Incompatible with the conditioning objectives.")
     p.add_argument("--no-compile", action="store_true", help="disable torch.compile (debugging)")
+    p.add_argument("--lora-scaling", type=float, default=-1.0,
+                   help="LoRA output scale for the invariant-#2 best-of-scale sweep; <=0 uses the "
+                        "codec default. Applied to each LoRA codec before training (as the pilot's "
+                        "--scales does), so a scale sweep at the shipped DDP recipe is a per-value run.")
     p.add_argument(
         "--fixed-seq-len", type=int, default=0,
         help="pad every batch to this fixed length instead of the per-batch max. Numerically "
@@ -139,6 +165,9 @@ def build_args():
         "cap (512). 0 = dynamic per-batch padding.",
     )
     p.add_argument("--checkpoint-every", type=int, default=5000)
+    p.add_argument("--snapshot-every", type=int, default=0,
+                   help="if >0, save model-only weights to snapshots/step{n}.pt at this cadence "
+                        "(+final) for post-hoc training-curve eval via scripts/t2p_eval_checkpoint.py")
     p.add_argument("--loss-log-every", type=int, default=500)
     # eval (rank 0 only, after training) - mirrors t2p-sft-pilot
     p.add_argument("--eval-tasks", default="arc_easy,arc_challenge,hellaswag,boolq")
@@ -214,11 +243,18 @@ def main() -> None:
         }
     del encoder_model
 
-    log(f"[3/6] loading + tokenizing {len(task_ids)} training task(s)...")
+    # --limit <= 0 means "use every example in each task" (paper trains on the full datasets; the
+    # default 40-example cap, repeated ~hundreds of times, invites a memorized description-agnostic
+    # solution — see the T2L conditioning diagnostic).
+    per_task_limit = args.limit if args.limit and args.limit > 0 else None
+    log(f"[3/6] loading + tokenizing {len(task_ids)} training task(s) (limit={per_task_limit})...")
     datasets = [
-        LolSFTDataset(tokenizer, metadata_by_task[task_id], train_embeddings_by_task[task_id], limit=args.limit)
+        LolSFTDataset(tokenizer, metadata_by_task[task_id], train_embeddings_by_task[task_id],
+                     limit=per_task_limit, strip_task_def=args.strip_task_def)
         for task_id in task_ids
     ]
+    if args.strip_task_def:
+        log("[pipeline] task definition STRIPPED from input — task specified only via description")
     dataset = ConcatDataset(datasets)
     log(f"[3/6] built {len(dataset)} example(s) across {len(datasets)} task(s)")
 
@@ -233,7 +269,24 @@ def main() -> None:
         adapter=args.adapter,
         seed=args.seed,
     ).to(device)
-    ddp_hyper = DDP(hypernetwork, device_ids=[local_rank], find_unused_parameters=False)
+    if args.lora_scaling > 0:
+        # invariant-#2 scale sweep: apply the swept output scale directly to each LoRA codec
+        # (same as the pilot's --scales), so "best-of-scale" is a per-value run.
+        from adapterbench.t2p.codecs import LoRACodec
+
+        for codec in hypernetwork.codecs.values():
+            if isinstance(codec, LoRACodec):
+                codec.scaling = args.lora_scaling
+        log(f"[scale] LoRA codec scaling set to {args.lora_scaling}")
+    if args.static:
+        if args.contrastive_lambda > 0 or args.neutral_junk_lambda > 0:
+            raise ValueError("--static trains a single unconditioned adapter; it is incompatible "
+                             "with the conditioning objectives (--contrastive-lambda/--neutral-junk-lambda)")
+        trainable = StaticAdapter(hypernetwork.codecs, len(layers)).to(device)
+        log(f"[static] training a single {args.adapter} adapter (multi-task reference), no conditioning")
+    else:
+        trainable = hypernetwork
+    ddp_hyper = DDP(trainable, device_ids=[local_rank], find_unused_parameters=False)
 
     current: dict = {}
     hook_handles = register_persistent_hooks(hypernetwork.codecs, layers, current)
@@ -259,13 +312,13 @@ def main() -> None:
     start, losses = 0, []
     if ckpt.exists():
         state = torch.load(ckpt, map_location=device, weights_only=False)
-        hypernetwork.load_state_dict(state["model"])
+        trainable.load_state_dict(state["model"])
         optimizer.load_state_dict(state["optimizer"])
         scheduler.load_state_dict(state["scheduler"])
         start, losses = state["step"], list(state["losses"])
         log(f"[resume] from step {start}/{args.steps}")
     # keep all ranks' weights identical after a resume
-    for p in hypernetwork.parameters():
+    for p in trainable.parameters():
         dist.broadcast(p.data, src=0)
 
     def save(done: int) -> None:
@@ -273,11 +326,21 @@ def main() -> None:
             return
         tmp = ckpt.with_suffix(ckpt.suffix + ".tmp")
         torch.save(
-            {"model": hypernetwork.state_dict(), "optimizer": optimizer.state_dict(),
+            {"model": trainable.state_dict(), "optimizer": optimizer.state_dict(),
              "scheduler": scheduler.state_dict(), "step": done, "losses": losses},
             tmp,
         )
         tmp.replace(ckpt)
+
+    def save_snapshot(done: int) -> None:
+        """Model-only, step-tagged weights for a post-hoc training curve. Decoupled from the
+        restart checkpoint (which also carries optimizer/scheduler and is rolling)."""
+        if not is_main() or args.snapshot_every <= 0:
+            return
+        snap_dir = output_dir / "snapshots"
+        snap_dir.mkdir(exist_ok=True)
+        torch.save({"model": trainable.state_dict(), "step": done, "static": args.static},
+                   snap_dir / f"step{done}.pt")
 
     base_collate = partial(lol_collate_fn, pad_token_id=tokenizer.pad_token_id)
     if args.fixed_seq_len > 0:
@@ -335,14 +398,71 @@ def main() -> None:
             torch._dynamo.maybe_mark_dynamic(batch.input_ids, 1)
             torch._dynamo.maybe_mark_dynamic(batch.attention_mask, 1)
         optimizer.zero_grad(set_to_none=True)
-        generated = ddp_hyper(batch.condition_embeddings)
-        current.clear()
-        current.update(generated)
-        outputs = interp_fwd(input_ids=batch.input_ids, attention_mask=batch.attention_mask)
-        loss = masked_cross_entropy(outputs.logits, batch.labels)
-        if args.l2_reg_generated_w:
-            reg = torch.stack([v.float().pow(2).mean() for v in generated.values()]).mean()
-            loss = loss + args.l2_reg_generated_w * reg
+        _z = torch.zeros((), device=device)
+        ce_m_t = ce_mm_t = ce_fz_t = aux_t = _z
+        if args.neutral_junk_lambda > 0:
+            # Non-gameable objective: matched HELPS + mismatched stays NEUTRAL (~frozen).
+            cond = batch.condition_embeddings
+            b = cond.shape[0]
+            cond_mm = torch.roll(cond, shifts=1, dims=0)
+            gen_both = ddp_hyper(torch.cat([cond, cond_mm], dim=0))  # single DDP forward
+            gen_m = {k: v[:, :b] for k, v in gen_both.items()}
+            gen_mm = {k: v[:, b:] for k, v in gen_both.items()}
+            # frozen (no-adapter) CE target: zero the generated params so the codec update is a no-op.
+            with torch.no_grad():
+                current.clear()
+                current.update({k: torch.zeros_like(v) for k, v in gen_m.items()})
+                out_fz = interp_fwd(input_ids=batch.input_ids, attention_mask=batch.attention_mask)
+                ce_frozen = masked_cross_entropy(out_fz.logits, batch.labels)
+            current.clear()
+            current.update(gen_m)
+            out_m = interp_fwd(input_ids=batch.input_ids, attention_mask=batch.attention_mask)
+            ce_m = masked_cross_entropy(out_m.logits, batch.labels)
+            current.clear()
+            current.update(gen_mm)
+            out_mm = interp_fwd(input_ids=batch.input_ids, attention_mask=batch.attention_mask)
+            ce_mm = masked_cross_entropy(out_mm.logits, batch.labels)
+            neutral_pen = (ce_mm - ce_frozen).pow(2)  # ce_frozen is detached (no_grad); push ce_mm -> frozen
+            loss = ce_m + args.neutral_junk_lambda * neutral_pen
+            ce_m_t, ce_mm_t, ce_fz_t, aux_t = ce_m.detach(), ce_mm.detach(), ce_frozen.detach(), neutral_pen.detach()
+            if args.l2_reg_generated_w:
+                reg = torch.stack([v.float().pow(2).mean() for v in gen_m.values()]).mean()
+                loss = loss + args.l2_reg_generated_w * reg
+        elif args.contrastive_lambda > 0:
+            # Mismatched-negative conditioning loss. ONE ddp_hyper forward on [matched ; mismatched]
+            # condition embeddings (keeps DDP's single-forward-per-backward contract), split along the
+            # batch dim, then TWO interpreter forwards (interpreter is not DDP-wrapped). The hinge
+            # rewards the matched adapter for fitting the batch better than an adapter built from
+            # another in-batch task's description.
+            cond = batch.condition_embeddings
+            b = cond.shape[0]
+            cond_mm = torch.roll(cond, shifts=1, dims=0)
+            gen_both = ddp_hyper(torch.cat([cond, cond_mm], dim=0))  # each: (num_layers, 2b, D)
+            gen_m = {k: v[:, :b] for k, v in gen_both.items()}
+            gen_mm = {k: v[:, b:] for k, v in gen_both.items()}
+            current.clear()
+            current.update(gen_m)
+            out_m = interp_fwd(input_ids=batch.input_ids, attention_mask=batch.attention_mask)
+            ce_m = masked_cross_entropy(out_m.logits, batch.labels)
+            current.clear()
+            current.update(gen_mm)
+            out_mm = interp_fwd(input_ids=batch.input_ids, attention_mask=batch.attention_mask)
+            ce_mm = masked_cross_entropy(out_mm.logits, batch.labels)
+            contrast = torch.relu(args.contrastive_margin + ce_m - ce_mm)
+            loss = ce_m + args.contrastive_lambda * contrast
+            ce_m_t, ce_mm_t, aux_t = ce_m.detach(), ce_mm.detach(), contrast.detach()
+            if args.l2_reg_generated_w:
+                reg = torch.stack([v.float().pow(2).mean() for v in gen_m.values()]).mean()
+                loss = loss + args.l2_reg_generated_w * reg
+        else:
+            generated = ddp_hyper(batch.input_ids.shape[0]) if args.static else ddp_hyper(batch.condition_embeddings)
+            current.clear()
+            current.update(generated)
+            outputs = interp_fwd(input_ids=batch.input_ids, attention_mask=batch.attention_mask)
+            loss = masked_cross_entropy(outputs.logits, batch.labels)
+            if args.l2_reg_generated_w:
+                reg = torch.stack([v.float().pow(2).mean() for v in generated.values()]).mean()
+                loss = loss + args.l2_reg_generated_w * reg
         loss.backward()
         torch.nn.utils.clip_grad_norm_(ddp_hyper.parameters(), args.max_grad_norm)
         optimizer.step()
@@ -350,14 +470,25 @@ def main() -> None:
 
         done = step + 1
         if done % args.loss_log_every == 0 or done == args.steps:
-            reduced = loss.detach().clone()
-            dist.all_reduce(reduced, op=dist.ReduceOp.AVG)
+            stats = torch.stack([loss.detach(), ce_m_t, ce_mm_t, ce_fz_t, aux_t]).float()
+            dist.all_reduce(stats, op=dist.ReduceOp.AVG)  # cross-rank means
             if is_main():
-                losses.append(float(reduced))
-                log(f"  step {done}/{args.steps} loss={float(reduced):.4f} lr={scheduler.get_last_lr()[0]:.2e}")
+                losses.append(float(stats[0]))
+                if args.neutral_junk_lambda > 0:
+                    extra = (f" ce_m={float(stats[1]):.4f} ce_mm={float(stats[2]):.4f} "
+                             f"ce_froz={float(stats[3]):.4f} neutral_pen={float(stats[4]):.4f}")
+                elif args.contrastive_lambda > 0:
+                    extra = f" ce_m={float(stats[1]):.4f} ce_mm={float(stats[2]):.4f} contrast={float(stats[4]):.4f}"
+                else:
+                    extra = ""
+                log(f"  step {done}/{args.steps} loss={float(stats[0]):.4f}{extra} lr={scheduler.get_last_lr()[0]:.2e}")
         if done % args.checkpoint_every == 0 or done == args.steps:
             dist.barrier()
             save(done)
+            dist.barrier()
+        if args.snapshot_every > 0 and (done % args.snapshot_every == 0 or done == args.steps):
+            dist.barrier()
+            save_snapshot(done)
             dist.barrier()
 
     if timer_start is not None:
@@ -374,6 +505,20 @@ def main() -> None:
     dist.barrier()
 
     if not is_main():
+        dist.destroy_process_group()
+        return
+
+    if args.static:
+        # No matched/junk to score: the static adapter is unconditioned. Its per-family accuracy is
+        # computed post-hoc (t2p_eval_checkpoint.py --static-snapshot) as the `matched - static`
+        # reference. Just persist metadata; the final snapshot already holds the trained weights.
+        (output_dir / "train_meta.json").write_text(json.dumps({
+            "static": True, "adapter": args.adapter, "interpreter": args.interpreter,
+            "effective_batch": eff_batch, "steps": args.steps, "learning_rate": args.learning_rate,
+            "per_task_limit": per_task_limit, "losses": losses,
+        }, indent=2) + "\n")
+        log(f"[6/6] static adapter trained -> {output_dir} "
+            f"(eval post-hoc: t2p_eval_checkpoint.py --static-snapshot)")
         dist.destroy_process_group()
         return
 
@@ -409,6 +554,9 @@ def main() -> None:
         "effective_batch": eff_batch, "per_gpu_batch": args.per_gpu_batch, "world_size": world,
         "steps": args.steps, "learning_rate": args.learning_rate, "warmup_steps": warmup_steps,
         "example_visits": eff_batch * args.steps, "losses": losses,
+        "per_task_limit": per_task_limit, "interpreter": args.interpreter,
+        "contrastive_lambda": args.contrastive_lambda, "contrastive_margin": args.contrastive_margin,
+        "neutral_junk_lambda": args.neutral_junk_lambda, "strip_task_def": args.strip_task_def,
     }, indent=2) + "\n")
     log(f"[6/6] done -> {output_dir}")
     dist.destroy_process_group()

@@ -1,0 +1,22 @@
+assistant_prefill: ''
+descriptions:
+- This task requires critical thinking as you examine a statement and three choices.
+  You are to find the sentence that represents a disagreement with what is stated,
+  showing an understanding of contrasting ideas.
+- In this task, you will evaluate a statement and three possible responses. Your objective
+  is to identify which response presents an opposing viewpoint or argument to the
+  original statement provided.
+- In this exercise, you will encounter a statement and three accompanying sentences.
+  Your role is to isolate the sentence that most directly contradicts the premise
+  of the original statement, requiring strong analytical skills.
+ds_kwargs:
+  name: default
+  path: Lots-of-LoRAs/task202_mnli_contradiction_classification
+  split: train[:10000]
+response_field: answer
+system_message: ''
+task_name: task202_mnli_contradiction_classification
+user_prompt_template: '{task_def}
+
+
+  {problem}'
