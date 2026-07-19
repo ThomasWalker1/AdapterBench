@@ -11,12 +11,14 @@ the generated representation, which plugs into a single `codec` (output structur
 `hook site` (attachment point) seam — so a new adapter needs no adapter-specific plumbing.
 
 The setting is **live end-to-end SFT** — hook a hypernetwork's generated output directly
-into a real frozen `Qwen3-0.6B` interpreter's forward pass on real training examples,
-backprop ordinary next-token cross-entropy through the hook, and evaluate on real held-out
-benchmarks. The hypernetwork is trained entirely from scratch (no released checkpoint).
+into a real frozen interpreter's forward pass on real training examples, backprop ordinary
+next-token cross-entropy through the hook, and evaluate on real held-out benchmarks. The
+interpreter is per-setting (gemma-2-2b for T2L, Qwen3-0.6B for D2L, SD-Turbo for I2P). The
+hypernetwork is trained entirely from scratch (no released checkpoint).
 
-**Current status (2026-07-12).** Three evaluation settings — two language, one image — are
-set up and validated end-to-end with a **LoRA baseline codec**:
+**Current status (2026-07-19).** Three evaluation settings — two language, one image — are
+complete end-to-end with a rigorous **LoRA baseline codec** (see "Session handoff" for the
+per-setting numbers and the remaining handoff tasks):
 - **T2L** — task-description conditioning (Text-to-LoRA-style), scored on held-out
   benchmark tasks.
 - **D2L** — document conditioning (Doc-to-LoRA-style), scored on held-out
@@ -39,108 +41,75 @@ row on all three leaderboards — a showcase of how `(codec, free-HP)` entries g
 reproduced. New codec shapes are explicitly deferred, not the current goal** (see § "Roadmap →
 CURRENT PHASE" for the definition-of-done and the exact gap list).
 
-## Session handoff (2026-07-15) — read this first
+## Session handoff (2026-07-19) — read this first
 
-**Design (current).** The benchmark is **committed per-setting leaderboards** (`leaderboards/*.md`):
-each entry is `(shape, free hyperparameters, matched−control ± std, #seeds, reproduce command)`,
-reproducible by running the setting's CLI against the committed codec. There is **no** automated
-search, proxies, or merge gate — that machinery was built, validated on LoRA, then removed as
-over-engineering. What survives as *rules* (not code): the HP partition (shared substrate fixed,
-only free HPs vary per entry, rank fixed) and the four invariants (matched−control never loss;
-scale swept; difficulty knob; multi-seed). A new shape is a codec subclass + `make_codec` entry +
-manifest, added one at a time, each with its leaderboard row. See § "The benchmark: per-setting
-leaderboards" and `leaderboards/README.md`.
+**State.** The benchmark is **three rigorously-controlled LoRA baselines** — one per setting — each
+with a `matched − control` result, a reproduce script, a leaderboard row, a paper section, and a spot
+on the landing page. There is still **only one codec (LoRA)**; alternative shapes are deferred (user's
+call). T2L was the last setting finished — its full redesign story is in § "T2L … ✅ COMPLETE".
 
-**Validated LoRA baselines** (recorded in the leaderboards): image reward-tilting matched−control
-**+3.50** (IR gain +0.160 ± 0.015 vs −3.34 reward-swap; scale optimum 2–4); T2L conditioning
-**+0.033** (150K × 3 seeds, all 4 families); D2L NIAH **+0.887 ± 0.143** (in-distribution, 5 seeds,
-realistic-prose haystack, ctxswap 0.000; length-gen crossover 4096 = 16× train length). The paper
-(`~/adapterbench-paper.tex`) reflects this design (D2L number to refresh to the realistic 5-seed).
+**Baselines** (`leaderboards/*.md`, all `matched − control`):
+- **T2L** — `matched − static = −0.81 ± 0.06` nats CE (20/21 held-out SNI tasks, 2 seeds; a 3rd is
+  running), accuracy `matched − static / matched − frozen = +0.035 / +0.23`. gemma-2-2b, definition
+  **stripped** from the input, plain SFT CE. CE is primary (non-saturating); accuracy corroborates.
+- **D2L** — `+0.887 ± 0.143` (NIAH, 5 seeds, ctxswap 0.000, realistic-prose haystack; length-gen
+  crossover at 4096 tok = 16× train length).
+- **I2P** — `+3.50` (ImageReward gain +0.160 ± 0.015 vs −3.34 reward-swap; scale optimum 2–4; CLIP-T
+  drop only +0.004). 3 seeds.
 
-**⏳ RUNNING right now (do not kill unless intended):**
-- **Fast DDP T2L run** (the *going-forward benchmark training path*, 2026-07-15) — 4-GPU
-  data-parallel via `scripts/t2p_train_ddp.py` → `results/t2p_cond_ddp/s777/`, on **cuda:1–4**,
-  seed 777, restart-safe (`--checkpoint-every 5000`). **Fixed *data budget*, not step count:**
-  effective batch 128 (4×32) × **62,500 steps = 8M example-visits = the same data/epochs as the
-  1M×batch-8 run**, just repackaged into fewer, larger steps. `torch.compile` + `--fixed-seq-len
-  512` static shapes + persistent codec hooks → **471 ms/step, ~8 h/run (~5.8× faster than the
-  batch-8 1M run)**. lr √-scaled 2.5e-5→**1e-4** for the 16× batch. `results.jsonl` at the end is
-  a drop-in for `t2p_rigor_aggregate.py` (verified). See § "T2L" and § "How to run" for the exact
-  command. This is how each new codec shape's T2L run should be trained (per-shape run tractable).
-- **1M-step T2L run** (the original single-GPU batch-8 trajectory) — `t2p-sft-pilot` →
-  `results/t2p_cond_1M/s777/`, single seed 777, on cuda:0, restart-safe (`--checkpoint-every 10000`),
-  ~2 days. Recipe: 128 descriptions, batch 8, lr 2.5e-5, warmup 0.1, `--adversarial-control`,
-  eval-limit 80. `results.jsonl` is written only at the end. Now **superseded by the DDP path above**
-  as the benchmark training method, but left running (46%+ done as of 2026-07-15) since it is the
-  batch-8 emergence-curve endpoint; kill only if the cuda:0 GPU is needed. **If it dies, re-run the
-  identical command** (§ "T2L" IN-PROGRESS block) — it resumes from the last 10K checkpoint. When it
-  finishes: `.venv/bin/python scripts/t2p_rigor_aggregate.py --results results/t2p_cond_1M/s777/results.jsonl`,
-  extend the emergence curve (5K→20K→60K→150K→**1M**).
-- **D2L NIAH — DONE (unified, realistic, 5-seed).** `results/repro/document_niah_realistic/
-  s{777..781}/`, train@256 realistic-prose haystack, eval sweep 256→8192, 12K steps. In-distribution
-  matched−control **+0.887 ± 0.143** (ctxswap 0.000), crossover(0.5) = 4096 = 16× train length.
-  Leaderboard `document_niah_d2l.md` + reproduce script updated. (This supersedes the old synthetic
-  single-bin base-retrieval + separate length-gen runs, now consolidated into one recipe. The earlier
-  synthetic 3-seed@12K gave a noisier +0.740 ± 0.217 — the realistic unified run is the shipped row.)
-- **⏳ D2L best-of-scale sweep RUNNING (invariant #2)** — `scripts/d2l_scale_sweep.sh` on cuda:5–7:
-  single-seed (777) sweep of LoRA scale {11.31, 22.63, 45.25(default), 67.88, 90.5} at the shipped
-  realistic recipe (train@256, eval in-dist@256, 12K steps) → `results/repro/d2l_scale_sweep/scale*/`.
-  Auto-summarizes scale→matched−control at the end. **When done:** if a scale beats the default 45.25,
-  confirm it 5-seed (`document_niah_lora.sh` + `--lora-scaling <best>`) and update the D2L row's
-  recorded scale; else the default stands and the sweep is the invariant-#2 evidence.
-- **GPU map (2026-07-15):** cuda:0 = batch-8 1M run; cuda:1–4 = DDP T2L run; cuda:5–7 = D2L scale
-  sweep. Other users (`sa86`) intermittently share GPUs; `nvidia-smi` before launching, prefer
-  0%-util GPUs, never touch cuda:0's 1M run.
+**⏳ RUNNING (do not kill unless intended): the 3rd T2L seed.**
+`scripts/reproduce/task_t2l_lora.sh 3 0,1,2,3 4,5,6,7` — trains the strip-def hypernetwork + static
+reference (~1 h), then runs both evals (CE + accuracy) and writes
+`results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s3/heldout_sni_{ce_full21,acc}.jsonl`. It is a
+harness-tracked background job. **When it lands**, recompute the 3-seed mean±std and update the T2L
+number in **all four** places: `adapterbench-paper.tex` (Table 1 row + §results-t2l), `leaderboards/
+task_conditioned_t2l.md`, `docs/index.html` (T2L leaderboard row), and this plan. Read the aggregate
+with: `grep __aggregate__ .../s{777,2,3}/heldout_sni_ce_full21.jsonl` (and `…_acc.jsonl`).
 
-**Completion checklist — aggregate the running experiments when they finish:**
-- [ ] **T2L fast DDP (benchmark default):** run `.venv/bin/python scripts/t2p_rigor_aggregate.py
-  --results results/t2p_cond_ddp/s777/results.jsonl`, record the matched−adversarial number as the
-  T2L leaderboard/paper row at the DDP config, then run seeds 778/779 (same command, `--seed`).
-- [ ] **T2L 1M (batch-8 reference):** run `.venv/bin/python scripts/t2p_rigor_aggregate.py --results
-  results/t2p_cond_1M/s777/results.jsonl`, then extend the batch-8 emergence curve.
-- [x] **D2L unified realistic 5-seed — DONE:** aggregated (+0.887 ± 0.143 in-dist, crossover 16×);
-  `document_niah_d2l.md` + reproduce script updated.
+**NEXT (priority order, per the 2026-07-19 planning discussion):**
+0. **Integrate seed-3** (orthogonal — do the moment the running job lands) → 3-seed T2L numbers in the
+   paper, `leaderboards/task_conditioned_t2l.md`, `docs/index.html`, and this plan.
+1. **I2P — make it a true conditioning member (build Path B).** *Interim (✅ done):* the paper
+   §sec:image, `leaderboards/image_reward_tilting.md`, `GUIDE.md`, and `docs/index.html` were reframed
+   to honestly call the shipped setting *unconditional / directly-optimized* (the identity-hypernetwork
+   `DirectCodecAdapter` — the delta is a learned parameter, not a function of the prompt; reward-swap is
+   the operative control, prompt-swap a *characterization* that the edit is prompt-generic). Nothing
+   over-claims today. *Active plan:* **build the prompt-conditioned version** — a real hypernetwork that
+   emits an adapter applied to the generator — so I2P matches T2L/D2L. Full design, the
+   redundancy/necessity problem, the candidate mechanisms, and the recommended first step are in
+   § "I2P Path B" below. This supersedes the reframe-only stance and is the active I2P priority.
+2. **Sweep engineering** — make per-codec scale sweeps efficient enough to produce *best-of-scale*
+   LoRA baselines cheaply (invariant #2), the prerequisite for the T2L strip-def scale sweep and for
+   every future codec. Also confirm/close the D2L best-of-scale sweep. (The T2L default-scale row is
+   acceptable until this lands.)
+3. **Paper + docs coherence pass** — once the science is settled: check `README.md`, `SETUP.md`,
+   `BENCHMARK_CONTRACT.md`, `AGENTS.md` for stale T2L/I2P framing; ensure the paper has no placeholders
+   beyond planning and its numbers match the leaderboards; **add tests for the new T2L eval path**
+   (`strip_task_def`, `StaticAdapter`, `t2p_eval_heldout_sni{,_acc}.py`) — currently zero coverage.
+4. **License + hosting** — add `LICENSE` + `CITATION`; stand up GitHub Pages for `docs/index.html` at
+   adapterbench.github.io (Settings → Pages → `main` `/docs`; fill the placeholder GitHub link
+   `href="https://github.com/"`); initial commit + push (human-driven).
+5. **(Deferred — user)** the **planning** setting — returns later; not started.
+6. **(Deferred — user)** **alternative codec shapes** — the real "does shape matter?" payload; the
+   registry (`make_codec`) has only LoRA, so the benchmark's central claim is not yet exercised.
+   Adding one: codec subclass + `make_codec` entry + `configs/adapters/<name>.yaml`, then a leaderboard
+   row per setting (the seam already spans all three settings).
 
-**LoRA results status + gaps** (the "complete the baseline" work):
-- **Image (I2P): complete.** Operating point (scale 4, reg 0.25) × 3 seeds + reward-swap control ×
-  3 seeds + full scale sweep (single-seed tails) + reg difficulty knob. Archived
-  `results/_archive/i2p_hypernoise_v2/`.
-- **Task (T2L): 150K × 3 done** (`results/_archive/t2p_cond_long/s{777,778,779}_150k`, +0.033);
-  **DDP data-matched run + batch-8 1M both running**. Gaps to a shippable row: land the DDP run as the
-  headline (+ seeds 778/779), reconcile its reproduce command, and settle invariant #2 (best-of-scale
-  — currently "default"; needs a fresh `--scales` sweep at the shipped recipe). See § Roadmap
-  "CURRENT PHASE".
-- **Document (D2L): DONE** — unified realistic 5-seed (`results/repro/document_niah_realistic/`):
-  in-distribution +0.887 ± 0.143, length-gen curve to 8192, crossover 16×, ctxswap 0.000. The
-  invariant-#2 best-of-scale sweep is **now running** (`scripts/d2l_scale_sweep.sh`, cuda:5–7);
-  confirm the winner multi-seed if it beats the default 45.25 (see RUNNING block above).
+**Eval gotcha — `HF_HUB_OFFLINE=1` is required** for the held-out-SNI evals: after the one-time
+`vendor_heldout_sni_metadata.py` downloads, the HF Hub 429-rate-limits the model-metadata check; the
+model and datasets are cached, so offline mode is both correct and necessary. The reproduce script
+sets it for you.
 
-**Next steps (priority order) — current phase = sound infra + complete LoRA baseline, NOT new codecs
-(see § Roadmap "CURRENT PHASE" for the full gap list and definition-of-done):**
-1. **Land the fast DDP T2L run** (running, `results/t2p_cond_ddp/s777/`, ~8h) → aggregate, set the
-   T2L leaderboard/paper row at the DDP data-matched config, then run seeds 778/779. The batch-8 1M
-   run keeps finishing on cuda:0 as the emergence-curve context point.
-2. **D2L — DONE** (unified realistic 5-seed, +0.887 ± 0.143, crossover 16×; leaderboard + reproduce
-   updated). Best-of-scale sweep now **running** (`scripts/d2l_scale_sweep.sh`); confirm winner if it
-   beats default 45.25.
-3. **Invariant #2 (best-of-scale)** — infra built (`--lora-scaling` on the DDP script;
-   `scripts/{d2l,t2l}_scale_sweep.sh`). D2L sweep running; **launch `t2l_scale_sweep.sh` once the DDP
-   run frees cuda:1–4.** Then confirm each setting's winning scale and record it in the row.
-4. **Commit** the shipped infra (`scripts/t2p_train_ddp.py`, `scripts/{d2l,t2l}_scale_sweep.sh`,
-   reproduce wrappers, leaderboards, plan, paper) to `main`.
-5. *(Deferred, not now)* alternative codec shapes — the "does shape matter" payload; resumes only
-   after the baseline + infra above are locked.
+**Key files.** `GUIDE.md` (user guide — coherent with the current T2L method) · `leaderboards/*.md`
+(source-of-truth rows) · `docs/index.html` (landing page) · `scripts/reproduce/task_t2l_lora.sh`
+(one-seed T2L baseline) · `scripts/t2p_eval_heldout_sni.py` (CE) + `_acc.py` (accuracy) ·
+`scripts/vendor_heldout_sni_metadata.py` (recovers all 21 held-out tasks) · `adapterbench-paper.tex`
+§sec:t2l.
 
-**Repo hygiene:** `results/` is gitignored scratch. **Pruned to leaderboard-only on 2026-07-15:**
-`results/_archive/` now holds *only* LoRA result-file metrics (checkpoints stripped), 14 MB total:
-image `i2p_hypernoise_v2/` and T2L `t2p_cond_long/` (both current leaderboard-backing); plus the
-**superseded** synthetic-D2L `d2p_niah_lora/` + `d2p_lengthgen_lora_s777..782/` (historical only — the
-shipped D2L baseline is now the realistic run at `results/repro/document_niah_realistic/`). Deferred-codec and exploratory
-archives (IA³/LoKr/FourierFT/steering, old reconstruction/vllm/smoke runs) were deleted; those shapes
-re-run fresh when codec work resumes. Live runs (`t2p_cond_1M/`, `t2p_cond_ddp/`,
-`repro/document_niah_lora/`) were left intact. Checkpoints/`*.pt`/`*.log` never committed. Stage-ready:
-`leaderboards/`, `data/`, modified `src/`/`scripts/`/docs. **Nothing has been committed — the human drives that.**
-The T2L data is vendored to `data/t2l/` (13 MB) so no `upstream/` clone is needed.
+**Repo hygiene.** `scripts/reproduce/task_t2l_lora_ddp.sh` is **superseded** (the old
+matched-adversarial / arc-boolq pipeline) — review and delete when integrating seed-3. `results/` is
+gitignored scratch. Checkpoints/`*.pt`/`*.log` are never committed. **Nothing is committed — the human
+drives that.** T2L data is vendored to `data/t2l/` (no `upstream/` clone needed).
 
 ## Architecture
 
@@ -270,7 +239,7 @@ stochastic (lands anywhere ~1500–2500+ steps), which is why the protocol requi
 seeds (see § "The four invariants"). `aggregate_lengthgen.py` emits the per-run length curve
 plus transition step and crossover length from the training logs.
 
-## T2L: task-description setting (works end-to-end; control added — conditioning unproven)
+## T2L: task-description setting (✅ conditioning PROVEN — strip-def + matched−static; see the COMPLETE subsection)
 
 `t2p-sft-pilot` trains a hypernetwork from scratch, conditions on a task-description
 embedding, and scores held-out boolq/hellaswag (generation + answer-extraction, dropout
@@ -538,7 +507,7 @@ strip-def snapshots.
 code sandbox — deferred). Memory: 2B/7B bases use **8 GPUs × batch 16 = eff-batch 128**; the
 neutral-junk objective's 3rd forward fits at batch 8.
 
-## Image domain: I2P — reward-tilting (HyperNoise), validated
+## Image domain: I2P — reward-tilting (HyperNoise) — the UNCONDITIONAL / directly-optimized member (validated; reframed 2026-07-19)
 
 The image setting answers the modality-transfer question: does the adapter-shape seam + the
 four invariants carry to a visual generator? It does. A de-risk first ruled out from-scratch
@@ -623,6 +592,59 @@ gain with a razor-sharp reward-swap control and a scale optimum** — a full mem
 panel. (First-run artifact for the record: at scale=2/reg=0.5 the matched gain was ~0, which is
 why an operating-point sweep was needed; the peak is at low scale, not high.)
 
+### I2P Path B — prompt-conditioned hypernetwork (make I2P a true conditioning member) (2026-07-19)
+
+**Why.** The shipped I2P (above) is the *unconditional* identity-hypernetwork case: `DirectCodecAdapter`
+is a learned parameter, not a function of any condition, so I2P does not exercise the benchmark's core
+premise — a hypernetwork *generates* a *conditioned* adapter — the way T2L/D2L do. The reframe made this
+honest; this plan makes it real.
+
+**Architecture (mirror T2L exactly).**
+- Conditioning input: the prompt embedding (SD-Turbo's text-encoder pooled output).
+- prompt emb → hypernetwork trunk → codec heads → per-Linear LoRA for the UNet attention projections
+  (attn1/attn2 q/k/v/out — the same 128 Linears `find_attention_linears` already targets), emitted in
+  one forward pass. Reuses `make_codec` + the T2P hypernetwork trunk.
+- **Apply the adapter to the generator directly (weight-space), NOT as a noise perturbation.** Drop the
+  HyperNoise `Δx₀ = unet_adapted − unet_base` construction and its `λ‖Δx₀‖²` regularizer — that
+  noise-space indirection biases toward a small *generic* nudge. A straight prompt-conditioned LoRA on
+  the UNet, generate, score, backprop, is cleaner and makes I2P architecturally identical to T2L/D2L.
+  (Keep a fidelity term to prevent reward-hacking; CLIP-T drop is already the anti-hack check.)
+- Metric: **`matched − static`** — the prompt-conditioned adapter vs. a single static LoRA of the same
+  shape (the existing `DirectCodecAdapter` *is* the static reference) — plus the reward-swap control.
+
+**The crux (read before building).** Unlike T2L, **you cannot strip the prompt from a text-to-image
+generator** — the prompt is its essential input, so the frozen generator *already sees it*. A
+prompt-conditioned adapter is therefore structurally **redundant** (the exact T2L redundancy problem,
+but unfixable by stripping). Plain reward-tilting will most likely give **matched ≈ static** —
+conditioning adds nothing over a generic tilt; this is why the de-risk found prompt-specific steering
+≈ 0. Building the hypernetwork is necessary but not sufficient — conditioning must be made *necessary*.
+
+**Necessity mechanisms (the strip-def analogue), in preference order:**
+1. **Per-prompt distinct hard requirements the base model fails** (rare compositions, counting, spatial
+   relations, specific styles), curated so the reward-maximizing edit genuinely differs per prompt and
+   one static edit can't satisfy all. Most faithful to "conditioning is necessary"; most curation effort.
+2. **Reward-conditioning** (safe fallback, *guaranteed* real signal): the hypernetwork reads *which*
+   reward to optimize (ImageReward / redness / blueness / …) and must emit a reward-specialized adapter;
+   metric = `matched − reward-swap`. Sidesteps prompt-redundancy entirely, but answers "shape matters
+   for *reward*-conditioned tilting," not prompt-conditioning.
+3. **Degraded-prompt-to-generator** (literal strip-def analogue): give the generator a stripped prompt
+   ("a photo") and the hypernetwork the full description; the adapter must carry the content. Cleanest
+   analogy, but it is the content-injection path the de-risk measured at ≈ 0 — will most likely fail.
+
+**Recommended first step.** Build the prompt-conditioned hypernetwork (weight-space, mechanism-free) and
+**measure plain `matched − static` first** — the cheap go/no-go on whether reward-tilting is even
+slightly prompt-specific. If ~0 (likely), layer on #1. #2 is the fallback that *guarantees* a positive
+conditioning result if I2P must land positive. Prototype small (a few hundred prompts, short training)
+before the full build.
+
+**Risk / decision.** A real build (new image hypernetwork + train/eval loop; trunk + codec seam shared).
+It may conclude "image-space adapters don't do prompt-conditioning" — a legitimate, publishable
+**boundary** result, not a positive one. Decide up front whether a boundary result is acceptable
+(→ start with the mechanism-free `matched − static` probe) or whether I2P must land positive (→ go
+straight to mechanism #2, reward-conditioning). Reuse: `src/adapterbench/i2p/` (`hypernoise.py`,
+`hypernoise_trainer.py`, `rewards.py`, `image_generator.py`), the T2P trunk in
+`src/adapterbench/t2p/hypernetwork.py`, and `make_codec`.
+
 ## How to run
 
 ```bash
@@ -637,28 +659,13 @@ why an operating-point sweep was needed; the peak is at low scale, not high.)
 nohup .venv/bin/python scripts/i2p_hypernoise_pipeline.py --out results/i2p_hypernoise &
 .venv/bin/python scripts/i2p_hypernoise_aggregate.py --out results/i2p_hypernoise
 
-# T2L: FAST full-scale training (the benchmark default) — 4-GPU DDP, data-budget-matched
-# effective batch 128 (4x32) x 62.5K steps = 8M example-visits, ~8h. torch.compile + fixed-512
-# static shapes + persistent hooks (471 ms/step). Restart-safe; re-run to resume. cuda:1-4.
-# results.jsonl is a drop-in for scripts/t2p_rigor_aggregate.py.
-CUDA_VISIBLE_DEVICES=1,2,3,4 .venv/bin/torchrun --standalone --nproc_per_node=4 \
-  scripts/t2p_train_ddp.py --all-decontam-tasks --max-descriptions 128 --limit 40 \
-  --per-gpu-batch 32 --steps 62500 --learning-rate 1e-4 --warmup-frac 0.1 \
-  --max-grad-norm 1.0 --fixed-seq-len 512 \
-  --eval-tasks arc_easy,arc_challenge,hellaswag,boolq --eval-limit 80 \
-  --adversarial-control --seed 777 --checkpoint-every 5000 --output results/t2p_cond_ddp/s777
-.venv/bin/python scripts/t2p_rigor_aggregate.py --results results/t2p_cond_ddp/s777/results.jsonl
-
-# T2L: original single-GPU live SFT, LoRA baseline, three seeds (slow reference recipe)
-uv run adapterbench t2p-sft-pilot \
-  --all-decontam-tasks --adapters lora \
-  --seeds 777,778,779 --steps 380 --grad-accum-steps 64 --warmup-frac 0.1 \
-  --learning-rate 1e-5 --eval-limit 60 --output results/t2p_sft_full
-
-# T2L: step-budget sweep (single seed, several budgets, one persistent optimizer)
-uv run adapterbench t2p-sft-sweep \
-  --adapters lora \
-  --checkpoint-steps 100,200,400,800,1200 --eval-limit 40 --output results/t2p_sft_sweep
+# T2L: reproduce the LoRA baseline for one seed — trains the strip-def hypernetwork + the same-shape
+# static reference (data-parallel, gemma-2-2b), then scores matched-static on the 21 held-out SNI
+# tasks (CE + accuracy). Needs HF_HUB_OFFLINE=1 (set by the script). Args: SEED GPUS_HYPER GPUS_STATIC.
+scripts/reproduce/task_t2l_lora.sh 777 0,1,2,3 4,5,6,7
+# read the aggregate rows (matched-static CE = primary; accuracy = corroborating):
+grep __aggregate__ results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s777/heldout_sni_ce_full21.jsonl
+grep __aggregate__ results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s777/heldout_sni_acc.jsonl
 
 # D2L NIAH: the SHIPPED unified recipe (realistic real-prose haystack; one run = in-distribution
 # headline @256 + length-gen sweep to 8192). Restart-safe. The 5-seed baseline is the reproduce
@@ -670,9 +677,8 @@ uv run adapterbench t2p-sft-sweep \
   --n-latents 208 --num-blocks 8 --eval-limit 32 \
   --device cuda:0 --output results/repro/document_niah_realistic/s777
 
-# Invariant-#2 best-of-scale sweeps (single-seed locators; confirm the winner multi-seed after):
+# Invariant-#2 best-of-scale sweep for D2L (single-seed locator; confirm the winner multi-seed after):
 bash scripts/d2l_scale_sweep.sh 5,6,7   # D2L: sweeps --lora-scaling, self-summarizes scale->matched-control
-bash scripts/t2l_scale_sweep.sh 1,2,3,4 # T2L: sweeps --lora-scaling at the DDP recipe (run when cuda:1-4 free)
 ```
 
 ```bash
@@ -889,55 +895,14 @@ optimize" claim splits into two sub-claims, and the image domain cleanly separat
   destroyed → NaN). **Use SGD+momentum** (as Path A does): with grad-clipping its step norm is
   exactly `lr`, preserving the reg-vs-reward balance. SGD lr 1e-3 / scale 2 / reg 0.25 was stable.
 
-**CURRENT PHASE (2026-07-15, refocused): sound infrastructure + a complete, rigorous LoRA
-baseline populating all three leaderboards.** The immediate goal is **not** new codecs — it is to
-make the benchmark *machinery* trustworthy and to fill each leaderboard with a LoRA row that fully
-satisfies the four invariants, so the artifact concretely **showcases how a `(codec, free-HP)`
-entry is produced and reproduced**. Adding alternative shapes (IA³, LoKr, FourierFT, steering) is
-explicitly **deferred** to a later phase (see "Future"). This phase is done when a new contributor
-could read a leaderboard row, run its command, and regenerate the number.
-
-*In flight now (compute; see session handoff):*
-1. **T2L** — fast DDP run (`results/t2p_cond_ddp/s777`, the shipped data-matched scale) → aggregate,
-   then seeds 778/779 for the multi-seed row. The batch-8 1M run keeps extending the emergence curve.
-2. **D2L** — DONE: unified realistic 5-seed (+0.887 ± 0.143 in-distribution, length-gen crossover 16×).
-
-*Necessary beyond the running compute (the gap to "phase done"):*
-3. **Reconcile every leaderboard "reproduce" command with the actually-shipped config.**
-   ✅ **DONE (code, 2026-07-15):** `scripts/reproduce/task_t2l_lora_ddp.sh` written (the shipped
-   DDP `torchrun` × 3 seeds + concat + aggregate; bash-syntax-checked); `leaderboards/
-   task_conditioned_t2l.md` reconciled to point at it with the headline number marked **pending the
-   DDP run**; the batch-8 `task_t2l_lora.sh` kept as the emergence-curve reference. **Remaining
-   (needs the run):** drop the "pending" and paste the DDP matched−adversarial number into the row.
-4. **Pick one canonical headline config per setting** and mark the rest as supporting curve points.
-   ✅ **DECIDED + recorded:** T2L headline = the DDP data-matched run; 150K×3 and 1M are
-   emergence-curve context (stated in the T2L leaderboard). No code left; it finalizes when #3's
-   number lands.
-5. **Satisfy invariant #2 (report best-of-scale) uniformly.** 🔄 **IN PROGRESS — infra built.**
-   `t2p_train_ddp.py` gained `--lora-scaling`; two reusable sweep scripts exist:
-   `scripts/d2l_scale_sweep.sh` (**running** on cuda:5–7, single-seed locator over 5 scales) and
-   `scripts/t2l_scale_sweep.sh` (**ready** — launches on cuda:1–4 once the DDP run frees them; a
-   reduced 20k-step single-seed locator at the DDP recipe). Protocol: single-seed locate → confirm
-   the winner multi-seed (or accept the default if it wins). Image already ships a full scale sweep.
-   (The old exploratory scale archives were unusable and were pruned 2026-07-15, hence fresh runs.)
-6. **Finalize each row to uniform rigor** once runs land: ≥3-seed mean±std, best-of-scale, a
-   difficulty-knob reference, remove standing caveats (T2L "headline pending"; D2L multi-seed now done).
-7. **Commit the shipped infrastructure** (human drives commits): `scripts/t2p_train_ddp.py`,
-   `scripts/t2p_train_ddp_smoke.sh`, `scripts/reproduce/{task_t2l_lora_ddp.sh,README.md}`,
-   PROJECT_PLAN, `leaderboards/task_conditioned_t2l.md`, and the paper.
-
-*Recommended (raises soundness / makes the showcase land, not strictly blocking):*
-- **A DDP smoke test.** ✅ **DONE (code):** `scripts/t2p_train_ddp_smoke.sh` — a few-step 2-GPU run
-  asserting checkpoint round-trip, trained-adapter + frozen rows, and the adversarial control in a
-  parseable `results.jsonl` (mirrors `i2p_hypernoise_smoke.py`). Codifies the exact pattern validated
-  this session; **run once on a free GPU pair to confirm** (all 8 GPUs were busy at write time).
-- **A reproduce index.** ✅ **DONE (doc):** `scripts/reproduce/README.md` — the table of
-  per-row scripts + the step-by-step "how a leaderboard row is produced" that every future codec
-  follows (directly the requested showcase of how the benchmark gets populated).
-- **≥2 LoRA rows per setting at different free-HP configs** (e.g., T2L at two scales/step budgets;
-  image already shows a scale curve). ⛔ **NEEDS COMPUTE.** With a single codec this is the cleanest
-  way to *showcase* that the leaderboard tracks `(shape, HP-config)` pairs — but each extra row is a
-  run.
+**PHASE COMPLETE (2026-07-19): the LoRA baseline is done on all three settings.** The infrastructure
+is sound and each setting has a rigorous, reproducible `matched − control` row (T2L `matched − static`
+= −0.81 ± 0.06 nats CE + accuracy corroboration, D2L +0.887 ± 0.143, I2P +3.50), a reproduce script, a
+leaderboard row, a paper section, and a landing page (`docs/index.html`). For the current per-setting
+numbers, the running 3rd T2L seed, and the remaining handoff tasks (integrate seed-3, stand up the
+GitHub Pages site, then the deferred planning setting and — the real "does shape matter?" payload —
+alternative codec shapes), see the **Session handoff** at the top of this file: it supersedes the
+2026-07-15 phase plan that used to live here.
 
 **Future (explicitly deferred — not this phase):**
 - **Alternative codec shapes** (IA³, LoKr, FourierFT, activation-steering — all in git history and

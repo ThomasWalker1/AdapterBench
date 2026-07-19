@@ -1,8 +1,18 @@
 # Image domain — reward tilting (SD-Turbo, ImageReward)
 
-**Task.** A generated adapter modulates the initial noise of a frozen distilled text-to-image
+**Task.** An adapter modulates the initial noise of a frozen distilled text-to-image
 generator (`stabilityai/sd-turbo`) so the sampled image scores higher under a fixed, differentiable
 reward (ImageReward). Trained end-to-end by `L(φ) = λ·‖Δx₀‖² − r(g(x₀+Δx₀))`.
+
+**This is the unconditional (directly-optimized) member.** Unlike T2L/D2L, the adapter is *not*
+generated from a per-instance condition — the trainable parameter *is* the codec output, shared
+across all prompts (the "identity-hypernetwork" case of the seam). So the question here is whether a
+codec *shape* supports a noise edit that raises a *specific* reward, not whether it installs
+prompt-specific content. Consistent with that, the single optimized edit is prompt-**generic** (the
+gain survives a prompt-swap probe) — an expected, characterized property, not a control the row must
+pass. The operative control is **reward-swap** (below). A prompt-*conditioned* hypernetwork for this
+setting is a documented future direction; a preliminary probe generated a working reward-tilting
+adapter (+0.14 IR) but did not become prompt-specific.
 
 **Metric — `matched − control`.** Matched = ImageReward gain of the adapter over the frozen
 generator. Control = **reward-swap**: an adapter trained for a near-orthogonal reward (image

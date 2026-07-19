@@ -1,22 +1,38 @@
 #!/bin/bash
-# Reproduce the LoRA baseline entry in leaderboards/task_conditioned_t2l.md.
-# Paper-matched recipe: 128 descriptions, batch 8, lr 2.5e-5, warmup 0.1, eval-limit 80,
-# adversarial control, over 3 seeds. Matched-adversarial ~+0.033 across all 4 families.
-# Default 150k steps is the confirmed controlled positive; pass STEPS=1000000 for paper scale.
-# Restart-safe (--checkpoint-every 10000): re-run the identical command to resume.
-# Usage: scripts/reproduce/task_t2l_lora.sh [DEVICE] [STEPS]   (defaults cuda:0, 150000)
-set -euo pipefail
+# Reproduce the T2L LoRA baseline for one seed.
+#
+# Trains the strip-def hypernetwork AND the same-shape static reference (multi-task LoRA) on the
+# 479-task decontaminated SNI split (gemma-2-2b, plain SFT cross-entropy, definition stripped from the
+# input so the description is the only route to the task), then scores matched - static on the 21
+# held-out SNI validation tasks: teacher-forced CE (primary) + greedy-generation accuracy (corroborating).
+#
+# Usage: scripts/reproduce/task_t2l_lora.sh [SEED] [GPUS_HYPER] [GPUS_STATIC]
+#   e.g. scripts/reproduce/task_t2l_lora.sh 3 0,1,2,3 4,5,6,7
+set -uo pipefail
 cd "$(dirname "$0")/../.."
-DEVICE="${1:-cuda:0}"
-STEPS="${2:-150000}"
-for SEED in 777 778 779; do
-  .venv/bin/adapterbench t2p-sft-pilot --all-decontam-tasks --adapters lora \
-    --max-descriptions 128 --batch-size 8 --grad-accum-steps 1 \
-    --learning-rate 2.5e-5 --warmup-frac 0.1 \
-    --eval-tasks arc_easy,arc_challenge,hellaswag,boolq --eval-limit 80 \
-    --adversarial-control --seeds "$SEED" --steps "$STEPS" \
-    --checkpoint-every 10000 --device "$DEVICE" \
-    --output "results/repro/task_t2l_lora/s$SEED"
-  .venv/bin/python scripts/t2p_rigor_aggregate.py \
-    --results "results/repro/task_t2l_lora/s$SEED/results.jsonl"
-done
+SEED="${1:-777}"; GH="${2:-0,1,2,3}"; GS="${3:-4,5,6,7}"
+export HF_HUB_OFFLINE=1   # model + datasets are cached; avoids the HF Hub 429 rate limit
+HY=results/repro/t2l_base_diag/gemma2b_stripdef_hyper
+ST=results/repro/t2l_base_diag/gemma2b_stripdef_static
+
+echo "=== T2L LoRA baseline, seed $SEED ($(date)) ==="
+SEED=$SEED STRIPDEF=1 STATIC=0 STEPS=20000 LR=1e-4 SNAP=5000 LIMIT=40 ELIMIT=20 \
+  scripts/t2l_base_diag.sh google/gemma-2-2b-it gemma2b_stripdef_hyper "$GH" 16 > "$HY/s${SEED}_train.log" 2>&1 &
+HPID=$!
+SEED=$SEED STRIPDEF=1 STATIC=1 STEPS=20000 LR=1e-4 SNAP=5000 LIMIT=40 ELIMIT=20 \
+  scripts/t2l_base_diag.sh google/gemma-2-2b-it gemma2b_stripdef_static "$GS" 16 > "$ST/s${SEED}_train.log" 2>&1 &
+SPID=$!
+wait "$HPID" "$SPID"
+echo "=== training done ($(date)); running evals ==="
+sleep 30
+
+echo "--- CE eval (matched - static, PRIMARY) ---"
+.venv/bin/python scripts/t2p_eval_heldout_sni.py --interpreter google/gemma-2-2b-it \
+  --snapshot "$HY/s${SEED}/snapshots/step20000.pt" --static-snapshot "$ST/s${SEED}/snapshots/step20000.pt" \
+  --limit 64 --batch-size 16 --n-desc 3 --device cuda:0 --out "$HY/s${SEED}/heldout_sni_ce_full21.jsonl"
+
+echo "--- accuracy eval (corroborating) ---"
+.venv/bin/python scripts/t2p_eval_heldout_sni_acc.py --interpreter google/gemma-2-2b-it \
+  --snapshot "$HY/s${SEED}/snapshots/step20000.pt" --static-snapshot "$ST/s${SEED}/snapshots/step20000.pt" \
+  --limit 48 --batch-size 16 --max-new-tokens 32 --device cuda:0 --out "$HY/s${SEED}/heldout_sni_acc.jsonl"
+echo "=== DONE seed $SEED ($(date)) ==="

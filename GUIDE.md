@@ -17,15 +17,16 @@ environment setup see [SETUP.md](SETUP.md); for the interface contract see
 
 ## 1. The three settings
 
-Each setting shares the same frozen interpreter (`Qwen3-0.6B`) and the same
-hypernetwork shell, and differs only in **what the hypernetwork is conditioned on** and
-**how the adapter is scored**.
+Each setting fixes a frozen interpreter and the same hypernetwork shell, and differs only
+in **what the hypernetwork is conditioned on** and **how the adapter is scored**. (The
+interpreter is per-setting: `gemma-2-2b` for the T2L baseline, `Qwen3-0.6B` for D2L, a
+frozen SD-Turbo generator for I2P — within a setting it is fixed and only the codec varies.)
 
 | Setting | Conditioned on | The adapter should… | Behavioral metric | Control (what a non-conditioning adapter can't pass) |
 |---------|----------------|---------------------|-------------------|------------------------------------------------------|
-| **T2L** — task-conditioned | pooled embedding of a free-text *task description* | install a whole task | held-out answer accuracy | **junk-description** adapter must not match, **and** matched must beat frozen (helpfulness floor) |
+| **T2L** — task-conditioned | pooled embedding of a free-text *task description* | install a whole task (definition stripped from the input) | held-out-SNI teacher-forced CE (primary) + generation accuracy | **matched − static**: must beat a same-shape static multi-task adapter |
 | **D2L** — document-conditioned | cross-attention over the interpreter's own activations for a *document* | retrieve info from that one document | needle-in-a-haystack exact-match | **context-swap**: adapter from the *wrong* document must fall to chance |
-| **I2P** — image reward-tilting | (a fixed reward) on a frozen SD-Turbo generator | raise a differentiable reward | ImageReward gain over frozen | **reward-swap**: adapter trained for a near-orthogonal reward must not raise ImageReward |
+| **I2P** — image reward-tilting | a fixed reward (adapter optimized directly — *unconditional*, not generated per prompt) | raise a differentiable reward | ImageReward gain over frozen | **reward-swap**: adapter trained for a near-orthogonal reward must not raise ImageReward |
 
 The settings are never pooled — their absolute scores use different conditioning,
 objectives, and evaluators. The cross-setting question is whether a codec's *relative*
@@ -47,23 +48,32 @@ invariants (see the paper's protocol section):
    weight) so codecs spread instead of all saturating.
 4. **Multi-seed** — at least three seeds; the spread is reported.
 
-### The T2L two-part metric (matched − junk **and** matched − frozen)
+### The T2L metric: matched − static (definition-stripped)
 
-For T2L specifically, `matched − control` alone is **not sufficient**. A control that is a
-gap between the matched adapter and a *wrong-description* adapter can be inflated by an
-adapter that **sabotages** the wrong-description case (drives it far below the frozen
-model) without the matched adapter ever helping. Such a model scores a large
-matched − junk while never installing the task.
+Standard T2L SFT concatenates the task *definition* and the problem in the prompt, so the
+frozen interpreter reads the task straight from its input and the description-conditioned
+adapter is **redundant** — every codec then scores ≈0 conditioning, masking the shape
+differences the benchmark exists to measure. AdapterBench removes this redundancy: the
+definition is **stripped** from the input (`--strip-task-def`), so the task is specifiable
+*only* through the description → hypernetwork → adapter (the D2L "context is necessary"
+principle applied to T2L). Conditioning is still over the task-level description; only the
+interpreter's input changes.
 
-AdapterBench therefore requires **two** conditions for genuine T2L conditioning, both
-reported by `scripts/t2p_rigor_aggregate.py`:
+The control is **matched − static**: the conditioned adapter is scored against a *static
+reference* — a single adapter of the **same shape**, directly optimized on the same SFT
+data (a multi-task LoRA, not emitted by any hypernetwork), which absorbs all task-*generic*
+help. On the 21 held-out SNI validation tasks (`lol_###` in `eval_ds_info`):
 
-- **matched − junk > 0** — the description changes the adapter (adversarial control:
-  the junk description is maximally dissimilar/meaningless, e.g. `dogs;cats;bananas`), and
-- **matched − frozen ≥ 0** — the adapter genuinely *helps* the task (helpfulness floor).
+- **CE (primary):** teacher-forced cross-entropy over the reference answer — the quantity
+  the trainer optimizes, non-saturating, well-defined even for open-ended tasks. `matched −
+  static < 0` means conditioning helps. Scored by `scripts/t2p_eval_heldout_sni.py`.
+- **accuracy (corroborating):** greedy-generation normalized exact-match. Scored by
+  `scripts/t2p_eval_heldout_sni_acc.py`. Smaller signal than CE — it saturates where both
+  adapters already succeed, and multiple-choice tasks leak answer content into the input.
 
-The aggregator prints a verdict — `NO CONDITIONING` / `SABOTAGE` / `WEAK-GENERIC` /
-`GENUINE CONDITIONING` — with a noise floor tied to the eval sample size.
+`matched − static` is **non-gameable** (no wrong-condition case to sabotage), **subsumes the
+helpfulness floor** (static ≥ frozen), and needs **no junk descriptions**; `matched − frozen`
+is reported alongside to confirm the adapter helps at all.
 
 ---
 
@@ -117,22 +127,25 @@ uv run adapterbench doctor --require-cuda && uv run pytest -q
 
 ### T2L — task-conditioned
 
-Data-parallel training at the shipped effective-batch-128 config, held-out eval with the
-adversarial control, then the two-part aggregate:
+Trains the strip-def hypernetwork **and** the same-shape static reference (data-parallel,
+gemma-2-2b), then scores `matched − static` on the 21 held-out SNI tasks (CE + accuracy).
+Evals require `HF_HUB_OFFLINE=1` (the model and datasets are cached; this avoids the HF Hub
+rate limit) — the reproduce script sets it for you.
 
 ```bash
-# reproduce the LoRA baseline (3 seeds, DDP across the given GPUs)
-scripts/reproduce/task_t2l_lora_ddp.sh 0,1,2,3,4,5,6,7
+# reproduce the LoRA baseline for one seed: trains hyper+static, then both evals
+scripts/reproduce/task_t2l_lora.sh 777 0,1,2,3 4,5,6,7    # SEED GPUS_HYPER GPUS_STATIC
 
-# aggregate one run's results.jsonl -> matched-junk AND matched-frozen verdict
-.venv/bin/python scripts/t2p_rigor_aggregate.py --results <run>/results.jsonl
+# results (per-task + __aggregate__ rows):
+#   .../gemma2b_stripdef_hyper/s777/heldout_sni_ce_full21.jsonl   (matched-static CE, primary)
+#   .../gemma2b_stripdef_hyper/s777/heldout_sni_acc.jsonl         (accuracy, corroborating)
 ```
 
 Helpers: `scripts/t2l_base_diag.sh <hf-interpreter> <tag> <gpus> <per-gpu-batch>` runs the
-shipped recipe with a swappable base model and optional training-objective knobs
-(`STEPS`, `LR`, `SNAP`, `LIMIT`, `CLAMBDA`, `NJLAMBDA` env vars); `--snapshot-every` +
-`scripts/t2p_eval_checkpoint.py` score any checkpoint (any eval-task set, `--avg-descriptions`)
-without retraining.
+recipe with a swappable base model and env knobs (`SEED`, `STEPS`, `LR`, `SNAP`, `LIMIT`,
+`ELIMIT`, `STRIPDEF`, `STATIC`); the 21 held-out tasks' metadata is vendored (once) by
+`scripts/vendor_heldout_sni_metadata.py`. Baseline: `matched − static = −0.81 ± 0.06` nats CE
+(20/21 tasks, 2 seeds; a 3rd is in progress).
 
 ### D2L — document-conditioned (NIAH)
 
