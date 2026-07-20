@@ -15,20 +15,21 @@ in this way — that's the whole point.
 
 > **Current state: LoRA is the only codec on `main`.** It validates two genuinely
 > conditioned settings: task-description conditioning (T2L) and document conditioning
-> (D2L). The former image reward-tilting setting was retired because its adapter was
-> directly optimized and prompt-generic, not generated from a causally necessary
-> inference-time condition. New shapes are added one at a time as a codec + registration
-> entry + manifest, then evaluated with the setting CLIs and recorded in the committed
-> per-setting leaderboards.
+> (D2L). These are the complete benchmark surface. New shapes are added one at a time as
+> a codec + registration entry + manifest, then evaluated with both setting CLIs and
+> recorded in the committed per-setting leaderboards.
 
 ## The setting
 
 **Live end-to-end SFT** — a hypernetwork trained entirely from scratch, hooked directly
-into a real frozen `Qwen3-0.6B` interpreter's forward pass, scored on real held-out
-benchmarks. The baseline runs the LoRA codec; the pipeline adds shapes to compare head to
-head over time (see the note above).
+into a frozen interpreter's forward pass and scored on held-out behavior. T2L uses
+`gemma-2-2b`; D2L uses `Qwen3-0.6B`. The baseline runs the LoRA codec, and the pipeline
+adds shapes to compare head to head over time.
 
-See [PROJECT_PLAN.md](PROJECT_PLAN.md) for architecture, results, and hard-won gotchas.
+See [PROJECT_PLAN.md](PROJECT_PLAN.md) for architecture, active results, and hard-won
+gotchas. [NEGATIVE_RESULTS.md](NEGATIVE_RESULTS.md) collates the investigated settings
+that failed condition controls or behavioral capacity gates; they remain scientific
+results without remaining active benchmark infrastructure.
 
 ## Layout
 
@@ -39,8 +40,6 @@ See [PROJECT_PLAN.md](PROJECT_PLAN.md) for architecture, results, and hard-won g
   (`live_evaluator.py`).
 - `leaderboards/` — the benchmark results and exact reproduction commands, one file per
   setting.
-- `archive/retired_i2p/` — historical image reward-tilting and UnHype-style boundary
-  experiments; explicitly not an active setting.
 - `configs/setups/`, `configs/adapters/` — declarative setup and codec metadata.
 
 Start with [SETUP.md](SETUP.md) for environment setup, then **[GUIDE.md](GUIDE.md)** for
@@ -92,5 +91,4 @@ uv run adapterbench t2p-sft-sweep --device cuda:0 \
 
 The validated T2L and D2L recipes, scale sweeps, controls, and longer reproduction
 commands are recorded in [PROJECT_PLAN.md](PROJECT_PLAN.md) and
-[leaderboards/](leaderboards/README.md). The admission criteria and go/no-go protocol for
-a future image-domain setting are in [IMAGE_DOMAIN_PLAN.md](IMAGE_DOMAIN_PLAN.md).
+[leaderboards/](leaderboards/README.md).

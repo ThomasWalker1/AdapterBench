@@ -13,8 +13,12 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_catalog_and_trial_ids_are_complete_and_stable():
     setups, adapters = load_catalog(ROOT / "configs")
     assert set(setups) == {
+        "document_to_peft_qwen06b_niah",
         "text_to_peft_gemma2b_sft",
-        "text_to_peft_sft_pilot",
+    }
+    assert {setup.conditioning.kind for setup in setups.values()} == {
+        "document",
+        "task_description",
     }
     # LoRA is the only baseline adapter; more are added one at a time with leaderboard entries.
     assert len(adapters) == 1
@@ -26,6 +30,11 @@ def test_catalog_and_trial_ids_are_complete_and_stable():
     assert len({trial.trial_id for trial in trials}) == len(trials)
     repeated = build_matrix(setups["text_to_peft_gemma2b_sft"], list(adapters.values()))
     assert [trial.trial_id for trial in repeated] == [trial.trial_id for trial in trials]
+
+    document_trials = build_matrix(
+        setups["document_to_peft_qwen06b_niah"], list(adapters.values())
+    )
+    assert len(document_trials) == 1
 
 
 def test_make_trial_rejects_an_objective_the_adapter_does_not_support():

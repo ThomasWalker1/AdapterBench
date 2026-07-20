@@ -31,13 +31,10 @@ The settings are never pooled — their absolute scores use different conditioni
 objectives, and evaluators. The cross-setting question is whether a codec's *relative*
 behavior repeats across protocols.
 
-There is currently **no active image-domain setting**. The former I2P reward-tilting row
-was retired because its adapter was directly optimized and shared across prompts. A later
-prompt-conditioned version was architecturally dynamic but failed the
-condition-shuffle control, while an UnHype-style selective-erasure variant learned broad
-suppression rather than reliable conditional deletion. The evidence is preserved in
-`archive/retired_i2p/`; [IMAGE_DOMAIN_PLAN.md](IMAGE_DOMAIN_PLAN.md) defines the stricter
-admission test for a replacement.
+Retired investigations are not hidden: [NEGATIVE_RESULTS.md](NEGATIVE_RESULTS.md)
+collates settings that failed a condition-shuffle or behavioral-capacity gate. This
+includes standard input-visible Text-to-LoRA; it is distinct from the definition-stripped
+T2L setting above.
 
 ---
 

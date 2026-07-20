@@ -20,9 +20,8 @@ question is whether an adapter's relative behavior repeats across protocols.
    scores that task's held-out examples.
 4. `EvaluationResult` records downstream metrics plus resource measurements.
 
-This artifact boundary accommodates the live-hook SFT mechanism's in-process generation
-and future document/context hypernetworks without pretending their generators are
-identical.
+This artifact boundary accommodates the live-hook SFT mechanism used by both T2L and D2L
+without pretending their conditioners are identical.
 
 ## Required evaluation invariants
 
@@ -30,8 +29,7 @@ Every leaderboard entry satisfies the same four rules:
 
 1. **Use a behavioral metric with a built-in control.** The headline is always
    `matched - control`, never training or reconstruction loss. T2L uses a mismatched
-   same-shape static adapter and D2L uses a context-swapped document. Any future setting
-   must include a control that changes only the hypernetwork condition.
+   same-shape static adapter and D2L uses a context-swapped document.
 2. **Sweep adapter scale.** Report the shape at its best measured scale so a comparison
    does not merely rank incompatible defaults.
 3. **Include a graded difficulty axis.** D2L reports length generalization and T2L
@@ -48,7 +46,7 @@ as rank are fixed. See `leaderboards/README.md` for the exact row format.
 ## Adapter catalog
 
 The baseline catalog registers a single codec — **LoRA** — as the reference
-representation validated across all settings. Additional shapes (other low-rank
+representation validated across both settings. Additional shapes (other low-rank
 factorizations, spectral/Fourier coefficients, activation-space vectors, …) are added
 one at a time; previously explored shapes live in git history.
 

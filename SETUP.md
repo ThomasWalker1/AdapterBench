@@ -1,97 +1,111 @@
 # Environment and execution
 
-## Harness environment
+AdapterBench supports exactly two language settings:
+
+- T2L task-description conditioning;
+- D2L document conditioning.
+
+## Environment
 
 The tested host combination is Python 3.11, PyTorch 2.5.1 with CUDA 12.4,
-Transformers 4.57.x, and PEFT 0.19. The NVIDIA 550.90.07 driver on this machine
-supports this CUDA build. Do not use the pre-existing Transformers 5.7 build:
-its float8 dtype expectations are incompatible with PyTorch 2.5 and PEFT 0.19.
-
-`adapterbench` is managed with `uv`, independent of any pre-existing conda
-environment on a given machine, so any researcher can reproduce it from
-`pyproject.toml`/`uv.lock` alone:
+Transformers 4.57.x, and PEFT 0.19. The project uses `uv` and is reproducible from
+`pyproject.toml` plus `uv.lock`.
 
 ```bash
 cd /home/tw78/AdapterBench
 uv venv .venv --python 3.11
-uv pip install -e ".[dev]"     # or: uv sync, once uv.lock is committed
+uv pip install -e ".[dev]"
 uv run adapterbench doctor --require-cuda
-uv run pytest -q
 uv run adapterbench validate
 uv run adapterbench catalog
+uv run pytest -q
 ```
 
-For live end-to-end SFT (no upstream clone or gated-model access required,
-`Qwen/Qwen3-0.6B` is ungated), see the Quickstart section of [README.md](README.md)
-(`t2p-sft`/`t2p-sft-pilot`). The Text-to-LoRA training data those commands need — the
-Lots-of-LoRAs per-task metadata, the decontaminated 479-task split, and the held-out
-eval-task descriptions — is vendored under `data/t2l/` (see `data/t2l/NOTICE.md`), so the
-T2L setting is self-contained; every `t2p-*` command defaults to those paths and no
-`upstream/text-to-lora` clone is required. The document-conditioning variant
-(`d2p-sft-pilot`, conditioned on a frozen interpreter's own per-layer activations on a
-synthetic needle-in-a-haystack document instead of a pooled task-description embedding
-— see `PROJECT_PLAN.md`'s "Document-conditioning variant" section) has the same
-no-upstream-clone/no-gated-model requirement, since it also trains from scratch against
-`Qwen/Qwen3-0.6B` and generates its own synthetic training data rather than reading
-`ctx_to_lora`'s on-disk `ctx_magic_number_*` bins:
+If `nvidia-smi` sees GPUs but `doctor` does not, the process is inside a
+device-isolated sandbox or container. Confirm that `/dev/nvidia0` and
+`/dev/nvidiactl` are visible.
+
+`environment.yml` is a legacy optional reference. The `uv` environment is authoritative.
+
+## T2L
+
+T2L data is vendored under `data/t2l/`: per-task metadata, the 479-task decontaminated
+training split, and held-out task descriptions. No upstream clone is required.
+
+Small plumbing run:
 
 ```bash
-uv run adapterbench d2p-sft-pilot \
-  --adapters lora --seeds 777 --steps 20 --grad-accum-steps 1 \
-  --context-lengths 256 --num-train-documents 40 --eval-limit 10 \
-  --device cuda:0 --output results/d2p_sft_smoke
+uv run adapterbench t2p-sft \
+  --device cuda:0 \
+  --tasks lol_022 \
+  --adapter lora \
+  --steps 60 \
+  --output results/t2p_sft/smoke_lol022_lora.json
 ```
 
-This is the recommended smoke-test scope (one adapter/seed, 20 steps, one context-length
-bin) before scaling up `--adapters`/`--seeds`/`--steps`/`--num-train-documents`/
-`--context-lengths` the same way `t2p-sft-pilot` scales up its own flags - see
-PROJECT_PLAN.md's Roadmap for the next scale-up step.
+Canonical one-seed baseline:
 
-`environment.yml` (conda) is kept only as a legacy/optional reference; it is
-not the primary supported path and may drift from `pyproject.toml`.
+```bash
+bash scripts/reproduce/task_t2l_lora.sh 777 0,1,2,3 4,5,6,7
+```
 
-If `nvidia-smi` shows GPUs but `doctor` reports zero, the process was launched
-inside a device-isolated sandbox/container. Check that `/dev/nvidia0` and
-`/dev/nvidiactl` exist in that process and launch it with GPU device access.
+The held-out-SNI evaluations use local cached model/data files and must run with
+`HF_HUB_OFFLINE=1`; the reproduction script sets it.
 
-## Build a comparison matrix
+## D2L
+
+D2L creates deterministic synthetic needle-in-a-haystack examples locally and uses
+realistic cached prose as distractors. No Doc-to-LoRA clone is required.
+
+Small plumbing run:
+
+```bash
+uv run adapterbench d2p-niah \
+  --adapters lora \
+  --steps 20 \
+  --grad-accum-steps 1 \
+  --context-lengths 256 \
+  --num-train-documents 40 \
+  --eval-limit 10 \
+  --device cuda:0 \
+  --output results/d2p_niah_smoke
+```
+
+Canonical baseline:
+
+```bash
+bash scripts/reproduce/document_niah_lora.sh cuda:0
+```
+
+Scale locator:
+
+```bash
+bash scripts/d2l_scale_sweep.sh
+```
+
+## Manifest and GPU checks
+
+Build a T2L trial matrix:
 
 ```bash
 adapterbench matrix \
   --setup text_to_peft_gemma2b_sft \
-  --adapters lora_r8_t2l \
+  --adapters lora_r8 \
   --output runs/text_to_peft_gemma2b_sft/trials.json
 ```
 
-Trial IDs hash the complete setup and adapter manifests, so changing a model
-revision, split, objective, or PEFT hyperparameter creates a new ID.
-
-## GPU materialization check
-
-This generates every adapter tensor from one condition, attaches it to the
-frozen Qwen3 interpreter, and executes a downstream LM forward pass. The
-generator is deliberately untrained; the command validates compatibility and
-parameter accounting, not task quality.
+Materialize a generated LoRA and execute one frozen-interpreter forward pass:
 
 ```bash
 adapterbench peft-smoke \
   --model Qwen/Qwen3-0.6B \
-  --adapters lora_r8_t2l \
+  --adapters lora_r8 \
   --device cuda:0 \
   --output results/qwen3_06b_adapter_smoke.json
 ```
 
-## Eight-GPU launch policy
+Trial IDs hash the complete setup and adapter manifests. Changing a model revision,
+split, objective, or PEFT parameter creates a new ID.
 
-Use one process per A100 and BF16. Each setup manifest records its launcher and
-process count. Typical launch forms are:
-
-```bash
-torchrun --standalone --nproc_per_node=8 TRAINING_ENTRYPOINT --config TRIAL_JSON
-accelerate launch --num_processes 8 TRAINING_ENTRYPOINT --config TRIAL_JSON
-```
-
-Write one result directory per immutable trial ID. Never average task scores across
-different setups together; compare adapter rankings and failure modes within each
-setup.
-
+For multi-GPU runs use one process per A100 and BF16. Write one result directory per
+immutable trial ID, and never pool absolute task scores across T2L and D2L.

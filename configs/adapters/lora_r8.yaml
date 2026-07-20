@@ -1,8 +1,8 @@
 schema_version: 1
-name: lora_r8_t2l
+name: lora_r8
 family: lora
 implementation: peft
-output_structure: Generated rank-8 RS-LoRA A/B factors.
+output_structure: Generated rank-8 LoRA A/B factors.
 target_modules: [q_proj, v_proj]
 hyperparameters:
   r: 8
@@ -12,5 +12,6 @@ hyperparameters:
   bias: none
 compatible_objectives: [downstream, reconstruction, hybrid]
 supports_batched_generation: true
-notes: [Exact adapter configuration from the released Text-to-LoRA Gemma checkpoint.]
-
+notes:
+  - T2L uses the q_proj/v_proj materialization represented here.
+  - D2L uses the same rank-8 LoRA codec through its runner-defined down_proj hook and validated scale.

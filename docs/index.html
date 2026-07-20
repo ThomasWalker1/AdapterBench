@@ -45,7 +45,7 @@
   .fv h4{margin:0 0 8px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
   .fv.vary h4{color:var(--accent)}
   .fv ul{margin:0;padding-left:18px;font-size:15px}
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:8px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column}
   .card .tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
   .card h3{margin:6px 0 2px;font-size:20px;letter-spacing:-.01em}
@@ -89,6 +89,7 @@
     <div class="cta">
       <a class="btn primary" href="#leaderboards">Leaderboards</a>
       <a class="btn ghost" href="#contribute">Add a codec</a>
+      <a class="btn ghost" href="https://github.com/ThomasWalker1/AdapterBench/blob/main/NEGATIVE_RESULTS.md">Negative results</a>
       <a class="btn ghost" href="https://github.com/">GitHub</a>
     </div>
   </div>
@@ -97,7 +98,7 @@
 <section id="question">
   <div class="wrap">
     <h2>The question</h2>
-    <p class="lead">Text-to-LoRA, Doc-to-LoRA, and reward-tilting all have a hypernetwork emit a LoRA — but none tests that choice of <em>representation</em> against alternatives under a fixed protocol. AdapterBench isolates it.</p>
+    <p class="lead">Text-to-LoRA and Doc-to-LoRA have a hypernetwork emit a LoRA — but neither tests that choice of <em>representation</em> against alternatives under a fixed protocol. AdapterBench isolates it.</p>
     <div class="premise">
       It holds the hypernetwork shell, training loop, data, and evaluator <b>constant</b>, and varies <b>only</b> the generated representation — the <b>codec</b>. Any difference in the scored result is therefore attributable to <b>shape</b>, not to a confound in the recipe.
       <div class="fixed-vary">
@@ -136,7 +137,16 @@
         </dl>
       </div>
     </div>
-    <p class="lead" style="margin-top:22px">There is no active image row. The former I2P setting was retired because its adapter was directly optimized and prompt-generic, not causally inference-time adaptive. Prompt-conditioned and UnHype-style probes are preserved as boundary results; a replacement must keep its per-instance condition unavailable to the frozen generator except through the generated adapter.</p>
+  </div>
+</section>
+
+<section id="negative-results">
+  <div class="wrap">
+    <h2>Negative results are results</h2>
+    <p class="lead">Several plausible settings failed the same controls that validate T2L and D2L. Standard input-visible Text-to-LoRA did not reliably beat junk descriptions; prompt-conditioned image tilting did not beat shuffled prompts; selective erasure became broad suppression; and a reference-image identity oracle remained at chance.</p>
+    <div class="premise">
+      These experiments are excluded from the active benchmark surface, but their measurements and failure modes are preserved in <a href="https://github.com/ThomasWalker1/AdapterBench/blob/main/NEGATIVE_RESULTS.md"><b>NEGATIVE_RESULTS.md</b></a>. The record distinguishes a failed shuffle audit from a failed capacity gate and from a method that had no per-instance condition to shuffle.
+    </div>
   </div>
 </section>
 

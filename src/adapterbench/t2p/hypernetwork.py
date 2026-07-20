@@ -276,15 +276,11 @@ def _resolve_target(layer: nn.Module, name: str) -> nn.Module:
     residual stream — for activation-space codecs), anything else is a named linear
     submodule (weight-space codecs).
 
-    The candidate list covers both causal-LM decoder naming
-    (``self_attn.{name}``, ``mlp.{name}``) and diffusion-transformer naming
-    (``attn2.{name}`` for cross-attention and ``attn1.{name}`` for self-attention), which
-    keeps the generalized hook usable by a future image setting. Names remain dot-free
-    (for example ``"to_k"`` rather than ``"attn2.to_k"``) so they are valid
-    ``nn.ModuleDict`` keys."""
+    The candidate list covers the causal-LM decoder paths used by the two active language
+    settings. Names remain dot-free so they are valid ``nn.ModuleDict`` keys."""
     if name == "block":
         return layer
-    candidates = (name, f"self_attn.{name}", f"mlp.{name}", f"attn2.{name}", f"attn1.{name}")
+    candidates = (name, f"self_attn.{name}", f"mlp.{name}")
     for candidate in candidates:
         try:
             return attrgetter(candidate)(layer)

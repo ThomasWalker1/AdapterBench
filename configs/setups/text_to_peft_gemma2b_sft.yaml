@@ -1,11 +1,11 @@
 schema_version: 1
 name: text_to_peft_gemma2b_sft
-description: Text-to-LoRA-style end-to-end downstream training with adapter held as the experimental variable.
+description: Task-description-conditioned live SFT with the task definition stripped from the frozen interpreter input.
 protocol: generic_text_to_adapter
-availability: specification_only
+availability: runnable
 runner: adapterbench.t2p
 sources:
-  - name: originating_code
+  - name: originating_method
     uri: https://github.com/SakanaAI/text-to-lora
     revision: main
 models:
@@ -23,15 +23,15 @@ conditioning:
   pooling: sentence_embedding
   fields: [task_description]
 dataset:
-  source: upstream
-  dataset_id: SakanaAI/text-to-lora/configs/hyper_lora_decontam_lol_tasks.yaml
-  train_split: train_tasks_479
-  validation_split: upstream_validation
-  test_splits: [seen_benchmarks, unseen_tasks]
+  source: local
+  dataset_id: data/t2l
+  train_split: decontaminated_479_tasks
+  validation_split: heldout_sni_21_tasks
+  test_splits: [heldout_sni]
   task_id_field: dataset_name
   family_field: benchmark_family
   condition_field: task_description
-  input_field: prompt
+  input_field: definition_stripped_problem
   target_field: answer
   holdout_unit: task
 objective:
@@ -39,24 +39,25 @@ objective:
   downstream_weight: 1.0
   reconstruction_weight: 0.0
 evaluation:
-  primary_metric: benchmark_accuracy_mean
-  metrics: [accuracy, exact_match, pass_at_1, generation_latency, interpreter_tokens_per_second]
-  baselines: [frozen_interpreter, interpreter_with_icl, oracle_adapter, released_t2l]
-  report_by: [task, seen_vs_unseen, adapter]
+  primary_metric: matched_minus_static_teacher_forced_ce
+  metrics: [teacher_forced_ce, generation_accuracy, matched_minus_static, matched_minus_frozen]
+  baselines: [same_shape_static_adapter, frozen_interpreter]
+  report_by: [task, seed, adapter]
   generation:
-    use_icl: true
-    num_fewshot: 3
+    use_icl: false
+    num_fewshot: 0
 runtime:
   launcher: torchrun
   num_processes: 8
   mixed_precision: bf16
   gradient_checkpointing: true
 fixed_controls:
-  - condition encoder and hypernetwork shell
-  - frozen interpreter
-  - task and description splits
-  - update and token budget
-  - downstream evaluator
+  - frozen gte-large-en-v1.5 condition encoder
+  - frozen gemma-2-2b interpreter
+  - definitions stripped from interpreter inputs
+  - vendored 479-task decontaminated training split
+  - 21 held-out SNI tasks
+  - same-shape static adapter trained on identical data and loss
 notes:
-  - The LoRA arm is runnable through the pinned upstream pipeline. Alternative adapter codecs are under implementation and must pass downstream evaluation before this setup is marked runnable.
-
+  - Run through `scripts/reproduce/task_t2l_lora.sh`.
+  - Teacher-forced matched-minus-static CE is primary; generation accuracy is corroborating.

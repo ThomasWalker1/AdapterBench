@@ -1,0 +1,59 @@
+schema_version: 1
+name: document_to_peft_qwen06b_niah
+description: Document-conditioned live SFT on realistic needle-in-a-haystack retrieval with a context-swap control.
+protocol: doc_to_lora
+availability: runnable
+runner: adapterbench.d2p_niah
+sources:
+  - name: originating_method
+    uri: https://github.com/SakanaAI/doc-to-lora
+    revision: main
+models:
+  interpreter:
+    model_id: Qwen/Qwen3-0.6B
+    frozen: true
+    dtype: bfloat16
+conditioning:
+  kind: document
+  encoder: Qwen/Qwen3-0.6B early-exit activations
+  pooling: perceiver_io
+  fields: [document]
+dataset:
+  source: local
+  dataset_id: deterministic_realistic_prose_niah
+  train_split: 512_documents_at_256_tokens
+  validation_split: heldout_documents
+  test_splits: [length_256, length_512, length_1024, length_2048, length_4096, length_8192]
+  task_id_field: document_id
+  family_field: context_length
+  condition_field: document
+  input_field: query
+  target_field: four_digit_needle
+  holdout_unit: document
+objective:
+  kind: downstream
+  downstream_weight: 1.0
+  reconstruction_weight: 0.0
+evaluation:
+  primary_metric: matched_minus_context_swap_exact_match
+  metrics: [accuracy, accuracy_ctxswap, matched_minus_control, crossover_length]
+  baselines: [context_swap, frozen_interpreter]
+  report_by: [context_length, seed, adapter]
+  generation:
+    answer_format: exact_four_digits
+runtime:
+  launcher: single
+  num_processes: 1
+  mixed_precision: bf16
+  gradient_checkpointing: false
+fixed_controls:
+  - frozen Qwen3-0.6B interpreter
+  - first-quarter early-exit feature depth
+  - 208 Perceiver latents and 8 cross-attention blocks
+  - realistic-prose haystack and four-digit needle format
+  - down_proj hook site and rank 8
+  - 512 training documents at 256 tokens
+  - context-swap evaluator
+notes:
+  - Run through `adapterbench d2p-niah` or `scripts/reproduce/document_niah_lora.sh`.
+  - The shared LoRA catalog manifest supplies rank and factorization metadata; this setting fixes its validated hook site to `down_proj`.
