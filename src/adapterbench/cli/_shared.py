@@ -4,7 +4,7 @@ Every command that loads a frozen interpreter, embeds task-description condition
 or streams results to disk went through a byte-for-byte copy of the same block
 before this module existed; extracting them here keeps that plumbing in one place
 without changing any command's behavior. Command *logic* stays in the per-command
-modules (`meta.py`, `image_sft.py`, `live_sft.py`); only the mechanical setup
+modules (`meta.py`, `live_sft.py`); only the mechanical setup
 lives here.
 """
 

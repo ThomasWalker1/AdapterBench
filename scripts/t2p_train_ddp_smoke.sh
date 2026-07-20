@@ -1,7 +1,7 @@
 #!/bin/bash
-# Smoke test for the DDP T2L training path (scripts/t2p_train_ddp.py) — the analogue of
-# i2p_hypernoise_smoke.py for the image seam. Runs a tiny, fast DDP job and asserts the machinery
-# is intact: DDP init on N GPUs, torch.compile + fixed-seq-len + persistent hooks run, loss
+# Smoke test for the DDP T2L training path (scripts/t2p_train_ddp.py). Runs a tiny, fast
+# DDP job and asserts the machinery is intact: DDP init on N GPUs, torch.compile +
+# fixed-seq-len + persistent hooks run, loss
 # decreases, a checkpoint is written, and results.jsonl is a valid drop-in for the aggregator.
 #
 # This is the exact pattern validated on 2026-07-15 (4-GPU, 60 steps, small corpus). It needs

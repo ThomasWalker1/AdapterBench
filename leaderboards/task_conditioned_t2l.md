@@ -28,10 +28,10 @@ strip-def input template, the 21 held-out SNI tasks, the static-reference contro
 
 | Shape | rank | lr | steps | seeds | **matched − static (CE, nats)** | matched − frozen | accuracy m−static / m−frozen |
 |-------|:----:|:----:|------:|:-----:|:-------------------------------:|:----------------:|:----------------------------:|
-| LoRA | 8 | 1e-4 | 20 000 | 2 | **−0.81 ± 0.06** (20/21 tasks) | −10.8 | +0.035 / +0.23 |
+| LoRA | 8 | 1e-4 | 20 000 | 3 | **−0.72 ± 0.16** (59/63 task-seed pairs) | −10.80 ± 0.11 | +0.032 / +0.235 |
 
-Seeds 777 and 2 (a 3rd is in progress). More-negative CE is better; positive accuracy is better. The
-huge `matched − frozen` (−10.8 nats CE, +0.23 accuracy) confirms the stripped-definition task genuinely
+Seeds 777, 2, and 3. More-negative CE is better; positive accuracy is better. The huge
+`matched − frozen` (−10.80 nats CE, +0.235 accuracy) confirms the stripped-definition task genuinely
 *requires* the adapter; `matched − static` isolates the description's contribution beyond generic help.
 
 **Reproduce:** `scripts/reproduce/task_t2l_lora.sh [SEED] [GPUS_HYPER] [GPUS_STATIC]` — trains the

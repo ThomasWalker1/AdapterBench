@@ -30,13 +30,13 @@ Every leaderboard entry satisfies the same four rules:
 
 1. **Use a behavioral metric with a built-in control.** The headline is always
    `matched - control`, never training or reconstruction loss. T2L uses a mismatched
-   task description, D2L uses a context-swapped document, and I2P uses a reward-swapped
-   adapter.
+   same-shape static adapter and D2L uses a context-swapped document. Any future setting
+   must include a control that changes only the hypernetwork condition.
 2. **Sweep adapter scale.** Report the shape at its best measured scale so a comparison
    does not merely rank incompatible defaults.
-3. **Include a graded difficulty axis.** D2L reports length generalization; I2P reports
-   the reward/fidelity tradeoff; T2L reports across task families with different frozen
-   headroom. A setting where every shape saturates is not discriminative.
+3. **Include a graded difficulty axis.** D2L reports length generalization and T2L
+   reports across task families with different frozen headroom. A setting where every
+   shape saturates is not discriminative.
 4. **Run at least three seeds.** Report mean and spread, including failures and
    non-finite runs.
 

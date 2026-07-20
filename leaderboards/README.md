@@ -15,7 +15,7 @@ rather than a hyperparameter contest is a small set of fixed rules, not machiner
   difference is fair: the task setting's `matched − static` subtracts a same-shape reference that
   captures any generic loss reduction, and reports generation accuracy alongside it.
 - **Only the free optimization HPs vary per entry.** The *free* HPs are scale, learning rate,
-  warmup, step budget (and, for the image setting, the noise regularization weight `λ`). The
+  warmup, and step budget. The
   *shared substrate* — task data, conditioner/trunk, evaluator, and the control — is identical
   across entries and lives in the setting's code; it is never tuned per entry. The *shape-identity*
   HP (LoRA's rank) is fixed, not maximized. An entry that changes the substrate is not comparable.

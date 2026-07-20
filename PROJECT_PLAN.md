@@ -13,19 +13,21 @@ the generated representation, which plugs into a single `codec` (output structur
 The setting is **live end-to-end SFT** — hook a hypernetwork's generated output directly
 into a real frozen interpreter's forward pass on real training examples, backprop ordinary
 next-token cross-entropy through the hook, and evaluate on real held-out benchmarks. The
-interpreter is per-setting (gemma-2-2b for T2L, Qwen3-0.6B for D2L, SD-Turbo for I2P). The
-hypernetwork is trained entirely from scratch (no released checkpoint).
+interpreter is per-setting (gemma-2-2b for T2L and Qwen3-0.6B for D2L). The hypernetwork
+is trained entirely from scratch (no released checkpoint).
 
-**Current status (2026-07-19).** Three evaluation settings — two language, one image — are
-complete end-to-end with a rigorous **LoRA baseline codec** (see "Session handoff" for the
-per-setting numbers and the remaining handoff tasks):
+**Current status (2026-07-20).** Two genuinely conditioned language settings are complete
+end-to-end with a rigorous **LoRA baseline codec**:
 - **T2L** — task-description conditioning (Text-to-LoRA-style), scored on held-out
   benchmark tasks.
 - **D2L** — document conditioning (Doc-to-LoRA-style), scored on held-out
   needle-in-a-haystack (NIAH) retrieval, including length generalization.
-- **I2P** — image-domain reward-tilting (HyperNoise-style): a from-scratch adapter on a
-  frozen SD-Turbo modulates the initial noise to maximize a reward (ImageReward headline),
-  scored on held-out prompts under all four invariants (see § "Image domain: I2P").
+
+The former I2P reward-tilting setting is **retired**. Its positive row came from a single
+directly optimized adapter shared across prompts, and prompt-conditioned follow-ups did
+not pass the condition-shuffle/selective-behavior controls. It therefore did not test the
+benchmark's core premise. Historical code and evidence are in `archive/retired_i2p/`.
+`IMAGE_DOMAIN_PLAN.md` defines the admission gates for a replacement.
 
 LoRA is the only codec on `main`. It exists to prove the *evaluation pipeline* works with a
 single, well-understood representation; any pipeline failure is then attributable to the
@@ -34,56 +36,40 @@ plumbing, not the codec. **Additional adapter shapes are added one at a time** �
 leaderboard (see § "The benchmark: per-setting leaderboards"). Previously-explored shapes and
 their results live in git history.
 
-**The modality-transfer question is now answered for LoRA**: the adapter-shape seam and the
-four invariants port to a visual generator (I2P). **The current focus (2026-07-15) is deliberately
-narrow: make the benchmark infrastructure sound and complete a rigorous, reproducible LoRA baseline
-row on all three leaderboards — a showcase of how `(codec, free-HP)` entries get produced and
-reproduced. New codec shapes are explicitly deferred, not the current goal** (see § "Roadmap →
-CURRENT PHASE" for the definition-of-done and the exact gap list).
+The modality-transfer question remains open. No image row will be restored until the
+hypernetwork-only condition causally changes behavior relative to both static and
+condition-shuffled controls.
 
-## Session handoff (2026-07-19) — read this first
+## Session handoff (2026-07-20) — read this first
 
-**State.** The benchmark is **three rigorously-controlled LoRA baselines** — one per setting — each
-with a `matched − control` result, a reproduce script, a leaderboard row, a paper section, and a spot
-on the landing page. There is still **only one codec (LoRA)**; alternative shapes are deferred (user's
-call). T2L was the last setting finished — its full redesign story is in § "T2L … ✅ COMPLETE".
+**State.** The benchmark has **two rigorously controlled, genuinely conditioned LoRA
+baselines**, T2L and D2L. There is still only one codec (LoRA); alternative shapes are
+deferred. There is no active image setting.
 
 **Baselines** (`leaderboards/*.md`, all `matched − control`):
-- **T2L** — `matched − static = −0.81 ± 0.06` nats CE (20/21 held-out SNI tasks, 2 seeds; a 3rd is
-  running), accuracy `matched − static / matched − frozen = +0.035 / +0.23`. gemma-2-2b, definition
+- **T2L** — `matched − static = −0.72 ± 0.16` nats CE (59/63 held-out task-seed pairs, 3 seeds),
+  accuracy `matched − static / matched − frozen = +0.032 / +0.235`. gemma-2-2b, definition
   **stripped** from the input, plain SFT CE. CE is primary (non-saturating); accuracy corroborates.
 - **D2L** — `+0.887 ± 0.143` (NIAH, 5 seeds, ctxswap 0.000, realistic-prose haystack; length-gen
   crossover at 4096 tok = 16× train length).
-- **I2P** — `+3.50` (ImageReward gain +0.160 ± 0.015 vs −3.34 reward-swap; scale optimum 2–4; CLIP-T
-  drop only +0.004). 3 seeds.
 
-**⏳ RUNNING (do not kill unless intended): the 3rd T2L seed.**
-`scripts/reproduce/task_t2l_lora.sh 3 0,1,2,3 4,5,6,7` — trains the strip-def hypernetwork + static
-reference (~1 h), then runs both evals (CE + accuracy) and writes
-`results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s3/heldout_sni_{ce_full21,acc}.jsonl`. It is a
-harness-tracked background job. **When it lands**, recompute the 3-seed mean±std and update the T2L
-number in **all four** places: `adapterbench-paper.tex` (Table 1 row + §results-t2l), `leaderboards/
-task_conditioned_t2l.md`, `docs/index.html` (T2L leaderboard row), and this plan. Read the aggregate
-with: `grep __aggregate__ .../s{777,2,3}/heldout_sni_ce_full21.jsonl` (and `…_acc.jsonl`).
+**✅ Seed 3 integrated (2026-07-19).** Seed 3 finished at 20k and independently confirmed the result:
+CE `matched − static = −0.544` (19/21 tasks) and accuracy `+0.0248`. Across seeds 777/2/3, CE is
+`−0.723 ± 0.162` nats and accuracy is `+0.0317 ± 0.0060`; matched beats static by CE on 59/63
+task-seed pairs. Results:
+`results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s{777,2,3}/heldout_sni_{ce_full21,acc}.jsonl`.
 
-**NEXT (priority order, per the 2026-07-19 planning discussion):**
-0. **Integrate seed-3** (orthogonal — do the moment the running job lands) → 3-seed T2L numbers in the
-   paper, `leaderboards/task_conditioned_t2l.md`, `docs/index.html`, and this plan.
-1. **I2P — make it a true conditioning member (build Path B).** *Interim (✅ done):* the paper
-   §sec:image, `leaderboards/image_reward_tilting.md`, `GUIDE.md`, and `docs/index.html` were reframed
-   to honestly call the shipped setting *unconditional / directly-optimized* (the identity-hypernetwork
-   `DirectCodecAdapter` — the delta is a learned parameter, not a function of the prompt; reward-swap is
-   the operative control, prompt-swap a *characterization* that the edit is prompt-generic). Nothing
-   over-claims today. *Active plan:* **build the prompt-conditioned version** — a real hypernetwork that
-   emits an adapter applied to the generator — so I2P matches T2L/D2L. Full design, the
-   redundancy/necessity problem, the candidate mechanisms, and the recommended first step are in
-   § "I2P Path B" below. This supersedes the reframe-only stance and is the active I2P priority.
+**NEXT:**
+1. **Image-domain go/no-go research.** Follow `IMAGE_DOMAIN_PLAN.md`: begin with a
+   reference-image-conditioned direct-optimization capacity oracle, then run the small
+   hypernetwork causality probe only if the oracle passes. Do not add a CLI or leaderboard
+   before both `matched − static` and `matched − shuffled-condition` pass.
 2. **Sweep engineering** — make per-codec scale sweeps efficient enough to produce *best-of-scale*
    LoRA baselines cheaply (invariant #2), the prerequisite for the T2L strip-def scale sweep and for
    every future codec. Also confirm/close the D2L best-of-scale sweep. (The T2L default-scale row is
    acceptable until this lands.)
 3. **Paper + docs coherence pass** — once the science is settled: check `README.md`, `SETUP.md`,
-   `BENCHMARK_CONTRACT.md`, `AGENTS.md` for stale T2L/I2P framing; ensure the paper has no placeholders
+   `BENCHMARK_CONTRACT.md`, `AGENTS.md` for stale framing; ensure the paper has no placeholders
    beyond planning and its numbers match the leaderboards; **add tests for the new T2L eval path**
    (`strip_task_def`, `StaticAdapter`, `t2p_eval_heldout_sni{,_acc}.py`) — currently zero coverage.
 4. **License + hosting** — add `LICENSE` + `CITATION`; stand up GitHub Pages for `docs/index.html` at
@@ -93,7 +79,7 @@ with: `grep __aggregate__ .../s{777,2,3}/heldout_sni_ce_full21.jsonl` (and `…_
 6. **(Deferred — user)** **alternative codec shapes** — the real "does shape matter?" payload; the
    registry (`make_codec`) has only LoRA, so the benchmark's central claim is not yet exercised.
    Adding one: codec subclass + `make_codec` entry + `configs/adapters/<name>.yaml`, then a leaderboard
-   row per setting (the seam already spans all three settings).
+   row per applicable active setting.
 
 **Eval gotcha — `HF_HUB_OFFLINE=1` is required** for the held-out-SNI evals: after the one-time
 `vendor_heldout_sni_metadata.py` downloads, the HF Hub 429-rate-limits the model-metadata check; the
@@ -369,11 +355,11 @@ is in place (`--adversarial-control`, `--scales`, `--max-descriptions`,
 
 ### T2L: the conditioning problem and the pipeline redesign — ✅ COMPLETE (2026-07-19)
 
-**Status: DONE.** Baseline established (2-seed, CE + accuracy), reproducible eval scripts, paper §sec:t2l
+**Status: DONE.** Baseline established (3-seed, CE + accuracy), reproducible eval scripts, paper §sec:t2l
 + results + Table 1 finalized. The three-line summary: standard T2L SFT gives near-null conditioning
 because the prompt already states the task; strip the task definition so the description is the only
 route to it; then a from-scratch LoRA hypernetwork learns genuinely description-conditioned adapters
-(matched−static = −0.81±0.06 nats CE on 20/21 held-out tasks; +0.23 accuracy over frozen). It was a
+(matched−static = −0.72±0.16 nats CE on 59/63 held-out task-seed pairs; +0.235 accuracy over frozen). It was a
 pipeline problem, not a codec problem. Details below.
 
 
@@ -444,25 +430,25 @@ the document: the query cannot reveal it, so the adapter **must** carry the cont
 diverse held-out task from a definition-free input; a description-conditioned one can — *if* the
 pipeline taught it to.
 
-**RESULT (2026-07-19, 2 seeds) — conditioning is GENUINE under the redesigned pipeline.** Both
+**RESULT (2026-07-19, 3 seeds) — conditioning is GENUINE under the redesigned pipeline.** All
 strip-def runs trained to 20k steps on gemma-2-2b with **standard CE** (no neutral/contrastive —
 `matched − static` needs no junk control): `gemma2b_stripdef_hyper` (hypernetwork) and
 `gemma2b_stripdef_static` (`StaticAdapter`), identical recipe (20k steps, eff-batch 64 = per-gpu-batch
 16 × 4, LIMIT 40, snapshots every 5k). `scripts/t2p_eval_heldout_sni.py` on the step-20000 snapshots,
 **all 21 held-out SNI tasks**, 64 ex × 3 descriptions, teacher-forced CE:
 
-  - **`matched − static` = −0.81 ± 0.06 nats** over 2 seeds (seed 777: −0.858; seed 2: −0.768), and
-    **matched < static on 20/21 tasks (95%) in each seed**. Biggest per-task gaps (seed 777): lol_039
+  - **`matched − static` = −0.72 ± 0.16 nats** over 3 seeds (seed 777: −0.858; seed 2: −0.768;
+    seed 3: −0.544), and **matched < static on 59/63 task-seed pairs (94%)**. Biggest per-task gaps (seed 777): lol_039
     −6.79, lol_710 −2.28, lol_701 −1.76, lol_614 −1.35.
   - **`matched − frozen` = −10.8 nats** (frozen mean CE 13.3, up to ~21) — with the definition stripped
     the base model is genuinely helpless, so the adapter is *necessary*, not merely additive.
   - **Training curve (seed 777, `heldout_curve.jsonl`):** matched − static −0.67 (5k) → −0.74 (10k) →
     −0.60 (15k) → −0.86 (20k) — upward but noisy, not strictly monotonic.
-  - Results: `.../gemma2b_stripdef_hyper/{s777,s2}/heldout_sni_ce_full21.jsonl`. Seed set via `SEED=`.
+  - Results: `.../gemma2b_stripdef_hyper/{s777,s2,s3}/heldout_sni_ce_full21.jsonl`. Seed set via `SEED=`.
   - **Accuracy corroboration** (greedy generation, normalized exact-match, `t2p_eval_heldout_sni_acc.py`,
-    `heldout_sni_acc.jsonl`, 2 seeds): matched **0.508** / static 0.472 / frozen 0.273 → **matched−frozen
-    = +0.23** (adaptation large), **matched−static = +0.035** (conditioning positive, non-reversing,
-    matched ≥ static on ~73% of tasks). Smaller than the CE signal because accuracy **saturates** where
+    `heldout_sni_acc.jsonl`, 3 seeds): matched **0.508** / static 0.476 / frozen 0.273 → **matched−frozen
+    = +0.235** (adaptation large), **matched−static = +0.032 ± 0.006** (conditioning positive,
+    non-reversing, matched ≥ static on 47/63 task-seed pairs, 75%). Smaller than the CE signal because accuracy **saturates** where
     both adapters already succeed and because MC tasks (MMMLU) leak answer choices into the stripped
     input (frozen scores high on content: high CE but high accuracy). Big per-task acc wins where
     unsaturated: lol_275 +0.375, lol_636 +0.31, lol_1711 +0.15, lol_039 +0.15. **CE stays primary**
@@ -483,8 +469,8 @@ writes schema-matching metadata so the full 21 are reproducible.
 
 **Paper (done, 2026-07-19):** §sec:t2l rewritten to the method that worked — strip-def + plain CE +
 `matched − static` on held-out SNI (the neutral-junk objective / matched−junk / arc-boolq narrative is
-dropped; user decision "rewrite to what worked"). Results subsection, Table 1 row (`−0.81 ± 0.06 nats
-CE, 20/21, 2 seeds`), table caption (CE sign convention: more-negative-is-better), and invariant #1
+dropped; user decision "rewrite to what worked"). Results subsection, Table 1 row (`−0.72 ± 0.16 nats
+CE, 59/63 task-seed pairs, 3 seeds`), table caption (CE sign convention: more-negative-is-better), and invariant #1
 (static-reference control) all updated. `HF_HUB_OFFLINE=1` is now required for evals (the Hub 429-rate-
 limited us after the vendoring downloads; everything is cached).
 
@@ -507,10 +493,14 @@ strip-def snapshots.
 code sandbox — deferred). Memory: 2B/7B bases use **8 GPUs × batch 16 = eff-batch 128**; the
 neutral-junk objective's 3rd forward fits at batch 8.
 
-## Image domain: I2P — reward-tilting (HyperNoise) — the UNCONDITIONAL / directly-optimized member (validated; reframed 2026-07-19)
+## Archived image-domain record: retired I2P / UnHype boundary experiments
 
-The image setting answers the modality-transfer question: does the adapter-shape seam + the
-four invariants carry to a visual generator? It does. A de-risk first ruled out from-scratch
+> **Not an active setting.** The implementation, experiment drivers, former leaderboard,
+> and curated conclusion moved to `archive/retired_i2p/` on 2026-07-20. The historical
+> detail below is retained to document the decision, not as a current benchmark recipe.
+
+The former image setting asked whether the adapter-shape seam and four invariants carry to
+a visual generator. A de-risk first ruled out from-scratch
 visual *concept injection* (personalization had ~zero signal — a small adapter on a frozen
 generator cannot inject an unseen subject). Reward-*tilting*, by contrast, is something a
 small adapter demonstrably CAN do, and it is exactly the AdapterBench shape question in
@@ -531,15 +521,14 @@ a reward, trained end-to-end by the tractable noise-space objective
   at init), instead of the reference's single-pass `conv_out`-delta patch — correct for any
   hook site, costs one extra (no_grad) UNet pass.
 
-**Modules** (`src/adapterbench/i2p/`): `image_generator.py` (frozen SD-Turbo loader +
+**Archived modules** (`archive/retired_i2p/src/adapterbench/i2p/`):
+`image_generator.py` (frozen SD-Turbo loader +
 prompt embed), `hypernoise.py` (`DirectCodecAdapter`, `noise_transform`, grad-capable
 `generate_from_latents`, `hypernoise_loss`), `rewards.py` (differentiable **ImageReward**
 headline + redness swap-partner, behind one `reward(images01, prompts)` protocol),
 `image_scoring.py` (frozen CLIP-T fidelity control), `hypernoise_trainer.py` (restart-safe
 checkpointed training + the four-invariant `evaluate_rewards`), `prompt_data.py` (disjoint
-train/eval prompts). CLI: `i2p-hypernoise` (one atomic cell). Pipeline:
-`scripts/i2p_hypernoise_pipeline.py` (8-GPU grid) + `scripts/i2p_hypernoise_aggregate.py`
-(four-invariant summary). Seam smoke: `scripts/i2p_hypernoise_smoke.py`.
+train/eval prompts). The former CLI and experiment drivers are archived alongside them.
 
 **Four-invariant mapping (all satisfied on the LoRA baseline):**
 1. **Behavioral metric + control; headline = matched − control.** Metric = ImageReward gain
@@ -587,12 +576,11 @@ under-powered — the matched gain was within noise; a scale sweep pinned the op
 4. **Multi-seed (invariant #4).** The matched gain is tight across 3 seeds (±0.015), so the
    +0.16 signal and its separation from the −3.34 control are both statistically clean.
 
-**This is the closed-out I2P result: a genuine, multi-seed, fidelity-preserving ImageReward
-gain with a razor-sharp reward-swap control and a scale optimum** — a full member of the codec
-panel. (First-run artifact for the record: at scale=2/reg=0.5 the matched gain was ~0, which is
-why an operating-point sweep was needed; the peak is at low scale, not high.)
+**Historical result only:** this was a genuine multi-seed, fidelity-preserving
+ImageReward gain and a valid generic reward-tilting experiment, but not a valid
+inference-time-conditioned AdapterBench row. It has been removed from the active panel.
 
-### I2P Path B — prompt-conditioned hypernetwork (make I2P a true conditioning member) (2026-07-19)
+### Retired prompt-conditioned and UnHype-style probes (2026-07-19–20)
 
 **Why.** The shipped I2P (above) is the *unconditional* identity-hypernetwork case: `DirectCodecAdapter`
 is a learned parameter, not a function of any condition, so I2P does not exercise the benchmark's core
@@ -637,28 +625,109 @@ slightly prompt-specific. If ~0 (likely), layer on #1. #2 is the fallback that *
 conditioning result if I2P must land positive. Prototype small (a few hundred prompts, short training)
 before the full build.
 
-**Risk / decision.** A real build (new image hypernetwork + train/eval loop; trunk + codec seam shared).
-It may conclude "image-space adapters don't do prompt-conditioning" — a legitimate, publishable
-**boundary** result, not a positive one. Decide up front whether a boundary result is acceptable
-(→ start with the mechanism-free `matched − static` probe) or whether I2P must land positive (→ go
-straight to mechanism #2, reward-conditioning). Reuse: `src/adapterbench/i2p/` (`hypernoise.py`,
-`hypernoise_trainer.py`, `rewards.py`, `image_generator.py`), the T2P trunk in
-`src/adapterbench/t2p/hypernetwork.py`, and `make_codec`.
+**Prototype result (2026-07-19) — optimizer works; mechanism-free prompt specialization does not.**
+The weight-space prototype is built in `i2p/prompt_hypernetwork.py` +
+`scripts/i2p_prompt_conditioning_probe.py`: pooled SD-Turbo prompt embedding → the shared T2P trunk →
+shape-shared codec heads → one per-example LoRA for each of the 128 UNet attention projections. A
+same-shape `DirectCodecAdapter` is trained on identical prompts/noise/objective. The probe uses 256
+ordinary train prompts, 64 held-out prompts, 300 paired steps, and reports both the planned
+`matched − static` and the stricter `matched − shuffled-condition` control.
+
+- **Optimizer de-risk was load-bearing.** An initial AdamW scale sweep collapsed every generated
+  adapter to ImageReward ≈−2.28 by step 10 (the known Path-B failure below), while the static controls
+  improved. Switching to the documented SGD+momentum recipe (lr 1e-3, grad clip 1) was stable.
+- **SGD result (one seed, scale sweep):**
+
+  | LoRA scale | matched − static ImageReward | matched − shuffled | static − frozen |
+  |---:|---:|---:|---:|
+  | 0.5 | +0.063 ± 0.026 SE | −0.001 ± 0.006 | +0.049 |
+  | 1 | +0.153 ± 0.036 | +0.011 ± 0.008 | +0.068 |
+  | 2 | +0.152 ± 0.036 | −0.000 ± 0.010 | +0.120 |
+  | 4 | +0.200 ± 0.042 | +0.023 ± 0.012 | +0.168 |
+
+  CLIP-T is preserved/slightly better for matched than static (+0.004–0.005), so this is not reward
+  hacking. But **matched ≈ shuffled at every scale**: the hypernetwork's advantage over the separately
+  optimized static adapter is a generic parameterization/optimization advantage, not evidence that
+  it uses the instance prompt. `matched − static` alone would over-attribute that gain; the shuffled
+  condition control catches it.
+- **Go/no-go: NO-GO for a full mechanism-free prompt-conditioned build.** This is the anticipated
+  boundary result: ordinary ImageReward tilting does not make prompt-specific adapters necessary.
+  Keep the shipped unconditional Path A as the honest image row. If a truly prompt-conditioned image
+  member is required, add mechanism #1 using prompt-indexed, mutually incompatible requirements with
+  a reward that can actually score them; require both `matched − static > 0` and
+  `matched − shuffled > 0`. Reward-ID conditioning (#2) remains a guaranteed-positive fallback but
+  must be labeled as reward-conditioning, not prompt-conditioning.
+
+**Necessity-mechanism prototype (2026-07-19) — conditioning works; literal erasure is not yet
+uniform.** We adapted UnHype's selective concept-removal framing into a structurally non-redundant
+probe: SD-Turbo receives the *same* two-object prompt and latent twice, while the hypernetwork alone
+receives either `remove A` or `remove B`. Each scene therefore has two incompatible requested
+interventions. `scripts/i2p_selective_erasure_probe.py` trains the prompt-conditioned LoRA and a
+same-shape directly optimized static LoRA on identical paired examples. The frozen CLIP training
+score is `sim(image, retained) − sim(image, erased)`; evaluation uses unseen scene templates, 32
+scenes × both directions × 2 seeds, with the two directions paired as one experimental unit.
+
+| LoRA scale | CLIP matched − static | CLIP matched − swapped | target suppression | retained change | CLIP-T change |
+|---:|---:|---:|---:|---:|---:|
+| 0.5 | +0.00094 ± 0.00020 | +0.00188 ± 0.00039 | +0.00187 | −0.00093 | −0.00029 |
+| 1 | +0.00193 ± 0.00043 | +0.00385 ± 0.00085 | +0.00078 | +0.00114 | +0.00156 |
+| 2 | +0.00317 ± 0.00086 | +0.00634 ± 0.00172 | +0.00136 | +0.00181 | +0.00029 |
+| 4 | +0.00816 ± 0.00115 | +0.01632 ± 0.00230 | +0.00556 | +0.00260 | −0.00626 |
+
+The result transfers to an independently trained scorer. At scale 2, ImageReward margin is
+`matched − static = +0.0893 ± 0.0322` and `matched − swapped = +0.1787 ± 0.0645`; at scale 4 it is
+`+0.1576 ± 0.0343` and `+0.3151 ± 0.0686`. This is a **GO for the necessity framing**: unlike plain
+prompt tilting, the adapter changes in the requested semantic direction and condition swapping
+reverses the advantage. Scale 2 is the cleaner operating point; scale 4 is stronger but loses 0.0063
+CLIP-T.
+
+Do **not** yet integrate this as a solved "object erasure" benchmark. Qualitative grids show a clear
+selective deletion in some cases, but many examples satisfy the margin mostly by strengthening the
+retained object or globally restaging the scene. The next full-build gate is an object-presence
+objective/evaluator that separately enforces target absence and non-target preservation (preferably
+an open-vocabulary detector), followed by the same static and swapped controls. Until that gate
+passes, describe this result as **target-conditioned semantic steering**, not reliable unlearning.
+
+**Detector gate (2026-07-20) — final NO-GO for integration as object erasure.** We added an
+evaluation-only Grounding DINO Tiny scorer and restricted the gate to scene/seed pairs where the
+frozen image contains *both* objects at confidence ≥0.25 (60/64 pairs, 93.8%). Passing requires:
+significant detector-margin `matched − static` and `matched − swapped`, positive target suppression,
+retained-confidence loss no worse than −0.02, and ≥10% selective success with a ≥5-point advantage
+over static. Three progressively more task-aligned objectives were tested:
+
+1. **Original relative CLIP margin.** Scale 2 significantly improves detector margin
+   (`matched − static +0.0256 ± 0.0079`; `matched − swapped +0.0511 ± 0.0159`) and preserves the
+   non-target (`−0.0014`), confirming a real but small semantic routing effect. However, only **0.8%**
+   of valid tasks cross the actual selective-erasure threshold. Scale 4 reaches 3.3% but is not
+   significant and loses more retention.
+2. **Absolute CLIP suppression (erase:retain weight 2:1).** This makes the static baseline learn a
+   genuine generic suppression adapter rather than cancel exactly. The strongest cell (scale 4,
+   fidelity 1) lowers detector target confidence by 0.113 and beats static/swapped in detector margin,
+   but retained confidence falls 0.071, CLIP-T falls 0.039, and selective success is only **6.7%**.
+3. **UnHype-style frozen denoising target.** We directly train the generated/static LoRAs to move the
+   full two-object prediction toward the retain-only prompt, leaving the detector evaluation-only.
+   At step 400, scale 2 / negative-guidance 0.5 and 1.0 reach **11.7% / 17.5%** apparent target
+   deletion, but suppress the retained object almost identically (target `−0.363 / −0.407`; retained
+   `−0.361 / −0.403`), collapse CLIP-T (`−0.051 / −0.120`), and show no significant matched advantage
+   over static or swapped. The planned 1000-step runs were stopped at the next safe point because
+   additional optimization was amplifying broad suppression, not selectivity.
+
+**Final decision (2026-07-20).** The separate erase condition can produce measurable
+semantic steering, so the structural-necessity argument is sound. But under SD-Turbo +
+attention-projection LoRA, neither a relative image-space objective, an absolute
+suppression objective, nor the UnHype denoising target produced reliable selective object
+erasure. Stronger objectives suppressed both the target and retained object. Mechanism-free
+prompt conditioning also failed its shuffled-condition control. I2P is therefore retired,
+not renamed or integrated. This is a legitimate boundary result.
+
+The replacement must use a natural external condition that the frozen generator cannot
+otherwise see. The recommended first candidate is reference-image-conditioned identity or
+appearance transfer; its staged capacity and causality gates are in
+`IMAGE_DOMAIN_PLAN.md`.
 
 ## How to run
 
 ```bash
-# I2P: image-domain reward-tilting, one cell (LoRA codec, ImageReward headline). Restart-safe.
-# Operating point: LoRA scale ~2-4, reg ~0.25 (higher scale destroys the image - see § I2P).
-.venv/bin/adapterbench i2p-hypernoise \
-  --device cuda:0 --reward imagereward --scale 4 --reg-weight 0.25 \
-  --steps 3000 --eval-every 500 --n-seeds 2 --output results/i2p_hypernoise/imagereward_s777
-
-# I2P: the full four-invariant pipeline across GPUs (reward-swap x scale-sweep x reg-knob x seeds),
-# then the derived summary. Restart-safe (skips cells whose results.jsonl exists).
-nohup .venv/bin/python scripts/i2p_hypernoise_pipeline.py --out results/i2p_hypernoise &
-.venv/bin/python scripts/i2p_hypernoise_aggregate.py --out results/i2p_hypernoise
-
 # T2L: reproduce the LoRA baseline for one seed — trains the strip-def hypernetwork + the same-shape
 # static reference (data-parallel, gemma-2-2b), then scores matched-static on the 21 held-out SNI
 # tasks (CE + accuracy). Needs HF_HUB_OFFLINE=1 (set by the script). Args: SEED GPUS_HYPER GPUS_STATIC.
@@ -682,7 +751,7 @@ bash scripts/d2l_scale_sweep.sh 5,6,7   # D2L: sweeps --lora-scaling, self-summa
 ```
 
 ```bash
-uv run pytest -q   # 92 tests (LoRA-only baseline; prior-D2L design removed 2026-07-15)
+uv run pytest -q   # 91 tests (active T2L/D2L code; retired image tests live in the archive)
 ```
 
 ## Gotchas (read before touching the pipeline again)
@@ -746,23 +815,7 @@ uv run pytest -q   # 92 tests (LoRA-only baseline; prior-D2L design removed 2026
     reforms batches from a **document-level reshuffle every epoch** (deterministic per-epoch
     seed, so restart-safe resume stays exact). The transition step is also init/seed-sensitive
     (~1600–2500+), so give NIAH runs a generous step budget.
-12. **The image reward's gradient must reach the adapter — a `@torch.no_grad` VAE decode
-    silently severs it.** In I2P the reward is applied to the *decoded* image, so
-    `generate_from_latents` uses a grad-capable VAE decode; an eval-only no-grad decode in the
-    training path zeroes every adapter gradient while the loss still looks fine. The seam smoke
-    (`i2p_hypernoise_smoke.py`) asserts all 128 adapter params get a finite non-zero gradient
-    and the frozen UNet gets none.
-13. **`image-reward` / `clip-anytorch` pin the Python env; installing them naïvely breaks
-    CUDA.** `uv pip install image-reward` let the resolver bump torch 2.5→2.13 (+CUDA 13),
-    which the CUDA-12.4 driver cannot run, and left shadowing `nvidia-*-cu13` libs behind. The
-    deps are pinned in `pyproject.toml` (`image-reward`, `clip-anytorch`, `setuptools<80` for
-    `pkg_resources`) so `uv lock`/`uv sync` keep torch at 2.5.1 — never `uv pip install` these
-    imperatively. ImageReward's bundled BLIP also imports three symbols
-    (`apply_chunking_to_forward` etc.) from `transformers.modeling_utils` that current
-    transformers moved to `transformers.pytorch_utils`; `i2p/rewards.py` shims them before
-    importing `ImageReward` rather than pinning transformers down (which would risk the Qwen3
-    language pipeline).
-14. **`torch.compile` on the frozen interpreter fights variable sequence lengths.** With
+12. **`torch.compile` on the frozen interpreter fights variable sequence lengths.** With
     per-batch dynamic padding the seq length changes every step; Dynamo then specializes a graph
     per length, blows through `cache_size_limit`, and silently falls back to eager (losing the
     speedup). Hard `torch._dynamo.mark_dynamic(input_ids, 1)` does **not** rescue it — transformers
@@ -774,13 +827,13 @@ uv run pytest -q   # 92 tests (LoRA-only baseline; prior-D2L design removed 2026
     updating the generated-param dict in place) rather than re-registering per step via
     `hypernetwork.apply()`'s context manager, which would re-trace every step. Measured on
     Qwen3-0.6B at eff-batch 128: compile+fixed-512 471 ms/step vs eager 755 ms (1.6×).
-15. **The DDP LR (`1e-4`) is tuned for the small base and diverges on a 7B interpreter.** On
+13. **The DDP LR (`1e-4`) is tuned for the small base and diverges on a 7B interpreter.** On
     Mistral-7B the run converged cleanly to loss ~0.004 by step 25k, then the loss *spiked to 1.59*
     around step 30k and only crawled back — a classic Adam divergence (bigger gradients through the
     larger frozen base; the `max_grad_norm=1.0` clip alone didn't catch it). The paper uses **8e-5**
     for SFT; `LR=8e-5 scripts/t2l_base_diag.sh …` is stable on Mistral-7B. Rule: scale the LR *down*
     with the base model, and don't trust a low-loss prefix — watch the whole trajectory for a spike.
-16. **A "matched > mismatched" conditioning loss is gamed by *sabotaging the negative*.** The
+14. **A "matched > mismatched" conditioning loss is gamed by *sabotaging the negative*.** The
     contrastive hinge `relu(margin + CE_matched − CE_mismatched)` (`--contrastive-lambda`) is
     satisfied two ways: make the matched adapter *help*, or make the mismatched adapter *hurt*. Since
     CE_matched is already floored (the adapter fits), the network takes the cheap route and drives
@@ -815,8 +868,8 @@ the image domain) MUST satisfy them.
 2. **Scale is a swept axis, not a fixed choice.** Run a small **per-codec scale sweep and
    report best-of**. Then "shape matters" means "even at its own best scale, shape X
    underperforms" — a claim that survives scrutiny. Comparing at default scales is exactly
-   what NOT to publish as a shape result. Each leaderboard entry records the winning scale (the
-   contributor sweeps it manually; `d2p-niah --lora-scaling` / `i2p-hypernoise --scale` /
+   what NOT to publish as a shape result. Each leaderboard entry records the winning scale
+   (the contributor sweeps it manually; `d2p-niah --lora-scaling` and
    `t2p-sft-pilot --scales` set it).
 3. **A graded difficulty knob so codecs actually spread.** A setting where everything
    saturates at 1.0 (or all fail) teaches nothing. **Length generalization is the ideal knob
@@ -844,11 +897,11 @@ An autoresearch search driver, lightweight proxies, and a git-native merge gate 
 validated on LoRA, then **removed** as over-engineering (see the session handoff). The benchmark is
 now deliberately simple:
 
-- **`leaderboards/*.md`** — one committed leaderboard per setting (image / T2L / D2L). Each entry is
+- **`leaderboards/*.md`** — one committed leaderboard per active setting (T2L / D2L). Each entry is
   `(shape, free HPs, matched−control ± std, #seeds, reproduce command)`. See `leaderboards/README.md`
-  for the format and the rules. LoRA baseline entries are recorded (image +3.50, T2L +0.033,
-  D2L +0.887 ± 0.143 in-distribution / crossover 16×).
-- **Eval scripts = the existing setting CLIs** (`i2p-hypernoise`, `d2p-niah`, `t2p-sft-pilot`), which
+  for the format and the rules. LoRA baseline entries are recorded (T2L matched−static
+  `−0.72 ± 0.16` nats CE; D2L `+0.887 ± 0.143` in-distribution / crossover 16×).
+- **Eval scripts = the existing setting CLIs** (`d2p-niah`, `t2p-sft-pilot`), which
   already take HPs and emit matched−control. A leaderboard entry's "reproduce command" is exactly one
   of these invocations; re-running it against the committed codec regenerates the number.
 - **No automated HP search, no proxies, no merge gate.** HP selection is manual (by hand or a sweep
@@ -859,57 +912,25 @@ now deliberately simple:
 
 ## Roadmap
 
-**The image domain is now built and validated on the LoRA baseline** (§ "Image domain: I2P").
-The `codec` + `hook site` seam proved modality-agnostic: the same seam, four invariants, and
-`initial_bias` zero-init that drive T2L/D2L drive the reward-tilting SD-Turbo setting
-unchanged. A shape ranking that holds across modalities is a far stronger claim than one
-measured on NIAH alone — so the image setting is now a full member of the codec panel, and any
-new codec shape is scored on it too.
+**Active baseline phase:** T2L and D2L have rigorous, reproducible LoRA rows. I2P was
+removed on 2026-07-20 because a directly optimized, prompt-generic adapter is not a
+hypernetwork-conditioned benchmark member. Its prompt-conditioned and UnHype-style
+follow-ups are archived boundary results, not hidden failures.
 
-**I2P Path B (generated noise-adapter) — EXPLORED, negative result (2026-07-14).** The Path B
-upgrade — have the hypernetwork *generate* the reward-tilting noise-adapter from the prompt
-(single forward pass) rather than train one directly (Path A) — was built, de-risked on two
-rewards, and then **removed** (the tree carries only the working Path A). The "generate vs
-optimize" claim splits into two sub-claims, and the image domain cleanly separates them:
-- **Generation feasibility — SUPPORTED.** A `GeneratedCodecAdapter` (Path A's flat 128-target
-  structure, but each per-target delta emitted by a shared conditioner→trunk→per-shape-head
-  hypernetwork off the pooled CLIP prompt embedding) reliably beat frozen SD-Turbo: ImageReward
-  **+0.14** (vs Path A's optimizer-fit +0.16), CLIP-align up to +2.0, fidelity preserved. A
-  hypernetwork *can* emit a working noise-adapter in one forward pass.
-- **Conditional specialization — NOT SUPPORTED.** The native control (generate the adapter from a
-  *mismatched* prompt, keep content matched — the image analogue of the D2L context-swap) did not
-  stably separate: matched−condswap ≈ 0 for ImageReward and only transient glimpses (+0.45 at
-  mid-training, within ±1 run-to-run noise) for a prompt-*discriminative* CLIP-alignment reward.
-- **Why (unifying explanation).** Training only ever sees matched conditioning, so a prompt-specific
-  adapter emerges only if maximizing the reward *requires* one — as task/document conditioning does
-  in T2L/D2L. Reward-tilting a frozen 1-step generator is served well by a **prompt-generic** nudge;
-  injecting genuinely prompt-specific content via a small noise edit is close to the from-scratch
-  concept-injection capability a prior de-risk already measured at ~zero. So **noise-space adapters
-  do generic reward-tilting but not prompt-specific content steering.** This sharpens the thesis
-  (hypernetwork *conditioning* works for tasks/documents, not for reward-tilting noise edits) and
-  leaves the core "does shape matter" contribution untouched — that runs on **Path A**, which is
-  already validated in the image domain and does not need Path B.
-- **Lesson if revisited (code is gone; in git history if resurrected):** the generated adapter is an
-  ~82M-param hypernetwork; **AdamW diverges** on it (per-parameter normalization makes the effective
-  step ≈ lr·√N ≈ 0.9 even with grad-clip-to-1.0, overshooting the sharp reward optimum → image
-  destroyed → NaN). **Use SGD+momentum** (as Path A does): with grad-clipping its step norm is
-  exactly `lr`, preserving the reg-vs-reward balance. SGD lr 1e-3 / scale 2 / reg 0.25 was stable.
-
-**PHASE COMPLETE (2026-07-19): the LoRA baseline is done on all three settings.** The infrastructure
-is sound and each setting has a rigorous, reproducible `matched − control` row (T2L `matched − static`
-= −0.81 ± 0.06 nats CE + accuracy corroboration, D2L +0.887 ± 0.143, I2P +3.50), a reproduce script, a
-leaderboard row, a paper section, and a landing page (`docs/index.html`). For the current per-setting
-numbers, the running 3rd T2L seed, and the remaining handoff tasks (integrate seed-3, stand up the
-GitHub Pages site, then the deferred planning setting and — the real "does shape matter?" payload —
-alternative codec shapes), see the **Session handoff** at the top of this file: it supersedes the
-2026-07-15 phase plan that used to live here.
+**Image research:** follow `IMAGE_DOMAIN_PLAN.md`. Start with a direct-optimization
+capacity oracle for reference-image-conditioned identity/appearance transfer. If it
+passes, run a small held-out hypernetwork probe whose primary controls are
+`matched − static` and `matched − shuffled-condition`. Only a causal positive result earns
+an active package, CLI, leaderboard, or paper headline. A negative result is acceptable;
+reward-ID conditioning remains a labeled diagnostic rather than a guaranteed-positive
+core task.
 
 **Future (explicitly deferred — not this phase):**
 - **Alternative codec shapes** (IA³, LoKr, FourierFT, activation-steering — all in git history and
   in git history — their exploratory archived results were pruned in the 2026-07-15 cleanup, so each
   is re-run fresh), added one at a time, each a subclass +
-  `make_codec` entry + manifest + leaderboard row at its own best free-HPs. This is the "does shape
-  matter" payload and resumes only after the LoRA baseline + infra above are locked.
+  `make_codec` entry + manifest + leaderboard row at its own best free-HPs. This is the
+  "does shape matter" payload and resumes after the active LoRA baselines are locked.
 - **Multi-seed at the batch-8 1M scale** for T2L (a second/third full trajectory) if the emergence
   endpoint warrants it.
 - **A difficulty knob / eval-task curation for T2L** with more frozen-baseline headroom (current
@@ -927,9 +948,9 @@ alternative codec shapes), see the **Session handoff** at the top of this file: 
 - HyperTuning (Phang et al.) — arXiv:2402.16817 (the one directly-comparable prior result that
   disagrees with LoRA-over-steering-tokens, on a different task distribution — an open question
   this project exists to help answer).
-- Noise Hypernetworks (Eyring et al., NeurIPS 2025) — the reward-tilting objective and the
-  SD-Turbo LoRA setting the I2P image domain reimplements in the codec seam.
-- ImageReward (Xu et al., 2023) — the BLIP-based human-preference model used as I2P's
-  differentiable headline reward.
+- Noise Hypernetworks (Eyring et al., NeurIPS 2025) — the reward-tilting objective used
+  by the retired I2P experiment.
+- ImageReward (Xu et al., 2023) — the BLIP-based human-preference model used by that
+  retired experiment.
 - Representations of interest for future pipeline codecs: FourierFT (arXiv:2405.03003), KronA
   (arXiv:2212.10650), Compacter (arXiv:2106.04647).

@@ -110,7 +110,7 @@
 
 <section id="settings">
   <div class="wrap">
-    <h2>Three settings</h2>
+    <h2>Two active settings</h2>
     <p class="lead">Each fixes a frozen interpreter and the hypernetwork shell, and differs only in what the hypernetwork is conditioned on and how the adapter is scored. Every headline is <span class="mono">matched − control</span>, never raw performance.</p>
     <div class="cards">
       <div class="card">
@@ -135,18 +135,8 @@
           <dt>Control</dt><dd><span class="mono">context-swap</span>: wrong-document adapter must fall to chance</dd>
         </dl>
       </div>
-      <div class="card">
-        <span class="tag">I2P</span>
-        <h3>Reward tilting</h3>
-        <div class="sub">SD-Turbo · ImageReward · unconditional</div>
-        <dl>
-          <dt>Adapter</dt><dd>optimized directly (unconditional — the identity-hypernetwork case), tilting the generator's initial noise</dd>
-          <dt>Adapter should</dt><dd>raise a differentiable reward without wrecking image fidelity</dd>
-          <dt>Metric</dt><dd>ImageReward gain over the frozen generator</dd>
-          <dt>Control</dt><dd><span class="mono">reward-swap</span>: near-orthogonal-reward adapter must not raise it</dd>
-        </dl>
-      </div>
     </div>
+    <p class="lead" style="margin-top:22px">There is no active image row. The former I2P setting was retired because its adapter was directly optimized and prompt-generic, not causally inference-time adaptive. Prompt-conditioned and UnHype-style probes are preserved as boundary results; a replacement must keep its per-instance condition unavailable to the frozen generator except through the generated adapter.</p>
   </div>
 </section>
 
@@ -160,10 +150,10 @@
       <div class="tablescroll"><table>
         <thead><tr><th>Shape</th><th>rank</th><th>lr</th><th>steps</th><th>seeds</th><th>matched − static (CE)</th><th>matched − frozen</th><th>accuracy m−static / m−frozen</th></tr></thead>
         <tbody>
-          <tr><td>LoRA <span class="baseline-badge">baseline</span></td><td>8</td><td>1e-4</td><td>20 000</td><td>2</td><td class="headline">−0.81 ± 0.06 <span class="muted">(20/21 tasks)</span></td><td>−10.8</td><td>+0.035 / +0.23</td></tr>
+          <tr><td>LoRA <span class="baseline-badge">baseline</span></td><td>8</td><td>1e-4</td><td>20 000</td><td>3</td><td class="headline">−0.72 ± 0.16 <span class="muted">(59/63 task-seed pairs)</span></td><td>−10.80 ± 0.11</td><td>+0.032 / +0.235</td></tr>
         </tbody>
       </table></div>
-      <div class="invite">Reproduce: <span class="mono">scripts/reproduce/task_t2l_lora.sh &lt;seed&gt; &lt;gpus_hyper&gt; &lt;gpus_static&gt;</span> · a 3rd seed is in progress.</div>
+      <div class="invite">Reproduce: <span class="mono">scripts/reproduce/task_t2l_lora.sh &lt;seed&gt; &lt;gpus_hyper&gt; &lt;gpus_static&gt;</span> · seeds 777, 2, and 3.</div>
     </div>
 
     <div class="lb">
@@ -177,18 +167,7 @@
       <div class="invite">In-distribution (256 tok). Length-generalization crossover at 4096 tok = 16× the training length. Reproduce: <span class="mono">scripts/reproduce/document_niah_lora.sh</span></div>
     </div>
 
-    <div class="lb">
-      <div class="lb-head"><h3>I2P — reward tilting</h3><div class="metric"><b>matched − control</b> · ImageReward gain, higher is better</div></div>
-      <div class="tablescroll"><table>
-        <thead><tr><th>Shape</th><th>scale</th><th>λ</th><th>steps</th><th>seeds</th><th>IR-gain</th><th>reward-swap</th><th>matched − control</th></tr></thead>
-        <tbody>
-          <tr><td>LoRA <span class="baseline-badge">baseline</span></td><td>4</td><td>0.25</td><td>3 000</td><td>3</td><td>+0.160 ± 0.015</td><td>−3.34</td><td class="headline">+3.50</td></tr>
-        </tbody>
-      </table></div>
-      <div class="invite">Fidelity preserved (CLIP-T drop +0.004). Scale is a sharp inverted-U — optimum at 2–4. Reproduce: <span class="mono">scripts/reproduce/image_lora.sh</span></div>
-    </div>
-
-    <p class="muted" style="margin-top:22px">Every board currently has a single row — the LoRA baseline. The benchmark exists to fill the rows below it. Losing shapes are kept, not curated away: the "does shape matter?" question needs the negatives.</p>
+    <p class="muted" style="margin-top:22px">Both active boards currently have a single row — the LoRA baseline. The benchmark exists to fill the rows below it. Losing shapes are kept, not curated away: the "does shape matter?" question needs the negatives.</p>
   </div>
 </section>
 
@@ -209,7 +188,7 @@
 <footer>
   <div class="wrap">
     <p><b>AdapterBench</b> — holding everything fixed but the shape.</p>
-    <p class="muted">Documentation: <span class="mono">GUIDE.md</span> · leaderboards: <span class="mono">leaderboards/</span> · reproduce scripts: <span class="mono">scripts/reproduce/</span>. Settings use per-setting frozen interpreters (gemma-2-2b, Qwen3-0.6B, SD-Turbo); within a setting only the codec varies.</p>
+    <p class="muted">Documentation: <span class="mono">GUIDE.md</span> · leaderboards: <span class="mono">leaderboards/</span> · reproduce scripts: <span class="mono">scripts/reproduce/</span>. Active settings use per-setting frozen interpreters (gemma-2-2b and Qwen3-0.6B); within a setting only the codec varies.</p>
   </div>
 </footer>
 </body>

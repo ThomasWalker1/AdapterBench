@@ -13,11 +13,13 @@ varies only the generated representation. A new adapter here needs exactly two t
 The training loop, data pipeline, and evaluator are the same for every adapter that plugs
 in this way — that's the whole point.
 
-> **Current state: LoRA is the only codec on `main`.** It validates all three settings:
-> task-description conditioning (T2L), document conditioning (D2L), and image reward-tilting
-> (I2P). New shapes are added one at a time as a codec + registration entry + manifest, then
-> evaluated with the setting CLIs and recorded in the committed per-setting leaderboards.
-> Hyperparameter selection is manual and explicit; there is no automated search or merge gate.
+> **Current state: LoRA is the only codec on `main`.** It validates two genuinely
+> conditioned settings: task-description conditioning (T2L) and document conditioning
+> (D2L). The former image reward-tilting setting was retired because its adapter was
+> directly optimized and prompt-generic, not generated from a causally necessary
+> inference-time condition. New shapes are added one at a time as a codec + registration
+> entry + manifest, then evaluated with the setting CLIs and recorded in the committed
+> per-setting leaderboards.
 
 ## The setting
 
@@ -35,14 +37,15 @@ See [PROJECT_PLAN.md](PROJECT_PLAN.md) for architecture, results, and hard-won g
   + generalized hook (`hypernetwork.py`), the training loop (`sft_trainer.py`),
   Lots-of-LoRAs/SNI data loading (`lol_data.py`), and the hook-based downstream evaluator
   (`live_evaluator.py`).
-- `src/adapterbench/i2p/` — image reward-tilting on a frozen SD-Turbo generator.
 - `leaderboards/` — the benchmark results and exact reproduction commands, one file per
   setting.
+- `archive/retired_i2p/` — historical image reward-tilting and UnHype-style boundary
+  experiments; explicitly not an active setting.
 - `configs/setups/`, `configs/adapters/` — declarative setup and codec metadata.
 
 Start with [SETUP.md](SETUP.md) for environment setup, then **[GUIDE.md](GUIDE.md)** for
-the benchmark's three settings, its metric and controls, how to add a codec, and how to
-run and reproduce each setting. [BENCHMARK_CONTRACT.md](BENCHMARK_CONTRACT.md) gives the
+the benchmark's active settings, metrics and controls, how to add a codec, and how to run
+and reproduce each setting. [BENCHMARK_CONTRACT.md](BENCHMARK_CONTRACT.md) gives the
 interface contract every setting implements, and [PROJECT_PLAN.md](PROJECT_PLAN.md) tracks
 current status and results.
 
@@ -87,6 +90,7 @@ uv run adapterbench t2p-sft-sweep --device cuda:0 \
   --checkpoint-steps 100,200,400,800,1200 --output results/t2p_sft_sweep
 ```
 
-The validated D2L and I2P recipes, scale sweeps, controls, and longer reproduction
+The validated T2L and D2L recipes, scale sweeps, controls, and longer reproduction
 commands are recorded in [PROJECT_PLAN.md](PROJECT_PLAN.md) and
-[leaderboards/](leaderboards/README.md).
+[leaderboards/](leaderboards/README.md). The admission criteria and go/no-go protocol for
+a future image-domain setting are in [IMAGE_DOMAIN_PLAN.md](IMAGE_DOMAIN_PLAN.md).

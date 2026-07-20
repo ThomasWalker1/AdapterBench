@@ -8,29 +8,36 @@ hypernetwork shell, training loop, data, and evaluator constant and varies **onl
 generated representation (the *codec*), so any difference in the scored result is
 attributable to shape.
 
-This guide covers: the three settings, how a result is scored (the metric and its
+This guide covers: the active settings, how a result is scored (the metric and its
 controls), how to add a new codec, and how to run and reproduce each setting. For
 environment setup see [SETUP.md](SETUP.md); for the interface contract see
 [BENCHMARK_CONTRACT.md](BENCHMARK_CONTRACT.md).
 
 ---
 
-## 1. The three settings
+## 1. The active settings
 
 Each setting fixes a frozen interpreter and the same hypernetwork shell, and differs only
-in **what the hypernetwork is conditioned on** and **how the adapter is scored**. (The
-interpreter is per-setting: `gemma-2-2b` for the T2L baseline, `Qwen3-0.6B` for D2L, a
-frozen SD-Turbo generator for I2P — within a setting it is fixed and only the codec varies.)
+in **what the hypernetwork is conditioned on** and **how the adapter is scored**. The
+interpreter is per-setting (`gemma-2-2b` for T2L and `Qwen3-0.6B` for D2L); within a
+setting it is fixed and only the codec varies.
 
 | Setting | Conditioned on | The adapter should… | Behavioral metric | Control (what a non-conditioning adapter can't pass) |
 |---------|----------------|---------------------|-------------------|------------------------------------------------------|
 | **T2L** — task-conditioned | pooled embedding of a free-text *task description* | install a whole task (definition stripped from the input) | held-out-SNI teacher-forced CE (primary) + generation accuracy | **matched − static**: must beat a same-shape static multi-task adapter |
 | **D2L** — document-conditioned | cross-attention over the interpreter's own activations for a *document* | retrieve info from that one document | needle-in-a-haystack exact-match | **context-swap**: adapter from the *wrong* document must fall to chance |
-| **I2P** — image reward-tilting | a fixed reward (adapter optimized directly — *unconditional*, not generated per prompt) | raise a differentiable reward | ImageReward gain over frozen | **reward-swap**: adapter trained for a near-orthogonal reward must not raise ImageReward |
 
 The settings are never pooled — their absolute scores use different conditioning,
 objectives, and evaluators. The cross-setting question is whether a codec's *relative*
 behavior repeats across protocols.
+
+There is currently **no active image-domain setting**. The former I2P reward-tilting row
+was retired because its adapter was directly optimized and shared across prompts. A later
+prompt-conditioned version was architecturally dynamic but failed the
+condition-shuffle control, while an UnHype-style selective-erasure variant learned broad
+suppression rather than reliable conditional deletion. The evidence is preserved in
+`archive/retired_i2p/`; [IMAGE_DOMAIN_PLAN.md](IMAGE_DOMAIN_PLAN.md) defines the stricter
+admission test for a replacement.
 
 ---
 
@@ -44,8 +51,8 @@ invariants (see the paper's protocol section):
    `matched − control`.
 2. **Scale is swept, best-of reported** — so a shape claim reads "even at its own best
    scale, shape *X* underperforms," not an artifact of a fixed default scale.
-3. **A graded difficulty knob** (e.g. D2L's eval context length, I2P's edit-regularization
-   weight) so codecs spread instead of all saturating.
+3. **A graded difficulty knob** (e.g. D2L's eval context length or T2L's task-family
+   headroom) so codecs spread instead of all saturating.
 4. **Multi-seed** — at least three seeds; the spread is reported.
 
 ### The T2L metric: matched − static (definition-stripped)
@@ -144,8 +151,8 @@ scripts/reproduce/task_t2l_lora.sh 777 0,1,2,3 4,5,6,7    # SEED GPUS_HYPER GPUS
 Helpers: `scripts/t2l_base_diag.sh <hf-interpreter> <tag> <gpus> <per-gpu-batch>` runs the
 recipe with a swappable base model and env knobs (`SEED`, `STEPS`, `LR`, `SNAP`, `LIMIT`,
 `ELIMIT`, `STRIPDEF`, `STATIC`); the 21 held-out tasks' metadata is vendored (once) by
-`scripts/vendor_heldout_sni_metadata.py`. Baseline: `matched − static = −0.81 ± 0.06` nats CE
-(20/21 tasks, 2 seeds; a 3rd is in progress).
+`scripts/vendor_heldout_sni_metadata.py`. Baseline: `matched − static = −0.72 ± 0.16` nats CE
+(59/63 task-seed pairs, 3 seeds).
 
 ### D2L — document-conditioned (NIAH)
 
@@ -155,12 +162,6 @@ sweep:
 ```bash
 scripts/reproduce/document_niah_lora.sh                       # 5 seeds, realistic haystack
 .venv/bin/python scripts/d2p_niah_aggregate.py --root <run> --min-seeds 5 --train-length 256
-```
-
-### I2P — image reward-tilting
-
-```bash
-scripts/reproduce/image_lora.sh
 ```
 
 ---

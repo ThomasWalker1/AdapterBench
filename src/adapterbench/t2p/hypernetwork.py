@@ -276,14 +276,12 @@ def _resolve_target(layer: nn.Module, name: str) -> nn.Module:
     residual stream — for activation-space codecs), anything else is a named linear
     submodule (weight-space codecs).
 
-    The candidate list covers both the language interpreter's naming
-    (``self_attn.{name}``, ``mlp.{name}`` on a causal-LM decoder layer) and the image
-    generator's (``attn2.{name}`` = cross-attention, ``attn1.{name}`` = self-attention, on a
-    diffusion ``BasicTransformerBlock``). Names are kept dot-free (e.g. ``"to_k"``, not
-    ``"attn2.to_k"``) so they are valid ``nn.ModuleDict`` keys in the codec/head registries;
-    ``attn2`` is tried before ``attn1`` so the image setting's default weight-space hook is
-    the cross-attention (where the condition is read) rather than self-attention. Harmless for
-    language models, which have no ``attn2``/``attn1``."""
+    The candidate list covers both causal-LM decoder naming
+    (``self_attn.{name}``, ``mlp.{name}``) and diffusion-transformer naming
+    (``attn2.{name}`` for cross-attention and ``attn1.{name}`` for self-attention), which
+    keeps the generalized hook usable by a future image setting. Names remain dot-free
+    (for example ``"to_k"`` rather than ``"attn2.to_k"``) so they are valid
+    ``nn.ModuleDict`` keys."""
     if name == "block":
         return layer
     candidates = (name, f"self_attn.{name}", f"mlp.{name}", f"attn2.{name}", f"attn1.{name}")
@@ -364,4 +362,3 @@ def infer_module_shapes(
         else:
             raise TypeError(f"{name} is {type(module).__name__}; pass hidden_size for non-nn.Linear targets")
     return shapes
-

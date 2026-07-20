@@ -55,11 +55,23 @@ def load_frozen_generator(device: str = "cuda:0", dtype: torch.dtype = torch.flo
 
 
 @torch.no_grad()
-def embed_prompt(gen: FrozenGenerator, prompts: list[str]) -> Tensor:
-    """Frozen text-encoder hidden states `(batch, 77, 1024)` for the content prompts.
-    The prompt carries the content; the generated noise-adapter carries the reward tilt."""
+def embed_prompt_with_pool(gen: FrozenGenerator, prompts: list[str]) -> tuple[Tensor, Tensor]:
+    """Return generator token states and the pooled prompt condition.
+
+    The token states ``(batch, 77, 1024)`` remain the frozen UNet's normal
+    cross-attention input.  The CLIP text encoder's pooled output ``(batch,
+    1024)`` is separately fed to the prompt hypernetwork; computing both in one
+    frozen encoder pass avoids accidentally changing what the generator sees.
+    """
     tokens = gen.tokenizer(
         prompts, padding="max_length", max_length=gen.tokenizer.model_max_length,
         truncation=True, return_tensors="pt",
     ).to(gen.device)
-    return gen.text_encoder(tokens.input_ids)[0]
+    encoded = gen.text_encoder(tokens.input_ids)
+    return encoded.last_hidden_state, encoded.pooler_output
+
+
+@torch.no_grad()
+def embed_prompt(gen: FrozenGenerator, prompts: list[str]) -> Tensor:
+    """Frozen text-encoder hidden states for existing unconditional I2P."""
+    return embed_prompt_with_pool(gen, prompts)[0]

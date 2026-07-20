@@ -6,7 +6,6 @@ requires-python = ">=3.10"
 dependencies = [
   "accelerate>=1.2,<2",
   "datasets>=3,<6",
-  "diffusers>=0.31,<0.38",  # image-domain frozen generator (SD-Turbo); see i2p/
   "huggingface-hub>=0.25,<2",
   "pandas>=2,<4",
   "peft>=0.19,<0.20",
@@ -14,9 +13,6 @@ dependencies = [
   "pyyaml>=6,<7",
   "torch>=2.5,<2.6",
   "transformers>=4.57,<5",
-  "image-reward>=1.5,<2",   # differentiable ImageReward headline reward (i2p/); pulls timm/fairscale
-  "clip-anytorch>=2.6,<3",  # ImageReward imports openai-style `clip`; anytorch fork is pip-installable
-  "setuptools>=68,<80",     # clip-anytorch needs pkg_resources, removed in setuptools>=80
 ]
 
 [project.scripts]

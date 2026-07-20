@@ -5,14 +5,13 @@ argument parser and dispatches. Console entry point is `adapterbench.cli:main`.
 
 - meta.py          catalog / validate / matrix / doctor / peft-smoke
 - live_sft.py      t2p-sft / t2p-sft-pilot / d2p-niah / t2p-sft-sweep
-- image_sft.py     i2p-hypernoise (image-domain reward-tilting setting)
 """
 
 from __future__ import annotations
 
 import argparse
 
-from . import image_sft, live_sft, meta
+from . import live_sft, meta
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -21,7 +20,6 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="command")
     meta.register(subparsers)
     live_sft.register(subparsers)
-    image_sft.register(subparsers)
     return parser
 
 
