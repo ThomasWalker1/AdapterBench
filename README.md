@@ -1,9 +1,9 @@
 # AdapterBench
 
 **AdapterBench** tests whether the *shape* of a hypernetwork-generated PEFT adapter
-matters. Text-to-LoRA, Program-as-Weights, and Doc-to-LoRA all generate a LoRA
-specifically, without testing it against alternative representations in this generation
-setting. AdapterBench holds the hypernetwork, training loop, and evaluator fixed and
+matters. Recent systems such as Text-to-LoRA and Doc-to-LoRA generate LoRA specifically,
+without testing it against alternative representations under the same generation
+protocol. AdapterBench holds the hypernetwork, training loop, and evaluator fixed and
 varies only the generated representation. A new adapter here needs exactly two things:
 
 1. an **output structure** (a differentiable codec — how many numbers, what shape), and
@@ -18,6 +18,11 @@ in this way — that's the whole point.
 > (D2L). These are the complete benchmark surface. New shapes are added one at a time as
 > a codec + registration entry + manifest, then evaluated with both setting CLIs and
 > recorded in the committed per-setting leaderboards.
+>
+> **Current phase: release hardening.** The core benchmark and reference results are
+> implemented. Remaining work is to make installation, reproduction, result derivation,
+> diagnostics, and presentation dependable and easy to audit. Adding more domains or
+> producing a multi-codec research matrix is not a blocker for the initial release.
 
 ## The setting
 
@@ -30,6 +35,10 @@ See [PROJECT_PLAN.md](PROJECT_PLAN.md) for architecture, active results, and har
 gotchas. [NEGATIVE_RESULTS.md](NEGATIVE_RESULTS.md) collates the investigated settings
 that failed condition controls or behavioral capacity gates; they remain scientific
 results without remaining active benchmark infrastructure.
+
+Committed headline records live in [`canonical_results/`](canonical_results/). They, not
+the rendered tables, are the source of truth; run `uv run adapterbench results check` to
+verify the leaderboards, website, and paper tables against them.
 
 ## Layout
 
@@ -57,6 +66,8 @@ uv run adapterbench doctor --require-cuda
 uv run pytest -q
 uv run adapterbench validate
 uv run adapterbench catalog
+uv run adapterbench results validate
+uv run adapterbench results check
 ```
 
 ## Live end-to-end SFT

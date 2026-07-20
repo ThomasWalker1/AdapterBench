@@ -10,6 +10,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 DEVICE="${1:-cuda:0}"
+.venv/bin/adapterbench preflight --setting d2l --devices "$DEVICE" --output results/repro/document_niah_realistic
 for SEED in 777 778 779 780 781; do
   .venv/bin/adapterbench d2p-niah --adapters lora --needle-style realistic \
     --context-lengths 256 --eval-context-lengths 256,512,1024,2048,4096,8192 \

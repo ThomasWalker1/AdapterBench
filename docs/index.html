@@ -160,7 +160,9 @@
       <div class="tablescroll"><table>
         <thead><tr><th>Shape</th><th>rank</th><th>lr</th><th>steps</th><th>seeds</th><th>matched − static (CE)</th><th>matched − frozen</th><th>accuracy m−static / m−frozen</th></tr></thead>
         <tbody>
-          <tr><td>LoRA <span class="baseline-badge">baseline</span></td><td>8</td><td>1e-4</td><td>20 000</td><td>3</td><td class="headline">−0.72 ± 0.16 <span class="muted">(59/63 task-seed pairs)</span></td><td>−10.80 ± 0.11</td><td>+0.032 / +0.235</td></tr>
+<!-- canonical-results:t2l-html:start -->
+<tr><td>LoRA <span class="baseline-badge">baseline</span></td><td>8</td><td>1e-4</td><td>20 000</td><td>3</td><td class="headline">−0.723 ± 0.162 <span class="muted">(59/63 task-seed pairs)</span></td><td>−10.80 ± 0.11</td><td>+0.0317 ± 0.0060 / +0.235</td></tr>
+<!-- canonical-results:t2l-html:end -->
         </tbody>
       </table></div>
       <div class="invite">Reproduce: <span class="mono">scripts/reproduce/task_t2l_lora.sh &lt;seed&gt; &lt;gpus_hyper&gt; &lt;gpus_static&gt;</span> · seeds 777, 2, and 3.</div>
@@ -171,7 +173,9 @@
       <div class="tablescroll"><table>
         <thead><tr><th>Shape</th><th>scale</th><th>lr</th><th>steps</th><th>seeds</th><th>accuracy</th><th>ctx-swap</th><th>matched − control</th></tr></thead>
         <tbody>
-          <tr><td>LoRA <span class="baseline-badge">baseline</span></td><td>≈45</td><td>4e-5</td><td>12 000</td><td>5</td><td>0.887 ± 0.143</td><td>0.000</td><td class="headline">+0.887 ± 0.143</td></tr>
+<!-- canonical-results:d2l-html:start -->
+<tr><td>LoRA <span class="baseline-badge">baseline</span></td><td>45.25</td><td>4e-5</td><td>12 000</td><td>5</td><td>0.887 ± 0.143</td><td>0.000</td><td class="headline">+0.887 ± 0.143</td></tr>
+<!-- canonical-results:d2l-html:end -->
         </tbody>
       </table></div>
       <div class="invite">In-distribution (256 tok). Length-generalization crossover at 4096 tok = 16× the training length. Reproduce: <span class="mono">scripts/reproduce/document_niah_lora.sh</span></div>

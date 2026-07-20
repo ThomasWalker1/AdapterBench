@@ -26,16 +26,18 @@ reported alongside.
 strip-def input template, the 21 held-out SNI tasks, the static-reference control, the CE metric.
 **Fixed:** rank (shape identity).
 
+<!-- canonical-results:t2l-markdown:start -->
 | Shape | rank | lr | steps | seeds | **matched − static (CE, nats)** | matched − frozen | accuracy m−static / m−frozen |
-|-------|:----:|:----:|------:|:-----:|:-------------------------------:|:----------------:|:----------------------------:|
-| LoRA | 8 | 1e-4 | 20 000 | 3 | **−0.72 ± 0.16** (59/63 task-seed pairs) | −10.80 ± 0.11 | +0.032 / +0.235 |
+|---|:---:|:---:|---:|:---:|:---:|:---:|:---:|
+| LoRA | 8 | 1e-4 | 20 000 | 3 | **−0.723 ± 0.162** (59/63 task-seed pairs) | −10.80 ± 0.11 | +0.0317 ± 0.0060 / +0.235 |
+<!-- canonical-results:t2l-markdown:end -->
 
 Seeds 777, 2, and 3. More-negative CE is better; positive accuracy is better. The huge
 `matched − frozen` (−10.80 nats CE, +0.235 accuracy) confirms the stripped-definition task genuinely
 *requires* the adapter; `matched − static` isolates the description's contribution beyond generic help.
 
-**Reproduce:** `scripts/reproduce/task_t2l_lora.sh [SEED] [GPUS_HYPER] [GPUS_STATIC]` — trains the
-strip-def hypernetwork + the static reference, then runs both evals (sets `HF_HUB_OFFLINE=1` for you).
+**Reproduce:** `scripts/reproduce/task_t2l_lora.sh [SEED] [GPUS_HYPER] [GPUS_STATIC]` — runs preflight,
+trains the strip-def hypernetwork + static reference, then runs both evals (sets `HF_HUB_OFFLINE=1`).
 
 ```bash
 scripts/reproduce/task_t2l_lora.sh 777 0,1,2,3 4,5,6,7

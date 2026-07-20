@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use AdapterBench, please cite this software release."
+title: "AdapterBench"
+version: "0.1.0"
+date-released: "2026-07-20"
+type: software
+authors:
+  - family-names: Walker
+    given-names: Thomas
+repository-code: "https://github.com/ThomasWalker1/AdapterBench"

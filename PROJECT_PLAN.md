@@ -1,4 +1,4 @@
-# AdapterBench: Project Plan
+# AdapterBench: Completion and Release Plan
 
 ## What this is
 
@@ -25,10 +25,12 @@ both settings before alternative shapes are added.
 
 Both language settings pass controls that require genuine condition dependence.
 
+<!-- canonical-results:release-summary-markdown:start -->
 | setting | frozen interpreter | primary result | condition control |
 |---|---|---|---|
-| T2L | gemma-2-2b | `matched − static = −0.723 ± 0.162` nats CE over 3 seeds | matched beats a same-shape static multi-task LoRA on 59/63 held-out task-seed pairs |
+| T2L | gemma-2-2b | `matched − static = −0.723 ± 0.162` nats CE over 3 seeds | matched beats a same-shape static multi-task LoRA on 59/63 task-seed pairs |
 | D2L | Qwen3-0.6B | `matched − context-swap = +0.887 ± 0.143` exact-match over 5 seeds | wrong-document adapters score `0.000` |
+<!-- canonical-results:release-summary-markdown:end -->
 
 T2L generation accuracy corroborates the CE result:
 `matched − static = +0.0317 ± 0.0060`; `matched − frozen = +0.235`.
@@ -46,23 +48,78 @@ Negative investigations are retained as results rather than as dormant settings.
 image tilting, selective erasure, and reference-image identity, including their
 matched-control measurements and the reason each was excluded.
 
-## Session handoff
+## Completion status and release focus
 
-The active scientific baseline is complete for LoRA. The next benchmark payload is to add
-alternative codec shapes one at a time and evaluate each on both T2L and D2L.
+### Release work status (updated 2026-07-20)
 
-Before adding a shape:
+**Done in this hardening pass:** versioned canonical T2L/D2L LoRA aggregate records,
+seed-level numerical validation, provenance hashes and locally observed model revisions,
+deterministic leaderboard/website/paper result fragments, a drift check, smoke/full
+reproduction entry points, preflight diagnostics, release citation/changelog metadata,
+and T2L multi-seed aggregation.
 
-1. Make best-of-scale sweeps efficient and lock the LoRA operating point in each setting.
-2. Keep the shared substrate fixed; tune only codec-free hyperparameters under the
-   benchmark's declared partition.
-3. Run at least three seeds.
-4. Add a codec subclass, one `make_codec` registration, a manifest, tests, and one row in
-   each applicable leaderboard.
+**Verified in this environment:** all 94 unit tests, manifest validation, two-setting/
+one-codec catalog inspection, canonical-result validation, rendered-table drift checks,
+artifact reaggregation, and `git diff --check` pass. The only local failure is expected:
+this sandbox has no CUDA-visible GPU.
+
+**Still required before release:** clean-environment installation, GPU smoke tests and
+full reproductions on release hardware, a TeX/PDF build and visual proof, license choice,
+and any model/data access that is absent from the release machine.
+
+The benchmark's **scientific substrate is complete**:
+
+- the active scope is frozen to T2L and D2L;
+- both conditions are available only through the generated adapter path;
+- both settings have behavioral controls, difficulty axes, multi-seed LoRA results, and
+  canonical reproduction scripts;
+- the shared codec/hook seam, training paths, evaluators, checkpointing, manifests, tests,
+  leaderboards, and negative-results record are implemented;
+- image and planning infrastructure is intentionally absent.
+
+The project is no longer in setting-discovery mode. The remaining work is **release
+hardening**, not another research phase:
+
+1. **One obvious user path.** Make the README/guide lead from installation to a cheap
+   smoke test and then to the two canonical reproductions without requiring knowledge of
+   internal scripts or historical experiments.
+2. **Canonical result derivation.** Commit compact machine-readable aggregate artifacts
+   for the LoRA rows and generate the Markdown/website tables from them, so the same
+   number is never maintained independently in several files.
+3. **Reproduction provenance.** Record exact model revisions, data provenance/checksums,
+   seeds, selected free hyperparameters, environment versions, commands, and expected
+   output files alongside every row.
+4. **Operational polish.** Keep long runs restart-safe; add preflight checks, resource and
+   runtime guidance, actionable errors, and explicit smoke/full modes.
+5. **Presentation coherence.** Keep `README.md`, `GUIDE.md`, `SETUP.md`,
+   `BENCHMARK_CONTRACT.md`, `leaderboards/`, `docs/index.html`, and the paper synchronized
+   with the two-setting catalog and canonical result artifacts.
+6. **Release verification.** Test installation from a clean environment, run CPU/unit
+   tests plus GPU smoke tests, validate the manifest catalog, reproduce aggregates from
+   stored metrics, build the paper/site, and check all links and commands.
+
+### Initial-release definition of done
+
+The initial release is ready when a new user can:
+
+- install the package from the documented lockfile;
+- understand the two settings and their controls without reading source code;
+- run a short validation on available hardware;
+- launch or resume either canonical LoRA reproduction from one documented entry point;
+- regenerate the published aggregate and identify every input artifact;
+- see matching numbers in the CLI output, leaderboards, website, and paper;
+- obtain a clear diagnostic when data, model access, cached assets, CUDA, or GPU capacity
+  is missing.
+
+Alternative codec rows remain the intended use of AdapterBench, but they are
+**post-release benchmark population**, not a prerequisite for shipping the stable
+two-setting framework. The initial paper therefore reports a LoRA reference
+implementation and validates the benchmark's causal controls; it does not claim to have
+identified the optimal adapter shape.
 
 Repository policy: experiment outputs under `results/` are scratch unless explicitly
-force-added as canonical metrics. Checkpoints, adapters, logs, and large artifacts are
-never committed. The human drives commits.
+force-added as compact canonical metrics. Checkpoints, adapters, logs, and large artifacts
+are never committed. The human drives commits.
 
 ## Architecture
 
@@ -285,7 +342,7 @@ The reproduction script sets it automatically.
 - D2L's useful LoRA scale is much larger than ordinary PEFT defaults. Scale must be swept,
   not assumed.
 
-## Leaderboards and adding codecs
+## Stable extension interface
 
 There is one leaderboard per active setting:
 
@@ -295,7 +352,7 @@ There is one leaderboard per active setting:
 Settings are never pooled because their metrics differ. The cross-setting question is
 whether a codec's relative behavior repeats.
 
-To add a codec:
+After the initial release, a codec is added through the stable extension path:
 
 1. subclass `GeneratedUpdateCodec`;
 2. register it in `make_codec`;
@@ -305,24 +362,41 @@ To add a codec:
 6. run at least three seeds in both settings;
 7. add a row to each leaderboard with exact commands and artifacts.
 
-Losing shapes remain in the leaderboards. The benchmark cannot answer whether shape
-matters if negative results are curated away.
+Losing shapes remain in the leaderboards. Populating these rows is the benchmark's next
+research use, but it does not change the release-hardening checklist above.
 
-## Roadmap
+## Release checklist
 
-1. Lock efficient best-of-scale LoRA baselines for both settings.
-2. Add one alternative codec shape.
-3. Evaluate it on T2L and D2L under the fixed substrate and controls.
-4. Repeat one shape at a time.
-5. Add license, citation, and final paper/docs coherence after the scientific matrix is
-   populated.
+### Required before the initial release
+
+- [x] Define and commit the compact canonical result schema and LoRA aggregate files.
+- [x] Derive/verify the two leaderboards, website table, and paper table from those
+      aggregates with `adapterbench results check`.
+- [ ] Confirm and record the final T2L scale-selection evidence; D2L's recorded selected
+      operating scale is 45.25, but its full sweep summary still needs a committed compact record.
+- [x] Consolidate smoke and full reproduction commands with preflight/resource guidance.
+- [x] Pin and display model/data revisions and complete provenance for both settings.
+- [ ] Verify clean-environment installation and all documented commands.
+- [x] Run unit tests, catalog validation, aggregate-regeneration, and canonical-table
+      checks. GPU smoke tests remain an external hardware prerequisite.
+- [ ] Build and proof the paper and website; eliminate stale links, placeholders, and
+      duplicated result claims.
+- [ ] Add release metadata: a license decision is still required; `CITATION.cff`, version
+      `0.1.0`, and `CHANGELOG.md` are present.
+
+### Post-release extensions
+
+- Add alternative codec shapes through the stable codec/hook interface.
+- Populate both leaderboards using the fixed controls and at least three seeds.
+- Improve sweep efficiency without changing the shared substrate.
+- Consider additional settings only if they pass a preregistered matched-control audit;
+  no image or planning setting is currently planned.
 
 ## Reference: prior art
 
 The benchmark is motivated by:
 
 - Text-to-LoRA and Lots-of-LoRAs;
-- Program-as-Weights;
 - Doc-to-LoRA;
 - PEFT representations such as LoRA, IA3, LoKr, FourierFT, and activation steering.
 

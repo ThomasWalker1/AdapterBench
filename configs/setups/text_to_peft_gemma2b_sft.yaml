@@ -11,10 +11,12 @@ sources:
 models:
   condition_encoder:
     model_id: Alibaba-NLP/gte-large-en-v1.5
+    revision: 104333d6af6f97649377c2afbde10a7704870c7b
     frozen: true
     dtype: bfloat16
   interpreter:
     model_id: google/gemma-2-2b-it
+    revision: 299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8
     frozen: true
     dtype: bfloat16
 conditioning:

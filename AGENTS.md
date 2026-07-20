@@ -6,6 +6,12 @@ settings: task-description conditioning (T2L, gemma-2-2b) and document condition
 (D2L, Qwen3-0.6B). LoRA is the current baseline codec; new representations are added and
 evaluated one at a time across both settings.
 
+The core benchmark implementation and LoRA reference results are complete. The current
+project phase is **release hardening**: make setup and reproduction straightforward,
+derive every displayed result from canonical artifacts, improve diagnostics and failure
+messages, and ensure the paper, website, leaderboards, and commands agree. New domains
+and codec research are post-release extensions, not current release blockers.
+
 **Start here: [`PROJECT_PLAN.md`](PROJECT_PLAN.md)** — current status, architecture, how
 to run the benchmark, results, and hard-won gotchas.
 

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AdapterBench canonical benchmark result v1",
+  "type": "object",
+  "required": ["schema_version", "setting", "codec", "metric", "headline", "seed_results", "difficulty_curve", "free_hyperparameters", "fixed_shape_parameters", "provenance", "reproduction"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "setting": {"enum": ["T2L", "D2L"]},
+    "codec": {"type": "string"},
+    "headline": {"type": "object"},
+    "seed_results": {"type": "array", "minItems": 3},
+    "difficulty_curve": {"type": "array", "minItems": 1},
+    "provenance": {"type": "object"},
+    "reproduction": {"type": "object"}
+  },
+  "additionalProperties": true
+}

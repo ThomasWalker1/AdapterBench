@@ -18,6 +18,8 @@ uv pip install -e ".[dev]"
 uv run adapterbench doctor --require-cuda
 uv run adapterbench validate
 uv run adapterbench catalog
+uv run adapterbench results validate
+uv run adapterbench results check
 uv run pytest -q
 ```
 
@@ -49,6 +51,12 @@ Canonical one-seed baseline:
 bash scripts/reproduce/task_t2l_lora.sh 777 0,1,2,3 4,5,6,7
 ```
 
+Full reference reproduction (three sequential restart-safe seeds, then aggregation):
+
+```bash
+bash scripts/reproduce/task_t2l_lora_all.sh 0,1,2,3 4,5,6,7
+```
+
 The held-out-SNI evaluations use local cached model/data files and must run with
 `HF_HUB_OFFLINE=1`; the reproduction script sets it.
 
@@ -76,6 +84,11 @@ Canonical baseline:
 ```bash
 bash scripts/reproduce/document_niah_lora.sh cuda:0
 ```
+
+Both canonical scripts first check the installed environment, CUDA visibility, pinned
+cached models, required data, output layout, and conflicting training jobs. The full
+training runs require a GPU; no wall-clock estimates are stated because the repository
+does not contain comparable timing measurements.
 
 Scale locator:
 

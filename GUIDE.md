@@ -1,12 +1,11 @@
 # AdapterBench — user guide
 
 AdapterBench asks one question: **does the *shape* of a hypernetwork-generated PEFT
-adapter matter?** Text-to-LoRA, Program-as-Weights, and Doc-to-LoRA all have a
-hypernetwork emit a LoRA — but none tests that choice of representation against
-alternatives under a fixed generation-and-evaluation protocol. AdapterBench holds the
-hypernetwork shell, training loop, data, and evaluator constant and varies **only** the
-generated representation (the *codec*), so any difference in the scored result is
-attributable to shape.
+adapter matter?** Text-to-LoRA and Doc-to-LoRA both have a hypernetwork emit a LoRA —
+but neither tests that choice of representation against alternatives under a fixed
+generation-and-evaluation protocol. AdapterBench holds the hypernetwork shell, training
+loop, data, and evaluator constant and varies **only** the generated representation (the
+*codec*), so any difference in the scored result is attributable to shape.
 
 This guide covers: the active settings, how a result is scored (the metric and its
 controls), how to add a new codec, and how to run and reproduce each setting. For
@@ -148,7 +147,7 @@ scripts/reproduce/task_t2l_lora.sh 777 0,1,2,3 4,5,6,7    # SEED GPUS_HYPER GPUS
 Helpers: `scripts/t2l_base_diag.sh <hf-interpreter> <tag> <gpus> <per-gpu-batch>` runs the
 recipe with a swappable base model and env knobs (`SEED`, `STEPS`, `LR`, `SNAP`, `LIMIT`,
 `ELIMIT`, `STRIPDEF`, `STATIC`); the 21 held-out tasks' metadata is vendored (once) by
-`scripts/vendor_heldout_sni_metadata.py`. Baseline: `matched − static = −0.72 ± 0.16` nats CE
+`scripts/vendor_heldout_sni_metadata.py`. Baseline: `matched − static = −0.723 ± 0.162` nats CE
 (59/63 task-seed pairs, 3 seeds).
 
 ### D2L — document-conditioned (NIAH)
@@ -165,12 +164,14 @@ scripts/reproduce/document_niah_lora.sh                       # 5 seeds, realist
 
 ## 5. Where results live
 
-- **`leaderboards/*.md`** — one file per setting: the committed baseline row(s) with the
-  shape, its free hyperparameters, `matched − control ± std`, seed count, and the exact
-  reproduce command. This is the source of truth for the benchmark's headline numbers.
-- **`scripts/reproduce/`** — one script per setting's baseline; each is self-contained.
+- **`leaderboards/*.md`** — one file per setting: rendered baseline rows with the shape,
+  free hyperparameters, `matched − control ± variation`, seed count, and exact command.
+- **`canonical_results/`** — versioned aggregate records with seed values, provenance,
+  source-artifact hashes, exact commands, and difficulty curves. These are the source of
+  truth for rendered result tables.
+- **`scripts/reproduce/`** — one script per setting's baseline; each runs a preflight and
+  is restart-safe.
 - **`results/repro/`** — the leaderboard-backing run outputs (`results.jsonl` + metrics).
 
-A leaderboard row is produced by: run the reproduce script → aggregate → paste the
-headline (with its control and seed spread) and the reproduce command into the setting's
-leaderboard file.
+A leaderboard row is produced by: run the reproduce script → aggregate → update the
+canonical record → render/check the structured tables with `adapterbench results check`.

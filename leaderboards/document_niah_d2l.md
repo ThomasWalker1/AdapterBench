@@ -21,16 +21,21 @@ loss) are essential here.
 
 Headline row is the **in-distribution** point (train length = eval length = 256), 5 seeds:
 
+<!-- canonical-results:d2l-markdown:start -->
 | Shape | scale | lr | steps | seeds | accuracy | ctxswap | **matched − control** |
-|-------|:-----:|-------:|------:|:-----:|---------:|--------:|----------------------:|
-| LoRA (r=8) | ≈45.25 (default) | 4e-5 | 12000 | 5 | 0.887 ± 0.143 | 0.000 | **+0.887 ± 0.143** |
+|---|:---:|---:|---:|:---:|---:|---:|:---:|
+| LoRA (r=8) | 45.25 | 4e-5 | 12 000 | 5 | 0.887 ± 0.143 | 0.000 | **+0.887 ± 0.143** |
+
+| eval len | 256 | 512 | 1024 | 2048 | 4096 | 8192 |
+|---|---|---|---|---|---|---|
+| matched − control | 0.887 | 0.844 | 0.806 | 0.806 | 0.762 | 0.369 |
+<!-- canonical-results:d2l-markdown:end -->
 
 **Difficulty knob — length generalization (same run, eval sweep):** mean matched−control by eval
 length (5 seeds, ctxswap 0.000 at every length):
 
-| eval len | 256 | 512 | 1024 | 2048 | 4096 | 8192 |
-|---|---|---|---|---|---|---|
-| matched−control | 0.887 | 0.844 | 0.806 | 0.806 | 0.762 | 0.369 |
+The canonical record above is the source of this curve; the context-swap value is `0.000`
+at every evaluated length.
 
 **Crossover(0.5) = 4096 tokens = 16× the 256-token training length.** Retrieval is a hard, stochastic
 phase transition (onset ~3.7k–5.4k steps across seeds; per-seed in-distribution: 0.97/0.84/1.0/0.63/1.0),

@@ -5,12 +5,24 @@ free-hyperparameters recorded in `leaderboards/<setting>.md`, runs ≥3 seeds, a
 headline `matched − control` number. Re-running a script against the codec on `main` regenerates the
 row up to seed variance — this is the benchmark's reproducibility contract.
 
+<!-- canonical-results:repro-summary-markdown:start -->
 | Setting | Script | Leaderboard | Headline |
 |---|---|---|---|
-| Task (T2L) | `task_t2l_lora.sh [SEED] [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2l.md` | matched − static = **−0.72 ± 0.16** nats CE (59/63 task-seed pairs, 3 seeds) |
+| Task (T2L) | `task_t2l_lora_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2l.md` | matched − static = **−0.723 ± 0.162** nats CE (59/63 task-seed pairs, 3 seeds) |
 | Document (NIAH) | `document_niah_lora.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **+0.887 ± 0.143** (5 seeds, realistic haystack; crossover 16×) |
+<!-- canonical-results:repro-summary-markdown:end -->
 
-All scripts are restart-safe: re-run the identical command to resume from the last checkpoint.
+All scripts run `adapterbench preflight` before training and are restart-safe: re-run the
+identical command to resume from the last checkpoint. Use the one-seed T2L script when
+only one seed is needed; the `*_all.sh` wrapper launches all three sequentially and
+aggregates their existing files without retraining completed work.
+
+Smoke paths (they validate plumbing, not the released metric):
+
+```bash
+uv run adapterbench t2p-sft --device cuda:0 --tasks lol_022 --adapter lora --steps 60 --output results/t2p_sft/smoke_lol022_lora.json
+uv run adapterbench d2p-niah --adapters lora --steps 20 --grad-accum-steps 1 --context-lengths 256 --num-train-documents 40 --eval-limit 10 --device cuda:0 --output results/d2p_niah_smoke
+```
 
 ## How a leaderboard row is produced (the pattern every future codec follows)
 

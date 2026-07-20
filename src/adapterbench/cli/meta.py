@@ -8,6 +8,8 @@ import json
 from pathlib import Path
 
 from ..catalog import build_matrix, load_catalog
+from ..preflight import preflight
+from ..results import DEFAULT_RESULTS_ROOT, ResultValidationError, check_rendered_documents, load_records, render_fragment
 from ..doctor import environment_report
 from ._shared import DEFAULT_CATALOG, write_json
 
@@ -63,6 +65,30 @@ def _peft_smoke_command(args) -> None:
     print(json.dumps(results, indent=2))
 
 
+def _results_command(args) -> None:
+    try:
+        records = load_records(args.root)
+        if args.results_action == "validate":
+            print(f"valid canonical results={len(records)} settings={','.join(record['setting'] for record in records)}")
+        elif args.results_action == "render":
+            print(render_fragment(records, args.fragment))
+        else:
+            errors = check_rendered_documents(records)
+            if errors:
+                raise ResultValidationError("\n".join(errors))
+            print("canonical result tables match leaderboards, website, and paper")
+    except ResultValidationError as error:
+        raise SystemExit(f"canonical result validation failed: {error}") from error
+
+
+def _preflight_command(args) -> None:
+    try:
+        for message in preflight(args.setting, args.devices, args.output, require_cuda=not args.allow_missing_cuda):
+            print(message)
+    except (RuntimeError, ValueError) as error:
+        raise SystemExit(f"reproduction preflight failed: {error}") from error
+
+
 def register(subparsers) -> None:
     catalog = subparsers.add_parser("catalog", help="list registered setups and adapters")
     catalog.add_argument("--root", default=DEFAULT_CATALOG, type=Path)
@@ -91,3 +117,16 @@ def register(subparsers) -> None:
     smoke.add_argument("--condition", default="Normalize a sentiment statement to positive or negative.")
     smoke.add_argument("--output", default="results/hf_adapter_smoke.json")
     smoke.set_defaults(func=_peft_smoke_command)
+
+    results = subparsers.add_parser("results", help="validate and render committed canonical result records")
+    results.add_argument("results_action", choices=("validate", "render", "check"))
+    results.add_argument("--root", default=DEFAULT_RESULTS_ROOT, type=Path)
+    results.add_argument("--fragment", choices=("t2l-markdown", "d2l-markdown", "release-summary-markdown", "repro-summary-markdown", "t2l-html", "d2l-html", "paper-results"), default="t2l-markdown")
+    results.set_defaults(func=_results_command)
+
+    preflight_parser = subparsers.add_parser("preflight", help="check prerequisites before a canonical reproduction")
+    preflight_parser.add_argument("--setting", choices=("t2l", "d2l"), required=True)
+    preflight_parser.add_argument("--devices", required=True, help="CUDA device list recorded for the run")
+    preflight_parser.add_argument("--output", required=True, type=Path)
+    preflight_parser.add_argument("--allow-missing-cuda", action="store_true", help="only inspect files and output layout")
+    preflight_parser.set_defaults(func=_preflight_command)

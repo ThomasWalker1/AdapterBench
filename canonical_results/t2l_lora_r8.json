@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "setting": "T2L",
+  "codec": "lora_r8",
+  "metric": "held_out_teacher_forced_cross_entropy",
+  "headline": {
+    "comparison": "matched_minus_control",
+    "control_name": "same_shape_static_adapter",
+    "matched": 2.520535714758952,
+    "control": 3.2437672823077612,
+    "value": -0.7232315675488087,
+    "variation": 0.16191601739129335,
+    "variation_kind": "sample_standard_deviation",
+    "unit": "nats_cross_entropy",
+    "direction": "lower_is_better"
+  },
+  "seed_results": [
+    {"seed": 777, "matched": 2.3977660615891656, "control": 3.256119601575262, "delta": -0.8583535399860965},
+    {"seed": 2, "matched": 2.57768010349579, "control": 3.3452583973007894, "delta": -0.7675782938049991},
+    {"seed": 3, "matched": 2.5861609791919014, "control": 3.129923848047232, "delta": -0.5437628688553302}
+  ],
+  "difficulty_curve": [
+    {"axis": "held_out_sni_task_seed_pairs", "matched": 59, "control": 63, "delta": -4}
+  ],
+  "summary": {
+    "wins": "59/63 task-seed pairs",
+    "matched_minus_frozen": {"value": -10.804412530811819, "variation": 0.1064061657880566, "variation_kind": "sample_standard_deviation"},
+    "accuracy_matched_minus_static": {"value": 0.03174603174603175, "variation": 0.00603553390593273, "variation_kind": "sample_standard_deviation"},
+    "accuracy_matched_minus_frozen": 0.2351190476190476
+  },
+  "free_hyperparameters": {"learning_rate": "1e-4", "warmup_fraction": 0.1, "steps": 20000, "scale": "codec_default"},
+  "fixed_shape_parameters": {"rank": 8, "target_modules": ["q_proj", "v_proj"]},
+  "provenance": {
+    "models": [
+      {"model_id": "google/gemma-2-2b-it", "revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8"},
+      {"model_id": "Alibaba-NLP/gte-large-en-v1.5", "revision": "104333d6af6f97649377c2afbde10a7704870c7b"}
+    ],
+    "data": [
+      {"path": "data/t2l/hyper_lora_decontam_lol_tasks.yaml", "sha256": "f38284efcbf9e01aebfe60746c0024e615ef4432667b540c52dc5f055a79e96f"},
+      {"path": "data/t2l/eval_ds_info.yaml", "sha256": "cf281756600d2f853907687e9210688f3f9aab8632c9cc1df0353e50a49017d2"}
+    ],
+    "source_artifacts": [
+      {"seed": 777, "path": "results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s777/heldout_sni_ce_full21.jsonl", "sha256": "3094ec4b8fec75543df013f09697104e211f866803d01f1848566d5615aaeac9"},
+      {"seed": 777, "path": "results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s777/heldout_sni_acc.jsonl", "sha256": "43087959479606928d56bbfd8b06bac2d3c135efce57a09a49fb90a7731e131c"},
+      {"seed": 2, "path": "results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s2/heldout_sni_ce_full21.jsonl", "sha256": "aa711985b3d9bf8e8a709e059dee9a30dee88436caf923930603390e11e9a88c"},
+      {"seed": 2, "path": "results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s2/heldout_sni_acc.jsonl", "sha256": "72033a5ca42a448a531493fffdbe59ab2711a66a48ea1e180d9cb3f42dff65cc"},
+      {"seed": 3, "path": "results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s3/heldout_sni_ce_full21.jsonl", "sha256": "2276d89a8f71874f1b5c6e4271f0600801dc2d198041eb43ee3bf130f0625523"},
+      {"seed": 3, "path": "results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s3/heldout_sni_acc.jsonl", "sha256": "39a6dbd1775b7e382b41bb34ef320295666ca6f76aae81258d510c849ff5629c"}
+    ],
+    "environment": {"python": "3.11.15", "lockfile_sha256": "f46fdbf77957f9b28555a9890c004d5ac5440c99822aa646c8884c815aec3762"}
+  },
+  "reproduction": {
+    "smoke": "uv run adapterbench t2p-sft --device cuda:0 --tasks lol_022 --adapter lora --steps 60 --output results/t2p_sft/smoke_lol022_lora.json",
+    "full": "bash scripts/reproduce/task_t2l_lora.sh 777 0,1,2,3 4,5,6,7",
+    "aggregate": "uv run adapterbench results validate"
+  }
+}
