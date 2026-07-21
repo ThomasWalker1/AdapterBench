@@ -13,16 +13,15 @@ varies only the generated representation. A new adapter here needs exactly two t
 The training loop, data pipeline, and evaluator are the same for every adapter that plugs
 in this way — that's the whole point.
 
-> **Current state: LoRA is the only codec on `main`.** It validates two genuinely
-> conditioned settings: task-description conditioning (T2L) and document conditioning
-> (D2L). These are the complete benchmark surface. New shapes are added one at a time as
-> a codec + registration entry + manifest, then evaluated with both setting CLIs and
-> recorded in the committed per-setting leaderboards.
+> **Current state:** LoRA validates the two genuinely conditioned settings:
+> task-description conditioning (T2L) and document conditioning (D2L). (IA)³ is the
+> first codec-exploration implementation and is awaiting its scale sweeps and benchmark
+> rows. New shapes are added one at a time as a codec + registration entry + manifest,
+> then evaluated with both setting CLIs and recorded in the per-setting leaderboards.
 >
-> **Current phase: release hardening.** The core benchmark and reference results are
-> implemented. Remaining work is to make installation, reproduction, result derivation,
-> diagnostics, and presentation dependable and easy to audit. Adding more domains or
-> producing a multi-codec research matrix is not a blocker for the initial release.
+> **Current phase: codec exploration.** The core benchmark and LoRA reference results
+> are implemented; the remaining research work is to compare the registered shapes under
+> the same substrate.
 
 ## The setting
 

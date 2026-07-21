@@ -1,0 +1,14 @@
+schema_version: 1
+name: ia3
+family: ia3
+implementation: custom
+output_structure: Generated output-channel vector v; applies W -> diag(1 + scale*v) W live.
+target_modules: [q_proj, v_proj]
+hyperparameters:
+  scaling: 1.0
+compatible_objectives: [downstream, reconstruction, hybrid]
+supports_batched_generation: true
+notes:
+  - The live codec scales the output channels of the runner-selected frozen projection.
+  - T2L retains q_proj/v_proj; D2L retains down_proj, so only the generated shape changes.
+  - The codec emits d_out scalars per hooked layer/module and has no bilinear symmetry.

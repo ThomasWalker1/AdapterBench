@@ -6,7 +6,7 @@ from adapterbench.t2p.codecs import make_codec
 from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
 
 
-@pytest.mark.parametrize("name", ["lora"])
+@pytest.mark.parametrize("name", ["lora", "ia3"])
 def test_generated_adapter_is_differentiable(name):
     torch.manual_seed(0)
     codec = make_codec(
@@ -43,10 +43,28 @@ def test_dense_delta_matches_apply(name):
 
 
 def test_make_codec_rejects_unregistered_shape():
-    # Only LoRA is registered in the baseline; other shapes (ia3, lokr, fourierft,
-    # activation_steering, …) return as committed codecs, not this map.
     with pytest.raises(ValueError, match="unsupported differentiable adapter"):
-        make_codec("ia3", 8, 8, num_layers=2)
+        make_codec("lok r", 8, 8, num_layers=2)
+
+
+def test_ia3_geometry_and_identity_initialization():
+    codec = make_codec("ia3", 5, 8, num_layers=2, ia3_scaling=2.0)
+    assert codec.output_size == 8
+    generated = torch.zeros(3, codec.output_size)
+    inputs = torch.randn(3, 4, 5)
+    base = torch.randn(3, 4, 8)
+    torch.testing.assert_close(codec.apply(inputs, base, generated, layer_index=0), base)
+    assert codec.dense_delta(generated, layer_index=0).shape == (3, 8, 5)
+    assert codec.initial_bias() is None
+
+
+def test_ia3_apply_scales_each_output_channel():
+    codec = make_codec("ia3", 5, 3, num_layers=1, ia3_scaling=0.5)
+    inputs = torch.randn(2, 4, 5)
+    base = torch.tensor([[[2.0, -3.0, 4.0]], [[-1.0, 6.0, 8.0]]]).expand(-1, 4, -1)
+    generated = torch.tensor([[2.0, -1.0, 0.0], [-2.0, 1.0, 3.0]])
+    expected = base * (1 + 0.5 * generated).unsqueeze(1)
+    torch.testing.assert_close(codec.apply(inputs, base, generated, layer_index=0), expected)
 
 
 class TinyLayer(nn.Module):
@@ -79,6 +97,38 @@ def test_hypernetwork_hooks_apply_per_example_adapters_and_backpropagate():
     output.square().mean().backward()
     assert hypernetwork.heads["q_proj"].weight.grad is not None
     assert hypernetwork.generated_parameter_count() == 64
+
+
+def test_ia3_hypernetwork_hook_applies_per_example_adapters_and_backpropagates():
+    layers = nn.ModuleList([TinyLayer(), TinyLayer()])
+    hypernetwork = TextToPeftHypernetwork(
+        condition_dim=6, module_shapes={"q_proj": (8, 8)}, num_layers=2,
+        adapter="ia3", latent_dim=32, head_dim=32, ia3_scaling=1.0,
+    )
+    nn.init.normal_(hypernetwork.heads["q_proj"].weight, std=0.01)
+    conditions = torch.randn(3, 6)
+    inputs = torch.randn(3, 4, 8)
+    generated = hypernetwork(conditions)
+    with hypernetwork.apply(layers, generated):
+        output = layers[1](layers[0](inputs))
+    output.square().mean().backward()
+    assert hypernetwork.generated_parameter_count() == 16
+    assert hypernetwork.heads["q_proj"].weight.grad is not None
+    assert torch.isfinite(hypernetwork.heads["q_proj"].weight.grad).all()
+
+
+def test_ia3_zero_head_is_identity_but_has_a_nonzero_gradient():
+    hypernetwork = TextToPeftHypernetwork(
+        condition_dim=4, module_shapes={"q_proj": (8, 8)}, num_layers=1,
+        adapter="ia3", latent_dim=16, head_dim=16,
+    )
+    generated = hypernetwork(torch.randn(3, 4))["q_proj"][0]
+    inputs, base = torch.randn(3, 5, 8), torch.randn(3, 5, 8)
+    output = hypernetwork.codecs["q_proj"].apply(inputs, base, generated, layer_index=0)
+    torch.testing.assert_close(output, base)
+    output.square().mean().backward()
+    assert hypernetwork.heads["q_proj"].weight.grad is not None
+    assert hypernetwork.heads["q_proj"].weight.grad.abs().max() > 0
 
 
 class TupleReturningDecoderLayer(nn.Module):

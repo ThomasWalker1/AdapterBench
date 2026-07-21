@@ -41,6 +41,9 @@ DEFAULT_SFT_TRAIN_TASKS = "lol_022,lol_043,lol_044,lol_045,lol_047,lol_050,lol_0
 # here (e.g. activation steering -> ["block"], IA3 -> ["k_proj", "v_proj", "down_proj"]).
 PILOT_DEFAULT_TARGET_MODULES = {
     "lora": ["q_proj", "v_proj"],
+    # IA3 scales each hooked projection's output channels, retaining the validated
+    # T2L projection sites while changing only the generated representation.
+    "ia3": ["q_proj", "v_proj"],
 }
 
 # TextToPeftHypernetwork's own default (never overridden by any existing t2p-sft*

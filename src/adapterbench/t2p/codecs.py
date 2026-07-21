@@ -5,12 +5,10 @@ passed to `TextToPeftHypernetwork` — `"block"` resolves to the whole decoder l
 `hypernetwork.py::_resolve_target`), anything else resolves to a named `nn.Linear`
 submodule.
 
-**LoRA is the only codec in the current baseline** (see PROJECT_PLAN.md's session
-handoff and roadmap). The whole point of the framework is that a new adapter shape is just a new
+The whole point of the framework is that a new adapter shape is just a new
 `GeneratedUpdateCodec` subclass + one entry in `make_codec` + an adapter manifest;
-additional shapes (FreezeALoRA, LoKr, FourierFT, IA3, activation steering, …) are
-reintroduced one at a time as committed codecs, each with its own leaderboard entry, not carried here
-speculatively. `GeneratedUpdateCodec` deliberately keeps the full contract
+additional shapes arrive one at a time with their own leaderboard entry. `GeneratedUpdateCodec`
+deliberately keeps the full contract
 (`dense_delta`, `initial_bias`, the `"block"` residual-stream hook path) so those shapes
 plug back in without framework changes.
 """
@@ -118,6 +116,40 @@ class LoRACodec(GeneratedUpdateCodec):
         return self.scaling * torch.einsum("bor,bri->boi", b, a)
 
 
+class IA3Codec(GeneratedUpdateCodec):
+    """Output-channel (IA)^3 scaling for a hooked linear projection.
+
+    The generated vector ``v`` has one scalar per output channel and acts as
+    ``W -> diag(1 + scale * v) W``.  At the live hook this is implemented as
+    a multiplicative transform of the projection output, which is exact for the
+    bias-free projection hooks used by both benchmark settings and preserves the
+    identity mapping at the all-zero generated initialization.
+    """
+
+    def __init__(self, in_features: int, out_features: int, scaling: float = 1.0):
+        super().__init__(in_features, out_features)
+        self.scaling = scaling
+
+    @property
+    def output_size(self) -> int:
+        return self.out_features
+
+    def apply(self, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int) -> Tensor:
+        self._check(inputs, generated)
+        multiplier = 1 + self.scaling * generated.to(base_output.dtype)
+        return base_output * multiplier.unsqueeze(1)
+
+    def dense_delta(self, generated: Tensor, layer_index: int) -> Tensor:
+        self._check_output_size(generated)
+        # IA3 is multiplicative rather than an additive, generated weight update:
+        # ΔW = diag(scale * v) W depends on the frozen target module's W, which is
+        # intentionally not part of this codec's generated state.  There is therefore
+        # no standalone additive ΔW to materialize through this interface.  Return the
+        # correctly shaped zero additive component; `apply()` is the authoritative live
+        # implementation of the nonzero transform.
+        return generated.new_zeros(generated.shape[0], self.out_features, self.in_features)
+
+
 def make_codec(
     name: str,
     in_features: int,
@@ -127,22 +159,21 @@ def make_codec(
     rank: int = 8,
     alpha: float = 16.0,
     lora_scaling: float | None = None,
+    ia3_scaling: float = 1.0,
     seed: int = 777,
     # Accepted-and-ignored so call sites (and future codecs) can pass a
     # uniform kwarg set without every caller special-casing which codec is registered.
     **_unused_codec_kwargs,
 ) -> GeneratedUpdateCodec:
-    """Build the codec named `name`. LoRA is the only registered shape in the current
-    baseline; a new adapter shape adds one entry to `constructors` (plus its
-    `GeneratedUpdateCodec` subclass above and its manifest), added one at a time with a leaderboard entry.
-    """
+    """Build a registered generated-update codec."""
     constructors = {
         "lora": lambda: LoRACodec(in_features, out_features, rank, alpha, scaling=lora_scaling, seed=seed),
+        "ia3": lambda: IA3Codec(in_features, out_features, scaling=ia3_scaling),
     }
     try:
         return constructors[name]()
     except KeyError as error:
         raise ValueError(
             f"unsupported differentiable adapter: {name!r} "
-            f"(baseline registers only {sorted(constructors)}; new shapes arrive via the pipeline)"
+            f"(registered codecs: {sorted(constructors)})"
         ) from error

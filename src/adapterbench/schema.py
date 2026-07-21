@@ -101,8 +101,7 @@ class SetupManifest(StrictModel):
 class AdapterManifest(StrictModel):
     schema_version: Literal[1]
     name: str
-    # LoRA is the only baseline family; new families are added here as they arrive.
-    family: Literal["lora"]
+    family: Literal["lora", "ia3"]
     implementation: Literal["peft", "custom"]
     output_structure: str
     target_modules: list[str]
@@ -141,4 +140,3 @@ def make_trial(setup: SetupManifest, adapter: AdapterManifest) -> TrialManifest:
     payload = {"setup": setup.model_dump(mode="json"), "adapter": adapter.model_dump(mode="json")}
     digest = sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()[:12]
     return TrialManifest(trial_id=f"{setup.name}--{adapter.name}--{digest}", setup=setup, adapter=adapter)
-

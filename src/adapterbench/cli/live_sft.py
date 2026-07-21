@@ -35,6 +35,8 @@ from ._shared import (
 # module constant here rather than in `_shared.py` since only `d2p-niah` uses it.
 D2L_PARITY_TARGET_MODULES = {
     "lora": ["down_proj"],
+    # Same validated D2L projection site; IA3 changes only the live generated shape.
+    "ia3": ["down_proj"],
 }
 
 
@@ -374,6 +376,7 @@ def _d2p_niah_command(args) -> None:
         assert_context_fits_in_one_pass(context_length, interpreter.config.max_position_embeddings)
     print(
         f"[1/5] num_layers={num_layers} exit_layer={exit_layer} lora_scaling={lora_scaling:.3f} "
+        f"ia3_scaling={args.ia3_scaling:.3f} "
         f"needle_style={args.needle_style} train_lengths={context_lengths} eval_lengths={eval_context_lengths}",
         flush=True,
     )
@@ -417,6 +420,7 @@ def _d2p_niah_command(args) -> None:
         hypernetwork = TextToPeftHypernetwork(
             module_shapes=module_shapes, num_layers=num_layers, adapter=adapter,
             latent_dim=D2P_LATENT_DIM, rank=args.rank, seed=args.seed, conditioner=conditioner,
+            ia3_scaling=args.ia3_scaling,
         ).to(args.device)
         # Apply the D2L-parity scale directly to the LoRA codec (2*r^1.5, ~8x rslora's
         # default) - the load-bearing ~8x-larger update the frozen model needs to be
@@ -424,12 +428,14 @@ def _d2p_niah_command(args) -> None:
         # LoRA-family weight codecs arrive through the pipeline, extend `scaled_types` to
         # include them under --scale-weight-codecs so a multi-codec comparison isn't
         # confounded by only LoRA receiving this scale.
-        from ..t2p.codecs import LoRACodec
+        from ..t2p.codecs import IA3Codec, LoRACodec
 
         scaled_types = (LoRACodec,)
         for codec in hypernetwork.codecs.values():
             if isinstance(codec, scaled_types):
                 codec.scaling = lora_scaling
+            elif isinstance(codec, IA3Codec):
+                codec.scaling = args.ia3_scaling
 
         evaluator = DocumentHypernetworkDownstreamEvaluator(
             interpreter, layers, hypernetwork, tokenizer,
@@ -638,6 +644,8 @@ def _register_d2p_niah(subparsers) -> None:
     p.add_argument("--rank", type=int, default=8)
     p.add_argument("--lora-scaling", type=float, default=-1.0,
                    help="LoRA scale applied directly; <=0 (default) computes D2L parity 2*r^1.5 (=45.25 at r=8)")
+    p.add_argument("--ia3-scaling", type=float, default=1.0,
+                   help="IA3 multiplier scale in W -> diag(1 + scale*v) W; sweep this per codec.")
     p.add_argument("--scale-weight-codecs", action="store_true",
                    help="also apply --lora-scaling to any other LoRA-family weight codecs added later "
                         "(none in the LoRA-only baseline, so currently a no-op) so a multi-codec "

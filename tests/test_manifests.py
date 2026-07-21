@@ -20,13 +20,12 @@ def test_catalog_and_trial_ids_are_complete_and_stable():
         "document",
         "task_description",
     }
-    # LoRA is the only baseline adapter; more are added one at a time with leaderboard entries.
-    assert len(adapters) == 1
+    assert set(adapters) == {"ia3", "lora_r8"}
     # Every registered adapter supports the downstream objective, so a downstream setup
     # builds a trial against all of them - matching how `adapterbench validate`/
     # build_matrix actually behaves.
     trials = build_matrix(setups["text_to_peft_gemma2b_sft"], list(adapters.values()))
-    assert len(trials) == 1
+    assert len(trials) == 2
     assert len({trial.trial_id for trial in trials}) == len(trials)
     repeated = build_matrix(setups["text_to_peft_gemma2b_sft"], list(adapters.values()))
     assert [trial.trial_id for trial in repeated] == [trial.trial_id for trial in trials]
@@ -34,7 +33,7 @@ def test_catalog_and_trial_ids_are_complete_and_stable():
     document_trials = build_matrix(
         setups["document_to_peft_qwen06b_niah"], list(adapters.values())
     )
-    assert len(document_trials) == 1
+    assert len(document_trials) == 2
 
 
 def test_make_trial_rejects_an_objective_the_adapter_does_not_support():

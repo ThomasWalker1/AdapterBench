@@ -29,8 +29,9 @@ STATIC_FLAG=""; [ "${STATIC:-0}" = "1" ] && STATIC_FLAG="--static"
 # strip-def (the real eval is the held-out-SNI teacher-forced-CE script on snapshots). ELIMIT lets a
 # strip-def run shrink that eval so it doesn't burn ~1h of autoregressive generation on the wrong instrument.
 ELIMIT="${ELIMIT:-80}"; ETASKS="${ETASKS:-arc_easy,arc_challenge,hellaswag,boolq}"
-OUT="results/repro/t2l_base_diag/$TAG/s$SEED"
+OUT="${OUT:-results/repro/t2l_base_diag/$TAG/s$SEED}"
 mkdir -p "$OUT"
+ADAPTER="${ADAPTER:-lora}"; IA3_SCALE="${IA3_SCALE:-1.0}"
 
 echo "=== T2L base diag: interpreter=$INTERP tag=$TAG gpus=$GPUS per_gpu_batch=$PGB steps=$STEPS lr=$LR snap=$SNAP limit=$LIMIT clambda=$CLAMBDA ($(date)) ==="
 CUDA_VISIBLE_DEVICES="$GPUS" .venv/bin/torchrun --standalone --nproc_per_node="$NPROC" \
@@ -38,6 +39,7 @@ CUDA_VISIBLE_DEVICES="$GPUS" .venv/bin/torchrun --standalone --nproc_per_node="$
   --all-decontam-tasks --max-descriptions 128 --limit "$LIMIT" \
   --per-gpu-batch "$PGB" --steps "$STEPS" --learning-rate "$LR" --warmup-frac 0.1 \
   --max-grad-norm 1.0 --fixed-seq-len 512 --snapshot-every "$SNAP" \
+  --adapter "$ADAPTER" --ia3-scaling "$IA3_SCALE" \
   --contrastive-lambda "$CLAMBDA" --contrastive-margin "$CMARGIN" --neutral-junk-lambda "$NJLAMBDA" \
   $STRIP_FLAG $STATIC_FLAG \
   --eval-tasks "$ETASKS" --eval-limit "$ELIMIT" \

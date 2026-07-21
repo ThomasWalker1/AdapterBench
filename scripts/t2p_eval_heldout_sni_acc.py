@@ -68,6 +68,7 @@ def build_args():
     p.add_argument("--max-len", type=int, default=512)
     p.add_argument("--adapter", default="lora")
     p.add_argument("--rank", type=int, default=8)
+    p.add_argument("--ia3-scaling", type=float, default=1.0)
     p.add_argument("--device", default="cuda:0")
     p.add_argument("--out", default="")
     return p.parse_args()
@@ -96,7 +97,7 @@ def main() -> None:
         condition_dim = embed_task_descriptions(["probe"], encoder_model, encoder_tokenizer).shape[-1]
     hypernetwork = TextToPeftHypernetwork(
         condition_dim=condition_dim, module_shapes=module_shapes, num_layers=len(layers),
-        adapter=args.adapter, rank=args.rank, seed=0,
+        adapter=args.adapter, rank=args.rank, ia3_scaling=args.ia3_scaling, seed=0,
     ).to(device)
     hypernetwork.load_state_dict(torch.load(args.snapshot, map_location=device, weights_only=False)["model"])
     hypernetwork.eval()

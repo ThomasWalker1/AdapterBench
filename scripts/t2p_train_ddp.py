@@ -156,6 +156,8 @@ def build_args():
                    help="LoRA output scale for the invariant-#2 best-of-scale sweep; <=0 uses the "
                         "codec default. Applied to each LoRA codec before training (as the pilot's "
                         "--scales does), so a scale sweep at the shipped DDP recipe is a per-value run.")
+    p.add_argument("--ia3-scaling", type=float, default=1.0,
+                   help="IA3 multiplier scale in W -> diag(1 + scale*v) W; select it with a per-codec sweep.")
     p.add_argument(
         "--fixed-seq-len", type=int, default=0,
         help="pad every batch to this fixed length instead of the per-batch max. Numerically "
@@ -267,6 +269,7 @@ def main() -> None:
         module_shapes=module_shapes,
         num_layers=len(layers),
         adapter=args.adapter,
+        ia3_scaling=args.ia3_scaling,
         seed=args.seed,
     ).to(device)
     if args.lora_scaling > 0:
@@ -278,6 +281,8 @@ def main() -> None:
             if isinstance(codec, LoRACodec):
                 codec.scaling = args.lora_scaling
         log(f"[scale] LoRA codec scaling set to {args.lora_scaling}")
+    if args.adapter == "ia3":
+        log(f"[scale] IA3 codec scaling set to {args.ia3_scaling}")
     if args.static:
         if args.contrastive_lambda > 0 or args.neutral_junk_lambda > 0:
             raise ValueError("--static trains a single unconditioned adapter; it is incompatible "
@@ -515,7 +520,7 @@ def main() -> None:
         (output_dir / "train_meta.json").write_text(json.dumps({
             "static": True, "adapter": args.adapter, "interpreter": args.interpreter,
             "effective_batch": eff_batch, "steps": args.steps, "learning_rate": args.learning_rate,
-            "per_task_limit": per_task_limit, "losses": losses,
+            "per_task_limit": per_task_limit, "ia3_scaling": args.ia3_scaling, "losses": losses,
         }, indent=2) + "\n")
         log(f"[6/6] static adapter trained -> {output_dir} "
             f"(eval post-hoc: t2p_eval_checkpoint.py --static-snapshot)")
@@ -547,8 +552,12 @@ def main() -> None:
         eval_condition_embeddings, all_eval_examples, split=args.eval_split,
         mismatched_embeddings=mismatched_condition_embeddings,
     ):
+        scale_metadata = {"seed": args.seed}
+        scale_metadata["ia3_scale" if args.adapter == "ia3" else "lora_scale"] = (
+            args.ia3_scaling if args.adapter == "ia3" else "default"
+        )
         recorder.record(dataclasses.replace(
-            result, metadata={**result.metadata, "seed": args.seed, "lora_scale": "default"}))
+            result, metadata={**result.metadata, **scale_metadata}))
 
     (output_dir / "train_meta.json").write_text(json.dumps({
         "effective_batch": eff_batch, "per_gpu_batch": args.per_gpu_batch, "world_size": world,
@@ -557,6 +566,7 @@ def main() -> None:
         "per_task_limit": per_task_limit, "interpreter": args.interpreter,
         "contrastive_lambda": args.contrastive_lambda, "contrastive_margin": args.contrastive_margin,
         "neutral_junk_lambda": args.neutral_junk_lambda, "strip_task_def": args.strip_task_def,
+        "adapter": args.adapter, "ia3_scaling": args.ia3_scaling,
     }, indent=2) + "\n")
     log(f"[6/6] done -> {output_dir}")
     dist.destroy_process_group()
