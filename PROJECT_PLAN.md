@@ -21,7 +21,7 @@ The benchmark contains exactly two genuinely inference-time adaptive language se
 LoRA is currently the only registered codec; it is the rigorous baseline that validates
 both settings before alternative shapes are added.
 
-## Current status (2026-07-20)
+## Current status (2026-07-21)
 
 Both language settings pass controls that require genuine condition dependence.
 
@@ -44,82 +44,82 @@ Canonical results and exact commands are in:
 - `leaderboards/document_niah_d2l.md`
 
 Negative investigations are retained as results rather than as dormant settings.
-`NEGATIVE_RESULTS.md` records standard input-visible Text-to-LoRA, prompt-conditioned
-image tilting, selective erasure, and reference-image identity, including their
-matched-control measurements and the reason each was excluded.
+`NEGATIVE_RESULTS.md` records the standard input-visible Text-to-LoRA negative result —
+the setting produces helpful adapters but fails a condition control — with its
+matched-control measurements, a verification on Sakana's own released checkpoints
+(standalone, under `scripts/negative_results/t2l_released_prompt_ablation/`, outside the
+benchmark code), and reproduction instructions.
 
-## Completion status and release focus
+## Where the project stands
 
-### Release work status (updated 2026-07-20)
-
-**Done in this hardening pass:** versioned canonical T2L/D2L LoRA aggregate records,
-seed-level numerical validation, provenance hashes and locally observed model revisions,
-deterministic leaderboard/website result fragments, a drift check, smoke/full
-reproduction entry points, preflight diagnostics, release citation/changelog metadata,
-and T2L multi-seed aggregation.
-
-**Verified in this environment:** all 94 unit tests, manifest validation, two-setting/
-one-codec catalog inspection, canonical-result validation, rendered-table drift checks,
-artifact reaggregation, and `git diff --check` pass. The only local failure is expected:
-this sandbox has no CUDA-visible GPU.
-
-**Paper status:** the active T2L/D2L setting descriptions and canonical LoRA results were
-updated in `/home/tw78/adapterbench-paper.tex` on 2026-07-20; PDF compilation and visual
-proof remain external prerequisites.
-
-**Still required before release:** clean-environment installation, GPU smoke tests and
-full reproductions on release hardware, a TeX/PDF build and visual proof, license choice,
-and any model/data access that is absent from the release machine.
-
-The benchmark's **scientific substrate is complete**:
+The **scientific substrate is complete** and the project is no longer in
+setting-discovery or substrate-building mode:
 
 - the active scope is frozen to T2L and D2L;
-- both conditions are available only through the generated adapter path;
-- both settings have behavioral controls, difficulty axes, multi-seed LoRA results, and
-  canonical reproduction scripts;
+- both conditions reach the frozen interpreter only through the generated adapter path;
+- both settings have behavioral controls, a helpfulness floor, difficulty axes, multi-seed
+  LoRA results, and canonical reproduction scripts;
 - the shared codec/hook seam, training paths, evaluators, checkpointing, manifests, tests,
   leaderboards, and negative-results record are implemented;
+- the standard-T2L conditioning failure is verified on Sakana's released checkpoints
+  (`scripts/negative_results/t2l_released_prompt_ablation/`), not just our own diagnostics;
 - image and planning infrastructure is intentionally absent.
 
-The project is no longer in setting-discovery mode. The remaining work is **release
-hardening**, not another research phase:
+**LoRA is the only registered codec.** It is deliberately the validated reference, not the
+answer to the benchmark's question. Everything above exists so that question can now be
+asked, which makes **codec exploration the one substantive remaining phase**.
 
-1. **One obvious user path.** Make the README/guide lead from installation to a cheap
-   smoke test and then to the two canonical reproductions without requiring knowledge of
-   internal scripts or historical experiments.
-2. **Canonical result derivation.** Commit compact machine-readable aggregate artifacts
-   for the LoRA rows and generate the Markdown/website tables from them, so the same
-   number is never maintained independently in several files.
-3. **Reproduction provenance.** Record exact model revisions, data provenance/checksums,
-   seeds, selected free hyperparameters, environment versions, commands, and expected
-   output files alongside every row.
-4. **Operational polish.** Keep long runs restart-safe; add preflight checks, resource and
-   runtime guidance, actionable errors, and explicit smoke/full modes.
-5. **Presentation coherence.** Keep `README.md`, `GUIDE.md`, `SETUP.md`,
-   `BENCHMARK_CONTRACT.md`, `leaderboards/`, `docs/index.html`, and the paper synchronized
-   with the two-setting catalog and canonical result artifacts.
-6. **Release verification.** Test installation from a clean environment, run CPU/unit
-   tests plus GPU smoke tests, validate the manifest catalog, reproduce aggregates from
-   stored metrics, build the paper/site, and check all links and commands.
+## Next phase: codec exploration
 
-### Initial-release definition of done
+AdapterBench's reason to exist is the comparison the substrate now makes fair: *does the
+generated adapter's shape matter?* Answering it means populating both leaderboards with
+the non-LoRA codecs already described in the paper (Section "Codecs"), one at a time,
+through the stable extension path in "Stable extension interface" below. None of this
+changes the shared substrate.
 
-The initial release is ready when a new user can:
+Candidate codecs to add (each is a `GeneratedUpdateCodec` subclass + a `make_codec` entry
++ a `configs/adapters/<name>.yaml` + unit tests):
 
-- install the package from the documented lockfile;
-- understand the two settings and their controls without reading source code;
-- run a short validation on available hardware;
-- launch or resume either canonical LoRA reproduction from one documented entry point;
-- regenerate the published aggregate and identify every input artifact;
-- see matching numbers in the CLI output, leaderboards, and website;
-- obtain a clear diagnostic when data, model access, cached assets, CUDA, or GPU capacity
-  is missing.
+| codec | update | budget / site | reparam. symmetry | why it is interesting |
+|---|---|---|---|---|
+| (IA)³ | `W ↦ diag(1+v) W` | `d_out` | none | can a tiny, symmetry-free shape carry conditioning at all? |
+| LoKr | `ΔW = B ⊗ A` | factor-dependent | scaling only | full-rank reach from few scalars; different budget/expressivity trade-off |
+| FourierFT | `ΔW = F⁻¹(sparse coeffs)` | `n` (chosen), size-independent | none | fixed global basis removes the low-rank rotation symmetry entirely |
+| activation steering | `h ↦ h + s·v` | `d_model` | scaling | adaptation with no weight edit; hook site is the residual stream, not a projection |
 
-Alternative codec rows remain the intended use of AdapterBench, but they are
-**post-release benchmark population**, not a prerequisite for shipping the stable
-two-setting framework. The initial paper therefore reports a LoRA reference
-implementation and validates the benchmark's causal controls; it does not claim to have
-identified the optimal adapter shape.
+The open empirical question is whether the low-rank rotation symmetry LoRA carries
+(`BA = (BG)(G⁻¹A)`) is a real obstacle to one-shot prediction, i.e. whether a
+symmetry-free or lower-budget shape conditions *better* than LoRA under identical training.
+For each codec the deliverable is a leaderboard row in **both** T2L and D2L: `matched −
+control` at the codec's best swept scale, at least three seeds, with the same conditioner,
+trunk, data, evaluator, and controls as the LoRA reference. Losing shapes stay on the
+leaderboards — a shape that fails to condition is itself a result.
+
+Per-codec worklist (repeat the "Stable extension interface" steps):
+
+1. Implement the `GeneratedUpdateCodec` subclass (geometry, initialization, `apply`,
+   `dense_delta`, `initial_bias` if bilinear) and register it.
+2. Add its manifest/config and unit tests (geometry, init, hook application).
+3. Run codec-specific scale selection (D2L's useful scale is far above PEFT defaults;
+   sweep, don't assume).
+4. Run ≥3 seeds in each setting; record aggregates as compact canonical metrics.
+5. Add a row to each leaderboard with exact commands and artifacts.
+
+## Remaining release prerequisites
+
+Mechanical, and independent of codec exploration — none require another research phase:
+
+- [ ] clean-environment installation and every documented command verified;
+- [ ] GPU smoke tests and full LoRA reproductions on release hardware (the sandbox has no
+      CUDA-visible GPU, the only expected local failure);
+- [ ] confirm/commit the final T2L scale-selection evidence and D2L's full sweep summary as
+      a compact record (D2L's selected operating scale is 45.25);
+- [ ] TeX/PDF build and visual proof of the paper and website;
+- [ ] license decision (`CITATION.cff`, version `0.1.0`, `CHANGELOG.md` are present).
+
+Already done: versioned canonical T2L/D2L LoRA aggregates with a drift check, provenance
+hashes and model revisions, smoke/full reproduction entry points, preflight diagnostics,
+and all 94 unit tests + manifest/catalog/drift checks passing locally.
 
 Repository policy: experiment outputs under `results/` are scratch unless explicitly
 force-added as compact canonical metrics. Checkpoints, adapters, logs, and large artifacts
@@ -356,7 +356,8 @@ There is one leaderboard per active setting:
 Settings are never pooled because their metrics differ. The cross-setting question is
 whether a codec's relative behavior repeats.
 
-After the initial release, a codec is added through the stable extension path:
+A codec is added through the stable extension path (this is exactly the "Next phase:
+codec exploration" worklist):
 
 1. subclass `GeneratedUpdateCodec`;
 2. register it in `make_codec`;
@@ -366,36 +367,10 @@ After the initial release, a codec is added through the stable extension path:
 6. run at least three seeds in both settings;
 7. add a row to each leaderboard with exact commands and artifacts.
 
-Losing shapes remain in the leaderboards. Populating these rows is the benchmark's next
-research use, but it does not change the release-hardening checklist above.
-
-## Release checklist
-
-### Required before the initial release
-
-- [x] Define and commit the compact canonical result schema and LoRA aggregate files.
-- [x] Derive/verify the two leaderboards and website table from those
-      aggregates with `adapterbench results check`. (The paper draft is kept separate
-      from this repository and is not covered by the drift check.)
-- [ ] Confirm and record the final T2L scale-selection evidence; D2L's recorded selected
-      operating scale is 45.25, but its full sweep summary still needs a committed compact record.
-- [x] Consolidate smoke and full reproduction commands with preflight/resource guidance.
-- [x] Pin and display model/data revisions and complete provenance for both settings.
-- [ ] Verify clean-environment installation and all documented commands.
-- [x] Run unit tests, catalog validation, aggregate-regeneration, and canonical-table
-      checks. GPU smoke tests remain an external hardware prerequisite.
-- [ ] Build and proof the paper and website. The paper's active-setting/result content is
-      synchronized; TeX compilation and visual proof remain required.
-- [ ] Add release metadata: a license decision is still required; `CITATION.cff`, version
-      `0.1.0`, and `CHANGELOG.md` are present.
-
-### Post-release extensions
-
-- Add alternative codec shapes through the stable codec/hook interface.
-- Populate both leaderboards using the fixed controls and at least three seeds.
-- Improve sweep efficiency without changing the shared substrate.
-- Consider additional settings only if they pass a preregistered matched-control audit;
-  no image or planning setting is currently planned.
+Losing shapes remain in the leaderboards: a shape that fails to condition is a result, not
+a failure. Additional *settings* (beyond T2L/D2L) are out of scope and would be considered
+only if they passed a preregistered matched-control audit; no image or planning setting is
+planned.
 
 ## Reference: prior art
 
