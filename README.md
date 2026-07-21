@@ -38,7 +38,8 @@ results without remaining active benchmark infrastructure.
 
 Committed headline records live in [`canonical_results/`](canonical_results/). They, not
 the rendered tables, are the source of truth; run `uv run adapterbench results check` to
-verify the leaderboards, website, and paper tables against them.
+verify the leaderboards and website tables against them. The paper draft is maintained
+separately from this repository and is not part of the drift check.
 
 ## Layout
 

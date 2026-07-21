@@ -13,7 +13,7 @@ benchmark settings.
 
 | investigated setting | control result | conclusion |
 |---|---|---|
-| Standard Text-to-LoRA, with the task definition still in the interpreter prompt | mean matched − junk accuracy: Qwen3-0.6B `+0.003`, Gemma-2-2B `+0.022`, Mistral-7B `−0.019`; all within roughly `±0.05` evaluation noise | the generated adapter can be generically helpful, but the task description is redundant and the matched adapter is not reliably better than a junk-description adapter |
+| Standard Text-to-LoRA, with the task definition still in the interpreter prompt | mean matched − junk accuracy: Qwen3-0.6B `+0.003`, Gemma-2-2B `+0.022`, Mistral-7B `−0.019`; all within roughly `±0.05` evaluation noise. Confirmed on Sakana's released checkpoints: matched − junk is `+0.029` (Gemma) / `−0.001` (Mistral) even though matched − frozen is `+0.011` / `+0.130` | the generated adapter can be generically helpful, but the task description is redundant and the matched adapter is not reliably better than a junk-description adapter |
 | Prompt-conditioned image reward tilting | matched − shuffled ImageReward at LoRA scales 0.5/1/2/4: `−0.001`, `+0.011`, `≈0.000`, `+0.023` | the apparent matched − static gain was a generic hypernetwork/optimization advantage, not prompt-specific adaptation |
 | Conditioned selective object erasure | the final UnHype-style objective showed no significant matched advantage over static or swapped controls; target and retained objects were suppressed almost identically | the condition induced mild proxy-level steering, but not reliable conditional deletion |
 | Reference-image-conditioned exact chair identity | matched top-1 retrieval was `6.25%` at every tested scale, equal to frozen/static chance; wrong-adapter retrieval was `5.47%–6.25%` | even directly optimized per-identity LoRAs could not transmit identity, so a generated-adapter benchmark would compare codecs at a shared floor |
@@ -48,6 +48,37 @@ under-powered three-seed run made the same issue especially clear: matched minus
 mismatched accuracy was `−0.017`, `−0.021`, `−0.021`, and `−0.029` on ARC-Easy,
 ARC-Challenge, HellaSwag, and BoolQ respectively. The adapters could improve raw
 performance, but a wrong or meaningless description improved it just as much.
+
+### Verification on Sakana's released checkpoints
+
+The gaps above came from our own diagnostic training runs. To confirm the effect is a
+property of the standard setting and not of our reimplementation, we loaded Sakana's
+**released** Text-to-LoRA hypernetworks (`SakanaAI/text-to-lora`, revision
+`6e571eda2188b216f027263cd28c99c0fdcf2fa3`), generated one LoRA per condition, and scored
+each on 200 held-out examples per family under upstream's own prompt/answer-extraction
+protocol. Only the text handed to the hypernetwork changed: `matched` (the family's own
+task description), `shuffled` (a different family's real description), or `junk`
+(`args.yaml`'s `additional_eval_descs`, e.g. `dogs;cats;bananas;`). The frozen interpreter
+saw an identical prompt in every case.
+
+| released checkpoint | matched − frozen | matched − shuffled | matched − junk |
+|---|---:|---:|---:|
+| `gemma_2b_t2l` (google/gemma-2-2b-it) | `+0.011` | `+0.022` | `+0.029` |
+| `mistral_7b_t2l` (mistralai/Mistral-7B-Instruct-v0.2) | `+0.130` | `−0.009` | `−0.001` |
+
+Means over ARC-Easy, ARC-Challenge, BoolQ, and HellaSwag. On Mistral the generated
+adapter is genuinely and generically helpful (`matched − frozen = +0.130`), yet giving it
+the *correct* per-task description buys nothing over a wrong task's description or
+meaningless text (`matched − shuffled = −0.009`, `matched − junk = −0.001`). On Gemma every
+gap is within the same `±0.05` noise band. The published checkpoints reproduce the
+diagnostic: the adapter helps, the per-prompt condition does not.
+
+This verification lives entirely outside the benchmark code, as a standalone record, in
+`scripts/negative_results/t2l_released_prompt_ablation/` (per-family numbers in
+`results/negative_results/t2l_released_prompt_ablation/*/ablation_summary.json`). It is not
+a registered setting and does not import the active `adapterbench` package.
+
+### The active setting, by contrast
 
 This is a negative result about the **standard input-visible setting**, not the active
 AdapterBench T2L setting. AdapterBench strips the task definition from the interpreter
@@ -136,9 +167,17 @@ It is evidence for generic reward tilting, not for inference-time adaptivity.
 
 ## Provenance
 
-The standard Text-to-LoRA artifacts remain under
+The standard Text-to-LoRA diagnostic artifacts remain under
 `results/repro/t2l_base_diag/`, `results/t2p_cond_ddp/`, and
-`results/_archive/t2p_cond_long/`. The retired image implementation and its detailed
+`results/_archive/t2p_cond_long/`. The released-checkpoint verification (§1) is a
+standalone, self-contained record under
+`scripts/negative_results/t2l_released_prompt_ablation/` (see its `README.md` for exact
+setup and reproduction commands), with per-family numbers in
+`results/negative_results/t2l_released_prompt_ablation/{gemma_2b,mistral_7b}/ablation_summary.json`.
+The disk-artifact "setting 1" code it was rebuilt from was removed from the active tree
+in git commits `a8867de`/`64de45e` and can be recovered from `a8867de^`.
+
+The retired image implementation and its detailed
 write-up are recoverable from git commit `65b1593`:
 
 ```bash

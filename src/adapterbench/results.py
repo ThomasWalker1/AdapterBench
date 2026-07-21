@@ -164,11 +164,6 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
         )
     if fragment == "d2l-html":
         return f'<tr><td>LoRA <span class="baseline-badge">baseline</span></td><td>{d2l["free_hyperparameters"]["scale"]}</td><td>4e-5</td><td>12 000</td><td>5</td><td>{dh["matched"]:.3f} ± {dh["variation"]:.3f}</td><td>{dh["control"]:.3f}</td><td class="headline">{_signed(dh["value"], 3)} ± {dh["variation"]:.3f}</td></tr>'
-    if fragment == "paper-results":
-        return "\n".join([
-            f"T2L & rank 8, lr $10^{{-4}}$, 20k steps, 3 seeds & held-out answer CE & ${th['value']:.3f}\\pm{th['variation']:.3f}$ nats matched $-$ static; {t2l['summary']['wins']} " + r"\\",
-            f"D2L & rank 8, scale {d2l['free_hyperparameters']['scale']}, lr $4{{\\times}}10^{{-5}}$, 12k steps, 5 seeds & {dh['matched']:.3f} / {dh['control']:.3f} accuracy & ${dh['value']:+.3f}\\pm{dh['variation']:.3f}$ matched $-$ context-swap " + r"\\",
-        ])
     raise ResultValidationError(f"unknown fragment: {fragment}")
 
 
@@ -180,7 +175,6 @@ def check_rendered_documents(records: list[dict[str, Any]], root: Path = REPO_RO
         (root / "scripts/reproduce/README.md", "repro-summary-markdown"),
         (root / "docs/index.html", "t2l-html"),
         (root / "docs/index.html", "d2l-html"),
-        (root.parent / "adapterbench-paper.tex", "paper-results"),
     ]
     errors = []
     for path, fragment in targets:

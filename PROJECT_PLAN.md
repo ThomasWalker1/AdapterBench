@@ -54,7 +54,7 @@ matched-control measurements and the reason each was excluded.
 
 **Done in this hardening pass:** versioned canonical T2L/D2L LoRA aggregate records,
 seed-level numerical validation, provenance hashes and locally observed model revisions,
-deterministic leaderboard/website/paper result fragments, a drift check, smoke/full
+deterministic leaderboard/website result fragments, a drift check, smoke/full
 reproduction entry points, preflight diagnostics, release citation/changelog metadata,
 and T2L multi-seed aggregation.
 
@@ -62,6 +62,10 @@ and T2L multi-seed aggregation.
 one-codec catalog inspection, canonical-result validation, rendered-table drift checks,
 artifact reaggregation, and `git diff --check` pass. The only local failure is expected:
 this sandbox has no CUDA-visible GPU.
+
+**Paper status:** the active T2L/D2L setting descriptions and canonical LoRA results were
+updated in `/home/tw78/adapterbench-paper.tex` on 2026-07-20; PDF compilation and visual
+proof remain external prerequisites.
 
 **Still required before release:** clean-environment installation, GPU smoke tests and
 full reproductions on release hardware, a TeX/PDF build and visual proof, license choice,
@@ -107,7 +111,7 @@ The initial release is ready when a new user can:
 - run a short validation on available hardware;
 - launch or resume either canonical LoRA reproduction from one documented entry point;
 - regenerate the published aggregate and identify every input artifact;
-- see matching numbers in the CLI output, leaderboards, website, and paper;
+- see matching numbers in the CLI output, leaderboards, and website;
 - obtain a clear diagnostic when data, model access, cached assets, CUDA, or GPU capacity
   is missing.
 
@@ -370,8 +374,9 @@ research use, but it does not change the release-hardening checklist above.
 ### Required before the initial release
 
 - [x] Define and commit the compact canonical result schema and LoRA aggregate files.
-- [x] Derive/verify the two leaderboards, website table, and paper table from those
-      aggregates with `adapterbench results check`.
+- [x] Derive/verify the two leaderboards and website table from those
+      aggregates with `adapterbench results check`. (The paper draft is kept separate
+      from this repository and is not covered by the drift check.)
 - [ ] Confirm and record the final T2L scale-selection evidence; D2L's recorded selected
       operating scale is 45.25, but its full sweep summary still needs a committed compact record.
 - [x] Consolidate smoke and full reproduction commands with preflight/resource guidance.
@@ -379,8 +384,8 @@ research use, but it does not change the release-hardening checklist above.
 - [ ] Verify clean-environment installation and all documented commands.
 - [x] Run unit tests, catalog validation, aggregate-regeneration, and canonical-table
       checks. GPU smoke tests remain an external hardware prerequisite.
-- [ ] Build and proof the paper and website; eliminate stale links, placeholders, and
-      duplicated result claims.
+- [ ] Build and proof the paper and website. The paper's active-setting/result content is
+      synchronized; TeX compilation and visual proof remain required.
 - [ ] Add release metadata: a license decision is still required; `CITATION.cff`, version
       `0.1.0`, and `CHANGELOG.md` are present.
 
