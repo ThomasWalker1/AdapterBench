@@ -174,14 +174,15 @@
         <thead><tr><th>Shape</th><th>scale</th><th>lr</th><th>steps</th><th>seeds</th><th>accuracy</th><th>ctx-swap</th><th>matched − control</th></tr></thead>
         <tbody>
 <!-- canonical-results:d2l-html:start -->
-<tr><td>LoRA <span class="baseline-badge">baseline</span></td><td>45.25</td><td>4e-5</td><td>12 000</td><td>5</td><td>0.887 ± 0.143</td><td>0.000</td><td class="headline">+0.887 ± 0.143</td></tr>
+<tr><td>LoRA (r=8) <span class="baseline-badge">baseline</span></td><td>45.25</td><td>4e-5</td><td>12,000</td><td>5</td><td>0.887 ± 0.143</td><td>0.000</td><td class="headline">+0.887 ± 0.143</td></tr>
+<tr><td>(IA)³</td><td>64</td><td>2e-5</td><td>36,000</td><td>3</td><td>1.000 ± 0.000</td><td>0.000</td><td class="headline">+1.000 ± 0.000</td></tr>
 <!-- canonical-results:d2l-html:end -->
         </tbody>
       </table></div>
-      <div class="invite">In-distribution (256 tok). Length-generalization crossover at 4096 tok = 16× the training length. Reproduce: <span class="mono">scripts/reproduce/document_niah_lora.sh</span></div>
+      <div class="invite">In-distribution (256 tok). Length-generalization crossover at 4096 tok = 16× the training length. Reproduce: <span class="mono">scripts/reproduce/document_niah_lora.sh</span> and <span class="mono">scripts/reproduce/document_niah_ia3.sh</span></div>
     </div>
 
-    <p class="muted" style="margin-top:22px">Both active boards currently have a single row — the LoRA baseline. The benchmark exists to fill the rows below it. Losing shapes are kept, not curated away: the "does shape matter?" question needs the negatives.</p>
+    <p class="muted" style="margin-top:22px">LoRA is the validated reference; (IA)³ is the first explored alternative. More shapes will be added one at a time. Losing shapes are kept, not curated away: the "does shape matter?" question needs the negatives.</p>
   </div>
 </section>
 

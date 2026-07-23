@@ -9,7 +9,8 @@ row up to seed variance — this is the benchmark's reproducibility contract.
 | Setting | Script | Leaderboard | Headline |
 |---|---|---|---|
 | Task (T2L) | `task_t2l_lora_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2l.md` | matched − static = **−0.723 ± 0.162** nats CE (59/63 task-seed pairs, 3 seeds) |
-| Document (NIAH) | `document_niah_lora.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **+0.887 ± 0.143** (5 seeds, realistic haystack; crossover 16×) |
+| Document (NIAH) — LoRA (r=8) | `document_niah_lora.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **+0.887 ± 0.143** (5 seeds, realistic haystack; crossover 16×) |
+| Document (NIAH) — (IA)³ | `document_niah_ia3.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **+1.000 ± 0.000** (3 seeds, realistic haystack; crossover 16×) |
 <!-- canonical-results:repro-summary-markdown:end -->
 
 All scripts run `adapterbench preflight` before training and are restart-safe: re-run the

@@ -105,13 +105,30 @@ def load_records(root: Path = DEFAULT_RESULTS_ROOT) -> list[dict[str, Any]]:
         records.append(record)
     if not records:
         raise ResultValidationError(f"no records under {root}")
-    if len({record["setting"] for record in records}) != len(records):
-        raise ResultValidationError("canonical settings must be unique")
+    identities = {(record["setting"], record["codec"]) for record in records}
+    if len(identities) != len(records):
+        raise ResultValidationError("canonical (setting, codec) pairs must be unique")
     return records
 
 
-def _by_setting(records: list[dict[str, Any]], setting: str) -> dict[str, Any]:
-    return next(record for record in records if record["setting"] == setting)
+def _by_setting(records: list[dict[str, Any]], setting: str) -> list[dict[str, Any]]:
+    return [record for record in records if record["setting"] == setting]
+
+
+def _one_setting_record(records: list[dict[str, Any]], setting: str) -> dict[str, Any]:
+    selected = _by_setting(records, setting)
+    if len(selected) != 1:
+        raise ResultValidationError(f"expected exactly one canonical record for {setting}, found {len(selected)}")
+    return selected[0]
+
+
+def _d2l_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Keep the validated LoRA reference first, then sort explored codecs by name."""
+    return sorted(_by_setting(records, "D2L"), key=lambda record: (record["codec"] != "lora_r8", record["codec"]))
+
+
+def _display_name(record: dict[str, Any]) -> str:
+    return str(record.get("display_name", record["codec"]))
 
 
 def _signed(value: float, decimals: int) -> str:
@@ -119,8 +136,10 @@ def _signed(value: float, decimals: int) -> str:
 
 
 def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
-    t2l, d2l = _by_setting(records, "T2L"), _by_setting(records, "D2L")
-    th, dh = t2l["headline"], d2l["headline"]
+    t2l, d2l_records = _one_setting_record(records, "T2L"), _d2l_records(records)
+    if not d2l_records:
+        raise ResultValidationError("no canonical D2L records")
+    th = t2l["headline"]
     if fragment == "t2l-markdown":
         return "\n".join([
             "| Shape | rank | lr | steps | seeds | **matched − static (CE, nats)** | matched − frozen | accuracy m−static / m−frozen |",
@@ -128,31 +147,51 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
             f"| LoRA | 8 | 1e-4 | 20 000 | 3 | **{_signed(th['value'], 3)} ± {th['variation']:.3f}** ({t2l['summary']['wins']}) | {_signed(t2l['summary']['matched_minus_frozen']['value'], 2)} ± {t2l['summary']['matched_minus_frozen']['variation']:.2f} | {_signed(t2l['summary']['accuracy_matched_minus_static']['value'], 4)} ± {t2l['summary']['accuracy_matched_minus_static']['variation']:.4f} / {_signed(t2l['summary']['accuracy_matched_minus_frozen'], 3)} |",
         ])
     if fragment == "d2l-markdown":
-        axes = " | ".join(str(point["axis"]) for point in d2l["difficulty_curve"])
-        values = " | ".join(f"{point['delta']:.3f}" for point in d2l["difficulty_curve"])
-        return "\n".join([
+        lines = [
             "| Shape | scale | lr | steps | seeds | accuracy | ctxswap | **matched − control** |",
             "|---|:---:|---:|---:|:---:|---:|---:|:---:|",
-            f"| LoRA (r=8) | {d2l['free_hyperparameters']['scale']} | 4e-5 | 12 000 | 5 | {dh['matched']:.3f} ± {dh['variation']:.3f} | {dh['control']:.3f} | **{_signed(dh['value'], 3)} ± {dh['variation']:.3f}** |",
-            "",
-            f"| eval len | {axes} |",
-            "|---|" + "---|" * len(d2l["difficulty_curve"]),
-            f"| matched − control | {values} |",
-        ])
+        ]
+        for d2l in d2l_records:
+            dh, hp = d2l["headline"], d2l["free_hyperparameters"]
+            lines.append(
+                f"| {_display_name(d2l)} | {hp['scale']} | {hp['learning_rate']} | "
+                f"{hp['steps']:,} | {len(d2l['seed_results'])} | {dh['matched']:.3f} ± {dh['variation']:.3f} | "
+                f"{dh['control']:.3f} | **{_signed(dh['value'], 3)} ± {dh['variation']:.3f}** |"
+            )
+        axes = " | ".join(str(point["axis"]) for point in d2l_records[0]["difficulty_curve"])
+        lines.extend(["", f"| eval len | {axes} |", "|---|" + "---|" * len(d2l_records[0]["difficulty_curve"])])
+        for d2l in d2l_records:
+            values = " | ".join(f"{point['delta']:.3f}" for point in d2l["difficulty_curve"])
+            lines.append(f"| matched − control ({_display_name(d2l)}) | {values} |")
+        return "\n".join(lines)
     if fragment == "release-summary-markdown":
+        d2l_summary = "; ".join(
+            f"{_display_name(d2l)}: `matched − context-swap = {_signed(d2l['headline']['value'], 3)} ± {d2l['headline']['variation']:.3f}`"
+            for d2l in d2l_records
+        )
+        d2l_control = "; ".join(
+            f"{_display_name(d2l)} control `{d2l['headline']['control']:.3f}`" for d2l in d2l_records
+        )
         return "\n".join([
             "| setting | frozen interpreter | primary result | condition control |",
             "|---|---|---|---|",
             f"| T2L | gemma-2-2b | `matched − static = {_signed(th['value'], 3)} ± {th['variation']:.3f}` nats CE over 3 seeds | matched beats a same-shape static multi-task LoRA on {t2l['summary']['wins']} |",
-            f"| D2L | Qwen3-0.6B | `matched − context-swap = {_signed(dh['value'], 3)} ± {dh['variation']:.3f}` exact-match over 5 seeds | wrong-document adapters score `{dh['control']:.3f}` |",
+            f"| D2L | Qwen3-0.6B | {d2l_summary} exact-match | {d2l_control} |",
         ])
     if fragment == "repro-summary-markdown":
-        return "\n".join([
+        lines = [
             "| Setting | Script | Leaderboard | Headline |",
             "|---|---|---|---|",
             f"| Task (T2L) | `task_t2l_lora_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2l.md` | matched − static = **{_signed(th['value'], 3)} ± {th['variation']:.3f}** nats CE ({t2l['summary']['wins']}, 3 seeds) |",
-            f"| Document (NIAH) | `document_niah_lora.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **{_signed(dh['value'], 3)} ± {dh['variation']:.3f}** (5 seeds, realistic haystack; crossover 16×) |",
-        ])
+        ]
+        for d2l in d2l_records:
+            dh = d2l["headline"]
+            lines.append(
+                f"| Document (NIAH) — {_display_name(d2l)} | `{d2l['reproduction']['script']} [DEVICE]` | "
+                f"`document_niah_d2l.md` | matched − ctxswap = **{_signed(dh['value'], 3)} ± {dh['variation']:.3f}** "
+                f"({len(d2l['seed_results'])} seeds, realistic haystack; crossover {d2l['summary']['crossover_length'] / d2l['summary']['training_length']:.0f}×) |"
+            )
+        return "\n".join(lines)
     if fragment == "t2l-html":
         frozen = t2l["summary"]["matched_minus_frozen"]
         accuracy = t2l["summary"]["accuracy_matched_minus_static"]
@@ -163,7 +202,18 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
             f'<td>{_signed(accuracy["value"], 4)} ± {accuracy["variation"]:.4f} / {_signed(t2l["summary"]["accuracy_matched_minus_frozen"], 3)}</td></tr>'
         )
     if fragment == "d2l-html":
-        return f'<tr><td>LoRA <span class="baseline-badge">baseline</span></td><td>{d2l["free_hyperparameters"]["scale"]}</td><td>4e-5</td><td>12 000</td><td>5</td><td>{dh["matched"]:.3f} ± {dh["variation"]:.3f}</td><td>{dh["control"]:.3f}</td><td class="headline">{_signed(dh["value"], 3)} ± {dh["variation"]:.3f}</td></tr>'
+        rows = []
+        for d2l in d2l_records:
+            dh, hp = d2l["headline"], d2l["free_hyperparameters"]
+            label = _display_name(d2l)
+            if d2l["codec"] == "lora_r8":
+                label += ' <span class="baseline-badge">baseline</span>'
+            rows.append(
+                f'<tr><td>{label}</td><td>{hp["scale"]}</td><td>{hp["learning_rate"]}</td><td>{hp["steps"]:,}</td>'
+                f'<td>{len(d2l["seed_results"])}</td><td>{dh["matched"]:.3f} ± {dh["variation"]:.3f}</td>'
+                f'<td>{dh["control"]:.3f}</td><td class="headline">{_signed(dh["value"], 3)} ± {dh["variation"]:.3f}</td></tr>'
+            )
+        return "\n".join(rows)
     raise ResultValidationError(f"unknown fragment: {fragment}")
 
 
