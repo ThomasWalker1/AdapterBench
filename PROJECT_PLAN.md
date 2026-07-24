@@ -29,7 +29,7 @@ Both language settings pass controls that require genuine condition dependence.
 | setting | frozen interpreter | primary result | condition control |
 |---|---|---|---|
 | T2L | gemma-2-2b | `matched − static = −0.723 ± 0.162` nats CE over 3 seeds | matched beats a same-shape static multi-task LoRA on 59/63 task-seed pairs |
-| D2L | Qwen3-0.6B | `matched − context-swap = +0.887 ± 0.143` exact-match over 5 seeds | wrong-document adapters score `0.000` |
+| D2L | Qwen3-0.6B | LoRA (r=8): `matched − context-swap = +0.887 ± 0.143`; (IA)³: `matched − context-swap = +1.000 ± 0.000` exact-match | LoRA (r=8) control `0.000`; (IA)³ control `0.000` |
 <!-- canonical-results:release-summary-markdown:end -->
 
 T2L generation accuracy corroborates the CE result:

@@ -25,6 +25,9 @@ LIMIT="${LIMIT:-40}"; CLAMBDA="${CLAMBDA:-0.0}"; CMARGIN="${CMARGIN:-0.5}"; NJLA
 # STATIC=1 trains the multi-task-LoRA reference instead of the hypernetwork.
 STRIP_FLAG=""; [ "${STRIPDEF:-0}" = "1" ] && STRIP_FLAG="--strip-task-def"
 STATIC_FLAG=""; [ "${STATIC:-0}" = "1" ] && STATIC_FLAG="--static"
+# This is a compilation-only escape hatch for CUDA environments without a compatible
+# Triton installation. It changes neither the model forward nor any benchmark setting.
+COMPILE_FLAG=""; [ "${NO_COMPILE:-0}" = "1" ] && COMPILE_FLAG="--no-compile"
 # The built-in arc/boolq final eval is a *self-describing* set that can't reveal conditioning under
 # strip-def (the real eval is the held-out-SNI teacher-forced-CE script on snapshots). ELIMIT lets a
 # strip-def run shrink that eval so it doesn't burn ~1h of autoregressive generation on the wrong instrument.
@@ -40,6 +43,7 @@ CUDA_VISIBLE_DEVICES="$GPUS" .venv/bin/torchrun --standalone --nproc_per_node="$
   --per-gpu-batch "$PGB" --steps "$STEPS" --learning-rate "$LR" --warmup-frac 0.1 \
   --max-grad-norm 1.0 --fixed-seq-len 512 --snapshot-every "$SNAP" \
   --adapter "$ADAPTER" --ia3-scaling "$IA3_SCALE" \
+  $COMPILE_FLAG \
   --contrastive-lambda "$CLAMBDA" --contrastive-margin "$CMARGIN" --neutral-junk-lambda "$NJLAMBDA" \
   $STRIP_FLAG $STATIC_FLAG \
   --eval-tasks "$ETASKS" --eval-limit "$ELIMIT" \

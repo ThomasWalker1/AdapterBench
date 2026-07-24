@@ -377,29 +377,40 @@ def _d2p_niah_command(args) -> None:
     print(
         f"[1/5] num_layers={num_layers} exit_layer={exit_layer} lora_scaling={lora_scaling:.3f} "
         f"ia3_scaling={args.ia3_scaling:.3f} "
-        f"needle_style={args.needle_style} train_lengths={context_lengths} eval_lengths={eval_context_lengths}",
+        f"needle_style={args.needle_style} numeric_decoy_count={args.numeric_decoy_count} "
+        f"train_lengths={context_lengths} eval_lengths={eval_context_lengths}",
         flush=True,
     )
 
-    print(f"[2/5] building {args.num_train_documents} generic-needle NIAH training documents...", flush=True)
-    dataset = DocSFTDataset(
-        tokenizer, num_examples=args.num_train_documents, context_lengths=context_lengths,
-        seed=args.seed, needle_style=args.needle_style,
-    )
-    # Pass the raw per-doc items (not pre-collated batches) so train_doc_niah_checkpointed
-    # can reform batches from a document-level reshuffle every epoch (see its docstring - a
-    # frozen single-shuffle materialisation slows NIAH's phase transition).
-    train_items = [dataset[i] for i in range(len(dataset))]
-    collate = partial(doc_collate_fn, pad_token_id=tokenizer.pad_token_id)
+    train_items = None
+    collate = None
+    if args.evaluate_checkpoint is None:
+        print(f"[2/5] building {args.num_train_documents} {args.needle_style} NIAH training documents...", flush=True)
+        dataset = DocSFTDataset(
+            tokenizer, num_examples=args.num_train_documents, context_lengths=context_lengths,
+            seed=args.seed, needle_style=args.needle_style, numeric_decoy_count=args.numeric_decoy_count,
+        )
+        # Pass the raw per-doc items (not pre-collated batches) so train_doc_niah_checkpointed
+        # can reform batches from a document-level reshuffle every epoch (see its docstring - a
+        # frozen single-shuffle materialisation slows NIAH's phase transition).
+        train_items = [dataset[i] for i in range(len(dataset))]
+        collate = partial(doc_collate_fn, pad_token_id=tokenizer.pad_token_id)
+    else:
+        if len(adapters) != 1:
+            raise ValueError("--evaluate-checkpoint requires exactly one adapter")
+        if not args.evaluate_checkpoint.exists():
+            raise FileNotFoundError(f"missing evaluation checkpoint: {args.evaluate_checkpoint}")
+        print(f"[2/5] evaluation-only: loading {args.evaluate_checkpoint} after held-out data setup...", flush=True)
 
     print(f"[3/5] building {args.eval_limit} held-out NIAH eval documents per bin {eval_context_lengths}...", flush=True)
     eval_examples_by_family = build_niah_eval_examples(
-        tokenizer, eval_context_lengths, examples_per_bin=args.eval_limit, needle_style=args.needle_style
+        tokenizer, eval_context_lengths, examples_per_bin=args.eval_limit, needle_style=args.needle_style,
+        numeric_decoy_count=args.numeric_decoy_count, seed=args.eval_seed,
     )
 
     recorder = ResultRecorder(output_dir, lambda r: f"  {r.adapter:20} {r.task_id:16} {r.metrics}")
     loss_curves: dict = {}
-    warmup_steps = int(args.warmup_frac * args.steps)
+    warmup_steps = args.warmup_steps if args.warmup_steps is not None else int(args.warmup_frac * args.steps)
 
     print("[4/5] scoring frozen interpreter baseline (no document access)...", flush=True)
     frozen_evaluator = DocumentHypernetworkDownstreamEvaluator(
@@ -441,6 +452,19 @@ def _d2p_niah_command(args) -> None:
             interpreter, layers, hypernetwork, tokenizer,
             trial_id=f"d2p_niah::{adapter}", device=args.device,
         )
+
+        if args.evaluate_checkpoint is not None:
+            checkpoint = torch.load(args.evaluate_checkpoint, map_location="cpu", weights_only=False)
+            hypernetwork.load_state_dict(checkpoint["model"])
+            hypernetwork.eval()
+            for result in evaluator.iter_evaluate(eval_examples_by_family, split=args.eval_split):
+                recorder.record(dataclasses.replace(
+                    result,
+                    metadata={**result.metadata, "adapter_family": adapter, "steps": checkpoint["step"], "evaluation_only": True},
+                ))
+            del hypernetwork, evaluator
+            torch.cuda.empty_cache()
+            continue
 
         def _evaluate(net, step, _adapter=adapter, _evaluator=evaluator):
             metrics = {}
@@ -629,8 +653,12 @@ def _register_d2p_niah(subparsers) -> None:
     )
     p.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
     p.add_argument("--adapters", default="lora", help="comma-separated codecs (see 't2p-sft-pilot --adapters')")
-    p.add_argument("--needle-style", default="generic", choices=["generic", "realistic"],
-                   help="generic = Doc-to-LoRA's topic-free needle+query (the format that retrieves); topic = original")
+    p.add_argument("--needle-style", default="generic", choices=["generic", "realistic", "realistic_numeric_decoys"],
+                   help="generic = parity format; realistic = real prose; realistic_numeric_decoys = one target plus irrelevant numeric decoys")
+    p.add_argument("--numeric-decoy-count", type=int, default=0,
+                   help="distinct irrelevant four-digit values for realistic_numeric_decoys; must be 0 for other styles")
+    p.add_argument("--evaluate-checkpoint", type=Path,
+                   help="skip training and score one saved D2L checkpoint on freshly generated held-out documents")
     p.add_argument("--context-lengths", default="384", help="comma-separated NIAH document token lengths (training)")
     p.add_argument("--eval-context-lengths", default="",
                    help="comma-separated NIAH document token lengths for held-out eval; empty (default) => eval at "
@@ -653,10 +681,14 @@ def _register_d2p_niah(subparsers) -> None:
     p.add_argument("--l2-reg-generated-w", type=float, default=0.0, help="D2L NIAH parity uses ~0 (see gotcha)")
     p.add_argument("--grad-accum-steps", type=int, default=1)
     p.add_argument("--warmup-frac", type=float, default=0.03)
+    p.add_argument("--warmup-steps", type=int,
+                   help="override --warmup-frac with an absolute count; use a fixed final-budget value for checkpoint promotion")
     p.add_argument("--exit-layer", type=int, default=-1, help="early-exit ctx encoder depth; <=0 => num_layers//4")
     p.add_argument("--n-latents", type=int, default=208, help="Perceiver-IO latent queries (D2L parity: 208)")
     p.add_argument("--num-blocks", type=int, default=8, help="Perceiver-IO cross-attention blocks (D2L parity: 8)")
     p.add_argument("--eval-limit", type=int, default=32, help="held-out eval documents per context-length bin")
+    p.add_argument("--eval-seed", type=int, default=778,
+                   help="deterministic held-out document seed; keep development and final evaluation disjoint")
     p.add_argument("--eval-split", default="test")
     p.add_argument("--seed", type=int, default=777)
     p.add_argument("--device", default="cuda:0")

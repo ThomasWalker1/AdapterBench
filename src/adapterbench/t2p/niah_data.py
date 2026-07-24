@@ -41,8 +41,14 @@ _GENERIC_QUERY = "What is the special magic number? Reply with only the number."
 # "generic" ONLY in the haystack: real English prose instead of a repeated noise block.
 # Because the needle and answer stay the synthetic magic number, the exact-match scoring
 # and the context-swap control remain exactly as clean as "generic".
-_GENERIC_STYLES = ("generic", "realistic")
-
+NUMERIC_DECOY_STYLE = "realistic_numeric_decoys"
+_GENERIC_STYLES = ("generic", "realistic", NUMERIC_DECOY_STYLE)
+_DECOY_TEMPLATES = (
+    "The archival reference number is {digits}.",
+    "An unrelated filing entry carries identifier {digits}.",
+    "The maintenance ledger cites auxiliary code {digits}.",
+    "A background inventory item is numbered {digits}.",
+)
 # Lazily built, process-cached pool of real sentences for needle_style="realistic".
 _REALISTIC_POOL: tuple[tuple[str, ...], tuple[int, ...]] | None = None
 
@@ -110,7 +116,8 @@ class NiahExample:
     topic: str
     digits: str
     depth: float  # requested (not necessarily exact - see make_niah_example) fractional depth in [0, 1]
-    needle_style: str = "generic"  # "generic" (D2L-parity) or "realistic" (real-prose haystack)
+    needle_style: str = "generic"
+    numeric_decoy_count: int = 0
 
 
 def make_niah_example(
@@ -120,6 +127,7 @@ def make_niah_example(
     depth: float | None = None,
     rng: random.Random | None = None,
     needle_style: str = "generic",
+    numeric_decoy_count: int = 0,
 ) -> NiahExample:
     """Build one haystack+needle document of approximately `context_length` tokens.
 
@@ -139,12 +147,20 @@ def make_niah_example(
       format that empirically learns held-out retrieval - see PROJECT_PLAN.md's D2P section.
     - `"realistic"`: the same needle among real English prose (BoolQ Wikipedia sentences),
       a genuine-distractor haystack instead of a repeated noise block.
+    - `"realistic_numeric_decoys"`: one queried magic-number needle plus a declared
+      number of uniquely valued, explicitly irrelevant four-digit records in real prose.
+      This increases target-selection difficulty without changing the one-document,
+      one-answer interface.
     `topic` is always "" (a vestigial field from a removed topic-conditioned style).
     """
     rng = rng or random.Random()
     resolved_depth = rng.random() if depth is None else depth
     if not 0.0 <= resolved_depth <= 1.0:
         raise ValueError(f"depth must be in [0, 1], got {resolved_depth}")
+    if numeric_decoy_count < 0:
+        raise ValueError(f"numeric_decoy_count must be nonnegative, got {numeric_decoy_count}")
+    if needle_style != NUMERIC_DECOY_STYLE and numeric_decoy_count:
+        raise ValueError("numeric_decoy_count requires needle_style='realistic_numeric_decoys'")
     digits = f"{rng.randrange(10000):04d}"
 
     if needle_style == "generic":
@@ -164,14 +180,27 @@ def make_niah_example(
             context_text=context_text, topic=topic, digits=digits, depth=realized_depth, needle_style="generic"
         )
 
-    if needle_style == "realistic":
+    if needle_style in ("realistic", NUMERIC_DECOY_STYLE):
+        decoy_count = numeric_decoy_count if needle_style == NUMERIC_DECOY_STYLE else 0
         # Real-prose haystack + the same synthetic generic needle/answer as "generic".
         topic = ""
         needle = _GENERIC_NEEDLE_TPL.format(digits=digits)
-        needle_tokens = len(tokenizer(needle, add_special_tokens=False)["input_ids"])
+        decoy_values: list[str] = []
+        while len(decoy_values) < decoy_count:
+            candidate = f"{rng.randrange(10000):04d}"
+            if candidate != digits and candidate not in decoy_values:
+                decoy_values.append(candidate)
+        decoys = [
+            _DECOY_TEMPLATES[index % len(_DECOY_TEMPLATES)].format(digits=value)
+            for index, value in enumerate(decoy_values)
+        ]
+        inserted_tokens = sum(
+            len(tokenizer(sentence, add_special_tokens=False)["input_ids"])
+            for sentence in (needle, *decoys)
+        )
         pool, counts = _realistic_filler_pool(tokenizer)
         n = len(pool)
-        target = max(1, context_length - needle_tokens)
+        target = max(1, context_length - inserted_tokens)
         # Walk a contiguous window from a per-example random start through the (shuffled,
         # so consecutive entries are unrelated) pool, accumulating real sentences until the
         # token budget is met. rng-driven => deterministic per (seed, example).
@@ -187,14 +216,24 @@ def make_niah_example(
         sentences = [pool[j] for j in idxs]
         num_filler = len(sentences)
         needle_index = min(num_filler, round(resolved_depth * num_filler))
-        sentences.insert(needle_index, needle)
-        context_text = " ".join(sentences)
+        inserts: dict[int, list[str]] = {needle_index: [needle]}
+        for decoy in decoys:
+            inserts.setdefault(rng.randrange(num_filler + 1), []).append(decoy)
+        blocks: list[str] = []
+        for position in range(num_filler + 1):
+            blocks.extend(inserts.get(position, ()))
+            if position < num_filler:
+                blocks.append(sentences[position])
+        context_text = " ".join(blocks)
         realized_depth = needle_index / num_filler if num_filler else 0.0
         return NiahExample(
-            context_text=context_text, topic=topic, digits=digits, depth=realized_depth, needle_style="realistic"
+            context_text=context_text, topic=topic, digits=digits, depth=realized_depth,
+            needle_style=needle_style, numeric_decoy_count=decoy_count,
         )
 
-    raise ValueError(f"needle_style must be 'generic' or 'realistic', got {needle_style!r}")
+    raise ValueError(
+        f"needle_style must be 'generic', 'realistic', or '{NUMERIC_DECOY_STYLE}', got {needle_style!r}"
+    )
 
 
 def build_niah_eval_examples(
@@ -205,6 +244,7 @@ def build_niah_eval_examples(
     seed: int = 778,  # deliberately different default from DocSFTDataset's 777 - held-out documents, not the training ones
     fixed_depth: float | None = None,
     needle_style: str = "generic",
+    numeric_decoy_count: int = 0,
 ) -> dict[str, list[NiahExample]]:
     """Build held-out NIAH eval examples grouped by context-length bin (mirrors
     `task_examples.py::build_all_task_examples`'s family -> list[TaskExample] shape, for
@@ -217,7 +257,10 @@ def build_niah_eval_examples(
     examples_by_family: dict[str, list[NiahExample]] = {}
     for length in context_lengths:
         examples_by_family[f"niah_{length}"] = [
-            make_niah_example(tokenizer, length, depth=fixed_depth, rng=rng, needle_style=needle_style)
+            make_niah_example(
+                tokenizer, length, depth=fixed_depth, rng=rng, needle_style=needle_style,
+                numeric_decoy_count=numeric_decoy_count,
+            )
             for _ in range(examples_per_bin)
         ]
     return examples_by_family
@@ -302,6 +345,7 @@ class DocSFTDataset(Dataset):
         seed: int = 777,
         fixed_depth: float | None = None,
         needle_style: str = "generic",
+        numeric_decoy_count: int = 0,
     ):
         self.tokenizer = tokenizer
         rng = random.Random(seed)
@@ -309,7 +353,8 @@ class DocSFTDataset(Dataset):
         for _ in range(num_examples):
             context_length = rng.choice(list(context_lengths))
             example = make_niah_example(
-                tokenizer, context_length, depth=fixed_depth, rng=rng, needle_style=needle_style
+                tokenizer, context_length, depth=fixed_depth, rng=rng, needle_style=needle_style,
+                numeric_decoy_count=numeric_decoy_count,
             )
             # `truncation=True, max_length=context_length * 2` is a generous safety cap
             # (sentence-boundary insertion in make_niah_example already targets

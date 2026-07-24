@@ -4,6 +4,7 @@ import pytest
 import torch
 
 from adapterbench.t2p.niah_data import (
+    NUMERIC_DECOY_STYLE,
     DocSFTDataset,
     assert_context_fits_in_one_pass,
     build_niah_eval_examples,
@@ -66,6 +67,33 @@ def test_make_niah_example_is_deterministic_given_the_same_rng_seed():
     a = make_niah_example(tokenizer, context_length=200, rng=random.Random(42))
     b = make_niah_example(tokenizer, context_length=200, rng=random.Random(42))
     assert a == b
+
+
+def test_numeric_decoy_needle_has_one_target_and_distinct_irrelevant_codes(monkeypatch):
+    tokenizer = FakeTokenizer()
+    monkeypatch.setattr(
+        "adapterbench.t2p.niah_data._realistic_filler_pool",
+        lambda _tokenizer: (("A realistic distractor sentence.",) * 64, (4,) * 64),
+    )
+    example = make_niah_example(
+        tokenizer, 256, rng=random.Random(18), needle_style=NUMERIC_DECOY_STYLE, numeric_decoy_count=4,
+    )
+    assert example.numeric_decoy_count == 4
+    assert example.context_text.count(f"The special magic number is {example.digits}.") == 1
+    assert example.context_text.count("reference number is") == 1
+    assert example.context_text.count("filing entry carries identifier") == 1
+    assert example.context_text.count("maintenance ledger cites auxiliary code") == 1
+    assert example.context_text.count("inventory item is numbered") == 1
+    assert example.digits not in " ".join(
+        line for line in example.context_text.split(". ") if "special magic number" not in line
+    )
+
+
+def test_numeric_decoy_count_is_rejected_for_plain_realistic_style():
+    with pytest.raises(ValueError, match="numeric_decoy_count"):
+        make_niah_example(FakeTokenizer(), 256, needle_style="realistic", numeric_decoy_count=1)
+
+
 
 
 def test_assert_context_fits_in_one_pass_accepts_lengths_within_the_limit():

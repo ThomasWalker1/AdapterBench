@@ -2,6 +2,7 @@
   "schema_version": 1,
   "setting": "D2L",
   "codec": "lora_r8",
+  "display_name": "LoRA (r=8)",
   "metric": "needle_retrieval_exact_match_accuracy",
   "headline": {
     "comparison": "matched_minus_control",
@@ -45,6 +46,7 @@
     "environment": {"python": "3.11.15", "lockfile_sha256": "f46fdbf77957f9b28555a9890c004d5ac5440c99822aa646c8884c815aec3762"}
   },
   "reproduction": {
+    "script": "document_niah_lora.sh",
     "smoke": "uv run adapterbench d2p-niah --adapters lora --steps 20 --grad-accum-steps 1 --context-lengths 256 --num-train-documents 40 --eval-limit 10 --device cuda:0 --output results/d2p_niah_smoke",
     "full": "bash scripts/reproduce/document_niah_lora.sh cuda:0",
     "aggregate": "uv run python scripts/d2p_niah_aggregate.py --root results/repro/document_niah_realistic --min-seeds 5 --train-length 256"

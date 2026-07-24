@@ -6,6 +6,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 SEED="${1:-777}"; GH="${2:-0,1,2,3}"; GS="${3:-4,5,6,7}"; SCALE="${4:-1.0}"
+NO_COMPILE="${NO_COMPILE:-1}"  # this runtime has no compatible Triton; semantics are unchanged
 export HF_HUB_OFFLINE=1
 ROOT="results/repro/t2l_ia3/gemma2b_stripdef_scale${SCALE}"
 HY="$ROOT/hyper"; ST="$ROOT/static"
@@ -13,10 +14,10 @@ mkdir -p "$HY" "$ST"
 .venv/bin/adapterbench preflight --setting t2l --devices "$GH,$GS" --output "$HY/s${SEED}"
 
 echo "=== T2L (IA)^3, seed $SEED, scale $SCALE ($(date)) ==="
-OUT="$HY/s${SEED}" SEED=$SEED ADAPTER=ia3 IA3_SCALE="$SCALE" STRIPDEF=1 STATIC=0 STEPS=20000 LR=1e-4 SNAP=5000 LIMIT=40 ELIMIT=20 \
+OUT="$HY/s${SEED}" SEED=$SEED ADAPTER=ia3 IA3_SCALE="$SCALE" NO_COMPILE="$NO_COMPILE" STRIPDEF=1 STATIC=0 STEPS=20000 LR=1e-4 SNAP=5000 LIMIT=40 ELIMIT=20 \
   scripts/t2l_base_diag.sh google/gemma-2-2b-it "ia3_hyper_scale${SCALE}" "$GH" 16 > "$HY/s${SEED}_train.log" 2>&1 &
 HPID=$!
-OUT="$ST/s${SEED}" SEED=$SEED ADAPTER=ia3 IA3_SCALE="$SCALE" STRIPDEF=1 STATIC=1 STEPS=20000 LR=1e-4 SNAP=5000 LIMIT=40 ELIMIT=20 \
+OUT="$ST/s${SEED}" SEED=$SEED ADAPTER=ia3 IA3_SCALE="$SCALE" NO_COMPILE="$NO_COMPILE" STRIPDEF=1 STATIC=1 STEPS=20000 LR=1e-4 SNAP=5000 LIMIT=40 ELIMIT=20 \
   scripts/t2l_base_diag.sh google/gemma-2-2b-it "ia3_static_scale${SCALE}" "$GS" 16 > "$ST/s${SEED}_train.log" 2>&1 &
 SPID=$!
 if ! wait "$HPID"; then kill "$SPID" 2>/dev/null || true; wait "$SPID" 2>/dev/null || true; exit 1; fi

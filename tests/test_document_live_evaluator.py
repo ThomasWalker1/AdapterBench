@@ -112,6 +112,7 @@ def test_evaluate_frozen_never_captures_document_activations():
     evaluator = DocumentHypernetworkDownstreamEvaluator(
         interpreter, interpreter.layers, hypernetwork, FakeTokenizer(), trial_id="t", device="cpu"
     )
+    assert evaluator.max_context_len is None
     results = evaluator.evaluate_frozen({"niah_256": [_example()]}, split="test")
     assert len(results) == 1
     result = results[0]

@@ -15,9 +15,10 @@ in this way — that's the whole point.
 
 > **Current state:** LoRA validates the two genuinely conditioned settings:
 > task-description conditioning (T2L) and document conditioning (D2L). (IA)³ is the
-> first codec-exploration implementation and is awaiting its scale sweeps and benchmark
-> rows. New shapes are added one at a time as a codec + registration entry + manifest,
-> then evaluated with both setting CLIs and recorded in the per-setting leaderboards.
+> first codec-exploration implementation; its D2L scale search and three-seed benchmark
+> row are complete, while its T2L evaluation remains pending. New shapes are added one at
+> a time as a codec + registration entry + manifest, then evaluated with both setting
+> CLIs and recorded in the per-setting leaderboards.
 >
 > **Current phase: codec exploration.** The core benchmark and LoRA reference results
 > are implemented; the remaining research work is to compare the registered shapes under

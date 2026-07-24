@@ -218,7 +218,7 @@ class DocumentHypernetworkDownstreamEvaluator:
         trial_id: str,
         device: str = "cuda:0",
         max_new_tokens: int = 16,  # the answer is always exactly 4 digits - far less generation budget than free-form tasks
-        max_context_len: int = 4096,
+        max_context_len: int | None = None,
     ):
         self.interpreter = interpreter
         self.layers = layers
@@ -234,7 +234,10 @@ class DocumentHypernetworkDownstreamEvaluator:
         if example is None or self.hypernetwork is None:
             yield self.interpreter
             return
-        # Tokenize the context exactly as training did for this needle_style
+        # Tokenize the context exactly as training did for this needle_style.
+        # Do not silently cap an eval bin below its requested length: D2L's length
+        # curve is meaningful only when an 8192-token document actually conditions the
+        # generated adapter. Callers may still supply an explicit safety cap.
         # (generic -> chat-wrapped; topic -> raw), then let the conditioner produce its
         # own raw_condition via `prepare_condition` - `EarlyExitPerceiverConditioner`
         # returns the full per-layer activation stack, `EarlyExitPerceiverConditioner`
