@@ -8,15 +8,16 @@ row up to seed variance — this is the benchmark's reproducibility contract.
 <!-- canonical-results:repro-summary-markdown:start -->
 | Setting | Script | Leaderboard | Headline |
 |---|---|---|---|
-| Task (T2L) | `task_t2l_lora_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2l.md` | matched − static = **−0.723 ± 0.162** nats CE (59/63 task-seed pairs, 3 seeds) |
-| Document (NIAH) — LoRA (r=8) | `document_niah_lora.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **+0.887 ± 0.143** (5 seeds, realistic haystack; crossover 16×) |
-| Document (NIAH) — (IA)³ | `document_niah_ia3.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **+1.000 ± 0.000** (3 seeds, realistic haystack; crossover 16×) |
+| Task (T2L) — LoRA | `task_t2l_lora_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2l.md` | matched − static = **−0.571 ± 0.045** nats CE (54/63 task-seed pairs, 3 seeds) |
+| Task (T2L) — (IA)³ | `task_t2l_ia3_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2l.md` | matched − static = **−0.381 ± 0.023** nats CE (48/63 task-seed pairs, 3 seeds) |
+| Document (NIAH) — LoRA (r=8) | `document_niah_numeric_decoy_lora.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **+0.556 ± 0.327** (5 seeds, realistic-prose, 4 numeric decoys; crossover 16×) |
+| Document (NIAH) — (IA)³ | `document_niah_numeric_decoy_ia3.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **+0.738 ± 0.327** (5 seeds, realistic-prose, 4 numeric decoys; crossover 64×) |
 <!-- canonical-results:repro-summary-markdown:end -->
 
 All scripts run `adapterbench preflight` before training and are restart-safe: re-run the
-identical command to resume from the last checkpoint. Use the one-seed T2L script when
-only one seed is needed; the `*_all.sh` wrapper launches all three sequentially and
-aggregates their existing files without retraining completed work.
+identical command to resume from the last checkpoint. Use the matching one-seed T2L codec
+script when only one seed is needed; each `*_all.sh` wrapper launches all three sequentially
+and aggregates their existing files without retraining completed work.
 
 Smoke paths (they validate plumbing, not the released metric):
 
@@ -48,6 +49,6 @@ the "does shape matter?" comparison is populated by repeating steps 1–4 per co
 - **T2L** trains two data-parallel runs — the strip-def hypernetwork and the same-shape static
   reference — then scores `matched − static` on the 21 held-out SNI tasks (CE + accuracy). It needs
   `HF_HUB_OFFLINE=1` (set by the script; the model and datasets are cached). Args are `SEED`,
-  `GPUS_HYPER`, `GPUS_STATIC` (e.g. `777 0,1,2,3 4,5,6,7`).
+  `GPUS_HYPER`, `GPUS_STATIC` (e.g. `1801 0,1,2,3 4,5,6,7`).
 - **GPU selection.** The T2L script splits GPUs across the two runs; the document script
   takes a single `DEVICE` like `cuda:0`.

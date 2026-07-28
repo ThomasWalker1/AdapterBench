@@ -178,6 +178,9 @@ def build_args():
     p.add_argument("--eval-variant", type=int, default=0)
     p.add_argument("--eval-split", default="test")
     p.add_argument("--use-icl", action="store_true")
+    p.add_argument("--skip-inline-eval", action="store_true",
+                   help="save the completed checkpoint without the legacy self-describing eval; "
+                        "use when a caller will run the held-out paired evaluator instead")
     p.add_argument("--adversarial-control", action="store_true")
     p.add_argument("--adversarial-descs", default="")
     p.add_argument("--output", required=True)
@@ -520,10 +523,26 @@ def main() -> None:
         (output_dir / "train_meta.json").write_text(json.dumps({
             "static": True, "adapter": args.adapter, "interpreter": args.interpreter,
             "effective_batch": eff_batch, "steps": args.steps, "learning_rate": args.learning_rate,
-            "per_task_limit": per_task_limit, "ia3_scaling": args.ia3_scaling, "losses": losses,
+            "per_task_limit": per_task_limit, "lora_scaling": args.lora_scaling,
+            "ia3_scaling": args.ia3_scaling, "losses": losses,
         }, indent=2) + "\n")
         log(f"[6/6] static adapter trained -> {output_dir} "
             f"(eval post-hoc: t2p_eval_checkpoint.py --static-snapshot)")
+        dist.destroy_process_group()
+        return
+
+    if args.skip_inline_eval:
+        (output_dir / "train_meta.json").write_text(json.dumps({
+            "effective_batch": eff_batch, "per_gpu_batch": args.per_gpu_batch, "world_size": world,
+            "steps": args.steps, "learning_rate": args.learning_rate, "warmup_steps": warmup_steps,
+            "example_visits": eff_batch * args.steps, "losses": losses,
+            "per_task_limit": per_task_limit, "interpreter": args.interpreter,
+            "contrastive_lambda": args.contrastive_lambda, "contrastive_margin": args.contrastive_margin,
+            "neutral_junk_lambda": args.neutral_junk_lambda, "strip_task_def": args.strip_task_def,
+            "adapter": args.adapter, "lora_scaling": args.lora_scaling, "ia3_scaling": args.ia3_scaling,
+            "inline_eval_skipped": True,
+        }, indent=2) + "\n")
+        log(f"[5/6] legacy inline evaluation skipped; paired held-out evaluation is run by the caller -> {output_dir}")
         dist.destroy_process_group()
         return
 
@@ -554,7 +573,7 @@ def main() -> None:
     ):
         scale_metadata = {"seed": args.seed}
         scale_metadata["ia3_scale" if args.adapter == "ia3" else "lora_scale"] = (
-            args.ia3_scaling if args.adapter == "ia3" else "default"
+            args.ia3_scaling if args.adapter == "ia3" else args.lora_scaling
         )
         recorder.record(dataclasses.replace(
             result, metadata={**result.metadata, **scale_metadata}))
@@ -566,7 +585,7 @@ def main() -> None:
         "per_task_limit": per_task_limit, "interpreter": args.interpreter,
         "contrastive_lambda": args.contrastive_lambda, "contrastive_margin": args.contrastive_margin,
         "neutral_junk_lambda": args.neutral_junk_lambda, "strip_task_def": args.strip_task_def,
-        "adapter": args.adapter, "ia3_scaling": args.ia3_scaling,
+        "adapter": args.adapter, "lora_scaling": args.lora_scaling, "ia3_scaling": args.ia3_scaling,
     }, indent=2) + "\n")
     log(f"[6/6] done -> {output_dir}")
     dist.destroy_process_group()

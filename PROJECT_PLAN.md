@@ -28,15 +28,15 @@ Both language settings pass controls that require genuine condition dependence.
 <!-- canonical-results:release-summary-markdown:start -->
 | setting | frozen interpreter | primary result | condition control |
 |---|---|---|---|
-| T2L | gemma-2-2b | `matched − static = −0.723 ± 0.162` nats CE over 3 seeds | matched beats a same-shape static multi-task LoRA on 59/63 task-seed pairs |
-| D2L | Qwen3-0.6B | LoRA (r=8): `matched − context-swap = +0.887 ± 0.143`; (IA)³: `matched − context-swap = +1.000 ± 0.000` exact-match | LoRA (r=8) control `0.000`; (IA)³ control `0.000` |
+| T2L | gemma-2-2b | LoRA `matched − static = −0.571 ± 0.045`; (IA)³ `matched − static = −0.381 ± 0.023` nats CE (3 seeds each) | same-shape static control: LoRA wins 54/63 task-seed pairs; (IA)³ wins 48/63 task-seed pairs |
+| D2L | Qwen3-0.6B | LoRA (r=8): `matched − context-swap = +0.556 ± 0.327`; (IA)³: `matched − context-swap = +0.738 ± 0.327` exact-match | LoRA (r=8) control `0.000`; (IA)³ control `0.000` |
 <!-- canonical-results:release-summary-markdown:end -->
 
-T2L generation accuracy corroborates the CE result:
-`matched − static = +0.0317 ± 0.0060`; `matched − frozen = +0.235`.
+T2L generation accuracy is corroborating rather than the selection metric: LoRA reports
+`matched − static = −0.0050 ± 0.0278`; `(IA)³` reports `+0.0562 ± 0.0087`.
 
-D2L generalizes beyond its 256-token training contexts. Its accuracy crosses 0.5 at
-4096 tokens, or 16× the training length.
+D2L's locked numeric-decoy NIAH setting trains at 512 tokens and tests through 32768.
+LoRA crosses 0.5 through 8192 (16×); IA³ crosses through 32768 (64×).
 
 Canonical results and exact commands are in:
 
@@ -112,14 +112,14 @@ Mechanical, and independent of codec exploration — none require another resear
 - [ ] clean-environment installation and every documented command verified;
 - [ ] GPU smoke tests and full LoRA reproductions on release hardware (the sandbox has no
       CUDA-visible GPU, the only expected local failure);
-- [ ] confirm/commit the final T2L scale-selection evidence and D2L's full sweep summary as
-      a compact record (D2L's selected operating scale is 45.25);
+- [ ] confirm/commit the final T2L scale-selection evidence and each codec's D2L sweep summary as
+      compact records;
 - [ ] TeX/PDF build and visual proof of the paper and website;
 - [ ] license decision (`CITATION.cff`, version `0.1.0`, `CHANGELOG.md` are present).
 
-Already done: versioned canonical T2L/D2L LoRA aggregates with a drift check, provenance
+Already done: versioned canonical T2L/D2L aggregates with a drift check, provenance
 hashes and model revisions, smoke/full reproduction entry points, preflight diagnostics,
-and all 94 unit tests + manifest/catalog/drift checks passing locally.
+and manifest/catalog/drift checks passing locally.
 
 Repository policy: experiment outputs under `results/` are scratch unless explicitly
 force-added as compact canonical metrics. Checkpoints, adapters, logs, and large artifacts
@@ -236,10 +236,10 @@ held-out SNI tasks.
 
 | seed | matched − static CE | matched beats static | accuracy matched − static |
 |---:|---:|---:|---:|
-| 777 | approximately −0.9 nats | 20/21 tasks | positive |
-| 2 | approximately −0.7 nats | 20/21 tasks | positive |
-| 3 | −0.544 nats | 19/21 tasks | +0.0248 |
-| aggregate | **−0.723 ± 0.162** | **59/63 task-seed pairs** | **+0.0317 ± 0.0060** |
+| 1801 | −0.597 nats | 18/21 tasks | −0.0050 |
+| 1802 | −0.519 nats | 17/21 tasks | −0.0327 |
+| 1803 | −0.598 nats | 19/21 tasks | +0.0228 |
+| aggregate | **−0.571 ± 0.045** | **54/63 task-seed pairs** | **−0.0050 ± 0.0278** |
 
 CE is primary because it is non-saturating and matches the training objective. Greedy
 exact-match accuracy is corroborating: it saturates on easy tasks and can understate
@@ -247,7 +247,7 @@ adapter differences.
 
 Result paths:
 
-`results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s{777,2,3}/`
+`results/autoresearch/t2l/lora/confirmation/hyper/s{1801,1802,1803}/`
 
 with:
 
@@ -256,17 +256,16 @@ with:
 
 ## D2L result
 
-The shipped setting uses realistic Wikipedia-prose haystacks, a topic-free four-digit
-needle, Qwen3-0.6B, early-exit document features, a perceiver conditioner, and a generated
-rank-8 LoRA on the selected projection.
+The shipped setting uses realistic Wikipedia-prose haystacks, one topic-free four-digit
+needle, four explicitly irrelevant four-digit decoys, Qwen3-0.6B, early-exit document
+features, a perceiver conditioner, and a generated codec on the selected projection.
 
-Across five seeds at the 256-token training length:
+Across five seeds at the 512-token training length:
 
-- matched exact-match: `0.887 ± 0.143`;
-- context-swap exact-match: `0.000`;
-- matched minus control: `+0.887 ± 0.143`.
+- LoRA (r=8) matched exact-match: `0.556 ± 0.327`; context-swap: `0.000`; matched minus control: `+0.556 ± 0.327`.
+- (IA)³ matched exact-match: `0.738 ± 0.327`; context-swap: `0.000`; matched minus control: `+0.738 ± 0.327`.
 
-The length-generalization crossover is 4096 tokens, 16× the training length.
+The length-generalization crossover is 8192 tokens (16×) for LoRA and 32768 (64×) for IA³.
 
 ## How to run
 
@@ -284,26 +283,26 @@ uv run pytest -q
 Reproduce one T2L seed:
 
 ```bash
-bash scripts/reproduce/task_t2l_lora.sh 777 0,1,2,3 4,5,6,7
+bash scripts/reproduce/task_t2l_lora.sh 1801 0,1,2,3 4,5,6,7
 ```
 
 Inspect T2L aggregate rows:
 
 ```bash
-tail -1 results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s777/heldout_sni_ce_full21.jsonl
-tail -1 results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s777/heldout_sni_acc.jsonl
+tail -1 results/repro/t2l_lora_scale22.627417_lr1e-4/hyper/s1801/heldout_sni_ce_full21.jsonl
+tail -1 results/repro/t2l_lora_scale22.627417_lr1e-4/hyper/s1801/heldout_sni_acc.jsonl
 ```
 
-Run the D2L realistic-NIAH baseline:
+Run the D2L numeric-decoy NIAH confirmation:
 
 ```bash
-bash scripts/reproduce/document_niah_lora.sh cuda:0
+bash scripts/reproduce/document_niah_numeric_decoy_lora.sh cuda:0
 ```
 
 Run the D2L scale locator:
 
 ```bash
-bash scripts/d2l_scale_sweep.sh
+bash scripts/d2l_numeric_decoy_dev.sh
 ```
 
 The held-out-SNI evaluations must run with `HF_HUB_OFFLINE=1` after metadata is vendored.

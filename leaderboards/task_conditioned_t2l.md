@@ -27,21 +27,39 @@ strip-def input template, the 21 held-out SNI tasks, the static-reference contro
 **Fixed:** rank (shape identity).
 
 <!-- canonical-results:t2l-markdown:start -->
-| Shape | rank | lr | steps | seeds | **matched − static (CE, nats)** | matched − frozen | accuracy m−static / m−frozen |
-|---|:---:|:---:|---:|:---:|:---:|:---:|:---:|
-| LoRA | 8 | 1e-4 | 20 000 | 3 | **−0.723 ± 0.162** (59/63 task-seed pairs) | −10.80 ± 0.11 | +0.0317 ± 0.0060 / +0.235 |
+| Shape | rank | scale | lr | steps | seeds | **matched − static (CE, nats)** | matched − frozen | accuracy m−static / m−frozen |
+|---|:---:|:---:|:---:|---:|:---:|:---:|:---:|:---:|
+| LoRA | 8 | 22.627417 | 1e-4 | 8 000 | 3 | **−0.571 ± 0.045** (54/63 task-seed pairs) | −11.21 ± 0.07 | −0.0050 ± 0.0278 / +0.158 |
+| (IA)³ | — | 16 | 4e-4 | 8 000 | 3 | **−0.381 ± 0.023** (48/63 task-seed pairs) | −11.31 ± 0.06 | +0.0562 ± 0.0087 / +0.150 |
 <!-- canonical-results:t2l-markdown:end -->
 
-Seeds 777, 2, and 3. More-negative CE is better; positive accuracy is better. The huge
-`matched − frozen` (−10.80 nats CE, +0.235 accuracy) confirms the stripped-definition task genuinely
-*requires* the adapter; `matched − static` isolates the description's contribution beyond generic help.
+More-negative CE is better; accuracy is corroborating and can diverge from CE. Both codecs beat
+the frozen helpfulness floor; `matched − static` isolates the description's contribution beyond
+generic help.
 
-**Reproduce:** `scripts/reproduce/task_t2l_lora.sh [SEED] [GPUS_HYPER] [GPUS_STATIC]` — runs preflight,
-trains the strip-def hypernetwork + static reference, then runs both evals (sets `HF_HUB_OFFLINE=1`).
+### Selection trails
+
+Each compact trail below points to append-only scratch ledgers containing the exact scout commands,
+candidate metrics, artifacts, and rejected points. Only fresh confirmation seeds enter the headline.
+
+<!-- canonical-results:t2l-selection-markdown:start -->
+| Shape | compact audit trail | selected final configuration |
+|---|---|---|
+| LoRA | Scale scout 0.353553→90.509668; 90.509668 was numerically invalid. At the common 8k rung, 22.627417 beat 1.414214 and 5.656854; a 20k continuation regressed. Fresh LR checks at 5e-5 and 2e-4 were worse than 1e-4. State ledgers: `scale_locator/state.jsonl`, `lr_locator/state.jsonl`. | scale 22.627417; lr 1e-4; 8,000 steps |
+| (IA)³ | Tiny scales were retained as static-control failures, not selection evidence. In the viable high-scale ladder, 16 beat 4 and 64. At 8k, LR 4e-4 beat 5e-5, 1e-4, and 2e-4; 8e-4 catastrophically failed the helpfulness floor. State ledgers: `scale_locator/state.jsonl`, `lr_locator/state.jsonl`, `lr_locator_scale16/state.jsonl`. | scale 16; lr 4e-4; 8,000 steps |
+<!-- canonical-results:t2l-selection-markdown:end -->
+
+**Reproduce:** `scripts/reproduce/task_t2l_lora.sh` and `scripts/reproduce/task_t2l_ia3.sh`
+accept `[SEED] [GPUS_HYPER] [GPUS_STATIC]`, run preflight, train the strip-def hypernetwork + static
+reference, and run both evaluations (sets `HF_HUB_OFFLINE=1`).
 
 ```bash
-scripts/reproduce/task_t2l_lora.sh 777 0,1,2,3 4,5,6,7
+scripts/reproduce/task_t2l_lora.sh 1801 0,1,2,3 4,5,6,7
 # results (per-task + __aggregate__ rows):
-#   results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s777/heldout_sni_ce_full21.jsonl
-#   results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s777/heldout_sni_acc.jsonl
+#   results/repro/t2l_lora_scale22.627417_lr1e-4/hyper/s1801/heldout_sni_ce_full21.jsonl
+#   results/repro/t2l_lora_scale22.627417_lr1e-4/hyper/s1801/heldout_sni_acc.jsonl
+
+scripts/reproduce/task_t2l_ia3.sh 1901 0,1,2,3 4,5,6,7
+#   results/repro/t2l_ia3_scale16_lr4e-4/hyper/s1901/heldout_sni_ce_full21.jsonl
+#   results/repro/t2l_ia3_scale16_lr4e-4/hyper/s1901/heldout_sni_acc.jsonl
 ```

@@ -3,48 +3,53 @@
   "setting": "D2L",
   "codec": "ia3",
   "display_name": "(IA)³",
-  "metric": "needle_retrieval_exact_match_accuracy",
+  "metric": "numeric_decoy_needle_retrieval_exact_match_accuracy",
   "headline": {
     "comparison": "matched_minus_control",
     "control_name": "wrong_document_context_swap",
-    "matched": 1.0,
+    "matched": 0.7375,
     "control": 0.0,
-    "value": 1.0,
-    "variation": 0.0,
+    "value": 0.7375,
+    "variation": 0.32691742076555047,
     "variation_kind": "population_standard_deviation",
     "unit": "exact_match_accuracy",
     "direction": "higher_is_better"
   },
   "seed_results": [
-    {"seed": 786, "matched": 1.0, "control": 0.0, "delta": 1.0},
-    {"seed": 787, "matched": 1.0, "control": 0.0, "delta": 1.0},
-    {"seed": 788, "matched": 1.0, "control": 0.0, "delta": 1.0}
+    {"seed": 2901, "matched": 0.96875, "control": 0.0, "delta": 0.96875},
+    {"seed": 2902, "matched": 0.15625, "control": 0.0, "delta": 0.15625},
+    {"seed": 2903, "matched": 1.0, "control": 0.0, "delta": 1.0},
+    {"seed": 2905, "matched": 0.59375, "control": 0.0, "delta": 0.59375},
+    {"seed": 2906, "matched": 0.96875, "control": 0.0, "delta": 0.96875}
   ],
   "difficulty_curve": [
-    {"axis": 256, "matched": 1.0, "control": 0.0, "delta": 1.0},
-    {"axis": 512, "matched": 1.0, "control": 0.0, "delta": 1.0},
-    {"axis": 1024, "matched": 1.0, "control": 0.0, "delta": 1.0},
-    {"axis": 2048, "matched": 0.9895833333333334, "control": 0.0, "delta": 0.9895833333333334},
-    {"axis": 4096, "matched": 0.8333333333333334, "control": 0.0, "delta": 0.8333333333333334},
-    {"axis": 8192, "matched": 0.3541666666666667, "control": 0.0, "delta": 0.3541666666666667}
+    {"axis": 512, "matched": 0.7375, "control": 0.0, "delta": 0.7375},
+    {"axis": 1024, "matched": 0.725, "control": 0.0, "delta": 0.725},
+    {"axis": 2048, "matched": 0.7375, "control": 0.0, "delta": 0.7375},
+    {"axis": 4096, "matched": 0.71875, "control": 0.0, "delta": 0.71875},
+    {"axis": 8192, "matched": 0.725, "control": 0.0, "delta": 0.725},
+    {"axis": 16384, "matched": 0.68125, "control": 0.0, "delta": 0.68125},
+    {"axis": 32768, "matched": 0.6875, "control": 0.0, "delta": 0.6875}
   ],
-  "summary": {"crossover_length": 4096, "training_length": 256},
-  "free_hyperparameters": {"scale": "64", "learning_rate": "2e-5", "warmup_fraction": 0.03, "steps": 36000},
+  "summary": {"crossover_length": 32768, "training_length": 512, "numeric_decoy_count": 4, "tail_log_auc": 0.71375, "tail_log_auc_variation": 0.3557046264107342},
+  "free_hyperparameters": {"scale": "64", "learning_rate": "2e-5", "warmup_steps": 960, "steps": 32000},
   "fixed_shape_parameters": {"target_modules": ["down_proj"], "n_latents": 208, "num_blocks": 8},
   "provenance": {
     "models": [{"model_id": "Qwen/Qwen3-0.6B", "revision": "c1899de289a04d12100db370d81485cdf75e47ca"}],
-    "data": [{"path": "src/adapterbench/t2p/niah_data.py", "sha256": "64a032231d30cc3d4740b3287b52158a88d27e2f00e216477c35ac1cbdc921bc"}],
+    "data": [{"path": "src/adapterbench/t2p/niah_data.py", "sha256": "f89e3962e8d6a7b2131ee10a8553202b680d8925d17a18a1160c498720c338cf"}],
     "source_artifacts": [
-      {"seed": 786, "path": "results/autoresearch/d2l/ia3/confirmation_scale64/s786/results.jsonl", "sha256": "8144a4255613f69443daddc3a6c0fdf5e03e41679486dbcc21c57f36bd1be555"},
-      {"seed": 787, "path": "results/autoresearch/d2l/ia3/confirmation_scale64/s787/results.jsonl", "sha256": "39ac4f11930e8b1b2577a6104c607d3a2282840e140be6e1b6cbe1d8c12d0995"},
-      {"seed": 788, "path": "results/autoresearch/d2l/ia3/confirmation_scale64/s788/results.jsonl", "sha256": "2b0072696aa51558ba18a6d7f3da0e72676c1ed02838281e0d8d3c76cf2528e5"}
+      {"seed": 2901, "path": "results/repro/d2l_numeric_decoy/ia3/s2901/results.jsonl", "sha256": "62fbb7530bf780a9fbfff743b942b987ee2251dfc7818c3bbdc1c73dab35e577"},
+      {"seed": 2902, "path": "results/repro/d2l_numeric_decoy/ia3/s2902/results.jsonl", "sha256": "642196212071428ba2209de45c304c23b1488f4c8d2122db0b7ef60ff74f653e"},
+      {"seed": 2903, "path": "results/repro/d2l_numeric_decoy/ia3/s2903/results.jsonl", "sha256": "3cd31acb3dc9bc9fa1761b8cf4cf4d7c5afef15393175c002e8aa02183791ab3"},
+      {"seed": 2905, "path": "results/repro/d2l_numeric_decoy/ia3/s2905/results.jsonl", "sha256": "b70e9e94af7eb235814070adb56c60f5e9d135a36580cf4b8e940b9032ac0ac2"},
+      {"seed": 2906, "path": "results/repro/d2l_numeric_decoy/ia3/s2906/results.jsonl", "sha256": "9c7aea0ba2219511002c49cbb163f7f7ccdf7f1f6b593b18b6fd406943d992a0"}
     ],
     "environment": {"python": "3.11.15", "lockfile_sha256": "f46fdbf77957f9b28555a9890c004d5ac5440c99822aa646c8884c815aec3762"}
   },
   "reproduction": {
-    "script": "document_niah_ia3.sh",
-    "smoke": "uv run adapterbench d2p-niah --adapters ia3 --ia3-scaling 64 --steps 20 --grad-accum-steps 1 --context-lengths 256 --num-train-documents 40 --eval-limit 10 --device cuda:0 --output results/d2p_niah_ia3_smoke",
-    "full": "bash scripts/reproduce/document_niah_ia3.sh cuda:0",
-    "aggregate": "uv run python scripts/d2p_niah_aggregate.py --root results/repro/document_niah_ia3/scale64 --min-seeds 3 --train-length 256"
+    "script": "document_niah_numeric_decoy_ia3.sh",
+    "smoke": "uv run adapterbench d2p-niah --adapters ia3 --ia3-scaling 64 --needle-style realistic_numeric_decoys --numeric-decoy-count 4 --context-lengths 512 --eval-context-lengths 512,32768 --num-train-documents 2 --steps 1 --eval-limit 1 --device cuda:0 --output results/d2p_niah_numeric_decoy_ia3_smoke",
+    "full": "bash scripts/reproduce/document_niah_numeric_decoy_ia3.sh cuda:0",
+    "aggregate": "uv run python scripts/d2p_niah_aggregate.py --root results/repro/d2l_numeric_decoy/ia3 --min-seeds 5 --train-length 512"
   }
 }

@@ -88,6 +88,23 @@ def validate_record(record: dict[str, Any]) -> None:
             raise ResultValidationError("artifact paths must be repository-relative")
         if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
             raise ResultValidationError("artifact sha256 must be a SHA-256 digest")
+    trail = record.get("selection_trail")
+    if trail is not None:
+        if not isinstance(trail, dict) or {"protocol", "state_artifacts", "summary"} - set(trail):
+            raise ResultValidationError("selection_trail is incomplete")
+        if not isinstance(trail["protocol"], str) or not isinstance(trail["summary"], str):
+            raise ResultValidationError("selection_trail protocol and summary must be strings")
+        state_artifacts = trail["state_artifacts"]
+        if not isinstance(state_artifacts, list) or not state_artifacts:
+            raise ResultValidationError("selection_trail needs state artifacts")
+        for artifact in state_artifacts:
+            if not isinstance(artifact, dict):
+                raise ResultValidationError("selection_trail artifacts must be objects")
+            path, digest = artifact.get("path"), artifact.get("sha256")
+            if not isinstance(path, str) or path.startswith("/") or ".." in Path(path).parts:
+                raise ResultValidationError("selection_trail paths must be repository-relative")
+            if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+                raise ResultValidationError("selection_trail sha256 must be a SHA-256 digest")
 
 
 def load_records(root: Path = DEFAULT_RESULTS_ROOT) -> list[dict[str, Any]]:
@@ -115,11 +132,12 @@ def _by_setting(records: list[dict[str, Any]], setting: str) -> list[dict[str, A
     return [record for record in records if record["setting"] == setting]
 
 
-def _one_setting_record(records: list[dict[str, Any]], setting: str) -> dict[str, Any]:
-    selected = _by_setting(records, setting)
-    if len(selected) != 1:
-        raise ResultValidationError(f"expected exactly one canonical record for {setting}, found {len(selected)}")
-    return selected[0]
+def _t2l_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Keep the validated LoRA reference first, then sort explored codecs by name."""
+    selected = _by_setting(records, "T2L")
+    if not selected:
+        raise ResultValidationError("no canonical T2L records")
+    return sorted(selected, key=lambda record: (record["codec"] != "lora_r8", record["codec"]))
 
 
 def _d2l_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -131,21 +149,51 @@ def _display_name(record: dict[str, Any]) -> str:
     return str(record.get("display_name", record["codec"]))
 
 
+def _t2l_display_name(record: dict[str, Any]) -> str:
+    return "LoRA" if record["codec"] == "lora_r8" else _display_name(record)
+
+
 def _signed(value: float, decimals: int) -> str:
     return f"{value:+.{decimals}f}".replace("-", "−")
 
 
 def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
-    t2l, d2l_records = _one_setting_record(records, "T2L"), _d2l_records(records)
+    t2l_records, d2l_records = _t2l_records(records), _d2l_records(records)
     if not d2l_records:
         raise ResultValidationError("no canonical D2L records")
-    th = t2l["headline"]
     if fragment == "t2l-markdown":
-        return "\n".join([
-            "| Shape | rank | lr | steps | seeds | **matched − static (CE, nats)** | matched − frozen | accuracy m−static / m−frozen |",
-            "|---|:---:|:---:|---:|:---:|:---:|:---:|:---:|",
-            f"| LoRA | 8 | 1e-4 | 20 000 | 3 | **{_signed(th['value'], 3)} ± {th['variation']:.3f}** ({t2l['summary']['wins']}) | {_signed(t2l['summary']['matched_minus_frozen']['value'], 2)} ± {t2l['summary']['matched_minus_frozen']['variation']:.2f} | {_signed(t2l['summary']['accuracy_matched_minus_static']['value'], 4)} ± {t2l['summary']['accuracy_matched_minus_static']['variation']:.4f} / {_signed(t2l['summary']['accuracy_matched_minus_frozen'], 3)} |",
-        ])
+        lines = [
+            "| Shape | rank | scale | lr | steps | seeds | **matched − static (CE, nats)** | matched − frozen | accuracy m−static / m−frozen |",
+            "|---|:---:|:---:|:---:|---:|:---:|:---:|:---:|:---:|",
+        ]
+        for t2l in t2l_records:
+            th, hp = t2l["headline"], t2l["free_hyperparameters"]
+            rank = t2l["fixed_shape_parameters"].get("rank", "—")
+            steps = f"{int(hp['steps']):,}".replace(",", " ")
+            frozen = t2l["summary"]["matched_minus_frozen"]
+            accuracy = t2l["summary"]["accuracy_matched_minus_static"]
+            lines.append(
+                f"| {_t2l_display_name(t2l)} | {rank} | {hp['scale']} | {hp['learning_rate']} | {steps} | {len(t2l['seed_results'])} | "
+                f"**{_signed(th['value'], 3)} ± {th['variation']:.3f}** ({t2l['summary']['wins']}) | "
+                f"{_signed(frozen['value'], 2)} ± {frozen['variation']:.2f} | "
+                f"{_signed(accuracy['value'], 4)} ± {accuracy['variation']:.4f} / {_signed(t2l['summary']['accuracy_matched_minus_frozen'], 3)} |"
+            )
+        return "\n".join(lines)
+    if fragment == "t2l-selection-markdown":
+        lines = [
+            "| Shape | compact audit trail | selected final configuration |",
+            "|---|---|---|",
+        ]
+        for t2l in t2l_records:
+            trail = t2l.get("selection_trail")
+            if trail is None:
+                lines.append(f"| {_t2l_display_name(t2l)} | not yet backfilled | — |")
+                continue
+            hp = t2l["free_hyperparameters"]
+            ledgers = ", ".join(f"`{Path(item['path']).parent.name}/{Path(item['path']).name}`" for item in trail["state_artifacts"])
+            selected = f"scale {hp['scale']}; lr {hp['learning_rate']}; {hp['steps']:,} steps"
+            lines.append(f"| {_t2l_display_name(t2l)} | {trail['summary']} State ledgers: {ledgers}. | {selected} |")
+        return "\n".join(lines)
     if fragment == "d2l-markdown":
         lines = [
             "| Shape | scale | lr | steps | seeds | accuracy | ctxswap | **matched − control** |",
@@ -165,6 +213,13 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
             lines.append(f"| matched − control ({_display_name(d2l)}) | {values} |")
         return "\n".join(lines)
     if fragment == "release-summary-markdown":
+        t2l_summary = "; ".join(
+            f"{_t2l_display_name(t2l)} `matched − static = {_signed(t2l['headline']['value'], 3)} ± {t2l['headline']['variation']:.3f}`"
+            for t2l in t2l_records
+        )
+        t2l_control = "; ".join(
+            f"{_t2l_display_name(t2l)} wins {t2l['summary']['wins']}" for t2l in t2l_records
+        )
         d2l_summary = "; ".join(
             f"{_display_name(d2l)}: `matched − context-swap = {_signed(d2l['headline']['value'], 3)} ± {d2l['headline']['variation']:.3f}`"
             for d2l in d2l_records
@@ -175,32 +230,51 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
         return "\n".join([
             "| setting | frozen interpreter | primary result | condition control |",
             "|---|---|---|---|",
-            f"| T2L | gemma-2-2b | `matched − static = {_signed(th['value'], 3)} ± {th['variation']:.3f}` nats CE over 3 seeds | matched beats a same-shape static multi-task LoRA on {t2l['summary']['wins']} |",
+            f"| T2L | gemma-2-2b | {t2l_summary} nats CE (3 seeds each) | same-shape static control: {t2l_control} |",
             f"| D2L | Qwen3-0.6B | {d2l_summary} exact-match | {d2l_control} |",
         ])
     if fragment == "repro-summary-markdown":
         lines = [
             "| Setting | Script | Leaderboard | Headline |",
             "|---|---|---|---|",
-            f"| Task (T2L) | `task_t2l_lora_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2l.md` | matched − static = **{_signed(th['value'], 3)} ± {th['variation']:.3f}** nats CE ({t2l['summary']['wins']}, 3 seeds) |",
         ]
+        for t2l in t2l_records:
+            th = t2l["headline"]
+            lines.append(
+                f"| Task (T2L) — {_t2l_display_name(t2l)} | `{t2l['reproduction']['script']} [GPUS_HYPER] [GPUS_STATIC]` | "
+                f"`task_conditioned_t2l.md` | matched − static = **{_signed(th['value'], 3)} ± {th['variation']:.3f}** "
+                f"nats CE ({t2l['summary']['wins']}, {len(t2l['seed_results'])} seeds) |"
+            )
         for d2l in d2l_records:
             dh = d2l["headline"]
+            decoys = d2l.get("summary", {}).get("numeric_decoy_count")
+            setting_label = (
+                f"realistic-prose, {decoys} numeric decoys" if decoys is not None else "realistic haystack"
+            )
             lines.append(
                 f"| Document (NIAH) — {_display_name(d2l)} | `{d2l['reproduction']['script']} [DEVICE]` | "
                 f"`document_niah_d2l.md` | matched − ctxswap = **{_signed(dh['value'], 3)} ± {dh['variation']:.3f}** "
-                f"({len(d2l['seed_results'])} seeds, realistic haystack; crossover {d2l['summary']['crossover_length'] / d2l['summary']['training_length']:.0f}×) |"
+                f"({len(d2l['seed_results'])} seeds, {setting_label}; crossover {d2l['summary']['crossover_length'] / d2l['summary']['training_length']:.0f}×) |"
             )
         return "\n".join(lines)
     if fragment == "t2l-html":
-        frozen = t2l["summary"]["matched_minus_frozen"]
-        accuracy = t2l["summary"]["accuracy_matched_minus_static"]
-        return (
-            '<tr><td>LoRA <span class="baseline-badge">baseline</span></td><td>8</td>'
-            f'<td>1e-4</td><td>20 000</td><td>3</td><td class="headline">{_signed(th["value"], 3)} ± {th["variation"]:.3f} '
-            f'<span class="muted">({t2l["summary"]["wins"]})</span></td><td>{_signed(frozen["value"], 2)} ± {frozen["variation"]:.2f}</td>'
-            f'<td>{_signed(accuracy["value"], 4)} ± {accuracy["variation"]:.4f} / {_signed(t2l["summary"]["accuracy_matched_minus_frozen"], 3)}</td></tr>'
-        )
+        rows = []
+        for t2l in t2l_records:
+            th, hp = t2l["headline"], t2l["free_hyperparameters"]
+            frozen = t2l["summary"]["matched_minus_frozen"]
+            accuracy = t2l["summary"]["accuracy_matched_minus_static"]
+            label = _t2l_display_name(t2l)
+            if t2l["codec"] == "lora_r8":
+                label += ' <span class="baseline-badge">baseline</span>'
+            rank = t2l["fixed_shape_parameters"].get("rank", "—")
+            steps = f"{int(hp['steps']):,}".replace(",", " ")
+            rows.append(
+                f'<tr><td>{label}</td><td>{rank}</td><td>{hp["scale"]}</td><td>{hp["learning_rate"]}</td>'
+                f'<td>{steps}</td><td>{len(t2l["seed_results"])}</td><td class="headline">{_signed(th["value"], 3)} ± {th["variation"]:.3f} '
+                f'<span class="muted">({t2l["summary"]["wins"]})</span></td><td>{_signed(frozen["value"], 2)} ± {frozen["variation"]:.2f}</td>'
+                f'<td>{_signed(accuracy["value"], 4)} ± {accuracy["variation"]:.4f} / {_signed(t2l["summary"]["accuracy_matched_minus_frozen"], 3)}</td></tr>'
+            )
+        return "\n".join(rows)
     if fragment == "d2l-html":
         rows = []
         for d2l in d2l_records:
@@ -220,6 +294,7 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
 def check_rendered_documents(records: list[dict[str, Any]], root: Path = REPO_ROOT) -> list[str]:
     targets = [
         (root / "leaderboards/task_conditioned_t2l.md", "t2l-markdown"),
+        (root / "leaderboards/task_conditioned_t2l.md", "t2l-selection-markdown"),
         (root / "leaderboards/document_niah_d2l.md", "d2l-markdown"),
         (root / "PROJECT_PLAN.md", "release-summary-markdown"),
         (root / "scripts/reproduce/README.md", "repro-summary-markdown"),

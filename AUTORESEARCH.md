@@ -163,16 +163,26 @@ is still published with its measured negative or null result. The human reviews 
 scratch artifacts, updates canonical compact metrics and leaderboards, runs drift checks,
 and creates the commit.
 
+#### Canonical selection trail
+
+Finalization also copies a **compact selection trail** into the codec's canonical result
+record: the protocol name, hashes and repository-relative paths of the append-only state
+ledgers, and a plain-language account of the selected point and rejected boundaries. The
+leaderboard renders this trail beneath the headline row. Keep the full commands and every
+candidate metric in `results/autoresearch/.../state.jsonl`; never commit checkpoints or
+verbose logs. Historical probes from a different locked setting may be retained as history,
+but must not be described as selecting the current leaderboard configuration.
+
 ## Setting-specific selection rules
 
 | Setting | Select on | Helpfulness floor | Required final evidence |
 |---|---|---|---|
 | T2L | Lowest `matched − static` held-out CE (negative is better) | matched CE lower than frozen CE | 21 held-out SNI tasks; CE primary and generation accuracy corroborating; same-shape static adapter for every candidate. |
-| D2L | Highest controlled hard-length score after passing the 256-token gate: normalized log-length AUC over 512, 1024, 2048, 4096, and 8192 tokens (each doubling contributes equally) | 256-token matched accuracy higher than frozen | realistic-prose NIAH length curve through 8192; context-swap near zero at every reported length. |
+| D2L | Highest controlled hard-length score after passing the shortest in-distribution gate: normalized log-length AUC over every declared doubled evaluation length after that gate | matched accuracy at the shortest in-distribution length higher than frozen | realistic-prose numeric-decoy NIAH length curve through every declared hard bin; context-swap near zero at every reported length. |
 
 For T2L, train the conditioned hypernetwork and the same-shape static reference together
 for every candidate. For D2L, never select on language-model loss: retrieval can remain
-at chance after loss is nearly zero. The 256-token score establishes that the codec is
+at chance after loss is nearly zero. The shortest in-distribution score establishes that the codec is
 helpful and condition-dependent; when it reaches a ceiling, it must not decide between
 otherwise viable configurations.
 

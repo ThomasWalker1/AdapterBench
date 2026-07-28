@@ -28,22 +28,23 @@ STATIC_FLAG=""; [ "${STATIC:-0}" = "1" ] && STATIC_FLAG="--static"
 # This is a compilation-only escape hatch for CUDA environments without a compatible
 # Triton installation. It changes neither the model forward nor any benchmark setting.
 COMPILE_FLAG=""; [ "${NO_COMPILE:-0}" = "1" ] && COMPILE_FLAG="--no-compile"
+INLINE_EVAL_FLAG=""; [ "${SKIP_INLINE_EVAL:-0}" = "1" ] && INLINE_EVAL_FLAG="--skip-inline-eval"
 # The built-in arc/boolq final eval is a *self-describing* set that can't reveal conditioning under
 # strip-def (the real eval is the held-out-SNI teacher-forced-CE script on snapshots). ELIMIT lets a
 # strip-def run shrink that eval so it doesn't burn ~1h of autoregressive generation on the wrong instrument.
 ELIMIT="${ELIMIT:-80}"; ETASKS="${ETASKS:-arc_easy,arc_challenge,hellaswag,boolq}"
 OUT="${OUT:-results/repro/t2l_base_diag/$TAG/s$SEED}"
 mkdir -p "$OUT"
-ADAPTER="${ADAPTER:-lora}"; IA3_SCALE="${IA3_SCALE:-1.0}"
+ADAPTER="${ADAPTER:-lora}"; LORA_SCALE="${LORA_SCALE:--1.0}"; IA3_SCALE="${IA3_SCALE:-1.0}"
 
-echo "=== T2L base diag: interpreter=$INTERP tag=$TAG gpus=$GPUS per_gpu_batch=$PGB steps=$STEPS lr=$LR snap=$SNAP limit=$LIMIT clambda=$CLAMBDA ($(date)) ==="
+echo "=== T2L base diag: interpreter=$INTERP tag=$TAG adapter=$ADAPTER lora_scale=$LORA_SCALE ia3_scale=$IA3_SCALE gpus=$GPUS per_gpu_batch=$PGB steps=$STEPS lr=$LR snap=$SNAP limit=$LIMIT clambda=$CLAMBDA ($(date)) ==="
 CUDA_VISIBLE_DEVICES="$GPUS" .venv/bin/torchrun --standalone --nproc_per_node="$NPROC" \
   scripts/t2p_train_ddp.py --interpreter "$INTERP" \
   --all-decontam-tasks --max-descriptions 128 --limit "$LIMIT" \
   --per-gpu-batch "$PGB" --steps "$STEPS" --learning-rate "$LR" --warmup-frac 0.1 \
   --max-grad-norm 1.0 --fixed-seq-len 512 --snapshot-every "$SNAP" \
-  --adapter "$ADAPTER" --ia3-scaling "$IA3_SCALE" \
-  $COMPILE_FLAG \
+  --adapter "$ADAPTER" --lora-scaling "$LORA_SCALE" --ia3-scaling "$IA3_SCALE" \
+  $COMPILE_FLAG $INLINE_EVAL_FLAG \
   --contrastive-lambda "$CLAMBDA" --contrastive-margin "$CMARGIN" --neutral-junk-lambda "$NJLAMBDA" \
   $STRIP_FLAG $STATIC_FLAG \
   --eval-tasks "$ETASKS" --eval-limit "$ELIMIT" \
@@ -51,4 +52,10 @@ CUDA_VISIBLE_DEVICES="$GPUS" .venv/bin/torchrun --standalone --nproc_per_node="$
   --output "$OUT"
 
 echo "=== DONE $(date) — matched vs junk-description control: ==="
-.venv/bin/python scripts/t2p_rigor_aggregate.py --results "$OUT/results.jsonl" 2>&1 | tail -15
+if [[ -f "$OUT/results.jsonl" ]]; then
+  .venv/bin/python scripts/t2p_rigor_aggregate.py --results "$OUT/results.jsonl" 2>&1 | tail -15
+else
+  # A static equal-shape control deliberately has no conditioned evaluation rows; its
+  # checkpoint is scored later alongside the hypernetwork snapshot.
+  echo "static checkpoint saved; held-out paired evaluation is run by the caller."
+fi
