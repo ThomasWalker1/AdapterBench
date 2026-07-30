@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "setting": "T2L",
+  "codec": "lokr",
+  "display_name": "LoKr",
+  "metric": "held_out_teacher_forced_cross_entropy",
+  "headline": {
+    "comparison": "matched_minus_control",
+    "control_name": "same_shape_static_adapter",
+    "matched": 6.637980623109755,
+    "control": 2.388907704435821,
+    "value": 4.249072918673932,
+    "variation": 8.09845707524124,
+    "variation_kind": "sample_standard_deviation",
+    "unit": "nats_cross_entropy",
+    "direction": "lower_is_better"
+  },
+  "seed_results": [
+    {"seed": 2704, "matched": 1.9103649746190519, "control": 2.4161887902411676, "delta": -0.5058238156221155},
+    {"seed": 2705, "matched": 1.9417158148735614, "control": 2.2885885939356827, "delta": -0.34687277906212133},
+    {"seed": 2706, "matched": 16.06186107983665, "control": 2.461945729130613, "delta": 13.599915350706034}
+  ],
+  "difficulty_curve": [
+    {"axis": "held_out_sni_task_seed_pairs", "matched": 37, "control": 63, "delta": -26}
+  ],
+  "summary": {
+    "wins": "37/63 task-seed pairs",
+    "matched_minus_frozen": {"value": -6.68696762246102, "variation": 8.161334931603133, "variation_kind": "sample_standard_deviation"},
+    "accuracy_matched_minus_static": {"value": -0.024140211640211646, "variation": 0.1031809623599878, "variation_kind": "sample_standard_deviation"},
+    "accuracy_matched_minus_frozen": 0.048280423280423285
+  },
+  "free_hyperparameters": {"learning_rate": "2e-4", "warmup_fraction": 0.1, "steps": 6000, "scale": "16"},
+  "selection_trail": {
+    "protocol": "AUTORESEARCH.md",
+    "state_artifacts": [
+      {"path": "results/autoresearch/t2l/lokr/state.jsonl", "sha256": "3411f9a2574c60366a606906fcedeed83f8e586371c9dd139bae84649826449b"}
+    ],
+    "summary": "The LoKr-owned scale ladder 0.0625→16 improved through 16; the geometric boundary at 64 catastrophically failed both the static-control comparison and frozen helpfulness floor. At scale 16, LR 2e-4 beat 1e-4 and 5e-5. Fresh confirmations were unstable: seeds 2704/2705 helped, while seed 2706 failed both controlled CE and the frozen helpfulness floor; the losing aggregate is retained."
+  },
+  "fixed_shape_parameters": {
+    "target_modules": ["q_proj", "v_proj"],
+    "factorization": "balanced exact dimension divisors",
+    "generated_scalars_per_layer": 7680,
+    "generated_scalars_all_layers": 199680
+  },
+  "provenance": {
+    "models": [
+      {"model_id": "google/gemma-2-2b-it", "revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8"},
+      {"model_id": "Alibaba-NLP/gte-large-en-v1.5", "revision": "104333d6af6f97649377c2afbde10a7704870c7b"}
+    ],
+    "data": [
+      {"path": "data/t2l/hyper_lora_decontam_lol_tasks.yaml", "sha256": "f38284efcbf9e01aebfe60746c0024e615ef4432667b540c52dc5f055a79e96f"},
+      {"path": "data/t2l/eval_ds_info.yaml", "sha256": "cf281756600d2f853907687e9210688f3f9aab8632c9cc1df0353e50a49017d2"}
+    ],
+    "source_artifacts": [
+      {"seed": 2704, "path": "results/autoresearch/t2l/lokr/confirmation/hyper/s2704/heldout_sni_ce_full21.jsonl", "sha256": "8db8bf4da244d94f8615b1c331d81251256a30b9aa401a8f7a7c67f1c43e826f"},
+      {"seed": 2704, "path": "results/autoresearch/t2l/lokr/confirmation/hyper/s2704/heldout_sni_acc.jsonl", "sha256": "b5b6520b619e95b47f436b7e607d98a58a7b702e454ddbb42e93275a4132821c"},
+      {"seed": 2705, "path": "results/autoresearch/t2l/lokr/confirmation/hyper/s2705/heldout_sni_ce_full21.jsonl", "sha256": "fe459e52e31939da66f0e0aaa8b2b1a86fb77e03749cbedd199f9782ae1602cf"},
+      {"seed": 2705, "path": "results/autoresearch/t2l/lokr/confirmation/hyper/s2705/heldout_sni_acc.jsonl", "sha256": "83d0ebd2b029a8398436cd0f65a6974ec26e9c370a4a73df8011ebc539532074"},
+      {"seed": 2706, "path": "results/autoresearch/t2l/lokr/confirmation/hyper/s2706/heldout_sni_ce_full21.jsonl", "sha256": "4c9a1b2ee1d59ca5b4a2b5b7d3a2204c851cad59009050a86de4f7a2bb9ccb79"},
+      {"seed": 2706, "path": "results/autoresearch/t2l/lokr/confirmation/hyper/s2706/heldout_sni_acc.jsonl", "sha256": "d5c98bc12f6094ca6dea5b2454d5ea4e58774b9e915c4526b1f2b9a86b837521"}
+    ],
+    "environment": {"python": "3.11.15", "lockfile_sha256": "f46fdbf77957f9b28555a9890c004d5ac5440c99822aa646c8884c815aec3762"}
+  },
+  "reproduction": {
+    "script": "task_t2l_lokr_all.sh",
+    "smoke": "STEPS=6 SNAP=6 LIMIT=2 PGB=2 CE_LIMIT=1 ACC_LIMIT=0 NO_COMPILE=1 bash scripts/t2l_codec_trial.sh lokr 1 2703 0,1 2,3 results/autoresearch/t2l/lokr/smoke_scale1_staged",
+    "full": "bash scripts/reproduce/task_t2l_lokr.sh 2704 0,1,2,3 4,5,6,7",
+    "aggregate": "bash scripts/reproduce/task_t2l_lokr_all.sh 0,1,2,3 4,5,6,7"
+  }
+}

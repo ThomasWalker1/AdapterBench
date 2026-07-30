@@ -101,7 +101,7 @@ class SetupManifest(StrictModel):
 class AdapterManifest(StrictModel):
     schema_version: Literal[1]
     name: str
-    family: Literal["lora", "ia3"]
+    family: Literal["lora", "ia3", "lokr", "loha"]
     implementation: Literal["peft", "custom"]
     output_structure: str
     target_modules: list[str]

@@ -31,6 +31,7 @@ strip-def input template, the 21 held-out SNI tasks, the static-reference contro
 |---|:---:|:---:|:---:|---:|:---:|:---:|:---:|:---:|
 | LoRA | 8 | 22.627417 | 1e-4 | 8 000 | 3 | **−0.571 ± 0.045** (54/63 task-seed pairs) | −11.21 ± 0.07 | −0.0050 ± 0.0278 / +0.158 |
 | (IA)³ | — | 16 | 4e-4 | 8 000 | 3 | **−0.381 ± 0.023** (48/63 task-seed pairs) | −11.31 ± 0.06 | +0.0562 ± 0.0087 / +0.150 |
+| LoKr | — | 16 | 2e-4 | 6 000 | 3 | **+4.249 ± 8.098** (37/63 task-seed pairs) | −6.69 ± 8.16 | −0.0241 ± 0.1032 / +0.048 |
 <!-- canonical-results:t2l-markdown:end -->
 
 More-negative CE is better; accuracy is corroborating and can diverge from CE. Both codecs beat
@@ -47,6 +48,7 @@ candidate metrics, artifacts, and rejected points. Only fresh confirmation seeds
 |---|---|---|
 | LoRA | Scale scout 0.353553→90.509668; 90.509668 was numerically invalid. At the common 8k rung, 22.627417 beat 1.414214 and 5.656854; a 20k continuation regressed. Fresh LR checks at 5e-5 and 2e-4 were worse than 1e-4. State ledgers: `scale_locator/state.jsonl`, `lr_locator/state.jsonl`. | scale 22.627417; lr 1e-4; 8,000 steps |
 | (IA)³ | Tiny scales were retained as static-control failures, not selection evidence. In the viable high-scale ladder, 16 beat 4 and 64. At 8k, LR 4e-4 beat 5e-5, 1e-4, and 2e-4; 8e-4 catastrophically failed the helpfulness floor. State ledgers: `scale_locator/state.jsonl`, `lr_locator/state.jsonl`, `lr_locator_scale16/state.jsonl`. | scale 16; lr 4e-4; 8,000 steps |
+| LoKr | The LoKr-owned scale ladder 0.0625→16 improved through 16; the geometric boundary at 64 catastrophically failed both the static-control comparison and frozen helpfulness floor. At scale 16, LR 2e-4 beat 1e-4 and 5e-5. Fresh confirmations were unstable: seeds 2704/2705 helped, while seed 2706 failed both controlled CE and the frozen helpfulness floor; the losing aggregate is retained. State ledgers: `lokr/state.jsonl`. | scale 16; lr 2e-4; 6,000 steps |
 <!-- canonical-results:t2l-selection-markdown:end -->
 
 **Reproduce:** `scripts/reproduce/task_t2l_lora.sh` and `scripts/reproduce/task_t2l_ia3.sh`

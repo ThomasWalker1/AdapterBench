@@ -10,8 +10,10 @@ row up to seed variance — this is the benchmark's reproducibility contract.
 |---|---|---|---|
 | Task (T2L) — LoRA | `task_t2l_lora_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2l.md` | matched − static = **−0.571 ± 0.045** nats CE (54/63 task-seed pairs, 3 seeds) |
 | Task (T2L) — (IA)³ | `task_t2l_ia3_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2l.md` | matched − static = **−0.381 ± 0.023** nats CE (48/63 task-seed pairs, 3 seeds) |
+| Task (T2L) — LoKr | `task_t2l_lokr_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2l.md` | matched − static = **+4.249 ± 8.098** nats CE (37/63 task-seed pairs, 3 seeds) |
 | Document (NIAH) — LoRA (r=8) | `document_niah_numeric_decoy_lora.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **+0.556 ± 0.327** (5 seeds, realistic-prose, 4 numeric decoys; crossover 16×) |
 | Document (NIAH) — (IA)³ | `document_niah_numeric_decoy_ia3.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **+0.738 ± 0.327** (5 seeds, realistic-prose, 4 numeric decoys; crossover 64×) |
+| Document (NIAH) — LoKr | `document_niah_numeric_decoy_lokr_all.sh [DEVICE]` | `document_niah_d2l.md` | matched − ctxswap = **+0.969 ± 0.026** (3 seeds, realistic-prose, 4 numeric decoys; crossover 64×) |
 <!-- canonical-results:repro-summary-markdown:end -->
 
 All scripts run `adapterbench preflight` before training and are restart-safe: re-run the

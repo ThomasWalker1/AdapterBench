@@ -3,7 +3,7 @@
 # controlled log-length AUC rather than loss, reusing one checkpoint per candidate.
 #
 # Usage: scripts/d2p_niah_multifidelity.sh ADAPTER GPU_CSV SCALES_CSV [SEED] [ROOT]
-# Example: scripts/d2p_niah_multifidelity.sh lora 0,1,2,3 1,3,10,30 902
+# Example: scripts/d2p_niah_multifidelity.sh loha 0,1,2,3 0.0625,0.25,1,4,16 902
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -14,7 +14,11 @@ IFS=',' read -ra CANDIDATES <<< "$SCALES_CSV"
 case "$ADAPTER" in
   lora) SCALE_FLAG="--lora-scaling"; LR="4e-5" ;;
   ia3) SCALE_FLAG="--ia3-scaling"; LR="2e-5" ;;
-  *) echo "unsupported adapter: $ADAPTER (expected lora or ia3)" >&2; exit 2 ;;
+  # 4e-5 is the D2L command's setting default, not a selected value transferred
+  # from another codec. Set LEARNING_RATE explicitly for LoKr's own LR sweep.
+  lokr) SCALE_FLAG="--lokr-scaling"; LR="4e-5" ;;
+  loha) SCALE_FLAG="--loha-scaling"; LR="4e-5" ;;
+  *) echo "unsupported adapter: $ADAPTER (expected lora, ia3, lokr, or loha)" >&2; exit 2 ;;
 esac
 LR="${LEARNING_RATE:-$LR}"
 NEEDLE_STYLE="${NEEDLE_STYLE:-realistic}"

@@ -86,7 +86,7 @@ class FakeTokenizer:
         return "0042 some text"  # always "contains" a 4-digit needle for a deterministic score
 
 
-def _setup(vocab_size=16, hidden_size=8, num_layers=2):
+def _setup(vocab_size=16, hidden_size=8, num_layers=2, adapter="lora"):
     torch.manual_seed(0)
     interpreter = FakeCausalLM(vocab_size, hidden_size, num_layers)
     conditioner = _StubConditioner(hidden_size=hidden_size, task_dim=8)
@@ -94,7 +94,7 @@ def _setup(vocab_size=16, hidden_size=8, num_layers=2):
     hypernetwork = TextToPeftHypernetwork(
         module_shapes=module_shapes,
         num_layers=num_layers,
-        adapter="lora",
+        adapter=adapter,
         latent_dim=16,
         head_dim=16,
         rank=2,
@@ -140,5 +140,29 @@ def test_hooks_are_removed_after_each_example_no_leakage_between_calls():
         interpreter, interpreter.layers, hypernetwork, FakeTokenizer(), trial_id="t", device="cpu"
     )
     evaluator.evaluate({"niah_256": [_example(), _example()]}, split="test")
+    for layer in interpreter.layers:
+        assert layer._forward_hooks == {}
+
+
+def test_lokr_evaluation_applies_live_updates_and_removes_hooks():
+    interpreter, hypernetwork = _setup(adapter="lokr")
+    evaluator = DocumentHypernetworkDownstreamEvaluator(
+        interpreter, interpreter.layers, hypernetwork, FakeTokenizer(), trial_id="t", device="cpu"
+    )
+    result = evaluator.evaluate({"niah_256": [_example()]}, split="test")[0]
+    assert result.adapter == "lokr"
+    assert result.generated_parameter_count == hypernetwork.generated_parameter_count()
+    for layer in interpreter.layers:
+        assert layer._forward_hooks == {}
+
+
+def test_loha_evaluation_applies_live_updates_and_removes_hooks():
+    interpreter, hypernetwork = _setup(adapter="loha")
+    evaluator = DocumentHypernetworkDownstreamEvaluator(
+        interpreter, interpreter.layers, hypernetwork, FakeTokenizer(), trial_id="t", device="cpu"
+    )
+    result = evaluator.evaluate({"niah_256": [_example()]}, split="test")[0]
+    assert result.adapter == "loha"
+    assert result.generated_parameter_count == hypernetwork.generated_parameter_count()
     for layer in interpreter.layers:
         assert layer._forward_hooks == {}

@@ -1,0 +1,18 @@
+schema_version: 1
+name: loha
+family: loha
+implementation: custom
+output_structure: Generated four-factor Hadamard low-rank update ΔW = scale * (B1 @ A1) ⊙ (B2 @ A2), applied live.
+target_modules: [q_proj, v_proj]
+hyperparameters:
+  base_rank: 8
+  internal_rank: 4
+  scaling: 1.0
+  scalar_budget_rule: 2 * internal_rank * (in_features + out_features) = base_rank * (in_features + out_features)
+compatible_objectives: [downstream, reconstruction, hybrid]
+supports_batched_generation: true
+notes:
+  - The internal rank is a fixed codec shape identity derived from the locked base rank, not a tunable parameter.
+  - LoHa matches the rank-8 LoRA generated-scalar budget at every fixed hook projection.
+  - T2L retains q_proj/v_proj and D2L retains down_proj; only the generated update representation changes.
+  - B1 starts at zero while A1 and the complete B2@A2 branch are nonzero, so the live update is initially zero without a fourth-order dead saddle.

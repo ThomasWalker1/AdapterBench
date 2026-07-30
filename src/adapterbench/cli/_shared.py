@@ -44,6 +44,11 @@ PILOT_DEFAULT_TARGET_MODULES = {
     # IA3 scales each hooked projection's output channels, retaining the validated
     # T2L projection sites while changing only the generated representation.
     "ia3": ["q_proj", "v_proj"],
+    # LoKr is an additive weight-space update, so it retains LoRA's validated
+    # T2L projection sites while replacing only the generated representation.
+    "lokr": ["q_proj", "v_proj"],
+    # LoHa is an additive weight-space update and retains the validated LoRA sites.
+    "loha": ["q_proj", "v_proj"],
 }
 
 # TextToPeftHypernetwork's own default (never overridden by any existing t2p-sft*

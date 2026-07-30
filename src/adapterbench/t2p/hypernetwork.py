@@ -67,6 +67,8 @@ class TextToPeftHypernetwork(nn.Module):
         n_frequency: int = 1000,
         steering_scale: float = 1.0,
         ia3_scaling: float = 1.0,
+        lokr_scaling: float = 1.0,
+        loha_scaling: float = 1.0,
         seed: int = 777,
         conditioner: nn.Module | None = None,
     ):
@@ -113,6 +115,8 @@ class TextToPeftHypernetwork(nn.Module):
                 n_frequency=n_frequency,
                 steering_scale=steering_scale,
                 ia3_scaling=ia3_scaling,
+                lokr_scaling=lokr_scaling,
+                loha_scaling=loha_scaling,
                 seed=seed + index,
             )
             codecs[name] = codec

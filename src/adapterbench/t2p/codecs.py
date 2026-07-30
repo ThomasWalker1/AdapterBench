@@ -150,6 +150,159 @@ class IA3Codec(GeneratedUpdateCodec):
         return generated.new_zeros(generated.shape[0], self.out_features, self.in_features)
 
 
+class LoKrCodec(GeneratedUpdateCodec):
+    """Kronecker-factored additive update for a hooked linear projection.
+
+    The generated update is ``scale * (L \u2297 R)``.  Rather than introduce a
+    tunable internal rank, the factor geometry is a deterministic, balanced exact
+    factorization of each frozen projection dimension.  For example, a 2048 by
+    2048 projection uses ``(32 x 32) \u2297 (64 x 64)`` and emits 5,120 scalars.
+    This is part of the codec's fixed shape identity, not a sweep parameter.
+
+    ``L`` and ``R`` are bilinear generated factors.  ``initial_bias`` initializes
+    R but leaves L exactly zero: the initial live update is identity while the
+    head can immediately receive a gradient through L.
+    """
+
+    def __init__(self, in_features: int, out_features: int, scaling: float = 1.0, seed: int = 777):
+        super().__init__(in_features, out_features)
+        self.out_factor_1, self.out_factor_2 = self._balanced_factors(out_features)
+        self.in_factor_1, self.in_factor_2 = self._balanced_factors(in_features)
+        self.scaling = scaling
+        self.seed = seed
+
+    @staticmethod
+    def _balanced_factors(size: int) -> tuple[int, int]:
+        """Return the exact divisor pair closest to ``sqrt(size)``.
+
+        This keeps neither Kronecker factor arbitrarily privileged and works for
+        all positive projection widths, including prime dimensions (where the
+        only exact shape is ``1 x size``).
+        """
+        for first in range(math.isqrt(size), 0, -1):
+            if size % first == 0:
+                return first, size // first
+        raise AssertionError("positive dimensions always have a factorization")
+
+    @property
+    def output_size(self) -> int:
+        return self.out_factor_1 * self.in_factor_1 + self.out_factor_2 * self.in_factor_2
+
+    def _split(self, generated: Tensor) -> tuple[Tensor, Tensor]:
+        split = self.out_factor_1 * self.in_factor_1
+        left = generated[:, :split].reshape(-1, self.out_factor_1, self.in_factor_1)
+        right = generated[:, split:].reshape(-1, self.out_factor_2, self.in_factor_2)
+        return left, right
+
+    def initial_bias(self) -> Tensor:
+        # See GeneratedUpdateCodec.initial_bias: initializing both Kronecker
+        # factors at zero is a dead bilinear saddle.  Keep L zero (so L \u2297 R is
+        # exactly zero) and seed R with a fan-in-normalized, deterministic draw.
+        split = self.out_factor_1 * self.in_factor_1
+        generator = torch.Generator().manual_seed(self.seed)
+        bias = torch.zeros(self.output_size)
+        bias[split:] = torch.randn(self.output_size - split, generator=generator) / math.sqrt(self.in_factor_2)
+        return bias
+
+    def apply(self, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int) -> Tensor:
+        self._check(inputs, generated)
+        left, right = self._split(generated)
+        # Do not materialize ΔW in the live path: contract the two Kronecker
+        # factors directly against x[j1, j2].  This preserves the generated
+        # autograd graph while avoiding a per-example dense projection tensor.
+        factored_inputs = inputs.to(left.dtype).reshape(
+            inputs.shape[0], inputs.shape[1], self.in_factor_1, self.in_factor_2
+        )
+        # Stage the contractions rather than submitting all three operands in one
+        # einsum.  The latter can choose a full five-index contraction; these two
+        # exact contractions exploit the Kronecker separability and keep the live
+        # path practical at the benchmark's sequence and projection dimensions.
+        intermediate = torch.einsum("bsij,bai->bsaj", factored_inputs, left)
+        delta = torch.einsum("bsaj,bcj->bsac", intermediate, right)
+        return base_output + self.scaling * delta.reshape(
+            inputs.shape[0], inputs.shape[1], self.out_features
+        ).to(base_output.dtype)
+
+    def dense_delta(self, generated: Tensor, layer_index: int) -> Tensor:
+        self._check_output_size(generated)
+        left, right = self._split(generated)
+        delta = torch.einsum("bai,bcj->bacij", left, right).reshape(
+            generated.shape[0], self.out_features, self.in_features
+        )
+        return self.scaling * delta
+
+
+class LoHaCodec(GeneratedUpdateCodec):
+    """Hadamard product of two low-rank additive updates.
+
+    ``ΔW = scale * (B₁ @ A₁) ⊙ (B₂ @ A₂)``.  The public shape identity
+    retains the repository's rank-8 LoRA scalar budget: LoHa uses fixed internal
+    rank 4, so its four factors emit ``2 * 4 * (in + out) == 8 * (in + out)``
+    values.  The internal rank is deliberately derived from the locked base rank,
+    never exposed as a sweep parameter.
+
+    A dense per-example ΔW would be prohibitive at a live hook.  ``apply`` uses
+    the equivalent rank-squared contraction, preserving the generated tensors'
+    autograd graph through the frozen interpreter forward.
+    """
+
+    def __init__(self, in_features: int, out_features: int, rank: int, scaling: float = 1.0, seed: int = 777):
+        super().__init__(in_features, out_features)
+        if rank <= 0:
+            raise ValueError("LoHa rank must be positive")
+        self.rank = rank
+        self.scaling = scaling
+        self.seed = seed
+
+    @property
+    def output_size(self) -> int:
+        return 2 * self.rank * (self.in_features + self.out_features)
+
+    def _split(self, generated: Tensor) -> tuple[Tensor, Tensor, Tensor, Tensor]:
+        self._check_output_size(generated)
+        a_size = self.rank * self.in_features
+        b_size = self.rank * self.out_features
+        a1 = generated[:, :a_size].reshape(-1, self.rank, self.in_features)
+        a2 = generated[:, a_size : 2 * a_size].reshape(-1, self.rank, self.in_features)
+        b1 = generated[:, 2 * a_size : 2 * a_size + b_size].reshape(-1, self.out_features, self.rank)
+        b2 = generated[:, 2 * a_size + b_size :].reshape(-1, self.out_features, self.rank)
+        return a1, a2, b1, b2
+
+    def initial_bias(self) -> Tensor:
+        # LoHa is fourth-order in its factors.  Initializing every factor at zero
+        # is a dead saddle; merely initializing one factor is insufficient because
+        # every gradient still contains another zero factor.  Keep B1 zero so the
+        # whole update is exactly zero, while initialize A1 and the complete second
+        # branch B2@A2 nonzero.  The immediate B1 gradient is then nonzero.
+        generator = torch.Generator().manual_seed(self.seed)
+        a_size = self.rank * self.in_features
+        b_size = self.rank * self.out_features
+        bias = torch.zeros(self.output_size)
+        bias[:a_size] = torch.randn(a_size, generator=generator) / math.sqrt(self.in_features)
+        bias[a_size : 2 * a_size] = torch.randn(a_size, generator=generator) / math.sqrt(self.in_features)
+        # B1 remains zero.  B2 completes the nonzero second branch.
+        bias[2 * a_size + b_size :] = torch.randn(b_size, generator=generator) / math.sqrt(self.rank)
+        return bias
+
+    def apply(self, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int) -> Tensor:
+        self._check(inputs, generated)
+        a1, a2, b1, b2 = self._split(generated)
+        # (B1@A1) ⊙ (B2@A2) has rank at most r². Form only its small input/output
+        # rank-pair factors, never a (batch, out, in) generated tensor in the live
+        # path. Both staged contractions keep `generated` live for backward.
+        input_pairs = a1.unsqueeze(2) * a2.unsqueeze(1)      # (batch, r, r, in)
+        output_pairs = b1.unsqueeze(3) * b2.unsqueeze(2)     # (batch, out, r, r)
+        features = torch.einsum("bsi,brqi->bsrq", inputs.to(a1.dtype), input_pairs)
+        delta = torch.einsum("bsrq,borq->bso", features, output_pairs)
+        return base_output + self.scaling * delta.to(base_output.dtype)
+
+    def dense_delta(self, generated: Tensor, layer_index: int) -> Tensor:
+        a1, a2, b1, b2 = self._split(generated)
+        first = torch.einsum("bor,bri->boi", b1, a1)
+        second = torch.einsum("bor,bri->boi", b2, a2)
+        return self.scaling * first * second
+
+
 def make_codec(
     name: str,
     in_features: int,
@@ -160,15 +313,27 @@ def make_codec(
     alpha: float = 16.0,
     lora_scaling: float | None = None,
     ia3_scaling: float = 1.0,
+    lokr_scaling: float = 1.0,
+    loha_scaling: float = 1.0,
     seed: int = 777,
     # Accepted-and-ignored so call sites (and future codecs) can pass a
     # uniform kwarg set without every caller special-casing which codec is registered.
     **_unused_codec_kwargs,
 ) -> GeneratedUpdateCodec:
     """Build a registered generated-update codec."""
+
+    def _loha() -> LoHaCodec:
+        if rank < 2 or rank % 2:
+            raise ValueError("LoHa requires an even base rank >= 2 so its fixed internal rank is rank/2")
+        return LoHaCodec(in_features, out_features, rank=rank // 2, scaling=loha_scaling, seed=seed)
+
     constructors = {
         "lora": lambda: LoRACodec(in_features, out_features, rank, alpha, scaling=lora_scaling, seed=seed),
         "ia3": lambda: IA3Codec(in_features, out_features, scaling=ia3_scaling),
+        "lokr": lambda: LoKrCodec(in_features, out_features, scaling=lokr_scaling, seed=seed),
+        # Four LoHa factor groups at rank r/2 have exactly the scalar count of the
+        # repository's fixed rank-r LoRA budget. r=8 is locked by the substrate.
+        "loha": _loha,
     }
     try:
         return constructors[name]()

@@ -211,6 +211,13 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
         for d2l in d2l_records:
             values = " | ".join(f"{point['delta']:.3f}" for point in d2l["difficulty_curve"])
             lines.append(f"| matched − control ({_display_name(d2l)}) | {values} |")
+        trails = [record for record in d2l_records if record.get("selection_trail")]
+        if trails:
+            lines.extend(["", "**Selection trail.**"])
+            for d2l in trails:
+                trail = d2l["selection_trail"]
+                ledgers = ", ".join(f"`{item['path']}`" for item in trail["state_artifacts"])
+                lines.append(f"- **{_display_name(d2l)}** — {trail['summary']} State ledger: {ledgers}.")
         return "\n".join(lines)
     if fragment == "release-summary-markdown":
         t2l_summary = "; ".join(

@@ -6,7 +6,7 @@ from adapterbench.t2p.codecs import make_codec
 from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
 
 
-@pytest.mark.parametrize("name", ["lora", "ia3"])
+@pytest.mark.parametrize("name", ["lora", "ia3", "lokr", "loha"])
 def test_generated_adapter_is_differentiable(name):
     torch.manual_seed(0)
     codec = make_codec(
@@ -28,7 +28,7 @@ def test_generated_adapter_is_differentiable(name):
     assert torch.isfinite(generated.grad).all()
 
 
-@pytest.mark.parametrize("name", ["lora"])
+@pytest.mark.parametrize("name", ["lora", "lokr", "loha"])
 def test_dense_delta_matches_apply(name):
     torch.manual_seed(0)
     codec = make_codec(name, 8, 8, num_layers=2, rank=2, alpha=2, n_frequency=4)
@@ -45,6 +45,11 @@ def test_dense_delta_matches_apply(name):
 def test_make_codec_rejects_unregistered_shape():
     with pytest.raises(ValueError, match="unsupported differentiable adapter"):
         make_codec("lok r", 8, 8, num_layers=2)
+
+
+def test_loha_rejects_a_base_rank_that_cannot_preserve_its_fixed_budget():
+    with pytest.raises(ValueError, match="even base rank"):
+        make_codec("loha", 8, 8, num_layers=2, rank=3)
 
 
 def test_ia3_geometry_and_identity_initialization():
@@ -65,6 +70,70 @@ def test_ia3_apply_scales_each_output_channel():
     generated = torch.tensor([[2.0, -1.0, 0.0], [-2.0, 1.0, 3.0]])
     expected = base * (1 + 0.5 * generated).unsqueeze(1)
     torch.testing.assert_close(codec.apply(inputs, base, generated, layer_index=0), expected)
+
+
+def test_lokr_geometry_and_identity_initialization():
+    codec = make_codec("lokr", 8, 8, num_layers=2, lokr_scaling=2.0)
+    # 8 = 2 * 4, so ΔW = L(2,2) ⊗ R(4,4) and emits 4 + 16 scalars.
+    assert (codec.out_factor_1, codec.out_factor_2) == (2, 4)
+    assert (codec.in_factor_1, codec.in_factor_2) == (2, 4)
+    assert codec.output_size == 20
+    generated = torch.zeros(3, codec.output_size)
+    inputs = torch.randn(3, 4, 8)
+    base = torch.randn(3, 4, 8)
+    torch.testing.assert_close(codec.apply(inputs, base, generated, layer_index=0), base)
+    assert codec.dense_delta(generated, layer_index=0).shape == (3, 8, 8)
+    # T2L's fixed Gemma-2 q_proj/v_proj budget is declared in the manifest.
+    assert make_codec("lokr", 2304, 2048, num_layers=26).output_size == 4608
+    assert make_codec("lokr", 2304, 1024, num_layers=26).output_size == 3072
+
+
+def test_lokr_dense_delta_is_the_kronecker_product():
+    codec = make_codec("lokr", 4, 4, num_layers=1, lokr_scaling=1.0)
+    # 4 = 2 * 2.  The first four entries are L and the final four are R.
+    generated = torch.tensor([[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]])
+    expected = torch.kron(generated[0, :4].reshape(2, 2), generated[0, 4:].reshape(2, 2))
+    torch.testing.assert_close(codec.dense_delta(generated, layer_index=0)[0], expected)
+
+
+def test_lokr_live_contraction_matches_dense_delta():
+    torch.manual_seed(7)
+    codec = make_codec("lokr", 8, 8, num_layers=1, lokr_scaling=0.75)
+    inputs = torch.randn(2, 3, 8)
+    generated = torch.randn(2, codec.output_size)
+    base = torch.zeros(2, 3, 8)
+    expected = torch.einsum("bsi,boi->bso", inputs, codec.dense_delta(generated, layer_index=0))
+    torch.testing.assert_close(codec.apply(inputs, base, generated, layer_index=0), expected, atol=1e-5, rtol=1e-5)
+
+
+def test_loha_geometry_matches_the_locked_lora_scalar_budget():
+    # The public rank is 8; LoHa's fixed internal rank is 4, so four factors
+    # emit 2 * 4 * (in + out) = 8 * (in + out), exactly rank-8 LoRA's budget.
+    codec = make_codec("loha", 8, 8, num_layers=2, rank=8, loha_scaling=2.0)
+    assert codec.rank == 4
+    assert codec.output_size == 128
+    assert codec.output_size == make_codec("lora", 8, 8, num_layers=2, rank=8).output_size
+    assert make_codec("loha", 2304, 2048, num_layers=26, rank=8).output_size == 34816
+    assert make_codec("loha", 2304, 1024, num_layers=26, rank=8).output_size == 26624
+
+
+def test_loha_dense_delta_is_hadamard_product_of_the_two_low_rank_branches():
+    codec = make_codec("loha", 2, 2, num_layers=1, rank=2, loha_scaling=0.5)
+    # rank=2 maps to LoHa internal rank=1, so each slice is easy to inspect.
+    generated = torch.tensor([[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]])
+    a1, a2, b1, b2 = codec._split(generated)
+    expected = 0.5 * (b1[0] @ a1[0]) * (b2[0] @ a2[0])
+    torch.testing.assert_close(codec.dense_delta(generated, layer_index=0)[0], expected)
+
+
+def test_loha_live_contraction_matches_dense_delta():
+    torch.manual_seed(17)
+    codec = make_codec("loha", 8, 8, num_layers=1, rank=4, loha_scaling=0.75)
+    inputs = torch.randn(2, 3, 8)
+    generated = torch.randn(2, codec.output_size)
+    base = torch.zeros(2, 3, 8)
+    expected = torch.einsum("bsi,boi->bso", inputs, codec.dense_delta(generated, layer_index=0))
+    torch.testing.assert_close(codec.apply(inputs, base, generated, layer_index=0), expected, atol=1e-5, rtol=1e-5)
 
 
 class TinyLayer(nn.Module):
@@ -114,6 +183,43 @@ def test_ia3_hypernetwork_hook_applies_per_example_adapters_and_backpropagates()
     output.square().mean().backward()
     assert hypernetwork.generated_parameter_count() == 16
     assert hypernetwork.heads["q_proj"].weight.grad is not None
+    assert torch.isfinite(hypernetwork.heads["q_proj"].weight.grad).all()
+
+
+def test_lokr_hypernetwork_hook_applies_per_example_adapters_and_backpropagates():
+    layers = nn.ModuleList([TinyLayer(), TinyLayer()])
+    hypernetwork = TextToPeftHypernetwork(
+        condition_dim=6, module_shapes={"q_proj": (8, 8)}, num_layers=2,
+        adapter="lokr", latent_dim=32, head_dim=32, lokr_scaling=1.0,
+    )
+    conditions = torch.randn(3, 6)
+    inputs = torch.randn(3, 4, 8)
+    generated = hypernetwork(conditions)
+    with hypernetwork.apply(layers, generated):
+        output = layers[1](layers[0](inputs))
+    output.square().mean().backward()
+    assert hypernetwork.generated_parameter_count() == 40
+    assert hypernetwork.heads["q_proj"].weight.grad is not None
+    assert hypernetwork.heads["q_proj"].weight.grad.abs().max() > 0
+    assert torch.isfinite(hypernetwork.heads["q_proj"].weight.grad).all()
+
+
+def test_loha_hypernetwork_hook_applies_per_example_adapters_and_backpropagates():
+    layers = nn.ModuleList([TinyLayer(), TinyLayer()])
+    hypernetwork = TextToPeftHypernetwork(
+        condition_dim=6, module_shapes={"q_proj": (8, 8)}, num_layers=2,
+        adapter="loha", latent_dim=32, head_dim=32, rank=2, loha_scaling=1.0,
+    )
+    conditions = torch.randn(3, 6)
+    inputs = torch.randn(3, 4, 8)
+    generated = hypernetwork(conditions)
+    with hypernetwork.apply(layers, generated):
+        output = layers[1](layers[0](inputs))
+    output.square().mean().backward()
+    # rank=2 gives internal rank 1: four factor slices total 32 values/layer.
+    assert hypernetwork.generated_parameter_count() == 64
+    assert hypernetwork.heads["q_proj"].weight.grad is not None
+    assert hypernetwork.heads["q_proj"].weight.grad.abs().max() > 0
     assert torch.isfinite(hypernetwork.heads["q_proj"].weight.grad).all()
 
 
@@ -185,7 +291,7 @@ def test_infer_module_shapes_still_resolves_linear_submodules():
     assert shapes == {"q_proj": (8, 8)}
 
 
-@pytest.mark.parametrize("name", ["lora"])
+@pytest.mark.parametrize("name", ["lora", "lokr", "loha"])
 def test_bilinear_codecs_have_a_nonzero_initial_bias(name):
     codec = make_codec(name, 8, 8, num_layers=2, rank=2, alpha=2)
     bias = codec.initial_bias()
@@ -194,17 +300,13 @@ def test_bilinear_codecs_have_a_nonzero_initial_bias(name):
     assert bias.abs().max() > 0
 
 
-@pytest.mark.parametrize("name", ["lora"])
+@pytest.mark.parametrize("name", ["lora", "lokr", "loha"])
 def test_bilinear_codec_contributes_zero_at_init_but_has_nonzero_gradient(name):
     """Regression test for a real bug found while smoke-testing live SFT training:
-    LoRA/LoKr split `generated` into two factors that are multiplied together (B@A,
-    Kronecker product) — bilinear in both factors. With the hypernetwork's default
-    all-zero head init, BOTH factors are zero simultaneously, and the gradient w.r.t.
-    each factor is proportional to the *other* factor — so both gradients vanish too,
-    a dead saddle point where training never moves (confirmed directly: the live SFT
-    smoke test's loss repeated bit-for-bit across steps before this fix). The codec's
-    `initial_bias()` override (randomizing one factor, leaving the other at zero) must
-    fix this: zero contribution at init, but nonzero gradient so training can start.
+    Factorized codecs have a zero-gradient saddle when all generated factors start at
+    zero. LoRA/LoKr are bilinear; LoHa is fourth-order and needs a complete nonzero
+    branch plus a nonzero opposing input factor. The codec's `initial_bias()` must
+    retain exact identity at init while leaving a path for the head to train.
     """
     torch.manual_seed(0)
     hypernetwork = TextToPeftHypernetwork(

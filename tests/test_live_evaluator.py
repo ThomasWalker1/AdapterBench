@@ -61,14 +61,14 @@ class FakeTokenizer:
         return "0"
 
 
-def _setup(vocab_size=16, hidden_size=8):
+def _setup(vocab_size=16, hidden_size=8, adapter="lora"):
     torch.manual_seed(0)
     interpreter = FakeCausalLM(vocab_size, hidden_size)
     hypernetwork = TextToPeftHypernetwork(
         condition_dim=4,
         module_shapes={"block": (hidden_size, hidden_size)},
         num_layers=1,
-        adapter="lora",
+        adapter=adapter,
         latent_dim=16,
         head_dim=16,
         rank=2,
@@ -119,5 +119,17 @@ def test_hooks_are_removed_after_each_group_no_leakage_between_calls():
         interpreter, interpreter.layers, hypernetwork, FakeTokenizer(), trial_id="t", device="cpu"
     )
     evaluator.evaluate({"arc_easy": torch.randn(4)}, [_example()], split="test")
+    for layer in interpreter.layers:
+        assert layer._forward_hooks == {}
+
+
+def test_lokr_evaluator_uses_live_hooks_and_removes_them():
+    interpreter, hypernetwork = _setup(adapter="lokr")
+    evaluator = HypernetworkDownstreamEvaluator(
+        interpreter, interpreter.layers, hypernetwork, FakeTokenizer(), trial_id="t", device="cpu"
+    )
+    results = evaluator.evaluate({"arc_easy": torch.randn(4)}, [_example()], split="test")
+    assert results[0].adapter == "lokr"
+    assert results[0].generated_parameter_count == hypernetwork.generated_parameter_count()
     for layer in interpreter.layers:
         assert layer._forward_hooks == {}

@@ -37,6 +37,11 @@ D2L_PARITY_TARGET_MODULES = {
     "lora": ["down_proj"],
     # Same validated D2L projection site; IA3 changes only the live generated shape.
     "ia3": ["down_proj"],
+    # LoKr is another generated weight update, so it uses the same locked D2L hook
+    # site. Its factor geometry is determined solely by this linear projection.
+    "lokr": ["down_proj"],
+    # LoHa is another additive weight-space update at the same locked D2L site.
+    "loha": ["down_proj"],
 }
 
 
@@ -377,6 +382,8 @@ def _d2p_niah_command(args) -> None:
     print(
         f"[1/5] num_layers={num_layers} exit_layer={exit_layer} lora_scaling={lora_scaling:.3f} "
         f"ia3_scaling={args.ia3_scaling:.3f} "
+        f"lokr_scaling={args.lokr_scaling:.3f} "
+        f"loha_scaling={args.loha_scaling:.3f} "
         f"needle_style={args.needle_style} numeric_decoy_count={args.numeric_decoy_count} "
         f"train_lengths={context_lengths} eval_lengths={eval_context_lengths}",
         flush=True,
@@ -431,15 +438,12 @@ def _d2p_niah_command(args) -> None:
         hypernetwork = TextToPeftHypernetwork(
             module_shapes=module_shapes, num_layers=num_layers, adapter=adapter,
             latent_dim=D2P_LATENT_DIM, rank=args.rank, seed=args.seed, conditioner=conditioner,
-            ia3_scaling=args.ia3_scaling,
+            ia3_scaling=args.ia3_scaling, lokr_scaling=args.lokr_scaling, loha_scaling=args.loha_scaling,
         ).to(args.device)
-        # Apply the D2L-parity scale directly to the LoRA codec (2*r^1.5, ~8x rslora's
-        # default) - the load-bearing ~8x-larger update the frozen model needs to be
-        # overridden on NIAH (see the D2P diagnosis in PROJECT_PLAN.md). When new
-        # LoRA-family weight codecs arrive through the pipeline, extend `scaled_types` to
-        # include them under --scale-weight-codecs so a multi-codec comparison isn't
-        # confounded by only LoRA receiving this scale.
-        from ..t2p.codecs import IA3Codec, LoRACodec
+        # LoRA retains its established parity scale. Other codecs each receive only
+        # their own explicit scale argument; their locators start from the respective
+        # identity parameterization rather than inheriting another codec's result.
+        from ..t2p.codecs import IA3Codec, LoHaCodec, LoKrCodec, LoRACodec
 
         scaled_types = (LoRACodec,)
         for codec in hypernetwork.codecs.values():
@@ -447,6 +451,10 @@ def _d2p_niah_command(args) -> None:
                 codec.scaling = lora_scaling
             elif isinstance(codec, IA3Codec):
                 codec.scaling = args.ia3_scaling
+            elif isinstance(codec, LoKrCodec):
+                codec.scaling = args.lokr_scaling
+            elif isinstance(codec, LoHaCodec):
+                codec.scaling = args.loha_scaling
 
         evaluator = DocumentHypernetworkDownstreamEvaluator(
             interpreter, layers, hypernetwork, tokenizer,
@@ -460,7 +468,10 @@ def _d2p_niah_command(args) -> None:
             for result in evaluator.iter_evaluate(eval_examples_by_family, split=args.eval_split):
                 recorder.record(dataclasses.replace(
                     result,
-                    metadata={**result.metadata, "adapter_family": adapter, "steps": checkpoint["step"], "evaluation_only": True},
+                    metadata={
+                        **result.metadata, "adapter_family": adapter, "steps": checkpoint["step"],
+                        "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling, "evaluation_only": True,
+                    },
                 ))
             del hypernetwork, evaluator
             torch.cuda.empty_cache()
@@ -489,7 +500,13 @@ def _d2p_niah_command(args) -> None:
         # Record the final eval as EvaluationResults (matched + ctxswap per family).
         hypernetwork.eval()
         for result in evaluator.iter_evaluate(eval_examples_by_family, split=args.eval_split):
-            recorder.record(dataclasses.replace(result, metadata={**result.metadata, "adapter_family": adapter, "steps": args.steps}))
+            recorder.record(dataclasses.replace(
+                result,
+                metadata={
+                    **result.metadata, "adapter_family": adapter, "steps": args.steps,
+                    "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling,
+                },
+            ))
         del hypernetwork, evaluator
         torch.cuda.empty_cache()
 
@@ -674,6 +691,10 @@ def _register_d2p_niah(subparsers) -> None:
                    help="LoRA scale applied directly; <=0 (default) computes D2L parity 2*r^1.5 (=45.25 at r=8)")
     p.add_argument("--ia3-scaling", type=float, default=1.0,
                    help="IA3 multiplier scale in W -> diag(1 + scale*v) W; sweep this per codec.")
+    p.add_argument("--lokr-scaling", type=float, default=1.0,
+                   help="LoKr scale in ΔW = scale * (L ⊗ R); sweep from its identity convention per codec.")
+    p.add_argument("--loha-scaling", type=float, default=1.0,
+                   help="LoHa scale in ΔW = scale * (B1@A1) ⊙ (B2@A2); sweep from its identity convention per codec.")
     p.add_argument("--scale-weight-codecs", action="store_true",
                    help="also apply --lora-scaling to any other LoRA-family weight codecs added later "
                         "(none in the LoRA-only baseline, so currently a no-op) so a multi-codec "
