@@ -30,6 +30,19 @@ from .hypernetwork import TextToPeftHypernetwork
 from .niah_data import NiahExample, build_query_for_example, encode_context
 
 
+def _greedy_generate(model, tokenizer, prompt: str, max_new_tokens: int, device) -> str:
+    """Greedy-decode the continuation of ``prompt`` and return only the newly generated text."""
+    input_ids = tokenizer(prompt, return_tensors="pt").to(device)
+    with torch.no_grad():
+        output_ids = model.generate(
+            **input_ids,
+            max_new_tokens=max_new_tokens,
+            do_sample=False,
+            pad_token_id=tokenizer.pad_token_id,
+        )
+    return tokenizer.decode(output_ids[0, input_ids["input_ids"].shape[1] :], skip_special_tokens=True)
+
+
 class HypernetworkDownstreamEvaluator:
     def __init__(
         self,
@@ -81,15 +94,7 @@ class HypernetworkDownstreamEvaluator:
         return chat_prompt + prefill
 
     def _generate(self, model, prompt: str) -> str:
-        input_ids = self.tokenizer(prompt, return_tensors="pt").to(self.device)
-        with torch.no_grad():
-            output_ids = model.generate(
-                **input_ids,
-                max_new_tokens=self.max_new_tokens,
-                do_sample=False,
-                pad_token_id=self.tokenizer.pad_token_id,
-            )
-        return self.tokenizer.decode(output_ids[0, input_ids["input_ids"].shape[1] :], skip_special_tokens=True)
+        return _greedy_generate(model, self.tokenizer, prompt, self.max_new_tokens, self.device)
 
     def _score_choice(self, model, example: TaskExample) -> bool:
         prefill = self._prefill_by_family.get(example.family, "")
@@ -257,15 +262,7 @@ class DocumentHypernetworkDownstreamEvaluator:
             yield self.interpreter
 
     def _generate(self, model, prompt: str) -> str:
-        input_ids = self.tokenizer(prompt, return_tensors="pt").to(self.device)
-        with torch.no_grad():
-            output_ids = model.generate(
-                **input_ids,
-                max_new_tokens=self.max_new_tokens,
-                do_sample=False,
-                pad_token_id=self.tokenizer.pad_token_id,
-            )
-        return self.tokenizer.decode(output_ids[0, input_ids["input_ids"].shape[1] :], skip_special_tokens=True)
+        return _greedy_generate(model, self.tokenizer, prompt, self.max_new_tokens, self.device)
 
     def _score(self, model, example: NiahExample) -> bool:
         prompt = build_query_for_example(self.tokenizer, example)

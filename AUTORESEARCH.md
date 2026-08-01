@@ -114,9 +114,11 @@ Only enter this phase if the scale locator produces a viable controlled signal.
    trajectories are still improving. Do not compare a 36k endpoint against another
    candidate's 12k endpoint.
 
-Use one scout seed for each locator decision. Stop an axis when the best point is
+Use one scout seed only to **prune** an axis coarsely. Stop an axis when the best point is
 interior and its neighbors are worse, or when all points fail the helpfulness floor.
 This makes the search bounded and auditable rather than an endless quest for a lucky run.
+The configuration finally promoted to confirmation is never chosen on the scout seed
+alone — that decision is made on multiple seeds under the stability gate in §3b.
 
 ### 3a. Multi-fidelity promotion
 
@@ -136,15 +138,43 @@ signal: retain all candidates for the next declared rung rather than applying an
 tie-break. The helpfulness/control gate remains required as soon as any candidate has a signal,
 and remains mandatory for any reported result.
 
+### 3b. Stability gate and multi-seed final selection
+
+A single scout seed rewards a configuration's *best-case* run, so it may only prune
+obviously-weak regions of an axis. The configuration actually **promoted to confirmation
+must be chosen on multiple seeds**, using the same statistic the leaderboard reports (a
+mean over seeds), never a one-seed peak. Concretely:
+
+1. Narrow each axis coarsely on the scout seed as in §2–§3.
+2. Re-run the surviving candidates (typically the top two) on **at least three selection
+   seeds**, disjoint from both the scout and the later confirmation seeds.
+3. Apply a **stability gate**: a candidate is eligible only if it *converges* on at least
+   ⌈2/3⌉ of its selection seeds, where a converged run is finite, clears the setting's
+   helpfulness floor, and shows no training divergence (e.g. a loss that climbs to and
+   stays on a degenerate plateau). Record each candidate's divergence rate as a
+   first-class selection metric alongside its controlled score.
+4. Among gate-passing candidates, select the best mean controlled metric. If no candidate
+   passes the gate, the codec has no stable operating point in the searched space — a
+   legitimate negative result, reported as such rather than by selecting an unstable point
+   on a lucky seed.
+
+The gate exists because selection and reporting must optimize the same quantity: a
+configuration selected on a one-seed peak but reported as a multi-seed mean is a
+winner's-curse estimate.
+
 ### 4. Multi-seed confirmation
 
 Run the selected configuration at **at least three independent confirmation seeds**.
-Prefer seeds not used by the scout. All confirmation runs use the same final free
-hyperparameters and final step budget. They may run in parallel on distinct GPUs.
+These seeds must be disjoint from the scout and from the §3b selection seeds. All
+confirmation runs use the same final free hyperparameters and final step budget. They may
+run in parallel on distinct GPUs.
 
-Compute mean and standard deviation only from the confirmation set. The scout may be
-shown in a scale-selection appendix or scratch record, but is not silently pooled into a
-confirmation result selected from it.
+Compute mean and standard deviation only from the confirmation set. The scout and §3b
+selection seeds may be shown in a scale-selection appendix or scratch record, but are not
+silently pooled into a confirmation result selected from them. If instability observed in
+a confirmation set triggers a re-tune, the re-selected configuration earns a **fresh**
+confirmation set: the seeds that revealed the instability may not double as its
+confirmation, or the confirmation is no longer held out.
 
 ### 5. Decide and publish
 
@@ -153,6 +183,8 @@ The result is eligible for a leaderboard row only if all are true:
 - controlled behavioral metric is reported as `matched − control`;
 - matched also beats the frozen helpfulness floor;
 - scale was swept and the chosen point is recorded;
+- the selected configuration passes the §3b stability gate, and its selection-seed
+  divergence rate is recorded;
 - at least three confirmation seeds report variation;
 - difficulty-axis output is present;
 - exact commands, seeds, hyperparameters, provenance, and compact aggregate artifacts
@@ -172,6 +204,19 @@ leaderboard renders this trail beneath the headline row. Keep the full commands 
 candidate metric in `results/autoresearch/.../state.jsonl`; never commit checkpoints or
 verbose logs. Historical probes from a different locked setting may be retained as history,
 but must not be described as selecting the current leaderboard configuration.
+
+## Retroactive audit of already-published codecs
+
+Tightening this protocol does not by itself invalidate a codec selected under an earlier
+version. A stricter selection changes an outcome only for a codec whose earlier
+single-seed choice hid an instability; for a stable codec the single-seed peak and the
+multi-seed robust point coincide. Audit each already-published codec against the §3b
+stability gate using its **existing** confirmation seeds — no re-run. A codec that passes
+the gate on its committed seeds keeps its row, and the audit is noted in its selection
+trail. Only a codec that *fails* the gate is re-selected under §2–§3b and re-confirmed.
+The comparison stays fair because the substrate is unchanged; the gate keys on training
+non-convergence, not on a setting's inherent metric variance (D2L retrieval's
+phase-transition spread across seeds is not a divergence).
 
 ## Setting-specific selection rules
 

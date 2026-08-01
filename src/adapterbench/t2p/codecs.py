@@ -22,6 +22,23 @@ import torch
 from torch import Tensor, nn
 
 
+def _saddle_bias(output_size: int, seed: int, filled: list[tuple[int, int, float]]) -> Tensor:
+    """Build a length-``output_size`` bias that is zero everywhere except the given
+    ``[start, end)`` slices, each filled with a fan-in-normalized normal draw.
+
+    Shared by the bilinear codecs' ``initial_bias`` (LoRA/LoKr/LoHa): the factor(s) whose
+    slice is left zero keep the initial product exactly zero, while the seeded slice(s)
+    break the dead all-zero saddle so gradient flows immediately. Draws come from a single
+    local ``Generator`` in the order ``filled`` is given, so callers preserve their exact
+    initialization by listing slices in their original draw order.
+    """
+    generator = torch.Generator().manual_seed(seed)
+    bias = torch.zeros(output_size)
+    for start, end, fan_in in filled:
+        bias[start:end] = torch.randn(end - start, generator=generator) / math.sqrt(fan_in)
+    return bias
+
+
 class GeneratedUpdateCodec(nn.Module, ABC):
     def __init__(self, in_features: int, out_features: int):
         super().__init__()
@@ -98,10 +115,7 @@ class LoRACodec(GeneratedUpdateCodec):
         # the adapter still contributes exactly zero at initialization (ΔW = B @ A = 0
         # whenever B = 0, regardless of A).
         split = self.rank * self.in_features
-        generator = torch.Generator().manual_seed(self.seed)
-        bias = torch.zeros(self.output_size)
-        bias[:split] = torch.randn(split, generator=generator) / math.sqrt(self.in_features)
-        return bias
+        return _saddle_bias(self.output_size, self.seed, [(0, split, self.in_features)])
 
     def apply(self, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int) -> Tensor:
         self._check(inputs, generated)
@@ -199,10 +213,7 @@ class LoKrCodec(GeneratedUpdateCodec):
         # factors at zero is a dead bilinear saddle.  Keep L zero (so L \u2297 R is
         # exactly zero) and seed R with a fan-in-normalized, deterministic draw.
         split = self.out_factor_1 * self.in_factor_1
-        generator = torch.Generator().manual_seed(self.seed)
-        bias = torch.zeros(self.output_size)
-        bias[split:] = torch.randn(self.output_size - split, generator=generator) / math.sqrt(self.in_factor_2)
-        return bias
+        return _saddle_bias(self.output_size, self.seed, [(split, self.output_size, self.in_factor_2)])
 
     def apply(self, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int) -> Tensor:
         self._check(inputs, generated)
@@ -274,15 +285,19 @@ class LoHaCodec(GeneratedUpdateCodec):
         # every gradient still contains another zero factor.  Keep B1 zero so the
         # whole update is exactly zero, while initialize A1 and the complete second
         # branch B2@A2 nonzero.  The immediate B1 gradient is then nonzero.
-        generator = torch.Generator().manual_seed(self.seed)
         a_size = self.rank * self.in_features
         b_size = self.rank * self.out_features
-        bias = torch.zeros(self.output_size)
-        bias[:a_size] = torch.randn(a_size, generator=generator) / math.sqrt(self.in_features)
-        bias[a_size : 2 * a_size] = torch.randn(a_size, generator=generator) / math.sqrt(self.in_features)
-        # B1 remains zero.  B2 completes the nonzero second branch.
-        bias[2 * a_size + b_size :] = torch.randn(b_size, generator=generator) / math.sqrt(self.rank)
-        return bias
+        # Seed A1, A2 and B2 (in that draw order); B1's slice [2*a_size : 2*a_size + b_size]
+        # is left zero, so the whole Hadamard update starts at exactly zero.
+        return _saddle_bias(
+            self.output_size,
+            self.seed,
+            [
+                (0, a_size, self.in_features),
+                (a_size, 2 * a_size, self.in_features),
+                (2 * a_size + b_size, self.output_size, self.rank),
+            ],
+        )
 
     def apply(self, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int) -> Tensor:
         self._check(inputs, generated)

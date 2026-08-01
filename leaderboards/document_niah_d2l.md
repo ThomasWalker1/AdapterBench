@@ -19,30 +19,30 @@ codec's shape-defining parameter budget.
 Retrieval can be a stochastic phase transition, and loss can saturate near-0 before accuracy leaves
 the floor — so multi-seed and matched−control (never loss) are essential here.
 
-Every headline row is the **in-distribution** point (train length = eval length = 512), with at
-least three held-out confirmation seeds (five for the two reference rows):
+Every headline row is the **in-distribution** point (train length = eval length = 512), with
+five held-out confirmation seeds:
 
 <!-- canonical-results:d2l-markdown:start -->
 | Shape | scale | lr | steps | seeds | accuracy | ctxswap | **matched − control** |
 |---|:---:|---:|---:|:---:|---:|---:|:---:|
 | LoRA (r=8) | 100 | 4e-5 | 32,000 | 5 | 0.556 ± 0.327 | 0.000 | **+0.556 ± 0.327** |
 | (IA)³ | 64 | 2e-5 | 32,000 | 5 | 0.738 ± 0.327 | 0.000 | **+0.738 ± 0.327** |
-| LoKr | 16 | 2e-5 | 36,000 | 3 | 0.969 ± 0.026 | 0.000 | **+0.969 ± 0.026** |
+| LoKr | 16 | 2e-5 | 36,000 | 5 | 0.981 ± 0.037 | 0.000 | **+0.981 ± 0.037** |
 
 | eval len | 512 | 1024 | 2048 | 4096 | 8192 | 16384 | 32768 |
 |---|---|---|---|---|---|---|---|
 | matched − control (LoRA (r=8)) | 0.556 | 0.619 | 0.594 | 0.550 | 0.506 | 0.456 | 0.425 |
 | matched − control ((IA)³) | 0.738 | 0.725 | 0.738 | 0.719 | 0.725 | 0.681 | 0.688 |
-| matched − control (LoKr) | 0.969 | 0.979 | 0.979 | 0.979 | 0.938 | 0.979 | 0.875 |
+| matched − control (LoKr) | 0.981 | 0.994 | 0.981 | 0.994 | 0.975 | 0.981 | 0.925 |
 
 **Selection trail.**
-- **LoKr** — A LoKr-identity-centered scale ladder (0.0625, 0.25, 1, 4, 16) was zero through 4; scale 16 was the only helpful point. The geometric upper boundary at 64 was zero at both 8k and 16k, closing the scale choice. At scale 16, the setting-default LR 4e-5 and upper neighbor 8e-5 were weak/zero, while 2e-5 won at 16k; its restart-safe 36k promotion improved hard-length AUC to 0.675. Three fresh 36k confirmations retained every result, including the lower 32k tail of seed 3005. State ledger: `results/autoresearch/d2l/lokr/state.jsonl`.
+- **LoKr** — A LoKr-identity-centered scale ladder (0.0625, 0.25, 1, 4, 16) was zero through 4; scale 16 was the only helpful point. The geometric upper boundary at 64 was zero at both 8k and 16k, closing the scale choice. At scale 16, the setting-default LR 4e-5 and upper neighbor 8e-5 were weak/zero, while 2e-5 won at 16k; its restart-safe 36k promotion improved hard-length AUC to 0.675. Five fresh 36k confirmations in the clean repro path (seeds 3003–3007) retained every result. State ledger: `results/autoresearch/d2l/lokr/state.jsonl`.
 <!-- canonical-results:d2l-markdown:end -->
 
 **Difficulty knob — length generalization (same run, eval sweep):** mean matched−control by eval
 length (the listed confirmation seeds; ctxswap 0.000 at every length). The normalized log-length
 tail AUC (1024–32768) is **0.526 ± 0.328** for LoRA, **0.714 ± 0.356** for IA³, and
-**0.960 ± 0.035** for LoKr.
+**0.975 ± 0.022** for LoKr.
 
 The canonical records above are the source of these curves; the context-swap value is `0.000`
 at every evaluated length for all three codecs.
@@ -52,7 +52,7 @@ reach 32768 tokens (64×).
 
 **Reproduce:** `scripts/reproduce/document_niah_numeric_decoy_lora.sh [DEVICE]` and
 `scripts/reproduce/document_niah_numeric_decoy_ia3.sh [DEVICE]` (five seeds each), or
-`scripts/reproduce/document_niah_numeric_decoy_lokr_all.sh [DEVICE]` (three seeds). The shared
+`scripts/reproduce/document_niah_numeric_decoy_lokr_all.sh [DEVICE]` (five seeds). The shared
 implementation is `scripts/reproduce/document_niah_numeric_decoy.sh`; set `SEEDS=<one seed>` to
 schedule one seed in parallel. Per-seed commands:
 

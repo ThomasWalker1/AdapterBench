@@ -7,38 +7,107 @@
   "headline": {
     "comparison": "matched_minus_control",
     "control_name": "wrong_document_context_swap",
-    "matched": 0.96875,
+    "matched": 0.98125,
     "control": 0.0,
-    "value": 0.96875,
-    "variation": 0.02551551815399144,
+    "value": 0.98125,
+    "variation": 0.0375,
     "variation_kind": "population_standard_deviation",
     "unit": "exact_match_accuracy",
     "direction": "higher_is_better"
   },
   "seed_results": [
-    {"seed": 3003, "matched": 1.0, "control": 0.0, "delta": 1.0},
-    {"seed": 3004, "matched": 0.96875, "control": 0.0, "delta": 0.96875},
-    {"seed": 3005, "matched": 0.9375, "control": 0.0, "delta": 0.9375}
+    {
+      "seed": 3003,
+      "matched": 1.0,
+      "control": 0.0,
+      "delta": 1.0
+    },
+    {
+      "seed": 3004,
+      "matched": 1.0,
+      "control": 0.0,
+      "delta": 1.0
+    },
+    {
+      "seed": 3005,
+      "matched": 1.0,
+      "control": 0.0,
+      "delta": 1.0
+    },
+    {
+      "seed": 3006,
+      "matched": 1.0,
+      "control": 0.0,
+      "delta": 1.0
+    },
+    {
+      "seed": 3007,
+      "matched": 0.90625,
+      "control": 0.0,
+      "delta": 0.90625
+    }
   ],
   "difficulty_curve": [
-    {"axis": 512, "matched": 0.96875, "control": 0.0, "delta": 0.96875},
-    {"axis": 1024, "matched": 0.9791666666666666, "control": 0.0, "delta": 0.9791666666666666},
-    {"axis": 2048, "matched": 0.9791666666666666, "control": 0.0, "delta": 0.9791666666666666},
-    {"axis": 4096, "matched": 0.9791666666666666, "control": 0.0, "delta": 0.9791666666666666},
-    {"axis": 8192, "matched": 0.9375, "control": 0.0, "delta": 0.9375},
-    {"axis": 16384, "matched": 0.9791666666666666, "control": 0.0, "delta": 0.9791666666666666},
-    {"axis": 32768, "matched": 0.875, "control": 0.0, "delta": 0.875}
+    {
+      "axis": 512,
+      "matched": 0.98125,
+      "control": 0.0,
+      "delta": 0.98125
+    },
+    {
+      "axis": 1024,
+      "matched": 0.99375,
+      "control": 0.0,
+      "delta": 0.99375
+    },
+    {
+      "axis": 2048,
+      "matched": 0.98125,
+      "control": 0.0,
+      "delta": 0.98125
+    },
+    {
+      "axis": 4096,
+      "matched": 0.99375,
+      "control": 0.0,
+      "delta": 0.99375
+    },
+    {
+      "axis": 8192,
+      "matched": 0.975,
+      "control": 0.0,
+      "delta": 0.975
+    },
+    {
+      "axis": 16384,
+      "matched": 0.98125,
+      "control": 0.0,
+      "delta": 0.98125
+    },
+    {
+      "axis": 32768,
+      "matched": 0.925,
+      "control": 0.0,
+      "delta": 0.925
+    }
   ],
   "summary": {
     "crossover_length": 32768,
     "training_length": 512,
     "numeric_decoy_count": 4,
-    "tail_log_auc": 0.9604166666666667,
-    "tail_log_auc_variation": 0.034642269058991426
+    "tail_log_auc": 0.975,
+    "tail_log_auc_variation": 0.022195078909023447
   },
-  "free_hyperparameters": {"scale": "16", "learning_rate": "2e-5", "warmup_steps": 1080, "steps": 36000},
+  "free_hyperparameters": {
+    "scale": "16",
+    "learning_rate": "2e-5",
+    "warmup_steps": 1080,
+    "steps": 36000
+  },
   "fixed_shape_parameters": {
-    "target_modules": ["down_proj"],
+    "target_modules": [
+      "down_proj"
+    ],
     "factorization": "balanced exact divisors: (32×48) ⊗ (32×64) per Qwen down_proj",
     "generated_scalars_per_layer": 3584,
     "generated_scalars_all_layers": 100352,
@@ -48,24 +117,62 @@
   "selection_trail": {
     "protocol": "AUTORESEARCH.md",
     "state_artifacts": [
-      {"path": "results/autoresearch/d2l/lokr/state.jsonl", "sha256": "83df787b56719b23e0ad9903e9c9466980c0c513c7e2fbbd58518366581f5e03"}
+      {
+        "path": "results/autoresearch/d2l/lokr/state.jsonl",
+        "sha256": "83df787b56719b23e0ad9903e9c9466980c0c513c7e2fbbd58518366581f5e03"
+      }
     ],
-    "summary": "A LoKr-identity-centered scale ladder (0.0625, 0.25, 1, 4, 16) was zero through 4; scale 16 was the only helpful point. The geometric upper boundary at 64 was zero at both 8k and 16k, closing the scale choice. At scale 16, the setting-default LR 4e-5 and upper neighbor 8e-5 were weak/zero, while 2e-5 won at 16k; its restart-safe 36k promotion improved hard-length AUC to 0.675. Three fresh 36k confirmations retained every result, including the lower 32k tail of seed 3005."
+    "summary": "A LoKr-identity-centered scale ladder (0.0625, 0.25, 1, 4, 16) was zero through 4; scale 16 was the only helpful point. The geometric upper boundary at 64 was zero at both 8k and 16k, closing the scale choice. At scale 16, the setting-default LR 4e-5 and upper neighbor 8e-5 were weak/zero, while 2e-5 won at 16k; its restart-safe 36k promotion improved hard-length AUC to 0.675. Five fresh 36k confirmations in the clean repro path (seeds 3003–3007) retained every result."
   },
   "provenance": {
-    "models": [{"model_id": "Qwen/Qwen3-0.6B", "revision": "c1899de289a04d12100db370d81485cdf75e47ca"}],
-    "data": [{"path": "src/adapterbench/t2p/niah_data.py", "sha256": "f89e3962e8d6a7b2131ee10a8553202b680d8925d17a18a1160c498720c338cf"}],
-    "source_artifacts": [
-      {"seed": 3003, "path": "results/autoresearch/d2l/lokr/confirmations/s3003/results.jsonl", "sha256": "02280bc0a5ed14887e10d34bd4119bd479abe4d83b3841be9389838460851e17"},
-      {"seed": 3004, "path": "results/autoresearch/d2l/lokr/confirmations/s3004/results.jsonl", "sha256": "4414e6a3b249253268c7bfa763083c4881130b67a902a42e1d14597886d58502"},
-      {"seed": 3005, "path": "results/autoresearch/d2l/lokr/confirmations/s3005/results.jsonl", "sha256": "e8b20d12b099698d4a77ffdfefb80387629d9ac6eb6616599a5172737ff27789"}
+    "models": [
+      {
+        "model_id": "Qwen/Qwen3-0.6B",
+        "revision": "c1899de289a04d12100db370d81485cdf75e47ca"
+      }
     ],
-    "environment": {"python": "3.11.15", "lockfile_sha256": "f46fdbf77957f9b28555a9890c004d5ac5440c99822aa646c8884c815aec3762"}
+    "data": [
+      {
+        "path": "src/adapterbench/t2p/niah_data.py",
+        "sha256": "f89e3962e8d6a7b2131ee10a8553202b680d8925d17a18a1160c498720c338cf"
+      }
+    ],
+    "source_artifacts": [
+      {
+        "seed": 3003,
+        "path": "results/repro/d2l_numeric_decoy/lokr/s3003/results.jsonl",
+        "sha256": "9828da93285270158ea5ac85dc339240d9c4a43dd8dcb0c77cc47f7ec5dc7198"
+      },
+      {
+        "seed": 3004,
+        "path": "results/repro/d2l_numeric_decoy/lokr/s3004/results.jsonl",
+        "sha256": "b2fa655d32077b320efd08b4d5b48ce4226e382eccc4dd86aeb7a28e62ce73b1"
+      },
+      {
+        "seed": 3005,
+        "path": "results/repro/d2l_numeric_decoy/lokr/s3005/results.jsonl",
+        "sha256": "fd5b10e455c9329e49a4ca0fc793f4654821916677bac0d3da984001522a715f"
+      },
+      {
+        "seed": 3006,
+        "path": "results/repro/d2l_numeric_decoy/lokr/s3006/results.jsonl",
+        "sha256": "bb65697de52233b0a90a1fb6d722fd0c03b09ba375050bd6a46e1f9b56527978"
+      },
+      {
+        "seed": 3007,
+        "path": "results/repro/d2l_numeric_decoy/lokr/s3007/results.jsonl",
+        "sha256": "6c9241bb2a7da57c9ac776c072676ba83a0633cb4b82ba4edc5e766c3fa1f931"
+      }
+    ],
+    "environment": {
+      "python": "3.11.15",
+      "lockfile_sha256": "f46fdbf77957f9b28555a9890c004d5ac5440c99822aa646c8884c815aec3762"
+    }
   },
   "reproduction": {
     "script": "document_niah_numeric_decoy_lokr_all.sh",
     "smoke": "uv run adapterbench d2p-niah --adapters lokr --lokr-scaling 1 --needle-style realistic_numeric_decoys --numeric-decoy-count 4 --context-lengths 512 --eval-context-lengths 512 --num-train-documents 2 --steps 1 --eval-every 1 --learning-rate 4e-5 --warmup-steps 1 --n-latents 208 --num-blocks 8 --eval-limit 1 --eval-seed 2904 --seed 3001 --device cuda:0 --output results/autoresearch/d2l/lokr/smoke_s3001",
     "full": "bash scripts/reproduce/document_niah_numeric_decoy_lokr.sh cuda:0 3003",
-    "aggregate": "bash scripts/reproduce/document_niah_numeric_decoy_lokr_all.sh cuda:0"
+    "aggregate": "uv run python scripts/d2p_niah_aggregate.py --root results/repro/d2l_numeric_decoy/lokr --min-seeds 5 --train-length 512"
   }
 }

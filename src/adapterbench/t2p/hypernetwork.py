@@ -252,29 +252,42 @@ class TextToPeftHypernetwork(nn.Module):
         )
         return self._generate_from_tasks_per_layer(tasks_per_layer)
 
-    @contextmanager
     def apply(self, layers: list[nn.Module] | nn.ModuleList, generated: Mapping[str, Tensor]):
-        handles = []
-        for layer_index, layer in enumerate(layers):
-            for name, codec in self.codecs.items():
-                module = _resolve_target(layer, name)
-                parameters = generated[name][layer_index]
+        return _apply_codec_hooks(layers, self.codecs, generated)
 
-                def hook(module, args, output, *, codec=codec, parameters=parameters, layer_index=layer_index):
-                    # A decoder layer's forward (resolved via "block") returns a tuple
-                    # (hidden_states, ...); a linear submodule's forward returns a bare
-                    # tensor. Unwrap/rewrap so codec.apply() only ever sees a tensor.
-                    is_tuple = isinstance(output, tuple)
-                    hidden = output[0] if is_tuple else output
-                    updated = codec.apply(args[0], hidden, parameters, layer_index)
-                    return (updated, *output[1:]) if is_tuple else updated
 
-                handles.append(module.register_forward_hook(hook))
-        try:
-            yield
-        finally:
-            for handle in handles:
-                handle.remove()
+@contextmanager
+def _apply_codec_hooks(
+    layers: list[nn.Module] | nn.ModuleList, codecs: Mapping[str, GeneratedUpdateCodec], generated: Mapping[str, Tensor]
+):
+    """Register one forward hook per (layer, codec) that applies the per-example generated
+    adapter live during the frozen interpreter's forward, and remove every hook on exit.
+
+    Shared by ``TextToPeftHypernetwork.apply`` (condition-generated adapters) and
+    ``StaticAdapter.apply`` (a single directly-optimized adapter): both attach the identical
+    codec at the identical site, differing only in where ``generated`` comes from.
+    """
+    handles = []
+    for layer_index, layer in enumerate(layers):
+        for name, codec in codecs.items():
+            module = _resolve_target(layer, name)
+            parameters = generated[name][layer_index]
+
+            def hook(module, args, output, *, codec=codec, parameters=parameters, layer_index=layer_index):
+                # A decoder layer's forward (resolved via "block") returns a tuple
+                # (hidden_states, ...); a linear submodule's forward returns a bare
+                # tensor. Unwrap/rewrap so codec.apply() only ever sees a tensor.
+                is_tuple = isinstance(output, tuple)
+                hidden = output[0] if is_tuple else output
+                updated = codec.apply(args[0], hidden, parameters, layer_index)
+                return (updated, *output[1:]) if is_tuple else updated
+
+            handles.append(module.register_forward_hook(hook))
+    try:
+        yield
+    finally:
+        for handle in handles:
+            handle.remove()
 
 
 def _resolve_target(layer: nn.Module, name: str) -> nn.Module:
@@ -325,26 +338,8 @@ class StaticAdapter(nn.Module):
         batch = condition_or_batch if isinstance(condition_or_batch, int) else condition_or_batch.shape[0]
         return {name: p.unsqueeze(1).expand(-1, batch, -1) for name, p in self.params.items()}
 
-    @contextmanager
-    def apply(self, layers, generated: Mapping[str, Tensor]):
-        handles = []
-        for layer_index, layer in enumerate(layers):
-            for name, codec in self.codecs.items():
-                module = _resolve_target(layer, name)
-                parameters = generated[name][layer_index]
-
-                def hook(module, args, output, *, codec=codec, parameters=parameters, layer_index=layer_index):
-                    is_tuple = isinstance(output, tuple)
-                    hidden = output[0] if is_tuple else output
-                    updated = codec.apply(args[0], hidden, parameters, layer_index)
-                    return (updated, *output[1:]) if is_tuple else updated
-
-                handles.append(module.register_forward_hook(hook))
-        try:
-            yield
-        finally:
-            for handle in handles:
-                handle.remove()
+    def apply(self, layers: list[nn.Module] | nn.ModuleList, generated: Mapping[str, Tensor]):
+        return _apply_codec_hooks(layers, self.codecs, generated)
 
 
 def infer_module_shapes(
