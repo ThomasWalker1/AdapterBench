@@ -9,4 +9,26 @@ restart-safe reproduction wrappers.
 
 ## Unreleased
 
-No unreleased changes.
+- **New codec: `steering`** — the first activation-space shape. The hypernetwork emits
+  one `d_model` steering vector per (layer, example), added to the residual stream at
+  the `"block"` hook site in both settings (`h -> h + scale * v`); linear in the
+  generated output, so zero-init is exact identity with a nonzero gradient. Registered
+  in `make_codec`, both hook-site maps, `configs/adapters/steering.yaml`, and the
+  manifest schema; unit tests cover geometry, identity init, per-example broadcast, and
+  residual-stream hook backprop. Benchmark rows pending the AUTORESEARCH.md protocol.
+- **Generic `--codec-scaling` flag** on `d2p-niah`, `t2p_train_ddp.py`, and the three
+  snapshot evaluators: one uniform output-scale override for the selected codec
+  (`set_codec_scaling`), replacing the per-codec `--<name>-scaling` pattern for new
+  codecs (existing flags retained for recorded commands). `t2l_codec_trial.sh` and
+  `d2p_niah_multifidelity.sh` now use it, so a new codec needs no scale-flag mapping in
+  any driver script.
+- `TextToPeftHypernetwork` forwards codec-specific kwargs to `make_codec` via
+  `**codec_kwargs` instead of naming each codec's scale parameter (dead `n_frequency`/
+  `steering_scale` parameters removed); adding a codec no longer touches the
+  constructor.
+- `t2p-sft-pilot --scales` now applies the swept scale to every codec as documented
+  (previously a silent no-op for non-LoRA adapters); `d2p-niah` validates `--adapters`
+  names up front.
+- Docs refreshed to the multi-codec reality (README/GUIDE/PROJECT_PLAN/AGENTS: registered
+  codec list, D2L numeric-decoy 512-token recipe, codec-exploration phase);
+  `aggregate_lengthgen.py` moved under `scripts/`.

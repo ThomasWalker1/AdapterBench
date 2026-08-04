@@ -64,6 +64,9 @@ def build_args():
     p.add_argument("--adversarial-descs", default="")
     p.add_argument("--decontam-config", default=str(T2L_DECONTAM_CONFIG))
     p.add_argument("--lora-scaling", type=float, default=-1.0)
+    p.add_argument("--codec-scaling", type=float, default=None,
+                   help="generic output-scale override for the selected --adapter's codec; "
+                        "must match the value the snapshot was trained with")
     p.add_argument("--static-snapshot", default="", help="path to a --static run's snapshot; if given, "
                    "also score the static (multi-task) adapter per family and report matched - static")
     p.add_argument("--skip-frozen", action="store_true", help="skip the frozen baseline (constant across steps)")
@@ -97,6 +100,9 @@ def main() -> None:
         for codec in hypernetwork.codecs.values():
             if isinstance(codec, LoRACodec):
                 codec.scaling = args.lora_scaling
+    if args.codec_scaling is not None:
+        from adapterbench.t2p.codecs import set_codec_scaling
+        set_codec_scaling(hypernetwork.codecs, args.codec_scaling)
     state = torch.load(args.snapshot, map_location=device, weights_only=False)
     hypernetwork.load_state_dict(state["model"])
     hypernetwork.eval()

@@ -36,14 +36,19 @@ ELIMIT="${ELIMIT:-80}"; ETASKS="${ETASKS:-arc_easy,arc_challenge,hellaswag,boolq
 OUT="${OUT:-results/repro/t2l_base_diag/$TAG/s$SEED}"
 mkdir -p "$OUT"
 ADAPTER="${ADAPTER:-lora}"; LORA_SCALE="${LORA_SCALE:--1.0}"; IA3_SCALE="${IA3_SCALE:-1.0}"; LOKR_SCALE="${LOKR_SCALE:-1.0}"; LOHA_SCALE="${LOHA_SCALE:-1.0}"; FOURIER_SCALE="${FOURIER_SCALE:-1.0}"
+# CODEC_SCALE (empty = unset) is the generic per-adapter scale override — the preferred
+# knob for new codecs; the per-codec env vars above are retained for recorded commands.
+CODEC_SCALE="${CODEC_SCALE:-}"
+CODEC_SCALE_FLAG=(); [ -n "$CODEC_SCALE" ] && CODEC_SCALE_FLAG=(--codec-scaling "$CODEC_SCALE")
 
-echo "=== T2L base diag: interpreter=$INTERP tag=$TAG adapter=$ADAPTER lora_scale=$LORA_SCALE ia3_scale=$IA3_SCALE lokr_scale=$LOKR_SCALE loha_scale=$LOHA_SCALE fourierft_scale=$FOURIER_SCALE gpus=$GPUS per_gpu_batch=$PGB steps=$STEPS lr=$LR snap=$SNAP limit=$LIMIT clambda=$CLAMBDA ($(date)) ==="
+echo "=== T2L base diag: interpreter=$INTERP tag=$TAG adapter=$ADAPTER lora_scale=$LORA_SCALE ia3_scale=$IA3_SCALE lokr_scale=$LOKR_SCALE loha_scale=$LOHA_SCALE fourierft_scale=$FOURIER_SCALE codec_scale=${CODEC_SCALE:-unset} gpus=$GPUS per_gpu_batch=$PGB steps=$STEPS lr=$LR snap=$SNAP limit=$LIMIT clambda=$CLAMBDA ($(date)) ==="
 CUDA_VISIBLE_DEVICES="$GPUS" .venv/bin/torchrun --standalone --nproc_per_node="$NPROC" \
   scripts/t2p_train_ddp.py --interpreter "$INTERP" \
   --all-decontam-tasks --max-descriptions 128 --limit "$LIMIT" \
   --per-gpu-batch "$PGB" --steps "$STEPS" --learning-rate "$LR" --warmup-frac 0.1 \
   --max-grad-norm 1.0 --fixed-seq-len 512 --snapshot-every "$SNAP" \
   --adapter "$ADAPTER" --lora-scaling "$LORA_SCALE" --ia3-scaling "$IA3_SCALE" --lokr-scaling "$LOKR_SCALE" --loha-scaling "$LOHA_SCALE" --fourierft-scaling "$FOURIER_SCALE" \
+  "${CODEC_SCALE_FLAG[@]}" \
   $COMPILE_FLAG $INLINE_EVAL_FLAG \
   --contrastive-lambda "$CLAMBDA" --contrastive-margin "$CMARGIN" --neutral-junk-lambda "$NJLAMBDA" \
   $STRIP_FLAG $STATIC_FLAG \

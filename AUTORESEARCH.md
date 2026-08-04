@@ -32,7 +32,7 @@ The only standard free hyperparameters are:
 
 | Parameter | Search rule |
 |---|---|
-| codec output scale | Required sweep; derive a codec-specific geometric ladder from its own identity-scale convention and observed stability, never import a value or range from another codec. |
+| codec output scale | Required sweep; derive a codec-specific geometric ladder from its own identity-scale convention and observed stability, never import a value or range from another codec. Sweep via the generic `--codec-scaling` flag (uniform across codecs); the per-codec flags exist only for recorded historical commands. |
 | learning rate | Optional geometric sweep after scale has a viable region. |
 | warmup fraction | Optional small discrete sweep after scale/LR are viable. |
 | training steps | Optional continuation from restart-safe checkpoints; compare equal final budgets across candidate configurations. |

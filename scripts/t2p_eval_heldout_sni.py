@@ -80,6 +80,9 @@ def build_args():
     p.add_argument("--lokr-scaling", type=float, default=1.0)
     p.add_argument("--loha-scaling", type=float, default=1.0)
     p.add_argument("--fourierft-scaling", type=float, default=1.0)
+    p.add_argument("--codec-scaling", type=float, default=None,
+                   help="generic output-scale override for the selected --adapter's codec; "
+                        "must match the value the snapshot was trained with")
     p.add_argument("--device", default="cuda:0")
     p.add_argument("--out", default="", help="JSONL to append one row per task + one aggregate row")
     return p.parse_args()
@@ -118,6 +121,9 @@ def main() -> None:
         for codec in hypernetwork.codecs.values():
             if isinstance(codec, LoRACodec):
                 codec.scaling = args.lora_scaling
+    if args.codec_scaling is not None:
+        from adapterbench.t2p.codecs import set_codec_scaling
+        set_codec_scaling(hypernetwork.codecs, args.codec_scaling)
     hypernetwork.load_state_dict(torch.load(args.snapshot, map_location=device, weights_only=False)["model"])
     hypernetwork.eval()
 

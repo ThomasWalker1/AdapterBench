@@ -18,10 +18,12 @@ The benchmark contains exactly two genuinely inference-time adaptive language se
   document-conditioned hypernetwork. The frozen interpreter answers a query without the
   document in its ordinary input.
 
-LoRA is currently the only registered codec; it is the rigorous baseline that validates
-both settings before alternative shapes are added.
+LoRA is the rigorous baseline that validates both settings; alternative shapes are
+registered and evaluated one at a time against it. Registered codecs: `lora`, `ia3`,
+`lokr`, `loha`, `fourierft`, and `steering` (the first activation-space shape, hooked at
+the residual stream).
 
-## Current status (2026-07-21)
+## Current status (2026-08-04)
 
 Both language settings pass controls that require genuine condition dependence.
 
@@ -65,9 +67,11 @@ setting-discovery or substrate-building mode:
   (`scripts/negative_results/t2l_released_prompt_ablation/`), not just our own diagnostics;
 - image and planning infrastructure is intentionally absent.
 
-**LoRA is the only registered codec.** It is deliberately the validated reference, not the
-answer to the benchmark's question. Everything above exists so that question can now be
-asked, which makes **codec exploration the one substantive remaining phase**.
+LoRA is deliberately the validated reference, not the answer to the benchmark's
+question. (IA)³, LoKr, and FourierFT now have complete two-setting rows beside it; LoHa
+and steering are registered with their protocol evaluations outstanding. Everything
+above exists so that question can be asked, which makes **codec exploration the one
+substantive remaining phase**.
 
 ## Next phase: codec exploration
 
@@ -80,12 +84,13 @@ changes the shared substrate.
 Candidate codecs to add (each is a `GeneratedUpdateCodec` subclass + a `make_codec` entry
 + a `configs/adapters/<name>.yaml` + unit tests):
 
-| codec | update | budget / site | reparam. symmetry | why it is interesting |
-|---|---|---|---|---|
-| (IA)³ | `W ↦ diag(1+v) W` | `d_out` | none | can a tiny, symmetry-free shape carry conditioning at all? |
-| LoKr | `ΔW = B ⊗ A` | factor-dependent | scaling only | full-rank reach from few scalars; different budget/expressivity trade-off |
-| FourierFT | `ΔW = F⁻¹(sparse coeffs)` | `n` (chosen), size-independent | none | fixed global basis removes the low-rank rotation symmetry entirely |
-| activation steering | `h ↦ h + s·v` | `d_model` | scaling | adaptation with no weight edit; hook site is the residual stream, not a projection |
+| codec | update | budget / site | reparam. symmetry | why it is interesting | status |
+|---|---|---|---|---|---|
+| (IA)³ | `W ↦ diag(1+v) W` | `d_out` | none | can a tiny, symmetry-free shape carry conditioning at all? | both rows complete |
+| LoKr | `ΔW = B ⊗ A` | factor-dependent | scaling only | full-rank reach from few scalars; different budget/expressivity trade-off | both rows complete |
+| FourierFT | `ΔW = F⁻¹(sparse coeffs)` | `n` (chosen), size-independent | none | fixed global basis removes the low-rank rotation symmetry entirely | both rows complete |
+| LoHa | `ΔW = (B₁A₁) ⊙ (B₂A₂)` | `= rank-8 LoRA` | per-branch rotation | higher-order factorization at the exact LoRA scalar budget | registered; evaluation in flight |
+| steering (`steering`) | `h ↦ h + s·v` | `d_model` / residual stream (`block`) | scaling | adaptation with no weight edit; hook site is the residual stream, not a projection | registered; autoresearch pending |
 
 The open empirical question is whether the low-rank rotation symmetry LoRA carries
 (`BA = (BG)(G⁻¹A)`) is a real obstacle to one-shot prediction, i.e. whether a
@@ -131,8 +136,9 @@ are never committed. The human drives commits.
 
 - `src/adapterbench/contracts.py` — `HypernetworkBackend.generate()`,
   `DownstreamEvaluator.evaluate()`, and shared task/result objects.
-- `src/adapterbench/t2p/codecs.py` — `GeneratedUpdateCodec` plus the registered
-  `LoRACodec`. A new shape implements:
+- `src/adapterbench/t2p/codecs.py` — `GeneratedUpdateCodec` plus the registered codecs
+  (`LoRACodec`, `IA3Codec`, `LoKrCodec`, `LoHaCodec`, `FourierFTCodec`, `SteeringCodec`).
+  A new shape implements:
   - `output_size`;
   - `apply(...)`;
   - `dense_delta(...)`;

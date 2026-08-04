@@ -43,6 +43,9 @@ D2L_PARITY_TARGET_MODULES = {
     # LoHa is another additive weight-space update at the same locked D2L site.
     "loha": ["down_proj"],
     "fourierft": ["down_proj"],
+    # Steering is activation-space: same residual-stream hook site as T2L, since the
+    # site is part of this codec's shape identity rather than a weight-projection choice.
+    "steering": ["block"],
 }
 
 
@@ -264,15 +267,15 @@ def _t2p_sft_pilot_command(args) -> None:
                 adapter=adapter,
                 seed=seed,
             ).to(args.device)
-            # Per-codec LoRA-scale sweep (invariant #2): apply the swept scale directly to each
+            # Per-codec scale sweep (invariant #2): apply the swept scale directly to each
             # codec before training (as d2p-niah does), so "shape matters" means "even at its own
             # best scale" - not an artifact of a fixed default. --scales empty => codec default.
+            # (Previously this silently applied only to LoRACodec, so a non-LoRA --scales sweep
+            # was a no-op; every codec has a uniform .scaling, so apply it to all of them.)
             if scale is not None:
-                from ..t2p.codecs import LoRACodec
+                from ..t2p.codecs import set_codec_scaling
 
-                for codec in hypernetwork.codecs.values():
-                    if isinstance(codec, LoRACodec):
-                        codec.scaling = scale
+                set_codec_scaling(hypernetwork.codecs, scale)
             # For long runs, --checkpoint-every > 0 uses the restart-safe trainer (atomic
             # model+optimizer+step checkpoint, resumes if the run is killed/restarted).
             if args.checkpoint_every > 0:
@@ -367,6 +370,11 @@ def _d2p_niah_command(args) -> None:
         else context_lengths
     )
     adapters = args.adapters.split(",")
+    unknown = [adapter for adapter in adapters if adapter not in D2L_PARITY_TARGET_MODULES]
+    if unknown:
+        raise ValueError(
+            f"unknown adapter(s) {unknown}; registered D2L codecs: {sorted(D2L_PARITY_TARGET_MODULES)}"
+        )
     output_dir = Path(args.output)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -386,6 +394,7 @@ def _d2p_niah_command(args) -> None:
         f"lokr_scaling={args.lokr_scaling:.3f} "
         f"loha_scaling={args.loha_scaling:.3f} "
         f"fourierft_scaling={args.fourierft_scaling:.3f} "
+        f"codec_scaling={args.codec_scaling} "
         f"needle_style={args.needle_style} numeric_decoy_count={args.numeric_decoy_count} "
         f"train_lengths={context_lengths} eval_lengths={eval_context_lengths}",
         flush=True,
@@ -437,29 +446,22 @@ def _d2p_niah_command(args) -> None:
             hidden_size=hidden_size, task_dim=D2P_LATENT_DIM // 2, num_layers=num_layers,
             exit_layer=exit_layer, n_latents=args.n_latents, num_blocks=args.num_blocks, seed=args.seed,
         )
+        # Every codec's scale arrives at construction: LoRA gets its established parity
+        # scale, and each other codec receives only its own explicit scale argument, so
+        # locators start from each codec's identity parameterization rather than
+        # inheriting another codec's result. --codec-scaling (the generic sweep flag)
+        # then overrides the selected codec's scale without a per-codec flag.
         hypernetwork = TextToPeftHypernetwork(
             module_shapes=module_shapes, num_layers=num_layers, adapter=adapter,
             latent_dim=D2P_LATENT_DIM, rank=args.rank, seed=args.seed, conditioner=conditioner,
-            ia3_scaling=args.ia3_scaling, lokr_scaling=args.lokr_scaling, loha_scaling=args.loha_scaling,
-            fourierft_scaling=args.fourierft_scaling,
+            lora_scaling=lora_scaling, ia3_scaling=args.ia3_scaling, lokr_scaling=args.lokr_scaling,
+            loha_scaling=args.loha_scaling, fourierft_scaling=args.fourierft_scaling,
         ).to(args.device)
-        # LoRA retains its established parity scale. Other codecs each receive only
-        # their own explicit scale argument; their locators start from the respective
-        # identity parameterization rather than inheriting another codec's result.
-        from ..t2p.codecs import FourierFTCodec, IA3Codec, LoHaCodec, LoKrCodec, LoRACodec
+        if args.codec_scaling is not None:
+            from ..t2p.codecs import set_codec_scaling
 
-        scaled_types = (LoRACodec,)
-        for codec in hypernetwork.codecs.values():
-            if isinstance(codec, scaled_types):
-                codec.scaling = lora_scaling
-            elif isinstance(codec, IA3Codec):
-                codec.scaling = args.ia3_scaling
-            elif isinstance(codec, LoKrCodec):
-                codec.scaling = args.lokr_scaling
-            elif isinstance(codec, LoHaCodec):
-                codec.scaling = args.loha_scaling
-            elif isinstance(codec, FourierFTCodec):
-                codec.scaling = args.fourierft_scaling
+            set_codec_scaling(hypernetwork.codecs, args.codec_scaling)
+            print(f"[scale] {adapter} codec scaling set to {args.codec_scaling} (--codec-scaling)", flush=True)
 
         evaluator = DocumentHypernetworkDownstreamEvaluator(
             interpreter, layers, hypernetwork, tokenizer,
@@ -476,7 +478,8 @@ def _d2p_niah_command(args) -> None:
                     metadata={
                         **result.metadata, "adapter_family": adapter, "steps": checkpoint["step"],
                         "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling,
-                        "fourierft_scaling": args.fourierft_scaling, "evaluation_only": True,
+                        "fourierft_scaling": args.fourierft_scaling, "codec_scaling": args.codec_scaling,
+                        "evaluation_only": True,
                     },
                 ))
             del hypernetwork, evaluator
@@ -511,7 +514,7 @@ def _d2p_niah_command(args) -> None:
                 metadata={
                     **result.metadata, "adapter_family": adapter, "steps": args.steps,
                     "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling,
-                    "fourierft_scaling": args.fourierft_scaling,
+                    "fourierft_scaling": args.fourierft_scaling, "codec_scaling": args.codec_scaling,
                 },
             ))
         del hypernetwork, evaluator
@@ -704,6 +707,12 @@ def _register_d2p_niah(subparsers) -> None:
                    help="LoHa scale in ΔW = scale * (B1@A1) ⊙ (B2@A2); sweep from its identity convention per codec.")
     p.add_argument("--fourierft-scaling", type=float, default=1.0,
                    help="FourierFT coefficient scale; sweep from its identity convention per codec.")
+    p.add_argument("--codec-scaling", type=float, default=None,
+                   help="generic output-scale override applied to the trained codec(s) after "
+                        "construction (every codec exposes a uniform .scaling). The preferred "
+                        "sweep flag for new codecs — no per-codec flag needed. With several "
+                        "--adapters it applies the same value to each; use the per-codec flags "
+                        "or one adapter per run to differentiate.")
     p.add_argument("--scale-weight-codecs", action="store_true",
                    help="also apply --lora-scaling to any other LoRA-family weight codecs added later "
                         "(none in the LoRA-only baseline, so currently a no-op) so a multi-codec "
@@ -786,8 +795,8 @@ def _register_t2p_sft_pilot(subparsers) -> None:
         "--adapters",
         default="lora",
         help="comma-separated adapters to train and compare; each uses a fixed default hook site "
-        "(lora -> q_proj,v_proj). LoRA is the only baseline codec; more are added one at a time, "
-        "each with its own leaderboard entry (see PROJECT_PLAN.md).",
+        "(see PILOT_DEFAULT_TARGET_MODULES, e.g. lora -> q_proj,v_proj; steering -> block). "
+        "Codecs are added one at a time, each with its own leaderboard entry (see PROJECT_PLAN.md).",
     )
     t2p_sft_pilot.add_argument("--condition-encoder", default="Alibaba-NLP/gte-large-en-v1.5")
     t2p_sft_pilot.add_argument("--max-descriptions", type=int, default=8)
@@ -823,9 +832,9 @@ def _register_t2p_sft_pilot(subparsers) -> None:
     )
     t2p_sft_pilot.add_argument(
         "--scales", default="",
-        help="comma-separated LoRA scales to sweep (invariant #2): trains one hypernetwork per scale "
-        "with the scale applied directly to each codec, and reports per-scale best-of. Empty (default) "
-        "uses the codec's own default scale (single run).",
+        help="comma-separated codec output scales to sweep (invariant #2): trains one hypernetwork per "
+        "scale with the scale applied directly to each codec (any registered codec, not just LoRA), and "
+        "reports per-scale best-of. Empty (default) uses the codec's own default scale (single run).",
     )
     t2p_sft_pilot.add_argument(
         "--adversarial-control", action="store_true",

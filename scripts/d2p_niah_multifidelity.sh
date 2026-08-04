@@ -11,15 +11,15 @@ ADAPTER="${1:?adapter required}"; GPUS="${2:?GPU csv required}"; SCALES_CSV="${3
 SEED="${4:-902}"; ROOT="${5:-results/autoresearch/d2l/$ADAPTER/multifidelity}"
 IFS=',' read -ra GPU_ARRAY <<< "$GPUS"
 IFS=',' read -ra CANDIDATES <<< "$SCALES_CSV"
+# The generic --codec-scaling flag applies each swept scale to whichever codec ADAPTER
+# selects (adapter names are validated by the d2p-niah CLI against its registry), so a
+# new codec needs no scale-flag mapping here. 4e-5 is the D2L command's setting default,
+# not a value transferred from another codec — every new codec's LR search starts there;
+# set LEARNING_RATE explicitly for a codec's own LR sweep (ia3 keeps its selected 2e-5).
+SCALE_FLAG="--codec-scaling"
 case "$ADAPTER" in
-  lora) SCALE_FLAG="--lora-scaling"; LR="4e-5" ;;
-  ia3) SCALE_FLAG="--ia3-scaling"; LR="2e-5" ;;
-  # 4e-5 is the D2L command's setting default, not a selected value transferred
-  # from another codec. Set LEARNING_RATE explicitly for LoKr's own LR sweep.
-  lokr) SCALE_FLAG="--lokr-scaling"; LR="4e-5" ;;
-  loha) SCALE_FLAG="--loha-scaling"; LR="4e-5" ;;
-  fourierft) SCALE_FLAG="--fourierft-scaling"; LR="4e-5" ;;
-  *) echo "unsupported adapter: $ADAPTER (expected lora, ia3, lokr, loha, or fourierft)" >&2; exit 2 ;;
+  ia3) LR="2e-5" ;;
+  *) LR="4e-5" ;;
 esac
 LR="${LEARNING_RATE:-$LR}"
 NEEDLE_STYLE="${NEEDLE_STYLE:-realistic}"

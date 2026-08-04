@@ -319,6 +319,44 @@ class LoHaCodec(GeneratedUpdateCodec):
         return self.scaling * first * second
 
 
+class SteeringCodec(GeneratedUpdateCodec):
+    """Additive residual-stream steering: ``h -> h + scale * v`` with one generated
+    vector ``v`` per (layer, example), broadcast across sequence positions.
+
+    This is the benchmark's first activation-space codec: its hook site is the whole
+    decoder layer (``"block"`` — see ``hypernetwork.py::_resolve_target``), not a linear
+    projection, so it edits the residual stream directly and performs no weight update
+    at all. The function-vector/task-vector literature shows a single residual-stream
+    vector can install an in-context task, which is exactly the T2L question; for D2L
+    the vector must carry the conditioned document's needle. Budget is ``d_model``
+    scalars per layer — the smallest registered shape alongside (IA)³.
+
+    ``apply()`` is linear in ``generated``: the all-zero initialization is exactly the
+    frozen model with a nonzero gradient, so the default ``initial_bias() -> None``
+    is correct (no bilinear saddle).
+    """
+
+    def __init__(self, in_features: int, out_features: int, scaling: float = 1.0):
+        super().__init__(in_features, out_features)
+        self.scaling = scaling
+
+    @property
+    def output_size(self) -> int:
+        return self.out_features
+
+    def apply(self, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int) -> Tensor:
+        self._check(inputs, generated)
+        return base_output + self.scaling * generated.to(base_output.dtype).unsqueeze(1)
+
+    def dense_delta(self, generated: Tensor, layer_index: int) -> Tensor:
+        self._check_output_size(generated)
+        # Steering is an input-independent additive shift of the hooked activation
+        # (a bias-space edit), not a linear map of the input: there is no ΔW with
+        # ΔW @ x equal to it. As with IA3, return the correctly shaped zero additive
+        # component; `apply()` is the authoritative live implementation.
+        return generated.new_zeros(generated.shape[0], self.out_features, self.in_features)
+
+
 class FourierFTCodec(GeneratedUpdateCodec):
     """Sparse coefficients over a fixed, orthonormal two-dimensional DCT-II basis.
 
@@ -446,6 +484,7 @@ def make_codec(
     lokr_scaling: float = 1.0,
     loha_scaling: float = 1.0,
     fourierft_scaling: float = 1.0,
+    steering_scaling: float = 1.0,
     seed: int = 777,
     # Accepted-and-ignored so call sites (and future codecs) can pass a
     # uniform kwarg set without every caller special-casing which codec is registered.
@@ -465,6 +504,9 @@ def make_codec(
         # Four LoHa factor groups at rank r/2 have exactly the scalar count of the
         # repository's fixed rank-r LoRA budget. r=8 is locked by the substrate.
         "loha": _loha,
+        # Activation-space: one steering vector per layer added to the residual
+        # stream; hook at "block", not a projection. d_model scalars per layer.
+        "steering": lambda: SteeringCodec(in_features, out_features, scaling=steering_scaling),
         # One coefficient per generated scalar in the locked rank-r LoRA budget.
         "fourierft": lambda: FourierFTCodec(
             in_features,
@@ -482,3 +524,16 @@ def make_codec(
             f"unsupported differentiable adapter: {name!r} "
             f"(registered codecs: {sorted(constructors)})"
         ) from error
+
+
+def set_codec_scaling(codecs, scaling: float) -> None:
+    """Apply one swept output scale to every codec in a ``codecs`` mapping.
+
+    Every registered codec exposes a uniform scalar ``.scaling``, so the invariant-#2
+    best-of-scale sweep needs exactly one mechanism: entry points expose a single
+    ``--codec-scaling`` flag and call this, instead of each new codec threading its own
+    ``--<name>-scaling`` flag through every trainer/evaluator (the per-codec flags are
+    retained for recorded reproduction commands, but new codecs should not add more).
+    """
+    for codec in codecs.values():
+        codec.scaling = scaling

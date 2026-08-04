@@ -6,7 +6,7 @@ from adapterbench.t2p.codecs import make_codec
 from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
 
 
-@pytest.mark.parametrize("name", ["lora", "ia3", "lokr", "loha", "fourierft"])
+@pytest.mark.parametrize("name", ["lora", "ia3", "lokr", "loha", "fourierft", "steering"])
 def test_generated_adapter_is_differentiable(name):
     torch.manual_seed(0)
     codec = make_codec(
@@ -165,6 +165,53 @@ def test_fourierft_zero_coefficients_are_identity_with_nonzero_gradient():
     assert torch.isfinite(generated.grad).all()
 
 
+def test_steering_geometry_and_identity_initialization():
+    codec = make_codec("steering", 5, 8, num_layers=2, steering_scaling=2.0)
+    assert codec.output_size == 8
+    assert codec.scaling == 2.0
+    generated = torch.zeros(3, codec.output_size)
+    inputs = torch.randn(3, 4, 5)
+    base = torch.randn(3, 4, 8)
+    # zero vector => exact identity (frozen model), like every linear codec
+    torch.testing.assert_close(codec.apply(inputs, base, generated, layer_index=0), base)
+    assert codec.dense_delta(generated, layer_index=0).shape == (3, 8, 5)
+    assert codec.initial_bias() is None
+    assert not tuple(codec.parameters())
+
+
+def test_steering_apply_adds_the_scaled_vector_at_every_position_per_example():
+    codec = make_codec("steering", 8, 8, num_layers=1, steering_scaling=0.5)
+    base = torch.randn(2, 4, 8)
+    inputs = torch.randn(2, 4, 8)
+    generated = torch.randn(2, 8)
+    output = codec.apply(inputs, base, generated, layer_index=0)
+    # each example's own vector, broadcast over its sequence positions
+    torch.testing.assert_close(output, base + 0.5 * generated.unsqueeze(1))
+
+
+def test_steering_zero_head_is_identity_with_nonzero_gradient():
+    inputs = torch.randn(3, 5, 8)
+    base = torch.randn(3, 5, 8)
+    codec = make_codec("steering", 8, 8, num_layers=1)
+    generated = torch.zeros(3, codec.output_size, requires_grad=True)
+    output = codec.apply(inputs, base, generated, layer_index=0)
+    torch.testing.assert_close(output, base)
+    output.square().mean().backward()
+    assert generated.grad is not None
+    assert generated.grad.abs().max() > 0
+
+
+def test_set_codec_scaling_applies_one_scale_to_every_codec():
+    from adapterbench.t2p.codecs import set_codec_scaling
+
+    codecs = {
+        "q_proj": make_codec("lora", 8, 8, num_layers=1, rank=2, alpha=2),
+        "block": make_codec("steering", 8, 8, num_layers=1),
+    }
+    set_codec_scaling(codecs, 3.5)
+    assert all(codec.scaling == 3.5 for codec in codecs.values())
+
+
 class TinyLayer(nn.Module):
     def __init__(self):
         super().__init__()
@@ -319,6 +366,49 @@ def test_hypernetwork_hooks_a_whole_layer_via_block_sentinel_and_backpropagates(
     output.square().mean().backward()
     assert hypernetwork.heads["block"].weight.grad is not None
     assert torch.isfinite(hypernetwork.heads["block"].weight.grad).all()
+
+
+def test_steering_hypernetwork_hooks_the_residual_stream_and_backpropagates():
+    hidden_size = 8
+    layers = nn.ModuleList([TupleReturningDecoderLayer(hidden_size), TupleReturningDecoderLayer(hidden_size)])
+    hypernetwork = TextToPeftHypernetwork(
+        condition_dim=6,
+        module_shapes={"block": (hidden_size, hidden_size)},
+        num_layers=2,
+        adapter="steering",
+        latent_dim=32,
+        head_dim=32,
+        steering_scaling=1.0,
+    )
+    nn.init.normal_(hypernetwork.heads["block"].weight, std=0.01)
+    conditions = torch.randn(3, 6)
+    inputs = torch.randn(3, 4, hidden_size)
+    generated = hypernetwork(conditions)
+    with hypernetwork.apply(layers, generated):
+        hidden, extra = layers[0](inputs)
+        output, _ = layers[1](hidden)
+    assert extra == "extra_output_the_hook_must_preserve"
+    output.square().mean().backward()
+    assert hypernetwork.generated_parameter_count() == 2 * hidden_size
+    assert hypernetwork.heads["block"].weight.grad is not None
+    assert hypernetwork.heads["block"].weight.grad.abs().max() > 0
+    assert torch.isfinite(hypernetwork.heads["block"].weight.grad).all()
+
+
+def test_hypernetwork_forwards_codec_kwargs_to_make_codec():
+    # Codec-specific kwargs (ia3_scaling, lora_scaling, steering_scaling, ...) reach the
+    # codec through the constructor's **codec_kwargs passthrough, so registering a new
+    # codec never needs a new named hypernetwork parameter.
+    hypernetwork = TextToPeftHypernetwork(
+        condition_dim=4, module_shapes={"q_proj": (8, 8)}, num_layers=1,
+        adapter="ia3", latent_dim=16, head_dim=16, ia3_scaling=2.5,
+    )
+    assert hypernetwork.codecs["q_proj"].scaling == 2.5
+    hypernetwork = TextToPeftHypernetwork(
+        condition_dim=4, module_shapes={"q_proj": (8, 8)}, num_layers=1,
+        adapter="lora", latent_dim=16, head_dim=16, rank=2, lora_scaling=7.0,
+    )
+    assert hypernetwork.codecs["q_proj"].scaling == 7.0
 
 
 def test_infer_module_shapes_uses_hidden_size_for_non_linear_targets():

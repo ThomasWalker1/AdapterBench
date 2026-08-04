@@ -14,11 +14,13 @@ The training loop, data pipeline, and evaluator are the same for every adapter t
 in this way — that's the whole point.
 
 > **Current state:** LoRA validates the two genuinely conditioned settings:
-> task-description conditioning (T2L) and document conditioning (D2L). (IA)³ is the
-> first codec-exploration implementation; its D2L scale search and three-seed benchmark
-> row are complete, while its T2L evaluation remains pending. New shapes are added one at
-> a time as a codec + registration entry + manifest, then evaluated with both setting
-> CLIs and recorded in the per-setting leaderboards.
+> task-description conditioning (T2L) and document conditioning (D2L). (IA)³, LoKr, and
+> FourierFT have complete two-setting benchmark rows alongside LoRA; LoHa is registered
+> and its protocol evaluation is in flight. **Steering** — the first activation-space
+> codec, hooked at the residual stream (`"block"`) rather than a projection — is the
+> newest registered shape; its two-setting autoresearch evaluation is pending. New
+> shapes are added one at a time as a codec + registration entry + manifest, then
+> evaluated with both setting CLIs and recorded in the per-setting leaderboards.
 >
 > **Current phase: codec exploration.** The core benchmark and LoRA reference results
 > are implemented; the remaining research work is to compare the registered shapes under

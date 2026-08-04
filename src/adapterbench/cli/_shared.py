@@ -36,9 +36,9 @@ T2L_EVAL_DESCRIPTIONS = T2L_DATA_DIR / "eval_ds_info.yaml"
 DEFAULT_SFT_TRAIN_TASKS = "lol_022,lol_043,lol_044,lol_045,lol_047,lol_050,lol_063,lol_064"
 
 # Default hook site per adapter, shared by every live-SFT pilot/sweep command so they
-# never drift apart. LoRA (the only baseline codec) modifies attention projections; as
-# new codecs are added one at a time with a leaderboard entry; they register their own hook site
-# here (e.g. activation steering -> ["block"], IA3 -> ["k_proj", "v_proj", "down_proj"]).
+# never drift apart. New codecs are added one at a time with a leaderboard entry and
+# register their own hook site here: a named linear submodule for weight-space codecs,
+# or "block" (the whole decoder layer / residual stream) for activation-space ones.
 PILOT_DEFAULT_TARGET_MODULES = {
     "lora": ["q_proj", "v_proj"],
     # IA3 scales each hooked projection's output channels, retaining the validated
@@ -50,6 +50,9 @@ PILOT_DEFAULT_TARGET_MODULES = {
     # LoHa is an additive weight-space update and retains the validated LoRA sites.
     "loha": ["q_proj", "v_proj"],
     "fourierft": ["q_proj", "v_proj"],
+    # Steering is activation-space: its hook site is the residual stream itself
+    # (every decoder layer's output), not a projection, in both settings.
+    "steering": ["block"],
 }
 
 # TextToPeftHypernetwork's own default (never overridden by any existing t2p-sft*

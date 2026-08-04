@@ -64,14 +64,13 @@ class TextToPeftHypernetwork(nn.Module):
         head_dim: int = 2048,
         rank: int = 8,
         alpha: float = 16.0,
-        n_frequency: int = 1000,
-        steering_scale: float = 1.0,
-        ia3_scaling: float = 1.0,
-        lokr_scaling: float = 1.0,
-        loha_scaling: float = 1.0,
-        fourierft_scaling: float = 1.0,
         seed: int = 777,
         conditioner: nn.Module | None = None,
+        # Codec-specific construction kwargs (e.g. ia3_scaling, lora_scaling,
+        # steering_scaling) forwarded verbatim to `make_codec`, which ignores the ones
+        # its selected codec doesn't take. Adding a codec therefore never touches this
+        # constructor: register it in `make_codec` and pass its kwargs straight through.
+        **codec_kwargs,
     ):
         super().__init__()
         self.module_names = tuple(module_shapes)
@@ -113,13 +112,8 @@ class TextToPeftHypernetwork(nn.Module):
                 num_layers=num_layers,
                 rank=rank,
                 alpha=alpha,
-                n_frequency=n_frequency,
-                steering_scale=steering_scale,
-                ia3_scaling=ia3_scaling,
-                lokr_scaling=lokr_scaling,
-                loha_scaling=loha_scaling,
-                fourierft_scaling=fourierft_scaling,
                 seed=seed + index,
+                **codec_kwargs,
             )
             codecs[name] = codec
             heads[name] = nn.Linear(head_dim, codec.output_size)

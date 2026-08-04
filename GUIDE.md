@@ -98,10 +98,14 @@ the residual stream for activation-space ones). Concretely:
      that randomizes one factor's slice so the head escapes the all-zero dead saddle.
      Linear codecs (IA³, activation steering, FourierFT) can keep the default `None`.
 2. **Register it** — add one entry to the `constructors` dict in `make_codec`
-   (`codecs.py`). LoRA is the only registered shape on `main`.
-3. **Add a manifest** under `configs/adapters/` so the CLI can select it.
+   (`codecs.py`) and its default hook site in `PILOT_DEFAULT_TARGET_MODULES`
+   (`cli/_shared.py`) + `D2L_PARITY_TARGET_MODULES` (`cli/live_sft.py`). Registered
+   shapes: `lora`, `ia3`, `lokr`, `loha`, `fourierft`, `steering`.
+3. **Add a manifest** under `configs/adapters/` so the CLI can select it (and add the
+   family to `schema.py`'s `AdapterManifest.family` literal).
 4. **Run the setting CLIs** (Section 4) at the codec's own best free hyperparameters and
-   **record a leaderboard row**.
+   **record a leaderboard row**. Scale sweeps use the single generic `--codec-scaling`
+   flag (every codec exposes a uniform `.scaling`); no per-codec flag is needed.
 
 The training loop, data pipeline, hypernetwork trunk, evaluator, and controls are
 identical for every codec that plugs in this way — that is the whole point.
@@ -152,13 +156,16 @@ recipe with a swappable base model and env knobs (`SEED`, `STEPS`, `LR`, `SNAP`,
 
 ### D2L — document-conditioned (NIAH)
 
-Trains at a fixed 256-token context and evaluates in-distribution plus a length-generalization
-sweep:
+The locked numeric-decoy setting trains at a fixed 512-token context and evaluates
+in-distribution plus a length-generalization sweep out to 32768 tokens:
 
 ```bash
-scripts/reproduce/document_niah_lora.sh                       # 5 seeds, realistic haystack
-.venv/bin/python scripts/d2p_niah_aggregate.py --root <run> --min-seeds 5 --train-length 256
+scripts/reproduce/document_niah_numeric_decoy_lora.sh cuda:0   # 5 seeds, realistic haystack + decoys
+.venv/bin/python scripts/d2p_niah_aggregate.py --root <run> --min-seeds 5 --train-length 512
 ```
+
+(`scripts/reproduce/document_niah_lora.sh` is the earlier decoy-free 256-token recipe,
+retained for the historical realistic-haystack diagnostic.)
 
 ---
 
