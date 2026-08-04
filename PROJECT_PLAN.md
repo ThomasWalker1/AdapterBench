@@ -28,15 +28,15 @@ Both language settings pass controls that require genuine condition dependence.
 <!-- canonical-results:release-summary-markdown:start -->
 | setting | frozen interpreter | primary result | condition control |
 |---|---|---|---|
-| T2L | gemma-2-2b | LoRA `matched − static = −0.571 ± 0.045`; (IA)³ `matched − static = −0.381 ± 0.023`; LoKr `matched − static = −0.403 ± 0.172` nats CE (3 seeds each) | same-shape static control: LoRA wins 54/63 task-seed pairs; (IA)³ wins 48/63 task-seed pairs; LoKr wins 49/63 task-seed pairs |
-| D2L | Qwen3-0.6B | LoRA (r=8): `matched − context-swap = +0.556 ± 0.327`; (IA)³: `matched − context-swap = +0.738 ± 0.327`; LoKr: `matched − context-swap = +0.981 ± 0.037` exact-match | LoRA (r=8) control `0.000`; (IA)³ control `0.000`; LoKr control `0.000` |
+| T2L | gemma-2-2b | LoRA `matched − static = −0.571 ± 0.045`; FourierFT `matched − static = −0.525 ± 0.064`; (IA)³ `matched − static = −0.381 ± 0.023`; LoKr `matched − static = −0.403 ± 0.172` nats CE (3 seeds each) | same-shape static control: LoRA wins 54/63 task-seed pairs; FourierFT wins 55/63 task-seed pairs; (IA)³ wins 48/63 task-seed pairs; LoKr wins 49/63 task-seed pairs |
+| D2L | Qwen3-0.6B | LoRA (r=8): `matched − context-swap = +0.556 ± 0.327`; FourierFT: `matched − context-swap = +0.656 ± 0.352`; (IA)³: `matched − context-swap = +0.738 ± 0.327`; LoKr: `matched − context-swap = +0.981 ± 0.037` exact-match | LoRA (r=8) control `0.000`; FourierFT control `0.000`; (IA)³ control `0.000`; LoKr control `0.000` |
 <!-- canonical-results:release-summary-markdown:end -->
 
 T2L generation accuracy is corroborating rather than the selection metric: LoRA reports
 `matched − static = −0.0050 ± 0.0278`; `(IA)³` reports `+0.0562 ± 0.0087`.
 
 D2L's locked numeric-decoy NIAH setting trains at 512 tokens and tests through 32768.
-LoRA crosses 0.5 through 8192 (16×); IA³ and LoKr cross through 32768 (64×).
+LoRA crosses 0.5 through 8192 (16×); FourierFT, IA³, and LoKr cross through 32768 (64×).
 
 Canonical results and exact commands are in:
 
@@ -265,7 +265,7 @@ Across five seeds at the 512-token training length:
 - LoRA (r=8) matched exact-match: `0.556 ± 0.327`; context-swap: `0.000`; matched minus control: `+0.556 ± 0.327`.
 - (IA)³ matched exact-match: `0.738 ± 0.327`; context-swap: `0.000`; matched minus control: `+0.738 ± 0.327`.
 
-The length-generalization crossover is 8192 tokens (16×) for LoRA and 32768 (64×) for IA³.
+The length-generalization crossover is 8192 tokens (16×) for LoRA and 32768 (64×) for FourierFT, IA³, and LoKr.
 
 ## How to run
 

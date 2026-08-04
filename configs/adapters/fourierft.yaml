@@ -1,0 +1,19 @@
+schema_version: 1
+name: fourierft
+family: fourierft
+implementation: custom
+output_structure: Generated coefficients over distinct fixed orthonormal 2D DCT-II basis elements, applied live without materializing a dense update.
+target_modules: [q_proj, v_proj]
+hyperparameters:
+  base_rank_budget: 8
+  scaling: 1.0
+  n_freqs: 8 * (in_features + out_features)
+  scalar_budget_rule: n_freqs = base_rank_budget * (in_features + out_features)
+compatible_objectives: [downstream, reconstruction, hybrid]
+supports_batched_generation: true
+notes:
+  - n_freqs is the fixed codec shape identity derived from the locked rank-8 LoRA scalar budget, not a tunable parameter.
+  - Each layer uses a seeded set of distinct frequency pairs and frozen DCT-II basis buffers.
+  - FourierFT matches the rank-8 LoRA generated-scalar budget at every fixed hook projection.
+  - T2L retains q_proj/v_proj and D2L retains down_proj; only the generated update representation changes.
+  - The update is linear in generated coefficients, so zero initialization is identity with a nonzero gradient.

@@ -6,7 +6,7 @@ from adapterbench.t2p.codecs import make_codec
 from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
 
 
-@pytest.mark.parametrize("name", ["lora", "ia3", "lokr", "loha"])
+@pytest.mark.parametrize("name", ["lora", "ia3", "lokr", "loha", "fourierft"])
 def test_generated_adapter_is_differentiable(name):
     torch.manual_seed(0)
     codec = make_codec(
@@ -28,7 +28,7 @@ def test_generated_adapter_is_differentiable(name):
     assert torch.isfinite(generated.grad).all()
 
 
-@pytest.mark.parametrize("name", ["lora", "lokr", "loha"])
+@pytest.mark.parametrize("name", ["lora", "lokr", "loha", "fourierft"])
 def test_dense_delta_matches_apply(name):
     torch.manual_seed(0)
     codec = make_codec(name, 8, 8, num_layers=2, rank=2, alpha=2, n_frequency=4)
@@ -136,6 +136,35 @@ def test_loha_live_contraction_matches_dense_delta():
     torch.testing.assert_close(codec.apply(inputs, base, generated, layer_index=0), expected, atol=1e-5, rtol=1e-5)
 
 
+def test_fourierft_geometry_matches_the_locked_lora_scalar_budget():
+    codec = make_codec("fourierft", 8, 8, num_layers=2, rank=2, fourierft_scaling=2.0)
+    assert codec.n_freqs == 32
+    assert codec.output_size == make_codec("lora", 8, 8, num_layers=2, rank=2).output_size
+    assert codec.dct_out.shape == (8, 8)
+    assert codec.dct_in.shape == (8, 8)
+    assert codec.row_frequencies.shape == (2, 32)
+    assert codec.column_frequencies.shape == (2, 32)
+    pairs = codec.row_frequencies[0] * 8 + codec.column_frequencies[0]
+    assert pairs.unique().numel() == codec.output_size
+    assert not tuple(codec.parameters())
+    assert make_codec("fourierft", 2304, 2048, num_layers=26, rank=8).output_size == 34816
+    assert make_codec("fourierft", 2304, 1024, num_layers=26, rank=8).output_size == 26624
+
+
+def test_fourierft_zero_coefficients_are_identity_with_nonzero_gradient():
+    codec = make_codec("fourierft", 8, 8, num_layers=2, rank=2, fourierft_scaling=0.75)
+    inputs = torch.randn(3, 5, 8)
+    base = torch.randn(3, 5, 8)
+    generated = torch.zeros(3, codec.output_size, requires_grad=True)
+    output = codec.apply(inputs, base, generated, layer_index=1)
+    torch.testing.assert_close(output, base)
+    output.square().mean().backward()
+    assert codec.initial_bias() is None
+    assert generated.grad is not None
+    assert generated.grad.abs().max() > 0
+    assert torch.isfinite(generated.grad).all()
+
+
 class TinyLayer(nn.Module):
     def __init__(self):
         super().__init__()
@@ -217,6 +246,24 @@ def test_loha_hypernetwork_hook_applies_per_example_adapters_and_backpropagates(
         output = layers[1](layers[0](inputs))
     output.square().mean().backward()
     # rank=2 gives internal rank 1: four factor slices total 32 values/layer.
+    assert hypernetwork.generated_parameter_count() == 64
+    assert hypernetwork.heads["q_proj"].weight.grad is not None
+    assert hypernetwork.heads["q_proj"].weight.grad.abs().max() > 0
+    assert torch.isfinite(hypernetwork.heads["q_proj"].weight.grad).all()
+
+
+def test_fourierft_hypernetwork_hook_applies_per_example_adapters_and_backpropagates():
+    layers = nn.ModuleList([TinyLayer(), TinyLayer()])
+    hypernetwork = TextToPeftHypernetwork(
+        condition_dim=6, module_shapes={"q_proj": (8, 8)}, num_layers=2,
+        adapter="fourierft", latent_dim=32, head_dim=32, rank=2, fourierft_scaling=1.0,
+    )
+    conditions = torch.randn(3, 6)
+    inputs = torch.randn(3, 4, 8)
+    generated = hypernetwork(conditions)
+    with hypernetwork.apply(layers, generated):
+        output = layers[1](layers[0](inputs))
+    output.square().mean().backward()
     assert hypernetwork.generated_parameter_count() == 64
     assert hypernetwork.heads["q_proj"].weight.grad is not None
     assert hypernetwork.heads["q_proj"].weight.grad.abs().max() > 0

@@ -20,6 +20,7 @@ import math
 
 import torch
 from torch import Tensor, nn
+from torch.utils.checkpoint import checkpoint
 
 
 def _saddle_bias(output_size: int, seed: int, filled: list[tuple[int, int, float]]) -> Tensor:
@@ -318,6 +319,120 @@ class LoHaCodec(GeneratedUpdateCodec):
         return self.scaling * first * second
 
 
+class FourierFTCodec(GeneratedUpdateCodec):
+    """Sparse coefficients over a fixed, orthonormal two-dimensional DCT-II basis.
+
+    Every generated scalar multiplies one outer product of fixed input/output DCT
+    columns.  Unlike factorized updates this representation has no change-of-basis
+    gauge symmetry and is linear in the generated values.  The bases are frozen
+    buffers, with an independently sampled set of distinct frequencies per layer.
+    """
+
+    def __init__(
+        self,
+        in_features: int,
+        out_features: int,
+        *,
+        num_layers: int,
+        n_freqs: int,
+        scaling: float = 1.0,
+        seed: int = 777,
+    ):
+        super().__init__(in_features, out_features)
+        if n_freqs <= 0:
+            raise ValueError("FourierFT n_freqs must be positive")
+        if n_freqs > in_features * out_features:
+            raise ValueError(
+                f"FourierFT n_freqs={n_freqs} exceeds the {out_features}x{in_features} "
+                "2D DCT spectrum"
+            )
+        self.n_freqs = n_freqs
+        self.num_layers = num_layers
+        self.scaling = scaling
+
+        generator = torch.Generator().manual_seed(seed)
+        row_frequencies_by_layer = []
+        column_frequencies_by_layer = []
+        for _ in range(num_layers):
+            flat_frequencies = torch.randperm(
+                out_features * in_features, generator=generator
+            )[:n_freqs]
+            row_frequencies = torch.div(flat_frequencies, in_features, rounding_mode="floor")
+            column_frequencies = flat_frequencies.remainder(in_features)
+            row_frequencies_by_layer.append(row_frequencies)
+            column_frequencies_by_layer.append(column_frequencies)
+
+        # Store each complete orthonormal 1D basis once, rather than duplicating
+        # repeated columns for every sampled pair and layer (which would consume
+        # several GB at benchmark dimensions). Indexing these buffers materializes
+        # exactly the Phi_out/Phi_in columns in the codec definition.
+        def _dct_basis(size: int) -> Tensor:
+            positions = torch.arange(size, dtype=torch.float32).unsqueeze(1)
+            frequencies = torch.arange(size).unsqueeze(0)
+            normalization = torch.full((size,), math.sqrt(2 / size))
+            normalization[0] = math.sqrt(1 / size)
+            return normalization * torch.cos(
+                math.pi * (2 * positions + 1) * frequencies / (2 * size)
+            )
+
+        self.register_buffer("dct_out", _dct_basis(out_features))
+        self.register_buffer("dct_in", _dct_basis(in_features))
+        self.register_buffer("row_frequencies", torch.stack(row_frequencies_by_layer))
+        self.register_buffer("column_frequencies", torch.stack(column_frequencies_by_layer))
+
+    @property
+    def output_size(self) -> int:
+        return self.n_freqs
+
+    def _delta(self, inputs: Tensor, generated: Tensor, layer_index: int) -> Tensor:
+        # Transform once into the complete input-frequency basis, then gather the
+        # sampled columns. Many of the n_freqs pairs share a column, so this is much
+        # cheaper than multiplying x by a repeated (in_features, n_freqs) matrix.
+        projected_all = torch.einsum("bsi,ic->bsc", inputs.to(self.dct_in.dtype), self.dct_in)
+        # Place the <1%-dense learned diagonal into a temporary frequency-domain
+        # operator and use one batched GEMM. This never forms weight-space ΔW and is
+        # substantially faster than thousands of small gather/scatter kernels. The
+        # surrounding activation checkpoint keeps this workspace out of the saved
+        # per-layer backward state.
+        flat_indices = (
+            self.column_frequencies[layer_index] * self.out_features
+            + self.row_frequencies[layer_index]
+        )
+        spectral_weights = generated.new_zeros(
+            generated.shape[0], self.in_features * self.out_features
+        ).scatter(1, flat_indices.unsqueeze(0).expand(generated.shape[0], -1), generated)
+        spectral_weights = spectral_weights.reshape(
+            generated.shape[0], self.in_features, self.out_features
+        )
+        spectral_out = torch.bmm(projected_all, spectral_weights)
+        delta = torch.einsum("bsr,or->bso", spectral_out, self.dct_out)
+        return delta
+
+    def apply(self, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int) -> Tensor:
+        self._check(inputs, generated)
+        if torch.is_grad_enabled() and (inputs.requires_grad or generated.requires_grad):
+            # Recompute the DCT intermediates during backward instead of retaining
+            # them for every hooked layer. This is exact activation checkpointing;
+            # it changes memory/compute only, not the model forward or gradients.
+            delta = checkpoint(
+                lambda layer_inputs, layer_generated: self._delta(
+                    layer_inputs, layer_generated, layer_index
+                ),
+                inputs,
+                generated,
+                use_reentrant=False,
+            )
+        else:
+            delta = self._delta(inputs, generated, layer_index)
+        return base_output + self.scaling * delta.to(base_output.dtype)
+
+    def dense_delta(self, generated: Tensor, layer_index: int) -> Tensor:
+        self._check_output_size(generated)
+        phi_in = self.dct_in[:, self.column_frequencies[layer_index]]
+        phi_out = self.dct_out[:, self.row_frequencies[layer_index]]
+        return self.scaling * torch.einsum("ok,bk,ik->boi", phi_out, generated, phi_in)
+
+
 def make_codec(
     name: str,
     in_features: int,
@@ -330,6 +445,7 @@ def make_codec(
     ia3_scaling: float = 1.0,
     lokr_scaling: float = 1.0,
     loha_scaling: float = 1.0,
+    fourierft_scaling: float = 1.0,
     seed: int = 777,
     # Accepted-and-ignored so call sites (and future codecs) can pass a
     # uniform kwarg set without every caller special-casing which codec is registered.
@@ -349,6 +465,15 @@ def make_codec(
         # Four LoHa factor groups at rank r/2 have exactly the scalar count of the
         # repository's fixed rank-r LoRA budget. r=8 is locked by the substrate.
         "loha": _loha,
+        # One coefficient per generated scalar in the locked rank-r LoRA budget.
+        "fourierft": lambda: FourierFTCodec(
+            in_features,
+            out_features,
+            num_layers=num_layers,
+            n_freqs=rank * (in_features + out_features),
+            scaling=fourierft_scaling,
+            seed=seed,
+        ),
     }
     try:
         return constructors[name]()

@@ -162,6 +162,8 @@ def build_args():
                    help="LoKr Kronecker-update scale; select it with a codec-specific geometric sweep.")
     p.add_argument("--loha-scaling", type=float, default=1.0,
                    help="LoHa Hadamard-update scale; select it with a codec-specific geometric sweep.")
+    p.add_argument("--fourierft-scaling", type=float, default=1.0,
+                   help="FourierFT coefficient scale; select it with a codec-specific geometric sweep.")
     p.add_argument(
         "--fixed-seq-len", type=int, default=0,
         help="pad every batch to this fixed length instead of the per-batch max. Numerically "
@@ -279,6 +281,7 @@ def main() -> None:
         ia3_scaling=args.ia3_scaling,
         lokr_scaling=args.lokr_scaling,
         loha_scaling=args.loha_scaling,
+        fourierft_scaling=args.fourierft_scaling,
         seed=args.seed,
     ).to(device)
     if args.lora_scaling > 0:
@@ -296,6 +299,8 @@ def main() -> None:
         log(f"[scale] LoKr codec scaling set to {args.lokr_scaling}")
     if args.adapter == "loha":
         log(f"[scale] LoHa codec scaling set to {args.loha_scaling}")
+    if args.adapter == "fourierft":
+        log(f"[scale] FourierFT codec scaling set to {args.fourierft_scaling}")
     if args.static:
         if args.contrastive_lambda > 0 or args.neutral_junk_lambda > 0:
             raise ValueError("--static trains a single unconditioned adapter; it is incompatible "
@@ -534,7 +539,8 @@ def main() -> None:
             "static": True, "adapter": args.adapter, "interpreter": args.interpreter,
             "effective_batch": eff_batch, "steps": args.steps, "learning_rate": args.learning_rate,
             "per_task_limit": per_task_limit, "lora_scaling": args.lora_scaling,
-            "ia3_scaling": args.ia3_scaling, "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling, "losses": losses,
+            "ia3_scaling": args.ia3_scaling, "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling,
+            "fourierft_scaling": args.fourierft_scaling, "losses": losses,
         }, indent=2) + "\n")
         log(f"[6/6] static adapter trained -> {output_dir} "
             f"(eval post-hoc: t2p_eval_checkpoint.py --static-snapshot)")
@@ -551,6 +557,7 @@ def main() -> None:
             "neutral_junk_lambda": args.neutral_junk_lambda, "strip_task_def": args.strip_task_def,
             "adapter": args.adapter, "lora_scaling": args.lora_scaling, "ia3_scaling": args.ia3_scaling,
             "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling,
+            "fourierft_scaling": args.fourierft_scaling,
             "inline_eval_skipped": True,
         }, indent=2) + "\n")
         log(f"[5/6] legacy inline evaluation skipped; paired held-out evaluation is run by the caller -> {output_dir}")
@@ -583,9 +590,12 @@ def main() -> None:
         mismatched_embeddings=mismatched_condition_embeddings,
     ):
         scale_metadata = {"seed": args.seed}
-        scale_metadata[{"ia3": "ia3_scale", "lokr": "lokr_scale", "loha": "loha_scale"}.get(args.adapter, "lora_scale")] = (
-            args.ia3_scaling if args.adapter == "ia3" else args.lokr_scaling if args.adapter == "lokr" else args.loha_scaling if args.adapter == "loha" else args.lora_scaling
-        )
+        scale_names = {"ia3": "ia3_scale", "lokr": "lokr_scale", "loha": "loha_scale", "fourierft": "fourierft_scale"}
+        scale_values = {
+            "ia3": args.ia3_scaling, "lokr": args.lokr_scaling, "loha": args.loha_scaling,
+            "fourierft": args.fourierft_scaling,
+        }
+        scale_metadata[scale_names.get(args.adapter, "lora_scale")] = scale_values.get(args.adapter, args.lora_scaling)
         recorder.record(dataclasses.replace(
             result, metadata={**result.metadata, **scale_metadata}))
 
@@ -598,6 +608,7 @@ def main() -> None:
         "neutral_junk_lambda": args.neutral_junk_lambda, "strip_task_def": args.strip_task_def,
         "adapter": args.adapter, "lora_scaling": args.lora_scaling, "ia3_scaling": args.ia3_scaling,
         "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling,
+        "fourierft_scaling": args.fourierft_scaling,
     }, indent=2) + "\n")
     log(f"[6/6] done -> {output_dir}")
     dist.destroy_process_group()

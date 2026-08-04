@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "setting": "T2L",
+  "codec": "fourierft",
+  "display_name": "FourierFT",
+  "metric": "held_out_teacher_forced_cross_entropy",
+  "headline": {
+    "comparison": "matched_minus_control",
+    "control_name": "same_shape_static_adapter",
+    "matched": 2.3164298422977994,
+    "control": 2.8418249166016243,
+    "value": -0.5253950743038249,
+    "variation": 0.06365315195163176,
+    "variation_kind": "sample_standard_deviation",
+    "unit": "nats_cross_entropy",
+    "direction": "lower_is_better"
+  },
+  "seed_results": [
+    {"seed": 5111, "matched": 2.403654529106533, "control": 2.9146094612633098, "delta": -0.5109549321567766},
+    {"seed": 5112, "matched": 2.270402751278154, "control": 2.7406052739381614, "delta": -0.47020252266000684},
+    {"seed": 5113, "matched": 2.2752322465087107, "control": 2.870260014603402, "delta": -0.5950277680946913}
+  ],
+  "difficulty_curve": [
+    {"axis": "held_out_sni_task_seed_pairs", "matched": 55, "control": 63, "delta": -8}
+  ],
+  "summary": {
+    "wins": "55/63 task-seed pairs",
+    "matched_minus_frozen": {"value": -11.008518403272975, "variation": 0.07557738086032668, "variation_kind": "sample_standard_deviation"},
+    "accuracy_matched_minus_static": {"value": -0.012896825396825396, "variation": 0.015591501632442169, "variation_kind": "sample_standard_deviation"},
+    "accuracy_matched_minus_frozen": 0.10515873015873016
+  },
+  "free_hyperparameters": {
+    "learning_rate": "1e-4",
+    "warmup_fraction": 0.1,
+    "steps": 6000,
+    "scale": "16"
+  },
+  "selection_trail": {
+    "protocol": "AUTORESEARCH.md",
+    "state_artifacts": [
+      {"path": "results/autoresearch/t2l/fourierft/state.jsonl", "sha256": "bea38ce7dfc84e4dac0015a049819e7c17fca9f6c6f92612d4c2b91c532dce31"}
+    ],
+    "summary": "The scale ladder at seed 5001 improved monotonically through scale 16; scale 64 diverged, closing the upper boundary. At scale 16, LR 5e-5 and 1e-4 were each run on three fresh selection seeds (5101–5103); both converged 3/3, and LR 1e-4 had the better mean (−0.734 vs −0.644) and lower sample SD (0.089 vs 0.115), so it was selected. Three disjoint confirmation seeds (5111–5113) converged 3/3."
+  },
+  "fixed_shape_parameters": {
+    "target_modules": ["q_proj", "v_proj"],
+    "factorization": "fixed seeded 2D orthonormal DCT-II frequency-pair basis",
+    "generated_scalars_per_layer": 61440,
+    "generated_scalars_all_layers": 1597440,
+    "n_freqs_rule": "8 * (in_features + out_features)"
+  },
+  "provenance": {
+    "models": [
+      {"model_id": "google/gemma-2-2b-it", "revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8"},
+      {"model_id": "Alibaba-NLP/gte-large-en-v1.5", "revision": "104333d6af6f97649377c2afbde10a7704870c7b"}
+    ],
+    "data": [
+      {"path": "data/t2l/hyper_lora_decontam_lol_tasks.yaml", "sha256": "f38284efcbf9e01aebfe60746c0024e615ef4432667b540c52dc5f055a79e96f"},
+      {"path": "data/t2l/eval_ds_info.yaml", "sha256": "cf281756600d2f853907687e9210688f3f9aab8632c9cc1df0353e50a49017d2"}
+    ],
+    "source_artifacts": [
+      {"seed": 5111, "path": "results/repro/t2l_fourierft_scale16_lr1e-4_confirm/hyper/s5111/heldout_sni_ce_full21.jsonl", "sha256": "ba9fcfee28e93fd63af269b70def5ecc35cb188e7b680a9b92cec0f02b2f23a7"},
+      {"seed": 5111, "path": "results/repro/t2l_fourierft_scale16_lr1e-4_confirm/hyper/s5111/heldout_sni_acc.jsonl", "sha256": "b2014ac8ceed29337c7167dfcf3bb0b64d5faa49dde4de8e0f7c633e3b0e670e"},
+      {"seed": 5112, "path": "results/repro/t2l_fourierft_scale16_lr1e-4_confirm/hyper/s5112/heldout_sni_ce_full21.jsonl", "sha256": "1e975411bcfafdd1b1643751451453005ba304afd109b837b1e5278e6b8aeb3d"},
+      {"seed": 5112, "path": "results/repro/t2l_fourierft_scale16_lr1e-4_confirm/hyper/s5112/heldout_sni_acc.jsonl", "sha256": "680402fa84b5bc7d40aadfa1d92ca51847eeaf13f94682d563555c4da4aa8f58"},
+      {"seed": 5113, "path": "results/repro/t2l_fourierft_scale16_lr1e-4_confirm/hyper/s5113/heldout_sni_ce_full21.jsonl", "sha256": "2aa121b5b329f2637368263e00d3ee40213c9de1bbff3d96870271495b170735"},
+      {"seed": 5113, "path": "results/repro/t2l_fourierft_scale16_lr1e-4_confirm/hyper/s5113/heldout_sni_acc.jsonl", "sha256": "a6b2f5480564aadaf201c24496904396b66aea624af84963bd8fb6e74c2e7c63"}
+    ],
+    "environment": {"python": "3.11.15", "lockfile_sha256": "f46fdbf77957f9b28555a9890c004d5ac5440c99822aa646c8884c815aec3762"}
+  },
+  "reproduction": {
+    "script": "task_t2l_fourierft_all.sh",
+    "smoke": "STEPS=6 SNAP=6 LIMIT=2 PGB=2 CE_LIMIT=1 ACC_LIMIT=0 NO_COMPILE=1 bash scripts/t2l_codec_trial.sh fourierft 1 5002 0,1 2,3 results/autoresearch/t2l/fourierft/smoke",
+    "full": "bash scripts/reproduce/task_t2l_fourierft.sh 5111 0,1,2,3 4,5,6,7",
+    "aggregate": ".venv/bin/python scripts/t2l_release_aggregate.py --root results/repro/t2l_fourierft_scale16_lr1e-4_confirm/hyper --seeds 5111,5112,5113"
+  }
+}

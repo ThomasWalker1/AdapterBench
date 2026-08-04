@@ -49,6 +49,7 @@ PILOT_DEFAULT_TARGET_MODULES = {
     "lokr": ["q_proj", "v_proj"],
     # LoHa is an additive weight-space update and retains the validated LoRA sites.
     "loha": ["q_proj", "v_proj"],
+    "fourierft": ["q_proj", "v_proj"],
 }
 
 # TextToPeftHypernetwork's own default (never overridden by any existing t2p-sft*

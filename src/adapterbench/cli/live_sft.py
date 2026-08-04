@@ -42,6 +42,7 @@ D2L_PARITY_TARGET_MODULES = {
     "lokr": ["down_proj"],
     # LoHa is another additive weight-space update at the same locked D2L site.
     "loha": ["down_proj"],
+    "fourierft": ["down_proj"],
 }
 
 
@@ -384,6 +385,7 @@ def _d2p_niah_command(args) -> None:
         f"ia3_scaling={args.ia3_scaling:.3f} "
         f"lokr_scaling={args.lokr_scaling:.3f} "
         f"loha_scaling={args.loha_scaling:.3f} "
+        f"fourierft_scaling={args.fourierft_scaling:.3f} "
         f"needle_style={args.needle_style} numeric_decoy_count={args.numeric_decoy_count} "
         f"train_lengths={context_lengths} eval_lengths={eval_context_lengths}",
         flush=True,
@@ -439,11 +441,12 @@ def _d2p_niah_command(args) -> None:
             module_shapes=module_shapes, num_layers=num_layers, adapter=adapter,
             latent_dim=D2P_LATENT_DIM, rank=args.rank, seed=args.seed, conditioner=conditioner,
             ia3_scaling=args.ia3_scaling, lokr_scaling=args.lokr_scaling, loha_scaling=args.loha_scaling,
+            fourierft_scaling=args.fourierft_scaling,
         ).to(args.device)
         # LoRA retains its established parity scale. Other codecs each receive only
         # their own explicit scale argument; their locators start from the respective
         # identity parameterization rather than inheriting another codec's result.
-        from ..t2p.codecs import IA3Codec, LoHaCodec, LoKrCodec, LoRACodec
+        from ..t2p.codecs import FourierFTCodec, IA3Codec, LoHaCodec, LoKrCodec, LoRACodec
 
         scaled_types = (LoRACodec,)
         for codec in hypernetwork.codecs.values():
@@ -455,6 +458,8 @@ def _d2p_niah_command(args) -> None:
                 codec.scaling = args.lokr_scaling
             elif isinstance(codec, LoHaCodec):
                 codec.scaling = args.loha_scaling
+            elif isinstance(codec, FourierFTCodec):
+                codec.scaling = args.fourierft_scaling
 
         evaluator = DocumentHypernetworkDownstreamEvaluator(
             interpreter, layers, hypernetwork, tokenizer,
@@ -470,7 +475,8 @@ def _d2p_niah_command(args) -> None:
                     result,
                     metadata={
                         **result.metadata, "adapter_family": adapter, "steps": checkpoint["step"],
-                        "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling, "evaluation_only": True,
+                        "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling,
+                        "fourierft_scaling": args.fourierft_scaling, "evaluation_only": True,
                     },
                 ))
             del hypernetwork, evaluator
@@ -505,6 +511,7 @@ def _d2p_niah_command(args) -> None:
                 metadata={
                     **result.metadata, "adapter_family": adapter, "steps": args.steps,
                     "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling,
+                    "fourierft_scaling": args.fourierft_scaling,
                 },
             ))
         del hypernetwork, evaluator
@@ -695,6 +702,8 @@ def _register_d2p_niah(subparsers) -> None:
                    help="LoKr scale in ΔW = scale * (L ⊗ R); sweep from its identity convention per codec.")
     p.add_argument("--loha-scaling", type=float, default=1.0,
                    help="LoHa scale in ΔW = scale * (B1@A1) ⊙ (B2@A2); sweep from its identity convention per codec.")
+    p.add_argument("--fourierft-scaling", type=float, default=1.0,
+                   help="FourierFT coefficient scale; sweep from its identity convention per codec.")
     p.add_argument("--scale-weight-codecs", action="store_true",
                    help="also apply --lora-scaling to any other LoRA-family weight codecs added later "
                         "(none in the LoRA-only baseline, so currently a no-op) so a multi-codec "

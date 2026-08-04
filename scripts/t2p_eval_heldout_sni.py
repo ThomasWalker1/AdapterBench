@@ -79,6 +79,7 @@ def build_args():
     p.add_argument("--ia3-scaling", type=float, default=1.0)
     p.add_argument("--lokr-scaling", type=float, default=1.0)
     p.add_argument("--loha-scaling", type=float, default=1.0)
+    p.add_argument("--fourierft-scaling", type=float, default=1.0)
     p.add_argument("--device", default="cuda:0")
     p.add_argument("--out", default="", help="JSONL to append one row per task + one aggregate row")
     return p.parse_args()
@@ -109,7 +110,8 @@ def main() -> None:
         condition_dim = embed_task_descriptions(["probe"], encoder_model, encoder_tokenizer).shape[-1]
     hypernetwork = TextToPeftHypernetwork(
         condition_dim=condition_dim, module_shapes=module_shapes, num_layers=len(layers),
-        adapter=args.adapter, rank=args.rank, ia3_scaling=args.ia3_scaling, lokr_scaling=args.lokr_scaling, loha_scaling=args.loha_scaling, seed=0,
+        adapter=args.adapter, rank=args.rank, ia3_scaling=args.ia3_scaling, lokr_scaling=args.lokr_scaling,
+        loha_scaling=args.loha_scaling, fourierft_scaling=args.fourierft_scaling, seed=0,
     ).to(device)
     if args.lora_scaling > 0:
         from adapterbench.t2p.codecs import LoRACodec

@@ -121,7 +121,19 @@ def register(subparsers) -> None:
     results = subparsers.add_parser("results", help="validate and render committed canonical result records")
     results.add_argument("results_action", choices=("validate", "render", "check"))
     results.add_argument("--root", default=DEFAULT_RESULTS_ROOT, type=Path)
-    results.add_argument("--fragment", choices=("t2l-markdown", "d2l-markdown", "release-summary-markdown", "repro-summary-markdown", "t2l-html", "d2l-html"), default="t2l-markdown")
+    results.add_argument(
+        "--fragment",
+        choices=(
+            "t2l-markdown",
+            "t2l-selection-markdown",
+            "d2l-markdown",
+            "release-summary-markdown",
+            "repro-summary-markdown",
+            "t2l-html",
+            "d2l-html",
+        ),
+        default="t2l-markdown",
+    )
     results.set_defaults(func=_results_command)
 
     preflight_parser = subparsers.add_parser("preflight", help="check prerequisites before a canonical reproduction")

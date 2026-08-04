@@ -18,7 +18,8 @@ case "$ADAPTER" in
   # from another codec. Set LEARNING_RATE explicitly for LoKr's own LR sweep.
   lokr) SCALE_FLAG="--lokr-scaling"; LR="4e-5" ;;
   loha) SCALE_FLAG="--loha-scaling"; LR="4e-5" ;;
-  *) echo "unsupported adapter: $ADAPTER (expected lora, ia3, lokr, or loha)" >&2; exit 2 ;;
+  fourierft) SCALE_FLAG="--fourierft-scaling"; LR="4e-5" ;;
+  *) echo "unsupported adapter: $ADAPTER (expected lora, ia3, lokr, loha, or fourierft)" >&2; exit 2 ;;
 esac
 LR="${LEARNING_RATE:-$LR}"
 NEEDLE_STYLE="${NEEDLE_STYLE:-realistic}"
