@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "setting": "T2A",
+  "codec": "lora_r8",
+  "metric": "held_out_teacher_forced_cross_entropy",
+  "headline": {
+    "comparison": "matched_minus_control",
+    "control_name": "same_shape_static_adapter",
+    "matched": 2.1144926727310693,
+    "control": 2.685650273349893,
+    "value": -0.5711576006188234,
+    "variation": 0.04518927796981713,
+    "variation_kind": "sample_standard_deviation",
+    "unit": "nats_cross_entropy",
+    "direction": "lower_is_better"
+  },
+  "seed_results": [
+    {"seed": 1801, "matched": 2.1684372220380093, "control": 2.765038758122717, "delta": -0.5966015360847073},
+    {"seed": 1802, "matched": 2.041909246783083, "control": 2.5608920539851256, "delta": -0.5189828072020428},
+    {"seed": 1803, "matched": 2.1331315493721164, "control": 2.7310200079418356, "delta": -0.5978884585697198}
+  ],
+  "difficulty_curve": [
+    {"axis": "held_out_sni_task_seed_pairs", "matched": 54, "control": 63, "delta": -9}
+  ],
+  "summary": {
+    "wins": "54/63 task-seed pairs",
+    "matched_minus_frozen": {"value": -11.210455572839704, "variation": 0.06529079508137242, "variation_kind": "sample_standard_deviation"},
+    "accuracy_matched_minus_static": {"value": -0.0049603174603174574, "variation": 0.027777777777777776, "variation_kind": "sample_standard_deviation"},
+    "accuracy_matched_minus_frozen": 0.1583994708994709
+  },
+  "free_hyperparameters": {"learning_rate": "1e-4", "warmup_fraction": 0.1, "steps": 8000, "scale": "22.627417"},
+  "selection_trail": {
+    "protocol": "AUTORESEARCH.md",
+    "state_artifacts": [
+      {"path": "results/autoresearch/t2a/lora/scale_locator/state.jsonl", "sha256": "f8c04e4e1a3a26148c1d7df9a806680181e0ceba6755f311a407865881c29870"},
+      {"path": "results/autoresearch/t2a/lora/lr_locator/state.jsonl", "sha256": "7fbac9690533f298853633e81104262a49f4ae33e4728b6ab31fccbc2c90aa33"}
+    ],
+    "summary": "Scale scout 0.353553→90.509668; 90.509668 was numerically invalid. At the common 8k rung, 22.627417 beat 1.414214 and 5.656854; a 20k continuation regressed. Fresh LR checks at 5e-5 and 2e-4 were worse than 1e-4."
+  },
+  "fixed_shape_parameters": {"rank": 8, "target_modules": ["q_proj", "v_proj"]},
+  "provenance": {
+    "models": [
+      {"model_id": "google/gemma-2-2b-it", "revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8"},
+      {"model_id": "Alibaba-NLP/gte-large-en-v1.5", "revision": "104333d6af6f97649377c2afbde10a7704870c7b"}
+    ],
+    "data": [
+      {"path": "data/t2a/hyper_lora_decontam_lol_tasks.yaml", "sha256": "f38284efcbf9e01aebfe60746c0024e615ef4432667b540c52dc5f055a79e96f"},
+      {"path": "data/t2a/eval_ds_info.yaml", "sha256": "cf281756600d2f853907687e9210688f3f9aab8632c9cc1df0353e50a49017d2"}
+    ],
+    "source_artifacts": [
+      {"seed": 1801, "path": "results/autoresearch/t2a/lora/confirmation/hyper/s1801/heldout_sni_ce_full21.jsonl", "sha256": "4aa0997d43cfe976362fe77f454e163165101ed2a0e689f24d9130a59eb9e4af"},
+      {"seed": 1801, "path": "results/autoresearch/t2a/lora/confirmation/hyper/s1801/heldout_sni_acc.jsonl", "sha256": "ae0136f3d235107f6820d41c9b9ec5fcce8b363432f0c45ac8f3d974767da5dc"},
+      {"seed": 1802, "path": "results/autoresearch/t2a/lora/confirmation/hyper/s1802/heldout_sni_ce_full21.jsonl", "sha256": "d85336fe35fc68f93f83d53b1b3f6521b21bf806e53567dc631033834d15eb58"},
+      {"seed": 1802, "path": "results/autoresearch/t2a/lora/confirmation/hyper/s1802/heldout_sni_acc.jsonl", "sha256": "fe4d0e468ceb00de2efde5e74be8e4a52bc20ad29303c1ba3bcfca1f4a2f0248"},
+      {"seed": 1803, "path": "results/autoresearch/t2a/lora/confirmation/hyper/s1803/heldout_sni_ce_full21.jsonl", "sha256": "630ff5f23f3c3004cf589b591c8628080ce77526223ed9a8e8457588e4f6d58c"},
+      {"seed": 1803, "path": "results/autoresearch/t2a/lora/confirmation/hyper/s1803/heldout_sni_acc.jsonl", "sha256": "4e1f55304dda25df10c46699997b954c171fe83177ba0aeacd278c143b57bcc9"}
+    ],
+    "environment": {"python": "3.11.15", "lockfile_sha256": "f46fdbf77957f9b28555a9890c004d5ac5440c99822aa646c8884c815aec3762"}
+  },
+  "reproduction": {
+    "script": "task_t2a_lora_all.sh",
+    "smoke": "uv run adapterbench t2a-sft --device cuda:0 --tasks lol_022 --adapter lora --steps 60 --output results/t2a_sft/smoke_lol022_lora.json",
+    "full": "bash scripts/reproduce/task_t2a_lora.sh 1801 0,1,2,3 4,5,6,7",
+    "aggregate": "bash scripts/reproduce/task_t2a_lora_all.sh 0,1,2,3 4,5,6,7"
+  }
+}

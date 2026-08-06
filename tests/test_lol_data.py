@@ -2,7 +2,7 @@ import pytest
 import torch
 import yaml
 
-from adapterbench.t2p.lol_data import (
+from adapterbench.t2a.lol_data import (
     lol_collate_fn,
     load_decontaminated_train_task_ids,
     load_task_metadata,

@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "setting": "D2A",
+  "codec": "lokr",
+  "display_name": "LoKr",
+  "metric": "numeric_decoy_needle_retrieval_exact_match_accuracy",
+  "headline": {
+    "comparison": "matched_minus_control",
+    "control_name": "wrong_document_context_swap",
+    "matched": 0.98125,
+    "control": 0.0,
+    "value": 0.98125,
+    "variation": 0.0375,
+    "variation_kind": "population_standard_deviation",
+    "unit": "exact_match_accuracy",
+    "direction": "higher_is_better"
+  },
+  "seed_results": [
+    {
+      "seed": 3003,
+      "matched": 1.0,
+      "control": 0.0,
+      "delta": 1.0
+    },
+    {
+      "seed": 3004,
+      "matched": 1.0,
+      "control": 0.0,
+      "delta": 1.0
+    },
+    {
+      "seed": 3005,
+      "matched": 1.0,
+      "control": 0.0,
+      "delta": 1.0
+    },
+    {
+      "seed": 3006,
+      "matched": 1.0,
+      "control": 0.0,
+      "delta": 1.0
+    },
+    {
+      "seed": 3007,
+      "matched": 0.90625,
+      "control": 0.0,
+      "delta": 0.90625
+    }
+  ],
+  "difficulty_curve": [
+    {
+      "axis": 512,
+      "matched": 0.98125,
+      "control": 0.0,
+      "delta": 0.98125
+    },
+    {
+      "axis": 1024,
+      "matched": 0.99375,
+      "control": 0.0,
+      "delta": 0.99375
+    },
+    {
+      "axis": 2048,
+      "matched": 0.98125,
+      "control": 0.0,
+      "delta": 0.98125
+    },
+    {
+      "axis": 4096,
+      "matched": 0.99375,
+      "control": 0.0,
+      "delta": 0.99375
+    },
+    {
+      "axis": 8192,
+      "matched": 0.975,
+      "control": 0.0,
+      "delta": 0.975
+    },
+    {
+      "axis": 16384,
+      "matched": 0.98125,
+      "control": 0.0,
+      "delta": 0.98125
+    },
+    {
+      "axis": 32768,
+      "matched": 0.925,
+      "control": 0.0,
+      "delta": 0.925
+    }
+  ],
+  "summary": {
+    "crossover_length": 32768,
+    "training_length": 512,
+    "numeric_decoy_count": 4,
+    "tail_log_auc": 0.975,
+    "tail_log_auc_variation": 0.022195078909023447
+  },
+  "free_hyperparameters": {
+    "scale": "16",
+    "learning_rate": "2e-5",
+    "warmup_steps": 1080,
+    "steps": 36000
+  },
+  "fixed_shape_parameters": {
+    "target_modules": [
+      "down_proj"
+    ],
+    "factorization": "balanced exact divisors: (32×48) ⊗ (32×64) per Qwen down_proj",
+    "generated_scalars_per_layer": 3584,
+    "generated_scalars_all_layers": 100352,
+    "n_latents": 208,
+    "num_blocks": 8
+  },
+  "selection_trail": {
+    "protocol": "AUTORESEARCH.md",
+    "state_artifacts": [
+      {
+        "path": "results/autoresearch/d2a/lokr/state.jsonl",
+        "sha256": "7007e7d7bde0ef45e6fa4c1e5e9f655b82645a4e1028e91206f9f27fc505feaf"
+      }
+    ],
+    "summary": "A LoKr-identity-centered scale ladder (0.0625, 0.25, 1, 4, 16) was zero through 4; scale 16 was the only helpful point. The geometric upper boundary at 64 was zero at both 8k and 16k, closing the scale choice. At scale 16, the setting-default LR 4e-5 and upper neighbor 8e-5 were weak/zero, while 2e-5 won at 16k; its restart-safe 36k promotion improved hard-length AUC to 0.675. Five fresh 36k confirmations in the clean repro path (seeds 3003–3007) retained every result."
+  },
+  "provenance": {
+    "models": [
+      {
+        "model_id": "Qwen/Qwen3-0.6B",
+        "revision": "c1899de289a04d12100db370d81485cdf75e47ca"
+      }
+    ],
+    "data": [
+      {
+        "path": "src/adapterbench/t2a/niah_data.py",
+        "sha256": "cd94ccb04880c06315c7f545f762e102ddf498017c37adee4c66af1be4bb1042"
+      }
+    ],
+    "source_artifacts": [
+      {
+        "seed": 3003,
+        "path": "results/repro/d2a_numeric_decoy/lokr/s3003/results.jsonl",
+        "sha256": "57d378c48395eb87799b8fea2df385eed92e4c46c9f656ba9479a99e3cde4d57"
+      },
+      {
+        "seed": 3004,
+        "path": "results/repro/d2a_numeric_decoy/lokr/s3004/results.jsonl",
+        "sha256": "69c36a750715c3f3235519ed815c72607d654d7235a821926756d16c2e1628b4"
+      },
+      {
+        "seed": 3005,
+        "path": "results/repro/d2a_numeric_decoy/lokr/s3005/results.jsonl",
+        "sha256": "0b11d7bf3b3e6cb8a197deb0f4226988fcac07e545572308d24f40f5179cec6a"
+      },
+      {
+        "seed": 3006,
+        "path": "results/repro/d2a_numeric_decoy/lokr/s3006/results.jsonl",
+        "sha256": "ad7608f2bd93b3d470ad3a83362e0c47cd82b00098c5dfa267c5b61825d37ddc"
+      },
+      {
+        "seed": 3007,
+        "path": "results/repro/d2a_numeric_decoy/lokr/s3007/results.jsonl",
+        "sha256": "b69495f77b300988e9ff142fc6bf0bcef9de3ee96eae848b98027bbd03152561"
+      }
+    ],
+    "environment": {
+      "python": "3.11.15",
+      "lockfile_sha256": "f46fdbf77957f9b28555a9890c004d5ac5440c99822aa646c8884c815aec3762"
+    }
+  },
+  "reproduction": {
+    "script": "document_niah_numeric_decoy_lokr_all.sh",
+    "smoke": "uv run adapterbench d2a-niah --adapters lokr --lokr-scaling 1 --needle-style realistic_numeric_decoys --numeric-decoy-count 4 --context-lengths 512 --eval-context-lengths 512 --num-train-documents 2 --steps 1 --eval-every 1 --learning-rate 4e-5 --warmup-steps 1 --n-latents 208 --num-blocks 8 --eval-limit 1 --eval-seed 2904 --seed 3001 --device cuda:0 --output results/autoresearch/d2a/lokr/smoke_s3001",
+    "full": "bash scripts/reproduce/document_niah_numeric_decoy_lokr.sh cuda:0 3003",
+    "aggregate": "uv run python scripts/d2a_niah_aggregate.py --root results/repro/d2a_numeric_decoy/lokr --min-seeds 5 --train-length 512"
+  }
+}

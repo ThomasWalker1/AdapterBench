@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "setting": "T2A",
+  "codec": "ia3",
+  "display_name": "(IA)³",
+  "metric": "held_out_teacher_forced_cross_entropy",
+  "headline": {
+    "comparison": "matched_minus_control",
+    "control_name": "same_shape_static_adapter",
+    "matched": 2.0124701384678865,
+    "control": 2.393901370384334,
+    "value": -0.3814312319164475,
+    "variation": 0.023391030418951724,
+    "variation_kind": "sample_standard_deviation",
+    "unit": "nats_cross_entropy",
+    "direction": "lower_is_better"
+  },
+  "seed_results": [
+    {"seed": 1901, "matched": 2.0835258897730253, "control": 2.4443498920826685, "delta": -0.3608240023096432},
+    {"seed": 1902, "matched": 1.9920810854560433, "control": 2.368694858470311, "delta": -0.37661377301426713},
+    {"seed": 1903, "matched": 1.9618034401745903, "control": 2.368659360600023, "delta": -0.4068559204254322}
+  ],
+  "difficulty_curve": [
+    {"axis": "held_out_sni_task_seed_pairs", "matched": 48, "control": 63, "delta": -15}
+  ],
+  "summary": {
+    "wins": "48/63 task-seed pairs",
+    "matched_minus_frozen": {"value": -11.312478107102885, "variation": 0.06337092232326064, "variation_kind": "sample_standard_deviation"},
+    "accuracy_matched_minus_static": {"value": 0.056216931216931214, "variation": 0.00866755451195843, "variation_kind": "sample_standard_deviation"},
+    "accuracy_matched_minus_frozen": 0.1498015873015873
+  },
+  "free_hyperparameters": {"learning_rate": "4e-4", "warmup_fraction": 0.1, "steps": 8000, "scale": "16"},
+  "selection_trail": {
+    "protocol": "AUTORESEARCH.md",
+    "state_artifacts": [
+      {"path": "results/autoresearch/t2a/ia3/scale_locator/state.jsonl", "sha256": "1d6870a96809da391c267dc5083562b4332fce77d1fd711ae5d8aedac3d2c238"},
+      {"path": "results/autoresearch/t2a/ia3/lr_locator/state.jsonl", "sha256": "e933b0129f47039edb01e23b912c1157385ba7b8e3ecc0ee7a2eaa4917bd4585"},
+      {"path": "results/autoresearch/t2a/ia3/lr_locator_scale16/state.jsonl", "sha256": "00ce082b05299a23bcd2d65b85feaeae7376ecb1eff041a9c545a3dd018697c1"}
+    ],
+    "summary": "Tiny scales were retained as static-control failures, not selection evidence. In the viable high-scale ladder, 16 beat 4 and 64. At 8k, LR 4e-4 beat 5e-5, 1e-4, and 2e-4; 8e-4 catastrophically failed the helpfulness floor."
+  },
+  "fixed_shape_parameters": {"target_modules": ["q_proj", "v_proj"], "generated_scalars_per_layer": 3072},
+  "provenance": {
+    "models": [
+      {"model_id": "google/gemma-2-2b-it", "revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8"},
+      {"model_id": "Alibaba-NLP/gte-large-en-v1.5", "revision": "104333d6af6f97649377c2afbde10a7704870c7b"}
+    ],
+    "data": [
+      {"path": "data/t2a/hyper_lora_decontam_lol_tasks.yaml", "sha256": "f38284efcbf9e01aebfe60746c0024e615ef4432667b540c52dc5f055a79e96f"},
+      {"path": "data/t2a/eval_ds_info.yaml", "sha256": "cf281756600d2f853907687e9210688f3f9aab8632c9cc1df0353e50a49017d2"}
+    ],
+    "source_artifacts": [
+      {"seed": 1901, "path": "results/autoresearch/t2a/ia3/confirmation/hyper/s1901/heldout_sni_ce_full21.jsonl", "sha256": "c32c5f52f516606a2b2b228d2c0f397ae3c0b29ea3b634eaff5c8ab525102890"},
+      {"seed": 1901, "path": "results/autoresearch/t2a/ia3/confirmation/hyper/s1901/heldout_sni_acc.jsonl", "sha256": "d001f6e90c3fd9a5f0afb26a5679bc31d84b366552f6eb80dab293acf07e2bb7"},
+      {"seed": 1902, "path": "results/autoresearch/t2a/ia3/confirmation/hyper/s1902/heldout_sni_ce_full21.jsonl", "sha256": "9ec19ebe000039dd10c280b37f7c54538f103c3e1f05c35fe08d7790049c6b9f"},
+      {"seed": 1902, "path": "results/autoresearch/t2a/ia3/confirmation/hyper/s1902/heldout_sni_acc.jsonl", "sha256": "646f53db437617621b82dac7757a95ddbc3a3ef9ecb4567f803ba56226232727"},
+      {"seed": 1903, "path": "results/autoresearch/t2a/ia3/confirmation/hyper/s1903/heldout_sni_ce_full21.jsonl", "sha256": "e4be5199d011f48d73d3c5ff707efb639ea92b3879f3faaebcfbe3267f5a05e8"},
+      {"seed": 1903, "path": "results/autoresearch/t2a/ia3/confirmation/hyper/s1903/heldout_sni_acc.jsonl", "sha256": "c7c1582d24194b45e5bf30d9ff312b7efce1548178dd7dc75e63fe143b10d107"}
+    ],
+    "environment": {"python": "3.11.15", "lockfile_sha256": "f46fdbf77957f9b28555a9890c004d5ac5440c99822aa646c8884c815aec3762"}
+  },
+  "reproduction": {
+    "script": "task_t2a_ia3_all.sh",
+    "smoke": "uv run adapterbench t2a-sft --device cuda:0 --tasks lol_022 --adapter ia3 --steps 60 --output results/t2a_sft/smoke_lol022_ia3.json",
+    "full": "bash scripts/reproduce/task_t2a_ia3.sh 1901 0,1,2,3 4,5,6,7",
+    "aggregate": "bash scripts/reproduce/task_t2a_ia3_all.sh 0,1,2,3 4,5,6,7"
+  }
+}

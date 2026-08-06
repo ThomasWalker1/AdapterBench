@@ -15,5 +15,5 @@ notes:
   - n_freqs is the fixed codec shape identity derived from the locked rank-8 LoRA scalar budget, not a tunable parameter.
   - Each layer uses a seeded set of distinct frequency pairs and frozen DCT-II basis buffers.
   - FourierFT matches the rank-8 LoRA generated-scalar budget at every fixed hook projection.
-  - T2L retains q_proj/v_proj and D2L retains down_proj; only the generated update representation changes.
+  - T2A retains q_proj/v_proj and D2A retains down_proj; only the generated update representation changes.
   - The update is linear in generated coefficients, so zero initialization is identity with a nonzero gradient.

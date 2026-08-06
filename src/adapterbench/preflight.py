@@ -9,25 +9,25 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 _REQUIREMENTS = {
-    "t2l": {
+    "t2a": {
         "models": {
             "models--google--gemma-2-2b-it": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8",
             "models--Alibaba-NLP--gte-large-en-v1.5": "104333d6af6f97649377c2afbde10a7704870c7b",
         },
-        "data": ["data/t2l/hyper_lora_decontam_lol_tasks.yaml", "data/t2l/eval_ds_info.yaml", "data/t2l/tasks"],
-        "jobs": ("t2p_train_ddp.py", "t2p_eval_heldout_sni"),
+        "data": ["data/t2a/hyper_lora_decontam_lol_tasks.yaml", "data/t2a/eval_ds_info.yaml", "data/t2a/tasks"],
+        "jobs": ("t2a_train_ddp.py", "t2a_eval_heldout_sni"),
     },
-    "d2l": {
+    "d2a": {
         "models": {"models--Qwen--Qwen3-0.6B": "c1899de289a04d12100db370d81485cdf75e47ca"},
-        "data": ["src/adapterbench/t2p/niah_data.py"],
-        "jobs": ("d2p-niah",),
+        "data": ["src/adapterbench/t2a/niah_data.py"],
+        "jobs": ("d2a-niah",),
     },
 }
 
 
 def preflight(setting: str, devices: str, output: Path, require_cuda: bool = True) -> list[str]:
     if setting not in _REQUIREMENTS:
-        raise ValueError(f"unknown setting {setting!r}; choose t2l or d2l")
+        raise ValueError(f"unknown setting {setting!r}; choose t2a or d2a")
     messages = []
     requirements = _REQUIREMENTS[setting]
     if not Path(".venv/bin/python").exists():
@@ -49,7 +49,7 @@ def preflight(setting: str, devices: str, output: Path, require_cuda: bool = Tru
     if not requested or any(not item.isdigit() for item in requested):
         raise RuntimeError("devices must be a comma-separated list such as 0,1,2 or cuda:0")
     if len(requested) != len(set(requested)):
-        raise RuntimeError("a CUDA device was assigned more than once; use disjoint device lists for concurrent T2L jobs")
+        raise RuntimeError("a CUDA device was assigned more than once; use disjoint device lists for concurrent T2A jobs")
     if torch.cuda.is_available() and any(int(item) >= torch.cuda.device_count() for item in requested):
         raise RuntimeError(f"requested CUDA device is outside the visible range 0..{torch.cuda.device_count() - 1}")
     if output.exists():

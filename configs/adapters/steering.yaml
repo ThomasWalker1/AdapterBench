@@ -13,4 +13,4 @@ notes:
   - First activation-space codec — the hook site is the whole decoder layer ("block", the residual stream), not a linear projection, in BOTH settings; the site is part of this codec's shape identity.
   - Emits d_model scalars per hooked layer (2304/layer on gemma-2-2b, 1024/layer on Qwen3-0.6B), the smallest registered budget alongside (IA)³.
   - The update is linear in the generated vector, so the zero initialization is exactly the frozen model with a nonzero gradient (no bilinear saddle bias needed).
-  - Performs no weight edit; tests whether pure residual-stream intervention (function-/task-vector style) can carry T2L task conditioning and D2L document retrieval.
+  - Performs no weight edit; tests whether pure residual-stream intervention (function-/task-vector style) can carry T2A task conditioning and D2A document retrieval.

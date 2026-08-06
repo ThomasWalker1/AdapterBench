@@ -71,7 +71,7 @@ _TASK_TEMPLATES = {
     ),
 }
 
-# 3-shot ICL, used only when ``use_icl=True`` (matches the T2L paper's Table 8/Gemma
+# 3-shot ICL, used only when ``use_icl=True`` (matches the T2A paper's Table 8/Gemma
 # eval protocol, which prepends these to every prompt and forces an "Answer:"
 # generation prefix — see the evaluator's ``use_icl``/prefill handling).
 _IN_CONTEXT_EXAMPLES = {

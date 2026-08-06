@@ -67,11 +67,11 @@ to adaptation.
 ## The active AdapterBench setting, by contrast
 
 This is a negative result about the **standard input-visible setting**, not the active
-AdapterBench T2L setting. AdapterBench strips the task definition from the interpreter input
+AdapterBench T2A setting. AdapterBench strips the task definition from the interpreter input
 so the task survives *only* through the generated adapter, and reports the harder-to-game
 `matched − static` control against a same-shape static multi-task LoRA. That redesigned
-setting passes: `matched − static = −0.723 ± 0.162` nats of held-out cross-entropy over three
-seeds (see `leaderboards/task_conditioned_t2l.md`).
+setting passes: `matched − static = −0.571 ± 0.045` nats of held-out cross-entropy over three
+seeds (see `leaderboards/task_conditioned_t2a.md`).
 
 ## Reproducing the released-checkpoint verification
 
@@ -129,5 +129,5 @@ three deltas) and `conditions_by_kind.json` (the exact matched/shuffled/junk tex
   The disk-artifact "setting 1" code the standalone scripts were rebuilt from was removed
   from the active tree in git commits `a8867de` / `64de45e` and is recoverable from
   `a8867de^`.
-- **Diagnostic training runs:** `results/repro/t2l_base_diag/`, `results/t2p_cond_ddp/`, and
-  `results/_archive/t2p_cond_long/`.
+- **Diagnostic training runs:** `results/repro/t2a_base_diag/`, `results/t2a_cond_ddp/`, and
+  `results/_archive/t2a_cond_long/`.

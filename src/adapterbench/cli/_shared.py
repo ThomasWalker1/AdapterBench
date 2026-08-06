@@ -17,20 +17,20 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_CATALOG = REPO_ROOT / "configs"
 
-# Vendored Text-to-LoRA data (see data/t2l/NOTICE.md) - the Lots-of-LoRAs per-task
+# Vendored Text-to-LoRA data (see data/t2a/NOTICE.md) - the Lots-of-LoRAs per-task
 # metadata, the decontaminated 479-task train split, and the held-out eval-task
 # descriptions, sliced from SakanaAI/text-to-lora at the pinned commit. Vendored into the
-# repo so the T2L setting is self-contained and needs no `upstream/` clone (which is
-# gitignored and gets cleaned). Every t2p-* command defaults to these paths.
-T2L_DATA_DIR = REPO_ROOT / "data" / "t2l"
-T2L_TASKS_DIR = T2L_DATA_DIR / "tasks"
-T2L_DECONTAM_CONFIG = T2L_DATA_DIR / "hyper_lora_decontam_lol_tasks.yaml"
-T2L_EVAL_DESCRIPTIONS = T2L_DATA_DIR / "eval_ds_info.yaml"
+# repo so the T2A setting is self-contained and needs no `upstream/` clone (which is
+# gitignored and gets cleaned). Every t2a-* command defaults to these paths.
+T2A_DATA_DIR = REPO_ROOT / "data" / "t2a"
+T2A_TASKS_DIR = T2A_DATA_DIR / "tasks"
+T2A_DECONTAM_CONFIG = T2A_DATA_DIR / "hyper_lora_decontam_lol_tasks.yaml"
+T2A_EVAL_DESCRIPTIONS = T2A_DATA_DIR / "eval_ds_info.yaml"
 
-# lol_022/043/044/045/047/050/063/064 are all confirmed present in T2L's own
-# train_ds_names (data/t2l/hyper_lora_decontam_lol_tasks.yaml).
+# lol_022/043/044/045/047/050/063/064 are all confirmed present in Text-to-LoRA's own
+# train_ds_names (data/t2a/hyper_lora_decontam_lol_tasks.yaml).
 # The previous default (lol_022,033,034,035,039,043,044,045) trained on lol_033/034
-# (two of T2L's 10 contamination-removed tasks) and lol_035/039 (two of T2L's own 11
+# (two of Text-to-LoRA's 10 contamination-removed tasks) and lol_035/039 (two of its own 11
 # held-out zero-shot validation tasks) - exactly the leakage a training pilot should
 # avoid. --decontam-config validates any --tasks value against this list at run time.
 DEFAULT_SFT_TRAIN_TASKS = "lol_022,lol_043,lol_044,lol_045,lol_047,lol_050,lol_063,lol_064"
@@ -42,10 +42,10 @@ DEFAULT_SFT_TRAIN_TASKS = "lol_022,lol_043,lol_044,lol_045,lol_047,lol_050,lol_0
 PILOT_DEFAULT_TARGET_MODULES = {
     "lora": ["q_proj", "v_proj"],
     # IA3 scales each hooked projection's output channels, retaining the validated
-    # T2L projection sites while changing only the generated representation.
+    # T2A projection sites while changing only the generated representation.
     "ia3": ["q_proj", "v_proj"],
     # LoKr is an additive weight-space update, so it retains LoRA's validated
-    # T2L projection sites while replacing only the generated representation.
+    # T2A projection sites while replacing only the generated representation.
     "lokr": ["q_proj", "v_proj"],
     # LoHa is an additive weight-space update and retains the validated LoRA sites.
     "loha": ["q_proj", "v_proj"],
@@ -55,12 +55,12 @@ PILOT_DEFAULT_TARGET_MODULES = {
     "steering": ["block"],
 }
 
-# TextToPeftHypernetwork's own default (never overridden by any existing t2p-sft*
+# TextToPeftHypernetwork's own default (never overridden by any existing t2a-sft*
 # command either) - kept as a plain module constant rather than a new CLI flag so
 # EarlyExitPerceiverConditioner's task_dim (= latent_dim // 2, see hypernetwork.py's
 # comment on that requirement) stays in lockstep with the hypernetwork's own trunk
 # width without the two ever being passed independently.
-D2P_LATENT_DIM = 512
+D2A_LATENT_DIM = 512
 
 
 def load_frozen_interpreter(interpreter_id: str, device: str):
@@ -75,7 +75,7 @@ def load_frozen_interpreter(interpreter_id: str, device: str):
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
-    from ..t2p.model_utils import get_decoder_layers
+    from ..t2a.model_utils import get_decoder_layers
 
     tokenizer = AutoTokenizer.from_pretrained(interpreter_id)
     if tokenizer.pad_token_id is None:
@@ -93,12 +93,12 @@ def embed_training_conditions(condition_encoder: str, device: str, tasks_dir: Pa
 
     Returns `(encoder_model, encoder_tokenizer, metadata_by_task, embeddings_by_task,
     condition_dim)`. The encoder model is returned rather than deleted so a caller that
-    also needs to embed held-out eval descriptions (t2p-sft-pilot, t2p-sft-sweep) can
+    also needs to embed held-out eval descriptions (t2a-sft-pilot, t2a-sft-sweep) can
     reuse it; every caller is responsible for `del encoder_model` once done, exactly as
     the inline code did.
     """
-    from ..t2p.condition_encoder import embed_task_descriptions, load_condition_encoder
-    from ..t2p.lol_data import load_task_metadata
+    from ..t2a.condition_encoder import embed_task_descriptions, load_condition_encoder
+    from ..t2a.lol_data import load_task_metadata
 
     encoder_model, encoder_tokenizer = load_condition_encoder(condition_encoder, device=device)
     metadata_by_task = {

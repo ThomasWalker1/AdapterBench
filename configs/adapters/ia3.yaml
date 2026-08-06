@@ -10,5 +10,5 @@ compatible_objectives: [downstream, reconstruction, hybrid]
 supports_batched_generation: true
 notes:
   - The live codec scales the output channels of the runner-selected frozen projection.
-  - T2L retains q_proj/v_proj; D2L retains down_proj, so only the generated shape changes.
+  - T2A retains q_proj/v_proj; D2A retains down_proj, so only the generated shape changes.
   - The codec emits d_out scalars per hooked layer/module and has no bilinear symmetry.

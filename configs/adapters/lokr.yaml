@@ -7,7 +7,7 @@ target_modules: [q_proj, v_proj]
 hyperparameters:
   factorization: balanced_exact_dimension_divisors
   scaling: 1.0
-  t2l_gemma2b_geometry:
+  t2a_gemma2b_geometry:
     q_proj: {factors: [[32, 48], [64, 48]], generated_scalars_per_layer: 4608}
     v_proj: {factors: [[32, 48], [32, 48]], generated_scalars_per_layer: 3072}
     generated_scalars_all_layers: 199680
@@ -15,7 +15,7 @@ compatible_objectives: [downstream, reconstruction, hybrid]
 supports_batched_generation: true
 notes:
   - Factor dimensions are deterministically derived from each frozen projection and are fixed shape identity, not tuned.
-  - The T2L fixed generated-scalar budget is 7,680 per decoder layer (199,680 over 26 layers and q_proj/v_proj).
-  - T2L retains the validated q_proj/v_proj hook sites; only the generated update representation changes.
-  - D2L retains its validated down_proj hook site; Qwen's fixed balanced factors emit 3,584 scalars per layer (100,352 over 28 layers).
+  - The T2A fixed generated-scalar budget is 7,680 per decoder layer (199,680 over 26 layers and q_proj/v_proj).
+  - T2A retains the validated q_proj/v_proj hook sites; only the generated update representation changes.
+  - D2A retains its validated down_proj hook site; Qwen's fixed balanced factors emit 3,584 scalars per layer (100,352 over 28 layers).
   - The bilinear factors use a nonzero one-factor initial bias so the live update begins at zero without a dead saddle.

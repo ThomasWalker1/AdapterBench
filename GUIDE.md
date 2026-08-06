@@ -18,13 +18,13 @@ environment setup see [SETUP.md](SETUP.md); for the interface contract see
 
 Each setting fixes a frozen interpreter and the same hypernetwork shell, and differs only
 in **what the hypernetwork is conditioned on** and **how the adapter is scored**. The
-interpreter is per-setting (`gemma-2-2b` for T2L and `Qwen3-0.6B` for D2L); within a
+interpreter is per-setting (`gemma-2-2b` for T2A and `Qwen3-0.6B` for D2A); within a
 setting it is fixed and only the codec varies.
 
 | Setting | Conditioned on | The adapter should… | Behavioral metric | Control (what a non-conditioning adapter can't pass) |
 |---------|----------------|---------------------|-------------------|------------------------------------------------------|
-| **T2L** — task-conditioned | pooled embedding of a free-text *task description* | install a whole task (definition stripped from the input) | held-out-SNI teacher-forced CE (primary) + generation accuracy | **matched − static**: must beat a same-shape static multi-task adapter |
-| **D2L** — document-conditioned | cross-attention over the interpreter's own activations for a *document* | retrieve info from that one document | needle-in-a-haystack exact-match | **context-swap**: adapter from the *wrong* document must fall to chance |
+| **T2A** — task-conditioned | pooled embedding of a free-text *task description* | install a whole task (definition stripped from the input) | held-out-SNI teacher-forced CE (primary) + generation accuracy | **matched − static**: must beat a same-shape static multi-task adapter |
+| **D2A** — document-conditioned | cross-attention over the interpreter's own activations for a *document* | retrieve info from that one document | needle-in-a-haystack exact-match | **context-swap**: adapter from the *wrong* document must fall to chance |
 
 The settings are never pooled — their absolute scores use different conditioning,
 objectives, and evaluators. The cross-setting question is whether a codec's *relative*
@@ -33,7 +33,7 @@ behavior repeats across protocols.
 Retired investigations are not hidden: [NEGATIVE_RESULTS.md](NEGATIVE_RESULTS.md)
 collates settings that failed a condition-shuffle or behavioral-capacity gate. This
 includes standard input-visible Text-to-LoRA; it is distinct from the definition-stripped
-T2L setting above.
+T2A setting above.
 
 ---
 
@@ -47,19 +47,19 @@ invariants (see the paper's protocol section):
    `matched − control`.
 2. **Scale is swept, best-of reported** — so a shape claim reads "even at its own best
    scale, shape *X* underperforms," not an artifact of a fixed default scale.
-3. **A graded difficulty knob** (e.g. D2L's eval context length or T2L's task-family
+3. **A graded difficulty knob** (e.g. D2A's eval context length or T2A's task-family
    headroom) so codecs spread instead of all saturating.
 4. **Multi-seed** — at least three seeds; the spread is reported.
 
-### The T2L metric: matched − static (definition-stripped)
+### The T2A metric: matched − static (definition-stripped)
 
-Standard T2L SFT concatenates the task *definition* and the problem in the prompt, so the
+Standard T2A SFT concatenates the task *definition* and the problem in the prompt, so the
 frozen interpreter reads the task straight from its input and the description-conditioned
 adapter is **redundant** — every codec then scores ≈0 conditioning, masking the shape
 differences the benchmark exists to measure. AdapterBench removes this redundancy: the
 definition is **stripped** from the input (`--strip-task-def`), so the task is specifiable
-*only* through the description → hypernetwork → adapter (the D2L "context is necessary"
-principle applied to T2L). Conditioning is still over the task-level description; only the
+*only* through the description → hypernetwork → adapter (the D2A "context is necessary"
+principle applied to T2A). Conditioning is still over the task-level description; only the
 interpreter's input changes.
 
 The control is **matched − static**: the conditioned adapter is scored against a *static
@@ -69,9 +69,9 @@ help. On the 21 held-out SNI validation tasks (`lol_###` in `eval_ds_info`):
 
 - **CE (primary):** teacher-forced cross-entropy over the reference answer — the quantity
   the trainer optimizes, non-saturating, well-defined even for open-ended tasks. `matched −
-  static < 0` means conditioning helps. Scored by `scripts/t2p_eval_heldout_sni.py`.
+  static < 0` means conditioning helps. Scored by `scripts/t2a_eval_heldout_sni.py`.
 - **accuracy (corroborating):** greedy-generation normalized exact-match. Scored by
-  `scripts/t2p_eval_heldout_sni_acc.py`. Smaller signal than CE — it saturates where both
+  `scripts/t2a_eval_heldout_sni_acc.py`. Smaller signal than CE — it saturates where both
   adapters already succeed, and multiple-choice tasks leak answer content into the input.
 
 `matched − static` is **non-gameable** (no wrong-condition case to sabotage), **subsumes the
@@ -87,7 +87,7 @@ codec — how many numbers the hypernetwork emits and how they become an update)
 **hook site** (a named linear submodule for weight-space adapters, or a whole layer /
 the residual stream for activation-space ones). Concretely:
 
-1. **Subclass `GeneratedUpdateCodec`** in `src/adapterbench/t2p/codecs.py`:
+1. **Subclass `GeneratedUpdateCodec`** in `src/adapterbench/t2a/codecs.py`:
    - `output_size` (property) — how many scalars the hypernetwork head emits per
      (layer, module).
    - `apply(inputs, base_output, generated, layer_index)` — fold the generated scalars
@@ -99,7 +99,7 @@ the residual stream for activation-space ones). Concretely:
      Linear codecs (IA³, activation steering, FourierFT) can keep the default `None`.
 2. **Register it** — add one entry to the `constructors` dict in `make_codec`
    (`codecs.py`) and its default hook site in `PILOT_DEFAULT_TARGET_MODULES`
-   (`cli/_shared.py`) + `D2L_PARITY_TARGET_MODULES` (`cli/live_sft.py`). Registered
+   (`cli/_shared.py`) + `DOC_TO_LORA_PARITY_TARGET_MODULES` (`cli/live_sft.py`). Registered
    shapes: `lora`, `ia3`, `lokr`, `loha`, `fourierft`, `steering`.
 3. **Add a manifest** under `configs/adapters/` so the CLI can select it (and add the
    family to `schema.py`'s `AdapterManifest.family` literal).
@@ -132,7 +132,7 @@ uv venv .venv --python 3.11 && uv pip install -e ".[dev]"
 uv run adapterbench doctor --require-cuda && uv run pytest -q
 ```
 
-### T2L — task-conditioned
+### T2A — task-conditioned
 
 Trains the strip-def hypernetwork **and** the same-shape static reference (data-parallel,
 gemma-2-2b), then scores `matched − static` on the 21 held-out SNI tasks (CE + accuracy).
@@ -141,27 +141,27 @@ rate limit) — the reproduce script sets it for you.
 
 ```bash
 # reproduce the LoRA baseline for one seed: trains hyper+static, then both evals
-scripts/reproduce/task_t2l_lora.sh 777 0,1,2,3 4,5,6,7    # SEED GPUS_HYPER GPUS_STATIC
+scripts/reproduce/task_t2a_lora.sh 777 0,1,2,3 4,5,6,7    # SEED GPUS_HYPER GPUS_STATIC
 
 # results (per-task + __aggregate__ rows):
 #   .../gemma2b_stripdef_hyper/s777/heldout_sni_ce_full21.jsonl   (matched-static CE, primary)
 #   .../gemma2b_stripdef_hyper/s777/heldout_sni_acc.jsonl         (accuracy, corroborating)
 ```
 
-Helpers: `scripts/t2l_base_diag.sh <hf-interpreter> <tag> <gpus> <per-gpu-batch>` runs the
+Helpers: `scripts/t2a_base_diag.sh <hf-interpreter> <tag> <gpus> <per-gpu-batch>` runs the
 recipe with a swappable base model and env knobs (`SEED`, `STEPS`, `LR`, `SNAP`, `LIMIT`,
 `ELIMIT`, `STRIPDEF`, `STATIC`); the 21 held-out tasks' metadata is vendored (once) by
 `scripts/vendor_heldout_sni_metadata.py`. Baseline: `matched − static = −0.723 ± 0.162` nats CE
 (59/63 task-seed pairs, 3 seeds).
 
-### D2L — document-conditioned (NIAH)
+### D2A — document-conditioned (NIAH)
 
 The locked numeric-decoy setting trains at a fixed 512-token context and evaluates
 in-distribution plus a length-generalization sweep out to 32768 tokens:
 
 ```bash
 scripts/reproduce/document_niah_numeric_decoy_lora.sh cuda:0   # 5 seeds, realistic haystack + decoys
-.venv/bin/python scripts/d2p_niah_aggregate.py --root <run> --min-seeds 5 --train-length 512
+.venv/bin/python scripts/d2a_niah_aggregate.py --root <run> --min-seeds 5 --train-length 512
 ```
 
 (`scripts/reproduce/document_niah_lora.sh` is the earlier decoy-free 256-token recipe,

@@ -12,9 +12,9 @@ seam.
 
 The benchmark contains exactly two genuinely inference-time adaptive language settings:
 
-- **T2L — task-description conditioning.** A task description is available only to the
+- **T2A — task-description conditioning.** A task description is available only to the
   hypernetwork. The frozen interpreter receives the problem without the task definition.
-- **D2L — document conditioning.** A document is available only through the
+- **D2A — document conditioning.** A document is available only through the
   document-conditioned hypernetwork. The frozen interpreter answers a query without the
   document in its ordinary input.
 
@@ -30,20 +30,20 @@ Both language settings pass controls that require genuine condition dependence.
 <!-- canonical-results:release-summary-markdown:start -->
 | setting | frozen interpreter | primary result | condition control |
 |---|---|---|---|
-| T2L | gemma-2-2b | LoRA `matched − static = −0.571 ± 0.045`; FourierFT `matched − static = −0.525 ± 0.064`; (IA)³ `matched − static = −0.381 ± 0.023`; LoKr `matched − static = −0.403 ± 0.172` nats CE (3 seeds each) | same-shape static control: LoRA wins 54/63 task-seed pairs; FourierFT wins 55/63 task-seed pairs; (IA)³ wins 48/63 task-seed pairs; LoKr wins 49/63 task-seed pairs |
-| D2L | Qwen3-0.6B | LoRA (r=8): `matched − context-swap = +0.556 ± 0.327`; FourierFT: `matched − context-swap = +0.656 ± 0.352`; (IA)³: `matched − context-swap = +0.738 ± 0.327`; LoKr: `matched − context-swap = +0.981 ± 0.037` exact-match | LoRA (r=8) control `0.000`; FourierFT control `0.000`; (IA)³ control `0.000`; LoKr control `0.000` |
+| T2A | gemma-2-2b | LoRA `matched − static = −0.571 ± 0.045`; FourierFT `matched − static = −0.525 ± 0.064`; (IA)³ `matched − static = −0.381 ± 0.023`; LoKr `matched − static = −0.403 ± 0.172` nats CE (3 seeds each) | same-shape static control: LoRA wins 54/63 task-seed pairs; FourierFT wins 55/63 task-seed pairs; (IA)³ wins 48/63 task-seed pairs; LoKr wins 49/63 task-seed pairs |
+| D2A | Qwen3-0.6B | LoRA (r=8): `matched − context-swap = +0.556 ± 0.327`; FourierFT: `matched − context-swap = +0.656 ± 0.352`; (IA)³: `matched − context-swap = +0.738 ± 0.327`; LoKr: `matched − context-swap = +0.981 ± 0.037`; steering: `matched − context-swap = +0.881 ± 0.050` exact-match | LoRA (r=8) control `0.000`; FourierFT control `0.000`; (IA)³ control `0.000`; LoKr control `0.000`; steering control `0.000` |
 <!-- canonical-results:release-summary-markdown:end -->
 
-T2L generation accuracy is corroborating rather than the selection metric: LoRA reports
+T2A generation accuracy is corroborating rather than the selection metric: LoRA reports
 `matched − static = −0.0050 ± 0.0278`; `(IA)³` reports `+0.0562 ± 0.0087`.
 
-D2L's locked numeric-decoy NIAH setting trains at 512 tokens and tests through 32768.
+D2A's locked numeric-decoy NIAH setting trains at 512 tokens and tests through 32768.
 LoRA crosses 0.5 through 8192 (16×); FourierFT, IA³, and LoKr cross through 32768 (64×).
 
 Canonical results and exact commands are in:
 
-- `leaderboards/task_conditioned_t2l.md`
-- `leaderboards/document_niah_d2l.md`
+- `leaderboards/task_conditioned_t2a.md`
+- `leaderboards/document_niah_d2a.md`
 
 Negative investigations are retained as results rather than as dormant settings.
 `NEGATIVE_RESULTS.md` records the standard input-visible Text-to-LoRA negative result —
@@ -57,13 +57,13 @@ benchmark code), and reproduction instructions.
 The **scientific substrate is complete** and the project is no longer in
 setting-discovery or substrate-building mode:
 
-- the active scope is frozen to T2L and D2L;
+- the active scope is frozen to T2A and D2A;
 - both conditions reach the frozen interpreter only through the generated adapter path;
 - both settings have behavioral controls, a helpfulness floor, difficulty axes, multi-seed
   LoRA results, and canonical reproduction scripts;
 - the shared codec/hook seam, training paths, evaluators, checkpointing, manifests, tests,
   leaderboards, and negative-results record are implemented;
-- the standard-T2L conditioning failure is verified on Sakana's released checkpoints
+- the standard-T2A conditioning failure is verified on Sakana's released checkpoints
   (`scripts/negative_results/t2l_released_prompt_ablation/`), not just our own diagnostics;
 - image and planning infrastructure is intentionally absent.
 
@@ -95,7 +95,7 @@ Candidate codecs to add (each is a `GeneratedUpdateCodec` subclass + a `make_cod
 The open empirical question is whether the low-rank rotation symmetry LoRA carries
 (`BA = (BG)(G⁻¹A)`) is a real obstacle to one-shot prediction, i.e. whether a
 symmetry-free or lower-budget shape conditions *better* than LoRA under identical training.
-For each codec the deliverable is a leaderboard row in **both** T2L and D2L: `matched −
+For each codec the deliverable is a leaderboard row in **both** T2A and D2A: `matched −
 control` at the codec's best swept scale, at least three seeds, with the same conditioner,
 trunk, data, evaluator, and controls as the LoRA reference. Losing shapes stay on the
 leaderboards — a shape that fails to condition is itself a result.
@@ -105,7 +105,7 @@ Per-codec worklist (repeat the "Stable extension interface" steps):
 1. Implement the `GeneratedUpdateCodec` subclass (geometry, initialization, `apply`,
    `dense_delta`, `initial_bias` if bilinear) and register it.
 2. Add its manifest/config and unit tests (geometry, init, hook application).
-3. Run codec-specific scale selection (D2L's useful scale is far above PEFT defaults;
+3. Run codec-specific scale selection (D2A's useful scale is far above PEFT defaults;
    sweep, don't assume).
 4. Run ≥3 seeds in each setting; record aggregates as compact canonical metrics.
 5. Add a row to each leaderboard with exact commands and artifacts.
@@ -117,12 +117,12 @@ Mechanical, and independent of codec exploration — none require another resear
 - [ ] clean-environment installation and every documented command verified;
 - [ ] GPU smoke tests and full LoRA reproductions on release hardware (the sandbox has no
       CUDA-visible GPU, the only expected local failure);
-- [ ] confirm/commit the final T2L scale-selection evidence and each codec's D2L sweep summary as
+- [ ] confirm/commit the final T2A scale-selection evidence and each codec's D2A sweep summary as
       compact records;
 - [ ] TeX/PDF build and visual proof of the paper and website;
 - [ ] license decision (`CITATION.cff`, version `0.1.0`, `CHANGELOG.md` are present).
 
-Already done: versioned canonical T2L/D2L aggregates with a drift check, provenance
+Already done: versioned canonical T2A/D2A aggregates with a drift check, provenance
 hashes and model revisions, smoke/full reproduction entry points, preflight diagnostics,
 and manifest/catalog/drift checks passing locally.
 
@@ -136,17 +136,17 @@ are never committed. The human drives commits.
 
 - `src/adapterbench/contracts.py` — `HypernetworkBackend.generate()`,
   `DownstreamEvaluator.evaluate()`, and shared task/result objects.
-- `src/adapterbench/t2p/codecs.py` — `GeneratedUpdateCodec` plus the registered codecs
+- `src/adapterbench/t2a/codecs.py` — `GeneratedUpdateCodec` plus the registered codecs
   (`LoRACodec`, `IA3Codec`, `LoKrCodec`, `LoHaCodec`, `FourierFTCodec`, `SteeringCodec`).
   A new shape implements:
   - `output_size`;
   - `apply(...)`;
   - `dense_delta(...)`;
   - `initial_bias()` when required by a bilinear parameterization.
-- `src/adapterbench/t2p/hypernetwork.py` — the shared hypernetwork shell, per-layer heads,
+- `src/adapterbench/t2a/hypernetwork.py` — the shared hypernetwork shell, per-layer heads,
   codec application, and hook lifecycle.
-- `src/adapterbench/t2p/model_utils.py` — frozen interpreter loading and layer discovery.
-- `src/adapterbench/t2p/live_evaluator.py` — hook-based downstream evaluation for both
+- `src/adapterbench/t2a/model_utils.py` — frozen interpreter loading and layer discovery.
+- `src/adapterbench/t2a/live_evaluator.py` — hook-based downstream evaluation for both
   settings.
 
 The generated adapter is applied live during the frozen interpreter's forward pass.
@@ -154,33 +154,33 @@ Training backpropagates ordinary next-token cross-entropy through the hook into 
 hypernetwork. Adapters are not materialized through `peft.PeftModel` during training or
 evaluation.
 
-### T2L: task-description conditioning
+### T2A: task-description conditioning
 
-- `src/adapterbench/t2p/lol_data.py` — vendored Lots-of-LoRAs/SNI task loading,
+- `src/adapterbench/t2a/lol_data.py` — vendored Lots-of-LoRAs/SNI task loading,
   decontaminated task validation, and definition stripping.
-- `src/adapterbench/t2p/condition_encoder.py` — pooled task-description conditioner.
-- `src/adapterbench/t2p/sft_trainer.py` — fixed-budget and checkpointed T2L SFT,
+- `src/adapterbench/t2a/condition_encoder.py` — pooled task-description conditioner.
+- `src/adapterbench/t2a/sft_trainer.py` — fixed-budget and checkpointed T2A SFT,
   gradient accumulation, warmup, and static-adapter training.
-- `scripts/t2p_train_ddp.py` — data-parallel T2L training.
-- `scripts/t2p_eval_heldout_sni.py` — held-out teacher-forced CE, the primary metric.
-- `scripts/t2p_eval_heldout_sni_acc.py` — held-out generation accuracy.
-- `scripts/reproduce/task_t2l_lora.sh` — canonical one-seed LoRA reproduction.
+- `scripts/t2a_train_ddp.py` — data-parallel T2A training.
+- `scripts/t2a_eval_heldout_sni.py` — held-out teacher-forced CE, the primary metric.
+- `scripts/t2a_eval_heldout_sni_acc.py` — held-out generation accuracy.
+- `scripts/reproduce/task_t2a_lora.sh` — canonical one-seed LoRA reproduction.
 
-Training tasks are vendored under `data/t2l/`. The loader refuses tasks outside T2L's
+Training tasks are vendored under `data/t2a/`. The loader refuses tasks outside T2A's
 479-task decontaminated training split and excludes all held-out validation tasks.
 
-### D2L: document conditioning
+### D2A: document conditioning
 
-- `src/adapterbench/t2p/document_conditioning.py` —
+- `src/adapterbench/t2a/document_conditioning.py` —
   `capture_early_exit_representation` plus `EarlyExitPerceiverConditioner`.
-- `src/adapterbench/t2p/niah_data.py` — deterministic needle/haystack examples,
+- `src/adapterbench/t2a/niah_data.py` — deterministic needle/haystack examples,
   realistic-prose distractors, packing guards, and evaluation examples.
-- `src/adapterbench/t2p/document_sft_trainer.py` — restart-safe document-conditioned
+- `src/adapterbench/t2a/document_sft_trainer.py` — restart-safe document-conditioned
   training with atomic model/optimizer/scheduler checkpoints.
-- `src/adapterbench/t2p/live_evaluator.py` —
+- `src/adapterbench/t2a/live_evaluator.py` —
   `DocumentHypernetworkDownstreamEvaluator`, including the context-swap control.
-- `scripts/d2p_niah_aggregate.py` — multi-seed and length-generalization aggregation.
-- `scripts/reproduce/document_niah_lora.sh` — canonical D2L LoRA reproduction.
+- `scripts/d2a_niah_aggregate.py` — multi-seed and length-generalization aggregation.
+- `scripts/reproduce/document_niah_lora.sh` — canonical D2A LoRA reproduction.
 
 Each document is packed into one interpreter context. The implementation deliberately
 does not reproduce Doc-to-LoRA's multi-chunk `combine_lora`; the one-pass constraint is
@@ -188,7 +188,7 @@ enforced explicitly.
 
 ## Why the settings are genuinely adaptive
 
-### T2L
+### T2A
 
 Standard task-conditioned SFT often gives the frozen interpreter the same task definition
 that conditions the hypernetwork. In that design, the adapter is redundant.
@@ -202,7 +202,7 @@ The primary comparison is against a directly optimized static adapter of the sam
 trained on the same multi-task data. `matched − static < 0` CE therefore isolates
 task-specific conditioning from generic adapter help.
 
-### D2L
+### D2A
 
 The query does not contain the document or needle. The only document path is:
 
@@ -220,7 +220,7 @@ Every leaderboard entry must satisfy all four:
    quality alone.
 2. **Best-of-scale comparison.** Sweep each codec's scale and report its best valid
    operating point.
-3. **Graded difficulty.** T2L reports task-level behavior and D2L reports context-length
+3. **Graded difficulty.** T2A reports task-level behavior and D2A reports context-length
    generalization rather than a single saturated point.
 4. **Multi-seed evidence.** Use at least three seeds and report variation.
 
@@ -234,9 +234,9 @@ Within a setting, comparisons must keep fixed:
 - evaluator and controls;
 - generated-scalar budget.
 
-## T2L result
+## T2A result
 
-The rigorous T2L baseline trains the hypernetwork and same-shape static reference on the
+The rigorous T2A baseline trains the hypernetwork and same-shape static reference on the
 same 479-task corpus, strips definitions from interpreter inputs, and evaluates on all 21
 held-out SNI tasks.
 
@@ -253,14 +253,14 @@ adapter differences.
 
 Result paths:
 
-`results/autoresearch/t2l/lora/confirmation/hyper/s{1801,1802,1803}/`
+`results/autoresearch/t2a/lora/confirmation/hyper/s{1801,1802,1803}/`
 
 with:
 
 - `heldout_sni_ce_full21.jsonl`
 - `heldout_sni_acc.jsonl`
 
-## D2L result
+## D2A result
 
 The shipped setting uses realistic Wikipedia-prose haystacks, one topic-free four-digit
 needle, four explicitly irrelevant four-digit decoys, Qwen3-0.6B, early-exit document
@@ -286,29 +286,29 @@ uv run adapterbench catalog
 uv run pytest -q
 ```
 
-Reproduce one T2L seed:
+Reproduce one T2A seed:
 
 ```bash
-bash scripts/reproduce/task_t2l_lora.sh 1801 0,1,2,3 4,5,6,7
+bash scripts/reproduce/task_t2a_lora.sh 1801 0,1,2,3 4,5,6,7
 ```
 
-Inspect T2L aggregate rows:
+Inspect T2A aggregate rows:
 
 ```bash
-tail -1 results/repro/t2l_lora_scale22.627417_lr1e-4/hyper/s1801/heldout_sni_ce_full21.jsonl
-tail -1 results/repro/t2l_lora_scale22.627417_lr1e-4/hyper/s1801/heldout_sni_acc.jsonl
+tail -1 results/repro/t2a_lora_scale22.627417_lr1e-4/hyper/s1801/heldout_sni_ce_full21.jsonl
+tail -1 results/repro/t2a_lora_scale22.627417_lr1e-4/hyper/s1801/heldout_sni_acc.jsonl
 ```
 
-Run the D2L numeric-decoy NIAH confirmation:
+Run the D2A numeric-decoy NIAH confirmation:
 
 ```bash
 bash scripts/reproduce/document_niah_numeric_decoy_lora.sh cuda:0
 ```
 
-Run the D2L scale locator:
+Run the D2A scale locator:
 
 ```bash
-bash scripts/d2l_numeric_decoy_dev.sh
+bash scripts/d2a_numeric_decoy_dev.sh
 ```
 
 The held-out-SNI evaluations must run with `HF_HUB_OFFLINE=1` after metadata is vendored.
@@ -327,7 +327,7 @@ The reproduction script sets it automatically.
 - Keep generated-parameter counts and hook sites explicit in manifests.
 - A positive raw score without a condition control is not an adaptive result.
 
-### T2L
+### T2A
 
 - Definition stripping is load-bearing. If the interpreter sees the task definition,
   conditioning becomes redundant.
@@ -338,7 +338,7 @@ The reproduction script sets it automatically.
   rate limits even when all model/data files are cached.
 - CE and accuracy answer different questions. Keep CE primary and accuracy corroborating.
 
-### D2L
+### D2A
 
 - Early-exit features plus the perceiver conditioner are load-bearing. The removed
   full-depth conditioner did not learn retrieval.
@@ -348,15 +348,15 @@ The reproduction script sets it automatically.
 - Ensure the full document fits in one interpreter pass; do not silently truncate.
 - Strong L1 regularization can collapse the generated LoRA to zero. The upstream-style
   coefficient `1.5` failed; `0` or `0.1` reproduced retrieval.
-- D2L's useful LoRA scale is much larger than ordinary PEFT defaults. Scale must be swept,
+- D2A's useful LoRA scale is much larger than ordinary PEFT defaults. Scale must be swept,
   not assumed.
 
 ## Stable extension interface
 
 There is one leaderboard per active setting:
 
-- `leaderboards/task_conditioned_t2l.md`
-- `leaderboards/document_niah_d2l.md`
+- `leaderboards/task_conditioned_t2a.md`
+- `leaderboards/document_niah_d2a.md`
 
 Settings are never pooled because their metrics differ. The cross-setting question is
 whether a codec's relative behavior repeats.
@@ -373,7 +373,7 @@ codec exploration" worklist):
 7. add a row to each leaderboard with exact commands and artifacts.
 
 Losing shapes remain in the leaderboards: a shape that fails to condition is a result, not
-a failure. Additional *settings* (beyond T2L/D2L) are out of scope and would be considered
+a failure. Additional *settings* (beyond T2A/D2A) are out of scope and would be considered
 only if they passed a preregistered matched-control audit; no image or planning setting is
 planned.
 

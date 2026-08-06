@@ -2,10 +2,10 @@
 hooking its generated adapter into a frozen interpreter's forward pass, then score
 held-out benchmarks.
 
-- `t2p-sft`         single adapter, single run, writes a loss-curve JSON.
-- `t2p-sft-pilot`   several adapters x seeds, task-description conditioning.
-- `d2p-niah`        document-conditioning variant (synthetic NIAH; early-exit conditioner).
-- `t2p-sft-sweep`   checkpointed step-budget sweep under one persistent optimizer.
+- `t2a-sft`         single adapter, single run, writes a loss-curve JSON.
+- `t2a-sft-pilot`   several adapters x seeds, task-description conditioning.
+- `d2a-niah`        document-conditioning variant (synthetic NIAH; early-exit conditioner).
+- `t2a-sft-sweep`   checkpointed step-budget sweep under one persistent optimizer.
 """
 
 from __future__ import annotations
@@ -16,45 +16,45 @@ from functools import partial
 from pathlib import Path
 
 from ._shared import (
-    D2P_LATENT_DIM,
+    D2A_LATENT_DIM,
     DEFAULT_CATALOG,
     DEFAULT_SFT_TRAIN_TASKS,
     PILOT_DEFAULT_TARGET_MODULES,
     REPO_ROOT,
-    T2L_DECONTAM_CONFIG,
-    T2L_EVAL_DESCRIPTIONS,
-    T2L_TASKS_DIR,
+    T2A_DECONTAM_CONFIG,
+    T2A_EVAL_DESCRIPTIONS,
+    T2A_TASKS_DIR,
     ResultRecorder,
     embed_training_conditions,
     load_frozen_interpreter,
     write_json,
 )
 
-# D2L-parity hook site for the NIAH document-conditioning command (`d2p-niah`): the
-# validated recipe hooks LoRA at `down_proj` (see PROJECT_PLAN.md's D2P section). Kept a
-# module constant here rather than in `_shared.py` since only `d2p-niah` uses it.
-D2L_PARITY_TARGET_MODULES = {
+# Doc-to-LoRA-parity hook site for the NIAH document-conditioning command (`d2a-niah`): the
+# validated recipe hooks LoRA at `down_proj` (see PROJECT_PLAN.md's D2A section). Kept a
+# module constant here rather than in `_shared.py` since only `d2a-niah` uses it.
+DOC_TO_LORA_PARITY_TARGET_MODULES = {
     "lora": ["down_proj"],
-    # Same validated D2L projection site; IA3 changes only the live generated shape.
+    # Same validated D2A projection site; IA3 changes only the live generated shape.
     "ia3": ["down_proj"],
-    # LoKr is another generated weight update, so it uses the same locked D2L hook
+    # LoKr is another generated weight update, so it uses the same locked D2A hook
     # site. Its factor geometry is determined solely by this linear projection.
     "lokr": ["down_proj"],
-    # LoHa is another additive weight-space update at the same locked D2L site.
+    # LoHa is another additive weight-space update at the same locked D2A site.
     "loha": ["down_proj"],
     "fourierft": ["down_proj"],
-    # Steering is activation-space: same residual-stream hook site as T2L, since the
+    # Steering is activation-space: same residual-stream hook site as T2A, since the
     # site is part of this codec's shape identity rather than a weight-projection choice.
     "steering": ["block"],
 }
 
 
-def _t2p_sft_command(args) -> None:
+def _t2a_sft_command(args) -> None:
     import torch
 
-    from ..t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-    from ..t2p.lol_data import LolSFTDataset, lol_collate_fn, validate_training_tasks
-    from ..t2p.sft_trainer import train_downstream_hypernetwork
+    from ..t2a.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+    from ..t2a.lol_data import LolSFTDataset, lol_collate_fn, validate_training_tasks
+    from ..t2a.sft_trainer import train_downstream_hypernetwork
 
     # Pins the hypernetwork's weight init (only its codec-specific initial_bias is seeded
     # by `TextToPeftHypernetwork(seed=...)` itself, not its Linear/Embedding layers) and
@@ -130,20 +130,20 @@ def _t2p_sft_command(args) -> None:
     print(f"wrote {args.output}", flush=True)
 
 
-def _t2p_sft_pilot_command(args) -> None:
+def _t2a_sft_pilot_command(args) -> None:
     import torch
 
     from ..task_examples import build_all_task_examples, load_task_descriptions
-    from ..t2p.condition_encoder import embed_task_descriptions
-    from ..t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-    from ..t2p.live_evaluator import HypernetworkDownstreamEvaluator
-    from ..t2p.lol_data import (
+    from ..t2a.condition_encoder import embed_task_descriptions
+    from ..t2a.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+    from ..t2a.live_evaluator import HypernetworkDownstreamEvaluator
+    from ..t2a.lol_data import (
         LolSFTDataset,
         load_decontaminated_train_task_ids,
         lol_collate_fn,
         validate_training_tasks,
     )
-    from ..t2p.sft_trainer import train_downstream_hypernetwork, train_downstream_hypernetwork_restartable
+    from ..t2a.sft_trainer import train_downstream_hypernetwork, train_downstream_hypernetwork_restartable
 
     if args.all_decontam_tasks:
         task_ids = sorted(load_decontaminated_train_task_ids(args.decontam_config))
@@ -226,7 +226,7 @@ def _t2p_sft_pilot_command(args) -> None:
         layers,
         None,
         tokenizer,
-        trial_id="t2p_sft_pilot::frozen_interpreter",
+        trial_id="t2a_sft_pilot::frozen_interpreter",
         device=args.device,
         use_icl=args.use_icl,
     )
@@ -236,7 +236,7 @@ def _t2p_sft_pilot_command(args) -> None:
     warmup_steps = int(args.warmup_frac * args.steps)
     for seed in seeds:
         # Batch order depends on the seed too (not just weight init/dropout - see
-        # _t2p_sft_command's comment) - rebuilt per seed, reusing the already-tokenized
+        # _t2a_sft_command's comment) - rebuilt per seed, reusing the already-tokenized
         # `dataset` so the (often expensive, network-bound) per-task data loading above
         # only ever happens once regardless of how many seeds are requested.
         dataloader = torch.utils.data.DataLoader(
@@ -268,12 +268,12 @@ def _t2p_sft_pilot_command(args) -> None:
                 seed=seed,
             ).to(args.device)
             # Per-codec scale sweep (invariant #2): apply the swept scale directly to each
-            # codec before training (as d2p-niah does), so "shape matters" means "even at its own
+            # codec before training (as d2a-niah does), so "shape matters" means "even at its own
             # best scale" - not an artifact of a fixed default. --scales empty => codec default.
             # (Previously this silently applied only to LoRACodec, so a non-LoRA --scales sweep
             # was a no-op; every codec has a uniform .scaling, so apply it to all of them.)
             if scale is not None:
-                from ..t2p.codecs import set_codec_scaling
+                from ..t2a.codecs import set_codec_scaling
 
                 set_codec_scaling(hypernetwork.codecs, scale)
             # For long runs, --checkpoint-every > 0 uses the restart-safe trainer (atomic
@@ -318,7 +318,7 @@ def _t2p_sft_pilot_command(args) -> None:
                 layers,
                 hypernetwork,
                 tokenizer,
-                trial_id=f"t2p_sft_pilot::{adapter}::seed{seed}::scale{scale_tag}",
+                trial_id=f"t2a_sft_pilot::{adapter}::seed{seed}::scale{scale_tag}",
                 device=args.device,
                 use_icl=args.use_icl,
             )
@@ -335,9 +335,9 @@ def _t2p_sft_pilot_command(args) -> None:
     print(f"wrote {output_dir}/results.jsonl, {output_dir}/results.csv, {output_dir}/loss_curves.json", flush=True)
 
 
-def _d2p_niah_command(args) -> None:
+def _d2a_niah_command(args) -> None:
     """Doc-to-LoRA-parity NIAH training through the shared codec seam: the validated
-    document-conditioned config for held-out needle retrieval (see PROJECT_PLAN.md's D2L
+    document-conditioned config for held-out needle retrieval (see PROJECT_PLAN.md's D2A
     section). Trains one hypernetwork per `--adapters` entry with the
     early-exit context encoder + Perceiver-IO generation path (`EarlyExitPerceiverConditioner`)
     on generic-needle chat-tokenized NIAH documents, checkpointing model+optimizer every eval
@@ -347,11 +347,11 @@ def _d2p_niah_command(args) -> None:
     """
     import torch
 
-    from ..t2p.document_conditioning import EarlyExitPerceiverConditioner
-    from ..t2p.document_sft_trainer import train_doc_niah_checkpointed
-    from ..t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-    from ..t2p.live_evaluator import DocumentHypernetworkDownstreamEvaluator
-    from ..t2p.niah_data import (
+    from ..t2a.document_conditioning import EarlyExitPerceiverConditioner
+    from ..t2a.document_sft_trainer import train_doc_niah_checkpointed
+    from ..t2a.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+    from ..t2a.live_evaluator import DocumentHypernetworkDownstreamEvaluator
+    from ..t2a.niah_data import (
         DocSFTDataset,
         assert_context_fits_in_one_pass,
         build_niah_eval_examples,
@@ -370,10 +370,10 @@ def _d2p_niah_command(args) -> None:
         else context_lengths
     )
     adapters = args.adapters.split(",")
-    unknown = [adapter for adapter in adapters if adapter not in D2L_PARITY_TARGET_MODULES]
+    unknown = [adapter for adapter in adapters if adapter not in DOC_TO_LORA_PARITY_TARGET_MODULES]
     if unknown:
         raise ValueError(
-            f"unknown adapter(s) {unknown}; registered D2L codecs: {sorted(D2L_PARITY_TARGET_MODULES)}"
+            f"unknown adapter(s) {unknown}; registered D2A codecs: {sorted(DOC_TO_LORA_PARITY_TARGET_MODULES)}"
         )
     output_dir = Path(args.output)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -432,18 +432,18 @@ def _d2p_niah_command(args) -> None:
 
     print("[4/5] scoring frozen interpreter baseline (no document access)...", flush=True)
     frozen_evaluator = DocumentHypernetworkDownstreamEvaluator(
-        interpreter, layers, None, tokenizer, trial_id="d2p_niah::frozen_interpreter", device=args.device,
+        interpreter, layers, None, tokenizer, trial_id="d2a_niah::frozen_interpreter", device=args.device,
     )
     for result in frozen_evaluator.iter_evaluate_frozen(eval_examples_by_family, split=args.eval_split):
         recorder.record(dataclasses.replace(result, metadata={**result.metadata, "adapter_family": "frozen"}))
 
     for adapter in adapters:
         torch.manual_seed(args.seed)
-        target_modules = D2L_PARITY_TARGET_MODULES[adapter]
+        target_modules = DOC_TO_LORA_PARITY_TARGET_MODULES[adapter]
         print(f"[5/5] adapter={adapter} target_modules={target_modules}: training...", flush=True)
         module_shapes = infer_module_shapes(layers, target_modules, hidden_size=hidden_size)
         conditioner = EarlyExitPerceiverConditioner(
-            hidden_size=hidden_size, task_dim=D2P_LATENT_DIM // 2, num_layers=num_layers,
+            hidden_size=hidden_size, task_dim=D2A_LATENT_DIM // 2, num_layers=num_layers,
             exit_layer=exit_layer, n_latents=args.n_latents, num_blocks=args.num_blocks, seed=args.seed,
         )
         # Every codec's scale arrives at construction: LoRA gets its established parity
@@ -453,19 +453,19 @@ def _d2p_niah_command(args) -> None:
         # then overrides the selected codec's scale without a per-codec flag.
         hypernetwork = TextToPeftHypernetwork(
             module_shapes=module_shapes, num_layers=num_layers, adapter=adapter,
-            latent_dim=D2P_LATENT_DIM, rank=args.rank, seed=args.seed, conditioner=conditioner,
+            latent_dim=D2A_LATENT_DIM, rank=args.rank, seed=args.seed, conditioner=conditioner,
             lora_scaling=lora_scaling, ia3_scaling=args.ia3_scaling, lokr_scaling=args.lokr_scaling,
             loha_scaling=args.loha_scaling, fourierft_scaling=args.fourierft_scaling,
         ).to(args.device)
         if args.codec_scaling is not None:
-            from ..t2p.codecs import set_codec_scaling
+            from ..t2a.codecs import set_codec_scaling
 
             set_codec_scaling(hypernetwork.codecs, args.codec_scaling)
             print(f"[scale] {adapter} codec scaling set to {args.codec_scaling} (--codec-scaling)", flush=True)
 
         evaluator = DocumentHypernetworkDownstreamEvaluator(
             interpreter, layers, hypernetwork, tokenizer,
-            trial_id=f"d2p_niah::{adapter}", device=args.device,
+            trial_id=f"d2a_niah::{adapter}", device=args.device,
         )
 
         if args.evaluate_checkpoint is not None:
@@ -523,9 +523,9 @@ def _d2p_niah_command(args) -> None:
     print(f"wrote {output_dir}/results.jsonl, {output_dir}/history.json", flush=True)
 
 
-def _t2p_sft_sweep_command(args) -> None:
-    """Checkpointed counterpart to `t2p-sft-pilot`: scores held-out accuracy at several
-    step budgets per adapter under one persistent optimizer (`t2p.sft_trainer.
+def _t2a_sft_sweep_command(args) -> None:
+    """Checkpointed counterpart to `t2a-sft-pilot`: scores held-out accuracy at several
+    step budgets per adapter under one persistent optimizer (`t2a.sft_trainer.
     train_with_checkpoints`), instead of only ever reporting a single fixed-step endpoint.
 
     Originally motivated by an apparent finding that longer training made held-out
@@ -543,11 +543,11 @@ def _t2p_sft_sweep_command(args) -> None:
     import torch
 
     from ..task_examples import build_all_task_examples, load_task_descriptions
-    from ..t2p.condition_encoder import embed_task_descriptions
-    from ..t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-    from ..t2p.live_evaluator import HypernetworkDownstreamEvaluator
-    from ..t2p.lol_data import LolSFTDataset, lol_collate_fn, validate_training_tasks
-    from ..t2p.sft_trainer import train_with_checkpoints
+    from ..t2a.condition_encoder import embed_task_descriptions
+    from ..t2a.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+    from ..t2a.live_evaluator import HypernetworkDownstreamEvaluator
+    from ..t2a.lol_data import LolSFTDataset, lol_collate_fn, validate_training_tasks
+    from ..t2a.sft_trainer import train_with_checkpoints
 
     torch.manual_seed(args.seed)
 
@@ -606,14 +606,14 @@ def _t2p_sft_sweep_command(args) -> None:
 
     print("[5/6] scoring frozen interpreter baseline (checkpoint_step=0)...", flush=True)
     frozen_evaluator = HypernetworkDownstreamEvaluator(
-        interpreter, layers, None, tokenizer, trial_id="t2p_sft_sweep::frozen_interpreter", device=args.device,
+        interpreter, layers, None, tokenizer, trial_id="t2a_sft_sweep::frozen_interpreter", device=args.device,
         use_icl=args.use_icl,
     )
     for result in frozen_evaluator.iter_evaluate_frozen(all_eval_examples, split=args.eval_split):
         recorder.record(dataclasses.replace(result, metadata={**result.metadata, "checkpoint_step": 0}))
 
     for adapter in adapters:
-        # Re-seeded per adapter, not just once at the top - see t2p-sft-pilot's identical
+        # Re-seeded per adapter, not just once at the top - see t2a-sft-pilot's identical
         # comment for why (each adapter's trajectory must be independent of loop position).
         torch.manual_seed(args.seed)
         target_modules = PILOT_DEFAULT_TARGET_MODULES[adapter]
@@ -649,7 +649,7 @@ def _t2p_sft_sweep_command(args) -> None:
         for step in checkpoint_steps:
             print(f"  {adapter} @ step {step}: final_loss={stats_by_checkpoint[step].final_loss:.4f} - evaluating...", flush=True)
             evaluator = HypernetworkDownstreamEvaluator(
-                interpreter, layers, hypernetwork, tokenizer, trial_id=f"t2p_sft_sweep::{adapter}::step{step}",
+                interpreter, layers, hypernetwork, tokenizer, trial_id=f"t2a_sft_sweep::{adapter}::step{step}",
                 device=args.device, use_icl=args.use_icl,
             )
             for result in evaluator.iter_evaluate(eval_condition_embeddings, all_eval_examples, split=args.eval_split):
@@ -663,15 +663,15 @@ def _t2p_sft_sweep_command(args) -> None:
 
 
 def register(subparsers) -> None:
-    _register_t2p_sft(subparsers)
-    _register_t2p_sft_pilot(subparsers)
-    _register_d2p_niah(subparsers)
-    _register_t2p_sft_sweep(subparsers)
+    _register_t2a_sft(subparsers)
+    _register_t2a_sft_pilot(subparsers)
+    _register_d2a_niah(subparsers)
+    _register_t2a_sft_sweep(subparsers)
 
 
-def _register_d2p_niah(subparsers) -> None:
+def _register_d2a_niah(subparsers) -> None:
     p = subparsers.add_parser(
-        "d2p-niah",
+        "d2a-niah",
         help="Doc-to-LoRA-parity NIAH training through the shared codec seam: early-exit context encoder + "
         "Perceiver-IO generation path on generic-needle chat-tokenized documents, restart-safe "
         "(checkpoints model+optimizer every eval), logging exact-digit accuracy AND accuracy_ctxswap per "
@@ -679,13 +679,13 @@ def _register_d2p_niah(subparsers) -> None:
         "several --adapters as additional codecs are committed.",
     )
     p.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
-    p.add_argument("--adapters", default="lora", help="comma-separated codecs (see 't2p-sft-pilot --adapters')")
+    p.add_argument("--adapters", default="lora", help="comma-separated codecs (see 't2a-sft-pilot --adapters')")
     p.add_argument("--needle-style", default="generic", choices=["generic", "realistic", "realistic_numeric_decoys"],
                    help="generic = parity format; realistic = real prose; realistic_numeric_decoys = one target plus irrelevant numeric decoys")
     p.add_argument("--numeric-decoy-count", type=int, default=0,
                    help="distinct irrelevant four-digit values for realistic_numeric_decoys; must be 0 for other styles")
     p.add_argument("--evaluate-checkpoint", type=Path,
-                   help="skip training and score one saved D2L checkpoint on freshly generated held-out documents")
+                   help="skip training and score one saved D2A checkpoint on freshly generated held-out documents")
     p.add_argument("--context-lengths", default="384", help="comma-separated NIAH document token lengths (training)")
     p.add_argument("--eval-context-lengths", default="",
                    help="comma-separated NIAH document token lengths for held-out eval; empty (default) => eval at "
@@ -695,10 +695,10 @@ def _register_d2p_niah(subparsers) -> None:
     p.add_argument("--batch-size", type=int, default=8)
     p.add_argument("--steps", type=int, default=2500)
     p.add_argument("--eval-every", type=int, default=250)
-    p.add_argument("--learning-rate", type=float, default=4e-5, help="D2L NIAH parity lr")
+    p.add_argument("--learning-rate", type=float, default=4e-5, help="D2A NIAH parity lr")
     p.add_argument("--rank", type=int, default=8)
     p.add_argument("--lora-scaling", type=float, default=-1.0,
-                   help="LoRA scale applied directly; <=0 (default) computes D2L parity 2*r^1.5 (=45.25 at r=8)")
+                   help="LoRA scale applied directly; <=0 (default) computes D2A parity 2*r^1.5 (=45.25 at r=8)")
     p.add_argument("--ia3-scaling", type=float, default=1.0,
                    help="IA3 multiplier scale in W -> diag(1 + scale*v) W; sweep this per codec.")
     p.add_argument("--lokr-scaling", type=float, default=1.0,
@@ -717,204 +717,204 @@ def _register_d2p_niah(subparsers) -> None:
                    help="also apply --lora-scaling to any other LoRA-family weight codecs added later "
                         "(none in the LoRA-only baseline, so currently a no-op) so a multi-codec "
                         "comparison isn't confounded by only LoRA getting the load-bearing scale")
-    p.add_argument("--l2-reg-generated-w", type=float, default=0.0, help="D2L NIAH parity uses ~0 (see gotcha)")
+    p.add_argument("--l2-reg-generated-w", type=float, default=0.0, help="D2A NIAH parity uses ~0 (see gotcha)")
     p.add_argument("--grad-accum-steps", type=int, default=1)
     p.add_argument("--warmup-frac", type=float, default=0.03)
     p.add_argument("--warmup-steps", type=int,
                    help="override --warmup-frac with an absolute count; use a fixed final-budget value for checkpoint promotion")
     p.add_argument("--exit-layer", type=int, default=-1, help="early-exit ctx encoder depth; <=0 => num_layers//4")
-    p.add_argument("--n-latents", type=int, default=208, help="Perceiver-IO latent queries (D2L parity: 208)")
-    p.add_argument("--num-blocks", type=int, default=8, help="Perceiver-IO cross-attention blocks (D2L parity: 8)")
+    p.add_argument("--n-latents", type=int, default=208, help="Perceiver-IO latent queries (D2A parity: 208)")
+    p.add_argument("--num-blocks", type=int, default=8, help="Perceiver-IO cross-attention blocks (D2A parity: 8)")
     p.add_argument("--eval-limit", type=int, default=32, help="held-out eval documents per context-length bin")
     p.add_argument("--eval-seed", type=int, default=778,
                    help="deterministic held-out document seed; keep development and final evaluation disjoint")
     p.add_argument("--eval-split", default="test")
     p.add_argument("--seed", type=int, default=777)
     p.add_argument("--device", default="cuda:0")
-    p.add_argument("--output", default="results/d2p_niah")
-    p.set_defaults(func=_d2p_niah_command)
+    p.add_argument("--output", default="results/d2a_niah")
+    p.set_defaults(func=_d2a_niah_command)
 
 
-def _register_t2p_sft(subparsers) -> None:
-    t2p_sft = subparsers.add_parser(
-        "t2p-sft",
+def _register_t2a_sft(subparsers) -> None:
+    t2a_sft = subparsers.add_parser(
+        "t2a-sft",
         help="live end-to-end SFT: hook the hypernetwork's generated output into a frozen interpreter and train on real next-token loss",
     )
-    t2p_sft.add_argument("--tasks-dir", default=str(T2L_TASKS_DIR))
-    t2p_sft.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
-    t2p_sft.add_argument(
+    t2a_sft.add_argument("--tasks-dir", default=str(T2A_TASKS_DIR))
+    t2a_sft.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
+    t2a_sft.add_argument(
         "--decontam-config",
-        default=str(T2L_DECONTAM_CONFIG),
-        help="T2L's own train_ds_names list - --tasks is validated against it so a training run "
-        "can't silently include one of T2L's contamination-removed or held-out-validation tasks",
+        default=str(T2A_DECONTAM_CONFIG),
+        help="Text-to-LoRA's own train_ds_names list - --tasks is validated against it so a training run "
+        "can't silently include one of Text-to-LoRA's contamination-removed or held-out-validation tasks",
     )
-    t2p_sft.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
-    t2p_sft.add_argument("--adapter", default="lora")
-    t2p_sft.add_argument(
+    t2a_sft.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
+    t2a_sft.add_argument("--adapter", default="lora")
+    t2a_sft.add_argument(
         "--target-modules",
         default="q_proj,v_proj",
         help="comma-separated hook sites: named linear submodules (e.g. q_proj,v_proj) "
         "for weight-space adapters, or 'block' for activation-space ones "
         "(hooks the whole decoder layer / residual stream)",
     )
-    t2p_sft.add_argument("--condition-encoder", default="Alibaba-NLP/gte-large-en-v1.5")
-    t2p_sft.add_argument("--max-descriptions", type=int, default=8)
-    t2p_sft.add_argument("--limit", type=int, default=20, help="examples per task")
-    t2p_sft.add_argument("--batch-size", type=int, default=4)
-    t2p_sft.add_argument("--steps", type=int, default=200)
-    t2p_sft.add_argument("--learning-rate", type=float, default=1e-3)
-    t2p_sft.add_argument("--max-grad-norm", type=float, default=1.0)
-    t2p_sft.add_argument("--l2-reg-generated-w", type=float, default=1e-3)
-    t2p_sft.add_argument("--seed", type=int, default=777)
-    t2p_sft.add_argument("--device", default="cuda:0")
-    t2p_sft.add_argument("--output", default="results/t2p_sft/pilot.json")
-    t2p_sft.set_defaults(func=_t2p_sft_command)
+    t2a_sft.add_argument("--condition-encoder", default="Alibaba-NLP/gte-large-en-v1.5")
+    t2a_sft.add_argument("--max-descriptions", type=int, default=8)
+    t2a_sft.add_argument("--limit", type=int, default=20, help="examples per task")
+    t2a_sft.add_argument("--batch-size", type=int, default=4)
+    t2a_sft.add_argument("--steps", type=int, default=200)
+    t2a_sft.add_argument("--learning-rate", type=float, default=1e-3)
+    t2a_sft.add_argument("--max-grad-norm", type=float, default=1.0)
+    t2a_sft.add_argument("--l2-reg-generated-w", type=float, default=1e-3)
+    t2a_sft.add_argument("--seed", type=int, default=777)
+    t2a_sft.add_argument("--device", default="cuda:0")
+    t2a_sft.add_argument("--output", default="results/t2a_sft/pilot.json")
+    t2a_sft.set_defaults(func=_t2a_sft_command)
 
 
-def _register_t2p_sft_pilot(subparsers) -> None:
-    t2p_sft_pilot = subparsers.add_parser(
-        "t2p-sft-pilot",
+def _register_t2a_sft_pilot(subparsers) -> None:
+    t2a_sft_pilot = subparsers.add_parser(
+        "t2a-sft-pilot",
         help="multi-task live-SFT pilot: train the selected codecs on a shared task corpus, "
         "then score each via HypernetworkDownstreamEvaluator against real held-out benchmark examples",
     )
-    t2p_sft_pilot.add_argument("--tasks-dir", default=str(T2L_TASKS_DIR))
-    t2p_sft_pilot.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
-    t2p_sft_pilot.add_argument(
+    t2a_sft_pilot.add_argument("--tasks-dir", default=str(T2A_TASKS_DIR))
+    t2a_sft_pilot.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
+    t2a_sft_pilot.add_argument(
         "--all-decontam-tasks",
         action="store_true",
-        help="train on T2L's full 479-task decontaminated split (--decontam-config's train_ds_names) instead "
+        help="train on Text-to-LoRA's full 479-task decontaminated split (--decontam-config's train_ds_names) instead "
         "of --tasks - matches Text-to-LoRA's own training scale rather than this project's small-pilot default",
     )
-    t2p_sft_pilot.add_argument(
+    t2a_sft_pilot.add_argument(
         "--decontam-config",
-        default=str(T2L_DECONTAM_CONFIG),
-        help="see 't2p-sft --decontam-config'",
+        default=str(T2A_DECONTAM_CONFIG),
+        help="see 't2a-sft --decontam-config'",
     )
-    t2p_sft_pilot.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
-    t2p_sft_pilot.add_argument(
+    t2a_sft_pilot.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
+    t2a_sft_pilot.add_argument(
         "--adapters",
         default="lora",
         help="comma-separated adapters to train and compare; each uses a fixed default hook site "
         "(see PILOT_DEFAULT_TARGET_MODULES, e.g. lora -> q_proj,v_proj; steering -> block). "
         "Codecs are added one at a time, each with its own leaderboard entry (see PROJECT_PLAN.md).",
     )
-    t2p_sft_pilot.add_argument("--condition-encoder", default="Alibaba-NLP/gte-large-en-v1.5")
-    t2p_sft_pilot.add_argument("--max-descriptions", type=int, default=8)
-    t2p_sft_pilot.add_argument("--limit", type=int, default=20, help="training examples per task")
-    t2p_sft_pilot.add_argument("--batch-size", type=int, default=4)
-    t2p_sft_pilot.add_argument("--steps", type=int, default=400)
-    t2p_sft_pilot.add_argument("--learning-rate", type=float, default=1e-3)
-    t2p_sft_pilot.add_argument("--max-grad-norm", type=float, default=1.0)
-    t2p_sft_pilot.add_argument("--l2-reg-generated-w", type=float, default=1e-3)
-    t2p_sft_pilot.add_argument(
+    t2a_sft_pilot.add_argument("--condition-encoder", default="Alibaba-NLP/gte-large-en-v1.5")
+    t2a_sft_pilot.add_argument("--max-descriptions", type=int, default=8)
+    t2a_sft_pilot.add_argument("--limit", type=int, default=20, help="training examples per task")
+    t2a_sft_pilot.add_argument("--batch-size", type=int, default=4)
+    t2a_sft_pilot.add_argument("--steps", type=int, default=400)
+    t2a_sft_pilot.add_argument("--learning-rate", type=float, default=1e-3)
+    t2a_sft_pilot.add_argument("--max-grad-norm", type=float, default=1.0)
+    t2a_sft_pilot.add_argument("--l2-reg-generated-w", type=float, default=1e-3)
+    t2a_sft_pilot.add_argument(
         "--grad-accum-steps", type=int, default=1,
         help="micro-batches accumulated per optimizer step (matches upstream's grad_accum_steps - see "
         "hyper_lora_decontam_lol_tasks.yaml's batch_size=4/grad_accum_steps=64 for an effective batch of 256)",
     )
-    t2p_sft_pilot.add_argument(
+    t2a_sft_pilot.add_argument(
         "--warmup-frac", type=float, default=0.0,
         help="fraction of --steps spent on linear LR warmup before holding constant (upstream's own recipe "
         "uses 0.1); 0 (default) disables warmup entirely, matching prior behavior",
     )
-    t2p_sft_pilot.add_argument("--seed", type=int, default=777)
-    t2p_sft_pilot.add_argument(
+    t2a_sft_pilot.add_argument("--seed", type=int, default=777)
+    t2a_sft_pilot.add_argument(
         "--seeds", default="",
         help="comma-separated seeds to run every adapter under (overrides --seed if set); the expensive "
         "per-task data loading happens once and is shared across all requested seeds",
     )
-    t2p_sft_pilot.add_argument("--device", default="cuda:0")
-    t2p_sft_pilot.add_argument(
+    t2a_sft_pilot.add_argument("--device", default="cuda:0")
+    t2a_sft_pilot.add_argument(
         "--eval-descriptions",
-        default=str(T2L_EVAL_DESCRIPTIONS),
+        default=str(T2A_EVAL_DESCRIPTIONS),
         help="args.yaml (eval_ds_info) to source held-out benchmark task descriptions from; only the "
         "description text is used (embedded fresh via --condition-encoder), so any released checkpoint's "
         "args.yaml works regardless of --interpreter",
     )
-    t2p_sft_pilot.add_argument(
+    t2a_sft_pilot.add_argument(
         "--scales", default="",
         help="comma-separated codec output scales to sweep (invariant #2): trains one hypernetwork per "
         "scale with the scale applied directly to each codec (any registered codec, not just LoRA), and "
         "reports per-scale best-of. Empty (default) uses the codec's own default scale (single run).",
     )
-    t2p_sft_pilot.add_argument(
+    t2a_sft_pilot.add_argument(
         "--adversarial-control", action="store_true",
         help="strong mismatched control: score each family with an adapter generated from a maximally "
         "dissimilar/meaningless description (the decontam yaml's additional_eval_descs) instead of "
         "deranging the (similar) eval-family descriptions - avoids the weak-swap confound (see PROJECT_PLAN "
-        "T2L rigor).",
+        "T2A rigor).",
     )
-    t2p_sft_pilot.add_argument(
+    t2a_sft_pilot.add_argument(
         "--adversarial-descs", default="",
         help="'||'-separated adversarial description strings to override the decontam yaml's "
         "additional_eval_descs for --adversarial-control.",
     )
-    t2p_sft_pilot.add_argument(
+    t2a_sft_pilot.add_argument(
         "--checkpoint-every", type=int, default=0,
         help="if >0, train with the restart-safe trainer, checkpointing hypernetwork+optimizer "
         "every N steps to results/<output>/ckpt_*.pt and resuming from it on re-run - use for "
         "long (multi-hour/day) runs so a crash or restart does not lose progress.",
     )
-    t2p_sft_pilot.add_argument("--eval-tasks", default="boolq,hellaswag")
-    t2p_sft_pilot.add_argument("--eval-limit", type=int, default=20, help="eval examples per family")
-    t2p_sft_pilot.add_argument("--eval-variant", type=int, default=0)
-    t2p_sft_pilot.add_argument("--eval-split", default="test")
-    t2p_sft_pilot.add_argument(
+    t2a_sft_pilot.add_argument("--eval-tasks", default="boolq,hellaswag")
+    t2a_sft_pilot.add_argument("--eval-limit", type=int, default=20, help="eval examples per family")
+    t2a_sft_pilot.add_argument("--eval-variant", type=int, default=0)
+    t2a_sft_pilot.add_argument("--eval-split", default="test")
+    t2a_sft_pilot.add_argument(
         "--use-icl",
         action="store_true",
         help="see 'run' subcommand's --use-icl; applies the same ICL-prompt/prefill protocol here",
     )
-    t2p_sft_pilot.add_argument("--output", default="results/t2p_sft_pilot")
-    t2p_sft_pilot.set_defaults(func=_t2p_sft_pilot_command)
+    t2a_sft_pilot.add_argument("--output", default="results/t2a_sft_pilot")
+    t2a_sft_pilot.set_defaults(func=_t2a_sft_pilot_command)
 
 
-def _register_t2p_sft_sweep(subparsers) -> None:
-    t2p_sft_sweep = subparsers.add_parser(
-        "t2p-sft-sweep",
-        help="checkpointed counterpart to t2p-sft-pilot: scores held-out accuracy at several step budgets per "
+def _register_t2a_sft_sweep(subparsers) -> None:
+    t2a_sft_sweep = subparsers.add_parser(
+        "t2a-sft-sweep",
+        help="checkpointed counterpart to t2a-sft-pilot: scores held-out accuracy at several step budgets per "
         "adapter under one persistent optimizer, to tell 'still converging' apart from 'already past the point "
         "where held-out generalization peaks'",
     )
-    t2p_sft_sweep.add_argument("--tasks-dir", default=str(T2L_TASKS_DIR))
-    t2p_sft_sweep.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
-    t2p_sft_sweep.add_argument(
+    t2a_sft_sweep.add_argument("--tasks-dir", default=str(T2A_TASKS_DIR))
+    t2a_sft_sweep.add_argument("--tasks", default=DEFAULT_SFT_TRAIN_TASKS)
+    t2a_sft_sweep.add_argument(
         "--decontam-config",
-        default=str(T2L_DECONTAM_CONFIG),
-        help="see 't2p-sft --decontam-config'",
+        default=str(T2A_DECONTAM_CONFIG),
+        help="see 't2a-sft --decontam-config'",
     )
-    t2p_sft_sweep.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
-    t2p_sft_sweep.add_argument(
+    t2a_sft_sweep.add_argument("--interpreter", default="Qwen/Qwen3-0.6B")
+    t2a_sft_sweep.add_argument(
         "--adapters",
         default="lora",
-        help="see 't2p-sft-pilot --adapters'",
+        help="see 't2a-sft-pilot --adapters'",
     )
-    t2p_sft_sweep.add_argument(
+    t2a_sft_sweep.add_argument(
         "--checkpoint-steps",
         default="100,200,400,800,1200",
         help="comma-separated, strictly ascending cumulative step counts to evaluate held-out accuracy at "
         "(e.g. '100,200,400' trains 100 steps, evaluates, trains 100 more to reach 200, evaluates, ...) - one "
         "persistent optimizer across all checkpoints, so this isn't confounded by an Adam-restart discontinuity "
-        "at each boundary the way calling t2p-sft-pilot once per budget would be",
+        "at each boundary the way calling t2a-sft-pilot once per budget would be",
     )
-    t2p_sft_sweep.add_argument("--condition-encoder", default="Alibaba-NLP/gte-large-en-v1.5")
-    t2p_sft_sweep.add_argument("--max-descriptions", type=int, default=8)
-    t2p_sft_sweep.add_argument("--limit", type=int, default=20, help="training examples per task")
-    t2p_sft_sweep.add_argument("--batch-size", type=int, default=4)
-    t2p_sft_sweep.add_argument("--learning-rate", type=float, default=1e-3)
-    t2p_sft_sweep.add_argument("--max-grad-norm", type=float, default=1.0)
-    t2p_sft_sweep.add_argument("--l2-reg-generated-w", type=float, default=1e-3)
-    t2p_sft_sweep.add_argument("--seed", type=int, default=777)
-    t2p_sft_sweep.add_argument("--device", default="cuda:0")
-    t2p_sft_sweep.add_argument(
+    t2a_sft_sweep.add_argument("--condition-encoder", default="Alibaba-NLP/gte-large-en-v1.5")
+    t2a_sft_sweep.add_argument("--max-descriptions", type=int, default=8)
+    t2a_sft_sweep.add_argument("--limit", type=int, default=20, help="training examples per task")
+    t2a_sft_sweep.add_argument("--batch-size", type=int, default=4)
+    t2a_sft_sweep.add_argument("--learning-rate", type=float, default=1e-3)
+    t2a_sft_sweep.add_argument("--max-grad-norm", type=float, default=1.0)
+    t2a_sft_sweep.add_argument("--l2-reg-generated-w", type=float, default=1e-3)
+    t2a_sft_sweep.add_argument("--seed", type=int, default=777)
+    t2a_sft_sweep.add_argument("--device", default="cuda:0")
+    t2a_sft_sweep.add_argument(
         "--eval-descriptions",
-        default=str(T2L_EVAL_DESCRIPTIONS),
-        help="see 't2p-sft-pilot --eval-descriptions'",
+        default=str(T2A_EVAL_DESCRIPTIONS),
+        help="see 't2a-sft-pilot --eval-descriptions'",
     )
-    t2p_sft_sweep.add_argument("--eval-tasks", default="boolq,hellaswag")
-    t2p_sft_sweep.add_argument("--eval-limit", type=int, default=40, help="eval examples per family")
-    t2p_sft_sweep.add_argument("--eval-variant", type=int, default=0)
-    t2p_sft_sweep.add_argument("--eval-split", default="test")
-    t2p_sft_sweep.add_argument(
+    t2a_sft_sweep.add_argument("--eval-tasks", default="boolq,hellaswag")
+    t2a_sft_sweep.add_argument("--eval-limit", type=int, default=40, help="eval examples per family")
+    t2a_sft_sweep.add_argument("--eval-variant", type=int, default=0)
+    t2a_sft_sweep.add_argument("--eval-split", default="test")
+    t2a_sft_sweep.add_argument(
         "--use-icl", action="store_true", help="see 'run' subcommand's --use-icl"
     )
-    t2p_sft_sweep.add_argument("--output", default="results/t2p_sft_sweep")
-    t2p_sft_sweep.set_defaults(func=_t2p_sft_sweep_command)
+    t2a_sft_sweep.add_argument("--output", default="results/t2a_sft_sweep")
+    t2a_sft_sweep.set_defaults(func=_t2a_sft_sweep_command)

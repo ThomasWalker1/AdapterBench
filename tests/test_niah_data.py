@@ -3,7 +3,7 @@ import random
 import pytest
 import torch
 
-from adapterbench.t2p.niah_data import (
+from adapterbench.t2a.niah_data import (
     NUMERIC_DECOY_STYLE,
     DocSFTDataset,
     assert_context_fits_in_one_pass,
@@ -72,7 +72,7 @@ def test_make_niah_example_is_deterministic_given_the_same_rng_seed():
 def test_numeric_decoy_needle_has_one_target_and_distinct_irrelevant_codes(monkeypatch):
     tokenizer = FakeTokenizer()
     monkeypatch.setattr(
-        "adapterbench.t2p.niah_data._realistic_filler_pool",
+        "adapterbench.t2a.niah_data._realistic_filler_pool",
         lambda _tokenizer: (("A realistic distractor sentence.",) * 64, (4,) * 64),
     )
     example = make_niah_example(
@@ -106,7 +106,7 @@ def test_assert_context_fits_in_one_pass_rejects_lengths_beyond_the_limit():
 
 
 def test_build_niah_eval_examples_families_track_the_requested_lengths():
-    # The decoupled-eval-length contract d2p-niah's --eval-context-lengths relies on:
+    # The decoupled-eval-length contract d2a-niah's --eval-context-lengths relies on:
     # eval families come from the eval-length list, independent of any training length,
     # so "train short, eval a longer sweep" produces exactly one bin per eval length.
     tokenizer = FakeTokenizer()

@@ -1,13 +1,13 @@
 #!/bin/bash
-# Hand an in-flight seed-3 T2L run from Codex PTYs to the official detached
+# Hand an in-flight seed-3 T2A run from Codex PTYs to the official detached
 # reproduce wrapper at the durable step-15k checkpoint.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
 HPID="${1:?need current hyper torchrun PID}"
 SPID="${2:?need current static torchrun PID}"
-HY="results/repro/t2l_base_diag/gemma2b_stripdef_hyper/s3"
-ST="results/repro/t2l_base_diag/gemma2b_stripdef_static/s3"
+HY="results/repro/t2a_base_diag/gemma2b_stripdef_hyper/s3"
+ST="results/repro/t2a_base_diag/gemma2b_stripdef_static/s3"
 HSNAP="$HY/snapshots/step15000.pt"
 SSNAP="$ST/snapshots/step15000.pt"
 
@@ -32,5 +32,5 @@ done
 sleep 30
 
 echo "[$(date)] restarting seed 3 in this detached tmux session"
-scripts/reproduce/task_t2l_lora.sh 3 0,1,2,3 4,5,6,7
+scripts/reproduce/task_t2a_lora.sh 3 0,1,2,3 4,5,6,7
 echo "[$(date)] detached seed-3 training and held-out evaluations complete"

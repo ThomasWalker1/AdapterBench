@@ -4,7 +4,7 @@ The command implementations live in per-topic modules; this file only builds the
 argument parser and dispatches. Console entry point is `adapterbench.cli:main`.
 
 - meta.py          catalog / validate / matrix / doctor / peft-smoke
-- live_sft.py      t2p-sft / t2p-sft-pilot / d2p-niah / t2p-sft-sweep
+- live_sft.py      t2a-sft / t2a-sft-pilot / d2a-niah / t2a-sft-sweep
 """
 
 from __future__ import annotations

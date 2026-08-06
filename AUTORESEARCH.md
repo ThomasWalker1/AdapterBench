@@ -51,7 +51,7 @@ trial. It must include:
 ```json
 {
   "phase": "scale_locator",
-  "setting": "d2l",
+  "setting": "d2a",
   "codec": "ia3",
   "seed": 777,
   "free_hparams": {"scale": 32, "learning_rate": 0.00004, "warmup_frac": 0.03, "steps": 12000},
@@ -126,7 +126,7 @@ When a setting is expensive, use checkpointed common-budget rungs rather than gi
 candidate the full budget. A candidate's optimizer, scheduler, and generated-adapter state
 must resume from the same checkpoint at each promotion; do not restart it at a later rung.
 
-For D2L, the standard locator rungs are 8k, 16k, and 36k steps. Evaluate at rung boundaries,
+For D2A, the standard locator rungs are 8k, 16k, and 36k steps. Evaluate at rung boundaries,
 apply the shortest in-distribution helpfulness/control gate, and promote by the declared controlled
 hard-length AUC. Keep at least three candidates after the first rung and one after the second;
 then run fresh three-seed confirmation only for the selected final configuration. Use a fixed
@@ -190,7 +190,7 @@ The result is eligible for a leaderboard row only if all are true:
 - exact commands, seeds, hyperparameters, provenance, and compact aggregate artifacts
   are recorded.
 
-Append both setting rows only after both T2L and D2L pass this protocol. A losing codec
+Append both setting rows only after both T2A and D2A pass this protocol. A losing codec
 is still published with its measured negative or null result. The human reviews the
 scratch artifacts, updates canonical compact metrics and leaderboards, runs drift checks,
 and creates the commit.
@@ -215,18 +215,18 @@ stability gate using its **existing** confirmation seeds — no re-run. A codec 
 the gate on its committed seeds keeps its row, and the audit is noted in its selection
 trail. Only a codec that *fails* the gate is re-selected under §2–§3b and re-confirmed.
 The comparison stays fair because the substrate is unchanged; the gate keys on training
-non-convergence, not on a setting's inherent metric variance (D2L retrieval's
+non-convergence, not on a setting's inherent metric variance (D2A retrieval's
 phase-transition spread across seeds is not a divergence).
 
 ## Setting-specific selection rules
 
 | Setting | Select on | Helpfulness floor | Required final evidence |
 |---|---|---|---|
-| T2L | Lowest `matched − static` held-out CE (negative is better) | matched CE lower than frozen CE | 21 held-out SNI tasks; CE primary and generation accuracy corroborating; same-shape static adapter for every candidate. |
-| D2L | Highest controlled hard-length score after passing the shortest in-distribution gate: normalized log-length AUC over every declared doubled evaluation length after that gate | matched accuracy at the shortest in-distribution length higher than frozen | realistic-prose numeric-decoy NIAH length curve through every declared hard bin; context-swap near zero at every reported length. |
+| T2A | Lowest `matched − static` held-out CE (negative is better) | matched CE lower than frozen CE | 21 held-out SNI tasks; CE primary and generation accuracy corroborating; same-shape static adapter for every candidate. |
+| D2A | Highest controlled hard-length score after passing the shortest in-distribution gate: normalized log-length AUC over every declared doubled evaluation length after that gate | matched accuracy at the shortest in-distribution length higher than frozen | realistic-prose numeric-decoy NIAH length curve through every declared hard bin; context-swap near zero at every reported length. |
 
-For T2L, train the conditioned hypernetwork and the same-shape static reference together
-for every candidate. For D2L, never select on language-model loss: retrieval can remain
+For T2A, train the conditioned hypernetwork and the same-shape static reference together
+for every candidate. For D2A, never select on language-model loss: retrieval can remain
 at chance after loss is nearly zero. The shortest in-distribution score establishes that the codec is
 helpful and condition-dependent; when it reaches a ceiling, it must not decide between
 otherwise viable configurations.

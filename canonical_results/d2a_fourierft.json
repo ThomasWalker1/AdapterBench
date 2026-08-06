@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "setting": "D2A",
+  "codec": "fourierft",
+  "display_name": "FourierFT",
+  "metric": "numeric_decoy_needle_retrieval_exact_match_accuracy",
+  "headline": {
+    "comparison": "matched_minus_control",
+    "control_name": "wrong_document_context_swap",
+    "matched": 0.65625,
+    "control": 0.0,
+    "value": 0.65625,
+    "variation": 0.3518922065064812,
+    "variation_kind": "population_standard_deviation",
+    "unit": "exact_match_accuracy",
+    "direction": "higher_is_better"
+  },
+  "seed_results": [
+    {"seed": 5301, "matched": 0.5625, "control": 0.0, "delta": 0.5625},
+    {"seed": 5302, "matched": 0.71875, "control": 0.0, "delta": 0.71875},
+    {"seed": 5303, "matched": 1.0, "control": 0.0, "delta": 1.0},
+    {"seed": 5304, "matched": 0.96875, "control": 0.0, "delta": 0.96875},
+    {"seed": 5305, "matched": 0.03125, "control": 0.0, "delta": 0.03125}
+  ],
+  "difficulty_curve": [
+    {"axis": 512, "matched": 0.65625, "control": 0.0, "delta": 0.65625},
+    {"axis": 1024, "matched": 0.6875, "control": 0.0, "delta": 0.6875},
+    {"axis": 2048, "matched": 0.7, "control": 0.0, "delta": 0.7},
+    {"axis": 4096, "matched": 0.65, "control": 0.0, "delta": 0.65},
+    {"axis": 8192, "matched": 0.63125, "control": 0.0, "delta": 0.63125},
+    {"axis": 16384, "matched": 0.5625, "control": 0.0, "delta": 0.5625},
+    {"axis": 32768, "matched": 0.58125, "control": 0.0, "delta": 0.58125}
+  ],
+  "summary": {
+    "crossover_length": 32768,
+    "training_length": 512,
+    "numeric_decoy_count": 4,
+    "tail_log_auc": 0.635625,
+    "tail_log_auc_variation": 0.33848005849680424
+  },
+  "free_hyperparameters": {"scale": "4", "learning_rate": "2e-5", "warmup_steps": 1080, "steps": 36000},
+  "fixed_shape_parameters": {
+    "target_modules": ["down_proj"],
+    "factorization": "fixed seeded 2D orthonormal DCT-II frequency-pair basis",
+    "generated_scalars_per_layer": 32768,
+    "generated_scalars_all_layers": 917504,
+    "n_freqs_rule": "8 * (in_features + out_features)",
+    "n_latents": 208,
+    "num_blocks": 8
+  },
+  "selection_trail": {
+    "protocol": "AUTORESEARCH.md",
+    "state_artifacts": [
+      {"path": "results/autoresearch/d2a/fourierft/state.jsonl", "sha256": "37482351c405d8530a37e753016bc78b05e33c6f059270ccb193bbbbf1285e43"}
+    ],
+    "summary": "The scale ladder at seed 5201 promoted scale 4 at 16k steps. Its lower geometric LR neighbor 2e-5 beat 4e-5 and 8e-5, then improved to tail AUC 0.659 at the 36k rung. The three-selection-seed stability gate compared LR 2e-5 with 4e-5: 2e-5 had the better mean tail AUC (0.778 vs 0.743) and much lower population SD (0.070 vs 0.359), with 3/3 finite runs for both. Five disjoint confirmations (5301–5305) were finite; seed 5305 exposed substantial retrieval-phase variance rather than numerical divergence."
+  },
+  "provenance": {
+    "models": [{"model_id": "Qwen/Qwen3-0.6B", "revision": "c1899de289a04d12100db370d81485cdf75e47ca"}],
+    "data": [{"path": "src/adapterbench/t2a/niah_data.py", "sha256": "cd94ccb04880c06315c7f545f762e102ddf498017c37adee4c66af1be4bb1042"}],
+    "source_artifacts": [
+      {"seed": 5301, "path": "results/repro/d2a_numeric_decoy/fourierft/s5301/results.jsonl", "sha256": "5fda45f6d5a72667a9ab053e95a096d618fe4bcbd1db4e5be69b11f3c8ee252a"},
+      {"seed": 5302, "path": "results/repro/d2a_numeric_decoy/fourierft/s5302/results.jsonl", "sha256": "7a49c542d73557dd0bd7fd47e5a4f50e0843fcae396523e5fb98bfc1f90ac60a"},
+      {"seed": 5303, "path": "results/repro/d2a_numeric_decoy/fourierft/s5303/results.jsonl", "sha256": "ab5451bf0bd27e01d359aee66d204f0c5916c78706338721d9bbedf998c80f1b"},
+      {"seed": 5304, "path": "results/repro/d2a_numeric_decoy/fourierft/s5304/results.jsonl", "sha256": "7fab321007046027626c63084d315143750e5e47f2c0a928ef647389534a3731"},
+      {"seed": 5305, "path": "results/repro/d2a_numeric_decoy/fourierft/s5305/results.jsonl", "sha256": "77547423b0f9fe0a1e08fca11b95e6f0d000523c1e2b3b1aae971ccbe17dc6c3"}
+    ],
+    "environment": {"python": "3.11.15", "lockfile_sha256": "f46fdbf77957f9b28555a9890c004d5ac5440c99822aa646c8884c815aec3762"}
+  },
+  "reproduction": {
+    "script": "document_niah_numeric_decoy_fourierft_all.sh",
+    "smoke": ".venv/bin/adapterbench d2a-niah --adapters fourierft --fourierft-scaling 1 --needle-style realistic_numeric_decoys --numeric-decoy-count 4 --context-lengths 512 --eval-context-lengths 512 --num-train-documents 2 --steps 1 --eval-every 1 --learning-rate 4e-5 --warmup-steps 1 --n-latents 208 --num-blocks 8 --eval-limit 1 --eval-seed 5300 --seed 5200 --device cuda:0 --output results/autoresearch/d2a/fourierft/smoke",
+    "full": "bash scripts/reproduce/document_niah_numeric_decoy_fourierft.sh cuda:0 5301",
+    "aggregate": ".venv/bin/python scripts/d2a_niah_aggregate.py --root results/repro/d2a_numeric_decoy/fourierft --min-seeds 5 --train-length 512"
+  }
+}

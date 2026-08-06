@@ -1,7 +1,7 @@
 """Tests for the Doc-to-LoRA-parity early-exit + Perceiver-IO generation path
 (EarlyExitPerceiverConditioner / capture_early_exit_representation) and the generic-needle
 NIAH data it trains on. The mechanism (this path learns held-out NIAH retrieval where the
-per-layer conditioner did not) is validated end-to-end by the d2p-niah run; these are the
+per-layer conditioner did not) is validated end-to-end by the d2a-niah run; these are the
 unit-level shape/wiring/gradient checks."""
 import random
 
@@ -9,13 +9,13 @@ import pytest
 import torch
 from torch import nn
 
-from adapterbench.t2p.document_conditioning import (
+from adapterbench.t2a.document_conditioning import (
     EarlyExitPerceiverConditioner,
     EarlyExitRepresentation,
     capture_early_exit_representation,
 )
-from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork
-from adapterbench.t2p.niah_data import (
+from adapterbench.t2a.hypernetwork import TextToPeftHypernetwork
+from adapterbench.t2a.niah_data import (
     DocSFTDataset,
     build_generic_query_prompt,
     build_query_for_example,

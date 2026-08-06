@@ -3,9 +3,9 @@ from types import SimpleNamespace
 import torch
 from torch import nn
 
-from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-from adapterbench.t2p.live_evaluator import DocumentHypernetworkDownstreamEvaluator
-from adapterbench.t2p.niah_data import NiahExample
+from adapterbench.t2a.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+from adapterbench.t2a.live_evaluator import DocumentHypernetworkDownstreamEvaluator
+from adapterbench.t2a.niah_data import NiahExample
 
 
 class _StubConditioner(nn.Module):

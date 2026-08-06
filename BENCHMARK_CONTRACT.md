@@ -20,7 +20,7 @@ question is whether an adapter's relative behavior repeats across protocols.
    scores that task's held-out examples.
 4. `EvaluationResult` records downstream metrics plus resource measurements.
 
-This artifact boundary accommodates the live-hook SFT mechanism used by both T2L and D2L
+This artifact boundary accommodates the live-hook SFT mechanism used by both T2A and D2A
 without pretending their conditioners are identical.
 
 ## Required evaluation invariants
@@ -28,11 +28,11 @@ without pretending their conditioners are identical.
 Every leaderboard entry satisfies the same four rules:
 
 1. **Use a behavioral metric with a built-in control.** The headline is always
-   `matched - control`, never training or reconstruction loss. T2L uses a mismatched
-   same-shape static adapter and D2L uses a context-swapped document.
+   `matched - control`, never training or reconstruction loss. T2A uses a mismatched
+   same-shape static adapter and D2A uses a context-swapped document.
 2. **Sweep adapter scale.** Report the shape at its best measured scale so a comparison
    does not merely rank incompatible defaults.
-3. **Include a graded difficulty axis.** D2L reports length generalization and T2L
+3. **Include a graded difficulty axis.** D2A reports length generalization and T2A
    reports across task families with different frozen headroom. A setting where every
    shape saturates is not discriminative.
 4. **Run at least three seeds.** Report mean and spread, including failures and

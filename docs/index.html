@@ -115,9 +115,9 @@
     <p class="lead">Each fixes a frozen interpreter and the hypernetwork shell, and differs only in what the hypernetwork is conditioned on and how the adapter is scored. Every headline is <span class="mono">matched − control</span>, never raw performance.</p>
     <div class="cards">
       <div class="card">
-        <span class="tag">T2L</span>
+        <span class="tag">T2A</span>
         <h3>Task-conditioned</h3>
-        <div class="sub">Text-to-LoRA · gemma-2-2b</div>
+        <div class="sub">Text-to-Adapter · gemma-2-2b</div>
         <dl>
           <dt>Conditioned on</dt><dd>a free-text task description</dd>
           <dt>Adapter should</dt><dd>install a whole task — with the task <em>definition stripped from the input</em>, so the description is the only route to it</dd>
@@ -126,9 +126,9 @@
         </dl>
       </div>
       <div class="card">
-        <span class="tag">D2L</span>
+        <span class="tag">D2A</span>
         <h3>Document-conditioned</h3>
-        <div class="sub">Doc-to-LoRA · NIAH · Qwen3-0.6B</div>
+        <div class="sub">Doc-to-Adapter · NIAH · Qwen3-0.6B</div>
         <dl>
           <dt>Conditioned on</dt><dd>cross-attention over the interpreter's own activations for a document</dd>
           <dt>Adapter should</dt><dd>retrieve information from that one document</dd>
@@ -143,7 +143,7 @@
 <section id="negative-results">
   <div class="wrap">
     <h2>Negative results are results</h2>
-    <p class="lead">Several plausible settings failed the same controls that validate T2L and D2L. Standard input-visible Text-to-LoRA did not reliably beat junk descriptions; prompt-conditioned image tilting did not beat shuffled prompts; selective erasure became broad suppression; and a reference-image identity oracle remained at chance.</p>
+    <p class="lead">Several plausible settings failed the same controls that validate T2A and D2A. Standard input-visible Text-to-LoRA did not reliably beat junk descriptions; prompt-conditioned image tilting did not beat shuffled prompts; selective erasure became broad suppression; and a reference-image identity oracle remained at chance.</p>
     <div class="premise">
       These experiments are excluded from the active benchmark surface, but their measurements and failure modes are preserved in <a href="https://github.com/ThomasWalker1/AdapterBench/blob/main/NEGATIVE_RESULTS.md"><b>NEGATIVE_RESULTS.md</b></a>. The record distinguishes a failed shuffle audit from a failed capacity gate and from a method that had no per-instance condition to shuffle.
     </div>
@@ -156,32 +156,33 @@
     <p class="lead">One board per setting. Each entry is a codec at its own best free hyperparameters (scale, lr, warmup, steps), over ≥3 seeds where noted; the shared substrate and the shape-identity hyperparameter (rank) are fixed. Settings are never pooled — the cross-setting question is whether a codec's <em>relative</em> behavior repeats.</p>
 
     <div class="lb">
-      <div class="lb-head"><h3>T2L — task-conditioned</h3><div class="metric"><b>matched − static</b> · cross-entropy in nats, <b>more negative is better</b></div></div>
+      <div class="lb-head"><h3>T2A — task-conditioned</h3><div class="metric"><b>matched − static</b> · cross-entropy in nats, <b>more negative is better</b></div></div>
       <div class="tablescroll"><table>
         <thead><tr><th>Shape</th><th>rank</th><th>scale</th><th>lr</th><th>steps</th><th>seeds</th><th>matched − static (CE)</th><th>matched − frozen</th><th>accuracy m−static / m−frozen</th></tr></thead>
         <tbody>
-<!-- canonical-results:t2l-html:start -->
+<!-- canonical-results:t2a-html:start -->
 <tr><td>LoRA <span class="baseline-badge">baseline</span></td><td>8</td><td>22.627417</td><td>1e-4</td><td>8 000</td><td>3</td><td class="headline">−0.571 ± 0.045 <span class="muted">(54/63 task-seed pairs)</span></td><td>−11.21 ± 0.07</td><td>−0.0050 ± 0.0278 / +0.158</td></tr>
 <tr><td>FourierFT</td><td>—</td><td>16</td><td>1e-4</td><td>6 000</td><td>3</td><td class="headline">−0.525 ± 0.064 <span class="muted">(55/63 task-seed pairs)</span></td><td>−11.01 ± 0.08</td><td>−0.0129 ± 0.0156 / +0.105</td></tr>
 <tr><td>(IA)³</td><td>—</td><td>16</td><td>4e-4</td><td>8 000</td><td>3</td><td class="headline">−0.381 ± 0.023 <span class="muted">(48/63 task-seed pairs)</span></td><td>−11.31 ± 0.06</td><td>+0.0562 ± 0.0087 / +0.150</td></tr>
 <tr><td>LoKr</td><td>—</td><td>16</td><td>1e-4</td><td>6 000</td><td>3</td><td class="headline">−0.403 ± 0.172 <span class="muted">(49/63 task-seed pairs)</span></td><td>−11.36 ± 0.09</td><td>+0.0443 ± 0.0208 / +0.127</td></tr>
-<!-- canonical-results:t2l-html:end -->
+<!-- canonical-results:t2a-html:end -->
         </tbody>
       </table></div>
-      <div class="invite">Reproduce: <span class="mono">task_t2l_lora.sh</span> (seeds 1801–1803) or <span class="mono">task_t2l_ia3.sh</span> (seeds 1901–1903), each with &lt;seed&gt; &lt;gpus_hyper&gt; &lt;gpus_static&gt;.</div>
+      <div class="invite">Reproduce: <span class="mono">task_t2a_lora.sh</span> (seeds 1801–1803) or <span class="mono">task_t2a_ia3.sh</span> (seeds 1901–1903), each with &lt;seed&gt; &lt;gpus_hyper&gt; &lt;gpus_static&gt;.</div>
     </div>
 
     <div class="lb">
-      <div class="lb-head"><h3>D2L — document-conditioned (NIAH)</h3><div class="metric"><b>matched − control</b> · retrieval accuracy, higher is better</div></div>
+      <div class="lb-head"><h3>D2A — document-conditioned (NIAH)</h3><div class="metric"><b>matched − control</b> · retrieval accuracy, higher is better</div></div>
       <div class="tablescroll"><table>
         <thead><tr><th>Shape</th><th>scale</th><th>lr</th><th>steps</th><th>seeds</th><th>accuracy</th><th>ctx-swap</th><th>matched − control</th></tr></thead>
         <tbody>
-<!-- canonical-results:d2l-html:start -->
+<!-- canonical-results:d2a-html:start -->
 <tr><td>LoRA (r=8) <span class="baseline-badge">baseline</span></td><td>100</td><td>4e-5</td><td>32,000</td><td>5</td><td>0.556 ± 0.327</td><td>0.000</td><td class="headline">+0.556 ± 0.327</td></tr>
 <tr><td>FourierFT</td><td>4</td><td>2e-5</td><td>36,000</td><td>5</td><td>0.656 ± 0.352</td><td>0.000</td><td class="headline">+0.656 ± 0.352</td></tr>
 <tr><td>(IA)³</td><td>64</td><td>2e-5</td><td>32,000</td><td>5</td><td>0.738 ± 0.327</td><td>0.000</td><td class="headline">+0.738 ± 0.327</td></tr>
 <tr><td>LoKr</td><td>16</td><td>2e-5</td><td>36,000</td><td>5</td><td>0.981 ± 0.037</td><td>0.000</td><td class="headline">+0.981 ± 0.037</td></tr>
-<!-- canonical-results:d2l-html:end -->
+<tr><td>steering</td><td>32</td><td>2e-5</td><td>32,000</td><td>5</td><td>0.881 ± 0.050</td><td>0.000</td><td class="headline">+0.881 ± 0.050</td></tr>
+<!-- canonical-results:d2a-html:end -->
         </tbody>
       </table></div>
       <div class="invite">In-distribution (512 tok), four numeric decoys. Length-generalization crossover: LoRA 8192 = 16×; FourierFT, (IA)³, and LoKr 32768 = 64×. Reproduce: <span class="mono">scripts/reproduce/document_niah_numeric_decoy_lora.sh</span>, <span class="mono">scripts/reproduce/document_niah_numeric_decoy_fourierft_all.sh</span>, <span class="mono">scripts/reproduce/document_niah_numeric_decoy_ia3.sh</span>, and <span class="mono">scripts/reproduce/document_niah_numeric_decoy_lokr_all.sh</span></div>
@@ -196,7 +197,7 @@
     <h2>Add a codec</h2>
     <p class="lead">A new adapter shape needs two things: an output structure (how many numbers the hypernetwork emits and how they become an update) and a hook site. Everything else — trunk, data, loop, evaluator, controls — is shared, and that is the whole point.</p>
     <ol class="steps">
-      <li><b>Subclass <span class="mono">GeneratedUpdateCodec</span></b><span class="muted">in <span class="mono">src/adapterbench/t2p/codecs.py</span>: <span class="mono">output_size</span>, <span class="mono">apply(...)</span>, <span class="mono">dense_delta(...)</span>, and <span class="mono">initial_bias()</span> (only if <span class="mono">apply</span> is bilinear in the generated params).</span></li>
+      <li><b>Subclass <span class="mono">GeneratedUpdateCodec</span></b><span class="muted">in <span class="mono">src/adapterbench/t2a/codecs.py</span>: <span class="mono">output_size</span>, <span class="mono">apply(...)</span>, <span class="mono">dense_delta(...)</span>, and <span class="mono">initial_bias()</span> (only if <span class="mono">apply</span> is bilinear in the generated params).</span></li>
       <li><b>Register it</b><span class="muted">add one entry to the <span class="mono">constructors</span> dict in <span class="mono">make_codec</span>, and a manifest under <span class="mono">configs/adapters/</span>.</span></li>
       <li><b>Run each setting</b><span class="muted">at the codec's own best free hyperparameters over ≥3 seeds, via the setting's reproduce script.</span></li>
       <li><b>Submit a leaderboard row</b><span class="muted">the shape, its free HPs, <span class="mono">matched − control ± std</span>, seed count, and the exact reproduce command.</span></li>

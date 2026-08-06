@@ -2,8 +2,8 @@
 
 AdapterBench supports exactly two language settings:
 
-- T2L task-description conditioning;
-- D2L document conditioning.
+- T2A task-description conditioning;
+- D2A document conditioning.
 
 ## Environment
 
@@ -29,46 +29,46 @@ device-isolated sandbox or container. Confirm that `/dev/nvidia0` and
 
 `environment.yml` is a legacy optional reference. The `uv` environment is authoritative.
 
-## T2L
+## T2A
 
-T2L data is vendored under `data/t2l/`: per-task metadata, the 479-task decontaminated
+T2A data is vendored under `data/t2a/`: per-task metadata, the 479-task decontaminated
 training split, and held-out task descriptions. No upstream clone is required.
 
 Small plumbing run:
 
 ```bash
-uv run adapterbench t2p-sft \
+uv run adapterbench t2a-sft \
   --device cuda:0 \
   --tasks lol_022 \
   --adapter lora \
   --steps 60 \
-  --output results/t2p_sft/smoke_lol022_lora.json
+  --output results/t2a_sft/smoke_lol022_lora.json
 ```
 
 Canonical one-seed baseline:
 
 ```bash
-bash scripts/reproduce/task_t2l_lora.sh 777 0,1,2,3 4,5,6,7
+bash scripts/reproduce/task_t2a_lora.sh 777 0,1,2,3 4,5,6,7
 ```
 
 Full reference reproduction (three sequential restart-safe seeds, then aggregation):
 
 ```bash
-bash scripts/reproduce/task_t2l_lora_all.sh 0,1,2,3 4,5,6,7
+bash scripts/reproduce/task_t2a_lora_all.sh 0,1,2,3 4,5,6,7
 ```
 
 The held-out-SNI evaluations use local cached model/data files and must run with
 `HF_HUB_OFFLINE=1`; the reproduction script sets it.
 
-## D2L
+## D2A
 
-D2L creates deterministic synthetic needle-in-a-haystack examples locally and uses
+D2A creates deterministic synthetic needle-in-a-haystack examples locally and uses
 realistic cached prose as distractors. No Doc-to-LoRA clone is required.
 
 Small plumbing run:
 
 ```bash
-uv run adapterbench d2p-niah \
+uv run adapterbench d2a-niah \
   --adapters lora \
   --steps 20 \
   --grad-accum-steps 1 \
@@ -76,7 +76,7 @@ uv run adapterbench d2p-niah \
   --num-train-documents 40 \
   --eval-limit 10 \
   --device cuda:0 \
-  --output results/d2p_niah_smoke
+  --output results/d2a_niah_smoke
 ```
 
 Canonical baseline:
@@ -93,18 +93,18 @@ does not contain comparable timing measurements.
 Scale locator:
 
 ```bash
-bash scripts/d2l_scale_sweep.sh
+bash scripts/d2a_scale_sweep.sh
 ```
 
 ## Manifest and GPU checks
 
-Build a T2L trial matrix:
+Build a T2A trial matrix:
 
 ```bash
 adapterbench matrix \
-  --setup text_to_peft_gemma2b_sft \
+  --setup text_to_adapter_gemma2b_sft \
   --adapters lora_r8 \
-  --output runs/text_to_peft_gemma2b_sft/trials.json
+  --output runs/text_to_adapter_gemma2b_sft/trials.json
 ```
 
 Materialize a generated LoRA and execute one frozen-interpreter forward pass:
@@ -121,4 +121,4 @@ Trial IDs hash the complete setup and adapter manifests. Changing a model revisi
 split, objective, or PEFT parameter creates a new ID.
 
 For multi-GPU runs use one process per A100 and BF16. Write one result directory per
-immutable trial ID, and never pool absolute task scores across T2L and D2L.
+immutable trial ID, and never pool absolute task scores across T2A and D2A.

@@ -1,0 +1,65 @@
+schema_version: 1
+name: text_to_adapter_gemma2b_sft
+description: Task-description-conditioned live SFT with the task definition stripped from the frozen interpreter input.
+protocol: generic_text_to_adapter
+availability: runnable
+runner: adapterbench.t2a
+sources:
+  - name: originating_method
+    uri: https://github.com/SakanaAI/text-to-lora
+    revision: main
+models:
+  condition_encoder:
+    model_id: Alibaba-NLP/gte-large-en-v1.5
+    revision: 104333d6af6f97649377c2afbde10a7704870c7b
+    frozen: true
+    dtype: bfloat16
+  interpreter:
+    model_id: google/gemma-2-2b-it
+    revision: 299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8
+    frozen: true
+    dtype: bfloat16
+conditioning:
+  kind: task_description
+  encoder: Alibaba-NLP/gte-large-en-v1.5
+  pooling: sentence_embedding
+  fields: [task_description]
+dataset:
+  source: local
+  dataset_id: data/t2a
+  train_split: decontaminated_479_tasks
+  validation_split: heldout_sni_21_tasks
+  test_splits: [heldout_sni]
+  task_id_field: dataset_name
+  family_field: benchmark_family
+  condition_field: task_description
+  input_field: definition_stripped_problem
+  target_field: answer
+  holdout_unit: task
+objective:
+  kind: downstream
+  downstream_weight: 1.0
+  reconstruction_weight: 0.0
+evaluation:
+  primary_metric: matched_minus_static_teacher_forced_ce
+  metrics: [teacher_forced_ce, generation_accuracy, matched_minus_static, matched_minus_frozen]
+  baselines: [same_shape_static_adapter, frozen_interpreter]
+  report_by: [task, seed, adapter]
+  generation:
+    use_icl: false
+    num_fewshot: 0
+runtime:
+  launcher: torchrun
+  num_processes: 8
+  mixed_precision: bf16
+  gradient_checkpointing: true
+fixed_controls:
+  - frozen gte-large-en-v1.5 condition encoder
+  - frozen gemma-2-2b interpreter
+  - definitions stripped from interpreter inputs
+  - vendored 479-task decontaminated training split
+  - 21 held-out SNI tasks
+  - same-shape static adapter trained on identical data and loss
+notes:
+  - Run through `scripts/reproduce/task_t2a_lora.sh`.
+  - Teacher-forced matched-minus-static CE is primary; generation accuracy is corroborating.

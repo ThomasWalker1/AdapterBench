@@ -1,10 +1,10 @@
 """Vendor metadata.yaml for the held-out SNI eval tasks that ship without it.
 
-Of T2L's 21 held-out `lol_###` validation tasks (`eval_ds_info` in the decontam yaml), only 10 have a
-vendored `data/t2l/tasks/<id>/metadata.yaml`. The other 11 have their 3 held-out descriptions in
+Of T2A's 21 held-out `lol_###` validation tasks (`eval_ds_info` in the decontam yaml), only 10 have a
+vendored `data/t2a/tasks/<id>/metadata.yaml`. The other 11 have their 3 held-out descriptions in
 `eval_ds_info` but no dataset kwargs. This resolves each to its `Lots-of-LoRAs/task###_*` Hub dataset,
 verifies it loads + preprocesses in the SNI convention, and writes a metadata.yaml matching the shipped
-schema so `t2p_eval_heldout_sni.py` can score the full 21. Descriptions come from `eval_ds_info` (the
+schema so `t2a_eval_heldout_sni.py` can score the full 21. Descriptions come from `eval_ds_info` (the
 canonical held-out eval descriptions); template/response_field match the vendored tasks.
 """
 from __future__ import annotations
@@ -18,14 +18,14 @@ from datasets import load_dataset
 from huggingface_hub import HfApi
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from adapterbench.cli._shared import T2L_DECONTAM_CONFIG  # noqa: E402
-from adapterbench.t2p.lol_data import preprocess_lol_example  # noqa: E402
+from adapterbench.cli._shared import T2A_DECONTAM_CONFIG  # noqa: E402
+from adapterbench.t2a.lol_data import preprocess_lol_example  # noqa: E402
 
-TASKS_ROOT = Path("data/t2l/tasks")
+TASKS_ROOT = Path("data/t2a/tasks")
 
 
 def main() -> None:
-    decontam = yaml.safe_load(Path(T2L_DECONTAM_CONFIG).read_text())
+    decontam = yaml.safe_load(Path(T2A_DECONTAM_CONFIG).read_text())
     eval_ds_info = decontam["eval_ds_info"]
     lol = [k for k in eval_ds_info if str(k).startswith("lol_")]
     missing = [t for t in lol if not (TASKS_ROOT / t / "metadata.yaml").exists()]

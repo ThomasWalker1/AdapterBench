@@ -4,8 +4,8 @@ import torch
 from torch import nn
 
 from adapterbench.contracts import TaskExample
-from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork
-from adapterbench.t2p.live_evaluator import HypernetworkDownstreamEvaluator
+from adapterbench.t2a.hypernetwork import TextToPeftHypernetwork
+from adapterbench.t2a.live_evaluator import HypernetworkDownstreamEvaluator
 
 
 class FakeDecoderLayer(nn.Module):

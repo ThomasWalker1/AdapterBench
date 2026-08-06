@@ -1,16 +1,16 @@
 import torch
 from torch import nn
 
-from adapterbench.t2p.document_conditioning import EarlyExitPerceiverConditioner
-from adapterbench.t2p.document_sft_trainer import (
+from adapterbench.t2a.document_conditioning import EarlyExitPerceiverConditioner
+from adapterbench.t2a.document_sft_trainer import (
     compute_doc_sft_loss,
     doc_train_step,
     train_doc_downstream_hypernetwork,
     train_doc_niah_checkpointed,
 )
-from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork
-from adapterbench.t2p.model_utils import get_decoder_layers
-from adapterbench.t2p.niah_data import DocSFTBatch
+from adapterbench.t2a.hypernetwork import TextToPeftHypernetwork
+from adapterbench.t2a.model_utils import get_decoder_layers
+from adapterbench.t2a.niah_data import DocSFTBatch
 
 
 def _toy_setup(seed=0, adapter="lora", target_modules=("q_proj",)):
@@ -27,7 +27,7 @@ def _toy_setup(seed=0, adapter="lora", target_modules=("q_proj",)):
     for parameter in interpreter.parameters():
         parameter.requires_grad = False
     layers = get_decoder_layers(interpreter)
-    from adapterbench.t2p.hypernetwork import infer_module_shapes
+    from adapterbench.t2a.hypernetwork import infer_module_shapes
 
     module_shapes = infer_module_shapes(layers, list(target_modules), hidden_size=hidden_size)
     latent_dim, task_dim = 16, 8
@@ -119,7 +119,7 @@ def _raw_doc_item(context_len, query_len, vocab_size, target_token):
 def test_train_doc_niah_checkpointed_evaluates_periodically_and_resumes(tmp_path):
     from functools import partial
 
-    from adapterbench.t2p.niah_data import doc_collate_fn
+    from adapterbench.t2a.niah_data import doc_collate_fn
 
     interpreter, layers, hypernetwork, vocab_size = _toy_setup()
     items = [_raw_doc_item(6, 5, vocab_size, target_token=(i % 3)) for i in range(4)]

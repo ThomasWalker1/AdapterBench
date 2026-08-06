@@ -2,7 +2,7 @@
 
 One leaderboard per setting. Each **entry is a shape (codec) together with the hyperparameters
 that produced its number**, and every entry is reproducible: run the recorded command against the
-codec in this repository (`src/adapterbench/t2p/codecs.py` + its manifest in `configs/adapters/`)
+codec in this repository (`src/adapterbench/t2a/codecs.py` + its manifest in `configs/adapters/`)
 and you regenerate the result up to seed variance.
 
 There is no automated search — hyperparameters are chosen per entry (by hand or by a sweep the

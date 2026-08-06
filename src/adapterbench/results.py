@@ -132,24 +132,24 @@ def _by_setting(records: list[dict[str, Any]], setting: str) -> list[dict[str, A
     return [record for record in records if record["setting"] == setting]
 
 
-def _t2l_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _t2a_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Keep the validated LoRA reference first, then sort explored codecs by name."""
-    selected = _by_setting(records, "T2L")
+    selected = _by_setting(records, "T2A")
     if not selected:
-        raise ResultValidationError("no canonical T2L records")
+        raise ResultValidationError("no canonical T2A records")
     return sorted(selected, key=lambda record: (record["codec"] != "lora_r8", record["codec"]))
 
 
-def _d2l_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _d2a_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Keep the validated LoRA reference first, then sort explored codecs by name."""
-    return sorted(_by_setting(records, "D2L"), key=lambda record: (record["codec"] != "lora_r8", record["codec"]))
+    return sorted(_by_setting(records, "D2A"), key=lambda record: (record["codec"] != "lora_r8", record["codec"]))
 
 
 def _display_name(record: dict[str, Any]) -> str:
     return str(record.get("display_name", record["codec"]))
 
 
-def _t2l_display_name(record: dict[str, Any]) -> str:
+def _t2a_display_name(record: dict[str, Any]) -> str:
     return "LoRA" if record["codec"] == "lora_r8" else _display_name(record)
 
 
@@ -158,140 +158,140 @@ def _signed(value: float, decimals: int) -> str:
 
 
 def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
-    t2l_records, d2l_records = _t2l_records(records), _d2l_records(records)
-    if not d2l_records:
-        raise ResultValidationError("no canonical D2L records")
-    if fragment == "t2l-markdown":
+    t2a_records, d2a_records = _t2a_records(records), _d2a_records(records)
+    if not d2a_records:
+        raise ResultValidationError("no canonical D2A records")
+    if fragment == "t2a-markdown":
         lines = [
             "| Shape | rank | scale | lr | steps | seeds | **matched − static (CE, nats)** | matched − frozen | accuracy m−static / m−frozen |",
             "|---|:---:|:---:|:---:|---:|:---:|:---:|:---:|:---:|",
         ]
-        for t2l in t2l_records:
-            th, hp = t2l["headline"], t2l["free_hyperparameters"]
-            rank = t2l["fixed_shape_parameters"].get("rank", "—")
+        for t2a in t2a_records:
+            th, hp = t2a["headline"], t2a["free_hyperparameters"]
+            rank = t2a["fixed_shape_parameters"].get("rank", "—")
             steps = f"{int(hp['steps']):,}".replace(",", " ")
-            frozen = t2l["summary"]["matched_minus_frozen"]
-            accuracy = t2l["summary"]["accuracy_matched_minus_static"]
+            frozen = t2a["summary"]["matched_minus_frozen"]
+            accuracy = t2a["summary"]["accuracy_matched_minus_static"]
             lines.append(
-                f"| {_t2l_display_name(t2l)} | {rank} | {hp['scale']} | {hp['learning_rate']} | {steps} | {len(t2l['seed_results'])} | "
-                f"**{_signed(th['value'], 3)} ± {th['variation']:.3f}** ({t2l['summary']['wins']}) | "
+                f"| {_t2a_display_name(t2a)} | {rank} | {hp['scale']} | {hp['learning_rate']} | {steps} | {len(t2a['seed_results'])} | "
+                f"**{_signed(th['value'], 3)} ± {th['variation']:.3f}** ({t2a['summary']['wins']}) | "
                 f"{_signed(frozen['value'], 2)} ± {frozen['variation']:.2f} | "
-                f"{_signed(accuracy['value'], 4)} ± {accuracy['variation']:.4f} / {_signed(t2l['summary']['accuracy_matched_minus_frozen'], 3)} |"
+                f"{_signed(accuracy['value'], 4)} ± {accuracy['variation']:.4f} / {_signed(t2a['summary']['accuracy_matched_minus_frozen'], 3)} |"
             )
         return "\n".join(lines)
-    if fragment == "t2l-selection-markdown":
+    if fragment == "t2a-selection-markdown":
         lines = [
             "| Shape | compact audit trail | selected final configuration |",
             "|---|---|---|",
         ]
-        for t2l in t2l_records:
-            trail = t2l.get("selection_trail")
+        for t2a in t2a_records:
+            trail = t2a.get("selection_trail")
             if trail is None:
-                lines.append(f"| {_t2l_display_name(t2l)} | not yet backfilled | — |")
+                lines.append(f"| {_t2a_display_name(t2a)} | not yet backfilled | — |")
                 continue
-            hp = t2l["free_hyperparameters"]
+            hp = t2a["free_hyperparameters"]
             ledgers = ", ".join(f"`{Path(item['path']).parent.name}/{Path(item['path']).name}`" for item in trail["state_artifacts"])
             selected = f"scale {hp['scale']}; lr {hp['learning_rate']}; {hp['steps']:,} steps"
-            lines.append(f"| {_t2l_display_name(t2l)} | {trail['summary']} State ledgers: {ledgers}. | {selected} |")
+            lines.append(f"| {_t2a_display_name(t2a)} | {trail['summary']} State ledgers: {ledgers}. | {selected} |")
         return "\n".join(lines)
-    if fragment == "d2l-markdown":
+    if fragment == "d2a-markdown":
         lines = [
             "| Shape | scale | lr | steps | seeds | accuracy | ctxswap | **matched − control** |",
             "|---|:---:|---:|---:|:---:|---:|---:|:---:|",
         ]
-        for d2l in d2l_records:
-            dh, hp = d2l["headline"], d2l["free_hyperparameters"]
+        for d2a in d2a_records:
+            dh, hp = d2a["headline"], d2a["free_hyperparameters"]
             lines.append(
-                f"| {_display_name(d2l)} | {hp['scale']} | {hp['learning_rate']} | "
-                f"{hp['steps']:,} | {len(d2l['seed_results'])} | {dh['matched']:.3f} ± {dh['variation']:.3f} | "
+                f"| {_display_name(d2a)} | {hp['scale']} | {hp['learning_rate']} | "
+                f"{hp['steps']:,} | {len(d2a['seed_results'])} | {dh['matched']:.3f} ± {dh['variation']:.3f} | "
                 f"{dh['control']:.3f} | **{_signed(dh['value'], 3)} ± {dh['variation']:.3f}** |"
             )
-        axes = " | ".join(str(point["axis"]) for point in d2l_records[0]["difficulty_curve"])
-        lines.extend(["", f"| eval len | {axes} |", "|---|" + "---|" * len(d2l_records[0]["difficulty_curve"])])
-        for d2l in d2l_records:
-            values = " | ".join(f"{point['delta']:.3f}" for point in d2l["difficulty_curve"])
-            lines.append(f"| matched − control ({_display_name(d2l)}) | {values} |")
-        trails = [record for record in d2l_records if record.get("selection_trail")]
+        axes = " | ".join(str(point["axis"]) for point in d2a_records[0]["difficulty_curve"])
+        lines.extend(["", f"| eval len | {axes} |", "|---|" + "---|" * len(d2a_records[0]["difficulty_curve"])])
+        for d2a in d2a_records:
+            values = " | ".join(f"{point['delta']:.3f}" for point in d2a["difficulty_curve"])
+            lines.append(f"| matched − control ({_display_name(d2a)}) | {values} |")
+        trails = [record for record in d2a_records if record.get("selection_trail")]
         if trails:
             lines.extend(["", "**Selection trail.**"])
-            for d2l in trails:
-                trail = d2l["selection_trail"]
+            for d2a in trails:
+                trail = d2a["selection_trail"]
                 ledgers = ", ".join(f"`{item['path']}`" for item in trail["state_artifacts"])
-                lines.append(f"- **{_display_name(d2l)}** — {trail['summary']} State ledger: {ledgers}.")
+                lines.append(f"- **{_display_name(d2a)}** — {trail['summary']} State ledger: {ledgers}.")
         return "\n".join(lines)
     if fragment == "release-summary-markdown":
-        t2l_summary = "; ".join(
-            f"{_t2l_display_name(t2l)} `matched − static = {_signed(t2l['headline']['value'], 3)} ± {t2l['headline']['variation']:.3f}`"
-            for t2l in t2l_records
+        t2a_summary = "; ".join(
+            f"{_t2a_display_name(t2a)} `matched − static = {_signed(t2a['headline']['value'], 3)} ± {t2a['headline']['variation']:.3f}`"
+            for t2a in t2a_records
         )
-        t2l_control = "; ".join(
-            f"{_t2l_display_name(t2l)} wins {t2l['summary']['wins']}" for t2l in t2l_records
+        t2a_control = "; ".join(
+            f"{_t2a_display_name(t2a)} wins {t2a['summary']['wins']}" for t2a in t2a_records
         )
-        d2l_summary = "; ".join(
-            f"{_display_name(d2l)}: `matched − context-swap = {_signed(d2l['headline']['value'], 3)} ± {d2l['headline']['variation']:.3f}`"
-            for d2l in d2l_records
+        d2a_summary = "; ".join(
+            f"{_display_name(d2a)}: `matched − context-swap = {_signed(d2a['headline']['value'], 3)} ± {d2a['headline']['variation']:.3f}`"
+            for d2a in d2a_records
         )
-        d2l_control = "; ".join(
-            f"{_display_name(d2l)} control `{d2l['headline']['control']:.3f}`" for d2l in d2l_records
+        d2a_control = "; ".join(
+            f"{_display_name(d2a)} control `{d2a['headline']['control']:.3f}`" for d2a in d2a_records
         )
         return "\n".join([
             "| setting | frozen interpreter | primary result | condition control |",
             "|---|---|---|---|",
-            f"| T2L | gemma-2-2b | {t2l_summary} nats CE (3 seeds each) | same-shape static control: {t2l_control} |",
-            f"| D2L | Qwen3-0.6B | {d2l_summary} exact-match | {d2l_control} |",
+            f"| T2A | gemma-2-2b | {t2a_summary} nats CE (3 seeds each) | same-shape static control: {t2a_control} |",
+            f"| D2A | Qwen3-0.6B | {d2a_summary} exact-match | {d2a_control} |",
         ])
     if fragment == "repro-summary-markdown":
         lines = [
             "| Setting | Script | Leaderboard | Headline |",
             "|---|---|---|---|",
         ]
-        for t2l in t2l_records:
-            th = t2l["headline"]
+        for t2a in t2a_records:
+            th = t2a["headline"]
             lines.append(
-                f"| Task (T2L) — {_t2l_display_name(t2l)} | `{t2l['reproduction']['script']} [GPUS_HYPER] [GPUS_STATIC]` | "
-                f"`task_conditioned_t2l.md` | matched − static = **{_signed(th['value'], 3)} ± {th['variation']:.3f}** "
-                f"nats CE ({t2l['summary']['wins']}, {len(t2l['seed_results'])} seeds) |"
+                f"| Task (T2A) — {_t2a_display_name(t2a)} | `{t2a['reproduction']['script']} [GPUS_HYPER] [GPUS_STATIC]` | "
+                f"`task_conditioned_t2a.md` | matched − static = **{_signed(th['value'], 3)} ± {th['variation']:.3f}** "
+                f"nats CE ({t2a['summary']['wins']}, {len(t2a['seed_results'])} seeds) |"
             )
-        for d2l in d2l_records:
-            dh = d2l["headline"]
-            decoys = d2l.get("summary", {}).get("numeric_decoy_count")
+        for d2a in d2a_records:
+            dh = d2a["headline"]
+            decoys = d2a.get("summary", {}).get("numeric_decoy_count")
             setting_label = (
                 f"realistic-prose, {decoys} numeric decoys" if decoys is not None else "realistic haystack"
             )
             lines.append(
-                f"| Document (NIAH) — {_display_name(d2l)} | `{d2l['reproduction']['script']} [DEVICE]` | "
-                f"`document_niah_d2l.md` | matched − ctxswap = **{_signed(dh['value'], 3)} ± {dh['variation']:.3f}** "
-                f"({len(d2l['seed_results'])} seeds, {setting_label}; crossover {d2l['summary']['crossover_length'] / d2l['summary']['training_length']:.0f}×) |"
+                f"| Document (NIAH) — {_display_name(d2a)} | `{d2a['reproduction']['script']} [DEVICE]` | "
+                f"`document_niah_d2a.md` | matched − ctxswap = **{_signed(dh['value'], 3)} ± {dh['variation']:.3f}** "
+                f"({len(d2a['seed_results'])} seeds, {setting_label}; crossover {d2a['summary']['crossover_length'] / d2a['summary']['training_length']:.0f}×) |"
             )
         return "\n".join(lines)
-    if fragment == "t2l-html":
+    if fragment == "t2a-html":
         rows = []
-        for t2l in t2l_records:
-            th, hp = t2l["headline"], t2l["free_hyperparameters"]
-            frozen = t2l["summary"]["matched_minus_frozen"]
-            accuracy = t2l["summary"]["accuracy_matched_minus_static"]
-            label = _t2l_display_name(t2l)
-            if t2l["codec"] == "lora_r8":
+        for t2a in t2a_records:
+            th, hp = t2a["headline"], t2a["free_hyperparameters"]
+            frozen = t2a["summary"]["matched_minus_frozen"]
+            accuracy = t2a["summary"]["accuracy_matched_minus_static"]
+            label = _t2a_display_name(t2a)
+            if t2a["codec"] == "lora_r8":
                 label += ' <span class="baseline-badge">baseline</span>'
-            rank = t2l["fixed_shape_parameters"].get("rank", "—")
+            rank = t2a["fixed_shape_parameters"].get("rank", "—")
             steps = f"{int(hp['steps']):,}".replace(",", " ")
             rows.append(
                 f'<tr><td>{label}</td><td>{rank}</td><td>{hp["scale"]}</td><td>{hp["learning_rate"]}</td>'
-                f'<td>{steps}</td><td>{len(t2l["seed_results"])}</td><td class="headline">{_signed(th["value"], 3)} ± {th["variation"]:.3f} '
-                f'<span class="muted">({t2l["summary"]["wins"]})</span></td><td>{_signed(frozen["value"], 2)} ± {frozen["variation"]:.2f}</td>'
-                f'<td>{_signed(accuracy["value"], 4)} ± {accuracy["variation"]:.4f} / {_signed(t2l["summary"]["accuracy_matched_minus_frozen"], 3)}</td></tr>'
+                f'<td>{steps}</td><td>{len(t2a["seed_results"])}</td><td class="headline">{_signed(th["value"], 3)} ± {th["variation"]:.3f} '
+                f'<span class="muted">({t2a["summary"]["wins"]})</span></td><td>{_signed(frozen["value"], 2)} ± {frozen["variation"]:.2f}</td>'
+                f'<td>{_signed(accuracy["value"], 4)} ± {accuracy["variation"]:.4f} / {_signed(t2a["summary"]["accuracy_matched_minus_frozen"], 3)}</td></tr>'
             )
         return "\n".join(rows)
-    if fragment == "d2l-html":
+    if fragment == "d2a-html":
         rows = []
-        for d2l in d2l_records:
-            dh, hp = d2l["headline"], d2l["free_hyperparameters"]
-            label = _display_name(d2l)
-            if d2l["codec"] == "lora_r8":
+        for d2a in d2a_records:
+            dh, hp = d2a["headline"], d2a["free_hyperparameters"]
+            label = _display_name(d2a)
+            if d2a["codec"] == "lora_r8":
                 label += ' <span class="baseline-badge">baseline</span>'
             rows.append(
                 f'<tr><td>{label}</td><td>{hp["scale"]}</td><td>{hp["learning_rate"]}</td><td>{hp["steps"]:,}</td>'
-                f'<td>{len(d2l["seed_results"])}</td><td>{dh["matched"]:.3f} ± {dh["variation"]:.3f}</td>'
+                f'<td>{len(d2a["seed_results"])}</td><td>{dh["matched"]:.3f} ± {dh["variation"]:.3f}</td>'
                 f'<td>{dh["control"]:.3f}</td><td class="headline">{_signed(dh["value"], 3)} ± {dh["variation"]:.3f}</td></tr>'
             )
         return "\n".join(rows)
@@ -300,13 +300,13 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
 
 def check_rendered_documents(records: list[dict[str, Any]], root: Path = REPO_ROOT) -> list[str]:
     targets = [
-        (root / "leaderboards/task_conditioned_t2l.md", "t2l-markdown"),
-        (root / "leaderboards/task_conditioned_t2l.md", "t2l-selection-markdown"),
-        (root / "leaderboards/document_niah_d2l.md", "d2l-markdown"),
+        (root / "leaderboards/task_conditioned_t2a.md", "t2a-markdown"),
+        (root / "leaderboards/task_conditioned_t2a.md", "t2a-selection-markdown"),
+        (root / "leaderboards/document_niah_d2a.md", "d2a-markdown"),
         (root / "PROJECT_PLAN.md", "release-summary-markdown"),
         (root / "scripts/reproduce/README.md", "repro-summary-markdown"),
-        (root / "docs/index.html", "t2l-html"),
-        (root / "docs/index.html", "d2l-html"),
+        (root / "docs/index.html", "t2a-html"),
+        (root / "docs/index.html", "d2a-html"),
     ]
     errors = []
     for path, fragment in targets:

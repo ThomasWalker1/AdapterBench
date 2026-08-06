@@ -5,7 +5,7 @@
   "required": ["schema_version", "setting", "codec", "metric", "headline", "seed_results", "difficulty_curve", "free_hyperparameters", "fixed_shape_parameters", "provenance", "reproduction"],
   "properties": {
     "schema_version": {"const": 1},
-    "setting": {"enum": ["T2L", "D2L"]},
+    "setting": {"enum": ["T2A", "D2A"]},
     "codec": {"type": "string"},
     "headline": {"type": "object"},
     "seed_results": {"type": "array", "minItems": 3},

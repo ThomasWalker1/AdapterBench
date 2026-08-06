@@ -2,8 +2,8 @@
 
 This is **AdapterBench**: it tests whether the *shape* of a hypernetwork-generated PEFT
 adapter matters under live end-to-end language-model SFT. It has exactly two active
-settings: task-description conditioning (T2L, gemma-2-2b) and document conditioning
-(D2L, Qwen3-0.6B). LoRA is the baseline codec; new representations are added and
+settings: task-description conditioning (T2A, gemma-2-2b) and document conditioning
+(D2A, Qwen3-0.6B). LoRA is the baseline codec; new representations are added and
 evaluated one at a time across both settings (registered so far: lora, ia3, lokr, loha,
 fourierft, steering).
 

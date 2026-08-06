@@ -4,9 +4,9 @@ import pytest
 import torch
 from torch import nn
 
-from adapterbench.t2p.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
-from adapterbench.t2p.model_utils import get_decoder_layers
-from adapterbench.t2p.sft_trainer import (
+from adapterbench.t2a.hypernetwork import TextToPeftHypernetwork, infer_module_shapes
+from adapterbench.t2a.model_utils import get_decoder_layers
+from adapterbench.t2a.sft_trainer import (
     SFTBatch,
     compute_sft_loss,
     train_downstream_hypernetwork,
@@ -205,7 +205,7 @@ def test_warmup_ramps_lr_linearly_then_holds_constant():
     batch = _make_batch(batch_size=4, seq_len=6, vocab_size=vocab_size, condition_dim=6, target_token=3)
 
     optimizer = torch.optim.AdamW(hypernetwork.parameters(), lr=1e-2)
-    from adapterbench.t2p.sft_trainer import _linear_warmup_then_constant
+    from adapterbench.t2a.sft_trainer import _linear_warmup_then_constant
 
     scheduler = _linear_warmup_then_constant(optimizer, warmup_steps=4)
     lrs = []

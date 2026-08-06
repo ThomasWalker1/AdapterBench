@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Aggregate the length-generalization grid into the per-codec benchmark vector.
 
-Reads every results/d2p_lengthgen_<adapter>_s<seed>.log, parses all per-eval records, and
+Reads every results/d2a_lengthgen_<adapter>_s<seed>.log, parses all per-eval records, and
 reports per codec (across seeds):
 
   - Final length curve: held-out accuracy at each eval bin, per seed + mean/best.
@@ -69,10 +69,10 @@ def main():
     runs = {}  # adapter -> {seed -> (recs, done)}
     # Canonical baseline logs are archived after completion; prefer an active scratch
     # run over an archived run with the same adapter/seed when both exist.
-    logs = sorted(glob.glob("results/_archive/d2p_lengthgen_*.log"))
-    logs += sorted(glob.glob("results/d2p_lengthgen_*.log"))
+    logs = sorted(glob.glob("results/_archive/d2a_lengthgen_*.log"))
+    logs += sorted(glob.glob("results/d2a_lengthgen_*.log"))
     for log in logs:
-        name = os.path.basename(log)[len("d2p_lengthgen_"):-len(".log")]
+        name = os.path.basename(log)[len("d2a_lengthgen_"):-len(".log")]
         adapter, _, seed = name.rpartition("_s")
         recs, done = parse_log(log)
         if recs:

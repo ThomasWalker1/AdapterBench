@@ -124,20 +124,20 @@ def register(subparsers) -> None:
     results.add_argument(
         "--fragment",
         choices=(
-            "t2l-markdown",
-            "t2l-selection-markdown",
-            "d2l-markdown",
+            "t2a-markdown",
+            "t2a-selection-markdown",
+            "d2a-markdown",
             "release-summary-markdown",
             "repro-summary-markdown",
-            "t2l-html",
-            "d2l-html",
+            "t2a-html",
+            "d2a-html",
         ),
-        default="t2l-markdown",
+        default="t2a-markdown",
     )
     results.set_defaults(func=_results_command)
 
     preflight_parser = subparsers.add_parser("preflight", help="check prerequisites before a canonical reproduction")
-    preflight_parser.add_argument("--setting", choices=("t2l", "d2l"), required=True)
+    preflight_parser.add_argument("--setting", choices=("t2a", "d2a"), required=True)
     preflight_parser.add_argument("--devices", required=True, help="CUDA device list recorded for the run")
     preflight_parser.add_argument("--output", required=True, type=Path)
     preflight_parser.add_argument("--allow-missing-cuda", action="store_true", help="only inspect files and output layout")

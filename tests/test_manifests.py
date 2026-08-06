@@ -13,8 +13,8 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_catalog_and_trial_ids_are_complete_and_stable():
     setups, adapters = load_catalog(ROOT / "configs")
     assert set(setups) == {
-        "document_to_peft_qwen06b_niah",
-        "text_to_peft_gemma2b_sft",
+        "document_to_adapter_qwen06b_niah",
+        "text_to_adapter_gemma2b_sft",
     }
     assert {setup.conditioning.kind for setup in setups.values()} == {
         "document",
@@ -24,14 +24,14 @@ def test_catalog_and_trial_ids_are_complete_and_stable():
     # Every registered adapter supports the downstream objective, so a downstream setup
     # builds a trial against all of them - matching how `adapterbench validate`/
     # build_matrix actually behaves.
-    trials = build_matrix(setups["text_to_peft_gemma2b_sft"], list(adapters.values()))
+    trials = build_matrix(setups["text_to_adapter_gemma2b_sft"], list(adapters.values()))
     assert len(trials) == 6
     assert len({trial.trial_id for trial in trials}) == len(trials)
-    repeated = build_matrix(setups["text_to_peft_gemma2b_sft"], list(adapters.values()))
+    repeated = build_matrix(setups["text_to_adapter_gemma2b_sft"], list(adapters.values()))
     assert [trial.trial_id for trial in repeated] == [trial.trial_id for trial in trials]
 
     document_trials = build_matrix(
-        setups["document_to_peft_qwen06b_niah"], list(adapters.values())
+        setups["document_to_adapter_qwen06b_niah"], list(adapters.values())
     )
     assert len(document_trials) == 6
 
@@ -43,7 +43,7 @@ def test_make_trial_rejects_an_objective_the_adapter_does_not_support():
     # downstream-only adapter ship in the catalog, so synthesize both from real
     # manifests to exercise the guard (this is exactly how a newly added codec that
     # restricts its objectives would be gated).
-    reconstruction_setup = setups["text_to_peft_gemma2b_sft"].model_copy(
+    reconstruction_setup = setups["text_to_adapter_gemma2b_sft"].model_copy(
         update={
             "objective": ObjectiveSpec(
                 kind="reconstruction",

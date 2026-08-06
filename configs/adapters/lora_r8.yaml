@@ -13,5 +13,5 @@ hyperparameters:
 compatible_objectives: [downstream, reconstruction, hybrid]
 supports_batched_generation: true
 notes:
-  - T2L uses the q_proj/v_proj materialization represented here.
-  - D2L uses the same rank-8 LoRA codec through its runner-defined down_proj hook and validated scale.
+  - T2A uses the q_proj/v_proj materialization represented here.
+  - D2A uses the same rank-8 LoRA codec through its runner-defined down_proj hook and validated scale.
