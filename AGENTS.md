@@ -17,5 +17,6 @@ commands must agree — `adapterbench results check`). New *settings* are out of
 to run the benchmark, results, and hard-won gotchas.
 
 For day-to-day commands (environment setup, running the benchmark), see
-[`SETUP.md`](SETUP.md). For the plugin contract every backend/evaluator implements, see
+[`SETUP.md`](SETUP.md). For landing a new codec via pull request, see
+[`CONTRIBUTING.md`](CONTRIBUTING.md). For the plugin contract every backend/evaluator implements, see
 [`BENCHMARK_CONTRACT.md`](BENCHMARK_CONTRACT.md).

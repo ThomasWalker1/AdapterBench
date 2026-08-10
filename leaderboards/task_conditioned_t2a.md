@@ -80,22 +80,22 @@ candidate metrics, artifacts, and rejected points. Only fresh confirmation seeds
 | Steering | First confirmed T2A row for this codec: its earlier search stopped at a selection_promotion_declaration for scale 64 lr 1e-4 that was never run. Under the corrected rules the hypernetwork's optimum is scale 1 lr 1e-4 and the static's own optimum is scale 64 lr 2e-4 (lr 4e-4 worse). The codec's own ledger had already documented that a yoked control can be inflated by handicapping its optimization; under the independent control its degenerate scale-0.0625 point falls from rank 1 of 9 to rank 5. Re-derived under the corrected T2A rules (AUTORESEARCH.md): ROUGE-L rather than the training objective, a static control selected independently on its own score, and selection data disjoint from the report split on BOTH task and example axes -- the selection split is the 10 in-distribution lol_ tasks at example offset 40, since training consumes the leading 40 examples of the same split. Every swept axis closed with an interior optimum; the operating point passed the §3b stability gate 3/3 on selection seeds disjoint from these confirmation seeds. State ledgers: `steering/state.jsonl`. | hyper: scale 1, lr 1e-4, 8,000 steps; static\*: scale 64, lr 2e-4 |
 <!-- canonical-results:t2a-selection-markdown:end -->
 
-**Reproduce:** `scripts/reproduce/task_t2a_lora.sh`, `scripts/reproduce/task_t2a_ia3.sh`, and
-`scripts/reproduce/task_t2a_fourierft.sh`
-accept `[SEED] [GPUS_HYPER] [GPUS_STATIC]`, run preflight, train the strip-def hypernetwork + static
-reference, and run both evaluations (sets `HF_HUB_OFFLINE=1`).
+**Reproduce:** use the shared drivers in `scripts/reproduce/`:
 
 ```bash
-scripts/reproduce/task_t2a_lora.sh 1801 0,1,2,3 4,5,6,7
-# results (per-task + __aggregate__ rows):
-#   results/repro/t2a_lora_scale22.627417_lr1e-4/hyper/s1801/heldout_sni_ce_full21.jsonl
-#   results/repro/t2a_lora_scale22.627417_lr1e-4/hyper/s1801/heldout_sni_acc.jsonl
+# one confirmation seed (LoRA):
+scripts/reproduce/task_t2a_lora.sh 1741 0,1,2,3 4,5,6,7
 
-scripts/reproduce/task_t2a_ia3.sh 1901 0,1,2,3 4,5,6,7
-#   results/repro/t2a_ia3_scale16_lr4e-4/hyper/s1901/heldout_sni_ce_full21.jsonl
-#   results/repro/t2a_ia3_scale16_lr4e-4/hyper/s1901/heldout_sni_acc.jsonl
+# full three-seed headline for one codec:
+bash scripts/reproduce/t2a_reproduce_all.sh lora 0,1,2,3 4,5,6,7
 
-scripts/reproduce/task_t2a_fourierft.sh 5111 0,1,2,3 4,5,6,7
-#   results/repro/t2a_fourierft_scale16_lr1e-4_confirm/hyper/s5111/heldout_sni_ce_full21.jsonl
-#   results/repro/t2a_fourierft_scale16_lr1e-4_confirm/hyper/s5111/heldout_sni_acc.jsonl
+# all five codecs (train, then score report split once):
+.venv/bin/python scripts/t2a_confirmation_seeds.py
+bash scripts/t2a_score_report_split.sh
 ```
+
+Report-split scores land under `results/autoresearch/t2a/evaluation/report_scores/`.
+The headline aggregate is `results/autoresearch/t2a/evaluation/confirmation_result.json`,
+produced by `scripts/t2a_confirmation_result.py`. Per-codec wrappers (`task_t2a_ia3.sh`, etc.)
+delegate to the same drivers; operating points and seeds are defined in
+`scripts/reproduce/t2a_codec_config.sh`.

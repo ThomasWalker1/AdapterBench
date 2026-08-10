@@ -1,9 +1,8 @@
 #!/bin/bash
 # Run one paired T2A steering trial and append its controlled held-out CE result to
 # the codec ledger.  The ledger is append-only: reruns are new observations, never
-# replacements.  Mirrors scripts/t2a_lokr_record_trial.sh; the shared
-# scripts/t2a_scale_locator.sh and scripts/t2a_promote.sh accept only lora|ia3, so
-# each later codec brings its own thin launcher around the shared
+# replacements.  Mirrors scripts/t2a_lokr_record_trial.sh; scripts/t2a_scale_locator.sh
+# accepts only lora|ia3, so each later codec brings its own thin launcher around the shared
 # scripts/t2a_codec_trial.sh.  Nothing here touches the interpreter, conditioner,
 # data, hook site, evaluator, control, or the codec's shape identity.
 #

@@ -12,7 +12,8 @@ Transformers 4.57.x, and PEFT 0.19. The project uses `uv` and is reproducible fr
 `pyproject.toml` plus `uv.lock`.
 
 ```bash
-cd /home/tw78/AdapterBench
+git clone <repository-url>
+cd AdapterBench
 uv venv .venv --python 3.11
 uv pip install -e ".[dev]"
 uv run adapterbench doctor --require-cuda
@@ -45,16 +46,16 @@ uv run adapterbench t2a-sft \
   --output results/t2a_sft/smoke_lol022_lora.json
 ```
 
-Canonical one-seed baseline:
+Canonical one-seed baseline (confirmation seed 1741):
 
 ```bash
-bash scripts/reproduce/task_t2a_lora.sh 777 0,1,2,3 4,5,6,7
+bash scripts/reproduce/task_t2a_lora.sh 1741 0,1,2,3 4,5,6,7
 ```
 
-Full reference reproduction (three sequential restart-safe seeds, then aggregation):
+Full reference reproduction (three confirmation seeds, score report split, aggregate):
 
 ```bash
-bash scripts/reproduce/task_t2a_lora_all.sh 0,1,2,3 4,5,6,7
+bash scripts/reproduce/t2a_reproduce_all.sh lora 0,1,2,3 4,5,6,7
 ```
 
 The held-out-SNI evaluations use local cached model/data files and must run with

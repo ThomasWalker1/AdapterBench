@@ -151,20 +151,18 @@ Evals require `HF_HUB_OFFLINE=1` (the model and datasets are cached; this avoids
 rate limit) — the reproduce script sets it for you.
 
 ```bash
-# reproduce the LoRA baseline for one seed: trains hyper+static, then both evals
-scripts/reproduce/task_t2a_lora.sh 777 0,1,2,3 4,5,6,7    # SEED GPUS_HYPER GPUS_STATIC
+# One confirmation seed (LoRA example; seeds 1741–1743):
+scripts/reproduce/task_t2a_lora.sh 1741 0,1,2,3 4,5,6,7
 
-# results (per-task + __aggregate__ rows):
-#   .../heldout_sni_acc.jsonl                     (ROUGE-L primary + exact match, one decode pass)
-#   .../heldout_sni_ce_full21.jsonl               (CE: appendix figure, divergence/eligibility gate)
-#   rescore/report_scores/*.jsonl                 (the one-shot 11-task report-split measurement)
+# Full three-seed headline reproduction for one codec:
+bash scripts/reproduce/t2a_reproduce_all.sh lora 0,1,2,3 4,5,6,7
+
+# All codecs at once (train via scripts/t2a_confirmation_seeds.py, then score):
+bash scripts/t2a_score_report_split.sh
 ```
 
-Helpers: `scripts/t2a_base_diag.sh <hf-interpreter> <tag> <gpus> <per-gpu-batch>` runs the
-recipe with a swappable base model and env knobs (`SEED`, `STEPS`, `LR`, `SNAP`, `LIMIT`,
-`ELIMIT`, `STRIPDEF`, `STATIC`); the 21 held-out tasks' metadata is vendored (once) by
-`scripts/vendor_heldout_sni_metadata.py`. Baseline: `matched − static* = +0.049 ± 0.027` ROUGE-L
-(59/63 task-seed pairs, 3 seeds).
+Baseline: `matched − static* = +0.049 ± 0.027` ROUGE-L (3 confirmation seeds, 11 held-out tasks).
+See `canonical_results/t2a_lora_r8.json` for per-seed values and provenance.
 
 ### D2A — document-conditioned (NIAH)
 

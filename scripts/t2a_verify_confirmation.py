@@ -22,7 +22,22 @@ from t2a_confirmation_seeds import CONFIRMATION_SEEDS, jobs  # noqa: E402
 
 
 def main() -> int:
-    expected = jobs()
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--codecs",
+        default=",".join(CONFIRMATION_SEEDS),
+        help="comma-separated codec subset to verify (default: all)",
+    )
+    args = parser.parse_args()
+    selected = {c.strip() for c in args.codecs.split(",") if c.strip()}
+    unknown = sorted(selected - set(CONFIRMATION_SEEDS))
+    if unknown:
+        print(f"unknown codec(s): {unknown}", file=sys.stderr)
+        return 2
+
+    expected = [j for j in jobs() if j["codec"] in selected]
     problems: list[str] = []
 
     # 1. every snapshot present
@@ -32,7 +47,7 @@ def main() -> int:
 
     # 2. ledger agrees: one `confirmation` record per (codec, role, seed), status complete
     ledger_ok: set[tuple] = set()
-    for codec in CONFIRMATION_SEEDS:
+    for codec in selected:
         path = REPO / "results/autoresearch/t2a" / codec / "state.jsonl"
         if not path.exists():
             continue

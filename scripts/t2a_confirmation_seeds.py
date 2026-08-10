@@ -142,11 +142,20 @@ def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--gpu-sets", default="0,1,2,3;4,5,6,7")
-    p.add_argument("--log-dir", default="results/autoresearch/t2a/stage3_logs")
+    p.add_argument("--log-dir", default="results/autoresearch/t2a/confirmation_logs")
+    p.add_argument(
+        "--codecs",
+        default=",".join(CONFIRMATION_SEEDS),
+        help="comma-separated codec subset (default: all registered codecs)",
+    )
     args = p.parse_args()
 
     assert_disjoint()
-    todo = jobs()
+    selected = {c.strip() for c in args.codecs.split(",") if c.strip()}
+    unknown = sorted(selected - set(CONFIRMATION_SEEDS))
+    if unknown:
+        raise SystemExit(f"unknown codec(s): {unknown}")
+    todo = [j for j in jobs() if j["codec"] in selected]
     pending = [j for j in todo if not (REPO / j["snapshot"]).exists()]
     print(f"{len(todo)} jobs ({len(OPERATING_POINTS)} operating points x 3 confirmation seeds), "
           f"{len(todo) - len(pending)} already trained, {len(pending)} pending")
@@ -168,7 +177,7 @@ def main() -> None:
     print(f"\ndone in {(time.time()-t0)/3600:.1f}h: {len(results)-len(failed)} ok, {len(failed)} failed")
     for r in failed:
         print(f"  FAILED {r['tag']} rc={r['rc']}")
-    (log_dir / "stage3_summary.json").write_text(json.dumps(results, indent=2, default=str) + "\n")
+    (log_dir / "confirmation_summary.json").write_text(json.dumps(results, indent=2, default=str) + "\n")
     print("\nTraining complete. The report split is NOT yet spent -- confirm every seed converged, "
           "then score once with:\n"
           "  --split report --confirm-spend-report-split --example-offset 0 --limit 64 --n-desc 3")

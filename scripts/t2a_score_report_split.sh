@@ -10,19 +10,19 @@
 # filter it would score every in-scope checkpoint on held-out data and compromise any future
 # re-selection.
 set -uo pipefail
-cd /home/tw78/AdapterBench
+cd "$(dirname "$0")/.."
 export HF_HUB_OFFLINE=1
 R=results/autoresearch/t2a/evaluation
-L=results/autoresearch/t2a/stage3_logs
+L=results/autoresearch/t2a/confirmation_logs
 C=lora,ia3,lokr,fourierft,steering
 mkdir -p "$L"
 
 {
-echo "=== [$(date)] waiting for Stage 3 training to drain ==="
+echo "=== [$(date)] waiting for confirmation training to drain ==="
 while pgrep -f t2a_train_ddp >/dev/null; do sleep 120; done
 
 echo "=== [$(date)] verifying the confirmation set before spending the report split ==="
-if ! .venv/bin/python scripts/t2a_verify_confirmation.py; then
+if ! .venv/bin/python scripts/t2a_verify_confirmation.py --codecs "$C"; then
   echo "!!! VERIFICATION FAILED -- report split NOT scored, still intact. Fix and rerun. !!!"
   exit 1
 fi

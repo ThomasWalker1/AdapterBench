@@ -167,7 +167,7 @@
     }
   },
   "reproduction": {
-    "script": "scripts/t2a_confirmation_seeds.py",
+    "script": "scripts/reproduce/t2a_reproduce_all.sh ia3",
     "scout": "scripts/t2a_sweep_axes.py",
     "selection": "scripts/t2a_selection_seeds.py",
     "confirmation": "scripts/t2a_confirmation_seeds.py",

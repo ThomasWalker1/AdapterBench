@@ -9,6 +9,11 @@ restart-safe reproduction wrappers.
 
 ## Unreleased
 
+- **Repository cleanup for open-source contributors:** added [CONTRIBUTING.md](CONTRIBUTING.md);
+  unified T2A reproduction under `scripts/reproduce/t2a_reproduce_*.sh` with operating points
+  matching `canonical_results/`; removed legacy one-off scripts (`migrate_seed3_at_15k.sh`,
+  `t2a_promote.sh`, `t2a_release_aggregate.py`); aligned leaderboard and setup docs with the
+  AUTORESEARCH confirmation protocol (seeds 1741–4743, not the superseded 1801-era runs).
 - **New codec: `steering`** — the first activation-space shape. The hypernetwork emits
   one `d_model` steering vector per (layer, example), added to the residual stream at
   the `"block"` hook site in both settings (`h -> h + scale * v`); linear in the

@@ -56,7 +56,8 @@ separately from this repository and is not part of the drift check.
 
 Start with [SETUP.md](SETUP.md) for environment setup, then **[GUIDE.md](GUIDE.md)** for
 the benchmark's active settings, metrics and controls, how to add a codec, and how to run
-and reproduce each setting. [BENCHMARK_CONTRACT.md](BENCHMARK_CONTRACT.md) gives the
+and reproduce each setting. **[CONTRIBUTING.md](CONTRIBUTING.md)** is the PR workflow for
+landing a new codec and leaderboard row. [BENCHMARK_CONTRACT.md](BENCHMARK_CONTRACT.md) gives the
 interface contract every setting implements, and [PROJECT_PLAN.md](PROJECT_PLAN.md) tracks
 current status and results.
 

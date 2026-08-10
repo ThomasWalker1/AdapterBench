@@ -251,32 +251,23 @@ Within a setting, comparisons must keep fixed:
 
 ## T2A result
 
-The rigorous T2A baseline trains the hypernetwork and same-shape static reference on the
-same 479-task corpus, strips definitions from interpreter inputs, and evaluates on all 21
-held-out SNI tasks.
+The rigorous T2A baseline uses ROUGE-L on the **11 genuinely held-out SNI tasks** (report
+split), with an independently selected same-shape static control. Confirmation seeds are
+disjoint from the selection seeds that chose the operating point.
 
-| seed | matched − static CE | matched beats static | accuracy matched − static |
-|---:|---:|---:|---:|
-| 1801 | −0.597 nats | 18/21 tasks | −0.0050 |
-| 1802 | −0.519 nats | 17/21 tasks | −0.0327 |
-| 1803 | −0.598 nats | 19/21 tasks | +0.0228 |
-| aggregate | **−0.571 ± 0.045** | **54/63 task-seed pairs** | **−0.0050 ± 0.0278** |
+| codec | matched − static* ROUGE-L | confirmation seeds |
+|---|---|---|
+| LoRA | **+0.049 ± 0.027** | 1741, 1742, 1743 |
+| FourierFT | +0.068 ± 0.044 | 5041, 5042, 5043 |
+| (IA)³ | +0.128 ± 0.049 | 1751, 1752, 1753 |
+| LoKr | +0.077 ± 0.033 | 2741, 2742, 2743 |
+| Steering | +0.119 ± 0.038 | 4741, 4742, 4743 |
 
-ROUGE-L is primary because it is behavioural. CE is the quantity the trainer optimizes, so
-selecting on it measures optimization quality and systematically favours shapes whose inductive bias
-reduces token-level likelihood whether or not behaviour changes — measured here as a Spearman −0.50
-rank disagreement with ROUGE-L on the held-out split. Exact match is computed from the same
-generations at no extra cost and reported alongside; it is stricter and unambiguous but
-near-meaningless on the open-ended tasks, so it is never the selector either.
+CE and exact match are appendix figures off the same decode pass; neither selects. On this split
+CE and ROUGE-L rank the shapes at Spearman −0.50.
 
-Result paths:
-
-`results/autoresearch/t2a/lora/confirmation/hyper/s{1801,1802,1803}/`
-
-with:
-
-- `heldout_sni_ce_full21.jsonl`
-- `heldout_sni_acc.jsonl`
+Canonical records: `canonical_results/t2a_*.json`. Source artifacts:
+`results/autoresearch/t2a/<codec>/confirmation_v2/report_split_s*.jsonl`.
 
 ## D2A result
 
@@ -304,17 +295,23 @@ uv run adapterbench catalog
 uv run pytest -q
 ```
 
-Reproduce one T2A seed:
+Reproduce one T2A confirmation seed:
 
 ```bash
-bash scripts/reproduce/task_t2a_lora.sh 1801 0,1,2,3 4,5,6,7
+bash scripts/reproduce/task_t2a_lora.sh 1741 0,1,2,3 4,5,6,7
 ```
 
-Inspect T2A aggregate rows:
+Full three-seed headline for LoRA:
 
 ```bash
-tail -1 results/repro/t2a_lora_scale22.627417_lr1e-4/hyper/s1801/heldout_sni_ce_full21.jsonl
-tail -1 results/repro/t2a_lora_scale22.627417_lr1e-4/hyper/s1801/heldout_sni_acc.jsonl
+bash scripts/reproduce/t2a_reproduce_all.sh lora 0,1,2,3 4,5,6,7
+```
+
+Inspect the canonical aggregate:
+
+```bash
+.venv/bin/python scripts/t2a_confirmation_result.py
+cat results/autoresearch/t2a/evaluation/confirmation_result.json
 ```
 
 Run the D2A numeric-decoy NIAH confirmation:
