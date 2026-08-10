@@ -1,106 +1,104 @@
 {
   "schema_version": 1,
   "setting": "T2A",
-  "codec": "lokr",
-  "display_name": "LoKr",
+  "codec": "steering",
+  "display_name": "Steering",
   "metric": "held_out_rouge_l",
   "headline": {
     "comparison": "matched_minus_control",
     "control_name": "independently_selected_same_shape_static_adapter",
-    "matched": 0.31490609684723286,
-    "control": 0.23782606566633446,
-    "value": 0.07708003118089841,
-    "variation": 0.03282546518537571,
+    "matched": 0.3223371111753986,
+    "control": 0.2036980480659731,
+    "value": 0.11863906310942544,
+    "variation": 0.03787190239520614,
     "variation_kind": "sample_standard_deviation",
     "unit": "rouge_l_f_measure",
     "direction": "higher_is_better"
   },
   "seed_results": [
     {
-      "seed": 2741,
-      "matched": 0.33181943620196547,
-      "control": 0.23470783541067525,
-      "delta": 0.09711160079129022
+      "seed": 4741,
+      "matched": 0.32492440129591404,
+      "control": 0.19429104017274737,
+      "delta": 0.13063336112316667
     },
     {
-      "seed": 2742,
-      "matched": 0.2845259790297617,
-      "control": 0.24532861853756494,
-      "delta": 0.03919736049219674
+      "seed": 4742,
+      "matched": 0.35011025277179314,
+      "control": 0.201048788941102,
+      "delta": 0.14906146383069113
     },
     {
-      "seed": 2743,
-      "matched": 0.32837287530997145,
-      "control": 0.23344174305076315,
-      "delta": 0.0949311322592083
+      "seed": 4743,
+      "matched": 0.2919766794584885,
+      "control": 0.21575431508406995,
+      "delta": 0.07622236437441854
     }
   ],
   "difficulty_curve": [
     {
       "axis": "held_out_sni_task_seed_pairs",
-      "matched": 0.31490609684723286,
-      "control": 0.23782606566633446,
-      "delta": 0.07708003118089841,
+      "matched": 0.3223371111753986,
+      "control": 0.2036980480659731,
+      "delta": 0.11863906310942544,
       "note": "3/3 confirmation seeds with a positive difference; 11 genuinely held-out tasks x 64 examples x 3 descriptions"
     }
   ],
   "summary": {
     "wins": "3/3 confirmation seeds",
     "matched_minus_frozen": {
-      "value": 0.26066246071760507,
+      "value": 0.2680934750457708,
       "frozen_rouge_l": 0.0542436361296278,
       "note": "helpfulness floor, ROUGE-L on the same split"
     },
     "exact_match_matched_minus_static": {
-      "value": 0.01152146464646464,
-      "matched": 0.2189078282828283,
-      "control": 0.20738636363636365,
+      "value": 0.06549873737373738,
+      "matched": 0.2307449494949495,
+      "control": 0.16524621212121213,
       "frozen": 0.2556818181818182,
       "note": "appendix cross-check off the same decode pass; stricter than ROUGE-L and near-meaningless on the open-ended tasks, so never the selector"
     },
     "cross_entropy_matched_minus_static": {
-      "value": 0.4983403510367026,
-      "matched": 3.4805882188557375,
-      "control": 2.982247867819035,
+      "value": -0.15847059256500629,
+      "matched": 2.999603070920766,
+      "control": 3.1580736634857725,
       "unit": "nats",
       "direction": "lower_is_better",
       "note": "appendix only. CE is the training objective; AUTORESEARCH.md keeps it as a divergence detector and eligibility gate and forbids it as a selector. On this split CE and ROUGE-L rank the shapes with Spearman -0.50, so CE would have selected differently and worse."
     },
     "tied_operating_points": {
-      "hyper": 1,
-      "static": 3
+      "hyper": 5,
+      "static": 2
     },
-    "shape_ranking": "PARTIAL ORDER ONLY. not separable from any other shape. Every other comparison, including every adjacent one, falls below 2x the SE of the difference and must not be reported as an ordering. The supported relations across all five shapes are: ia3 > lora (2.4x SE); steering > lora (2.6x SE)."
+    "shape_ranking": "PARTIAL ORDER ONLY. separably better than lora. Every other comparison, including every adjacent one, falls below 2x the SE of the difference and must not be reported as an ordering. The supported relations across all five shapes are: ia3 > lora (2.4x SE); steering > lora (2.6x SE)."
   },
   "free_hyperparameters": {
-    "learning_rate": "2e-4",
+    "learning_rate": "1e-4",
     "warmup_fraction": 0.1,
-    "steps": 6000,
-    "scale": "0.25",
+    "steps": 8000,
+    "scale": "1",
     "static_control": {
-      "scale": "0.25",
+      "scale": "64",
       "learning_rate": "2e-4",
-      "steps": 6000,
+      "steps": 8000,
       "note": "selected independently on the static's own selection-split ROUGE-L, not yoked to the hypernetwork's point"
     }
   },
   "fixed_shape_parameters": {
     "target_modules": [
-      "q_proj",
-      "v_proj"
+      "block"
     ],
-    "factorization": "deterministic balanced Kronecker factorization",
-    "generated_scalars_per_layer": 5120
+    "note": "activation-space codec: hooks the whole decoder layer and adds one generated residual-stream vector per (layer, example); performs no weight update at all"
   },
   "selection_trail": {
     "protocol": "AUTORESEARCH.md",
     "state_artifacts": [
       {
-        "path": "results/autoresearch/t2a/lokr/state.jsonl",
-        "sha256": "9978a8c228ab25e06cb231b4f61057cd0e81ff07816e339577601b8b1fb7b0d5"
+        "path": "results/autoresearch/t2a/steering/state.jsonl",
+        "sha256": "5ef26a59de57216d57581f729451542e529331ab660843cace66330ee6a4c921"
       }
     ],
-    "summary": "Scale moved from 16 to 0.25 and LR from 1e-4 to 2e-4, stable across both example offsets. The static's own optimum is also scale 0.25 lr 2e-4: lr 4e-4 tied within 0.0001 (seed SD 0.021) and lr 8e-4 was worse, so the axis closed at the interior point under \u00a72's materiality threshold. Re-derived under the corrected T2A rules (AUTORESEARCH.md): ROUGE-L rather than the training objective, a static control selected independently on its own score, and selection data disjoint from the report split on BOTH task and example axes -- the selection split is the 10 in-distribution lol_ tasks at example offset 40, since training consumes the leading 40 examples of the same split. Every swept axis closed with an interior optimum; the operating point passed the \u00a73b stability gate 3/3 on selection seeds disjoint from these confirmation seeds."
+    "summary": "First confirmed T2A row for this codec: its earlier search stopped at a selection_promotion_declaration for scale 64 lr 1e-4 that was never run. Under the corrected rules the hypernetwork's optimum is scale 1 lr 1e-4 and the static's own optimum is scale 64 lr 2e-4 (lr 4e-4 worse). The codec's own ledger had already documented that a yoked control can be inflated by handicapping its optimization; under the independent control its degenerate scale-0.0625 point falls from rank 1 of 9 to rank 5. Re-derived under the corrected T2A rules (AUTORESEARCH.md): ROUGE-L rather than the training objective, a static control selected independently on its own score, and selection data disjoint from the report split on BOTH task and example axes -- the selection split is the 10 in-distribution lol_ tasks at example offset 40, since training consumes the leading 40 examples of the same split. Every swept axis closed with an interior optimum; the operating point passed the \u00a73b stability gate 3/3 on selection seeds disjoint from these confirmation seeds."
   },
   "provenance": {
     "models": [
@@ -125,19 +123,19 @@
     ],
     "source_artifacts": [
       {
-        "seed": 2741,
-        "path": "results/autoresearch/t2a/lokr/confirmation_v2/report_split_s2741.jsonl",
-        "sha256": "18d7dc2ceb0b49662ac88d505879bf313147a327e0194c566fc44c58bf839739"
+        "seed": 4741,
+        "path": "results/autoresearch/t2a/steering/confirmation_v2/report_split_s4741.jsonl",
+        "sha256": "5eab87cc1bb055e39155980e811e6aef95459646021aa7c586f0eff0f0bd9532"
       },
       {
-        "seed": 2742,
-        "path": "results/autoresearch/t2a/lokr/confirmation_v2/report_split_s2742.jsonl",
-        "sha256": "7c5b8e5c499a23365d56901444ee900932c3c3a51821a63b38648434ed8ccb9f"
+        "seed": 4742,
+        "path": "results/autoresearch/t2a/steering/confirmation_v2/report_split_s4742.jsonl",
+        "sha256": "ce6044539e7a64387834bb668f6516f831a07a648cb02ba6b81f5dfde8fd006f"
       },
       {
-        "seed": 2743,
-        "path": "results/autoresearch/t2a/lokr/confirmation_v2/report_split_s2743.jsonl",
-        "sha256": "0cefeca8d866aea4f6d191fafd95a93e8a0db232594b9327bb88a1e8ecc56175"
+        "seed": 4743,
+        "path": "results/autoresearch/t2a/steering/confirmation_v2/report_split_s4743.jsonl",
+        "sha256": "5a9ef78723847336290b3db0965abb15718c19b0086c46b5fd58faee5777fe07"
       }
     ],
     "evaluation": {

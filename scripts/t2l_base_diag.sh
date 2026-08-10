@@ -1,1 +1,0 @@
-t2a_base_diag.sh

@@ -93,9 +93,48 @@ ladder must be chosen without using another codec's results.
   identity-scale convention. Its numerical limits are practical safety limits only, not
   evidence transferred from another codec.
 - If the best point is an endpoint, extend outward by a constant log-space factor until
-  the next point is worse, training becomes numerically invalid, or the declared safety
-  limit is reached. If an endpoint is reached because of the safety limit, report that
-  limitation rather than calling the result optimal.
+  the next point is worse, training becomes numerically invalid, the declared safety
+  limit is reached, or **two extension steps have been taken in that direction** —
+  whichever comes first. If an endpoint is reached because of the safety limit or the
+  two-step cap, report that limitation rather than calling the result optimal.
+- **The two-extension cap.** At most two steps outward from the declared ladder, counted
+  independently per `(codec, axis, direction)`: extending a ladder downward and extending
+  it upward are separate searches, and an LR ladder is separate from a scale ladder, so
+  each gets its own budget of two. After the second step, stop and record the boundary as
+  a declared limitation even if the endpoint is still winning.
+
+  The cap exists because "extend while the endpoint wins" is unbounded in exactly the case
+  where the endpoint is winning for the wrong reason. A `matched − control` metric can be
+  inflated without limit by driving the control toward a no-op (see §"T2A: metric, data
+  split, and the independently selected control", rule 3), so a mechanical extension rule
+  will chase that artifact as far as the safety bound allows. The diagnostic is whether the
+  control's score is approaching the frozen model's: a control that has degenerated toward a
+  no-op turns `matched − control` into `matched − frozen`, and rungs in that region are control
+  failures rather than selection evidence.
+
+  A cap reached is a finding, not a failure: record which axis and direction were still
+  improving, so a reviewer can decide whether a fresh preregistered ladder centred
+  elsewhere is warranted. Do not quietly resume the same chain in a later phase.
+- **An endpoint only "wins" if it wins by more than the noise.** "Extend while the endpoint
+  wins" has no meaning until *wins* is defined, and a bare argmax comparison makes an
+  arbitrarily small gain mandate another run. So: an endpoint counts as winning only if it
+  improves on its inward neighbour by **more than the measured seed standard deviation for
+  that codec and role**. Within that, the two points are a **tie**: declare the axis closed at
+  the interior point, record the plateau, and do not extend.
+
+  Use the pooled within-configuration seed SD measured for that codec and role, excluding
+  non-converged configurations (their spread is a divergence rate, not measurement noise). If
+  no configuration of that codec and role has two or more seeds yet, borrow the largest SD
+  measured across codecs as a conservative stand-in and record that it was borrowed.
+
+  This closes the other end of the runaway the two-extension cap bounds: a curve that has
+  asymptoted keeps producing nominal argmax improvements indefinitely, and without a threshold
+  each one mandates another rung.
+
+  The same threshold applies wherever one configuration is said to beat another, not only at
+  ladder ends — including which point is promoted to §3b's selection seeds. Two configurations
+  within one seed SD are tied, so both are candidates rather than one being "the" argmax; see
+  §3b.
 - Use the setting's behavioral controlled metric, not training loss, to select the
   provisional winner. A nonzero raw score with a failed control is rejected.
 
@@ -146,8 +185,28 @@ must be chosen on multiple seeds**, using the same statistic the leaderboard rep
 mean over seeds), never a one-seed peak. Concretely:
 
 1. Narrow each axis coarsely on the scout seed as in §2–§3.
-2. Re-run the surviving candidates (typically the top two) on **at least three selection
-   seeds**, disjoint from both the scout and the later confirmation seeds.
+2. **Form the tied set by the same materiality threshold §2 uses**: every configuration within
+   one measured seed SD of the scout-seed argmax is *tied* with it. A scout seed cannot
+   separate points inside its own noise, so treating its argmax as a decision over those
+   points is a one-seed peak dressed up as a choice.
+
+   Then **declare the argmax the operating point and run only it** on at least three selection
+   seeds, disjoint from the scout and from the later confirmation seeds. Do *not* run every
+   tied configuration: they are tied, so choosing among them cannot change the reported effect
+   by more than the spread already being reported, and paying 3 seeds each to discover that is
+   spend without an inference attached. Record the size of the tied set and the fact that the
+   operating point was chosen within noise, so the report says "chosen from N statistically
+   indistinguishable points" rather than implying a resolved optimum.
+
+   Run a second tied candidate **only** when there is a reason to prefer knowing which wins:
+   the declared operating point **fails the stability gate** below (then promote the next tied
+   candidate and re-gate — adaptive fallback, not a shortcut), or the report intends to *claim*
+   one configuration beats another, which requires the seeds to support that claim.
+
+   This keeps the threshold's benefit — no false precision about which point is best — without
+   letting a wide tie multiply the training budget. Measured example: on the T2A grid the tied
+   sets ran 1–5 configurations per (codec, role), 27 in total; running all of them at 3 seeds
+   would have cost 81 trials to choose between points no seed count in reach can separate.
 3. Apply a **stability gate**: a candidate is eligible only if it *converges* on at least
    ⌈2/3⌉ of its selection seeds, where a converged run is finite, clears the setting's
    helpfulness floor, and shows no training divergence (e.g. a loss that climbs to and
@@ -180,12 +239,18 @@ confirmation, or the confirmation is no longer held out.
 
 The result is eligible for a leaderboard row only if all are true:
 
-- controlled behavioral metric is reported as `matched − control`;
+- controlled behavioral metric is reported as `matched − control`, and the metric is
+  behavioral rather than the training objective;
+- `matched`, `control`, and their difference are each reported, not the difference alone;
+- the control was selected independently, on its own score, under this same protocol;
+- selection and reporting used disjoint data, and no hyperparameter — including step
+  budget — was chosen against the reporting split;
 - matched also beats the frozen helpfulness floor;
 - scale was swept and the chosen point is recorded;
 - the selected configuration passes the §3b stability gate, and its selection-seed
   divergence rate is recorded;
-- at least three confirmation seeds report variation;
+- at least three confirmation seeds report variation, and the spread is small relative to
+  the between-shape differences being claimed;
 - difficulty-axis output is present;
 - exact commands, seeds, hyperparameters, provenance, and compact aggregate artifacts
   are recorded.
@@ -222,14 +287,111 @@ phase-transition spread across seeds is not a divergence).
 
 | Setting | Select on | Helpfulness floor | Required final evidence |
 |---|---|---|---|
-| T2A | Lowest `matched − static` held-out CE (negative is better) | matched CE lower than frozen CE | 21 held-out SNI tasks; CE primary and generation accuracy corroborating; same-shape static adapter for every candidate. |
+| T2A | Highest `matched − static*` **ROUGE-L on the selection split** (the 10 in-distribution `lol_` eval tasks, **examples 40+ only**) | matched ROUGE-L above frozen, on the same split | 11 genuinely held-out SNI tasks, all examples; ROUGE-L primary against an **independently selected** static; CE and exact match reported as appendix data points. |
 | D2A | Highest controlled hard-length score after passing the shortest in-distribution gate: normalized log-length AUC over every declared doubled evaluation length after that gate | matched accuracy at the shortest in-distribution length higher than frozen | realistic-prose numeric-decoy NIAH length curve through every declared hard bin; context-swap near zero at every reported length. |
 
-For T2A, train the conditioned hypernetwork and the same-shape static reference together
-for every candidate. For D2A, never select on language-model loss: retrieval can remain
-at chance after loss is nearly zero. The shortest in-distribution score establishes that the codec is
-helpful and condition-dependent; when it reaches a ceiling, it must not decide between
-otherwise viable configurations.
+For D2A, never select on language-model loss: retrieval can remain at chance after loss is
+nearly zero. The shortest in-distribution score establishes that the codec is helpful and
+condition-dependent; when it reaches a ceiling, it must not decide between otherwise
+viable configurations.
+
+### T2A: metric, data split, and the independently selected control
+
+Three rules, all introduced together because each is unsound without the others.
+
+**1. Behavioral metric, not the training objective.** The selector and the headline are
+**ROUGE-L** — Super-NaturalInstructions' own aggregate metric, and the metric upstream's
+evaluation protocol uses. Teacher-forced cross-entropy is the quantity the trainer
+optimizes, so selecting on it measures optimization quality and systematically favors
+shapes whose inductive bias reduces token-level likelihood whether or not behavior
+changes. CE keeps two jobs it is genuinely good at and loses the third: it remains a cheap
+**divergence detector** (non-finite loss, a dead plateau) and a cheap **eligibility gate**,
+but it never selects. Normalized exact match is computed from the same generations at no
+extra cost and reported alongside; it is a stricter, unambiguous cross-check that catches
+ROUGE-L partial-credit inflation, but it is near-meaningless on the open-ended tasks and so
+is never the selector either.
+
+**2. Selection and reporting are disjoint on two axes: task *and* example.** `eval_ds_info`
+contains 21 `lol_` tasks, but only **11 are absent from `train_ds_names`**. The other 10 are
+trained on, so they are in-distribution monitors, not held-out generalization:
+
+- **selection split (10 tasks, in-distribution), examples 40 and up:** `lol_084, lol_140,
+  lol_275, lol_636, lol_705, lol_717, lol_742, lol_1198, lol_1448, lol_1711`
+- **report split (11 tasks, genuinely held out), all examples:** `lol_035, lol_039, lol_202,
+  lol_304, lol_362, lol_614, lol_701, lol_706, lol_710, lol_726, lol_1557`
+
+**The example offset is mandatory, not a refinement.** Every vendored `lol_` task draws from
+one `train[:10000]` HuggingFace split, and both the trainer (`LolSFTDataset`) and the
+evaluators select a **leading range** of it. Training uses `--limit 40`, so evaluating a
+selection-split task at offset 0 does not merely test in-distribution behavior — it **replays
+the exact training examples**, and every evaluation at 24, 32, or 40 examples/task is a strict
+subset of what the model was fit on. So:
+
+- score the selection split with `--example-offset 40`, i.e. examples 40 onward, which no run
+  has ever trained on. All ten tasks have at least 42 unused examples (17,686 in total; the
+  binding task is `lol_742` with 42), so a uniform 32-examples/task instrument fits, and 42 is
+  the ceiling for a uniform one. Above that, allow uneven per-task counts rather than dropping
+  tasks: the aggregate is an unweighted mean over per-task scores, so uneven `n` costs
+  precision on the small tasks but does not bias the mean.
+- if the training `--limit` ever changes, the offset changes with it. The offset is recorded in
+  every evaluation row so a mismatch is auditable rather than invisible.
+- the **report split needs no offset**: those 11 tasks are absent from `train_ds_names`, so
+  none of their examples was ever trained on.
+- the three **descriptions** used at evaluation are already disjoint from the 128 the trainer
+  consumes (verified: 0/3 overlap on all ten selection tasks). Only *task identity* is shared
+  between training and the selection split.
+
+Every free hyperparameter — for the hypernetwork *and* for the static — is chosen on the
+selection split only. The report split is touched once, by the confirmation seeds of the
+already-selected configuration, and never during a sweep. Nothing may be tuned against it,
+including step budget and the decision to extend a ladder. Because hyperparameters are still
+chosen on in-distribution *tasks*, record that as a known limitation rather than claiming a
+clean dev set; the alternative — carving a dev set out of the 479 training tasks — would change
+the immutable substrate and is out of scope for this loop. The example offset removes the
+replay term of that limitation, which is the largest one, but not the task-identity term.
+
+**Why the offset is mandatory rather than optional.** Replay does not merely add noise. A larger
+output scale has more capacity to fit the specific training examples, so scoring them again inflates
+high-scale rungs more than low-scale ones — and it inflates the task-agnostic *control* more than the
+conditioned adapter, because the control has nothing else to fit. The combined effect biases the
+scale argmax upward and biases the reported difference toward zero. The residual task-identity term
+remains unmeasurable without the report split; record it as a declared limitation and do not test it,
+since testing it spends the split on a sweep.
+
+**Difficulty control for the offset.** When introducing or changing an example offset, check the
+frozen (zeroed-adapter) score on both ranges. If frozen is unchanged, the two ranges are equally
+hard and any drop is specific to the adapted model, i.e. memorisation rather than a harder sample.
+
+**3. The static control is selected independently, on its own score.** The static reference
+must be swept over the same axes and under the same stability gate as the hypernetwork, and
+selected to maximize **its own** selection-split ROUGE-L — never to maximize the gap.
+
+`matched − control` is **not** non-gameable, and this is the failure mode. It cannot be gamed by
+sabotaging a wrong-condition case, but it **can** be inflated by handicapping the control's
+optimization — so a rung where the control merely under-trains will outrank a rung where the
+adapter is genuinely better. The clearest measured case is `steering`, whose static reference
+trains the steering vector `v` directly, making the achieved intervention `scale·||v||`
+rate-limited by scale: at scale 0.0625 its static is indistinguishable from no adapter at all,
+and the yoked metric ranked that rung **first of nine** by a wide margin. Under this rule the
+same rung ranks fifth. Earlier revisions of the protocol had to exclude such points by hand, via
+a convention recorded in one codec's selection trail; selecting the control independently makes
+the exclusion **structural**, because the quantity subtracted is the shape's best static
+regardless of rung. A degenerate control can no longer win.
+
+Yoking the static to the hypernetwork's chosen scale/LR/steps gives the search a structural
+incentive to settle where the control is weak, because the reported quantity is a difference the
+search is maximizing. Under this rule the headline is `best hypernetwork of shape S − best static
+of shape S`, which is a deliberately conservative estimate of conditioning.
+
+Report `matched`, `static*`, and their difference as separate columns, never the difference
+alone. A large gap over a mediocre matched score means the control moved, not the adapter,
+and the reader must be able to see that without recomputing it.
+
+**Variance.** The report split is scored with enough examples per task and enough
+confirmation seeds that the seed spread is small relative to the between-shape differences
+being claimed. A spread that overlaps the gap between two shapes does not support ranking
+them; increase examples per task (which reduces within-seed sampling noise) and seeds (which
+tighten the estimate of the mean) rather than reporting the ranking anyway.
 
 ## Stop conditions
 

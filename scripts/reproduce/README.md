@@ -8,10 +8,11 @@ row up to seed variance — this is the benchmark's reproducibility contract.
 <!-- canonical-results:repro-summary-markdown:start -->
 | Setting | Script | Leaderboard | Headline |
 |---|---|---|---|
-| Task (T2A) — LoRA | `task_t2a_lora_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2a.md` | matched − static = **−0.571 ± 0.045** nats CE (54/63 task-seed pairs, 3 seeds) |
-| Task (T2A) — FourierFT | `task_t2a_fourierft_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2a.md` | matched − static = **−0.525 ± 0.064** nats CE (55/63 task-seed pairs, 3 seeds) |
-| Task (T2A) — (IA)³ | `task_t2a_ia3_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2a.md` | matched − static = **−0.381 ± 0.023** nats CE (48/63 task-seed pairs, 3 seeds) |
-| Task (T2A) — LoKr | `task_t2a_lokr_all.sh [GPUS_HYPER] [GPUS_STATIC]` | `task_conditioned_t2a.md` | matched − static = **−0.403 ± 0.172** nats CE (49/63 task-seed pairs, 3 seeds) |
+| Task (T2A) — LoRA | `scripts/t2a_confirmation_seeds.py` | `task_conditioned_t2a.md` | matched − static\* = **+0.049 ± 0.027** ROUGE-L (3/3 confirmation seeds, 3 confirmation seeds) |
+| Task (T2A) — FourierFT | `scripts/t2a_confirmation_seeds.py` | `task_conditioned_t2a.md` | matched − static\* = **+0.068 ± 0.044** ROUGE-L (3/3 confirmation seeds, 3 confirmation seeds) |
+| Task (T2A) — (IA)³ | `scripts/t2a_confirmation_seeds.py` | `task_conditioned_t2a.md` | matched − static\* = **+0.128 ± 0.049** ROUGE-L (3/3 confirmation seeds, 3 confirmation seeds) |
+| Task (T2A) — LoKr | `scripts/t2a_confirmation_seeds.py` | `task_conditioned_t2a.md` | matched − static\* = **+0.077 ± 0.033** ROUGE-L (3/3 confirmation seeds, 3 confirmation seeds) |
+| Task (T2A) — Steering | `scripts/t2a_confirmation_seeds.py` | `task_conditioned_t2a.md` | matched − static\* = **+0.119 ± 0.038** ROUGE-L (3/3 confirmation seeds, 3 confirmation seeds) |
 | Document (NIAH) — LoRA (r=8) | `document_niah_numeric_decoy_lora.sh [DEVICE]` | `document_niah_d2a.md` | matched − ctxswap = **+0.556 ± 0.327** (5 seeds, realistic-prose, 4 numeric decoys; crossover 16×) |
 | Document (NIAH) — FourierFT | `document_niah_numeric_decoy_fourierft_all.sh [DEVICE]` | `document_niah_d2a.md` | matched − ctxswap = **+0.656 ± 0.352** (5 seeds, realistic-prose, 4 numeric decoys; crossover 64×) |
 | Document (NIAH) — (IA)³ | `document_niah_numeric_decoy_ia3.sh [DEVICE]` | `document_niah_d2a.md` | matched − ctxswap = **+0.738 ± 0.327** (5 seeds, realistic-prose, 4 numeric decoys; crossover 64×) |
@@ -52,7 +53,8 @@ the "does shape matter?" comparison is populated by repeating steps 1–4 per co
 ## Notes
 
 - **T2A** trains two data-parallel runs — the strip-def hypernetwork and the same-shape static
-  reference — then scores `matched − static` on the 21 held-out SNI tasks (CE + accuracy). It needs
+  reference at its OWN selected hyperparameters — then scores `matched − static*` ROUGE-L on the 11
+  genuinely held-out SNI tasks, with exact match and CE as appendix figures. It needs
   `HF_HUB_OFFLINE=1` (set by the script; the model and datasets are cached). Args are `SEED`,
   `GPUS_HYPER`, `GPUS_STATIC` (e.g. `1801 0,1,2,3 4,5,6,7`).
 - **GPU selection.** The T2A script splits GPUs across the two runs; the document script

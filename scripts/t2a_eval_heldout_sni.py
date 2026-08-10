@@ -59,6 +59,66 @@ from adapterbench.t2a.sft_trainer import masked_cross_entropy  # noqa: E402
 from t2a_train_ddp import register_persistent_hooks  # noqa: E402
 
 
+def build_task_examples(tokenizer, tasks_root, task_id: str, limit: int, max_len: int,
+                        offset: int = 0) -> list[dict]:
+    """Definition-stripped, response-only-supervised examples for one task.
+
+    `strip_task_def=True` => the frozen model sees ONLY the problem, so the task is specifiable
+    only via the description-conditioned adapter. `training=False` => deterministic (the attached
+    condition embedding is ignored). Returns `[]` when the task has no vendored metadata.
+
+    `offset` skips the first N examples so an evaluation can be example-disjoint from training on
+    a task that is in `train_ds_names` (training selects a LEADING range of the same split). It is
+    applied by over-fetching and slicing rather than by teaching `LolSFTDataset` about offsets,
+    because that class defines the training examples and must keep its current semantics exactly.
+    """
+    if not (Path(tasks_root) / task_id / "metadata.yaml").exists():
+        return []
+    metadata = load_task_metadata(Path(tasks_root), task_id)
+    dataset = LolSFTDataset(
+        tokenizer, metadata, torch.zeros(1, 1), max_len=max_len,
+        limit=offset + limit, training=False, strip_task_def=True,
+    )
+    return [dataset[i] for i in range(min(offset, len(dataset)), len(dataset))]
+
+
+def make_batched_ce(interpreter, current: dict, *, pad_id: int, batch_size: int, device: str):
+    """Example-weighted mean of `masked_cross_entropy`, with the codec hooks reading generated
+    params from `current` exactly as in training -- so this is the quantity the trainer optimized."""
+
+    def batched_ce(examples: list[dict], gen_fn) -> float:
+        total_ce, total_n = 0.0, 0
+        for i in range(0, len(examples), batch_size):
+            batch = lol_collate_fn(examples[i : i + batch_size], pad_id).to(device)
+            b = batch.input_ids.shape[0]
+            current.clear()
+            current.update(gen_fn(b))
+            with torch.no_grad():
+                out = interpreter(input_ids=batch.input_ids, attention_mask=batch.attention_mask)
+                ce = masked_cross_entropy(out.logits, batch.labels)
+            total_ce += float(ce) * b
+            total_n += b
+        return total_ce / max(total_n, 1)
+
+    return batched_ce
+
+
+def ce_for_task(batched_ce, examples: list[dict], *, hypernetwork, static,
+                desc_embs: list[torch.Tensor], roles=("matched", "static", "frozen")) -> dict[str, float]:
+    """CE per role for one task. `matched` averages over the description variants."""
+    out: dict[str, float] = {}
+    if "matched" in roles:
+        out["matched"] = sum(
+            batched_ce(examples, lambda b, e=emb: hypernetwork(e.unsqueeze(0).expand(b, -1)))
+            for emb in desc_embs
+        ) / len(desc_embs)
+    if "static" in roles:
+        out["static"] = batched_ce(examples, lambda b: static(b))
+    if "frozen" in roles:
+        out["frozen"] = batched_ce(examples, lambda b: {k: torch.zeros_like(v) for k, v in static(b).items()})
+    return out
+
+
 def build_args():
     p = argparse.ArgumentParser()
     p.add_argument("--interpreter", required=True)
@@ -71,6 +131,10 @@ def build_args():
     p.add_argument("--tasks", default="", help="comma-separated held-out task ids; default = all lol_* in eval_ds_info")
     p.add_argument("--n-desc", type=int, default=3, help="held-out description variants to average matched CE over")
     p.add_argument("--limit", type=int, default=64, help="examples per held-out task")
+    p.add_argument("--example-offset", type=int, default=0,
+                   help="skip the first N examples of each task. Training consumes a LEADING range "
+                        "of the same split, so set this to the training --limit (40 for every "
+                        "recorded T2A run) to score a trained-on task on examples it never saw.")
     p.add_argument("--batch-size", type=int, default=16)
     p.add_argument("--max-len", type=int, default=512)
     p.add_argument("--adapter", default="lora")
@@ -135,55 +199,26 @@ def main() -> None:
     # exactly as in training -- so the CE we compute here is the same quantity the trainer optimized.
     current: dict = {}
     register_persistent_hooks(hypernetwork.codecs, layers, current)
-
-    def batched_ce(examples, gen_fn) -> float:
-        """Example-weighted mean of masked_cross_entropy (which is itself per-example averaged)."""
-        total_ce, total_n = 0.0, 0
-        for i in range(0, len(examples), args.batch_size):
-            batch = lol_collate_fn(examples[i : i + args.batch_size], pad_id).to(device)
-            b = batch.input_ids.shape[0]
-            current.clear()
-            current.update(gen_fn(b))
-            with torch.no_grad():
-                out = interpreter(input_ids=batch.input_ids, attention_mask=batch.attention_mask)
-                ce = masked_cross_entropy(out.logits, batch.labels)
-            total_ce += float(ce) * b
-            total_n += b
-        return total_ce / max(total_n, 1)
+    batched_ce = make_batched_ce(interpreter, current, pad_id=pad_id, batch_size=args.batch_size, device=device)
 
     print(f"[3/4] embedding held-out descriptions for {len(task_ids)} task(s)...", flush=True)
-    dummy_cond = torch.zeros(1, 1)  # dataset attaches an (ignored) condition embedding per example
     rows = []
     for ti, task_id in enumerate(task_ids):
-        meta_path = Path(args.tasks_root) / task_id / "metadata.yaml"
-        if not meta_path.exists():
-            print(f"  [skip] {task_id}: no vendored metadata.yaml", flush=True)
-            continue
-        metadata = load_task_metadata(Path(args.tasks_root), task_id)
-        descs = eval_ds_info[task_id]["descriptions"][: args.n_desc]
-        # strip_task_def=True => the frozen model sees ONLY the problem; the task is specifiable only
-        # via the description-conditioned adapter. training=False => deterministic (embedding ignored).
-        dataset = LolSFTDataset(
-            tokenizer, metadata, dummy_cond, max_len=args.max_len,
-            limit=args.limit, training=False, strip_task_def=True,
-        )
-        examples = [dataset[i] for i in range(len(dataset))]
+        examples = build_task_examples(tokenizer, args.tasks_root, task_id, args.limit, args.max_len,
+                                       offset=args.example_offset)
         if not examples:
-            print(f"  [skip] {task_id}: no examples", flush=True)
+            print(f"  [skip] {task_id}: no vendored metadata.yaml or no examples", flush=True)
             continue
-
+        descs = eval_ds_info[task_id]["descriptions"][: args.n_desc]
         with torch.no_grad():
             desc_embs = [embed_task_descriptions([d], encoder_model, encoder_tokenizer)[0].to(device) for d in descs]
 
-        def gen_matched(b, emb):
-            return hypernetwork(emb.unsqueeze(0).expand(b, -1))
-
-        ce_matched = sum(batched_ce(examples, lambda b, e=e: gen_matched(b, e)) for e in desc_embs) / len(desc_embs)
-        ce_static = batched_ce(examples, lambda b: static(b))
-        ce_frozen = batched_ce(examples, lambda b: {k: torch.zeros_like(v) for k, v in static(b).items()})
+        ce = ce_for_task(batched_ce, examples, hypernetwork=hypernetwork, static=static, desc_embs=desc_embs)
+        ce_matched, ce_static, ce_frozen = ce["matched"], ce["static"], ce["frozen"]
 
         row = {
             "step": step, "task_id": task_id, "n_examples": len(examples), "n_desc": len(desc_embs),
+            "example_offset": args.example_offset,
             "ce_matched": ce_matched, "ce_static": ce_static, "ce_frozen": ce_frozen,
             "matched_minus_static": ce_matched - ce_static,
             "matched_minus_frozen": ce_matched - ce_frozen,

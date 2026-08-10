@@ -23,7 +23,7 @@ setting it is fixed and only the codec varies.
 
 | Setting | Conditioned on | The adapter should… | Behavioral metric | Control (what a non-conditioning adapter can't pass) |
 |---------|----------------|---------------------|-------------------|------------------------------------------------------|
-| **T2A** — task-conditioned | pooled embedding of a free-text *task description* | install a whole task (definition stripped from the input) | held-out-SNI teacher-forced CE (primary) + generation accuracy | **matched − static**: must beat a same-shape static multi-task adapter |
+| **T2A** — task-conditioned | pooled embedding of a free-text *task description* | install a whole task (definition stripped from the input) | held-out-SNI **ROUGE-L** (primary) + exact match and CE as appendix | **matched − static\***: must beat an *independently selected* same-shape static multi-task adapter |
 | **D2A** — document-conditioned | cross-attention over the interpreter's own activations for a *document* | retrieve info from that one document | needle-in-a-haystack exact-match | **context-swap**: adapter from the *wrong* document must fall to chance |
 
 The settings are never pooled — their absolute scores use different conditioning,
@@ -65,18 +65,28 @@ interpreter's input changes.
 The control is **matched − static**: the conditioned adapter is scored against a *static
 reference* — a single adapter of the **same shape**, directly optimized on the same SFT
 data (a multi-task LoRA, not emitted by any hypernetwork), which absorbs all task-*generic*
-help. On the 21 held-out SNI validation tasks (`lol_###` in `eval_ds_info`):
+help. `eval_ds_info` holds 21 `lol_` tasks but only **11 are absent from `train_ds_names`**, so the
+two splits are disjoint on task *and* example: hyperparameters are chosen on the 10 in-distribution
+tasks at `--example-offset 40` (training consumes the leading 40 examples of the same split), and the
+11 genuinely held-out tasks are scored exactly once by the confirmation seeds:
 
-- **CE (primary):** teacher-forced cross-entropy over the reference answer — the quantity
-  the trainer optimizes, non-saturating, well-defined even for open-ended tasks. `matched −
-  static < 0` means conditioning helps. Scored by `scripts/t2a_eval_heldout_sni.py`.
-- **accuracy (corroborating):** greedy-generation normalized exact-match. Scored by
-  `scripts/t2a_eval_heldout_sni_acc.py`. Smaller signal than CE — it saturates where both
-  adapters already succeed, and multiple-choice tasks leak answer content into the input.
+- **ROUGE-L (primary):** Super-NaturalInstructions' own aggregate metric — LCS F-measure over
+  greedy generations, averaged over the 3 held-out description variants. Higher is better;
+  `matched − static* > 0` means conditioning helps. Scored by
+  `scripts/t2a_eval_heldout_sni_acc.py`, which reads ROUGE-L and exact match off one decode pass.
+- **exact match (appendix):** normalized exact match from the *same* generations. Stricter and
+  unambiguous, so it catches ROUGE-L partial-credit inflation, but near-meaningless on the
+  open-ended tasks — never the selector.
+- **CE (appendix):** teacher-forced cross-entropy, scored by `scripts/t2a_eval_heldout_sni.py`.
+  It is the training objective, so it keeps two jobs — divergence detector and eligibility gate —
+  and loses selection. On the held-out split CE and ROUGE-L rank the shapes at Spearman −0.50.
 
-`matched − static` is **non-gameable** (no wrong-condition case to sabotage), **subsumes the
-helpfulness floor** (static ≥ frozen), and needs **no junk descriptions**; `matched − frozen`
-is reported alongside to confirm the adapter helps at all.
+`matched − static*` **subsumes the helpfulness floor** (static\* ≥ frozen) and needs **no junk
+descriptions**; `matched − frozen` is reported alongside to confirm the adapter helps at all. It is
+**not non-gameable**: it cannot be gamed by sabotaging a wrong-condition case, but it *can* be
+inflated by handicapping the control's optimization — a control driven toward a no-op makes the
+difference arbitrarily large. That is why the control is selected independently, on its own score,
+and why a control approaching the frozen model marks a control failure rather than a good result.
 
 ---
 
@@ -135,7 +145,8 @@ uv run adapterbench doctor --require-cuda && uv run pytest -q
 ### T2A — task-conditioned
 
 Trains the strip-def hypernetwork **and** the same-shape static reference (data-parallel,
-gemma-2-2b), then scores `matched − static` on the 21 held-out SNI tasks (CE + accuracy).
+gemma-2-2b), then scores `matched − static*` ROUGE-L on the 11 genuinely held-out SNI tasks
+(with exact match and CE as appendix figures).
 Evals require `HF_HUB_OFFLINE=1` (the model and datasets are cached; this avoids the HF Hub
 rate limit) — the reproduce script sets it for you.
 
@@ -144,14 +155,15 @@ rate limit) — the reproduce script sets it for you.
 scripts/reproduce/task_t2a_lora.sh 777 0,1,2,3 4,5,6,7    # SEED GPUS_HYPER GPUS_STATIC
 
 # results (per-task + __aggregate__ rows):
-#   .../gemma2b_stripdef_hyper/s777/heldout_sni_ce_full21.jsonl   (matched-static CE, primary)
-#   .../gemma2b_stripdef_hyper/s777/heldout_sni_acc.jsonl         (accuracy, corroborating)
+#   .../heldout_sni_acc.jsonl                     (ROUGE-L primary + exact match, one decode pass)
+#   .../heldout_sni_ce_full21.jsonl               (CE: appendix figure, divergence/eligibility gate)
+#   rescore/report_scores/*.jsonl                 (the one-shot 11-task report-split measurement)
 ```
 
 Helpers: `scripts/t2a_base_diag.sh <hf-interpreter> <tag> <gpus> <per-gpu-batch>` runs the
 recipe with a swappable base model and env knobs (`SEED`, `STEPS`, `LR`, `SNAP`, `LIMIT`,
 `ELIMIT`, `STRIPDEF`, `STATIC`); the 21 held-out tasks' metadata is vendored (once) by
-`scripts/vendor_heldout_sni_metadata.py`. Baseline: `matched − static = −0.723 ± 0.162` nats CE
+`scripts/vendor_heldout_sni_metadata.py`. Baseline: `matched − static* = +0.049 ± 0.027` ROUGE-L
 (59/63 task-seed pairs, 3 seeds).
 
 ### D2A — document-conditioned (NIAH)

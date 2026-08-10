@@ -30,12 +30,20 @@ Both language settings pass controls that require genuine condition dependence.
 <!-- canonical-results:release-summary-markdown:start -->
 | setting | frozen interpreter | primary result | condition control |
 |---|---|---|---|
-| T2A | gemma-2-2b | LoRA `matched − static = −0.571 ± 0.045`; FourierFT `matched − static = −0.525 ± 0.064`; (IA)³ `matched − static = −0.381 ± 0.023`; LoKr `matched − static = −0.403 ± 0.172` nats CE (3 seeds each) | same-shape static control: LoRA wins 54/63 task-seed pairs; FourierFT wins 55/63 task-seed pairs; (IA)³ wins 48/63 task-seed pairs; LoKr wins 49/63 task-seed pairs |
+| T2A | gemma-2-2b | LoRA `matched − static* = +0.049 ± 0.027`; FourierFT `matched − static* = +0.068 ± 0.044`; (IA)³ `matched − static* = +0.128 ± 0.049`; LoKr `matched − static* = +0.077 ± 0.033`; Steering `matched − static* = +0.119 ± 0.038` ROUGE-L on 11 held-out SNI tasks (3 confirmation seeds each) | independently selected same-shape static control: LoRA wins 3/3 confirmation seeds; FourierFT wins 3/3 confirmation seeds; (IA)³ wins 3/3 confirmation seeds; LoKr wins 3/3 confirmation seeds; Steering wins 3/3 confirmation seeds |
 | D2A | Qwen3-0.6B | LoRA (r=8): `matched − context-swap = +0.556 ± 0.327`; FourierFT: `matched − context-swap = +0.656 ± 0.352`; (IA)³: `matched − context-swap = +0.738 ± 0.327`; LoKr: `matched − context-swap = +0.981 ± 0.037`; steering: `matched − context-swap = +0.881 ± 0.050` exact-match | LoRA (r=8) control `0.000`; FourierFT control `0.000`; (IA)³ control `0.000`; LoKr control `0.000`; steering control `0.000` |
 <!-- canonical-results:release-summary-markdown:end -->
 
-T2A generation accuracy is corroborating rather than the selection metric: LoRA reports
-`matched − static = −0.0050 ± 0.0278`; `(IA)³` reports `+0.0562 ± 0.0087`.
+T2A's selection metric and headline are **ROUGE-L**, Super-NaturalInstructions' own aggregate
+metric, measured on the 11 genuinely held-out `lol_` tasks against an independently selected
+same-shape static control. Cross-entropy is an appendix figure: it stays a divergence detector and
+an eligibility gate and never selects. On the report split CE and ROUGE-L rank the shapes at
+Spearman −0.50, so a CE-selected point is not the behaviourally best point.
+
+The five shapes are **not ranked**. Only `(IA)³ > LoRA` (+0.079, 2.4× SE) and
+`Steering > LoRA` (+0.069, 2.6× SE) separate; every adjacent pair does not, and `LoKr` vs `(IA)³`
+would need ~90 seeds per codec. Read the table as five independent measurements of conditioning
+against five independent controls.
 
 D2A's locked numeric-decoy NIAH setting trains at 512 tokens and tests through 32768.
 LoRA crosses 0.5 through 8192 (16×); FourierFT, IA³, and LoKr cross through 32768 (64×).
@@ -162,8 +170,15 @@ evaluation.
 - `src/adapterbench/t2a/sft_trainer.py` — fixed-budget and checkpointed T2A SFT,
   gradient accumulation, warmup, and static-adapter training.
 - `scripts/t2a_train_ddp.py` — data-parallel T2A training.
-- `scripts/t2a_eval_heldout_sni.py` — held-out teacher-forced CE, the primary metric.
-- `scripts/t2a_eval_heldout_sni_acc.py` — held-out generation accuracy.
+- `scripts/t2a_eval_heldout_sni_acc.py` — greedy generation scored for **ROUGE-L and exact match off
+  one decode pass**: the primary metric and its cross-check. `--example-offset` skips the examples
+  training consumed; `--split` is selected by the re-scoring driver below.
+- `scripts/t2a_eval_heldout_sni.py` — held-out teacher-forced CE, now an appendix figure and the
+  divergence/eligibility gate, never the selector.
+- `scripts/t2a_score_checkpoints.py` — the scoring driver for both splits, resumable, with the
+  report split guarded behind `--split report --confirm-spend-report-split --checkpoint-filter`.
+- `scripts/t2a_sweep_axes.py` / `t2a_selection_seeds.py` / `t2a_confirmation_seeds.py` — the
+  scout, §3b selection-seed and §4 confirmation-seed phases of the re-derivation.
 - `scripts/reproduce/task_t2a_lora.sh` — canonical one-seed LoRA reproduction.
 
 Training tasks are vendored under `data/t2a/`. The loader refuses tasks outside T2A's
@@ -247,9 +262,12 @@ held-out SNI tasks.
 | 1803 | −0.598 nats | 19/21 tasks | +0.0228 |
 | aggregate | **−0.571 ± 0.045** | **54/63 task-seed pairs** | **−0.0050 ± 0.0278** |
 
-CE is primary because it is non-saturating and matches the training objective. Greedy
-exact-match accuracy is corroborating: it saturates on easy tasks and can understate
-adapter differences.
+ROUGE-L is primary because it is behavioural. CE is the quantity the trainer optimizes, so
+selecting on it measures optimization quality and systematically favours shapes whose inductive bias
+reduces token-level likelihood whether or not behaviour changes — measured here as a Spearman −0.50
+rank disagreement with ROUGE-L on the held-out split. Exact match is computed from the same
+generations at no extra cost and reported alongside; it is stricter and unambiguous but
+near-meaningless on the open-ended tasks, so it is never the selector either.
 
 Result paths:
 
@@ -336,7 +354,12 @@ The reproduction script sets it automatically.
   SuperNI split.
 - The held-out metadata is local; online model metadata checks can trigger Hugging Face
   rate limits even when all model/data files are cached.
-- CE and accuracy answer different questions. Keep CE primary and accuracy corroborating.
+- CE and behaviour answer different questions, and on genuinely held-out tasks they *anti-correlate*
+  (Spearman −0.50). ROUGE-L selects and headlines; CE is a divergence detector and eligibility gate.
+  A CE-selected operating point is reliably not the behaviourally best one.
+- The 10 `lol_` eval tasks that appear in `train_ds_names` must be scored at `--example-offset 40`.
+  Training consumes the leading 40 examples of the same `train[:10000]` split, so offset 0 replays
+  training examples: it inflates matched, inflates the *static* more, and biases the scale argmax high.
 
 ### D2A
 

@@ -163,20 +163,25 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
         raise ResultValidationError("no canonical D2A records")
     if fragment == "t2a-markdown":
         lines = [
-            "| Shape | rank | scale | lr | steps | seeds | **matched − static (CE, nats)** | matched − frozen | accuracy m−static / m−frozen |",
-            "|---|:---:|:---:|:---:|---:|:---:|:---:|:---:|:---:|",
+            "| Shape | rank | scale | lr | steps | static\\* scale / lr | seeds | matched | static\\* | "
+            "**matched − static\\* (ROUGE-L)** | m − frozen | EM Δ | CE Δ (appendix) |",
+            "|---|:---:|:---:|:---:|---:|:---:|:---:|---:|---:|:---:|---:|---:|---:|",
         ]
         for t2a in t2a_records:
             th, hp = t2a["headline"], t2a["free_hyperparameters"]
             rank = t2a["fixed_shape_parameters"].get("rank", "—")
             steps = f"{int(hp['steps']):,}".replace(",", " ")
-            frozen = t2a["summary"]["matched_minus_frozen"]
-            accuracy = t2a["summary"]["accuracy_matched_minus_static"]
+            summary = t2a["summary"]
+            static = hp.get("static_control", {})
+            em = summary["exact_match_matched_minus_static"]
+            ce = summary["cross_entropy_matched_minus_static"]
             lines.append(
-                f"| {_t2a_display_name(t2a)} | {rank} | {hp['scale']} | {hp['learning_rate']} | {steps} | {len(t2a['seed_results'])} | "
-                f"**{_signed(th['value'], 3)} ± {th['variation']:.3f}** ({t2a['summary']['wins']}) | "
-                f"{_signed(frozen['value'], 2)} ± {frozen['variation']:.2f} | "
-                f"{_signed(accuracy['value'], 4)} ± {accuracy['variation']:.4f} / {_signed(t2a['summary']['accuracy_matched_minus_frozen'], 3)} |"
+                f"| {_t2a_display_name(t2a)} | {rank} | {hp['scale']} | {hp['learning_rate']} | {steps} | "
+                f"{static.get('scale', '—')} / {static.get('learning_rate', '—')} | "
+                f"{len(t2a['seed_results'])} | {th['matched']:.3f} | {th['control']:.3f} | "
+                f"**{_signed(th['value'], 3)} ± {th['variation']:.3f}** | "
+                f"{_signed(summary['matched_minus_frozen']['value'], 3)} | "
+                f"{_signed(em['value'], 3)} | {_signed(ce['value'], 3)} |"
             )
         return "\n".join(lines)
     if fragment == "t2a-selection-markdown":
@@ -191,7 +196,9 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
                 continue
             hp = t2a["free_hyperparameters"]
             ledgers = ", ".join(f"`{Path(item['path']).parent.name}/{Path(item['path']).name}`" for item in trail["state_artifacts"])
-            selected = f"scale {hp['scale']}; lr {hp['learning_rate']}; {hp['steps']:,} steps"
+            static = hp.get("static_control", {})
+            selected = (f"hyper: scale {hp['scale']}, lr {hp['learning_rate']}, {hp['steps']:,} steps; "
+                        f"static\\*: scale {static.get('scale', '—')}, lr {static.get('learning_rate', '—')}")
             lines.append(f"| {_t2a_display_name(t2a)} | {trail['summary']} State ledgers: {ledgers}. | {selected} |")
         return "\n".join(lines)
     if fragment == "d2a-markdown":
@@ -221,7 +228,7 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
         return "\n".join(lines)
     if fragment == "release-summary-markdown":
         t2a_summary = "; ".join(
-            f"{_t2a_display_name(t2a)} `matched − static = {_signed(t2a['headline']['value'], 3)} ± {t2a['headline']['variation']:.3f}`"
+            f"{_t2a_display_name(t2a)} `matched − static* = {_signed(t2a['headline']['value'], 3)} ± {t2a['headline']['variation']:.3f}`"
             for t2a in t2a_records
         )
         t2a_control = "; ".join(
@@ -237,7 +244,8 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
         return "\n".join([
             "| setting | frozen interpreter | primary result | condition control |",
             "|---|---|---|---|",
-            f"| T2A | gemma-2-2b | {t2a_summary} nats CE (3 seeds each) | same-shape static control: {t2a_control} |",
+            f"| T2A | gemma-2-2b | {t2a_summary} ROUGE-L on 11 held-out SNI tasks (3 confirmation seeds each) | "
+            f"independently selected same-shape static control: {t2a_control} |",
             f"| D2A | Qwen3-0.6B | {d2a_summary} exact-match | {d2a_control} |",
         ])
     if fragment == "repro-summary-markdown":
@@ -248,9 +256,9 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
         for t2a in t2a_records:
             th = t2a["headline"]
             lines.append(
-                f"| Task (T2A) — {_t2a_display_name(t2a)} | `{t2a['reproduction']['script']} [GPUS_HYPER] [GPUS_STATIC]` | "
-                f"`task_conditioned_t2a.md` | matched − static = **{_signed(th['value'], 3)} ± {th['variation']:.3f}** "
-                f"nats CE ({t2a['summary']['wins']}, {len(t2a['seed_results'])} seeds) |"
+                f"| Task (T2A) — {_t2a_display_name(t2a)} | `{t2a['reproduction']['script']}` | "
+                f"`task_conditioned_t2a.md` | matched − static\\* = **{_signed(th['value'], 3)} ± {th['variation']:.3f}** "
+                f"ROUGE-L ({t2a['summary']['wins']}, {len(t2a['seed_results'])} confirmation seeds) |"
             )
         for d2a in d2a_records:
             dh = d2a["headline"]
@@ -268,8 +276,10 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
         rows = []
         for t2a in t2a_records:
             th, hp = t2a["headline"], t2a["free_hyperparameters"]
-            frozen = t2a["summary"]["matched_minus_frozen"]
-            accuracy = t2a["summary"]["accuracy_matched_minus_static"]
+            summary = t2a["summary"]
+            static = hp.get("static_control", {})
+            em = summary["exact_match_matched_minus_static"]
+            ce = summary["cross_entropy_matched_minus_static"]
             label = _t2a_display_name(t2a)
             if t2a["codec"] == "lora_r8":
                 label += ' <span class="baseline-badge">baseline</span>'
@@ -277,9 +287,11 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
             steps = f"{int(hp['steps']):,}".replace(",", " ")
             rows.append(
                 f'<tr><td>{label}</td><td>{rank}</td><td>{hp["scale"]}</td><td>{hp["learning_rate"]}</td>'
-                f'<td>{steps}</td><td>{len(t2a["seed_results"])}</td><td class="headline">{_signed(th["value"], 3)} ± {th["variation"]:.3f} '
-                f'<span class="muted">({t2a["summary"]["wins"]})</span></td><td>{_signed(frozen["value"], 2)} ± {frozen["variation"]:.2f}</td>'
-                f'<td>{_signed(accuracy["value"], 4)} ± {accuracy["variation"]:.4f} / {_signed(t2a["summary"]["accuracy_matched_minus_frozen"], 3)}</td></tr>'
+                f'<td>{steps}</td><td>{static.get("scale", "—")} / {static.get("learning_rate", "—")}</td>'
+                f'<td>{len(t2a["seed_results"])}</td><td>{th["matched"]:.3f}</td><td>{th["control"]:.3f}</td>'
+                f'<td class="headline">{_signed(th["value"], 3)} ± {th["variation"]:.3f}</td>'
+                f'<td>{_signed(summary["matched_minus_frozen"]["value"], 3)}</td>'
+                f'<td>{_signed(em["value"], 3)}</td><td class="muted">{_signed(ce["value"], 3)}</td></tr>'
             )
         return "\n".join(rows)
     if fragment == "d2a-html":
@@ -296,6 +308,41 @@ def render_fragment(records: list[dict[str, Any]], fragment: str) -> str:
             )
         return "\n".join(rows)
     raise ResultValidationError(f"unknown fragment: {fragment}")
+
+
+RENDER_TARGETS = [
+    ("leaderboards/task_conditioned_t2a.md", "t2a-markdown"),
+    ("leaderboards/task_conditioned_t2a.md", "t2a-selection-markdown"),
+    ("leaderboards/document_niah_d2a.md", "d2a-markdown"),
+    ("PROJECT_PLAN.md", "release-summary-markdown"),
+    ("scripts/reproduce/README.md", "repro-summary-markdown"),
+    ("docs/index.html", "t2a-html"),
+    ("docs/index.html", "d2a-html"),
+]
+
+
+def write_rendered_documents(records: list[dict[str, Any]], root: Path = REPO_ROOT) -> list[str]:
+    """Rewrite every `canonical-results:<fragment>` marker block in place from the records.
+
+    The counterpart to `check_rendered_documents`: that function reports drift, this one removes it.
+    Only the text BETWEEN the markers is replaced, so the surrounding prose -- which does not
+    regenerate and has to be maintained by hand -- is never touched.
+    """
+    written = []
+    for rel, fragment in RENDER_TARGETS:
+        path = root / rel
+        text = path.read_text()
+        start, end = f"<!-- canonical-results:{fragment}:start -->", f"<!-- canonical-results:{fragment}:end -->"
+        if start not in text or end not in text:
+            raise ResultValidationError(f"{path}: missing canonical-results markers for {fragment}")
+        head, rest = text.split(start, 1)
+        _, tail = rest.split(end, 1)
+        body = render_fragment(records, fragment)
+        new = f"{head}{start}\n{body}\n{end}{tail}"
+        if new != text:
+            path.write_text(new)
+            written.append(f"{rel}: {fragment}")
+    return written
 
 
 def check_rendered_documents(records: list[dict[str, Any]], root: Path = REPO_ROOT) -> list[str]:

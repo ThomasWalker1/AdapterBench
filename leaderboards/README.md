@@ -9,11 +9,16 @@ There is no automated search — hyperparameters are chosen per entry (by hand o
 author runs) and recorded here alongside the number. What keeps the comparison a *shape* comparison
 rather than a hyperparameter contest is a small set of fixed rules, not machinery:
 
-- **Report `matched − control`, never a raw loss.** Every setting has a control a non-conditioning
-  adapter cannot pass; the headline number is matched minus control. Raw loss is not capability (a
-  response cross-entropy can hit zero with task success at chance) — but a *controlled* loss
-  difference is fair: the task setting's `matched − static` subtracts a same-shape reference that
-  captures any generic loss reduction, and reports generation accuracy alongside it.
+- **Report `matched − control` on a behavioural metric, never a loss.** Every setting has a control a
+  non-conditioning adapter cannot pass; the headline is matched minus control. Raw loss is not
+  capability — a response cross-entropy can hit zero with task success at chance — and a *controlled*
+  loss is not a safe substitute either: subtracting a same-shape reference only removes generic help
+  if that reference is at its own optimum, and the difference can be inflated by handicapping the
+  control's optimization. So both halves are fixed: the control is selected independently on its own
+  score, and the metric is behavioural (ROUGE-L for the task setting, retrieval accuracy for the
+  document setting). Cross-entropy is a divergence detector, an eligibility gate and an appendix
+  column; it never selects and never headlines. On genuinely held-out tasks CE and ROUGE-L rank the
+  task-setting shapes at Spearman −0.50, so a CE-selected point is not the behaviourally best one.
 - **Only the free optimization HPs vary per entry.** The *free* HPs are scale, learning rate,
   warmup, and step budget. The
   *shared substrate* — task data, conditioner/trunk, evaluator, and the control — is identical

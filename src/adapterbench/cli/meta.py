@@ -9,7 +9,7 @@ from pathlib import Path
 
 from ..catalog import build_matrix, load_catalog
 from ..preflight import preflight
-from ..results import DEFAULT_RESULTS_ROOT, ResultValidationError, check_rendered_documents, load_records, render_fragment
+from ..results import DEFAULT_RESULTS_ROOT, ResultValidationError, check_rendered_documents, load_records, render_fragment, write_rendered_documents
 from ..doctor import environment_report
 from ._shared import DEFAULT_CATALOG, write_json
 
@@ -72,6 +72,9 @@ def _results_command(args) -> None:
             print(f"valid canonical results={len(records)} settings={','.join(record['setting'] for record in records)}")
         elif args.results_action == "render":
             print(render_fragment(records, args.fragment))
+        elif args.results_action == "write":
+            written = write_rendered_documents(records)
+            print("\n".join(f"rewrote {item}" for item in written) or "all marker blocks already current")
         else:
             errors = check_rendered_documents(records)
             if errors:
@@ -119,7 +122,7 @@ def register(subparsers) -> None:
     smoke.set_defaults(func=_peft_smoke_command)
 
     results = subparsers.add_parser("results", help="validate and render committed canonical result records")
-    results.add_argument("results_action", choices=("validate", "render", "check"))
+    results.add_argument("results_action", choices=("validate", "render", "check", "write"))
     results.add_argument("--root", default=DEFAULT_RESULTS_ROOT, type=Path)
     results.add_argument(
         "--fragment",
