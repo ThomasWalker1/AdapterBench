@@ -5,6 +5,7 @@ setups/adapters or the environment."""
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 from ..catalog import build_matrix, load_catalog
@@ -92,6 +93,14 @@ def _preflight_command(args) -> None:
         raise SystemExit(f"reproduction preflight failed: {error}") from error
 
 
+def _website_build_command(_args) -> None:
+    import subprocess
+
+    repo = Path(__file__).resolve().parents[3]
+    script = repo / "scripts" / "build_website.py"
+    raise SystemExit(subprocess.call([sys.executable, str(script)], cwd=repo))
+
+
 def register(subparsers) -> None:
     catalog = subparsers.add_parser("catalog", help="list registered setups and adapters")
     catalog.add_argument("--root", default=DEFAULT_CATALOG, type=Path)
@@ -145,3 +154,8 @@ def register(subparsers) -> None:
     preflight_parser.add_argument("--output", required=True, type=Path)
     preflight_parser.add_argument("--allow-missing-cuda", action="store_true", help="only inspect files and output layout")
     preflight_parser.set_defaults(func=_preflight_command)
+
+    website = subparsers.add_parser("website", help="build the static benchmark website")
+    website_sub = website.add_subparsers(dest="website_action", required=True)
+    build = website_sub.add_parser("build", help="regenerate website/ from canonical_results/")
+    build.set_defaults(func=_website_build_command)

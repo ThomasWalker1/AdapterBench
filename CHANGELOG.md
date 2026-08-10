@@ -9,6 +9,10 @@ restart-safe reproduction wrappers.
 
 ## Unreleased
 
+- **Static website builder** — `website/` with PAARBench-style layout (IBM Plex, sortable
+  leaderboards, per-codec detail pages). Build via `uv run adapterbench website build`;
+  deploy to a personal site with `website/INTEGRATION.md`. Root `benchmark.yaml` declares
+  metadata for site aggregators.
 - **Repository cleanup for open-source contributors:** added [CONTRIBUTING.md](CONTRIBUTING.md);
   unified T2A reproduction under `scripts/reproduce/t2a_reproduce_*.sh` with operating points
   matching `canonical_results/`; removed legacy one-off scripts (`migrate_seed3_at_15k.sh`,

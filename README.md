@@ -40,8 +40,8 @@ results without remaining active benchmark infrastructure.
 
 Committed headline records live in [`canonical_results/`](canonical_results/). They, not
 the rendered tables, are the source of truth; run `uv run adapterbench results check` to
-verify the leaderboards and website tables against them. The paper draft is maintained
-separately from this repository and is not part of the drift check.
+verify leaderboards against them, then `uv run adapterbench website build` to refresh the
+public site. The paper draft is maintained separately and is not part of the drift check.
 
 ## Layout
 
@@ -52,6 +52,8 @@ separately from this repository and is not part of the drift check.
   (`live_evaluator.py`).
 - `leaderboards/` — the benchmark results and exact reproduction commands, one file per
   setting.
+- `website/` — static benchmark site; build with `uv run adapterbench website build` (see
+  [website/INTEGRATION.md](website/INTEGRATION.md) for personal-site deployment).
 - `configs/setups/`, `configs/adapters/` — declarative setup and codec metadata.
 
 Start with [SETUP.md](SETUP.md) for environment setup, then **[GUIDE.md](GUIDE.md)** for
@@ -72,6 +74,7 @@ uv run adapterbench validate
 uv run adapterbench catalog
 uv run adapterbench results validate
 uv run adapterbench results check
+uv run adapterbench website build   # regenerate website/ from canonical_results/
 ```
 
 ## Live end-to-end SFT

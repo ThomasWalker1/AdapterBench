@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FourierFT — AdapterBench</title>
+  <meta name="description" content="AdapterBench tests whether the shape of a hypernetwork-generated PEFT adapter matters under live end-to-end SFT.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <h1><a href="../index.html" style="color:inherit;text-decoration:none;">AdapterBench</a></h1>
+      <p class="tagline">Does the <em>shape</em> of a hypernetwork-generated adapter matter?</p>
+      <nav class="site-nav">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#settings">Settings</a>
+        <a href="../index.html#leaderboards">Leaderboards</a>
+        <a href="../index.html#contribute">Contribute</a>
+        <a href="https://github.com/ThomasWalker1/AdapterBench">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page-main">
+    
+<a class="back-link" href="../index.html#leaderboards">← Back to leaderboards</a>
+
+<div class="codec-hero">
+  <h1>FourierFT</h1>
+  <p class="lead">Sparse Fourier coefficients in a fixed global basis.</p>
+  <div class="badge-row"><span class="badge">fourierft</span><span class="badge badge-accent">D2A</span><span class="badge badge-accent">T2A</span><span class="badge">custom</span></div>
+</div>
+
+
+<section>
+  <h2>D2A headline</h2>
+  <p class="lead"><strong>matched minus control</strong>
+  vs wrong document context swap:
+  <span class="headline">+0.6562 + 0.3519</span>
+  (5 seeds).</p>
+  <div class="table-wrap"><table><thead><tr><th>Seed</th><th class="num">Matched</th><th class="num">Control</th><th class="num">Δ (exact match accuracy)</th></tr></thead><tbody><tr><td>5301</td><td class="num">0.5625</td><td class="num">0.0000</td><td class="num headline">+0.5625</td></tr><tr><td>5302</td><td class="num">0.7188</td><td class="num">0.0000</td><td class="num headline">+0.7188</td></tr><tr><td>5303</td><td class="num">1.0000</td><td class="num">0.0000</td><td class="num headline">+1.0000</td></tr><tr><td>5304</td><td class="num">0.9688</td><td class="num">0.0000</td><td class="num headline">+0.9688</td></tr><tr><td>5305</td><td class="num">0.0312</td><td class="num">0.0000</td><td class="num headline">+0.0312</td></tr></tbody></table></div>
+  <h3>Hyperparameters</h3>
+  <ul class="param-list"><li><span>scale</span> = 4</li><li><span>learning_rate</span> = 2e-5</li><li><span>warmup_steps</span> = 1080</li><li><span>steps</span> = 36000</li><li><span>target_modules (fixed)</span> = down_proj</li><li><span>factorization (fixed)</span> = fixed seeded 2D orthonormal DCT-II frequency-pair basis</li><li><span>generated_scalars_per_layer (fixed)</span> = 32768</li><li><span>generated_scalars_all_layers (fixed)</span> = 917504</li><li><span>n_freqs_rule (fixed)</span> = 8 * (in_features + out_features)</li><li><span>n_latents (fixed)</span> = 208</li><li><span>num_blocks (fixed)</span> = 8</li></ul>
+  <h3>Difficulty curve</h3><div class="table-wrap"><table><thead><tr><th>Axis</th><th class="num">Matched</th><th class="num">Control</th><th class="num">Δ</th></tr></thead><tbody><tr><td>512</td><td class="num">0.6562</td><td class="num">0.0000</td><td class="num">+0.6562</td></tr><tr><td>1024</td><td class="num">0.6875</td><td class="num">0.0000</td><td class="num">+0.6875</td></tr><tr><td>2048</td><td class="num">0.7000</td><td class="num">0.0000</td><td class="num">+0.7000</td></tr><tr><td>4096</td><td class="num">0.6500</td><td class="num">0.0000</td><td class="num">+0.6500</td></tr><tr><td>8192</td><td class="num">0.6312</td><td class="num">0.0000</td><td class="num">+0.6312</td></tr><tr><td>16384</td><td class="num">0.5625</td><td class="num">0.0000</td><td class="num">+0.5625</td></tr><tr><td>32768</td><td class="num">0.5813</td><td class="num">0.0000</td><td class="num">+0.5813</td></tr></tbody></table></div>
+  <p class="muted">The scale ladder at seed 5201 promoted scale 4 at 16k steps. Its lower geometric LR neighbor 2e-5 beat 4e-5 and 8e-5, then improved to tail AUC 0.659 at the 36k rung. The three-selection-seed stability gate compared LR 2e-5 with 4e-5: 2e-5 had the better mean tail AUC (0.778 vs 0.743) and much lower population SD (0.070 vs 0.359), with 3/3 finite runs for both. Five disjoint confirmations (5301–5305) were finite; seed 5305 exposed substantial retrieval-phase variance rather than numerical divergence.</p>
+  <h3>Reproduce</h3>
+  <pre><code>document_niah_numeric_decoy_fourierft_all.sh</code></pre>
+</section>
+
+<section>
+  <h2>T2A headline</h2>
+  <p class="lead"><strong>matched minus control</strong>
+  vs independently selected same shape static adapter:
+  <span class="headline">+0.0684 + 0.0444</span>
+  (3 seeds).</p>
+  <div class="table-wrap"><table><thead><tr><th>Seed</th><th class="num">Matched</th><th class="num">Control</th><th class="num">Δ (rouge l f measure)</th></tr></thead><tbody><tr><td>5041</td><td class="num">0.2695</td><td class="num">0.2519</td><td class="num headline">+0.0176</td></tr><tr><td>5042</td><td class="num">0.3157</td><td class="num">0.2278</td><td class="num headline">+0.0879</td></tr><tr><td>5043</td><td class="num">0.2994</td><td class="num">0.1996</td><td class="num headline">+0.0998</td></tr></tbody></table></div>
+  <h3>Hyperparameters</h3>
+  <ul class="param-list"><li><span>learning_rate</span> = 1e-4</li><li><span>warmup_fraction</span> = 0.1</li><li><span>steps</span> = 6000</li><li><span>scale</span> = 0.25</li><li><span>scale</span> = 4</li><li><span>learning_rate</span> = 1e-4</li><li><span>steps</span> = 6000</li><li><span>note</span> = selected independently on the static&#x27;s own selection-split ROUGE-L, not yoked to the hypernetwork&#x27;s point</li><li><span>target_modules (fixed)</span> = q_proj, v_proj</li><li><span>factorization (fixed)</span> = fixed seeded 2D orthonormal DCT-II frequency-pair basis</li><li><span>generated_scalars_per_layer (fixed)</span> = 61440</li><li><span>n_freqs_rule (fixed)</span> = 8 * (in_features + out_features)</li></ul>
+  <h3>Difficulty curve</h3><div class="table-wrap"><table><thead><tr><th>Axis</th><th class="num">Matched</th><th class="num">Control</th><th class="num">Δ</th></tr></thead><tbody><tr><td>held_out_sni_task_seed_pairs</td><td class="num">0.2949</td><td class="num">0.2265</td><td class="num">+0.0684</td></tr></tbody></table></div>
+  <p class="muted">Scale moved from 16 to 0.25 with LR held at 1e-4 (5e-5 and 2e-4 both worse), stable across both example offsets. The static&#x27;s own optimum is scale 4 lr 1e-4, interior on every swept axis. Re-derived under the corrected T2A rules (AUTORESEARCH.md): ROUGE-L rather than the training objective, a static control selected independently on its own score, and selection data disjoint from the report split on BOTH task and example axes -- the selection split is the 10 in-distribution lol_ tasks at example offset 40, since training consumes the leading 40 examples of the same split. Every swept axis closed with an interior optimum; the operating point passed the §3b stability gate 3/3 on selection seeds disjoint from these confirmation seeds.</p>
+  <h3>Reproduce</h3>
+  <pre><code>scripts/reproduce/t2a_reproduce_all.sh fourierft</code></pre>
+</section>
+
+
+<section>
+  <h2>Source</h2>
+  <div class="prose">
+    <p>Implementation: <a href="https://github.com/ThomasWalker1/AdapterBench/blob/main/src/adapterbench/t2a/codecs.py">codecs.py</a>
+    · manifest: <a href="https://github.com/ThomasWalker1/AdapterBench/blob/main/configs/adapters/fourierft.yaml">fourierft.yaml</a>
+    · contribute: <a href="https://github.com/ThomasWalker1/AdapterBench/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a></p>
+  </div>
+</section>
+
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <p>AdapterBench — holding the hypernetwork, training loop, data, and evaluator fixed; varying only the generated representation.</p>
+    </div>
+  </footer>
+  <script src="../js/sort-tables.js" defer></script>
+</body>
+</html>

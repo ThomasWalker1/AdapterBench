@@ -316,8 +316,6 @@ RENDER_TARGETS = [
     ("leaderboards/document_niah_d2a.md", "d2a-markdown"),
     ("PROJECT_PLAN.md", "release-summary-markdown"),
     ("scripts/reproduce/README.md", "repro-summary-markdown"),
-    ("docs/index.html", "t2a-html"),
-    ("docs/index.html", "d2a-html"),
 ]
 
 
@@ -352,8 +350,6 @@ def check_rendered_documents(records: list[dict[str, Any]], root: Path = REPO_RO
         (root / "leaderboards/document_niah_d2a.md", "d2a-markdown"),
         (root / "PROJECT_PLAN.md", "release-summary-markdown"),
         (root / "scripts/reproduce/README.md", "repro-summary-markdown"),
-        (root / "docs/index.html", "t2a-html"),
-        (root / "docs/index.html", "d2a-html"),
     ]
     errors = []
     for path, fragment in targets:

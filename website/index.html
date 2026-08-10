@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home — AdapterBench</title>
+  <meta name="description" content="AdapterBench tests whether the shape of a hypernetwork-generated PEFT adapter matters under live end-to-end SFT.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <h1><a href="index.html" style="color:inherit;text-decoration:none;">AdapterBench</a></h1>
+      <p class="tagline">Does the <em>shape</em> of a hypernetwork-generated adapter matter?</p>
+      <nav class="site-nav">
+        <a href="index.html#about">About</a>
+        <a href="index.html#settings">Settings</a>
+        <a href="index.html#leaderboards">Leaderboards</a>
+        <a href="index.html#contribute">Contribute</a>
+        <a href="https://github.com/ThomasWalker1/AdapterBench">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page-main">
+    
+<section id="about">
+  <h2>About the benchmark</h2>
+  <div class="about-copy">
+    <p class="lead">
+      <strong>AdapterBench</strong> asks whether the <em>shape</em> of a hypernetwork-generated
+      PEFT adapter matters. Text-to-LoRA and Doc-to-LoRA both emit a LoRA — but neither tests that
+      representation against alternatives under a fixed generation-and-evaluation protocol.
+    </p>
+    <p>
+      The benchmark holds the hypernetwork shell, training loop, data, and evaluator
+      <strong>constant</strong> within each setting, and varies <strong>only</strong> the generated
+      representation (the <em>codec</em>). Any difference in the scored result is therefore attributable
+      to shape, not to a confound in the recipe.
+    </p>
+    <div class="premise">
+      <div class="fixed-vary">
+        <div class="fv"><h4>Fixed substrate</h4><ul>
+          <li>hypernetwork trunk &amp; conditioner</li>
+          <li>training data &amp; optimizer loop</li>
+          <li>evaluator &amp; behavioral control</li>
+        </ul></div>
+        <div class="fv vary"><h4>Varied — the codec</h4><ul>
+          <li>how many numbers the net emits</li>
+          <li>how they become a weight or activation update</li>
+          <li>LoRA, (IA)³, LoKr, FourierFT, steering, …</li>
+        </ul></div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:1rem">
+      Every headline is <code>matched − control</code> on a behavioral metric, never raw training loss.
+      Scale is swept per codec; ≥3 seeds are reported with spread. See
+      <a href="https://github.com/ThomasWalker1/AdapterBench/blob/main/BENCHMARK_CONTRACT.md">BENCHMARK_CONTRACT.md</a>.
+    </p>
+  </div>
+</section>
+
+<section id="settings">
+  <h2>Two active settings</h2>
+  <p class="lead">Each fixes a frozen interpreter and differs only in what the hypernetwork is conditioned on and how the adapter is scored. Settings are never pooled.</p>
+  <div class="card-grid">
+    <div class="card">
+      <span class="tag">T2A</span>
+      <h3>Task-conditioned</h3>
+      <div class="sub">Text-to-Adapter · gemma-2-2b</div>
+      <dl>
+        <dt>Conditioned on</dt><dd>a free-text task description (definition stripped from the input)</dd>
+        <dt>Metric</dt><dd><strong>ROUGE-L</strong> on 11 held-out SNI tasks (primary); CE and exact match are appendix figures</dd>
+        <dt>Control</dt><dd><code>matched − static*</code> — independently selected same-shape multi-task adapter</dd>
+      </dl>
+    </div>
+    <div class="card">
+      <span class="tag">D2A</span>
+      <h3>Document-conditioned</h3>
+      <div class="sub">Doc-to-Adapter · NIAH · Qwen3-0.6B</div>
+      <dl>
+        <dt>Conditioned on</dt><dd>cross-attention over interpreter activations for one document</dd>
+        <dt>Metric</dt><dd>needle-in-a-haystack exact-match accuracy with numeric decoys</dd>
+        <dt>Control</dt><dd><code>context-swap</code> — wrong-document adapter must fall to chance</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="leaderboards">
+  <h2>Leaderboards</h2>
+  <p class="lead">Click a codec name for hyperparameters, per-seed results, and reproduce commands. Column headers are sortable.</p>
+
+  <div class="setting-block" id="t2a">
+    <h3>T2A — task-conditioned</h3>
+    <p class="setting-meta"><strong>matched − static*</strong> ROUGE-L on 11 genuinely held-out SNI tasks (3 confirmation seeds each). Higher is better.</p>
+    <div class="table-wrap">
+      <table class="sortable">
+        <thead>
+          <tr>
+            <th data-type="text">Shape</th><th>rank</th><th>scale</th><th>lr</th><th>steps</th>
+            <th>static* scale / lr</th><th class="num" data-type="number">seeds</th>
+            <th class="num" data-type="number">matched</th><th class="num" data-type="number">static*</th>
+            <th class="num" data-type="number">matched − static*</th>
+            <th class="num" data-type="number">m − frozen</th>
+            <th class="num" data-type="number">EM Δ</th><th class="num" data-type="number">CE Δ</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr><td><a class="codec-link" href="codecs/lora.html">LoRA</a> <span class="baseline-badge">baseline</span></td><td>8</td><td>1.414214</td><td>5e-5</td><td>8 000</td><td>22.627417 / 5e-5</td><td>3</td><td>0.321</td><td>0.272</td><td class="headline">+0.049 ± 0.027</td><td>+0.267</td><td>+0.025</td><td class="muted">−0.917</td></tr>
+<tr><td><a class="codec-link" href="codecs/fourierft.html">FourierFT</a></td><td>—</td><td>0.25</td><td>1e-4</td><td>6 000</td><td>4 / 1e-4</td><td>3</td><td>0.295</td><td>0.226</td><td class="headline">+0.068 ± 0.044</td><td>+0.241</td><td>+0.043</td><td class="muted">−0.973</td></tr>
+<tr><td><a class="codec-link" href="codecs/ia3.html">(IA)³</a></td><td>—</td><td>16</td><td>5e-5</td><td>8 000</td><td>16 / 8e-4</td><td>3</td><td>0.323</td><td>0.195</td><td class="headline">+0.128 ± 0.049</td><td>+0.269</td><td>+0.039</td><td class="muted">−0.452</td></tr>
+<tr><td><a class="codec-link" href="codecs/lokr.html">LoKr</a></td><td>—</td><td>0.25</td><td>2e-4</td><td>6 000</td><td>0.25 / 2e-4</td><td>3</td><td>0.315</td><td>0.238</td><td class="headline">+0.077 ± 0.033</td><td>+0.261</td><td>+0.012</td><td class="muted">+0.498</td></tr>
+<tr><td><a class="codec-link" href="codecs/steering.html">Steering</a></td><td>—</td><td>1</td><td>1e-4</td><td>8 000</td><td>64 / 2e-4</td><td>3</td><td>0.322</td><td>0.204</td><td class="headline">+0.119 ± 0.038</td><td>+0.268</td><td>+0.065</td><td class="muted">−0.158</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-foot">Reproduce: <code>bash scripts/reproduce/t2a_reproduce_all.sh &lt;codec&gt;</code> — see <a href="https://github.com/ThomasWalker1/AdapterBench/blob/main/scripts/reproduce/README.md">reproduce README</a>.</div>
+  </div>
+
+  <div class="setting-block" id="d2a">
+    <h3>D2A — document-conditioned (NIAH)</h3>
+    <p class="setting-meta"><strong>matched − context-swap</strong> exact-match accuracy (5 seeds, 512-token training, numeric decoys). Higher is better.</p>
+    <div class="table-wrap">
+      <table class="sortable">
+        <thead>
+          <tr>
+            <th data-type="text">Shape</th><th>scale</th><th>lr</th><th>steps</th>
+            <th class="num" data-type="number">seeds</th>
+            <th class="num" data-type="number">accuracy</th>
+            <th class="num" data-type="number">ctx-swap</th>
+            <th class="num" data-type="number">matched − control</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr><td><a class="codec-link" href="codecs/lora.html">LoRA (r=8)</a> <span class="baseline-badge">baseline</span></td><td>100</td><td>4e-5</td><td>32,000</td><td>5</td><td>0.556 ± 0.327</td><td>0.000</td><td class="headline">+0.556 ± 0.327</td></tr>
+<tr><td><a class="codec-link" href="codecs/fourierft.html">FourierFT</a></td><td>4</td><td>2e-5</td><td>36,000</td><td>5</td><td>0.656 ± 0.352</td><td>0.000</td><td class="headline">+0.656 ± 0.352</td></tr>
+<tr><td><a class="codec-link" href="codecs/ia3.html">(IA)³</a></td><td>64</td><td>2e-5</td><td>32,000</td><td>5</td><td>0.738 ± 0.327</td><td>0.000</td><td class="headline">+0.738 ± 0.327</td></tr>
+<tr><td><a class="codec-link" href="codecs/lokr.html">LoKr</a></td><td>16</td><td>2e-5</td><td>36,000</td><td>5</td><td>0.981 ± 0.037</td><td>0.000</td><td class="headline">+0.981 ± 0.037</td></tr>
+<tr><td><a class="codec-link" href="codecs/steering.html">steering</a></td><td>32</td><td>2e-5</td><td>32,000</td><td>5</td><td>0.881 ± 0.050</td><td>0.000</td><td class="headline">+0.881 ± 0.050</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-foot">Reproduce: <code>bash scripts/reproduce/document_niah_numeric_decoy_&lt;codec&gt;_all.sh cuda:0</code>.</div>
+  </div>
+
+  <p class="muted">LoRA is the validated reference, not the answer to the benchmark question. Losing shapes stay on the board — a codec that fails to condition is itself a result.</p>
+</section>
+
+<section id="contribute">
+  <h2>Contribute a codec</h2>
+  <p class="lead">A new adapter shape needs an output structure and a hook site. Everything else is shared — that is the whole point.</p>
+  <ol class="contribute-steps">
+    <li><strong>Subclass <code>GeneratedUpdateCodec</code></strong>
+      <span class="muted">in <code>src/adapterbench/t2a/codecs.py</code>: <code>output_size</code>, <code>apply</code>, <code>dense_delta</code>, and <code>initial_bias</code> when bilinear.</span></li>
+    <li><strong>Register and manifest</strong>
+      <span class="muted">one <code>make_codec</code> entry plus <code>configs/adapters/&lt;name&gt;.yaml</code>.</span></li>
+    <li><strong>Run both settings</strong>
+      <span class="muted">≥3 seeds at the codec's own best swept scale; record <code>matched − control</code>.</span></li>
+    <li><strong>Open a pull request</strong>
+      <span class="muted">append a leaderboard row, a canonical record, a reproduce script, and regenerate this site with <code>uv run adapterbench website build</code>.</span></li>
+  </ol>
+  <p class="muted">Full checklist: <a href="https://github.com/ThomasWalker1/AdapterBench/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> · user guide: <a href="https://github.com/ThomasWalker1/AdapterBench/blob/main/GUIDE.md">GUIDE.md</a>.</p>
+</section>
+
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <p>AdapterBench — holding the hypernetwork, training loop, data, and evaluator fixed; varying only the generated representation.</p>
+    </div>
+  </footer>
+  <script src="js/sort-tables.js" defer></script>
+</body>
+</html>

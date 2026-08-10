@@ -140,11 +140,12 @@ bash scripts/reproduce/t2a_reproduce_all.sh <your_codec> 0,1,2,3 4,5,6,7
    reproduce command.
 3. Add a reproduce script under `scripts/reproduce/` (thin wrapper around the
    shared drivers is fine — see `task_t2a_lora.sh`).
-4. Verify drift checks pass:
+4. Verify drift checks pass and regenerate the public site:
 
 ```bash
 uv run adapterbench results validate
 uv run adapterbench results check
+uv run adapterbench website build
 ```
 
 ## Pull request guidelines
@@ -168,6 +169,7 @@ uv run adapterbench results check
 | `leaderboards/` | Published rows with reproduce commands |
 | `canonical_results/` | Versioned aggregate records (source of truth) |
 | `scripts/reproduce/` | One script per committed leaderboard row |
+| `website/` | Public benchmark site (`adapterbench website build`); see `website/INTEGRATION.md` |
 | `AUTORESEARCH.md` | T2A hyperparameter search protocol |
 | `NEGATIVE_RESULTS.md` | Retired settings and failed controls |
 
