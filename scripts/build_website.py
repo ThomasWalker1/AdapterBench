@@ -45,7 +45,6 @@ CODEC_SLUG = {
     "lokr": "lokr",
     "fourierft": "fourierft",
     "steering": "steering",
-    "loha": "loha",
 }
 
 CODEC_FAMILY_BLURB = {
@@ -54,7 +53,6 @@ CODEC_FAMILY_BLURB = {
     "lokr": "Kronecker factorization ΔW = B ⊗ A — full-rank reach from few scalars.",
     "fourierft": "Sparse Fourier coefficients in a fixed global basis.",
     "steering": "Activation-space residual-stream vector h ↦ h + s·v — no weight edit.",
-    "loha": "Hadamard product of two low-rank factors at LoRA scalar budget.",
 }
 
 

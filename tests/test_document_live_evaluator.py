@@ -154,15 +154,3 @@ def test_lokr_evaluation_applies_live_updates_and_removes_hooks():
     assert result.generated_parameter_count == hypernetwork.generated_parameter_count()
     for layer in interpreter.layers:
         assert layer._forward_hooks == {}
-
-
-def test_loha_evaluation_applies_live_updates_and_removes_hooks():
-    interpreter, hypernetwork = _setup(adapter="loha")
-    evaluator = DocumentHypernetworkDownstreamEvaluator(
-        interpreter, interpreter.layers, hypernetwork, FakeTokenizer(), trial_id="t", device="cpu"
-    )
-    result = evaluator.evaluate({"niah_256": [_example()]}, split="test")[0]
-    assert result.adapter == "loha"
-    assert result.generated_parameter_count == hypernetwork.generated_parameter_count()
-    for layer in interpreter.layers:
-        assert layer._forward_hooks == {}

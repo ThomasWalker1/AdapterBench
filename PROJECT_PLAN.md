@@ -20,7 +20,7 @@ The benchmark contains exactly two genuinely inference-time adaptive language se
 
 LoRA is the rigorous baseline that validates both settings; alternative shapes are
 registered and evaluated one at a time against it. Registered codecs: `lora`, `ia3`,
-`lokr`, `loha`, `fourierft`, and `steering` (the first activation-space shape, hooked at
+`lokr`, `fourierft`, and `steering` (the first activation-space shape, hooked at
 the residual stream).
 
 ## Current status (2026-08-04)
@@ -76,8 +76,8 @@ setting-discovery or substrate-building mode:
 - image and planning infrastructure is intentionally absent.
 
 LoRA is deliberately the validated reference, not the answer to the benchmark's
-question. (IA)³, LoKr, and FourierFT now have complete two-setting rows beside it; LoHa
-and steering are registered with their protocol evaluations outstanding. Everything
+question. (IA)³, LoKr, and FourierFT now have complete two-setting rows beside it; steering
+is registered with its protocol evaluation outstanding. Everything
 above exists so that question can be asked, which makes **codec exploration the one
 substantive remaining phase**.
 
@@ -97,7 +97,6 @@ Candidate codecs to add (each is a `GeneratedUpdateCodec` subclass + a `make_cod
 | (IA)³ | `W ↦ diag(1+v) W` | `d_out` | none | can a tiny, symmetry-free shape carry conditioning at all? | both rows complete |
 | LoKr | `ΔW = B ⊗ A` | factor-dependent | scaling only | full-rank reach from few scalars; different budget/expressivity trade-off | both rows complete |
 | FourierFT | `ΔW = F⁻¹(sparse coeffs)` | `n` (chosen), size-independent | none | fixed global basis removes the low-rank rotation symmetry entirely | both rows complete |
-| LoHa | `ΔW = (B₁A₁) ⊙ (B₂A₂)` | `= rank-8 LoRA` | per-branch rotation | higher-order factorization at the exact LoRA scalar budget | registered; evaluation in flight |
 | steering (`steering`) | `h ↦ h + s·v` | `d_model` / residual stream (`block`) | scaling | adaptation with no weight edit; hook site is the residual stream, not a projection | registered; autoresearch pending |
 
 The open empirical question is whether the low-rank rotation symmetry LoRA carries
@@ -145,7 +144,7 @@ are never committed. The human drives commits.
 - `src/adapterbench/contracts.py` — `HypernetworkBackend.generate()`,
   `DownstreamEvaluator.evaluate()`, and shared task/result objects.
 - `src/adapterbench/t2a/codecs.py` — `GeneratedUpdateCodec` plus the registered codecs
-  (`LoRACodec`, `IA3Codec`, `LoKrCodec`, `LoHaCodec`, `FourierFTCodec`, `SteeringCodec`).
+  (`LoRACodec`, `IA3Codec`, `LoKrCodec`, `FourierFTCodec`, `SteeringCodec`).
   A new shape implements:
   - `output_size`;
   - `apply(...)`;

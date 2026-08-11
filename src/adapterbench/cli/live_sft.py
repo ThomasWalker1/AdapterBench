@@ -40,8 +40,6 @@ DOC_TO_LORA_PARITY_TARGET_MODULES = {
     # LoKr is another generated weight update, so it uses the same locked D2A hook
     # site. Its factor geometry is determined solely by this linear projection.
     "lokr": ["down_proj"],
-    # LoHa is another additive weight-space update at the same locked D2A site.
-    "loha": ["down_proj"],
     "fourierft": ["down_proj"],
     # Steering is activation-space: same residual-stream hook site as T2A, since the
     # site is part of this codec's shape identity rather than a weight-projection choice.
@@ -392,7 +390,6 @@ def _d2a_niah_command(args) -> None:
         f"[1/5] num_layers={num_layers} exit_layer={exit_layer} lora_scaling={lora_scaling:.3f} "
         f"ia3_scaling={args.ia3_scaling:.3f} "
         f"lokr_scaling={args.lokr_scaling:.3f} "
-        f"loha_scaling={args.loha_scaling:.3f} "
         f"fourierft_scaling={args.fourierft_scaling:.3f} "
         f"codec_scaling={args.codec_scaling} "
         f"needle_style={args.needle_style} numeric_decoy_count={args.numeric_decoy_count} "
@@ -455,7 +452,7 @@ def _d2a_niah_command(args) -> None:
             module_shapes=module_shapes, num_layers=num_layers, adapter=adapter,
             latent_dim=D2A_LATENT_DIM, rank=args.rank, seed=args.seed, conditioner=conditioner,
             lora_scaling=lora_scaling, ia3_scaling=args.ia3_scaling, lokr_scaling=args.lokr_scaling,
-            loha_scaling=args.loha_scaling, fourierft_scaling=args.fourierft_scaling,
+            fourierft_scaling=args.fourierft_scaling,
         ).to(args.device)
         if args.codec_scaling is not None:
             from ..t2a.codecs import set_codec_scaling
@@ -477,7 +474,7 @@ def _d2a_niah_command(args) -> None:
                     result,
                     metadata={
                         **result.metadata, "adapter_family": adapter, "steps": checkpoint["step"],
-                        "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling,
+                        "lokr_scaling": args.lokr_scaling,
                         "fourierft_scaling": args.fourierft_scaling, "codec_scaling": args.codec_scaling,
                         "evaluation_only": True,
                     },
@@ -513,7 +510,7 @@ def _d2a_niah_command(args) -> None:
                 result,
                 metadata={
                     **result.metadata, "adapter_family": adapter, "steps": args.steps,
-                    "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling,
+                    "lokr_scaling": args.lokr_scaling,
                     "fourierft_scaling": args.fourierft_scaling, "codec_scaling": args.codec_scaling,
                 },
             ))
@@ -703,8 +700,6 @@ def _register_d2a_niah(subparsers) -> None:
                    help="IA3 multiplier scale in W -> diag(1 + scale*v) W; sweep this per codec.")
     p.add_argument("--lokr-scaling", type=float, default=1.0,
                    help="LoKr scale in ΔW = scale * (L ⊗ R); sweep from its identity convention per codec.")
-    p.add_argument("--loha-scaling", type=float, default=1.0,
-                   help="LoHa scale in ΔW = scale * (B1@A1) ⊙ (B2@A2); sweep from its identity convention per codec.")
     p.add_argument("--fourierft-scaling", type=float, default=1.0,
                    help="FourierFT coefficient scale; sweep from its identity convention per codec.")
     p.add_argument("--codec-scaling", type=float, default=None,

@@ -27,7 +27,7 @@ def _saddle_bias(output_size: int, seed: int, filled: list[tuple[int, int, float
     """Build a length-``output_size`` bias that is zero everywhere except the given
     ``[start, end)`` slices, each filled with a fan-in-normalized normal draw.
 
-    Shared by the bilinear codecs' ``initial_bias`` (LoRA/LoKr/LoHa): the factor(s) whose
+    Shared by the bilinear codecs' ``initial_bias`` (LoRA/LoKr): the factor(s) whose
     slice is left zero keep the initial product exactly zero, while the seeded slice(s)
     break the dead all-zero saddle so gradient flows immediately. Draws come from a single
     local ``Generator`` in the order ``filled`` is given, so callers preserve their exact
@@ -244,81 +244,6 @@ class LoKrCodec(GeneratedUpdateCodec):
         return self.scaling * delta
 
 
-class LoHaCodec(GeneratedUpdateCodec):
-    """Hadamard product of two low-rank additive updates.
-
-    ``ΔW = scale * (B₁ @ A₁) ⊙ (B₂ @ A₂)``.  The public shape identity
-    retains the repository's rank-8 LoRA scalar budget: LoHa uses fixed internal
-    rank 4, so its four factors emit ``2 * 4 * (in + out) == 8 * (in + out)``
-    values.  The internal rank is deliberately derived from the locked base rank,
-    never exposed as a sweep parameter.
-
-    A dense per-example ΔW would be prohibitive at a live hook.  ``apply`` uses
-    the equivalent rank-squared contraction, preserving the generated tensors'
-    autograd graph through the frozen interpreter forward.
-    """
-
-    def __init__(self, in_features: int, out_features: int, rank: int, scaling: float = 1.0, seed: int = 777):
-        super().__init__(in_features, out_features)
-        if rank <= 0:
-            raise ValueError("LoHa rank must be positive")
-        self.rank = rank
-        self.scaling = scaling
-        self.seed = seed
-
-    @property
-    def output_size(self) -> int:
-        return 2 * self.rank * (self.in_features + self.out_features)
-
-    def _split(self, generated: Tensor) -> tuple[Tensor, Tensor, Tensor, Tensor]:
-        self._check_output_size(generated)
-        a_size = self.rank * self.in_features
-        b_size = self.rank * self.out_features
-        a1 = generated[:, :a_size].reshape(-1, self.rank, self.in_features)
-        a2 = generated[:, a_size : 2 * a_size].reshape(-1, self.rank, self.in_features)
-        b1 = generated[:, 2 * a_size : 2 * a_size + b_size].reshape(-1, self.out_features, self.rank)
-        b2 = generated[:, 2 * a_size + b_size :].reshape(-1, self.out_features, self.rank)
-        return a1, a2, b1, b2
-
-    def initial_bias(self) -> Tensor:
-        # LoHa is fourth-order in its factors.  Initializing every factor at zero
-        # is a dead saddle; merely initializing one factor is insufficient because
-        # every gradient still contains another zero factor.  Keep B1 zero so the
-        # whole update is exactly zero, while initialize A1 and the complete second
-        # branch B2@A2 nonzero.  The immediate B1 gradient is then nonzero.
-        a_size = self.rank * self.in_features
-        b_size = self.rank * self.out_features
-        # Seed A1, A2 and B2 (in that draw order); B1's slice [2*a_size : 2*a_size + b_size]
-        # is left zero, so the whole Hadamard update starts at exactly zero.
-        return _saddle_bias(
-            self.output_size,
-            self.seed,
-            [
-                (0, a_size, self.in_features),
-                (a_size, 2 * a_size, self.in_features),
-                (2 * a_size + b_size, self.output_size, self.rank),
-            ],
-        )
-
-    def apply(self, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int) -> Tensor:
-        self._check(inputs, generated)
-        a1, a2, b1, b2 = self._split(generated)
-        # (B1@A1) ⊙ (B2@A2) has rank at most r². Form only its small input/output
-        # rank-pair factors, never a (batch, out, in) generated tensor in the live
-        # path. Both staged contractions keep `generated` live for backward.
-        input_pairs = a1.unsqueeze(2) * a2.unsqueeze(1)      # (batch, r, r, in)
-        output_pairs = b1.unsqueeze(3) * b2.unsqueeze(2)     # (batch, out, r, r)
-        features = torch.einsum("bsi,brqi->bsrq", inputs.to(a1.dtype), input_pairs)
-        delta = torch.einsum("bsrq,borq->bso", features, output_pairs)
-        return base_output + self.scaling * delta.to(base_output.dtype)
-
-    def dense_delta(self, generated: Tensor, layer_index: int) -> Tensor:
-        a1, a2, b1, b2 = self._split(generated)
-        first = torch.einsum("bor,bri->boi", b1, a1)
-        second = torch.einsum("bor,bri->boi", b2, a2)
-        return self.scaling * first * second
-
-
 class SteeringCodec(GeneratedUpdateCodec):
     """Additive residual-stream steering: ``h -> h + scale * v`` with one generated
     vector ``v`` per (layer, example), broadcast across sequence positions.
@@ -482,7 +407,6 @@ def make_codec(
     lora_scaling: float | None = None,
     ia3_scaling: float = 1.0,
     lokr_scaling: float = 1.0,
-    loha_scaling: float = 1.0,
     fourierft_scaling: float = 1.0,
     steering_scaling: float = 1.0,
     seed: int = 777,
@@ -492,18 +416,10 @@ def make_codec(
 ) -> GeneratedUpdateCodec:
     """Build a registered generated-update codec."""
 
-    def _loha() -> LoHaCodec:
-        if rank < 2 or rank % 2:
-            raise ValueError("LoHa requires an even base rank >= 2 so its fixed internal rank is rank/2")
-        return LoHaCodec(in_features, out_features, rank=rank // 2, scaling=loha_scaling, seed=seed)
-
     constructors = {
         "lora": lambda: LoRACodec(in_features, out_features, rank, alpha, scaling=lora_scaling, seed=seed),
         "ia3": lambda: IA3Codec(in_features, out_features, scaling=ia3_scaling),
         "lokr": lambda: LoKrCodec(in_features, out_features, scaling=lokr_scaling, seed=seed),
-        # Four LoHa factor groups at rank r/2 have exactly the scalar count of the
-        # repository's fixed rank-r LoRA budget. r=8 is locked by the substrate.
-        "loha": _loha,
         # Activation-space: one steering vector per layer added to the residual
         # stream; hook at "block", not a projection. d_model scalars per layer.
         "steering": lambda: SteeringCodec(in_features, out_features, scaling=steering_scaling),

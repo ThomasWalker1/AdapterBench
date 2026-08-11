@@ -38,7 +38,7 @@ A codec needs exactly two things:
    - `apply(inputs, base_output, generated, layer_index)` — fold generated values
      into the hooked module's output.
    - `dense_delta(generated, layer_index)` — weight-space ΔW when applicable.
-   - `initial_bias()` — only if `apply()` is bilinear (LoRA, LoKr, LoHa); linear
+   - `initial_bias()` — only if `apply()` is bilinear (LoRA, LoKr); linear
      codecs keep the default `None`.
 
 2. **Register** the codec in `make_codec()` and add default hook sites in

@@ -175,7 +175,7 @@ def score_task(generate_batch, prompts: list[str], golds: list[str], *, hypernet
 
 def build_modules(*, interpreter, layers, device, condition_dim, adapter, rank=8,
                   codec_scaling=None, lora_scaling=-1.0, ia3_scaling=1.0, lokr_scaling=1.0,
-                  loha_scaling=1.0, fourierft_scaling=1.0):
+                  fourierft_scaling=1.0):
     """Construct the hypernetwork and its same-shape StaticAdapter, without loading weights.
 
     Construction is the expensive part for codecs with large frozen buffers (FourierFT's fixed
@@ -189,7 +189,7 @@ def build_modules(*, interpreter, layers, device, condition_dim, adapter, rank=8
     hypernetwork = TextToPeftHypernetwork(
         condition_dim=condition_dim, module_shapes=module_shapes, num_layers=len(layers),
         adapter=adapter, rank=rank, ia3_scaling=ia3_scaling, lokr_scaling=lokr_scaling,
-        loha_scaling=loha_scaling, fourierft_scaling=fourierft_scaling, seed=0,
+        fourierft_scaling=fourierft_scaling, seed=0,
     ).to(device)
     if lora_scaling > 0:
         from adapterbench.t2a.codecs import LoRACodec
@@ -222,7 +222,7 @@ def build_hypernetwork_and_static(args, interpreter, layers, device, condition_d
         interpreter=interpreter, layers=layers, device=device, condition_dim=condition_dim,
         adapter=args.adapter, rank=args.rank, codec_scaling=args.codec_scaling,
         lora_scaling=args.lora_scaling, ia3_scaling=args.ia3_scaling, lokr_scaling=args.lokr_scaling,
-        loha_scaling=args.loha_scaling, fourierft_scaling=args.fourierft_scaling,
+        fourierft_scaling=args.fourierft_scaling,
     )
     load_snapshot(hypernetwork, args.snapshot, device)
     load_snapshot(static, args.static_snapshot, device)
@@ -255,7 +255,6 @@ def build_args():
     p.add_argument("--lora-scaling", type=float, default=-1.0)
     p.add_argument("--ia3-scaling", type=float, default=1.0)
     p.add_argument("--lokr-scaling", type=float, default=1.0)
-    p.add_argument("--loha-scaling", type=float, default=1.0)
     p.add_argument("--fourierft-scaling", type=float, default=1.0)
     p.add_argument("--codec-scaling", type=float, default=None,
                    help="generic output-scale override for the selected --adapter's codec; "

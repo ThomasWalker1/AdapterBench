@@ -110,7 +110,7 @@ the residual stream for activation-space ones). Concretely:
 2. **Register it** — add one entry to the `constructors` dict in `make_codec`
    (`codecs.py`) and its default hook site in `PILOT_DEFAULT_TARGET_MODULES`
    (`cli/_shared.py`) + `DOC_TO_LORA_PARITY_TARGET_MODULES` (`cli/live_sft.py`). Registered
-   shapes: `lora`, `ia3`, `lokr`, `loha`, `fourierft`, `steering`.
+   shapes: `lora`, `ia3`, `lokr`, `fourierft`, `steering`.
 3. **Add a manifest** under `configs/adapters/` so the CLI can select it (and add the
    family to `schema.py`'s `AdapterManifest.family` literal).
 4. **Run the setting CLIs** (Section 4) at the codec's own best free hyperparameters and

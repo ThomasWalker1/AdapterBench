@@ -160,8 +160,6 @@ def build_args():
                    help="IA3 multiplier scale in W -> diag(1 + scale*v) W; select it with a per-codec sweep.")
     p.add_argument("--lokr-scaling", type=float, default=1.0,
                    help="LoKr Kronecker-update scale; select it with a codec-specific geometric sweep.")
-    p.add_argument("--loha-scaling", type=float, default=1.0,
-                   help="LoHa Hadamard-update scale; select it with a codec-specific geometric sweep.")
     p.add_argument("--fourierft-scaling", type=float, default=1.0,
                    help="FourierFT coefficient scale; select it with a codec-specific geometric sweep.")
     p.add_argument("--codec-scaling", type=float, default=None,
@@ -284,7 +282,6 @@ def main() -> None:
         adapter=args.adapter,
         ia3_scaling=args.ia3_scaling,
         lokr_scaling=args.lokr_scaling,
-        loha_scaling=args.loha_scaling,
         fourierft_scaling=args.fourierft_scaling,
         seed=args.seed,
     ).to(device)
@@ -301,8 +298,6 @@ def main() -> None:
         log(f"[scale] IA3 codec scaling set to {args.ia3_scaling}")
     if args.adapter == "lokr":
         log(f"[scale] LoKr codec scaling set to {args.lokr_scaling}")
-    if args.adapter == "loha":
-        log(f"[scale] LoHa codec scaling set to {args.loha_scaling}")
     if args.adapter == "fourierft":
         log(f"[scale] FourierFT codec scaling set to {args.fourierft_scaling}")
     if args.codec_scaling is not None:
@@ -550,7 +545,7 @@ def main() -> None:
             "static": True, "adapter": args.adapter, "interpreter": args.interpreter,
             "effective_batch": eff_batch, "steps": args.steps, "learning_rate": args.learning_rate,
             "per_task_limit": per_task_limit, "lora_scaling": args.lora_scaling,
-            "ia3_scaling": args.ia3_scaling, "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling,
+            "ia3_scaling": args.ia3_scaling, "lokr_scaling": args.lokr_scaling,
             "fourierft_scaling": args.fourierft_scaling, "codec_scaling": args.codec_scaling,
             "losses": losses,
         }, indent=2) + "\n")
@@ -568,7 +563,7 @@ def main() -> None:
             "contrastive_lambda": args.contrastive_lambda, "contrastive_margin": args.contrastive_margin,
             "neutral_junk_lambda": args.neutral_junk_lambda, "strip_task_def": args.strip_task_def,
             "adapter": args.adapter, "lora_scaling": args.lora_scaling, "ia3_scaling": args.ia3_scaling,
-            "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling,
+            "lokr_scaling": args.lokr_scaling,
             "fourierft_scaling": args.fourierft_scaling, "codec_scaling": args.codec_scaling,
             "inline_eval_skipped": True,
         }, indent=2) + "\n")
@@ -606,7 +601,7 @@ def main() -> None:
         # given) is the value that actually reached the codec, so it wins the record.
         per_codec_values = {
             "lora": args.lora_scaling, "ia3": args.ia3_scaling, "lokr": args.lokr_scaling,
-            "loha": args.loha_scaling, "fourierft": args.fourierft_scaling,
+            "fourierft": args.fourierft_scaling,
         }
         scale_value = per_codec_values.get(args.adapter, 1.0)
         if args.codec_scaling is not None:
@@ -623,7 +618,7 @@ def main() -> None:
         "contrastive_lambda": args.contrastive_lambda, "contrastive_margin": args.contrastive_margin,
         "neutral_junk_lambda": args.neutral_junk_lambda, "strip_task_def": args.strip_task_def,
         "adapter": args.adapter, "lora_scaling": args.lora_scaling, "ia3_scaling": args.ia3_scaling,
-        "lokr_scaling": args.lokr_scaling, "loha_scaling": args.loha_scaling,
+        "lokr_scaling": args.lokr_scaling,
         "fourierft_scaling": args.fourierft_scaling, "codec_scaling": args.codec_scaling,
     }, indent=2) + "\n")
     log(f"[6/6] done -> {output_dir}")

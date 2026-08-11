@@ -3,7 +3,7 @@
 # controlled log-length AUC rather than loss, reusing one checkpoint per candidate.
 #
 # Usage: scripts/d2a_niah_multifidelity.sh ADAPTER GPU_CSV SCALES_CSV [SEED] [ROOT]
-# Example: scripts/d2a_niah_multifidelity.sh loha 0,1,2,3 0.0625,0.25,1,4,16 902
+# Example: scripts/d2a_niah_multifidelity.sh fourierft 0,1,2,3 0.0625,0.25,1,4,16 902
 set -euo pipefail
 cd "$(dirname "$0")/.."
 

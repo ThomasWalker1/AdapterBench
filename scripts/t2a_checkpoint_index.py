@@ -138,7 +138,7 @@ def infer_codec(snapshot_rel: str) -> str | None:
     parts = Path(snapshot_rel).parts
     if parts[:3] == ("results", "autoresearch", "t2a") and len(parts) > 3:
         return parts[3]
-    for codec in (*AUDITED_CODECS, "steering", "loha"):
+    for codec in (*AUDITED_CODECS, "steering"):
         if re.search(rf"(?:^|[/_]){codec}(?:[/_]|$)", snapshot_rel):
             return codec
     return None

@@ -47,8 +47,6 @@ PILOT_DEFAULT_TARGET_MODULES = {
     # LoKr is an additive weight-space update, so it retains LoRA's validated
     # T2A projection sites while replacing only the generated representation.
     "lokr": ["q_proj", "v_proj"],
-    # LoHa is an additive weight-space update and retains the validated LoRA sites.
-    "loha": ["q_proj", "v_proj"],
     "fourierft": ["q_proj", "v_proj"],
     # Steering is activation-space: its hook site is the residual stream itself
     # (every decoder layer's output), not a projection, in both settings.
