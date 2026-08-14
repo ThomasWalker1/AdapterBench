@@ -43,11 +43,12 @@ RESCORE = REPO / "results/autoresearch/t2a/evaluation"
 # The canonical filename per codec. `lora` keeps its `_r8` record name and `lora_r8` codec id, which
 # the renderers special-case.
 RECORD = {"lora": "t2a_lora_r8.json", "ia3": "t2a_ia3.json", "lokr": "t2a_lokr.json",
-          "fourierft": "t2a_fourierft.json", "steering": "t2a_steering.json"}
+          "fourierft": "t2a_fourierft.json", "steering": "t2a_steering.json",
+          "dora": "t2a_dora.json"}
 CODEC_ID = {"lora": "lora_r8", "ia3": "ia3", "lokr": "lokr", "fourierft": "fourierft",
-            "steering": "steering"}
+            "steering": "steering", "dora": "dora"}
 DISPLAY = {"lora": "LoRA", "ia3": "(IA)³", "lokr": "LoKr", "fourierft": "FourierFT",
-           "steering": "Steering"}
+           "steering": "Steering", "dora": "DoRA"}
 
 MODELS = [
     {"model_id": "google/gemma-2-2b-it", "revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8"},
@@ -273,6 +274,18 @@ FIXED_SHAPE = {
                  "note": "activation-space codec: hooks the whole decoder layer and adds one "
                          "generated residual-stream vector per (layer, example); performs no "
                          "weight update at all"},
+    # DoRA: rank-8 directional factors over q_proj (2304->2048) and v_proj (2304->1024) plus one
+    # magnitude scalar per output channel, i.e. 8*(2304+2048)+2048 = 36,864 and
+    # 8*(2304+1024)+1024 = 27,648 per layer.
+    "dora": {"target_modules": ["q_proj", "v_proj"], "rank": 8,
+             "generated_scalars_per_layer": 64512,
+             "budget_note": "the locked rank-8 LoRA budget plus d_out per projection for the "
+                            "magnitude vector (+5.9% on q_proj, +3.8% on v_proj); the magnitude "
+                            "vector is DoRA's shape identity, not a tunable extra",
+             "note": "weight-decomposed codec: the only registered shape whose update reads the "
+                     "frozen weight it edits, applied as "
+                     "W -> m * (W0 + scale*B@A)/||W0 + scale*B@A||_row with a detached "
+                     "denominator and generated magnitudes as a delta on the frozen row norms"},
 }
 
 _COMMON = (" Re-derived under the corrected T2A rules (AUTORESEARCH.md): ROUGE-L rather than the "
