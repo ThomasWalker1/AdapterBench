@@ -4,7 +4,7 @@ This is **AdapterBench**: it tests whether the *shape* of a hypernetwork-generat
 adapter matters under live end-to-end language-model SFT. It has exactly two active
 settings: task-description conditioning (T2A, gemma-2-2b) and document conditioning
 (D2A, Qwen3-0.6B). LoRA is the baseline codec; new representations are added and
-evaluated one at a time across both settings (registered so far: lora, ia3, lokr,
+evaluated one at a time across both settings (registered so far: lora, dora, ia3, lokr,
 fourierft, steering).
 
 The core benchmark implementation and the LoRA/(IA)³/LoKr/FourierFT reference results

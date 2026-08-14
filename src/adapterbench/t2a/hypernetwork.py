@@ -273,9 +273,14 @@ def _apply_codec_hooks(
                 # A decoder layer's forward (resolved via "block") returns a tuple
                 # (hidden_states, ...); a linear submodule's forward returns a bare
                 # tensor. Unwrap/rewrap so codec.apply() only ever sees a tensor.
+                #
+                # `apply_at` passes the hook-site module through as well; its default
+                # implementation ignores it and calls codec.apply(), so this is unchanged
+                # for every codec except the weight-decomposed ones (DoRA), which need to
+                # read the frozen W0 they decompose. See GeneratedUpdateCodec.apply_at.
                 is_tuple = isinstance(output, tuple)
                 hidden = output[0] if is_tuple else output
-                updated = codec.apply(args[0], hidden, parameters, layer_index)
+                updated = codec.apply_at(module, args[0], hidden, parameters, layer_index)
                 return (updated, *output[1:]) if is_tuple else updated
 
             handles.append(module.register_forward_hook(hook))

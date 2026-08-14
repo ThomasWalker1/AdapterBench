@@ -87,7 +87,9 @@ def register_persistent_hooks(codecs, layers, current: dict) -> list:
     generated parameters for its layer from the mutable ``current`` dict, refilled each
     step from the (DDP-wrapped) hypernetwork's forward. Codecs are stateless w.r.t.
     trainable params (LoRACodec.apply uses only its scalar ``scaling`` + the generated
-    tensor), so referencing them directly here is safe under DDP."""
+    tensor), so referencing them directly here is safe under DDP. Weight-decomposed codecs
+    (DoRA) additionally *read* their hook site's frozen weight through ``apply_at``, which is
+    equally safe: the interpreter is frozen, so the weight is a constant of the step."""
     handles = []
     for layer_index, layer in enumerate(layers):
         for name, codec in codecs.items():
@@ -96,7 +98,7 @@ def register_persistent_hooks(codecs, layers, current: dict) -> list:
             def hook(module, args, output, *, codec=codec, name=name, layer_index=layer_index):
                 is_tuple = isinstance(output, tuple)
                 hidden = output[0] if is_tuple else output
-                updated = codec.apply(args[0], hidden, current[name][layer_index], layer_index)
+                updated = codec.apply_at(module, args[0], hidden, current[name][layer_index], layer_index)
                 return (updated, *output[1:]) if is_tuple else updated
 
             handles.append(module.register_forward_hook(hook))

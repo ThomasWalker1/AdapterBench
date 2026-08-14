@@ -16,9 +16,11 @@ in this way — that's the whole point.
 > **Current state:** LoRA validates the two genuinely conditioned settings:
 > task-description conditioning (T2A) and document conditioning (D2A). (IA)³, LoKr, and
 > FourierFT have complete two-setting benchmark rows alongside LoRA. **Steering** — the
-> first activation-space
-> codec, hooked at the residual stream (`"block"`) rather than a projection — is the
-> newest registered shape; its two-setting autoresearch evaluation is pending. New
+> first activation-space codec, hooked at the residual stream (`"block"`) rather than a
+> projection — and **DoRA** — the first *weight-decomposed* codec, which reads the frozen
+> weight it edits and generates a per-output-channel magnitude alongside LoRA's
+> directional factors — are the newest registered shapes; their two-setting autoresearch
+> evaluations are in flight. New
 > shapes are added one at a time as a codec + registration entry + manifest, then
 > evaluated with both setting CLIs and recorded in the per-setting leaderboards.
 >

@@ -19,8 +19,8 @@ The benchmark contains exactly two genuinely inference-time adaptive language se
   document in its ordinary input.
 
 LoRA is the rigorous baseline that validates both settings; alternative shapes are
-registered and evaluated one at a time against it. Registered codecs: `lora`, `ia3`,
-`lokr`, `fourierft`, and `steering` (the first activation-space shape, hooked at
+registered and evaluated one at a time against it. Registered codecs: `lora`, `dora`,
+`ia3`, `lokr`, `fourierft`, and `steering` (the first activation-space shape, hooked at
 the residual stream).
 
 ## Current status (2026-08-04)
@@ -77,7 +77,7 @@ setting-discovery or substrate-building mode:
 
 LoRA is deliberately the validated reference, not the answer to the benchmark's
 question. (IA)³, LoKr, and FourierFT now have complete two-setting rows beside it; steering
-is registered with its protocol evaluation outstanding. Everything
+and DoRA are registered with their protocol evaluations outstanding. Everything
 above exists so that question can be asked, which makes **codec exploration the one
 substantive remaining phase**.
 
@@ -98,6 +98,7 @@ Candidate codecs to add (each is a `GeneratedUpdateCodec` subclass + a `make_cod
 | LoKr | `ΔW = B ⊗ A` | factor-dependent | scaling only | full-rank reach from few scalars; different budget/expressivity trade-off | both rows complete |
 | FourierFT | `ΔW = F⁻¹(sparse coeffs)` | `n` (chosen), size-independent | none | fixed global basis removes the low-rank rotation symmetry entirely | both rows complete |
 | steering (`steering`) | `h ↦ h + s·v` | `d_model` / residual stream (`block`) | scaling | adaptation with no weight edit; hook site is the residual stream, not a projection | registered; autoresearch pending |
+| DoRA (`dora`) | `W ↦ m ⊙ (W₀+s·BA)/‖W₀+s·BA‖_row` | rank-8 LoRA budget + `d_out` | direction-only rotation (magnitude is gauge-fixed) | the only shape defined *relative to the weight it edits*: magnitude and direction are separately addressable and pre-normalized by the host weight, so it tests whether one-shot prediction is limited by calibration rather than expressivity | registered; autoresearch in flight |
 
 The open empirical question is whether the low-rank rotation symmetry LoRA carries
 (`BA = (BG)(G⁻¹A)`) is a real obstacle to one-shot prediction, i.e. whether a
@@ -144,7 +145,7 @@ are never committed. The human drives commits.
 - `src/adapterbench/contracts.py` — `HypernetworkBackend.generate()`,
   `DownstreamEvaluator.evaluate()`, and shared task/result objects.
 - `src/adapterbench/t2a/codecs.py` — `GeneratedUpdateCodec` plus the registered codecs
-  (`LoRACodec`, `IA3Codec`, `LoKrCodec`, `FourierFTCodec`, `SteeringCodec`).
+  (`LoRACodec`, `DoRACodec`, `IA3Codec`, `LoKrCodec`, `FourierFTCodec`, `SteeringCodec`).
   A new shape implements:
   - `output_size`;
   - `apply(...)`;

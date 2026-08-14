@@ -18,6 +18,25 @@ restart-safe reproduction wrappers.
   matching `canonical_results/`; removed legacy one-off scripts (`migrate_seed3_at_15k.sh`,
   `t2a_promote.sh`, `t2a_release_aggregate.py`); aligned leaderboard and setup docs with the
   AUTORESEARCH confirmation protocol (seeds 1741–4743, not the superseded 1801-era runs).
+- **New codec: `dora`** — weight-decomposed low-rank adaptation (Liu et al., 2024) as a
+  generated shape. The hypernetwork emits LoRA's rank-8 directional `A`/`B` factors **plus
+  one magnitude scalar per output channel**, applied as
+  `W' = m ⊙ (W0 + scale·B@A)/||W0 + scale·B@A||_row` at the same q_proj/v_proj (T2A) and
+  down_proj (D2A) sites LoRA uses. Generated magnitudes are a delta on the frozen row
+  norms, so the zero-init head is exactly the frozen projection; the renormalizing
+  denominator is detached, as in the reference implementation. Live row norms use an exact
+  algebraic expansion, so no per-example dense `ΔW` is materialized.
+  - **New codec-interface seam: `GeneratedUpdateCodec.apply_at(module, ...)`.** DoRA is the
+    first registered shape whose update is defined *relative to the frozen weight it
+    edits*, which `base_output = W0 @ x` cannot recover. The forward hooks now pass the
+    resolved hook-site module; the default implementation delegates to `apply()`, so every
+    existing codec is unchanged bit-for-bit. Weight-decomposed codecs therefore require a
+    linear-projection hook site (never `"block"`), which the codec enforces.
+  - Registered in `make_codec`, both hook-site maps, `configs/adapters/dora.yaml`, and the
+    manifest schema; unit tests cover geometry, identity init, the bilinear saddle bias,
+    equivalence with a materialized reference implementation, `dense_delta`/`apply`
+    consistency, hook application, and the static-control path. Benchmark rows pending the
+    AUTORESEARCH.md protocol.
 - **New codec: `steering`** — the first activation-space shape. The hypernetwork emits
   one `d_model` steering vector per (layer, example), added to the residual stream at
   the `"block"` hook site in both settings (`h -> h + scale * v`); linear in the

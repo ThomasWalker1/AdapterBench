@@ -41,6 +41,10 @@ DEFAULT_SFT_TRAIN_TASKS = "lol_022,lol_043,lol_044,lol_045,lol_047,lol_050,lol_0
 # or "block" (the whole decoder layer / residual stream) for activation-space ones.
 PILOT_DEFAULT_TARGET_MODULES = {
     "lora": ["q_proj", "v_proj"],
+    # DoRA decomposes the frozen projection it hooks into magnitude + direction, so it
+    # retains LoRA's validated T2A projection sites; only the generated representation
+    # (and its dependence on the frozen weight) changes.
+    "dora": ["q_proj", "v_proj"],
     # IA3 scales each hooked projection's output channels, retaining the validated
     # T2A projection sites while changing only the generated representation.
     "ia3": ["q_proj", "v_proj"],

@@ -43,6 +43,7 @@ CODEC_SLUG = {
     "lora_r8": "lora",
     "ia3": "ia3",
     "lokr": "lokr",
+    "dora": "dora",
     "fourierft": "fourierft",
     "steering": "steering",
 }
@@ -51,6 +52,7 @@ CODEC_FAMILY_BLURB = {
     "lora": "Low-rank A/B factorization — the validated baseline representation.",
     "ia3": "Elementwise scaling W ↦ diag(1+v) W — symmetry-free, tiny budget.",
     "lokr": "Kronecker factorization ΔW = B ⊗ A — full-rank reach from few scalars.",
+    "dora": "Weight-decomposed magnitude + low-rank direction, renormalized by the frozen weight.",
     "fourierft": "Sparse Fourier coefficients in a fixed global basis.",
     "steering": "Activation-space residual-stream vector h ↦ h + s·v — no weight edit.",
 }

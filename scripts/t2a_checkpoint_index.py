@@ -16,7 +16,7 @@ the reason recorded rather than dropped silently: smoke runs, and probes at step
 that appear on no declared ladder (AUTORESEARCH.md compares only equal final budgets).
 
 Usage:
-    .venv/bin/python scripts/t2a_checkpoint_index.py --codecs lora,ia3,lokr,fourierft,steering
+    .venv/bin/python scripts/t2a_checkpoint_index.py --codecs lora,ia3,lokr,fourierft,steering,dora
 """
 
 from __future__ import annotations
@@ -138,7 +138,7 @@ def infer_codec(snapshot_rel: str) -> str | None:
     parts = Path(snapshot_rel).parts
     if parts[:3] == ("results", "autoresearch", "t2a") and len(parts) > 3:
         return parts[3]
-    for codec in (*AUDITED_CODECS, "steering"):
+    for codec in (*AUDITED_CODECS, "steering", "dora"):
         if re.search(rf"(?:^|[/_]){codec}(?:[/_]|$)", snapshot_rel):
             return codec
     return None

@@ -47,6 +47,173 @@ def test_make_codec_rejects_unregistered_shape():
         make_codec("lok r", 8, 8, num_layers=2)
 
 
+def _dora_reference(codec, inputs, base_weight, generated):
+    """Materialized reference for DoRA, written the way the paper/PEFT define it:
+    build W' = m ⊙ (W0 + s·B@A)/||W0 + s·B@A||_row densely, then apply it to the inputs.
+
+    The codec deliberately never forms that dense matrix (it expands the row norms
+    algebraically instead), so this independent implementation is what pins the shortcut.
+    """
+    rank, in_features, out_features = codec.rank, codec.in_features, codec.out_features
+    a = generated[:, : rank * in_features].reshape(-1, rank, in_features)
+    b = generated[:, rank * in_features : rank * (in_features + out_features)].reshape(-1, out_features, rank)
+    magnitude = generated[:, rank * (in_features + out_features) :]
+    adapted = base_weight.unsqueeze(0) + codec.scaling * torch.einsum("bor,bri->boi", b, a)
+    norm = torch.linalg.norm(adapted, dim=2)
+    scale = (torch.linalg.norm(base_weight, dim=1).unsqueeze(0) + codec.scaling * magnitude) / norm
+    weight = scale.unsqueeze(-1) * adapted
+    return torch.einsum("bsi,boi->bso", inputs, weight)
+
+
+def test_dora_geometry_and_identity_initialization():
+    codec = make_codec("dora", 5, 8, num_layers=2, rank=2, dora_scaling=2.0)
+    # rank-2 A/B factors (2*(5+8)) plus one magnitude scalar per output channel (8).
+    assert codec.output_size == 2 * (5 + 8) + 8 == 34
+    assert codec.scaling == 2.0
+    base_weight = torch.randn(8, 5)
+    generated = torch.zeros(3, codec.output_size)
+    inputs = torch.randn(3, 4, 5)
+    base = inputs @ base_weight.T
+    # zero magnitude delta => m = ||W0||_row, and B = 0 => direction unchanged: exact identity
+    torch.testing.assert_close(
+        codec.apply(inputs, base, generated, layer_index=0, base_weight=base_weight), base
+    )
+    assert codec.dense_delta(generated, layer_index=0, base_weight=base_weight).abs().max() == 0
+    assert not tuple(codec.parameters())
+    # T2A's locked gemma-2-2b q_proj/v_proj budgets: rank-8 LoRA plus d_out.
+    assert make_codec("dora", 2304, 2048, num_layers=26).output_size == 34816 + 2048
+    assert make_codec("dora", 2304, 1024, num_layers=26).output_size == 26624 + 1024
+
+
+def test_dora_has_a_nonzero_initial_bias_that_is_still_identity_with_gradient():
+    torch.manual_seed(0)
+    codec = make_codec("dora", 8, 8, num_layers=1, rank=2)
+    bias = codec.initial_bias()
+    assert bias is not None and bias.shape == (codec.output_size,)
+    # A's slice is seeded (bilinear saddle escape); B's slice and the magnitude slice are zero.
+    split = codec.rank * codec.in_features
+    assert bias[:split].abs().max() > 0
+    assert bias[split:].abs().max() == 0
+
+    base_weight = torch.randn(8, 8)
+    inputs = torch.randn(3, 5, 8)
+    base = inputs @ base_weight.T
+    generated = bias.unsqueeze(0).expand(3, -1).clone().requires_grad_(True)
+    output = codec.apply(inputs, base, generated, layer_index=0, base_weight=base_weight)
+    torch.testing.assert_close(output, base)  # contributes exactly zero at init
+    output.square().mean().backward()
+    assert generated.grad is not None and torch.isfinite(generated.grad).all()
+    # gradient reaches the zero B slice (via the seeded A) and the magnitude slice
+    assert generated.grad[:, split : split + codec.rank * codec.out_features].abs().max() > 0
+    assert generated.grad[:, split + codec.rank * codec.out_features :].abs().max() > 0
+
+
+def test_dora_apply_matches_the_materialized_weight_decomposition():
+    """The live path's algebraic row-norm expansion must equal the dense definition."""
+    torch.manual_seed(3)
+    codec = make_codec("dora", 6, 4, num_layers=1, rank=2, dora_scaling=0.75)
+    base_weight = torch.randn(4, 6)
+    inputs = torch.randn(3, 5, 6)
+    base = inputs @ base_weight.T
+    generated = torch.randn(3, codec.output_size) * 0.3
+    output = codec.apply(inputs, base, generated, layer_index=0, base_weight=base_weight)
+    expected = _dora_reference(codec, inputs, base_weight, generated)
+    torch.testing.assert_close(output, expected, atol=1e-5, rtol=1e-5)
+
+
+def test_dora_dense_delta_matches_apply():
+    torch.manual_seed(4)
+    codec = make_codec("dora", 6, 4, num_layers=1, rank=2, dora_scaling=0.5)
+    base_weight = torch.randn(4, 6)
+    inputs = torch.randn(2, 3, 6)
+    base = inputs @ base_weight.T
+    generated = torch.randn(2, codec.output_size) * 0.3
+    delta_weight = codec.dense_delta(generated, layer_index=0, base_weight=base_weight)
+    assert delta_weight.shape == (2, 4, 6)
+    output = codec.apply(inputs, base, generated, layer_index=0, base_weight=base_weight)
+    expected = base + torch.einsum("bsi,boi->bso", inputs, delta_weight)
+    torch.testing.assert_close(output, expected, atol=1e-5, rtol=1e-5)
+
+
+def test_dora_magnitude_slice_rescales_output_channels():
+    """With B = 0 the direction is untouched, so the update is exactly the magnitude ratio."""
+    codec = make_codec("dora", 4, 3, num_layers=1, rank=2, dora_scaling=1.0)
+    base_weight = torch.randn(3, 4)
+    inputs = torch.randn(2, 5, 4)
+    base = inputs @ base_weight.T
+    generated = torch.zeros(2, codec.output_size)
+    magnitude = torch.tensor([[0.5, -0.25, 0.0], [1.0, 0.0, 2.0]])
+    generated[:, codec.rank * (codec.in_features + codec.out_features) :] = magnitude
+    output = codec.apply(inputs, base, generated, layer_index=0, base_weight=base_weight)
+    row_norm = torch.linalg.norm(base_weight, dim=1).unsqueeze(0)
+    torch.testing.assert_close(output, base * ((row_norm + magnitude) / row_norm).unsqueeze(1))
+
+
+def test_dora_requires_the_frozen_hook_site_weight():
+    codec = make_codec("dora", 8, 8, num_layers=1, rank=2)
+    generated = torch.zeros(3, codec.output_size)
+    inputs, base = torch.randn(3, 4, 8), torch.randn(3, 4, 8)
+    with pytest.raises(ValueError, match="frozen hook-site weight"):
+        codec.apply(inputs, base, generated, layer_index=0)
+    with pytest.raises(ValueError, match="frozen hook-site weight"):
+        codec.dense_delta(generated, layer_index=0)
+    # ... and the residual-stream site, which has no weight to decompose, is refused.
+    with pytest.raises(ValueError, match="linear projection"):
+        codec.apply_at(nn.LayerNorm(8), inputs, base, generated, layer_index=0)
+
+
+def test_dora_hypernetwork_hook_reads_the_frozen_weight_and_backpropagates():
+    torch.manual_seed(0)
+    layers = nn.ModuleList([TinyLayer(), TinyLayer()])
+    layers.requires_grad_(False)  # the interpreter is frozen in both settings
+    hypernetwork = TextToPeftHypernetwork(
+        condition_dim=6, module_shapes={"q_proj": (8, 8)}, num_layers=2,
+        adapter="dora", latent_dim=32, head_dim=32, rank=2, dora_scaling=1.0,
+    )
+    conditions = torch.randn(3, 6)
+    inputs = torch.randn(3, 4, 8)
+
+    # At the zero-initialized head the hooked forward is exactly the frozen model.
+    generated = hypernetwork(conditions)
+    with hypernetwork.apply(layers, generated):
+        hooked = layers[1](layers[0](inputs))
+    torch.testing.assert_close(hooked, layers[1](layers[0](inputs)))
+
+    nn.init.normal_(hypernetwork.heads["q_proj"].weight, std=0.01)
+    generated = hypernetwork(conditions)
+    with hypernetwork.apply(layers, generated):
+        output = layers[1](layers[0](inputs))
+    # the hook is not a no-op once the head moves off its initialization
+    assert not torch.allclose(output, layers[1](layers[0](inputs)))
+    output.square().mean().backward()
+    assert hypernetwork.generated_parameter_count() == 2 * (2 * (8 + 8) + 8)
+    assert hypernetwork.heads["q_proj"].weight.grad is not None
+    assert hypernetwork.heads["q_proj"].weight.grad.abs().max() > 0
+    assert torch.isfinite(hypernetwork.heads["q_proj"].weight.grad).all()
+    # the frozen interpreter weight the codec reads stays frozen
+    assert layers[0].q_proj.weight.grad is None
+
+
+def test_dora_static_adapter_hook_applies_at_every_layer():
+    """The `matched - static*` control path shares the codecs, so it must hook identically."""
+    from adapterbench.t2a.hypernetwork import StaticAdapter
+
+    torch.manual_seed(0)
+    layers = nn.ModuleList([TinyLayer(), TinyLayer()])
+    hypernetwork = TextToPeftHypernetwork(
+        condition_dim=6, module_shapes={"q_proj": (8, 8)}, num_layers=2,
+        adapter="dora", latent_dim=32, head_dim=32, rank=2,
+    )
+    static = StaticAdapter(hypernetwork.codecs, num_layers=2)
+    inputs = torch.randn(3, 4, 8)
+    generated = static(3)
+    with static.apply(layers, generated):
+        output = layers[1](layers[0](inputs))
+    output.square().mean().backward()
+    assert static.params["q_proj"].grad is not None
+    assert static.params["q_proj"].grad.abs().max() > 0
+
+
 def test_ia3_geometry_and_identity_initialization():
     codec = make_codec("ia3", 5, 8, num_layers=2, ia3_scaling=2.0)
     assert codec.output_size == 8
