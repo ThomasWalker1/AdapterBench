@@ -149,6 +149,31 @@ def test_dora_magnitude_slice_rescales_output_channels():
     torch.testing.assert_close(output, base * ((row_norm + magnitude) / row_norm).unsqueeze(1))
 
 
+def test_dora_does_not_renormalize_a_hook_site_bias():
+    """DoRA decomposes the *weight*, so a bias is excluded from the magnitude rescaling —
+    the reference implementation (PEFT's DoraLinearLayer.forward) subtracts
+    `base_layer.bias` from `base_result` before applying `mag_norm_scale`. Both benchmark
+    settings hook bias-free projections, so this only guards other hook sites.
+    """
+    torch.manual_seed(5)
+    codec = make_codec("dora", 6, 4, num_layers=1, rank=2, dora_scaling=0.5)
+    linear = nn.Linear(6, 4, bias=True)
+    inputs = torch.randn(2, 3, 6)
+    generated = torch.randn(2, codec.output_size) * 0.3
+
+    biased = codec.apply_at(linear, inputs, linear(inputs), generated, layer_index=0)
+    # the same update with the bias handled explicitly outside the codec
+    unbiased = codec.apply(
+        inputs, inputs @ linear.weight.T, generated, layer_index=0, base_weight=linear.weight
+    )
+    torch.testing.assert_close(biased, unbiased + linear.bias, atol=1e-5, rtol=1e-5)
+    # ... and it is NOT the same as rescaling the bias along with the projection
+    rescaled_bias = codec.apply(
+        inputs, linear(inputs), generated, layer_index=0, base_weight=linear.weight
+    )
+    assert not torch.allclose(biased, rescaled_bias, atol=1e-5)
+
+
 def test_dora_requires_the_frozen_hook_site_weight():
     codec = make_codec("dora", 8, 8, num_layers=1, rank=2)
     generated = torch.zeros(3, codec.output_size)

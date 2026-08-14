@@ -24,8 +24,11 @@ restart-safe reproduction wrappers.
   `W' = m ⊙ (W0 + scale·B@A)/||W0 + scale·B@A||_row` at the same q_proj/v_proj (T2A) and
   down_proj (D2A) sites LoRA uses. Generated magnitudes are a delta on the frozen row
   norms, so the zero-init head is exactly the frozen projection; the renormalizing
-  denominator is detached, as in the reference implementation. Live row norms use an exact
-  algebraic expansion, so no per-example dense `ΔW` is materialized.
+  denominator is detached, as in the reference implementation (DoRA §4.3, PEFT's
+  `DoraLinearLayer`), the magnitude is per output channel with the norm reduced over fan-in
+  (following the implementations rather than the paper's transposed "column" wording), and a
+  hook-site bias is excluded from the rescaling. Live row norms use an exact algebraic
+  expansion, so no per-example dense `ΔW` is materialized.
   - **New codec-interface seam: `GeneratedUpdateCodec.apply_at(module, ...)`.** DoRA is the
     first registered shape whose update is defined *relative to the frozen weight it
     edits*, which `base_output = W0 @ x` cannot recover. The forward hooks now pass the

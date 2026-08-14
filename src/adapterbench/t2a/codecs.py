@@ -180,8 +180,13 @@ class DoRACodec(GeneratedUpdateCodec):
 
     - **The denominator is detached**, exactly as in the reference implementation (and PEFT's
       ``DoraLinearLayer``): the paper treats ``||V + ΔV||_c`` as a constant in the backward
-      pass, which is part of the method, not an optimization. The numerator ``m`` stays
-      differentiable, so gradient reaches the magnitude slice.
+      pass (DoRA §4.3), which is part of the method, not an optimization. The numerator ``m``
+      stays differentiable, so gradient reaches the magnitude slice.
+    - The magnitude is **per output channel**, with the norm reduced over fan-in. The paper
+      writes ``m ∈ R^(1×k)`` and calls ``||·||_c`` a column norm, but both the official
+      implementation and PEFT compute ``torch.linalg.norm(weight, dim=1)`` on an
+      ``(out, in)`` weight; this codec follows the implementations and says ``||·||_row``
+      throughout so the convention is unambiguous.
     - The row norms are computed **without materializing** ``W0 + s·B@A`` (a per-example
       ``(out, in)`` tensor at every layer would dominate the step): expanding
       ``||W0 + s·BA||²_row = ||W0||²_row + 2s·⟨W0, BA⟩_row + s²·||BA||²_row`` needs only
@@ -260,7 +265,7 @@ class DoRACodec(GeneratedUpdateCodec):
 
     def apply(
         self, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int,
-        *, base_weight: Tensor | None = None,
+        *, base_weight: Tensor | None = None, base_bias: Tensor | None = None,
     ) -> Tensor:
         self._check(inputs, generated)
         if base_weight is None:
@@ -273,7 +278,17 @@ class DoRACodec(GeneratedUpdateCodec):
         low_rank = torch.einsum("bsi,bri->bsr", inputs.to(a.dtype), a)
         directional = torch.einsum("bsr,bor->bso", low_rank, b)
         scale = self._magnitude_norm_scale(base_weight, a, b, magnitude).unsqueeze(1).to(base_output.dtype)
-        return scale * (base_output + self.scaling * directional.to(base_output.dtype))
+        # The decomposition is of the *weight*, so a hook site's bias is not part of what gets
+        # renormalized: subtract it before rescaling and add it back, matching the reference
+        # implementation (PEFT's DoraLinearLayer.forward removes `base_layer.bias` from
+        # `base_result` before applying `mag_norm_scale`). Both settings' hook sites are
+        # bias-free (gemma-2 sets attention_bias=False; Qwen3's down_proj has no bias), so
+        # this branch never fires in the benchmark - it exists so the codec cannot silently
+        # diverge from the method on a biased projection or a different interpreter.
+        if base_bias is None:
+            return scale * (base_output + self.scaling * directional.to(base_output.dtype))
+        bias = base_bias.detach().to(base_output.dtype)
+        return scale * (base_output - bias + self.scaling * directional.to(base_output.dtype)) + bias
 
     def apply_at(
         self, module: nn.Module, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int
@@ -287,7 +302,10 @@ class DoRACodec(GeneratedUpdateCodec):
                 f"has {found}. The 'block' residual-stream site cannot carry a weight-decomposed "
                 "codec."
             )
-        return self.apply(inputs, base_output, generated, layer_index, base_weight=weight)
+        return self.apply(
+            inputs, base_output, generated, layer_index,
+            base_weight=weight, base_bias=getattr(module, "bias", None),
+        )
 
     def dense_delta(
         self, generated: Tensor, layer_index: int, *, base_weight: Tensor | None = None
