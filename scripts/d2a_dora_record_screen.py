@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Append one `exploratory_screen` ledger record for a D2A DoRA screening point.
+"""Append one ledger record for a D2A DoRA scale x LR screening point.
 
 Status is always `exploratory`: these records exist for auditability, never as selection
 evidence. A window located here is re-derived from scratch under AUTORESEARCH.md before it
@@ -84,8 +84,8 @@ def main() -> int:
         "diverged": diverged,
         "rungs": rungs,
         "notes": (
-            "EXPLORATORY SCREEN, NOT SELECTION EVIDENCE. Wide/short/low-resolution sweep over the free "
-            f"axes to find out whether any operating window exists at all, scored at lengths "
+            "SCREEN, NOT SELECTION EVIDENCE. Wide/short/low-resolution joint sweep over the two free "
+            f"axes to locate the operating window, scored at lengths "
             f"{args.eval_lengths} with {args.eval_limit} examples/bin on the DEV eval seed 1802 and the "
             "scout seed. The truncated eval instrument makes hard-length AUC incomparable with the "
             "declared-ladder rungs by design; only the 512-token gate column is comparable. The "

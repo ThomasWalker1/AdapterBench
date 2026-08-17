@@ -1,14 +1,13 @@
 #!/bin/bash
-# EXPLORATORY D2A DoRA hyperparameter screen — deliberately NOT the AUTORESEARCH protocol.
+# Joint scale x learning-rate sweep for D2A DoRA — a wide, short, low-resolution screen whose
+# only job is to locate the operating window before the protocol refines it.
 #
-# Purpose: the declared scale ladder (0.0625-16) and both allowed upward extensions (64, 256)
-# are retrieval-dead at the 512-token in-distribution gate at LR 4e-5, so before writing a
-# negative row we ask a cheaper question: does ANY operating window exist on the free axes?
-# This screen is a wide, short, low-resolution sweep whose only job is to locate a region.
-# Nothing it produces may be quoted as a benchmark result or used to select an operating
-# point: a window found here is re-derived from scratch under AUTORESEARCH.md (declared
-# ladder, 3 selection seeds, stability gate, 5 fresh confirmation seeds) before it can
-# become a row.
+# Why joint rather than one axis at a time: DoRA's two free axes interact. Scale 64 does not
+# retrieve at the substrate-default lr 4e-5 and reaches the 512-token gate ceiling at 2e-5, so
+# sweeping scale at a single learning rate cannot see the window. Nothing this screen produces
+# may be quoted as a benchmark result or used to select an operating point: a window found here
+# is re-derived from scratch under AUTORESEARCH.md (declared ladder, 3 selection seeds,
+# stability gate, 5 fresh confirmation seeds) before it can become a row.
 #
 # What it holds fixed, so a window found here transfers:
 #   * substrate  — 512-token training length, 512 documents, realistic_numeric_decoys with 4
@@ -17,9 +16,9 @@
 #   * instrument — scout seed 902 and the DEV eval seed 1802. The confirmation seeds
 #                  (2901-2906) and the held-out eval seed 2904 are never touched here.
 #
-# What it varies: scale and learning rate (free axes), at a short 8k budget, scored at the
-# gate length plus 1024 only — the 16k/32k eval bins dominate wall-clock and the gate is the
-# screening signal. That makes the AUC incomparable with the ladder runs BY DESIGN; only the
+# What it varies: scale and learning rate (free axes), at a short 8k budget, scored at the gate
+# length plus 1024 only — the 16k/32k eval bins dominate wall-clock and the gate is the
+# screening signal. That makes the AUC incomparable with the protocol rungs BY DESIGN; only the
 # gate column is comparable.
 #
 # Usage: bash scripts/d2a_dora_explore.sh "GPU_CSV" "SCALE:LR SCALE:LR ..." [STEPS]

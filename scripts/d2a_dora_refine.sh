@@ -1,10 +1,10 @@
 #!/bin/bash
 # D2A DoRA protocol refinement around the located operating window (AUTORESEARCH.md §2/§3).
 #
-# The exploratory screen (scripts/d2a_dora_explore.sh) found that DoRA's scale and LR axes
-# interact: scale 64 is gate-zero at LR 4e-5 through 32k, but reaches gate 0.833 by 8k at
-# LR 2e-5. This script comes back on protocol at the full declared instrument to bracket
-# that window: a x2 scale refinement either side of 64, plus the lower LR neighbour.
+# The scale x LR screen (scripts/d2a_dora_explore.sh) located the window at scale 64, lr 2e-5,
+# where the 512-token gate is reached by 8k steps. This script comes back on protocol at the
+# full declared instrument to bracket that window: a x2 scale refinement either side of 64,
+# plus the lower LR neighbour.
 # Nothing outside the free axes moves, and the eval instrument is the declared one
 # (all seven lengths, 12 examples/bin, dev eval seed 1802, scout seed).
 #

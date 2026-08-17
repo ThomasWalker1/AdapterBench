@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Append one append-only ledger record per D2A DoRA boundary-probe point.
+"""Append one append-only ledger record per D2A DoRA protocol rung.
 
 Reads each probe run's eval lines, records the 512-token in-distribution gate, the
 per-length accuracies, the maximum context-swap seen, and the normalized hard-length
@@ -8,12 +8,13 @@ log-AUC (the setting's declared selection statistic), and classifies the point:
   * ``complete``            - trained to budget with finite loss
   * ``numerically_invalid`` - non-finite loss at any eval, i.e. divergence
 
-Nothing here selects: it records. A probe that diverged is retained explicitly, since a
-narrow stable band is itself the finding this probe exists to establish.
+Nothing here selects: it records. A rung that diverged is retained explicitly, since DoRA's
+stable band is narrow in LR and its edges are part of the trail.
 
 Usage:
-  d2a_dora_record_probe.py --root results/autoresearch/d2a/dora/scale_boundary \
-      --scales 64,256 --seed 902 --learning-rate 4e-5 --steps 32000 \
+  d2a_dora_record_probe.py --root results/autoresearch/d2a/dora/refinement \
+      --scales 64 --seed 902 --learning-rate 2e-5 --steps 32000 --phase scale_refinement \
+      --log-glob "refine_*.log" --scale-dir scale64_lr2e-5 \
       --ledger results/autoresearch/d2a/dora/state.jsonl
 """
 
@@ -64,10 +65,10 @@ def main() -> int:
     p.add_argument("--learning-rate", required=True)
     p.add_argument("--steps", type=int, required=True)
     p.add_argument("--ledger", type=Path, required=True)
-    # The same recorder serves the boundary probe and the refinement: they differ only in
-    # phase name and on-disk layout, never in what is measured.
-    p.add_argument("--phase", default="scale_boundary_extension")
-    p.add_argument("--log-glob", default="probe_*.log")
+    # The same recorder serves every rung phase (refinement, selection seeds): they differ only
+    # in phase name and on-disk layout, never in what is measured.
+    p.add_argument("--phase", default="scale_refinement")
+    p.add_argument("--log-glob", default="refine_*.log")
     p.add_argument("--scale-dir", default=None,
                    help="run directory name under --root (default: scale<SCALE>)")
     args = p.parse_args()
@@ -87,7 +88,7 @@ def main() -> int:
                 "steps": args.steps, "warmup_steps": 960,
             },
             "command": (
-                f"bash scripts/d2a_dora_boundary_probe.sh (--codec-scaling {scale}, "
+                f"bash scripts/d2a_dora_refine.sh (--codec-scaling {scale}, "
                 f"--learning-rate {args.learning_rate}, --steps {args.steps})"
             ),
             "artifact_root": str(run),
@@ -98,8 +99,8 @@ def main() -> int:
         }
         if not evals:
             record["status"] = "numerically_invalid"
-            record["notes"] = ("No evaluation reached; the probe produced no scorable rung. Retained "
-                              "explicitly as a boundary observation rather than retried.")
+            record["notes"] = ("No evaluation reached; this rung produced no scorable result. Retained "
+                              "explicitly rather than retried.")
             records.append(record)
             continue
 
@@ -129,11 +130,8 @@ def main() -> int:
             "notes": (
                 ("Non-finite loss at one or more evals: divergence, ineligible for selection. "
                  if diverged else "")
-                + ("Upward boundary probe above the declared ladder's top endpoint (16), at the "
-                   "ladder's own x4 spacing and the substrate-default LR. "
-                   if args.phase == "scale_boundary_extension" else
-                   "Protocol refinement around the operating window located by the exploratory screen, "
-                   "at the full declared eval instrument and the committed 32k budget. ")
+                + ("Protocol rung around the operating window located by the scale x LR screen, at the "
+                   "full declared eval instrument and the committed 32k budget. ")
                 + "Dev eval seed 1802 at 12 examples/bin, so a single retrieved example is 0.0833 and "
                   "the document's 4 numeric decoys put the emit-an-arbitrary-in-document-number rate "
                   "near 0.2."

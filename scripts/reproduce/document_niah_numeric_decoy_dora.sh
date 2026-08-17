@@ -3,12 +3,11 @@
 # autoresearch search; this script never performs selection.
 #
 # Selected point: --codec-scaling 64, --learning-rate 2e-5, 32000 steps, warmup 960.
-# Scale 64 came from a x2 refinement bracketing a window an exploratory screen located:
-# DoRA's scale and LR axes INTERACT, so its declared x4 ladder (0.0625-16) swept at the
-# substrate-default LR 4e-5 was retrieval-dead at every point, and scale 64 itself is dead
-# at 4e-5 but reaches the gate ceiling at 2e-5. Scales 32/64/128 all reach gate 1.000 and
-# are a tied set; 64 is the hard-length AUC argmax. One x2 step either side of LR 2e-5
-# destroys retrieval (4e-5 dead, 1e-5 collapses to 0.083), so the band is narrow in LR.
+# DoRA's scale and LR axes interact, so the point was located by a joint scale x LR sweep and
+# then re-derived on protocol: scales 32/64/128 at lr 2e-5 all reach the 512-token gate
+# ceiling (hard-length AUC 0.983/1.000/0.983, a tied set of three, 64 the AUC argmax), and the
+# LR axis closes interior at 2e-5. The band is narrow in LR - one x2 step either side of 2e-5
+# loses retrieval - which is why the learning rate is pinned here rather than left to a default.
 #
 # Usage: scripts/reproduce/document_niah_numeric_decoy_dora.sh [DEVICE] [SEED] [ROOT]
 set -euo pipefail

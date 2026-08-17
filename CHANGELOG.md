@@ -47,11 +47,11 @@ restart-safe reproduction wrappers.
     seeds, hyper scale 0.25 / lr 1e-4, independently selected static* at scale 16 / lr 1e-4),
     mid-table and not separable from any other shape. DoRA is the first codec whose relative
     standing differs sharply between the two settings.
-  - The D2A search needed an explicitly declared **exploratory screen** before the protocol
-    could find its operating point: DoRA's scale and LR axes interact, so its declared ×4 ladder
-    and both allowed upward extensions read as retrieval-dead at the substrate-default LR 4e-5.
-    Scale 64 is gate-zero at 4e-5 and reaches the gate ceiling at 2e-5. The screen, its
-    departure from §3, and the subsequent on-protocol re-derivation are all in the ledger.
+  - **DoRA's scale and learning rate interact**, so the D2A operating point was located by a joint
+    scale x LR sweep rather than one axis at a time: scale 64 does not retrieve at the setting-default
+    lr 4e-5 and reaches the gate ceiling at 2e-5. The sweep used the scout seed and dev eval
+    instrument only; the point was then re-derived on protocol at the full instrument, where scales
+    32/64/128 form a tied set at the ceiling and the LR axis closes interior.
 - **New codec: `steering`** — the first activation-space shape. The hypernetwork emits
   one `d_model` steering vector per (layer, example), added to the residual stream at
   the `"block"` hook site in both settings (`h -> h + scale * v`); linear in the
