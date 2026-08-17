@@ -9,11 +9,13 @@ row up to seed variance — this is the benchmark's reproducibility contract.
 | Setting | Script | Leaderboard | Headline |
 |---|---|---|---|
 | Task (T2A) — LoRA | `scripts/reproduce/t2a_reproduce_all.sh lora` | `task_conditioned_t2a.md` | matched − static\* = **+0.049 ± 0.027** ROUGE-L (3/3 confirmation seeds, 3 confirmation seeds) |
+| Task (T2A) — DoRA | `scripts/reproduce/t2a_reproduce_all.sh dora` | `task_conditioned_t2a.md` | matched − static\* = **+0.069 ± 0.031** ROUGE-L (3/3 confirmation seeds, 3 confirmation seeds) |
 | Task (T2A) — FourierFT | `scripts/reproduce/t2a_reproduce_all.sh fourierft` | `task_conditioned_t2a.md` | matched − static\* = **+0.068 ± 0.044** ROUGE-L (3/3 confirmation seeds, 3 confirmation seeds) |
 | Task (T2A) — (IA)³ | `scripts/reproduce/t2a_reproduce_all.sh ia3` | `task_conditioned_t2a.md` | matched − static\* = **+0.128 ± 0.049** ROUGE-L (3/3 confirmation seeds, 3 confirmation seeds) |
 | Task (T2A) — LoKr | `scripts/reproduce/t2a_reproduce_all.sh lokr` | `task_conditioned_t2a.md` | matched − static\* = **+0.077 ± 0.033** ROUGE-L (3/3 confirmation seeds, 3 confirmation seeds) |
 | Task (T2A) — Steering | `scripts/reproduce/t2a_reproduce_all.sh steering` | `task_conditioned_t2a.md` | matched − static\* = **+0.119 ± 0.038** ROUGE-L (3/3 confirmation seeds, 3 confirmation seeds) |
 | Document (NIAH) — LoRA (r=8) | `document_niah_numeric_decoy_lora.sh [DEVICE]` | `document_niah_d2a.md` | matched − ctxswap = **+0.556 ± 0.327** (5 seeds, realistic-prose, 4 numeric decoys; crossover 16×) |
+| Document (NIAH) — DoRA | `document_niah_numeric_decoy_dora_all.sh [DEVICE]` | `document_niah_d2a.md` | matched − ctxswap = **+0.956 ± 0.073** (5 seeds, realistic-prose, 4 numeric decoys; crossover 64×) |
 | Document (NIAH) — FourierFT | `document_niah_numeric_decoy_fourierft_all.sh [DEVICE]` | `document_niah_d2a.md` | matched − ctxswap = **+0.656 ± 0.352** (5 seeds, realistic-prose, 4 numeric decoys; crossover 64×) |
 | Document (NIAH) — (IA)³ | `document_niah_numeric_decoy_ia3.sh [DEVICE]` | `document_niah_d2a.md` | matched − ctxswap = **+0.738 ± 0.327** (5 seeds, realistic-prose, 4 numeric decoys; crossover 64×) |
 | Document (NIAH) — LoKr | `document_niah_numeric_decoy_lokr_all.sh [DEVICE]` | `document_niah_d2a.md` | matched − ctxswap = **+0.981 ± 0.037** (5 seeds, realistic-prose, 4 numeric decoys; crossover 64×) |

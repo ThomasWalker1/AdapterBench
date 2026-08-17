@@ -43,6 +43,7 @@ SELECTION_SEEDS = {
     "lokr": (2721, 2722, 2723),
     "fourierft": (5021, 5022, 5023),
     "steering": (4721, 4722, 4723),
+    "dora": (6711, 6712, 6713),
 }
 
 # The operating point per (codec, role), read off the decontaminated selection-split grid after
@@ -62,6 +63,11 @@ OPERATING_POINTS = [
     dict(codec="fourierft", role="static", scale="4",         lr="1e-4", steps=6000, rl=0.5342, tied=1),
     dict(codec="steering",  role="hyper",  scale="1",         lr="1e-4", steps=8000, rl=0.7271, tied=5),
     dict(codec="steering",  role="static", scale="64",        lr="2e-4", steps=8000, rl=0.5140, tied=2),
+    # DoRA: both roles closed on interior optima of BOTH axes (scale and LR), and the two roles
+    # land 64x apart in scale -- a yoked control at the hypernetwork's 0.25 would have scored
+    # 0.4867 instead of 0.6074, inflating matched-minus-static by ~0.12.
+    dict(codec="dora",      role="hyper",  scale="0.25",      lr="1e-4", steps=8000, rl=0.7609, tied=1),
+    dict(codec="dora",      role="static", scale="16",        lr="1e-4", steps=8000, rl=0.6074, tied=1),
 ]
 
 

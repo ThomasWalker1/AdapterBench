@@ -43,11 +43,12 @@ CONFIRMATION_SEEDS = {
     "lokr": (2741, 2742, 2743),
     "fourierft": (5041, 5042, 5043),
     "steering": (4741, 4742, 4743),
+    "dora": (6741, 6742, 6743),
 }
 
 # Every seed consumed by an earlier phase, for the disjointness assertion.
 HISTORICAL_SEEDS = {
-    1701, 1702, 2702, 4702, 5001,                    # scouts
+    1701, 1702, 2702, 4702, 5001, 6702,              # scouts
     2801, 2802, 2803, 5101, 5102, 5103,              # historical selection seeds
     1801, 1802, 1803, 1901, 1902, 1903,              # historical confirmations
     2811, 2812, 2813, 5111, 5112, 5113,

@@ -70,7 +70,7 @@
       "hyper": 1,
       "static": 3
     },
-    "shape_ranking": "PARTIAL ORDER ONLY. not separable from any other shape. Every other comparison, including every adjacent one, falls below 2x the SE of the difference and must not be reported as an ordering. The supported relations across all five shapes are: ia3 > lora (2.4x SE); steering > lora (2.6x SE)."
+    "shape_ranking": "PARTIAL ORDER ONLY. not separable from any other shape. Every other comparison, including every adjacent one, falls below 2x the SE of the difference and must not be reported as an ordering. The supported relations across all shapes are: ia3 > lora (2.4x SE); steering > lora (2.6x SE)."
   },
   "free_hyperparameters": {
     "learning_rate": "2e-4",
@@ -172,7 +172,7 @@
     "scout": "scripts/t2a_sweep_axes.py",
     "selection": "scripts/t2a_selection_seeds.py",
     "confirmation": "scripts/t2a_confirmation_seeds.py",
-    "score": "scripts/t2a_score_checkpoints.py --split report --confirm-spend-report-split --example-offset 0 --checkpoint-filter confirmation_v2 --expect-checkpoints 30 --limit 64 --n-desc 3",
+    "score": "scripts/reproduce/t2a_score_codec.sh lokr",
     "aggregate": "scripts/t2a_confirmation_result.py"
   }
 }

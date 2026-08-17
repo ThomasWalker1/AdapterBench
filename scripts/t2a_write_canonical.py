@@ -141,7 +141,7 @@ def ranking_note(codec: str, separable: list[dict]) -> str:
         "PARTIAL ORDER ONLY. " + "; ".join(parts)
         + ". Every other comparison, including every adjacent one, falls below 2x the SE of the "
           "difference and must not be reported as an ordering. The supported relations across all "
-          "five shapes are: " + "; ".join(f"{p['better']} > {p['worse']} ({p['ratio']:.1f}x SE)"
+          "shapes are: " + "; ".join(f"{p['better']} > {p['worse']} ({p['ratio']:.1f}x SE)"
                                           for p in separable) + "."
     )
 
@@ -248,13 +248,13 @@ def build_record(codec: str, entry: dict, frozen: dict, artifacts: list[dict],
         "reproduction": {
             # `script` is the single entry point a reader would run to reproduce this row's
             # confirmation seeds; the stage keys below are the full pipeline that selected the point.
-            "script": "scripts/t2a_confirmation_seeds.py",
+            # The committed reproduce wrapper, not the raw driver: re-running this writer must not
+            # silently downgrade an already-published record's entry point (it did once).
+            "script": f"scripts/reproduce/t2a_reproduce_all.sh {codec}",
             "scout": "scripts/t2a_sweep_axes.py",
             "selection": "scripts/t2a_selection_seeds.py",
             "confirmation": "scripts/t2a_confirmation_seeds.py",
-            "score": "scripts/t2a_score_checkpoints.py --split report "
-                     "--confirm-spend-report-split --example-offset 0 --checkpoint-filter "
-                     "confirmation_v2 --expect-checkpoints 30 --limit 64 --n-desc 3",
+            "score": f"scripts/reproduce/t2a_score_codec.sh {codec}",
             "aggregate": "scripts/t2a_confirmation_result.py",
         },
     }
@@ -317,6 +317,19 @@ SELECTION_SUMMARY = {
                 "already documented that a yoked control can be inflated by handicapping its "
                 "optimization; under the independent control its degenerate scale-0.0625 point "
                 "falls from rank 1 of 9 to rank 5." + _COMMON,
+    "dora": "Both roles closed with interior optima on BOTH free axes, and they landed far apart: the "
+            "hypernetwork at scale 0.25 lr 1e-4 (0.7609 on the scout; scale 0.0625 gives 0.7143 and 1.0 gives "
+            "0.7252; lr 5e-5 gives 0.7357 and 2e-4 gives 0.7093) and the static at scale 16 lr 1e-4 (0.6074; its "
+            "mandatory upward extension to 64 scored 0.5537, below 16, so the second extension step was not "
+            "licensed; lr 5e-5 gives 0.5683 and 2e-4 gives 0.5641). The 64x scale gap between the two roles is "
+            "direct evidence for the independent-control rule: a control yoked to the hypernetwork's scale 0.25 "
+            "would have scored 0.4867 rather than 0.6074, inflating this row by about 0.12. The LR axis was swept "
+            "rather than assumed because DoRA's D2A search established that its scale and LR axes interact; in T2A "
+            "they did not, and the setting default survived. Both roles passed the section 3b stability gate 3/3 on "
+            "selection seeds 6711-6713 (hyper mean 0.7272, SD 0.0140; static mean 0.5895, SD 0.0169; divergence "
+            "0/3 for both), and the measured SD is tighter than the 0.021 materiality threshold used to close the "
+            "ladders. Note the hyper multi-seed mean 0.7272 sits below the 0.7609 scout peak that selected the "
+            "point, which is the winner's-curse gap the gate exists to expose." + _COMMON,
 }
 
 

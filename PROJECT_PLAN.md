@@ -30,8 +30,8 @@ Both language settings pass controls that require genuine condition dependence.
 <!-- canonical-results:release-summary-markdown:start -->
 | setting | frozen interpreter | primary result | condition control |
 |---|---|---|---|
-| T2A | gemma-2-2b | LoRA `matched − static* = +0.049 ± 0.027`; FourierFT `matched − static* = +0.068 ± 0.044`; (IA)³ `matched − static* = +0.128 ± 0.049`; LoKr `matched − static* = +0.077 ± 0.033`; Steering `matched − static* = +0.119 ± 0.038` ROUGE-L on 11 held-out SNI tasks (3 confirmation seeds each) | independently selected same-shape static control: LoRA wins 3/3 confirmation seeds; FourierFT wins 3/3 confirmation seeds; (IA)³ wins 3/3 confirmation seeds; LoKr wins 3/3 confirmation seeds; Steering wins 3/3 confirmation seeds |
-| D2A | Qwen3-0.6B | LoRA (r=8): `matched − context-swap = +0.556 ± 0.327`; FourierFT: `matched − context-swap = +0.656 ± 0.352`; (IA)³: `matched − context-swap = +0.738 ± 0.327`; LoKr: `matched − context-swap = +0.981 ± 0.037`; steering: `matched − context-swap = +0.881 ± 0.050` exact-match | LoRA (r=8) control `0.000`; FourierFT control `0.000`; (IA)³ control `0.000`; LoKr control `0.000`; steering control `0.000` |
+| T2A | gemma-2-2b | LoRA `matched − static* = +0.049 ± 0.027`; DoRA `matched − static* = +0.069 ± 0.031`; FourierFT `matched − static* = +0.068 ± 0.044`; (IA)³ `matched − static* = +0.128 ± 0.049`; LoKr `matched − static* = +0.077 ± 0.033`; Steering `matched − static* = +0.119 ± 0.038` ROUGE-L on 11 held-out SNI tasks (3 confirmation seeds each) | independently selected same-shape static control: LoRA wins 3/3 confirmation seeds; DoRA wins 3/3 confirmation seeds; FourierFT wins 3/3 confirmation seeds; (IA)³ wins 3/3 confirmation seeds; LoKr wins 3/3 confirmation seeds; Steering wins 3/3 confirmation seeds |
+| D2A | Qwen3-0.6B | LoRA (r=8): `matched − context-swap = +0.556 ± 0.327`; DoRA: `matched − context-swap = +0.956 ± 0.073`; FourierFT: `matched − context-swap = +0.656 ± 0.352`; (IA)³: `matched − context-swap = +0.738 ± 0.327`; LoKr: `matched − context-swap = +0.981 ± 0.037`; steering: `matched − context-swap = +0.881 ± 0.050` exact-match | LoRA (r=8) control `0.000`; DoRA control `0.000`; FourierFT control `0.000`; (IA)³ control `0.000`; LoKr control `0.000`; steering control `0.000` |
 <!-- canonical-results:release-summary-markdown:end -->
 
 T2A's selection metric and headline are **ROUGE-L**, Super-NaturalInstructions' own aggregate
@@ -40,13 +40,17 @@ same-shape static control. Cross-entropy is an appendix figure: it stays a diver
 an eligibility gate and never selects. On the report split CE and ROUGE-L rank the shapes at
 Spearman −0.50, so a CE-selected point is not the behaviourally best point.
 
-The five shapes are **not ranked**. Only `(IA)³ > LoRA` (+0.079, 2.4× SE) and
+The six shapes are **not ranked**. Only `(IA)³ > LoRA` (+0.079, 2.4× SE) and
 `Steering > LoRA` (+0.069, 2.6× SE) separate; every adjacent pair does not, and `LoKr` vs `(IA)³`
-would need ~90 seeds per codec. Read the table as five independent measurements of conditioning
-against five independent controls.
+would need ~90 seeds per codec. Read the table as six independent measurements of conditioning
+against six independent controls.
 
 D2A's locked numeric-decoy NIAH setting trains at 512 tokens and tests through 32768.
-LoRA crosses 0.5 through 8192 (16×); FourierFT, IA³, and LoKr cross through 32768 (64×).
+LoRA crosses 0.5 through 8192 (16×); FourierFT, IA³, LoKr, steering and DoRA cross through 32768 (64×).
+
+**DoRA is the first codec whose relative standing differs sharply between the two settings**: joint-top
+in D2A (+0.956 ± 0.073, indistinguishable from LoKr's +0.981 ± 0.037) and mid-table in T2A
+(+0.069 ± 0.031). That is the cross-setting question stated as a finding rather than an aspiration.
 
 Canonical results and exact commands are in:
 
@@ -76,8 +80,8 @@ setting-discovery or substrate-building mode:
 - image and planning infrastructure is intentionally absent.
 
 LoRA is deliberately the validated reference, not the answer to the benchmark's
-question. (IA)³, LoKr, and FourierFT now have complete two-setting rows beside it; steering
-and DoRA are registered with their protocol evaluations outstanding. Everything
+question. (IA)³, LoKr, FourierFT, steering and DoRA all now have complete two-setting rows beside
+it, so every registered codec has been evaluated in both settings. Everything
 above exists so that question can be asked, which makes **codec exploration the one
 substantive remaining phase**.
 
@@ -97,8 +101,8 @@ Candidate codecs to add (each is a `GeneratedUpdateCodec` subclass + a `make_cod
 | (IA)³ | `W ↦ diag(1+v) W` | `d_out` | none | can a tiny, symmetry-free shape carry conditioning at all? | both rows complete |
 | LoKr | `ΔW = B ⊗ A` | factor-dependent | scaling only | full-rank reach from few scalars; different budget/expressivity trade-off | both rows complete |
 | FourierFT | `ΔW = F⁻¹(sparse coeffs)` | `n` (chosen), size-independent | none | fixed global basis removes the low-rank rotation symmetry entirely | both rows complete |
-| steering (`steering`) | `h ↦ h + s·v` | `d_model` / residual stream (`block`) | scaling | adaptation with no weight edit; hook site is the residual stream, not a projection | registered; autoresearch pending |
-| DoRA (`dora`) | `W ↦ m ⊙ (W₀+s·BA)/‖W₀+s·BA‖_row` | rank-8 LoRA budget + `d_out` | direction-only rotation (magnitude is gauge-fixed) | the only shape defined *relative to the weight it edits*: magnitude and direction are separately addressable and pre-normalized by the host weight, so it tests whether one-shot prediction is limited by calibration rather than expressivity | registered; autoresearch in flight |
+| steering (`steering`) | `h ↦ h + s·v` | `d_model` / residual stream (`block`) | scaling | adaptation with no weight edit; hook site is the residual stream, not a projection | both rows complete |
+| DoRA (`dora`) | `W ↦ m ⊙ (W₀+s·BA)/‖W₀+s·BA‖_row` | rank-8 LoRA budget + `d_out` | direction-only rotation (magnitude is gauge-fixed) | the only shape defined *relative to the weight it edits*: magnitude and direction are separately addressable and pre-normalized by the host weight, so it tests whether one-shot prediction is limited by calibration rather than expressivity | both rows complete |
 
 The open empirical question is whether the low-rank rotation symmetry LoRA carries
 (`BA = (BG)(G⁻¹A)`) is a real obstacle to one-shot prediction, i.e. whether a

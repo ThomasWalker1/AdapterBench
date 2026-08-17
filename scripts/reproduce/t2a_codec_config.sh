@@ -5,7 +5,7 @@
 # Confirmation seeds are disjoint from scout and selection seeds.
 
 t2a_load_codec_config() {
-  local codec="${1:?codec required (lora|ia3|lokr|fourierft|steering)}"
+  local codec="${1:?codec required (lora|dora|ia3|lokr|fourierft|steering)}"
   CODEC="$codec"
   case "$codec" in
     lora)
@@ -37,6 +37,12 @@ t2a_load_codec_config() {
       STATIC_SCALE=64; STATIC_LR=2e-4
       STEPS=8000
       CONFIRMATION_SEEDS=(4741 4742 4743)
+      ;;
+    dora)
+      HYPER_SCALE=0.25; HYPER_LR=1e-4
+      STATIC_SCALE=16; STATIC_LR=1e-4
+      STEPS=8000
+      CONFIRMATION_SEEDS=(6741 6742 6743)
       ;;
     *)
       echo "unsupported codec: $codec" >&2

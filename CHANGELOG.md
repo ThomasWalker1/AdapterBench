@@ -38,8 +38,20 @@ restart-safe reproduction wrappers.
   - Registered in `make_codec`, both hook-site maps, `configs/adapters/dora.yaml`, and the
     manifest schema; unit tests cover geometry, identity init, the bilinear saddle bias,
     equivalence with a materialized reference implementation, `dense_delta`/`apply`
-    consistency, hook application, and the static-control path. Benchmark rows pending the
-    AUTORESEARCH.md protocol.
+    consistency, hook application, and the static-control path.
+  - **Both benchmark rows landed** under the AUTORESEARCH.md protocol. D2A:
+    `matched − context-swap = +0.956 ± 0.073` (5 held-out seeds, scale 64, lr 2e-5, 32k steps),
+    perfect retrieval at every length to 32768 tokens (64× the training length), tail log-AUC
+    0.969 — joint-top with LoKr and not separable from it. T2A:
+    `matched − static* = +0.069 ± 0.031` ROUGE-L on the 11 held-out SNI tasks (3 confirmation
+    seeds, hyper scale 0.25 / lr 1e-4, independently selected static* at scale 16 / lr 1e-4),
+    mid-table and not separable from any other shape. DoRA is the first codec whose relative
+    standing differs sharply between the two settings.
+  - The D2A search needed an explicitly declared **exploratory screen** before the protocol
+    could find its operating point: DoRA's scale and LR axes interact, so its declared ×4 ladder
+    and both allowed upward extensions read as retrieval-dead at the substrate-default LR 4e-5.
+    Scale 64 is gate-zero at 4e-5 and reaches the gate ceiling at 2e-5. The screen, its
+    departure from §3, and the subsequent on-protocol re-derivation are all in the ledger.
 - **New codec: `steering`** — the first activation-space shape. The hypernetwork emits
   one `d_model` steering vector per (layer, example), added to the residual stream at
   the `"block"` hook site in both settings (`h -> h + scale * v`); linear in the

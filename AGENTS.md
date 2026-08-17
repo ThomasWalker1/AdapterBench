@@ -7,8 +7,8 @@ settings: task-description conditioning (T2A, gemma-2-2b) and document condition
 evaluated one at a time across both settings (registered so far: lora, dora, ia3, lokr,
 fourierft, steering).
 
-The core benchmark implementation and the LoRA/(IA)³/LoKr/FourierFT reference results
-are complete. The current project phase is **codec exploration**: evaluate each newly
+The core benchmark implementation and the reference results for every registered codec
+(LoRA, DoRA, (IA)³, LoKr, FourierFT, steering) are complete in both settings. The current project phase is **codec exploration**: evaluate each newly
 registered codec in both settings under `AUTORESEARCH.md`'s protocol, keeping every
 displayed result derived from canonical artifacts (leaderboards, paper, website, and
 commands must agree — `adapterbench results check`). New *settings* are out of scope.

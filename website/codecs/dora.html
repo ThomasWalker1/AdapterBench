@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DoRA — AdapterBench</title>
+  <meta name="description" content="AdapterBench tests whether the shape of a hypernetwork-generated PEFT adapter matters under live end-to-end SFT.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <h1><a href="../index.html" style="color:inherit;text-decoration:none;">AdapterBench</a></h1>
+      <p class="tagline">Does the <em>shape</em> of a hypernetwork-generated adapter matter?</p>
+      <nav class="site-nav">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#settings">Settings</a>
+        <a href="../index.html#leaderboards">Leaderboards</a>
+        <a href="../index.html#contribute">Contribute</a>
+        <a href="https://github.com/ThomasWalker1/AdapterBench">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page-main">
+    
+<a class="back-link" href="../index.html#leaderboards">← Back to leaderboards</a>
+
+<div class="codec-hero">
+  <h1>DoRA</h1>
+  <p class="lead">Weight-decomposed magnitude + low-rank direction, renormalized by the frozen weight.</p>
+  <div class="badge-row"><span class="badge">dora</span><span class="badge badge-accent">D2A</span><span class="badge badge-accent">T2A</span><span class="badge">custom</span></div>
+</div>
+
+
+<section>
+  <h2>D2A headline</h2>
+  <p class="lead"><strong>matched minus control</strong>
+  vs wrong document context swap:
+  <span class="headline">+0.9563 + 0.0729</span>
+  (5 seeds).</p>
+  <div class="table-wrap"><table><thead><tr><th>Seed</th><th class="num">Matched</th><th class="num">Control</th><th class="num">Δ (exact match accuracy)</th></tr></thead><tbody><tr><td>2901</td><td class="num">1.0000</td><td class="num">0.0000</td><td class="num headline">+1.0000</td></tr><tr><td>2902</td><td class="num">1.0000</td><td class="num">0.0000</td><td class="num headline">+1.0000</td></tr><tr><td>2903</td><td class="num">1.0000</td><td class="num">0.0000</td><td class="num headline">+1.0000</td></tr><tr><td>2905</td><td class="num">0.8125</td><td class="num">0.0000</td><td class="num headline">+0.8125</td></tr><tr><td>2906</td><td class="num">0.9688</td><td class="num">0.0000</td><td class="num headline">+0.9688</td></tr></tbody></table></div>
+  <h3>Hyperparameters</h3>
+  <ul class="param-list"><li><span>scale</span> = 64</li><li><span>learning_rate</span> = 2e-5</li><li><span>warmup_steps</span> = 960</li><li><span>steps</span> = 32000</li><li><span>target_modules (fixed)</span> = down_proj</li><li><span>update (fixed)</span> = W -&gt; m * (W0 + scale * B@A) / ||W0 + scale * B@A||_row (weight-decomposed: generated rank-8 direction plus one generated magnitude scalar per output channel, the latter a delta on the frozen row norms; the renormalizing denominator is detached)</li><li><span>rank (fixed)</span> = 8</li><li><span>generated_scalars_per_layer (fixed)</span> = 33792</li><li><span>generated_scalars_all_layers (fixed)</span> = 946176</li><li><span>budget_note (fixed)</span> = the locked rank-8 LoRA budget plus d_out for the magnitude vector (32768 + 1024 per layer, +3.1%); the magnitude vector is DoRA&#x27;s shape identity, not a tunable extra</li><li><span>n_latents (fixed)</span> = 208</li><li><span>num_blocks (fixed)</span> = 8</li></ul>
+  <h3>Difficulty curve</h3><div class="table-wrap"><table><thead><tr><th>Axis</th><th class="num">Matched</th><th class="num">Control</th><th class="num">Δ</th></tr></thead><tbody><tr><td>512</td><td class="num">0.9563</td><td class="num">0.0000</td><td class="num">+0.9563</td></tr><tr><td>1024</td><td class="num">0.9938</td><td class="num">0.0000</td><td class="num">+0.9938</td></tr><tr><td>2048</td><td class="num">0.9688</td><td class="num">0.0000</td><td class="num">+0.9688</td></tr><tr><td>4096</td><td class="num">0.9875</td><td class="num">0.0000</td><td class="num">+0.9875</td></tr><tr><td>8192</td><td class="num">0.9750</td><td class="num">0.0000</td><td class="num">+0.9750</td></tr><tr><td>16384</td><td class="num">0.9688</td><td class="num">0.0000</td><td class="num">+0.9688</td></tr><tr><td>32768</td><td class="num">0.8938</td><td class="num">0.0000</td><td class="num">+0.8938</td></tr></tbody></table></div>
+  <p class="muted">DoRA&#x27;s declared x4 ladder (0.0625-16, centred on its own identity convention) was retrieval-dead at the 512-token in-distribution gate at every point through 32k at the substrate-default LR 4e-5, as were both allowed upward extensions (64 and 256, the declared safety limit); a 32-example re-score of the only nonzero point (scale 4, gate 1/12) resolved it DOWN to 1/32, confirming a sampling artifact rather than a weak effect. Rather than publish a negative that had never probed the learning rate every other confirmed D2A codec selected, an explicitly EXPLORATORY screen (declared in the ledger, scout seed and dev eval instrument only, free axes only) swept scale x LR at a short 8k budget and found the window: scale 64 is gate-zero at LR 4e-5 but reaches gate 0.833 by 8k at LR 2e-5. DoRA&#x27;s scale and LR axes therefore INTERACT, which is why a ladder swept at a single LR read as flat. The operating point was then re-derived on protocol at the full instrument: scales 32/64/128 at LR 2e-5 all reach the gate ceiling of 1.000 (hard-length AUC 0.983/1.000/0.983, a tied set of three; 64 promoted as the AUC argmax without claiming a resolved optimum among them), the upper endpoint 128 does not beat 64 so no further extension is licensed, and the LR axis closes interior at 2e-5 (4e-5 gate-zero, 1e-5 collapses to 0.083). The section 3b stability gate passed 3/3 on selection seeds 6201/6202/6203 (gates 1.000/0.500/1.000, divergence rate 0/3) - the same gate that ruled steering&#x27;s analogous scale-64 point ineligible at 1/3. Five fresh confirmation seeds on the held-out eval instrument retained the result.</p>
+  <h3>Reproduce</h3>
+  <pre><code>document_niah_numeric_decoy_dora_all.sh</code></pre>
+</section>
+
+<section>
+  <h2>T2A headline</h2>
+  <p class="lead"><strong>matched minus control</strong>
+  vs independently selected same shape static adapter:
+  <span class="headline">+0.0687 + 0.0305</span>
+  (3 seeds).</p>
+  <div class="table-wrap"><table><thead><tr><th>Seed</th><th class="num">Matched</th><th class="num">Control</th><th class="num">Δ (rouge l f measure)</th></tr></thead><tbody><tr><td>6741</td><td class="num">0.2992</td><td class="num">0.2624</td><td class="num headline">+0.0368</td></tr><tr><td>6742</td><td class="num">0.3165</td><td class="num">0.2445</td><td class="num headline">+0.0719</td></tr><tr><td>6743</td><td class="num">0.3126</td><td class="num">0.2151</td><td class="num headline">+0.0975</td></tr></tbody></table></div>
+  <h3>Hyperparameters</h3>
+  <ul class="param-list"><li><span>learning_rate</span> = 1e-4</li><li><span>warmup_fraction</span> = 0.1</li><li><span>steps</span> = 8000</li><li><span>scale</span> = 0.25</li><li><span>scale</span> = 16</li><li><span>learning_rate</span> = 1e-4</li><li><span>steps</span> = 8000</li><li><span>note</span> = selected independently on the static&#x27;s own selection-split ROUGE-L, not yoked to the hypernetwork&#x27;s point</li><li><span>target_modules (fixed)</span> = q_proj, v_proj</li><li><span>rank (fixed)</span> = 8</li><li><span>generated_scalars_per_layer (fixed)</span> = 64512</li><li><span>budget_note (fixed)</span> = the locked rank-8 LoRA budget plus d_out per projection for the magnitude vector (+5.9% on q_proj, +3.8% on v_proj); the magnitude vector is DoRA&#x27;s shape identity, not a tunable extra</li><li><span>note (fixed)</span> = weight-decomposed codec: the only registered shape whose update reads the frozen weight it edits, applied as W -&gt; m * (W0 + scale*B@A)/||W0 + scale*B@A||_row with a detached denominator and generated magnitudes as a delta on the frozen row norms</li></ul>
+  <h3>Difficulty curve</h3><div class="table-wrap"><table><thead><tr><th>Axis</th><th class="num">Matched</th><th class="num">Control</th><th class="num">Δ</th></tr></thead><tbody><tr><td>held_out_sni_task_seed_pairs</td><td class="num">0.3094</td><td class="num">0.2407</td><td class="num">+0.0687</td></tr></tbody></table></div>
+  <p class="muted">Both roles closed with interior optima on BOTH free axes, and they landed far apart: the hypernetwork at scale 0.25 lr 1e-4 (0.7609 on the scout; scale 0.0625 gives 0.7143 and 1.0 gives 0.7252; lr 5e-5 gives 0.7357 and 2e-4 gives 0.7093) and the static at scale 16 lr 1e-4 (0.6074; its mandatory upward extension to 64 scored 0.5537, below 16, so the second extension step was not licensed; lr 5e-5 gives 0.5683 and 2e-4 gives 0.5641). The 64x scale gap between the two roles is direct evidence for the independent-control rule: a control yoked to the hypernetwork&#x27;s scale 0.25 would have scored 0.4867 rather than 0.6074, inflating this row by about 0.12. The LR axis was swept rather than assumed because DoRA&#x27;s D2A search established that its scale and LR axes interact; in T2A they did not, and the setting default survived. Both roles passed the section 3b stability gate 3/3 on selection seeds 6711-6713 (hyper mean 0.7272, SD 0.0140; static mean 0.5895, SD 0.0169; divergence 0/3 for both), and the measured SD is tighter than the 0.021 materiality threshold used to close the ladders. Note the hyper multi-seed mean 0.7272 sits below the 0.7609 scout peak that selected the point, which is the winner&#x27;s-curse gap the gate exists to expose. Re-derived under the corrected T2A rules (AUTORESEARCH.md): ROUGE-L rather than the training objective, a static control selected independently on its own score, and selection data disjoint from the report split on BOTH task and example axes -- the selection split is the 10 in-distribution lol_ tasks at example offset 40, since training consumes the leading 40 examples of the same split. Every swept axis closed with an interior optimum; the operating point passed the §3b stability gate 3/3 on selection seeds disjoint from these confirmation seeds.</p>
+  <h3>Reproduce</h3>
+  <pre><code>scripts/reproduce/t2a_reproduce_all.sh dora</code></pre>
+</section>
+
+
+<section>
+  <h2>Source</h2>
+  <div class="prose">
+    <p>Implementation: <a href="https://github.com/ThomasWalker1/AdapterBench/blob/main/src/adapterbench/t2a/codecs.py">codecs.py</a>
+    · manifest: <a href="https://github.com/ThomasWalker1/AdapterBench/blob/main/configs/adapters/dora.yaml">dora.yaml</a>
+    · contribute: <a href="https://github.com/ThomasWalker1/AdapterBench/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a></p>
+  </div>
+</section>
+
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <p>AdapterBench — holding the hypernetwork, training loop, data, and evaluator fixed; varying only the generated representation.</p>
+    </div>
+  </footer>
+  <script src="../js/sort-tables.js" defer></script>
+</body>
+</html>
