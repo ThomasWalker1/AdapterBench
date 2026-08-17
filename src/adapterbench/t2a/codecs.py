@@ -53,6 +53,26 @@ class GeneratedUpdateCodec(nn.Module, ABC):
     @abstractmethod
     def apply(self, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int) -> Tensor: ...
 
+    def apply_at(
+        self, module: nn.Module, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int
+    ) -> Tensor:
+        """Hook-site-aware entry point, called by the forward hooks in
+        ``hypernetwork.py::_apply_codec_hooks`` (and the persistent-hook variant in
+        ``scripts/t2a_train_ddp.py``) with the resolved hook-site module itself.
+
+        The default implementation ignores ``module`` and delegates to ``apply``, so every
+        codec whose update is a function of the generated values alone — LoRA, (IA)³, LoKr,
+        FourierFT, steering — is unchanged, bit for bit. Override it only for a codec whose
+        definition references the *frozen* weight at its hook site: ``DoRACodec`` decomposes
+        ``W0`` into magnitude and direction, so it needs read access to ``W0`` rather than
+        just ``W0 @ x`` (``base_output``), and no amount of generated state can recover it.
+
+        The frozen weight is read, never written, and is not part of the generated state or
+        the optimizer's parameters — the interpreter stays frozen, and ``output_size`` is
+        unaffected.
+        """
+        return self.apply(inputs, base_output, generated, layer_index)
+
     @abstractmethod
     def dense_delta(self, generated: Tensor, layer_index: int) -> Tensor:
         """Return the (batch, out_features, in_features) weight-space update ΔW."""
@@ -129,6 +149,186 @@ class LoRACodec(GeneratedUpdateCodec):
         self._check_output_size(generated)
         a, b = self._split(generated)
         return self.scaling * torch.einsum("bor,bri->boi", b, a)
+
+
+class DoRACodec(GeneratedUpdateCodec):
+    """Weight-decomposed low-rank adaptation (Liu et al., 2024).
+
+    DoRA splits the frozen projection into a per-output-channel **magnitude** and a
+    **direction**, adapts the direction with a LoRA-style low-rank update, and renormalizes:
+
+        W' = m ⊙_row (W0 + s·B@A) / ||W0 + s·B@A||_row
+
+    where ``||·||_row`` is the vector norm over each output row's input fan-in, ``m`` is one
+    magnitude scalar per output channel, and ``s`` is this codec's uniform ``.scaling``.
+    Both parts are generated: the emitted vector is LoRA's ``A``/``B`` slices followed by
+    ``out_features`` magnitude scalars, which are a **delta on** the frozen row norms
+    (``m = ||W0||_row + s·g_m``), so the all-zero generated output is exactly the frozen
+    projection.
+
+    Why it is interesting for this benchmark: DoRA is the one registered shape whose update
+    is defined *relative to the frozen weight it edits*. Every other codec here emits a
+    self-contained function of its generated values, so the hypernetwork must discover the
+    scale of a useful edit from data; DoRA hands it a decomposition in which magnitude and
+    direction are separately addressable and already normalized by the host weight. If the
+    obstacle to one-shot adapter prediction is partly *calibration* rather than expressivity,
+    this shape should show it — and it is a direct test of whether LoRA's reported deficit
+    versus full fine-tuning, which DoRA was introduced to close, has any counterpart when the
+    adapter is predicted rather than optimized.
+
+    Implementation notes:
+
+    - **The denominator is detached**, exactly as in the reference implementation (and PEFT's
+      ``DoraLinearLayer``): the paper treats ``||V + ΔV||_c`` as a constant in the backward
+      pass (DoRA §4.3), which is part of the method, not an optimization. The numerator ``m``
+      stays differentiable, so gradient reaches the magnitude slice.
+    - The magnitude is **per output channel**, with the norm reduced over fan-in. The paper
+      writes ``m ∈ R^(1×k)`` and calls ``||·||_c`` a column norm, but both the official
+      implementation and PEFT compute ``torch.linalg.norm(weight, dim=1)`` on an
+      ``(out, in)`` weight; this codec follows the implementations and says ``||·||_row``
+      throughout so the convention is unambiguous.
+    - The row norms are computed **without materializing** ``W0 + s·B@A`` (a per-example
+      ``(out, in)`` tensor at every layer would dominate the step): expanding
+      ``||W0 + s·BA||²_row = ||W0||²_row + 2s·⟨W0, BA⟩_row + s²·||BA||²_row`` needs only
+      ``A@W0ᵀ`` and the ``r × r`` Gram matrix ``A@Aᵀ``. This is exact, not an approximation —
+      ``tests/test_dynamic_t2a.py`` pins it against the materialized reference.
+    - ``apply`` is bilinear in the ``A``/``B`` slices, so ``initial_bias`` seeds ``A`` and
+      leaves ``B`` (and the magnitude slice) at zero, exactly as ``LoRACodec`` does.
+    - The hook site must be a linear projection: the magnitude/direction decomposition is
+      defined on a weight matrix, so ``"block"`` (the residual stream) has nothing to
+      decompose.
+    """
+
+    def __init__(
+        self, in_features: int, out_features: int, rank: int, *, scaling: float = 1.0, seed: int = 777,
+        epsilon: float = 1e-6,
+    ):
+        super().__init__(in_features, out_features)
+        self.rank = rank
+        # One knob for the whole intervention (the benchmark's uniform `--codec-scaling`
+        # sweep axis): it scales the directional update AND the generated magnitude delta,
+        # so `scaling` moves the strength of the edit without changing its shape. At
+        # scaling -> 0 the codec is exactly the frozen projection for any generated values.
+        self.scaling = scaling
+        self.seed = seed
+        # Guards the sqrt/divide when a large directional update lands anti-parallel to a
+        # frozen row; never reached at any usable scale, but a NaN here would be silent.
+        self.epsilon = epsilon
+
+    @property
+    def output_size(self) -> int:
+        # LoRA's rank-r budget plus one magnitude scalar per output channel. The magnitude
+        # vector is DoRA's shape identity, not a tunable extra: it is the +d_out overhead
+        # the method is defined by (5.9% over rank-8 LoRA at gemma-2-2b's q_proj).
+        return self.rank * (self.in_features + self.out_features) + self.out_features
+
+    def _split(self, generated: Tensor) -> tuple[Tensor, Tensor, Tensor]:
+        a_end = self.rank * self.in_features
+        b_end = a_end + self.rank * self.out_features
+        a = generated[:, :a_end].reshape(-1, self.rank, self.in_features)
+        b = generated[:, a_end:b_end].reshape(-1, self.out_features, self.rank)
+        magnitude = generated[:, b_end:]
+        return a, b, magnitude
+
+    def initial_bias(self) -> Tensor:
+        # Same bilinear saddle-escape as LoRACodec (see GeneratedUpdateCodec.initial_bias):
+        # seed A, leave B at zero so the directional update is exactly zero at init. The
+        # magnitude slice also stays zero, which makes m = ||W0||_row and therefore
+        # W' = W0 exactly — DoRA's own identity initialization.
+        return _saddle_bias(self.output_size, self.seed, [(0, self.rank * self.in_features, self.in_features)])
+
+    def _row_norms(self, base_weight: Tensor, a: Tensor, b: Tensor) -> tuple[Tensor, Tensor]:
+        """Return ``(||W0||_row, ||W0 + scaling*B@A||_row)`` in float32.
+
+        Both are detached: the frozen weight carries no gradient, and DoRA's backward pass
+        treats the adapted norm as a constant. Computed via the expansion documented in the
+        class docstring, so no per-example dense ``(out, in)`` tensor is ever formed.
+        """
+        weight = base_weight.detach().float()
+        base_squared = weight.pow(2).sum(dim=1)  # (out,)
+        a, b = a.detach().float(), b.detach().float()
+        # <W0[o], (B@A)[o]> without forming B@A: (A @ W0^T) is (batch, rank, out).
+        projected = torch.einsum("bri,oi->bro", a, weight)
+        cross = torch.einsum("bor,bro->bo", b, projected)
+        # ||(B@A)[o]||^2 = b[o] @ (A A^T) @ b[o]
+        gram = torch.einsum("bri,bqi->brq", a, a)
+        delta_squared = (torch.einsum("bor,brq->boq", b, gram) * b).sum(dim=-1)
+        adapted_squared = base_squared.unsqueeze(0) + 2 * self.scaling * cross + self.scaling**2 * delta_squared
+        return base_squared.clamp_min(self.epsilon).sqrt(), adapted_squared.clamp_min(self.epsilon).sqrt()
+
+    def _magnitude_norm_scale(self, base_weight: Tensor, a: Tensor, b: Tensor, magnitude: Tensor) -> Tensor:
+        """The per-example, per-output-channel factor ``m / ||W0 + s·B@A||_row``."""
+        base_norm, adapted_norm = self._row_norms(base_weight, a, b)
+        # Generated magnitudes are a delta on the frozen row norms, so zero => m = ||W0||_row
+        # and (with B = 0) the ratio is exactly 1: the frozen projection, bit for bit.
+        return (base_norm.unsqueeze(0) + self.scaling * magnitude.float()) / adapted_norm
+
+    def apply(
+        self, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int,
+        *, base_weight: Tensor | None = None, base_bias: Tensor | None = None,
+    ) -> Tensor:
+        self._check(inputs, generated)
+        if base_weight is None:
+            raise ValueError(
+                "DoRACodec needs the frozen hook-site weight (it decomposes W0 into magnitude "
+                "and direction): call apply_at(module, ...) — which the benchmark's forward "
+                "hooks do — or pass base_weight explicitly."
+            )
+        a, b, magnitude = self._split(generated)
+        low_rank = torch.einsum("bsi,bri->bsr", inputs.to(a.dtype), a)
+        directional = torch.einsum("bsr,bor->bso", low_rank, b)
+        scale = self._magnitude_norm_scale(base_weight, a, b, magnitude).unsqueeze(1).to(base_output.dtype)
+        # The decomposition is of the *weight*, so a hook site's bias is not part of what gets
+        # renormalized: subtract it before rescaling and add it back, matching the reference
+        # implementation (PEFT's DoraLinearLayer.forward removes `base_layer.bias` from
+        # `base_result` before applying `mag_norm_scale`). Both settings' hook sites are
+        # bias-free (gemma-2 sets attention_bias=False; Qwen3's down_proj has no bias), so
+        # this branch never fires in the benchmark - it exists so the codec cannot silently
+        # diverge from the method on a biased projection or a different interpreter.
+        if base_bias is None:
+            return scale * (base_output + self.scaling * directional.to(base_output.dtype))
+        bias = base_bias.detach().to(base_output.dtype)
+        return scale * (base_output - bias + self.scaling * directional.to(base_output.dtype)) + bias
+
+    def apply_at(
+        self, module: nn.Module, inputs: Tensor, base_output: Tensor, generated: Tensor, layer_index: int
+    ) -> Tensor:
+        weight = getattr(module, "weight", None)
+        if weight is None or weight.shape != (self.out_features, self.in_features):
+            found = "none" if weight is None else f"shape {tuple(weight.shape)}"
+            raise ValueError(
+                f"dora hooks a linear projection whose frozen weight it decomposes, and needs "
+                f"a ({self.out_features}, {self.in_features}) weight there; {type(module).__name__} "
+                f"has {found}. The 'block' residual-stream site cannot carry a weight-decomposed "
+                "codec."
+            )
+        return self.apply(
+            inputs, base_output, generated, layer_index,
+            base_weight=weight, base_bias=getattr(module, "bias", None),
+        )
+
+    def dense_delta(
+        self, generated: Tensor, layer_index: int, *, base_weight: Tensor | None = None
+    ) -> Tensor:
+        """``W' - W0`` for the hooked projection.
+
+        Unlike the additive codecs, DoRA's update is defined relative to the weight it edits,
+        so the frozen weight is required. This materializes the dense ``(batch, out, in)``
+        update and is a diagnostic/testing path — ``apply`` is the live implementation and
+        never forms it.
+        """
+        self._check_output_size(generated)
+        if base_weight is None:
+            raise ValueError(
+                "DoRACodec.dense_delta needs the frozen hook-site weight: DoRA's update is "
+                "W' - W0 = m ⊙ (W0 + s·B@A)/||W0 + s·B@A|| - W0, which is not a function of "
+                "the generated values alone."
+            )
+        a, b, magnitude = self._split(generated)
+        weight = base_weight.detach().float()
+        adapted = weight.unsqueeze(0) + self.scaling * torch.einsum("bor,bri->boi", b, a).float()
+        scale = self._magnitude_norm_scale(base_weight, a, b, magnitude)
+        return (scale.unsqueeze(-1) * adapted - weight.unsqueeze(0)).to(generated.dtype)
 
 
 class IA3Codec(GeneratedUpdateCodec):
@@ -405,6 +605,7 @@ def make_codec(
     rank: int = 8,
     alpha: float = 16.0,
     lora_scaling: float | None = None,
+    dora_scaling: float = 1.0,
     ia3_scaling: float = 1.0,
     lokr_scaling: float = 1.0,
     fourierft_scaling: float = 1.0,
@@ -418,6 +619,10 @@ def make_codec(
 
     constructors = {
         "lora": lambda: LoRACodec(in_features, out_features, rank, alpha, scaling=lora_scaling, seed=seed),
+        # Weight-decomposed: the same rank-r directional factors plus one generated magnitude
+        # scalar per output channel, renormalized by the frozen row norms it reads at the
+        # hook site (the only registered codec that reads W0 — see `apply_at`).
+        "dora": lambda: DoRACodec(in_features, out_features, rank, scaling=dora_scaling, seed=seed),
         "ia3": lambda: IA3Codec(in_features, out_features, scaling=ia3_scaling),
         "lokr": lambda: LoKrCodec(in_features, out_features, scaling=lokr_scaling, seed=seed),
         # Activation-space: one steering vector per layer added to the residual

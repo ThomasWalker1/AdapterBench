@@ -38,8 +38,11 @@ A codec needs exactly two things:
    - `apply(inputs, base_output, generated, layer_index)` — fold generated values
      into the hooked module's output.
    - `dense_delta(generated, layer_index)` — weight-space ΔW when applicable.
-   - `initial_bias()` — only if `apply()` is bilinear (LoRA, LoKr); linear
+   - `initial_bias()` — only if `apply()` is bilinear (LoRA, LoKr, DoRA); linear
      codecs keep the default `None`.
+   - `apply_at(module, ...)` — only if the update is defined relative to the frozen
+     weight at the hook site (DoRA's magnitude/direction decomposition). The default
+     delegates to `apply()`; such a codec must hook a linear projection, not `"block"`.
 
 2. **Register** the codec in `make_codec()` and add default hook sites in
    `PILOT_DEFAULT_TARGET_MODULES` (`cli/_shared.py`) and

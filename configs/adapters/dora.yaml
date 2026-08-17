@@ -1,0 +1,22 @@
+schema_version: 1
+name: dora
+family: dora
+implementation: custom
+output_structure: Generated rank-8 directional A/B factors plus one magnitude scalar per output channel; applied live as W' = m ⊙ (W0 + scale*B@A) / ||W0 + scale*B@A||_row.
+target_modules: [q_proj, v_proj]
+hyperparameters:
+  r: 8
+  scaling: 1.0
+  scalar_budget_rule: r * (in_features + out_features) + out_features
+compatible_objectives: [downstream, reconstruction, hybrid]
+supports_batched_generation: true
+notes:
+  - Weight-decomposed adaptation (Liu et al., 2024) as a generated shape - the magnitude vector and the low-rank direction are both hypernetwork outputs.
+  - The magnitude vector is DoRA's shape identity, not a tunable extra; the budget is the locked rank-8 LoRA budget plus d_out (+5.9% at gemma-2-2b's q_proj, +8.7% at Qwen3-0.6B's down_proj).
+  - Generated magnitudes are a delta on the frozen row norms, so the all-zero generated output is exactly the frozen projection (m = ||W0||_row, B = 0).
+  - The only registered codec whose update reads the frozen weight it edits; its hook site must therefore be a linear projection, never the "block" residual stream.
+  - The renormalizing denominator is detached, exactly as in the reference implementation and PEFT's DoraLinearLayer (DoRA paper section 4.3) - it is part of the method, not an optimization.
+  - Magnitude is per output channel with the norm reduced over fan-in, following the official implementation and PEFT (torch.linalg.norm(weight, dim=1)); the paper's "column" wording uses the transposed convention.
+  - A hook site's bias, if any, is excluded from the magnitude rescaling, as in PEFT; both settings' sites are bias-free, so this never fires in the benchmark.
+  - Live row norms use the exact expansion ||W0 + s*BA||^2 = ||W0||^2 + 2s<W0,BA> + s^2||BA||^2, so no per-example dense update is ever materialized.
+  - T2A retains q_proj/v_proj and D2A retains down_proj; only the generated update representation changes.

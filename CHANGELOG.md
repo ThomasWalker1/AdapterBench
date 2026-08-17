@@ -18,6 +18,40 @@ restart-safe reproduction wrappers.
   matching `canonical_results/`; removed legacy one-off scripts (`migrate_seed3_at_15k.sh`,
   `t2a_promote.sh`, `t2a_release_aggregate.py`); aligned leaderboard and setup docs with the
   AUTORESEARCH confirmation protocol (seeds 1741–4743, not the superseded 1801-era runs).
+- **New codec: `dora`** — weight-decomposed low-rank adaptation (Liu et al., 2024) as a
+  generated shape. The hypernetwork emits LoRA's rank-8 directional `A`/`B` factors **plus
+  one magnitude scalar per output channel**, applied as
+  `W' = m ⊙ (W0 + scale·B@A)/||W0 + scale·B@A||_row` at the same q_proj/v_proj (T2A) and
+  down_proj (D2A) sites LoRA uses. Generated magnitudes are a delta on the frozen row
+  norms, so the zero-init head is exactly the frozen projection; the renormalizing
+  denominator is detached, as in the reference implementation (DoRA §4.3, PEFT's
+  `DoraLinearLayer`), the magnitude is per output channel with the norm reduced over fan-in
+  (following the implementations rather than the paper's transposed "column" wording), and a
+  hook-site bias is excluded from the rescaling. Live row norms use an exact algebraic
+  expansion, so no per-example dense `ΔW` is materialized.
+  - **New codec-interface seam: `GeneratedUpdateCodec.apply_at(module, ...)`.** DoRA is the
+    first registered shape whose update is defined *relative to the frozen weight it
+    edits*, which `base_output = W0 @ x` cannot recover. The forward hooks now pass the
+    resolved hook-site module; the default implementation delegates to `apply()`, so every
+    existing codec is unchanged bit-for-bit. Weight-decomposed codecs therefore require a
+    linear-projection hook site (never `"block"`), which the codec enforces.
+  - Registered in `make_codec`, both hook-site maps, `configs/adapters/dora.yaml`, and the
+    manifest schema; unit tests cover geometry, identity init, the bilinear saddle bias,
+    equivalence with a materialized reference implementation, `dense_delta`/`apply`
+    consistency, hook application, and the static-control path.
+  - **Both benchmark rows landed** under the AUTORESEARCH.md protocol. D2A:
+    `matched − context-swap = +0.956 ± 0.073` (5 held-out seeds, scale 64, lr 2e-5, 32k steps),
+    perfect retrieval at every length to 32768 tokens (64× the training length), tail log-AUC
+    0.969 — joint-top with LoKr and not separable from it. T2A:
+    `matched − static* = +0.069 ± 0.031` ROUGE-L on the 11 held-out SNI tasks (3 confirmation
+    seeds, hyper scale 0.25 / lr 1e-4, independently selected static* at scale 16 / lr 1e-4),
+    mid-table and not separable from any other shape. DoRA is the first codec whose relative
+    standing differs sharply between the two settings.
+  - **DoRA's scale and learning rate interact**, so the D2A operating point was located by a joint
+    scale x LR sweep rather than one axis at a time: scale 64 does not retrieve at the setting-default
+    lr 4e-5 and reaches the gate ceiling at 2e-5. The sweep used the scout seed and dev eval
+    instrument only; the point was then re-derived on protocol at the full instrument, where scales
+    32/64/128 form a tied set at the ceiling and the LR axis closes interior.
 - **New codec: `steering`** — the first activation-space shape. The hypernetwork emits
   one `d_model` steering vector per (layer, example), added to the residual stream at
   the `"block"` hook site in both settings (`h -> h + scale * v`); linear in the

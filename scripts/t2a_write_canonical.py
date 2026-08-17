@@ -43,11 +43,12 @@ RESCORE = REPO / "results/autoresearch/t2a/evaluation"
 # The canonical filename per codec. `lora` keeps its `_r8` record name and `lora_r8` codec id, which
 # the renderers special-case.
 RECORD = {"lora": "t2a_lora_r8.json", "ia3": "t2a_ia3.json", "lokr": "t2a_lokr.json",
-          "fourierft": "t2a_fourierft.json", "steering": "t2a_steering.json"}
+          "fourierft": "t2a_fourierft.json", "steering": "t2a_steering.json",
+          "dora": "t2a_dora.json"}
 CODEC_ID = {"lora": "lora_r8", "ia3": "ia3", "lokr": "lokr", "fourierft": "fourierft",
-            "steering": "steering"}
+            "steering": "steering", "dora": "dora"}
 DISPLAY = {"lora": "LoRA", "ia3": "(IA)³", "lokr": "LoKr", "fourierft": "FourierFT",
-           "steering": "Steering"}
+           "steering": "Steering", "dora": "DoRA"}
 
 MODELS = [
     {"model_id": "google/gemma-2-2b-it", "revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8"},
@@ -140,7 +141,7 @@ def ranking_note(codec: str, separable: list[dict]) -> str:
         "PARTIAL ORDER ONLY. " + "; ".join(parts)
         + ". Every other comparison, including every adjacent one, falls below 2x the SE of the "
           "difference and must not be reported as an ordering. The supported relations across all "
-          "five shapes are: " + "; ".join(f"{p['better']} > {p['worse']} ({p['ratio']:.1f}x SE)"
+          "shapes are: " + "; ".join(f"{p['better']} > {p['worse']} ({p['ratio']:.1f}x SE)"
                                           for p in separable) + "."
     )
 
@@ -247,13 +248,13 @@ def build_record(codec: str, entry: dict, frozen: dict, artifacts: list[dict],
         "reproduction": {
             # `script` is the single entry point a reader would run to reproduce this row's
             # confirmation seeds; the stage keys below are the full pipeline that selected the point.
-            "script": "scripts/t2a_confirmation_seeds.py",
+            # The committed reproduce wrapper, not the raw driver: re-running this writer must not
+            # silently downgrade an already-published record's entry point (it did once).
+            "script": f"scripts/reproduce/t2a_reproduce_all.sh {codec}",
             "scout": "scripts/t2a_sweep_axes.py",
             "selection": "scripts/t2a_selection_seeds.py",
             "confirmation": "scripts/t2a_confirmation_seeds.py",
-            "score": "scripts/t2a_score_checkpoints.py --split report "
-                     "--confirm-spend-report-split --example-offset 0 --checkpoint-filter "
-                     "confirmation_v2 --expect-checkpoints 30 --limit 64 --n-desc 3",
+            "score": f"scripts/reproduce/t2a_score_codec.sh {codec}",
             "aggregate": "scripts/t2a_confirmation_result.py",
         },
     }
@@ -273,6 +274,18 @@ FIXED_SHAPE = {
                  "note": "activation-space codec: hooks the whole decoder layer and adds one "
                          "generated residual-stream vector per (layer, example); performs no "
                          "weight update at all"},
+    # DoRA: rank-8 directional factors over q_proj (2304->2048) and v_proj (2304->1024) plus one
+    # magnitude scalar per output channel, i.e. 8*(2304+2048)+2048 = 36,864 and
+    # 8*(2304+1024)+1024 = 27,648 per layer.
+    "dora": {"target_modules": ["q_proj", "v_proj"], "rank": 8,
+             "generated_scalars_per_layer": 64512,
+             "budget_note": "the locked rank-8 LoRA budget plus d_out per projection for the "
+                            "magnitude vector (+5.9% on q_proj, +3.8% on v_proj); the magnitude "
+                            "vector is DoRA's shape identity, not a tunable extra",
+             "note": "weight-decomposed codec: the only registered shape whose update reads the "
+                     "frozen weight it edits, applied as "
+                     "W -> m * (W0 + scale*B@A)/||W0 + scale*B@A||_row with a detached "
+                     "denominator and generated magnitudes as a delta on the frozen row norms"},
 }
 
 _COMMON = (" Re-derived under the corrected T2A rules (AUTORESEARCH.md): ROUGE-L rather than the "
@@ -304,6 +317,19 @@ SELECTION_SUMMARY = {
                 "already documented that a yoked control can be inflated by handicapping its "
                 "optimization; under the independent control its degenerate scale-0.0625 point "
                 "falls from rank 1 of 9 to rank 5." + _COMMON,
+    "dora": "Both roles closed with interior optima on BOTH free axes, and they landed far apart: the "
+            "hypernetwork at scale 0.25 lr 1e-4 (0.7609 on the scout; scale 0.0625 gives 0.7143 and 1.0 gives "
+            "0.7252; lr 5e-5 gives 0.7357 and 2e-4 gives 0.7093) and the static at scale 16 lr 1e-4 (0.6074; its "
+            "mandatory upward extension to 64 scored 0.5537, below 16, so the second extension step was not "
+            "licensed; lr 5e-5 gives 0.5683 and 2e-4 gives 0.5641). The 64x scale gap between the two roles is "
+            "direct evidence for the independent-control rule: a control yoked to the hypernetwork's scale 0.25 "
+            "would have scored 0.4867 rather than 0.6074, inflating this row by about 0.12. The LR axis was swept "
+            "rather than assumed because DoRA's D2A search established that its scale and LR axes interact; in T2A "
+            "they did not, and the setting default survived. Both roles passed the section 3b stability gate 3/3 on "
+            "selection seeds 6711-6713 (hyper mean 0.7272, SD 0.0140; static mean 0.5895, SD 0.0169; divergence "
+            "0/3 for both), and the measured SD is tighter than the 0.021 materiality threshold used to close the "
+            "ladders. Note the hyper multi-seed mean 0.7272 sits below the 0.7609 scout peak that selected the "
+            "point, which is the winner's-curse gap the gate exists to expose." + _COMMON,
 }
 
 

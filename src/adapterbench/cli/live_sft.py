@@ -35,6 +35,9 @@ from ._shared import (
 # module constant here rather than in `_shared.py` since only `d2a-niah` uses it.
 DOC_TO_LORA_PARITY_TARGET_MODULES = {
     "lora": ["down_proj"],
+    # DoRA is a weight-decomposed edit of the same locked D2A projection: identical hook
+    # site, and the magnitude/direction split is defined on that projection's own weight.
+    "dora": ["down_proj"],
     # Same validated D2A projection site; IA3 changes only the live generated shape.
     "ia3": ["down_proj"],
     # LoKr is another generated weight update, so it uses the same locked D2A hook

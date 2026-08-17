@@ -107,10 +107,17 @@ the residual stream for activation-space ones). Concretely:
      factors multiplied, like LoRA's `B@A` or LoKr's Kronecker factors); return a bias
      that randomizes one factor's slice so the head escapes the all-zero dead saddle.
      Linear codecs (IA³, activation steering, FourierFT) can keep the default `None`.
+   - `apply_at(module, ...)` — override **only** for a shape whose update is defined
+     relative to the *frozen weight* at its hook site, which `base_output = W0 @ x` cannot
+     recover. DoRA is the one registered example: it decomposes `W0` into magnitude and
+     direction, so it reads `module.weight` (read-only — the interpreter stays frozen and
+     the weight is never part of the generated state). The default implementation ignores
+     `module` and calls `apply`, so every other codec is unaffected. A codec that needs
+     the weight must hook a linear projection, never `"block"`.
 2. **Register it** — add one entry to the `constructors` dict in `make_codec`
    (`codecs.py`) and its default hook site in `PILOT_DEFAULT_TARGET_MODULES`
    (`cli/_shared.py`) + `DOC_TO_LORA_PARITY_TARGET_MODULES` (`cli/live_sft.py`). Registered
-   shapes: `lora`, `ia3`, `lokr`, `fourierft`, `steering`.
+   shapes: `lora`, `dora`, `ia3`, `lokr`, `fourierft`, `steering`.
 3. **Add a manifest** under `configs/adapters/` so the CLI can select it (and add the
    family to `schema.py`'s `AdapterManifest.family` literal).
 4. **Run the setting CLIs** (Section 4) at the codec's own best free hyperparameters and

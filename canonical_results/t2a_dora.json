@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "setting": "T2A",
+  "codec": "dora",
+  "display_name": "DoRA",
+  "metric": "held_out_rouge_l",
+  "headline": {
+    "comparison": "matched_minus_control",
+    "control_name": "independently_selected_same_shape_static_adapter",
+    "matched": 0.30940323348389637,
+    "control": 0.24066923699883921,
+    "value": 0.06873399648505718,
+    "variation": 0.03050159920883734,
+    "variation_kind": "sample_standard_deviation",
+    "unit": "rouge_l_f_measure",
+    "direction": "higher_is_better"
+  },
+  "seed_results": [
+    {
+      "seed": 6741,
+      "matched": 0.29916165407493334,
+      "control": 0.2624036642957824,
+      "delta": 0.03675798977915096
+    },
+    {
+      "seed": 6742,
+      "matched": 0.3164730991055944,
+      "control": 0.24453776422191942,
+      "delta": 0.07193533488367498
+    },
+    {
+      "seed": 6743,
+      "matched": 0.31257494727116136,
+      "control": 0.21506628247881576,
+      "delta": 0.0975086647923456
+    }
+  ],
+  "difficulty_curve": [
+    {
+      "axis": "held_out_sni_task_seed_pairs",
+      "matched": 0.30940323348389637,
+      "control": 0.24066923699883921,
+      "delta": 0.06873399648505718,
+      "note": "3/3 confirmation seeds with a positive difference; 11 genuinely held-out tasks x 64 examples x 3 descriptions"
+    }
+  ],
+  "summary": {
+    "wins": "3/3 confirmation seeds",
+    "matched_minus_frozen": {
+      "value": 0.2551595973542686,
+      "frozen_rouge_l": 0.0542436361296278,
+      "note": "helpfulness floor, ROUGE-L on the same split"
+    },
+    "exact_match_matched_minus_static": {
+      "value": 0.042455808080808066,
+      "matched": 0.24226641414141414,
+      "control": 0.19981060606060608,
+      "frozen": 0.2556818181818182,
+      "note": "appendix cross-check off the same decode pass; stricter than ROUGE-L and near-meaningless on the open-ended tasks, so never the selector"
+    },
+    "cross_entropy_matched_minus_static": {
+      "value": -0.5549957895971307,
+      "matched": 4.10904926960968,
+      "control": 4.664045059206811,
+      "unit": "nats",
+      "direction": "lower_is_better",
+      "note": "appendix only. CE is the training objective; AUTORESEARCH.md keeps it as a divergence detector and eligibility gate and forbids it as a selector. On this split CE and ROUGE-L rank the shapes with Spearman -0.50, so CE would have selected differently and worse."
+    },
+    "tied_operating_points": {
+      "hyper": 1,
+      "static": 1
+    },
+    "shape_ranking": "PARTIAL ORDER ONLY. not separable from any other shape. Every other comparison, including every adjacent one, falls below 2x the SE of the difference and must not be reported as an ordering. The supported relations across all shapes are: ia3 > lora (2.4x SE); steering > lora (2.6x SE)."
+  },
+  "free_hyperparameters": {
+    "learning_rate": "1e-4",
+    "warmup_fraction": 0.1,
+    "steps": 8000,
+    "scale": "0.25",
+    "static_control": {
+      "scale": "16",
+      "learning_rate": "1e-4",
+      "steps": 8000,
+      "note": "selected independently on the static's own selection-split ROUGE-L, not yoked to the hypernetwork's point"
+    }
+  },
+  "fixed_shape_parameters": {
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ],
+    "rank": 8,
+    "generated_scalars_per_layer": 64512,
+    "budget_note": "the locked rank-8 LoRA budget plus d_out per projection for the magnitude vector (+5.9% on q_proj, +3.8% on v_proj); the magnitude vector is DoRA's shape identity, not a tunable extra",
+    "note": "weight-decomposed codec: the only registered shape whose update reads the frozen weight it edits, applied as W -> m * (W0 + scale*B@A)/||W0 + scale*B@A||_row with a detached denominator and generated magnitudes as a delta on the frozen row norms"
+  },
+  "selection_trail": {
+    "protocol": "AUTORESEARCH.md",
+    "state_artifacts": [
+      {
+        "path": "results/autoresearch/t2a/dora/state.jsonl",
+        "sha256": "259c87d76f5eafc252b0c29e4c43c9eb01c543ff930f84caa334610ef122a2a0"
+      }
+    ],
+    "summary": "Both roles closed with interior optima on BOTH free axes, and they landed far apart: the hypernetwork at scale 0.25 lr 1e-4 (0.7609 on the scout; scale 0.0625 gives 0.7143 and 1.0 gives 0.7252; lr 5e-5 gives 0.7357 and 2e-4 gives 0.7093) and the static at scale 16 lr 1e-4 (0.6074; its mandatory upward extension to 64 scored 0.5537, below 16, so the second extension step was not licensed; lr 5e-5 gives 0.5683 and 2e-4 gives 0.5641). The 64x scale gap between the two roles is direct evidence for the independent-control rule: a control yoked to the hypernetwork's scale 0.25 would have scored 0.4867 rather than 0.6074, inflating this row by about 0.12. The LR axis was swept rather than assumed because DoRA's D2A search established that its scale and LR axes interact; in T2A they did not, and the setting default survived. Both roles passed the section 3b stability gate 3/3 on selection seeds 6711-6713 (hyper mean 0.7272, SD 0.0140; static mean 0.5895, SD 0.0169; divergence 0/3 for both), and the measured SD is tighter than the 0.021 materiality threshold used to close the ladders. Note the hyper multi-seed mean 0.7272 sits below the 0.7609 scout peak that selected the point, which is the winner's-curse gap the gate exists to expose. Re-derived under the corrected T2A rules (AUTORESEARCH.md): ROUGE-L rather than the training objective, a static control selected independently on its own score, and selection data disjoint from the report split on BOTH task and example axes -- the selection split is the 10 in-distribution lol_ tasks at example offset 40, since training consumes the leading 40 examples of the same split. Every swept axis closed with an interior optimum; the operating point passed the \u00a73b stability gate 3/3 on selection seeds disjoint from these confirmation seeds."
+  },
+  "provenance": {
+    "models": [
+      {
+        "model_id": "google/gemma-2-2b-it",
+        "revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8"
+      },
+      {
+        "model_id": "Alibaba-NLP/gte-large-en-v1.5",
+        "revision": "104333d6af6f97649377c2afbde10a7704870c7b"
+      }
+    ],
+    "data": [
+      {
+        "path": "data/t2a/hyper_lora_decontam_lol_tasks.yaml",
+        "sha256": "f38284efcbf9e01aebfe60746c0024e615ef4432667b540c52dc5f055a79e96f"
+      },
+      {
+        "path": "data/t2a/eval_ds_info.yaml",
+        "sha256": "cf281756600d2f853907687e9210688f3f9aab8632c9cc1df0353e50a49017d2"
+      }
+    ],
+    "source_artifacts": [
+      {
+        "seed": 6741,
+        "path": "results/autoresearch/t2a/dora/confirmation_v2/report_split_s6741.jsonl",
+        "sha256": "c17e6062ce4eb8551f55cae19e1c46c807f87a477f06f7e72e6310a9b1a3571d"
+      },
+      {
+        "seed": 6742,
+        "path": "results/autoresearch/t2a/dora/confirmation_v2/report_split_s6742.jsonl",
+        "sha256": "34ddedf614ddb3a7b83c2df88c6efe45db50ae67dcb3be37132726f68214463f"
+      },
+      {
+        "seed": 6743,
+        "path": "results/autoresearch/t2a/dora/confirmation_v2/report_split_s6743.jsonl",
+        "sha256": "338360551d1221805fb7316fadf2d1de9cabcf3b28209f46000dc953121893c8"
+      }
+    ],
+    "evaluation": {
+      "split": "report",
+      "tasks": [
+        "lol_035",
+        "lol_039",
+        "lol_202",
+        "lol_304",
+        "lol_362",
+        "lol_614",
+        "lol_701",
+        "lol_706",
+        "lol_710",
+        "lol_726",
+        "lol_1557"
+      ],
+      "examples_per_task": 64,
+      "descriptions_per_task": 3,
+      "decoding": "greedy",
+      "max_new_tokens": 32,
+      "example_offset": 0,
+      "note": "the 11 lol_ tasks absent from train_ds_names, scored exactly once"
+    },
+    "environment": {
+      "python": "3.11.15",
+      "lockfile_sha256": "f46fdbf77957f9b28555a9890c004d5ac5440c99822aa646c8884c815aec3762"
+    }
+  },
+  "reproduction": {
+    "script": "scripts/reproduce/t2a_reproduce_all.sh dora",
+    "scout": "scripts/t2a_sweep_axes.py",
+    "selection": "scripts/t2a_selection_seeds.py",
+    "confirmation": "scripts/t2a_confirmation_seeds.py",
+    "score": "scripts/reproduce/t2a_score_codec.sh dora",
+    "aggregate": "scripts/t2a_confirmation_result.py"
+  }
+}

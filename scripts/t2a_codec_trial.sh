@@ -11,7 +11,7 @@ cd "$(dirname "$0")/.."
 
 ADAPTER="${1:?adapter required}"; SCALE="${2:?scale required}"; SEED="${3:?seed required}"
 GH="${4:?hyper GPU CSV required}"; GS="${5:?static GPU CSV required}"; ROOT="${6:?output root required}"
-case "$ADAPTER" in lora|ia3|lokr|fourierft|steering) ;; *) echo "unsupported adapter: $ADAPTER" >&2; exit 2 ;; esac
+case "$ADAPTER" in lora|dora|ia3|lokr|fourierft|steering) ;; *) echo "unsupported adapter: $ADAPTER" >&2; exit 2 ;; esac
 
 STEPS="${STEPS:-8000}"; LR="${LR:-1e-4}"; SNAP="${SNAP:-$STEPS}"; LIMIT="${LIMIT:-40}"
 PGB="${PGB:-16}"; CE_LIMIT="${CE_LIMIT:-24}"; ACC_LIMIT="${ACC_LIMIT:-0}"

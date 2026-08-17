@@ -20,12 +20,12 @@ def test_catalog_and_trial_ids_are_complete_and_stable():
         "document",
         "task_description",
     }
-    assert set(adapters) == {"fourierft", "ia3", "lokr", "lora_r8", "steering"}
+    assert set(adapters) == {"dora", "fourierft", "ia3", "lokr", "lora_r8", "steering"}
     # Every registered adapter supports the downstream objective, so a downstream setup
     # builds a trial against all of them - matching how `adapterbench validate`/
     # build_matrix actually behaves.
     trials = build_matrix(setups["text_to_adapter_gemma2b_sft"], list(adapters.values()))
-    assert len(trials) == 5
+    assert len(trials) == 6
     assert len({trial.trial_id for trial in trials}) == len(trials)
     repeated = build_matrix(setups["text_to_adapter_gemma2b_sft"], list(adapters.values()))
     assert [trial.trial_id for trial in repeated] == [trial.trial_id for trial in trials]
@@ -33,7 +33,7 @@ def test_catalog_and_trial_ids_are_complete_and_stable():
     document_trials = build_matrix(
         setups["document_to_adapter_qwen06b_niah"], list(adapters.values())
     )
-    assert len(document_trials) == 5
+    assert len(document_trials) == 6
 
 
 def test_make_trial_rejects_an_objective_the_adapter_does_not_support():

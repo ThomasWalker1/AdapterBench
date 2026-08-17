@@ -37,7 +37,7 @@ sys.path.insert(0, str(REPO / "scripts"))
 from t2a_selection_seeds import OPERATING_POINTS, SELECTION_SEEDS  # noqa: E402
 from t2a_confirmation_seeds import CONFIRMATION_SEEDS  # noqa: E402
 
-CODECS = ("lora", "ia3", "lokr", "fourierft", "steering")
+CODECS = ("lora", "ia3", "lokr", "fourierft", "steering", "dora")
 
 
 def load(pattern: str) -> list[dict]:
